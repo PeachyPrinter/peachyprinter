@@ -4,15 +4,14 @@ import kivy
 from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.settings import SettingsWithSidebar
 from kivy.uix.popup import Popup
-from kivy.graphics.vertex_instructions import Rectangle, Ellipse, Line
-from kivy.graphics.context_instructions import Color
-
 
 from setting_adapter import SettingsAdapter
 
-class Interface(BoxLayout):
+
+class Interface(FloatLayout):
     pass
 
 class ConfigPopUp(Popup):
@@ -54,6 +53,6 @@ class SettingsApp(App):
     def on_close_config(self, **kwargs):
         self.pop_up.dismiss()
 
-
+ 
 if __name__ == '__main__':
     SettingsApp().run()

@@ -1,0 +1,45 @@
+<Interface>:
+    orientation: 'vertical'
+    padding: [5,5]
+    background_color: [1,1,1,1]
+    canvas.before:
+        Color:
+            rgba: (0.97, 0.97, 0.97, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Image:
+        source: 'resources\peachyprinter.jpg'
+    AnchorLayout:
+        anchor_x: 'right'
+        anchor_y: 'top'
+        Button:
+            size_hint: (0.05, 0.05)
+            on_release: app.on_open_config()
+            background_color: [0,0,0,0]
+            Image:
+                source: 'resources\gear.png'
+                y: self.parent.y
+                x: self.parent.x
+                size: self.parent.width,self.parent.height
+                allow_strech: False
+
+<ConfigPopUp>:
+    id: config_pop
+    title: 'Configuration Options'
+    size_hint: (0.8,0.8)
+    auto_dismiss: True
+    BoxLayout:
+        orientation: 'vertical'
+        Button:
+            text: 'Calibrate Printer' 
+        Button:
+            text: 'Calibrate Dripper'
+        Button:
+            text: 'Calibrate Cure Rate'
+        Button:
+            text: 'Advanced Settings'
+            on_release: app.open_settings()
+        Button:
+            text: 'Close'
+            on_release: app.on_close_config()
