@@ -6,13 +6,14 @@ from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.settings import SettingsWithSidebar
 from kivy.uix.popup import Popup
+from kivy.graphics.vertex_instructions import Rectangle, Ellipse, Line
+from kivy.graphics.context_instructions import Color
+
 
 from setting_adapter import SettingsAdapter
 
-
 class Interface(BoxLayout):
     pass
-
 
 class ConfigPopUp(Popup):
     pass
@@ -36,8 +37,8 @@ class SettingsApp(App):
         settings.add_json_panel("Peachy Printer", self.config, data=json.dumps([setting for setting in self.settings_adapter.getSettings() if setting['section'] == 'Main']))
         settings.add_json_panel("Audio Settings", self.config, data=json.dumps([setting for setting in self.settings_adapter.getSettings() if setting['section'] == 'Audio']))
         settings.add_json_panel("Advanced Options", self.config, data=json.dumps([setting for setting in self.settings_adapter.getSettings() if setting['section'] == 'Options']))
-        settings.add_json_panel("Dripper Setup", self.config, data=json.dumps([setting for setting in self.settings_adapter.getSettings() if setting['section'] == 'Dripper']))
-        settings.add_json_panel("Calibration Data", self.config, data=json.dumps([setting for setting in self.settings_adapter.getSettings() if setting['section'] == 'Calibration']))
+        # settings.add_json_panel("Dripper Setup", self.config, data=json.dumps([setting for setting in self.settings_adapter.getSettings() if setting['section'] == 'Dripper']))
+        # settings.add_json_panel("Calibration Data", self.config, data=json.dumps([setting for setting in self.settings_adapter.getSettings() if setting['section'] == 'Calibration']))
         settings.add_json_panel("Email Setup", self.config, data=json.dumps([setting for setting in self.settings_adapter.getSettings() if setting['section'] == 'Email']))
         settings.add_json_panel("Serial Setup", self.config, data=json.dumps([setting for setting in self.settings_adapter.getSettings() if setting['section'] == 'Serial']))
         settings.add_json_panel("Circut Selection", self.config, data=json.dumps([setting for setting in self.settings_adapter.getSettings() if setting['section'] == 'Circut']))
@@ -46,8 +47,12 @@ class SettingsApp(App):
     def on_config_changed(self, config, section, key, value):
         print key, value
 
-    def open_config(self):
-        self.interface.add_widget(ConfigPopUp())
+    def on_open_config(self, **kwargs):
+        self.pop_up = ConfigPopUp()
+        self.pop_up.open()
+
+    def on_close_config(self, **kwargs):
+        self.pop_up.dismiss()
 
 
 if __name__ == '__main__':
