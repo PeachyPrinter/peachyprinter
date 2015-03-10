@@ -1,7 +1,7 @@
 <Interface>:
     orientation: 'vertical'
-    padding: [5,5]
-    background_color: [1,1,1,1]
+    padding: [5, 5]
+    background_color: [1, 1, 1, 1]
     canvas.before:
         Color:
             rgba: (0.97, 0.97, 0.97, 1)
@@ -16,23 +16,49 @@
         Button:
             size_hint: (0.05, 0.05)
             on_release: app.on_open_config()
-            background_color: [0,0,0,0]
+            background_color: [0, 0, 0, 0]
             Image:
                 source: 'resources\gear.png'
                 y: self.parent.y
                 x: self.parent.x
-                size: self.parent.width,self.parent.height
+                size: self.parent.width, self.parent.height
                 allow_strech: False
+    FloatLayout:
+        pos: root.pos
+        size_hint: [0.3, 1]
+        BoxLayout:
+            orientation:'vertical'
+            size: self.parent.size
+            pos: self.parent.pos
+            ResizingLabel:
+                texture_size: self.size
+                text_size: self.size
+                text_font: int(self.y * 0.8)
+                size_hint: [1, 0.06]
+                text: 'Printer Control'
+                color: [0, 0, 0, 1]
+                halign: 'left'
+            ResizingLabel:
+                texture_size: self.size
+                text_size: self.size
+                text_font: int(self.y * 0.8)
+                size_hint: [1, 0.06]
+                text: 'Status: Ready'
+                color: [0, 0, 0, 1]
+                halign: 'left'
+            Label:
+                text: ""
+
 
 <ConfigPopUp>:
     id: config_pop
     title: 'Configuration Options'
-    size_hint: (0.8,0.8)
+    size_hint: [0.8, 0.8]
     auto_dismiss: True
     BoxLayout:
         orientation: 'vertical'
         Button:
-            text: 'Calibrate Printer' 
+            text: 'Calibrate Printer'
         Button:
             text: 'Calibrate Dripper'
         Button:
