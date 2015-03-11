@@ -9,7 +9,7 @@
             pos: self.pos
             size: self.size
     Image:
-        source: 'resources\peachyprinter.jpg'
+        source: 'resources/peachyprinter.jpg'
     AnchorLayout:
         anchor_x: 'right'
         anchor_y: 'top'
@@ -18,7 +18,7 @@
             on_release: app.on_open_config()
             background_color: [0, 0, 0, 0]
             Image:
-                source: 'resources\gear.png'
+                source: 'resources/gear.png'
                 y: self.parent.y
                 x: self.parent.x
                 size: self.parent.width, self.parent.height
@@ -26,6 +26,12 @@
     FloatLayout:
         pos: root.pos
         size_hint: [0.3, 1]
+        canvas:
+            Color:
+                rgba: (1, 0, 0, 0.2)
+            Rectangle:
+                pos: self.pos
+                size: self.size
         BoxLayout:
             orientation:'vertical'
             size: self.parent.size
@@ -33,7 +39,7 @@
             ResizingLabel:
                 texture_size: self.size
                 text_size: self.size
-                text_font: int(self.y * 0.8)
+                font_size: min(int(self.height * 0.8), int(self.width / (len(self.text) + 1)) * 0.8)
                 size_hint: [1, 0.06]
                 text: 'Printer Control'
                 color: [0, 0, 0, 1]
@@ -41,13 +47,14 @@
             ResizingLabel:
                 texture_size: self.size
                 text_size: self.size
-                text_font: int(self.y * 0.8)
+                font_size: min(int(self.height * 0.8), int(self.width / (len(self.text) + 1)) * 0.8)
                 size_hint: [1, 0.06]
                 text: 'Status: Ready'
                 color: [0, 0, 0, 1]
                 halign: 'left'
             Label:
                 text: ""
+
 
 
 <ConfigPopUp>:

@@ -13,16 +13,14 @@ import time
 from setting_adapter import SettingsAdapter
 
 class ResizingLabel(Label):
-    def on_size(self, *arg, **kwargs):
+    def __init__(self, **kwargs):
+        super(ResizingLabel, self).__init__(**kwargs)
+        # self.bind(size=self.update_font)
+
+    def update_font(self, *arg, **kwargs):
         Logger.info('SIZE '* 5)
         self.text_font = self.parent.y * 0.8
-        temp = self.text
-        self.text = ''
         self.text = str(time.time())
-
-    def on_text_font(self, *arg, **kwargs):
-        Logger.info('FONT ' *5)
-        self.texture_update()
 
 
 
