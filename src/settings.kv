@@ -37,9 +37,15 @@
             size: self.parent.size
             pos: self.parent.pos
             ResizingLabel:
+                canvas:
+                    Color:
+                        rgba: (0, 1, 0, 0.2)
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
                 texture_size: self.size
                 text_size: self.size
-                font_size: min(int(self.height * 0.8), int(self.width / (len(self.text) + 1)) * 0.8)
+                font_size: min(int(self.height * 0.9), int((self.width / (len(self.text) + 1)) * 1.8))
                 size_hint: [1, 0.06]
                 text: 'Printer Control'
                 color: [0, 0, 0, 1]
@@ -47,15 +53,15 @@
             ResizingLabel:
                 texture_size: self.size
                 text_size: self.size
-                font_size: min(int(self.height * 0.8), int(self.width / (len(self.text) + 1)) * 0.8)
+                font_size: min(int(self.height * 0.9), int((self.width / (len(self.text) + 1)) * 1.8))
                 size_hint: [1, 0.06]
                 text: 'Status: Ready'
                 color: [0, 0, 0, 1]
                 halign: 'left'
             Label:
                 text: ""
-
-
+    Bork:
+        pos: root.pos
 
 <ConfigPopUp>:
     id: config_pop
