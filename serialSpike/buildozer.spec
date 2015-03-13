@@ -1,10 +1,10 @@
 [app]
 
 # (str) Title of your application
-title = Peachy Printer
+title = SerialSpike
 
 # (str) Package name
-package.name = peachy_printer
+package.name = serialspike
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.test
@@ -13,7 +13,7 @@ package.domain = org.test
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas,glsl
+source.include_exts = py,png,jpg,kv,atlas
 
 # (list) Source files to exclude (let empty to not exclude anything)
 #source.exclude_exts = spec
@@ -29,11 +29,11 @@ source.include_exts = py,png,jpg,kv,atlas,glsl
 # version.filename = %(source.dir)s/main.py
 
 # (str) Application versioning (method 2)
-version = 0.0.1
+version = 1.2.0
 
 # (list) Application requirements
 # comma seperated e.g. requirements = sqlite3,kivy
-requirements = kivy
+requirements = pyserial, kivy, twisted
 
 # (list) Garden requirements
 #garden_requirements =

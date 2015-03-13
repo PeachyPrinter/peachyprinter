@@ -66,12 +66,12 @@ class Bork(Widget):
                 ]
         data = [item for sublist in data for item in sublist]
         UpdateNormalMatrix()
-        self.mesh = Mesh(
-            vertices=data,
-            indices=[0, 1, 2, 3, 4, 5, 6, 7, 8],
-            fmt=[(b'v_pos', 3, b'float'), (b'v_normal', 3, b'float')],
-            mode='triangles',
-        )
+        # self.mesh = Mesh(
+        #     vertices=data,
+        #     indices=[0, 1, 2, 3, 4, 5, 6, 7, 8],
+        #     fmt=[(b'v_pos', 3, b'float'), (b'v_normal', 3, b'float')],
+        #     mode='triangles',
+        # )
         PopMatrix()
 
 
