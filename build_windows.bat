@@ -51,17 +51,6 @@ ECHO ------------------------------------
 ECHO Creating Package
 ECHO ------------------------------------
 
-REM pyinstaller --clean --noconfirm --name=PeachyPrinter src\main.py
-REM IF NOT "%ERRORLEVEL%" == "0" (
-REM   ECHO FAILED executing command: pyinstaller setup
-REM   EXIT /B 77
-REM )
-REM pyinstaller  --noconfirm --name=PeachyPrinter --icon=resources\peachy.ico src\main.py
-REM IF NOT "%ERRORLEVEL%" == "0" (
-REM   ECHO FAILED executing command: pyinstaller --noconfirm --name=PeachyPrinter --icon=resources\peachy.ico src\main.py
-REM   EXIT /B 78
-REM )
-
 COPY /Y PeachyPrinter.spec.source PeachyPrinter.spec
 IF NOT "%ERRORLEVEL%" == "0" (
   ECHO FAILED executing command: COPY /Y PeachyPrinter.spec.source PeachyPrinter.spec

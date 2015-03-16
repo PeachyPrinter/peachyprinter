@@ -37,7 +37,7 @@ sudo yum -y install python-virtualenv
 
 ### Windows
 via (oh yeah there is no package manager in windows)
- - python [https://www.python.org/downloads/windows/]
+ - kivy [http://kivy.org/#download]
 
 ##Getting Started
 ###Creating a development environment
