@@ -1,12 +1,11 @@
 @ECHO OFF
 
-ECHO ----Ensuring Virtual Environment Running----
-IF  "%VIRTUAL_ENV%" == "" (
-    ECHO You need to be running the virtual environment first type \"source venv/bin/activate\"
-    ECHO This can be done with the \"deactivate\" command.
-    EXIT /B 88
+ECHO ----Checking for already running kivy Environment----
+ECHO "%kivy_portable_root%"
+IF "%kivy_portable_root%" == "" (
+    ECHO Run this from kivy portable environment v 1.8.0.
+    EXIT /B 53 
 )
-
 ECHO ----Running Installer----
 pip install --upgrade http://software.peachyprinter.com/builds/api/latest.zip
 IF NOT "%ERRORLEVEL%" == "0" (
