@@ -4,23 +4,14 @@ ECHO ------------------------------------
 ECHO Cleaning workspace
 ECHO ------------------------------------
 
-DEL /Q *.msi
+DEL /Q PeachyPrinter*.exe
 RMDIR /S /Q src\build
 RMDIR /S /Q src\dist
-RMDIR /S /Q venv
 DEL /S *.pyc
 
 ECHO ------------------------------------
-ECHO Setting up Virtual Enviroment venv
+ECHO Setting up Enviroment
 ECHO ------------------------------------
-
-IF "%PYTHON_HOME%" == "" (
-    ECHO FAILURE: Environment setup failed, PYTHON_HOME environment variable not available
-    EXIT /B 27
-)
-
-set TCL_LIBRARY=%PYTHON_HOME%\tcl\tcl8.5
-set TK_LIBRARY=%PYTHON_HOME%\tcl
 
 CALL setup_development_windows.bat
 IF NOT "%ERRORLEVEL%" == "0" (
@@ -60,16 +51,35 @@ ECHO ------------------------------------
 ECHO Creating Package
 ECHO ------------------------------------
 
-CD src
-python setup.py bdist_msi
+REM pyinstaller --clean --noconfirm --name=PeachyPrinter src\main.py
+REM IF NOT "%ERRORLEVEL%" == "0" (
+REM   ECHO FAILED executing command: pyinstaller setup
+REM   EXIT /B 77
+REM )
+REM pyinstaller  --noconfirm --name=PeachyPrinter --icon=resources\peachy.ico src\main.py
+REM IF NOT "%ERRORLEVEL%" == "0" (
+REM   ECHO FAILED executing command: pyinstaller --noconfirm --name=PeachyPrinter --icon=resources\peachy.ico src\main.py
+REM   EXIT /B 78
+REM )
+
+COPY /Y PeachyPrinter.spec.source PeachyPrinter.spec
 IF NOT "%ERRORLEVEL%" == "0" (
-    ECHO "FAILED PACKAGING ABORTING"
-    EXIT /B 3
+  ECHO FAILED executing command: COPY /Y PeachyPrinter.spec.source PeachyPrinter.spec
+  EXIT /B 78
 )
-CD ..
+
+pyinstaller --clean --noconfirm PeachyPrinter.spec
+IF NOT "%ERRORLEVEL%" == "0" (
+  ECHO FAILED executing command: pyinstaller --noconfirm PeachyPrinter.spec
+  EXIT /B 78
+)
 
 ECHO ------------------------------------
 ECHO Moving file
 ECHO ------------------------------------
 
-MOVE src\dist\*.msi .
+COPY dist\PeachyPrinter\PeachyPrinter.exe PeachyPrinter-%VERSION%.exe
+IF NOT "%ERRORLEVEL%" == "0" (
+    ECHO "FAILED moving files"
+    EXIT /B 798
+)

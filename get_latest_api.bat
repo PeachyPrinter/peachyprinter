@@ -7,7 +7,7 @@ IF "%kivy_portable_root%" == "" (
     EXIT /B 53 
 )
 ECHO ----Running Installer----
-pip install --upgrade http://software.peachyprinter.com/builds/api/latest.zip
+pip install --upgrade ..\peachyprintertools\PeachyPrinterToolsAPI-0.3.672.zip
 IF NOT "%ERRORLEVEL%" == "0" (
     ECHO FAILURE: Installer failed, check log
     EXIT /B 99

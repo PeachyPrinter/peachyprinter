@@ -15,7 +15,8 @@ exe = EXE(pyz,
           debug=False,
           strip=None,
           upx=True,
-          console=True , icon='resources\\peachy.ico')
+          console=True,
+          icon='src\\resources\\peachy.ico')
 coll = COLLECT(exe,
                Tree('src'),
                a.binaries,
