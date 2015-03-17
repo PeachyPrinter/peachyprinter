@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-17 10:27-0600\n"
+"POT-Creation-Date: 2015-03-17 12:58-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -11,7 +11,32 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: src/main.py:22
+msgid "Close"
+msgstr ""
+
+#: src/peachyprinter.kv:8
+msgid "Hello World"
+msgstr ""
+
+#: src/peachyprinter.kv:10
+msgid "English (Canada/UK)"
+msgstr ""
+
+#: src/peachyprinter.kv:13
+msgid "English (American)"
+msgstr ""
+
+#: src/peachyprinter.kv:16
+msgid "Klingon"
+msgstr ""
+
+#: src/peachyprinter.kv:19
+msgid "Settings"
+msgstr ""
+
 #: test/infrastructure_test/langtoolstest.py:18
-#: test/infrastructure_test/langtoolstest.py:21
+#: test/infrastructure_test/langtoolstest.py:22
+#: test/infrastructure_test/langtoolstest.py:26
 msgid "en_GB Text"
 msgstr "en_US Text"

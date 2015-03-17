@@ -1,3 +1,20 @@
+#:kivy 1.8.0
+#:import _ __main__._
+
 BoxLayout:
-    Label:
-        text: 'Hello World'
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: _('Hello World')
+        Button:
+            text: _('English (Canada/UK)')
+            on_release: app.lang = 'en_GB'
+        Button:
+            text: _('English (American)')
+            on_release: app.lang = 'en_US'
+        Button:
+            text: _('Klingon')
+            on_release: app.lang = 'tlh'
+    Button:
+        text: _('Settings')
+        on_release: app.open_settings()
