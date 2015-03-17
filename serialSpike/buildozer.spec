@@ -33,7 +33,7 @@ version = 1.2.0
 
 # (list) Application requirements
 # comma seperated e.g. requirements = sqlite3,kivy
-requirements = pyserial, kivy, twisted
+requirements = pyserial, kivy
 
 # (list) Garden requirements
 #garden_requirements =
