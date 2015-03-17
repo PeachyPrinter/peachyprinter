@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-17 12:58-0600\n"
+"POT-Creation-Date: 2015-03-17 16:24-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/main.py:22
+#: src/main.py:33
 msgid "Close"
 msgstr "SoQmoH"
 
@@ -40,3 +40,35 @@ msgstr "setting"
 #: test/infrastructure_test/langtoolstest.py:26
 msgid "en_GB Text"
 msgstr "tlh Text"
+
+#: src/infrastructure/setting_mapper.py:11
+msgid "Peachy Printers Software Version"
+msgstr "peachy Printers Software Version"
+
+#: src/infrastructure/setting_mapper.py:12
+msgid "Version"
+msgstr "version"
+
+#: src/infrastructure/setting_mapper.py:19
+msgid "Your Peachy Printers Hardware Serial Number"
+msgstr "Peachy Printers Hardware serial mI'"
+
+#: src/infrastructure/setting_mapper.py:20
+msgid "Serial Number"
+msgstr "serial mI"
+
+#: src/infrastructure/setting_mapper.py:27
+msgid "Your Peachy Printers Hardware Version"
+msgstr "peachy Printers Hardware Version"
+
+#: src/infrastructure/setting_mapper.py:28
+msgid "Hardware Number"
+msgstr "hardware mI'"
+
+#: src/infrastructure/setting_mapper.py:35
+msgid "Your Peachy Printers Firmware Version"
+msgstr "Peachy Printers Firmware Version"
+
+#: src/infrastructure/setting_mapper.py:36
+msgid "Firmware Number"
+msgstr "firmware MI"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-17 12:58-0600\n"
+"POT-Creation-Date: 2015-03-17 16:24-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/main.py:22
+#: src/main.py:33
 msgid "Close"
 msgstr ""
 
@@ -45,4 +45,36 @@ msgstr ""
 #: test/infrastructure_test/langtoolstest.py:22
 #: test/infrastructure_test/langtoolstest.py:26
 msgid "en_GB Text"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:11
+msgid "Peachy Printers Software Version"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:12
+msgid "Version"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:19
+msgid "Your Peachy Printers Hardware Serial Number"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:20
+msgid "Serial Number"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:27
+msgid "Your Peachy Printers Hardware Version"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:28
+msgid "Hardware Number"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:35
+msgid "Your Peachy Printers Firmware Version"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:36
+msgid "Firmware Number"
 msgstr ""
