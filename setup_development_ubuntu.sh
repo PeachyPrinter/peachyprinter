@@ -19,7 +19,6 @@ if [ $? != 0 ]; then
     fi
 fi
 
-
 echo "----Checking for virtualenv----"
 command -v virtualenv 2>&1 >/dev/null
 if [ $? != 0 ]; then
