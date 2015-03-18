@@ -11,33 +11,33 @@ class SettingsMapper(object):
                 {
                     'type': 'string',
                     'section': u'Info',
-                    'desc': _('Peachy Printers Software Version'),
-                    'title': _('Version'),
-                    'key': 'version_number',
+                    'desc': _('info.version_number DESCRIPTION'),
+                    'title': _('info.version_number TITLE'),
+                    'key': 'info.version_number',
                     'disabled': True
                 },
                 {
                     'type': 'string',
                     'section': u'Info',
-                    'desc': _('Your Peachy Printers Hardware Serial Number'),
-                    'title': _('Serial Number'),
-                    'key': 'serial_number',
+                    'desc': _('info.serial_number DESCRIPTION'),
+                    'title': _('info.serial_number TITLE'),
+                    'key': 'info.serial_number',
                     'disabled': True
                 },
                 {
                     'type': 'string',
                     'section': u'Info',
-                    'desc': _('Your Peachy Printers Hardware Version'),
-                    'title': _('Hardware Number'),
-                    'key': 'hardware_version_number',
+                    'desc': _('info.hardware_version_number DESCRIPTION'),
+                    'title': _('info.hardware_version_number TITLE'),
+                    'key': 'info.hardware_version_number',
                     'disabled': True
                 },
                 {
                     'type': 'string',
                     'section': u'Info',
-                    'desc': _('Your Peachy Printers Firmware Version'),
-                    'title': _('Firmware Number'),
-                    'key': 'firmwware_version_number',
+                    'desc': _('info.firmwware_version_number DESCRIPTION'),
+                    'title': _('info.firmwware_version_number TITLE'),
+                    'key': 'info.firmwware_version_number',
                     'disabled': True
                 },
                ]
@@ -49,69 +49,69 @@ class SettingsMapper(object):
                     'type': 'bool',
                     'section': 'Options',
                     'key': 'options.use_sublayers',
-                    'title': _('Use Sublayers'),
-                    'desc': _('Augment the gcode model with sublayers for use with large layers [Off]'),
+                    'title': _('options.use_sublayers TITLE'),
+                    'desc': _('options.use_sublayers DESCRIPTION'),
                 },
                 {
                     'type': 'numeric',
                     'section': 'Options',
                     'key': 'options.sublayer_height_mm',
-                    'title': _('Sublayer Height (mm)'),
-                    'desc': _('Height of a sublayer in mm [0.1]'),
+                    'title': _('options.sublayer_height_mm TITLE'),
+                    'desc': _('options.sublayer_height_mm DESCRIPTION'),
                 },
                 {
                     'type': 'numeric',
                     'section': 'Options',
                     'key': 'options.laser_thickness_mm',
-                    'title': _('Laser Thickness (mm)'),
-                    'desc': _('The thickness of the laser where it intersects the resin [0.5]'),
+                    'title': _('options.laser_thickness_mm TITLE'),
+                    'desc': _('options.laser_thickness_mm DESCRIPTION'),
                 },
                 {
                     'type': 'numeric',
                     'section': 'Options',
                     'key': 'options.scaling_factor',
-                    'title': '',
-                    'desc': '',
+                    'title': _('options.scaling_factor TITLE'),
+                    'desc': _('options.scaling_factor DESCRIPTION'),
                 },
                 {
                     'type': 'numeric',
                     'section': 'Options',
                     'key': 'options.overlap_amount',
-                    'title': '',
-                    'desc': '',
+                    'title': _('options.overlap_amount TITLE'),
+                    'desc': _('options.overlap_amount DESCRIPTION'),
                 },
                 {
                     'type': 'bool',
                     'section': 'Options',
                     'key': 'options.use_shufflelayers',
-                    'title': '',
-                    'desc': '',
+                    'title': _('options.use_shufflelayers TITLE'),
+                    'desc': _('options.use_shufflelayers DESCRIPTION'),
                 },
                 {
                     'type': 'bool',
                     'section': 'Options',
                     'key': 'options.use_overlap',
-                    'title': '',
-                    'desc': '',
+                    'title': _('options.use_overlap TITLE'),
+                    'desc': _('options.use_overlap DESCRIPTION'),
                 },
                 {
                     'type': 'numeric',
                     'section': 'Options',
                     'key': 'options.print_queue_delay',
-                    'title': '',
-                    'desc': '',
+                    'title': _('options.print_queue_delay TITLE'),
+                    'desc': _('options.print_queue_delay DESCRIPTION'),
                 },
                 {
                     'type': 'numeric',
                     'section': 'Options',
                     'key': 'options.pre_layer_delay',
-                    'title': '',
-                    'desc': '',
+                    'title': _('options.pre_layer_delay TITLE'),
+                    'desc': _('options.pre_layer_delay DESCRIPTION'),
                 },]
 
     def refresh_settings(self, settings, config):
         settings.add_json_panel(_('Info'), config, data=json.dumps(self.config_info))
 
     def set_defaults(self, config):
-        info_items = dict([(item['key'], "Not Specified") for item in self.config_info if hasattr(item, 'key')])
+        info_items = dict([(item['key'], "Not Specified") for item in self.config_info])
         config.setdefaults(u'Info', info_items)

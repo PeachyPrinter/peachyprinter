@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-18 10:35-0600\n"
+"POT-Creation-Date: 2015-03-18 11:07-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -41,62 +41,110 @@ msgstr "setting"
 msgid "en_GB Text"
 msgstr "tlh Text"
 
-#: src/infrastructure/setting_mapper.py:13
+#: src/infrastructure/setting_mapper.py:14
+msgid "info.version_number DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:15
+msgid "info.version_number TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:22
+msgid "info.serial_number DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:23
+msgid "info.serial_number TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:30
+msgid "info.hardware_version_number DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:31
+msgid "info.hardware_version_number TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:38
+msgid "info.firmwware_version_number DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:39
+msgid "info.firmwware_version_number TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:52
+msgid "options.use_sublayers TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:53
+msgid "options.use_sublayers DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:59
+msgid "options.sublayer_height_mm TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:60
+msgid "options.sublayer_height_mm DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:66
+msgid "options.laser_thickness_mm TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:67
+msgid "options.laser_thickness_mm DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:73
+msgid "options.scaling_factor TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:74
+msgid "options.scaling_factor DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:80
+msgid "options.overlap_amount TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:81
+msgid "options.overlap_amount DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:87
+msgid "options.use_shufflelayers TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:88
+msgid "options.use_shufflelayers DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:94
+msgid "options.use_overlap TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:95
+msgid "options.use_overlap DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:101
+msgid "options.print_queue_delay TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:102
+msgid "options.print_queue_delay DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:108
+msgid "options.pre_layer_delay TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:109
+msgid "options.pre_layer_delay DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:113
 msgid "Info"
 msgstr "De'"
-
-#: src/infrastructure/setting_mapper.py:18
-msgid "Peachy Printers Software Version"
-msgstr "peachy Printers Software Version"
-
-#: src/infrastructure/setting_mapper.py:19
-msgid "Version"
-msgstr "version"
-
-#: src/infrastructure/setting_mapper.py:26
-msgid "Your Peachy Printers Hardware Serial Number"
-msgstr "Peachy Printers Hardware serial mI'"
-
-#: src/infrastructure/setting_mapper.py:27
-msgid "Serial Number"
-msgstr "serial mI"
-
-#: src/infrastructure/setting_mapper.py:34
-msgid "Your Peachy Printers Hardware Version"
-msgstr "peachy Printers Hardware Version"
-
-#: src/infrastructure/setting_mapper.py:35
-msgid "Hardware Number"
-msgstr "hardware mI'"
-
-#: src/infrastructure/setting_mapper.py:42
-msgid "Your Peachy Printers Firmware Version"
-msgstr "Peachy Printers Firmware Version"
-
-#: src/infrastructure/setting_mapper.py:43
-msgid "Firmware Number"
-msgstr "firmware MI"
-
-#: src/infrastructure/setting_mapper.py:56
-msgid "Use Sublayers"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:57
-msgid "Augment the gcode model with sublayers for use with large layers [Off]"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:63
-msgid "Sublayer Height (mm)"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:64
-msgid "Height of a sublayer in mm [0.1]"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:70
-msgid "Laser Thickness (mm)"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:71
-msgid "The thickness of the laser where it intersects the resin [0.5]"
-msgstr ""
