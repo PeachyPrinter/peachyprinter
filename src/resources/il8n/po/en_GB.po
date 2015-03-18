@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-18 14:59-0600\n"
+"POT-Creation-Date: 2015-03-18 16:17-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -41,114 +41,114 @@ msgstr ""
 msgid "en_GB Text"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:17
-msgid "info.version_number DESCRIPTION"
-msgstr ""
-
 #: src/infrastructure/setting_mapper.py:18
-msgid "info.version_number TITLE"
-msgstr ""
+msgid "info.version_number DESCRIPTION"
+msgstr "Version Number"
 
-#: src/infrastructure/setting_mapper.py:25
-msgid "info.serial_number DESCRIPTION"
-msgstr ""
+#: src/infrastructure/setting_mapper.py:19
+msgid "info.version_number TITLE"
+msgstr "Version Number"
 
 #: src/infrastructure/setting_mapper.py:26
-msgid "info.serial_number TITLE"
-msgstr ""
+msgid "info.serial_number DESCRIPTION"
+msgstr "Serial Number"
 
-#: src/infrastructure/setting_mapper.py:33
-msgid "info.hardware_version_number DESCRIPTION"
-msgstr ""
+#: src/infrastructure/setting_mapper.py:27
+msgid "info.serial_number TITLE"
+msgstr "Serial number"
 
 #: src/infrastructure/setting_mapper.py:34
-msgid "info.hardware_version_number TITLE"
-msgstr ""
+msgid "info.hardware_version_number DESCRIPTION"
+msgstr "Hardware Version"
 
-#: src/infrastructure/setting_mapper.py:41
-msgid "info.firmwware_version_number DESCRIPTION"
-msgstr ""
+#: src/infrastructure/setting_mapper.py:35
+msgid "info.hardware_version_number TITLE"
+msgstr "HW ver."
 
 #: src/infrastructure/setting_mapper.py:42
-msgid "info.firmwware_version_number TITLE"
-msgstr ""
+msgid "info.firmwware_version_number DESCRIPTION"
+msgstr "Firmware Version"
 
-#: src/infrastructure/setting_mapper.py:55
-msgid "options.use_sublayers TITLE"
-msgstr ""
+#: src/infrastructure/setting_mapper.py:43
+msgid "info.firmwware_version_number TITLE"
+msgstr "FW ver."
 
 #: src/infrastructure/setting_mapper.py:56
-msgid "options.use_sublayers DESCRIPTION"
-msgstr ""
+msgid "options.use_sublayers TITLE"
+msgstr "Use Sublayers"
 
-#: src/infrastructure/setting_mapper.py:62
-msgid "options.sublayer_height_mm TITLE"
-msgstr ""
+#: src/infrastructure/setting_mapper.py:57
+msgid "options.use_sublayers DESCRIPTION"
+msgstr "Use sublayers to accout for thinkly sliced gcode"
 
 #: src/infrastructure/setting_mapper.py:63
-msgid "options.sublayer_height_mm DESCRIPTION"
-msgstr ""
+msgid "options.sublayer_height_mm TITLE"
+msgstr "Sublayer Height (mm)"
 
-#: src/infrastructure/setting_mapper.py:69
-msgid "options.laser_thickness_mm TITLE"
-msgstr ""
+#: src/infrastructure/setting_mapper.py:64
+msgid "options.sublayer_height_mm DESCRIPTION"
+msgstr "Height of sublayers [0.01]"
 
 #: src/infrastructure/setting_mapper.py:70
-msgid "options.laser_thickness_mm DESCRIPTION"
-msgstr ""
+msgid "options.laser_thickness_mm TITLE"
+msgstr "Laser Thickness (mm)"
 
-#: src/infrastructure/setting_mapper.py:76
-msgid "options.scaling_factor TITLE"
-msgstr ""
+#: src/infrastructure/setting_mapper.py:71
+msgid "options.laser_thickness_mm DESCRIPTION"
+msgstr "Thickness of the laser [0.5]"
 
 #: src/infrastructure/setting_mapper.py:77
-msgid "options.scaling_factor DESCRIPTION"
-msgstr ""
+msgid "options.scaling_factor TITLE"
+msgstr "Gcode Scaling Factor"
 
-#: src/infrastructure/setting_mapper.py:83
-msgid "options.overlap_amount TITLE"
-msgstr ""
+#: src/infrastructure/setting_mapper.py:78
+msgid "options.scaling_factor DESCRIPTION"
+msgstr "Adjust the gcode by scaling it's size"
 
 #: src/infrastructure/setting_mapper.py:84
-msgid "options.overlap_amount DESCRIPTION"
-msgstr ""
+msgid "options.overlap_amount_mm TITLE"
+msgstr "Overlap amount (mm)"
 
-#: src/infrastructure/setting_mapper.py:90
-msgid "options.use_shufflelayers TITLE"
-msgstr ""
+#: src/infrastructure/setting_mapper.py:85
+msgid "options.overlap_amount_mm DESCRIPTION"
+msgstr "This is the amount to ooverlap the beginning of the layer in mm"
 
 #: src/infrastructure/setting_mapper.py:91
-msgid "options.use_shufflelayers DESCRIPTION"
-msgstr ""
+msgid "options.use_shufflelayers TITLE"
+msgstr "Use Shuffle Layers"
 
-#: src/infrastructure/setting_mapper.py:97
-msgid "options.use_overlap TITLE"
-msgstr ""
+#: src/infrastructure/setting_mapper.py:92
+msgid "options.use_shufflelayers DESCRIPTION"
+msgstr "Allows the shuffling of the start point of a print."
 
 #: src/infrastructure/setting_mapper.py:98
-msgid "options.use_overlap DESCRIPTION"
-msgstr ""
+msgid "options.use_overlap TITLE"
+msgstr "Use Overlap"
 
-#: src/infrastructure/setting_mapper.py:104
-msgid "options.print_queue_delay TITLE"
-msgstr ""
+#: src/infrastructure/setting_mapper.py:99
+msgid "options.use_overlap DESCRIPTION"
+msgstr "Overlap allow for the overlaping of the begining of the current layer"
 
 #: src/infrastructure/setting_mapper.py:105
-msgid "options.print_queue_delay DESCRIPTION"
-msgstr ""
+msgid "options.print_queue_delay TITLE"
+msgstr "Print Queue Delay"
 
-#: src/infrastructure/setting_mapper.py:111
-msgid "options.pre_layer_delay TITLE"
-msgstr ""
+#: src/infrastructure/setting_mapper.py:106
+msgid "options.print_queue_delay DESCRIPTION"
+msgstr "The amount "
 
 #: src/infrastructure/setting_mapper.py:112
-msgid "options.pre_layer_delay DESCRIPTION"
-msgstr ""
+msgid "options.pre_layer_delay TITLE"
+msgstr "Pre Layer Delay"
 
-#: src/infrastructure/setting_mapper.py:116
+#: src/infrastructure/setting_mapper.py:113
+msgid "options.pre_layer_delay DESCRIPTION"
+msgstr "The amount of time to wait before starting a layer"
+
+#: src/infrastructure/setting_mapper.py:117
 msgid "Info"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:117
+#: src/infrastructure/setting_mapper.py:118
 msgid "Options"
 msgstr ""
