@@ -93,4 +93,5 @@ if [ $? != 0 ]; then
         exit 91
 fi
 
-echo "NOT COMPLETE"
+echo "NOT COMPLETE- MORE CODES BE NEEDED"
+exit 1
