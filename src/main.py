@@ -6,7 +6,7 @@ from kivy.logger import Logger
 
 from infrastructure.langtools import _
 from infrastructure.setting_mapper import SettingsMapper
-# from peachyprinter import PrinterAPI
+from peachyprinter import PrinterAPI
 
 
 kivy.require('1.8.0')
@@ -16,7 +16,8 @@ class PeachyPrinter(App):
     lang = StringProperty('en_GB')
 
     def __init__(self, **kwargs):
-        self.setting_translation = SettingsMapper()
+        self.api = PrinterAPI()
+        self.setting_translation = SettingsMapper(self.api)
         super(PeachyPrinter, self).__init__(**kwargs)
 
     def build(self):
