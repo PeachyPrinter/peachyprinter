@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-17 16:24-0600\n"
+"POT-Creation-Date: 2015-03-18 10:35-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/main.py:33
+#: src/main.py:37
 msgid "Close"
 msgstr ""
 
@@ -41,34 +41,62 @@ msgstr ""
 msgid "en_GB Text"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:11
+#: src/infrastructure/setting_mapper.py:13
+msgid "Info"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:18
 msgid "Peachy Printers Software Version"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:12
+#: src/infrastructure/setting_mapper.py:19
 msgid "Version"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:19
+#: src/infrastructure/setting_mapper.py:26
 msgid "Your Peachy Printers Hardware Serial Number"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:20
+#: src/infrastructure/setting_mapper.py:27
 msgid "Serial Number"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:27
+#: src/infrastructure/setting_mapper.py:34
 msgid "Your Peachy Printers Hardware Version"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:28
+#: src/infrastructure/setting_mapper.py:35
 msgid "Hardware Number"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:35
+#: src/infrastructure/setting_mapper.py:42
 msgid "Your Peachy Printers Firmware Version"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:36
+#: src/infrastructure/setting_mapper.py:43
 msgid "Firmware Number"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:56
+msgid "Use Sublayers"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:57
+msgid "Augment the gcode model with sublayers for use with large layers [Off]"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:63
+msgid "Sublayer Height (mm)"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:64
+msgid "Height of a sublayer in mm [0.1]"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:70
+msgid "Laser Thickness (mm)"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:71
+msgid "The thickness of the laser where it intersects the resin [0.5]"
 msgstr ""

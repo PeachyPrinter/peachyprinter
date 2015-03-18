@@ -2,6 +2,8 @@ import kivy
 from kivy.app import App
 from kivy.uix.settings import SettingsWithSidebar
 from kivy.properties import StringProperty
+from kivy.logger import Logger
+
 from infrastructure.langtools import _
 from infrastructure.setting_mapper import SettingsMapper
 # from peachyprinter import PrinterAPI
@@ -25,10 +27,12 @@ class PeachyPrinter(App):
         self.setting_translation.set_defaults(config)
 
     def build_settings(self, settings):
+        Logger.info("Building Settings")
         self.setting_translation.refresh_settings(settings, self.config)
 
     def on_lang(self, instance, lang):
         _.switch_lang(lang)
+        self.destroy_settings()
         if hasattr(self, 'settings'):
             self.settings.interface.menu.close_button.text = _("Close")
 

@@ -1,9 +1,5 @@
 #!/bin/bash
 
-echo "TODO - not done yet"
-exit 666
-
-
 echo "----Checking for already running Virtual Environment----"
 if [[ "$VIRTUAL_ENV" != "" ]]; then
     echo "Deactivitate the existing virtual enviroment before running this script."
@@ -50,7 +46,7 @@ if [ -d "venv" ]; then
     done
 fi
 if [ $CREATE_VENV == "TRUE" ]; then
-    virtualenv venv
+    virtualenv -p python2.7 --system-site-packages venv
     if [ $? != 0 ]; then
         echo "Virutal environment failed"
         exit 59
@@ -67,15 +63,28 @@ SETUP_TMP="setup_tmp"
 WILL_FAIL=0
 FAIL_REASONS=""
 
-echo "--------Setting up numpy----"
-python -c"import numpy" 2>&1 >/dev/null
+
+echo "--------Setting up cython----"
+python -c"import cython" 2>&1 >/dev/null
 if [ $? != 0 ]; then
-    echo "Numpy not available adding"
-    pip install -U --force numpy
+    echo "cython not available adding"
+    pip install -U cython==0.22
     if [ $? != 0 ]; then
-        echo "FAILURE: Numpy failed installing"
+        echo "FAILURE: cython failed installing"
         WILL_FAIL=1
-        FAIL_REASONS="$FAIL_REASONS\nFAILURE: Numpy failed installing"
+        FAIL_REASONS="$FAIL_REASONS\nFAILURE: cython failed installing"
+    fi
+fi
+
+echo "--------Setting up kivy----"
+python -c"import kivy" 2>&1 >/dev/null
+if [ $? != 0 ]; then
+    echo "kivy not available adding"
+    pip install -U kivy==1.8.0
+    if [ $? != 0 ]; then
+        echo "FAILURE: kivy failed installing"
+        WILL_FAIL=1
+        FAIL_REASONS="$FAIL_REASONS\nFAILURE: kivy failed installing"
     fi
 fi
 
