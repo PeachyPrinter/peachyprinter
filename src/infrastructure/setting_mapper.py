@@ -55,6 +55,7 @@ class SettingsMapper(object):
                     'key': 'options.use_sublayers',
                     'title': _('options.use_sublayers TITLE'),
                     'desc': _('options.use_sublayers DESCRIPTION'),
+                    'values': [True, False]
                 },
                 {
                     'type': 'numeric',
@@ -86,6 +87,7 @@ class SettingsMapper(object):
                 },
                 {
                     'type': 'bool',
+                    'values': [True, False],
                     'section': 'Options',
                     'key': 'options.use_shufflelayers',
                     'title': _('options.use_shufflelayers TITLE'),
@@ -93,6 +95,7 @@ class SettingsMapper(object):
                 },
                 {
                     'type': 'bool',
+                    'values': [True, False],
                     'section': 'Options',
                     'key': 'options.use_overlap',
                     'title': _('options.use_overlap TITLE'),
