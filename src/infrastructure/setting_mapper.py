@@ -1,5 +1,7 @@
 from langtools import _
+
 import json
+from kivy.logger import Logger
 
 class SettingsMapper(object):
     def __init__(self, api):
@@ -114,6 +116,12 @@ class SettingsMapper(object):
         settings.add_json_panel(_('Options'), config, data=json.dumps(self.config_options))
 
     def set_defaults(self, config):
+        self.load_config(config)
+
+    def update_setting(self, section, key, value):
+        Logger.info(u"Setting changed  %s, %s -> %s" % (section, key, value))
+
+    def load_config(self, config):
         configuration_api = self.api.get_configuration_api()
         configuration_api.load_printer(configuration_api.get_available_printers()[0])
         info_items = {

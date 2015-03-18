@@ -22,7 +22,8 @@ class PeachyPrinter(App):
 
     def build(self):
         self.settings_cls = SettingsWithSidebar
-        # self.api = PrinterAPI()
+        self.setting_translation.load_config(self.config)
+        self.config.add_callback(self.setting_translation.update_setting)
 
     def build_config(self, config):
         self.setting_translation.set_defaults(config)
