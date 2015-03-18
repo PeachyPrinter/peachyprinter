@@ -7,6 +7,7 @@ import VERSION
 class SettingsMapper(object):
     def __init__(self, api):
         self.api = api
+        self.configuration_api = self.api.get_configuration_api()
 
     @property
     def config_info(self):
@@ -79,9 +80,9 @@ class SettingsMapper(object):
                 {
                     'type': 'numeric',
                     'section': 'Options',
-                    'key': 'options.overlap_amount',
-                    'title': _('options.overlap_amount TITLE'),
-                    'desc': _('options.overlap_amount DESCRIPTION'),
+                    'key': 'options.overlap_amount_mm',
+                    'title': _('options.overlap_amount_mm TITLE'),
+                    'desc': _('options.overlap_amount_mm DESCRIPTION'),
                 },
                 {
                     'type': 'bool',
@@ -117,14 +118,17 @@ class SettingsMapper(object):
         settings.add_json_panel(_('Options'), config, data=json.dumps(self.config_options))
 
     def set_defaults(self, config):
-        self.load_config(config)
+        Logger.info("Setting Defaults")
 
     def update_setting(self, section, key, value):
         Logger.info(u"Setting changed  %s, %s -> %s" % (section, key, value))
+        # setter = key.split('.')[1]
+        # getattr(self.configuration_api, 'set_' + setter)(value)
+
 
     def load_config(self, config):
-        configuration_api = self.api.get_configuration_api()
-        configuration_api.load_printer(configuration_api.get_available_printers()[0])
+        Logger.info("Loading Configs")
+        self.configuration_api.load_printer(self.configuration_api.get_available_printers()[0])
         info_items = {
             'info.version_number': '%s, build %s' % (VERSION.version, VERSION.revision),
             'info.serial_number': 'Not Yet Determined',
@@ -132,17 +136,16 @@ class SettingsMapper(object):
             'info.firmwware_version_number': 'Not Yet Determined',
             }
 
-        config_items = {
-            'options.use_sublayers': configuration_api.get_use_sublayers(),
-            'options.sublayer_height_mm': configuration_api.get_sublayer_height_mm(),
-            'options.laser_thickness_mm': configuration_api.get_laser_thickness_mm(),
-            'options.scaling_factor': configuration_api.get_scaling_factor(),
-            'options.overlap_amount': configuration_api.get_overlap_amount_mm(),
-            'options.use_shufflelayers': configuration_api.get_use_shufflelayers(),
-            'options.use_overlap': configuration_api.get_use_overlap(),
-            'options.print_queue_delay': configuration_api.get_print_queue_delay(),
-            'options.pre_layer_delay': configuration_api.get_pre_layer_delay(),
-        }
+        config_items = {}
+        for item in self.config_options:
+            key = item['key']
+            getter = 'get_' + key.split('.')[1]
+            config_items[key] = getattr(self.configuration_api, getter)()
 
-        config.setdefaults('Info', info_items)
-        config.setdefaults('Options', config_items)
+        self.setall(config, 'Info', info_items)
+        self.setall(config, 'Options', config_items)
+
+    def setall(self, config, section, items):
+        config.add_section(section)
+        for (key, value) in items.items():
+            config.set(section, key, value)
