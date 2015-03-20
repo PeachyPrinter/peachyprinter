@@ -100,6 +100,17 @@ if [ $? != 0 ]; then
     fi
 fi
 
+echo "--------Setting up pyinstaller----"
+python -c"import pyinstaller" 2>&1 >/dev/null
+if [ $? != 0 ]; then
+    echo "pyinstaller not available adding"
+    pip install -U pyinstaller
+    if [ $? != 0 ]; then
+        echo "FAILURE: pyinstaller failed installing"
+        WILL_FAIL=1
+        FAIL_REASONS="$FAIL_REASONS\nFAILURE: pyinstaller failed installing"
+    fi
+fi
 
 echo "--------Getting Latest API----"
 ./get_latest_api.sh
