@@ -2,7 +2,11 @@ from langtools import _
 
 import json
 from kivy.logger import Logger
-import VERSION
+try:
+    from VERSION import version, revision
+except:
+    version = "DEV"
+    revision = "DEV"
 
 class SettingsMapper(object):
     def __init__(self, api):
@@ -133,7 +137,7 @@ class SettingsMapper(object):
         Logger.info("Loading Configs")
         self.configuration_api.load_printer(self.configuration_api.get_available_printers()[0])
         info_items = {
-            'info.version_number': '%s, build %s' % (VERSION.version, VERSION.revision),
+            'info.version_number': '%s, build %s' % (version, revision),
             'info.serial_number': 'Not Yet Determined',
             'info.hardware_version_number': 'Not Yet Determined',
             'info.firmwware_version_number': 'Not Yet Determined',
