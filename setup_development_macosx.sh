@@ -1,9 +1,5 @@
 #!/bin/bash
 
-echo "TODO - not done yet"
-exit 666
-
-
 echo "----Checking for already running Virtual Environment----"
 if [[ "$VIRTUAL_ENV" != "" ]]; then
     echo "Deactivitate the existing virtual enviroment before running this script."
@@ -68,42 +64,51 @@ FAIL_REASONS=""
 export CFLAGS=-Qunused-arguments
 export CPPFLAGS=-Qunused-arguments
 
-echo "--------Setting up numpy----"
-python -c"import numpy" 2>&1 >/dev/null
+echo "--------Setting up cython----"
+python -c"import cython" 2>&1 >/dev/null
 if [ $? != 0 ]; then
-    echo "Numpy not available adding"
-    pip install -U --force numpy
+    echo "cython not available adding"
+    pip install -U cython==0.20
     if [ $? != 0 ]; then
-        echo "FAILURE: Numpy failed installing"
+        echo "FAILURE: cython failed installing"
         WILL_FAIL=1
-        FAIL_REASONS="$FAIL_REASONS\nFAILURE: Numpy failed installing"
+        FAIL_REASONS="$FAIL_REASONS\nFAILURE: cython failed installing"
     fi
 fi
 
-echo "--------Setting up cx_Freeze----"
-python -c"import cx_Freeze" 2>&1 >/dev/null
+echo "--------Setting up pygame----"
+python -c"import pygame" 2>&1 >/dev/null
 if [ $? != 0 ]; then
-    echo "cx_Freeze not available adding"
-    pip install -U --force cx_Freeze
+    echo "pygame not available adding"
+    pip install hg+http://bitbucket.org/pygame/pygame
     if [ $? != 0 ]; then
-        echo "FAILURE: cx_Freeze failed installing"
-        WILL_FAIL=2
-        FAIL_REASONS="$FAIL_REASONS\nFAILURE: cx_Freeze failed installing"
+        echo "FAILURE: pygame failed installing"
+        WILL_FAIL=1
+        FAIL_REASONS="$FAIL_REASONS\nFAILURE: pygame failed installing"
     fi
 fi
 
-echo "--------Setting up pyaudio----"
-python -c"import pyaudio" 2>&1 >/dev/null
+echo "--------Setting up kivy----"
+python -c"import kivy" 2>&1 >/dev/null
 if [ $? != 0 ]; then
-    echo "pyaudio not available adding"
-    pip install -U --force --allow-external pyaudio --allow-unverified pyaudio pyaudio
+    echo "kivy not available adding"
+    pip install -U kivy
     if [ $? != 0 ]; then
-        echo "FAILURE: pyaudio failed installing"
-        echo "FAILURE: Chances are you are missing the port audio binding."
-        echo "FAILURE: If you have Homebrew installed 'brew install portaudio' should solve this problem"
-        echo "FAILURE: Or if you prefer pain you can build from source, http://portaudio.com/docs/v19-doxydocs/tutorial_start.html"
-        WILL_FAIL=2
-        FAIL_REASONS="$FAIL_REASONS\nFAILURE: Pyaudio failed installing"
+        echo "FAILURE: kivy failed installing"
+        WILL_FAIL=1
+        FAIL_REASONS="$FAIL_REASONS\nFAILURE: kivy failed installing"
+    fi
+fi
+
+echo "--------Setting up pyinstaller----"
+python -c"import pyinstaller" 2>&1 >/dev/null
+if [ $? != 0 ]; then
+    echo "pyinstaller not available adding"
+    pip install -U pyinstaller
+    if [ $? != 0 ]; then
+        echo "FAILURE: pyinstaller failed installing"
+        WILL_FAIL=1
+        FAIL_REASONS="$FAIL_REASONS\nFAILURE: pyinstaller failed installing"
     fi
 fi
 

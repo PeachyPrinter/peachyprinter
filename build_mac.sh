@@ -9,6 +9,7 @@ echo "------------------------------------"
 
 # TODO JT 2014-02-13 - Should clean the workspace
 
+# rm -rf venv
 rm -rf src/build
 rm -rf *.dmg
 rm -f src/VERSION.py
@@ -59,11 +60,4 @@ echo "------------------------------------"
 echo "Building Package"
 echo "------------------------------------"
 
-cd src
-python setup.py bdist_dmg
-if [ $? != 0 ]; then
-    echo "Packaging Failed Aborting"
-    exit 55
-fi
-cd ..
-mv src/build/*.dmg .
+python pyinstaller.py --windowed --name peachyprinter-$VERSION src/main.py

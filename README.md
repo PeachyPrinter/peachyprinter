@@ -7,6 +7,14 @@ API python packages are available at [http://software.peachyprinter.com/builds/a
 This code [https://github.com/PeachyPrinter/kivypeachyprinter]
 Complete packages are available at [http://software.peachyprinter.com/]
 
+## Development goals
+ - Continuous deployment
+ - TDD when possible(UI elements not included)
+ - Il8n
+ - Simple contained development enviroment
+ - Cross platform (Inital goals: Windows, Mac, Centos, )
+
+
 ## Development Requirements
 <!-- ### Ubuntu (Debian)
 via apt
@@ -32,8 +40,16 @@ sudo yum -y install python-virtualenv
 ``` -->
 
 ### Mac OSX
-<!--  - pip
- - virtualenv -->
+To setup up your enviroment it helps to have a package manager such as "Homebrew" [http://brew.sh/]
+####Pre-Script Requirements
+ - python2.7
+ - xcode
+ - pip
+ - virtualenv
+ - mercurial  ('brew install mercurial')   -- Needed for pygame
+ - sdl   ('brew install sdl sdl_image sdl_mixer sdl_ttf portmidi') -- Needed for pygame
+ - Xquartz  a X11 interface for mac [http://xquartz.macosforge.org/landing/] -- Needed for pygame
+
 
 ### Windows
 via (oh yeah there is no package manager in windows)

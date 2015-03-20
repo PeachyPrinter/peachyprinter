@@ -75,6 +75,18 @@ if [ $? != 0 ]; then
     fi
 fi
 
+echo "--------Setting up pygame----"
+python -c"import pygame" 2>&1 >/dev/null
+if [ $? != 0 ]; then
+    echo "pygame not available adding"
+    pip install -U pygame
+    if [ $? != 0 ]; then
+        echo "FAILURE: pygame failed installing"
+        WILL_FAIL=1
+        FAIL_REASONS="$FAIL_REASONS\nFAILURE: pygame failed installing"
+    fi
+fi
+
 echo "--------Setting up kivy----"
 python -c"import kivy" 2>&1 >/dev/null
 if [ $? != 0 ]; then
