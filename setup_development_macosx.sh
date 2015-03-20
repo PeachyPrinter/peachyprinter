@@ -33,25 +33,16 @@ if [ $? != 0 ]; then
 fi
 
 echo "----Checking for and create a virtual environment----"
-CREATE_VENV="TRUE"
-if [ -d "venv" ]; then
-    while true; do
-    read -p "Do you wish remove and re-install this environment?" yn
-    case $yn in
-        [Yy]* ) rm -rf venv && CREATE_VENV="TRUE"; break;;
-        [Nn]* ) CREATE_VENV="FALSE"; break;;
-        * ) echo "Please answer yes or no.";;
-    esac
-    done
-fi
-if [ $CREATE_VENV == "TRUE" ]; then
-    virtualenv venv
+if [ ! -d "venv" ]; then
+        virtualenv venv
     if [ $? != 0 ]; then
         echo "Virutal environment failed"
-        exit 59
+        exit
     fi
 fi
+
 source venv/bin/activate
+
 if [[ "$VIRTUAL_ENV" == "" ]]; then
     echo "FAILURE: Virutal environment creation failed"
     exit 666

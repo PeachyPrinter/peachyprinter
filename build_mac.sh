@@ -1,8 +1,5 @@
 #!/bin/bash
 
-echo "TODO - not done yet"
-exit 666
-
 echo "------------------------------------"
 echo "Cleaning workspace"
 echo "------------------------------------"
@@ -10,11 +7,11 @@ echo "------------------------------------"
 # TODO JT 2014-02-13 - Should clean the workspace
 
 # rm -rf venv
-rm -rf src/build
-rm -rf *.dmg
+rm -rf dist
+rm -rf build
+rm -rf *.app
 rm -f src/VERSION.py
 rm -f version.properties 
-rm -rf venv
 find . -name "*.pyc" -exec rm -rf {} \;
 
 echo "------------------------------------"
@@ -60,4 +57,6 @@ echo "------------------------------------"
 echo "Building Package"
 echo "------------------------------------"
 
-python pyinstaller.py --windowed --name peachyprinter-$VERSION src/main.py
+cp peachyprinter-mac.spec.source peachyprinter-mac.spec
+pyinstaller peachyprinter-mac.spec
+cp -R dist/peachyprinter-mac.app peachyprinter-$VERSION.app
