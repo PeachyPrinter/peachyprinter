@@ -2,7 +2,12 @@ from langtools import _
 
 import json
 from kivy.logger import Logger
+
+
+from ui.peachy_settings import SettingFloat
+
 import VERSION
+
 
 class SettingsMapper(object):
     def __init__(self, api):
@@ -58,11 +63,12 @@ class SettingsMapper(object):
                     'values': [True, False]
                 },
                 {
-                    'type': 'numeric',
+                    'type': 'float',
                     'section': 'Options',
                     'key': 'options.sublayer_height_mm',
                     'title': _('options.sublayer_height_mm TITLE'),
                     'desc': _('options.sublayer_height_mm DESCRIPTION'),
+                    'value_range': [0, None]
                 },
                 {
                     'type': 'numeric',
@@ -70,20 +76,23 @@ class SettingsMapper(object):
                     'key': 'options.laser_thickness_mm',
                     'title': _('options.laser_thickness_mm TITLE'),
                     'desc': _('options.laser_thickness_mm DESCRIPTION'),
+                    'value_range': [0, None]
                 },
                 {
-                    'type': 'numeric',
+                    'type': 'float',
                     'section': 'Options',
                     'key': 'options.scaling_factor',
                     'title': _('options.scaling_factor TITLE'),
                     'desc': _('options.scaling_factor DESCRIPTION'),
+                    'value_range': [0, None]
                 },
                 {
-                    'type': 'numeric',
+                    'type': 'float',
                     'section': 'Options',
                     'key': 'options.overlap_amount_mm',
                     'title': _('options.overlap_amount_mm TITLE'),
                     'desc': _('options.overlap_amount_mm DESCRIPTION'),
+                    'value_range': [0, None]
                 },
                 {
                     'type': 'bool',
@@ -102,21 +111,24 @@ class SettingsMapper(object):
                     'desc': _('options.use_overlap DESCRIPTION'),
                 },
                 {
-                    'type': 'numeric',
+                    'type': 'float',
                     'section': 'Options',
                     'key': 'options.print_queue_delay',
                     'title': _('options.print_queue_delay TITLE'),
                     'desc': _('options.print_queue_delay DESCRIPTION'),
+                    'value_range': [0, None]
                 },
                 {
-                    'type': 'numeric',
+                    'type': 'float',
                     'section': 'Options',
                     'key': 'options.pre_layer_delay',
                     'title': _('options.pre_layer_delay TITLE'),
                     'desc': _('options.pre_layer_delay DESCRIPTION'),
+                    'value_range': [0, None]
                 },]
 
     def refresh_settings(self, settings, config):
+        settings.register_type('float', SettingFloat)
         settings.add_json_panel(_('Info'), config, data=json.dumps(self.config_info))
         settings.add_json_panel(_('Options'), config, data=json.dumps(self.config_options))
 
