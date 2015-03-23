@@ -9,19 +9,13 @@ a = Analysis(['src\\main.py'],
              runtime_hooks=None)
 pyz = PYZ(a.pure)
 exe = EXE(pyz,
+          Tree('src'),
           a.scripts,
-          exclude_binaries=True,
+          a.binaries,
+          a.zipfiles,
+          a.datas,
           name='PeachyPrinter.exe',
           debug=False,
           strip=None,
           upx=True,
-          console=True,
-          icon='src\\resources\\peachy.ico')
-coll = COLLECT(exe,
-               Tree('src'),
-               a.binaries,
-               a.zipfiles,
-               a.datas,
-               strip=None,
-               upx=True,
-               name='PeachyPrinter')
+          console=True )
