@@ -9,7 +9,7 @@ from infrastructure.setting_mapper import SettingsMapper
 from peachyprinter import PrinterAPI
 
 
-kivy.require('1.8.0')
+kivy.require('1.9.0')
 
 
 class PeachyPrinter(App):
