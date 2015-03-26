@@ -12,7 +12,7 @@ except:
 
 
 class SettingsMapper(object):
-    email_regex = """[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)"""
+    email_regex = """[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$"""
     def __init__(self, api):
         self.api = api
         self.configuration_api = self.api.get_configuration_api()
@@ -73,11 +73,11 @@ class SettingsMapper(object):
                 },
                 {
                     'type': 'bool',
-                    'values': [True, False],
                     'section': 'Options',
                     'key': 'options_use_shufflelayers',
                     'title': _('options_use_shufflelayers TITLE'),
                     'desc': _('options_use_shufflelayers DESCRIPTION'),
+                    'values': [True, False],
                 },
                 {
                     'type': 'numeric',
@@ -269,18 +269,18 @@ class SettingsMapper(object):
 
     def _convert(self, entry_type, value):
         if entry_type == 'string':
-            return value
+            return str(value)
         if entry_type == 'numeric':
             if '.' in value:
                 return float(value)
             else:
                 return int(value)
         if entry_type == 'bool':
-            return value
+            return bool(value)
 
     def update_setting(self, section, key, value):
         Logger.info(u"Setting changed  %s, %s -> %s" % (section, key, value))
-        entry_type = [entry['type'] for entry in self.section_map[section] if entry['key'] == key][0]
+        entry_type = [item['type'] for item in self.config_info if item['key'] == key][0]
         getattr(self.configuration_api, 'set_' + key)(self._convert(entry_type, value))
         self.configuration_api.save()
 
