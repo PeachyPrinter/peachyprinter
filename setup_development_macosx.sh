@@ -24,7 +24,7 @@ echo "----Checking for virtualenv----"
 command -v virtualenv 2>&1 >/dev/null
 if [ $? != 0 ]; then
     echo "virtualenv not available, you should be prompted for install:"
-    sudo pip install virtualenv
+    sudo pip install virtualenv --system-site-packages
     if [ $? != 0 ]; then
         echo "FAILURE: virtualenv failed installing"
         WILL_FAIL=12
@@ -59,7 +59,7 @@ echo "--------Setting up cython----"
 python -c"import cython" 2>&1 >/dev/null
 if [ $? != 0 ]; then
     echo "cython not available adding"
-    pip install -U cython==0.20
+    pip install -U cython==0.21.2
     if [ $? != 0 ]; then
         echo "FAILURE: cython failed installing"
         WILL_FAIL=1
@@ -71,7 +71,7 @@ echo "--------Setting up pygame----"
 python -c"import pygame" 2>&1 >/dev/null
 if [ $? != 0 ]; then
     echo "pygame not available adding"
-    pip install hg+http://bitbucket.org/pygame/pygame
+    pip install http://pygame.org/ftp/pygame-1.9.1release.tar.gz
     if [ $? != 0 ]; then
         echo "FAILURE: pygame failed installing"
         WILL_FAIL=1

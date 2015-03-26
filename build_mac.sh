@@ -59,4 +59,12 @@ echo "------------------------------------"
 
 cp peachyprinter-mac.spec.source peachyprinter-mac.spec
 pyinstaller peachyprinter-mac.spec
+if [ $? != 0 ]; then
+    echo "FAILURE: Building app"
+    exit 232
+fi
 cp -R dist/peachyprinter-mac.app peachyprinter-$VERSION.app
+if [ $? != 0 ]; then
+    echo "FAILURE: Copying app"
+    exit 233
+fi
