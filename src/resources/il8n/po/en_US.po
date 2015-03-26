@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-24 15:55-0600\n"
+"POT-Creation-Date: 2015-03-26 16:00-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -10,10 +10,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: src/main.py:39
-msgid "Close"
-msgstr ""
 
 #: src/peachyprinter.kv:8
 msgid "Hello World"
@@ -42,129 +38,349 @@ msgid "en_GB Text"
 msgstr "en_US Text"
 
 #: src/infrastructure/setting_mapper.py:25
-msgid "info.version_number DESCRIPTION"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:26
-msgid "info.version_number TITLE"
-msgstr ""
-
 #: src/infrastructure/setting_mapper.py:33
-msgid "info.serial_number DESCRIPTION"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:34
-msgid "info.serial_number TITLE"
-msgstr ""
-
 #: src/infrastructure/setting_mapper.py:41
-msgid "info.hardware_version_number DESCRIPTION"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:42
-msgid "info.hardware_version_number TITLE"
-msgstr ""
-
 #: src/infrastructure/setting_mapper.py:49
-msgid "info.firmwware_version_number DESCRIPTION"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:50
-msgid "info.firmwware_version_number TITLE"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:63
-msgid "options.use_sublayers TITLE"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:64
-msgid "options.use_sublayers DESCRIPTION"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:71
-msgid "options.sublayer_height_mm TITLE"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:72
-msgid "options.sublayer_height_mm DESCRIPTION"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:74
-#: src/infrastructure/setting_mapper.py:92
-#: src/infrastructure/setting_mapper.py:102
-#: src/infrastructure/setting_mapper.py:128
-#: src/infrastructure/setting_mapper.py:138
-msgid "Ok"
-msgstr "Ok"
-
-#: src/infrastructure/setting_mapper.py:75
-#: src/infrastructure/setting_mapper.py:93
-#: src/infrastructure/setting_mapper.py:103
-#: src/infrastructure/setting_mapper.py:129
-#: src/infrastructure/setting_mapper.py:139
-msgid "Cancel"
-msgstr "Cancel"
-
-#: src/infrastructure/setting_mapper.py:81
-msgid "options.laser_thickness_mm TITLE"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:82
-msgid "options.laser_thickness_mm DESCRIPTION"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:89
-msgid "options.scaling_factor TITLE"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:90
-msgid "options.scaling_factor DESCRIPTION"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:99
-msgid "options.overlap_amount_mm TITLE"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:100
-msgid "options.overlap_amount_mm DESCRIPTION"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:110
-msgid "options.use_shufflelayers TITLE"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:111
-msgid "options.use_shufflelayers DESCRIPTION"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:118
-msgid "options.use_overlap TITLE"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:119
-msgid "options.use_overlap DESCRIPTION"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:125
-msgid "options.print_queue_delay TITLE"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:126
-msgid "options.print_queue_delay DESCRIPTION"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:135
-msgid "options.pre_layer_delay TITLE"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:136
-msgid "options.pre_layer_delay DESCRIPTION"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:145
 msgid "Info"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:146
+#: src/infrastructure/setting_mapper.py:26
+msgid "info_version_number DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:27
+msgid "info_version_number TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:34
+msgid "info_serial_number DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:35
+msgid "info_serial_number TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:42
+msgid "info_hardware_version_number DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:43
+msgid "info_hardware_version_number TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:50
+msgid "info_firmware_version_number DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:51
+msgid "info_firmware_version_number TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:58
+#: src/infrastructure/setting_mapper.py:66
+#: src/infrastructure/setting_mapper.py:76
+#: src/infrastructure/setting_mapper.py:84
+#: src/infrastructure/setting_mapper.py:95
+#: src/infrastructure/setting_mapper.py:102
+#: src/infrastructure/setting_mapper.py:112
+#: src/infrastructure/setting_mapper.py:120
+#: src/infrastructure/setting_mapper.py:131
+#: src/infrastructure/setting_mapper.py:141
+#: src/infrastructure/setting_mapper.py:151
+#: src/infrastructure/setting_mapper.py:161
+#: src/infrastructure/setting_mapper.py:171
+#: src/infrastructure/setting_mapper.py:182
 msgid "Options"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:60
+msgid "options_use_sublayers TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:61
+msgid "options_use_sublayers DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:68
+msgid "options_sublayer_height_mm TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:69
+msgid "options_sublayer_height_mm DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:71
+#: src/infrastructure/setting_mapper.py:89
+#: src/infrastructure/setting_mapper.py:107
+#: src/infrastructure/setting_mapper.py:125
+#: src/infrastructure/setting_mapper.py:136
+#: src/infrastructure/setting_mapper.py:146
+#: src/infrastructure/setting_mapper.py:156
+#: src/infrastructure/setting_mapper.py:166
+#: src/infrastructure/setting_mapper.py:176
+#: src/infrastructure/setting_mapper.py:187
+#: src/infrastructure/setting_mapper.py:206
+#: src/infrastructure/setting_mapper.py:222
+#: src/infrastructure/setting_mapper.py:232
+#: src/infrastructure/setting_mapper.py:242
+#: src/infrastructure/setting_mapper.py:251
+#: src/infrastructure/setting_mapper.py:269
+#: src/infrastructure/setting_mapper.py:278
+#: src/infrastructure/setting_mapper.py:288
+#: src/infrastructure/setting_mapper.py:298
+#: src/infrastructure/setting_mapper.py:308
+#: src/infrastructure/setting_mapper.py:318
+msgid "Ok"
+msgstr "Ok"
+
+#: src/infrastructure/setting_mapper.py:72
+#: src/infrastructure/setting_mapper.py:90
+#: src/infrastructure/setting_mapper.py:108
+#: src/infrastructure/setting_mapper.py:126
+#: src/infrastructure/setting_mapper.py:137
+#: src/infrastructure/setting_mapper.py:147
+#: src/infrastructure/setting_mapper.py:157
+#: src/infrastructure/setting_mapper.py:167
+#: src/infrastructure/setting_mapper.py:177
+#: src/infrastructure/setting_mapper.py:188
+#: src/infrastructure/setting_mapper.py:207
+#: src/infrastructure/setting_mapper.py:223
+#: src/infrastructure/setting_mapper.py:233
+#: src/infrastructure/setting_mapper.py:243
+#: src/infrastructure/setting_mapper.py:252
+#: src/infrastructure/setting_mapper.py:270
+#: src/infrastructure/setting_mapper.py:279
+#: src/infrastructure/setting_mapper.py:289
+#: src/infrastructure/setting_mapper.py:299
+#: src/infrastructure/setting_mapper.py:309
+#: src/infrastructure/setting_mapper.py:319
+msgid "Cancel"
+msgstr "Cancel"
+
+#: src/infrastructure/setting_mapper.py:78
+msgid "options_use_shufflelayers TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:79
+msgid "options_use_shufflelayers DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:86
+msgid "options_shuffle_layers_amount TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:87
+msgid "options_shuffle_layers_amount DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:97
+msgid "options_use_overlap TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:98
+msgid "options_use_overlap DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:104
+msgid "options_overlap_amount_mm TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:105
+msgid "options_overlap_amount_mm DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:114
+msgid "options_laser_thickness_mm TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:115
+msgid "options_laser_thickness_mm DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:122
+msgid "options_scaling_factor TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:123
+msgid "options_scaling_factor DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:133
+msgid "options_max_lead_distance_mm TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:134
+msgid "options_max_lead_distance_mm DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:143
+msgid "options_pre_layer_delay TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:144
+msgid "options_pre_layer_delay DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:153
+msgid "options_post_fire_delay TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:154
+msgid "options_post_fire_delay DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:163
+msgid "options_slew_delay TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:164
+msgid "options_slew_delay DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:173
+msgid "options_wait_after_move_milliseconds TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:174
+msgid "options_wait_after_move_milliseconds DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:184
+msgid "options_print_queue_delay TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:185
+msgid "options_print_queue_delay DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:193
+#: src/infrastructure/setting_mapper.py:201
+#: src/infrastructure/setting_mapper.py:211
+#: src/infrastructure/setting_mapper.py:218
+#: src/infrastructure/setting_mapper.py:228
+#: src/infrastructure/setting_mapper.py:238
+#: src/infrastructure/setting_mapper.py:247
+msgid "Email"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:195
+msgid "email.on TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:196
+msgid "email.on DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:203
+msgid "email.port TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:204
+msgid "email.port DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:213
+msgid "email.host TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:214
+msgid "email.host DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:220
+msgid "email.sender TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:221
+msgid "email.sender DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:230
+msgid "email.recipient TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:231
+msgid "email.recipient DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:240
+msgid "email.username TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:241
+msgid "email.username DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:249
+msgid "email.password TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:250
+msgid "email.password DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:257
+#: src/infrastructure/setting_mapper.py:265
+#: src/infrastructure/setting_mapper.py:274
+#: src/infrastructure/setting_mapper.py:284
+#: src/infrastructure/setting_mapper.py:294
+#: src/infrastructure/setting_mapper.py:304
+#: src/infrastructure/setting_mapper.py:314
+msgid "Serial"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:259
+msgid "serial_enabled TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:260
+msgid "serial_enabled DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:267
+msgid "serial_port TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:268
+msgid "serial_port DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:276
+msgid "serial_on_command TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:277
+msgid "serial_on_command DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:286
+msgid "serial_off_command TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:287
+msgid "serial_off_command DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:296
+msgid "serial_layer_started_command TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:297
+msgid "serial_layer_started_command DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:306
+msgid "serial_layer_ended_command TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:307
+msgid "serial_layer_ended_command DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:316
+msgid "serial_print_ended_command TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:317
+msgid "serial_print_ended_command DESCRIPTION"
 msgstr ""

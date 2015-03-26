@@ -22,7 +22,7 @@ class SettingsMapper(object):
         return [
                 {
                     'type': 'string',
-                    'section': 'Info',
+                    'section': _('Info'),
                     'desc': _('info_version_number DESCRIPTION'),
                     'title': _('info_version_number TITLE'),
                     'key': 'info_version_number',
@@ -30,7 +30,7 @@ class SettingsMapper(object):
                 },
                 {
                     'type': 'string',
-                    'section': 'Info',
+                    'section': _('Info'),
                     'desc': _('info_serial_number DESCRIPTION'),
                     'title': _('info_serial_number TITLE'),
                     'key': 'info_serial_number',
@@ -38,7 +38,7 @@ class SettingsMapper(object):
                 },
                 {
                     'type': 'string',
-                    'section': 'Info',
+                    'section': _('Info'),
                     'desc': _('info_hardware_version_number DESCRIPTION'),
                     'title': _('info_hardware_version_number TITLE'),
                     'key': 'info_hardware_version_number',
@@ -46,7 +46,7 @@ class SettingsMapper(object):
                 },
                 {
                     'type': 'string',
-                    'section': 'Info',
+                    'section': _('Info'),
                     'desc': _('info_firmware_version_number DESCRIPTION'),
                     'title': _('info_firmware_version_number TITLE'),
                     'key': 'info_firmware_version_number',
@@ -55,7 +55,7 @@ class SettingsMapper(object):
 # ----------- BEGIN Options --------------------
                 {
                     'type': 'bool',
-                    'section': 'Options',
+                    'section': _('Options'),
                     'key': 'options_use_sublayers',
                     'title': _('options_use_sublayers TITLE'),
                     'desc': _('options_use_sublayers DESCRIPTION'),
@@ -63,7 +63,7 @@ class SettingsMapper(object):
                 },
                 {
                     'type': 'numeric',
-                    'section': 'Options',
+                    'section': _('Options'),
                     'key': 'options_sublayer_height_mm',
                     'title': _('options_sublayer_height_mm TITLE'),
                     'desc': _('options_sublayer_height_mm DESCRIPTION'),
@@ -73,7 +73,7 @@ class SettingsMapper(object):
                 },
                 {
                     'type': 'bool',
-                    'section': 'Options',
+                    'section': _('Options'),
                     'key': 'options_use_shufflelayers',
                     'title': _('options_use_shufflelayers TITLE'),
                     'desc': _('options_use_shufflelayers DESCRIPTION'),
@@ -81,7 +81,7 @@ class SettingsMapper(object):
                 },
                 {
                     'type': 'numeric',
-                    'section': 'Options',
+                    'section': _('Options'),
                     'key': 'options_shuffle_layers_amount',
                     'title': _('options_shuffle_layers_amount TITLE'),
                     'desc': _('options_shuffle_layers_amount DESCRIPTION'),
@@ -92,14 +92,14 @@ class SettingsMapper(object):
                 {
                     'type': 'bool',
                     'values': [True, False],
-                    'section': 'Options',
+                    'section': _('Options'),
                     'key': 'options_use_overlap',
                     'title': _('options_use_overlap TITLE'),
                     'desc': _('options_use_overlap DESCRIPTION'),
                 },
                 {
                     'type': 'numeric',
-                    'section': 'Options',
+                    'section': _('Options'),
                     'key': 'options_overlap_amount_mm',
                     'title': _('options_overlap_amount_mm TITLE'),
                     'desc': _('options_overlap_amount_mm DESCRIPTION'),
@@ -109,7 +109,7 @@ class SettingsMapper(object):
                 },
                 {
                     'type': 'numeric',
-                    'section': 'Options',
+                    'section': _('Options'),
                     'key': 'options_laser_thickness_mm',
                     'title': _('options_laser_thickness_mm TITLE'),
                     'desc': _('options_laser_thickness_mm DESCRIPTION'),
@@ -117,7 +117,7 @@ class SettingsMapper(object):
                 },
                 {
                     'type': 'numeric',
-                    'section': 'Options',
+                    'section': _('Options'),
                     'key': 'options_scaling_factor',
                     'title': _('options_scaling_factor TITLE'),
                     'desc': _('options_scaling_factor DESCRIPTION'),
@@ -128,7 +128,7 @@ class SettingsMapper(object):
 
                 {
                     'type': 'numeric',
-                    'section': 'Options',
+                    'section': _('Options'),
                     'key': 'options_max_lead_distance_mm',
                     'title': _('options_max_lead_distance_mm TITLE'),
                     'desc': _('options_max_lead_distance_mm DESCRIPTION'),
@@ -138,7 +138,7 @@ class SettingsMapper(object):
                 },
                 {
                     'type': 'numeric',
-                    'section': 'Options',
+                    'section': _('Options'),
                     'key': 'options_pre_layer_delay',
                     'title': _('options_pre_layer_delay TITLE'),
                     'desc': _('options_pre_layer_delay DESCRIPTION'),
@@ -148,7 +148,7 @@ class SettingsMapper(object):
                 },
                 {
                     'type': 'numeric',
-                    'section': 'Options',
+                    'section': _('Options'),
                     'key': 'options_post_fire_delay',
                     'title': _('options_post_fire_delay TITLE'),
                     'desc': _('options_post_fire_delay DESCRIPTION'),
@@ -158,7 +158,7 @@ class SettingsMapper(object):
                 },
                                 {
                     'type': 'numeric',
-                    'section': 'Options',
+                    'section': _('Options'),
                     'key': 'options_slew_delay',
                     'title': _('options_slew_delay TITLE'),
                     'desc': _('options_slew_delay DESCRIPTION'),
@@ -168,7 +168,7 @@ class SettingsMapper(object):
                 },
                 {
                     'type': 'numeric',
-                    'section': 'Options',
+                    'section': _('Options'),
                     'key': 'options_wait_after_move_milliseconds',
                     'title': _('options_wait_after_move_milliseconds TITLE'),
                     'desc': _('options_wait_after_move_milliseconds DESCRIPTION'),
@@ -179,7 +179,7 @@ class SettingsMapper(object):
 
                 {
                     'type': 'numeric',
-                    'section': 'Options',
+                    'section': _('Options'),
                     'key': 'options_print_queue_delay',
                     'title': _('options_print_queue_delay TITLE'),
                     'desc': _('options_print_queue_delay DESCRIPTION'),
@@ -190,7 +190,7 @@ class SettingsMapper(object):
 # ----------- BEGIN EMAIL --------------------
                 {
                     'type': 'bool',
-                    'section': 'Email',
+                    'section': _('Email'),
                     'key': 'email_on',
                     'title': _('email.on TITLE'),
                     'desc': _('email.on DESCRIPTION'),
@@ -198,7 +198,7 @@ class SettingsMapper(object):
                 },
                 {
                     'type': 'numeric',
-                    'section': 'Email',
+                    'section': _('Email'),
                     'key': 'email_port',
                     'title': _('email.port TITLE'),
                     'desc': _('email.port DESCRIPTION'),
@@ -208,14 +208,14 @@ class SettingsMapper(object):
                 },
                 {
                     'type': 'string',
-                    'section': 'Email',
+                    'section': _('Email'),
                     'key': 'email_host',
                     'title': _('email.host TITLE'),
                     'desc': _('email.host DESCRIPTION'),
                 },
                 {
                     'type': 'string',
-                    'section': 'Email',
+                    'section': _('Email'),
                     'key': 'email_sender',
                     'title': _('email.sender TITLE'),
                     'desc': _('email.sender DESCRIPTION'),
@@ -225,7 +225,7 @@ class SettingsMapper(object):
                 },
                 {
                     'type': 'string',
-                    'section': 'Email',
+                    'section': _('Email'),
                     'key': 'email_recipient',
                     'title': _('email.recipient TITLE'),
                     'desc': _('email.recipient DESCRIPTION'),
@@ -235,7 +235,7 @@ class SettingsMapper(object):
                 },
                 {
                     'type': 'string',
-                    'section': 'Email',
+                    'section': _('Email'),
                     'key': 'email_username',
                     'title': _('email.username TITLE'),
                     'desc': _('email.username DESCRIPTION'),
@@ -244,16 +244,86 @@ class SettingsMapper(object):
                 },
                 {
                     'type': 'string',
-                    'section': 'Email',
+                    'section': _('Email'),
                     'key': 'email_password',
                     'title': _('email.password TITLE'),
                     'desc': _('email.password DESCRIPTION'),
                     'ok_button_text': _("Ok"),
                     'cancel_button_text': _("Cancel")
-                },]
+                },
+# ----------- BEGIN Serial --------------------
+                {
+                    'type': 'bool',
+                    'section': _('Serial'),
+                    'key': 'serial_enabled',
+                    'title': _('serial_enabled TITLE'),
+                    'desc': _('serial_enabled DESCRIPTION'),
+                    'values': [True, False]
+                },
+                {
+                    'type': 'string',
+                    'section': _('Serial'),
+                    'key': 'serial_port',
+                    'title': _('serial_port TITLE'),
+                    'desc': _('serial_port DESCRIPTION'),
+                    'ok_button_text': _("Ok"),
+                    'cancel_button_text': _("Cancel")
+                },
+                {
+                    'type': 'string',
+                    'section': _('Serial'),
+                    'key': 'serial_on_command',
+                    'title': _('serial_on_command TITLE'),
+                    'desc': _('serial_on_command DESCRIPTION'),
+                    'ok_button_text': _("Ok"),
+                    'cancel_button_text': _("Cancel"),
+                    'validation_regex': ".$"
+                },
+                {
+                    'type': 'string',
+                    'section': _('Serial'),
+                    'key': 'serial_off_command',
+                    'title': _('serial_off_command TITLE'),
+                    'desc': _('serial_off_command DESCRIPTION'),
+                    'ok_button_text': _("Ok"),
+                    'cancel_button_text': _("Cancel"),
+                    'validation_regex': ".$"
+                },
+                {
+                    'type': 'string',
+                    'section': _('Serial'),
+                    'key': 'serial_layer_started_command',
+                    'title': _('serial_layer_started_command TITLE'),
+                    'desc': _('serial_layer_started_command DESCRIPTION'),
+                    'ok_button_text': _("Ok"),
+                    'cancel_button_text': _("Cancel"),
+                    'validation_regex': ".$"
+                },
+                {
+                    'type': 'string',
+                    'section': _('Serial'),
+                    'key': 'serial_layer_ended_command',
+                    'title': _('serial_layer_ended_command TITLE'),
+                    'desc': _('serial_layer_ended_command DESCRIPTION'),
+                    'ok_button_text': _("Ok"),
+                    'cancel_button_text': _("Cancel"),
+                    'validation_regex': ".$"
+                },
+                {
+                    'type': 'string',
+                    'section': _('Serial'),
+                    'key': 'serial_print_ended_command',
+                    'title': _('serial_print_ended_command TITLE'),
+                    'desc': _('serial_print_ended_command DESCRIPTION'),
+                    'ok_button_text': _("Ok"),
+                    'cancel_button_text': _("Cancel"),
+                    'validation_regex': ".$"
+                },
+                ]
 
     def refresh_settings(self, settings, config):
-        Logger.info("Starting")
+        Logger.info("Starting :%s " % dir(config))
+        self.load_config(config)
         settings.register_type('string', SettingString)
         settings.register_type('bool', SettingBoolean)
         settings.register_type('numeric', SettingNumeric)
@@ -271,7 +341,7 @@ class SettingsMapper(object):
         if entry_type == 'string':
             return str(value)
         if entry_type == 'numeric':
-            if '.' in value:
+            if '.' in str(value):
                 return float(value)
             else:
                 return int(value)
@@ -281,7 +351,8 @@ class SettingsMapper(object):
     def update_setting(self, section, key, value):
         Logger.info(u"Setting changed  %s, %s -> %s" % (section, key, value))
         entry_type = [item['type'] for item in self.config_info if item['key'] == key][0]
-        getattr(self.configuration_api, 'set_' + key)(self._convert(entry_type, value))
+        if hasattr(self.configuration_api, 'set_' + key):
+            getattr(self.configuration_api, 'set_' + key)(self._convert(entry_type, value))
         self.configuration_api.save()
 
     def load_config(self, config):
