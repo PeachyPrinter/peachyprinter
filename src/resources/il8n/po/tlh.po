@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-18 16:33-0600\n"
+"POT-Creation-Date: 2015-03-24 15:55-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -21,15 +21,15 @@ msgstr "qo' vIvan"
 
 #: src/peachyprinter.kv:10
 msgid "English (Canada/UK)"
-msgstr ""
+msgstr "ta'be' English Hol"
 
 #: src/peachyprinter.kv:13
 msgid "English (American)"
-msgstr ""
+msgstr "English Hol"
 
 #: src/peachyprinter.kv:16
 msgid "Klingon"
-msgstr ""
+msgstr "tlhIngan"
 
 #: src/peachyprinter.kv:19
 msgid "Settings"
@@ -41,122 +41,131 @@ msgstr "setting"
 msgid "en_GB Text"
 msgstr "tlh Text"
 
-#: src/infrastructure/setting_mapper.py:18
+#: src/infrastructure/setting_mapper.py:25
 msgid "info.version_number DESCRIPTION"
 msgstr "De' version mI'"
 
-#: src/infrastructure/setting_mapper.py:19
+#: src/infrastructure/setting_mapper.py:26
 msgid "info.version_number TITLE"
 msgstr "De' version mI'"
 
-#: src/infrastructure/setting_mapper.py:26
+#: src/infrastructure/setting_mapper.py:33
 msgid "info.serial_number DESCRIPTION"
 msgstr "De' serial mI'"
 
-#: src/infrastructure/setting_mapper.py:27
+#: src/infrastructure/setting_mapper.py:34
 msgid "info.serial_number TITLE"
 msgstr "De' serial mI'"
 
-#: src/infrastructure/setting_mapper.py:34
+#: src/infrastructure/setting_mapper.py:41
 msgid "info.hardware_version_number DESCRIPTION"
 msgstr "De' hardware version mI'"
 
-#: src/infrastructure/setting_mapper.py:35
+#: src/infrastructure/setting_mapper.py:42
 msgid "info.hardware_version_number TITLE"
 msgstr "De' hardware version mI'"
 
-#: src/infrastructure/setting_mapper.py:42
+#: src/infrastructure/setting_mapper.py:49
 msgid "info.firmwware_version_number DESCRIPTION"
 msgstr "De' firmwware version mI'"
 
-#: src/infrastructure/setting_mapper.py:43
+#: src/infrastructure/setting_mapper.py:50
 msgid "info.firmwware_version_number TITLE"
 msgstr "De' firmwware version mI'"
 
-#: src/infrastructure/setting_mapper.py:56
+#: src/infrastructure/setting_mapper.py:63
 msgid "options.use_sublayers TITLE"
 msgstr "sublayers yIlo' DuH"
 
-#: src/infrastructure/setting_mapper.py:57
+#: src/infrastructure/setting_mapper.py:64
 msgid "options.use_sublayers DESCRIPTION"
 msgstr "sublayers yIlo' DuH"
 
-#: src/infrastructure/setting_mapper.py:58
-msgid "On"
-msgstr "maqcha"
-
-#: src/infrastructure/setting_mapper.py:58
-msgid "Off"
-msgstr "Qotlh"
-
-#: src/infrastructure/setting_mapper.py:64
+#: src/infrastructure/setting_mapper.py:71
 msgid "options.sublayer_height_mm TITLE"
 msgstr "DuH sublayer 'ab mm"
 
-#: src/infrastructure/setting_mapper.py:65
+#: src/infrastructure/setting_mapper.py:72
 msgid "options.sublayer_height_mm DESCRIPTION"
 msgstr "DuH sublayer 'ab mm"
 
-#: src/infrastructure/setting_mapper.py:71
+#: src/infrastructure/setting_mapper.py:74
+#: src/infrastructure/setting_mapper.py:92
+#: src/infrastructure/setting_mapper.py:102
+#: src/infrastructure/setting_mapper.py:128
+#: src/infrastructure/setting_mapper.py:138
+msgid "Ok"
+msgstr "lu'"
+
+#: src/infrastructure/setting_mapper.py:75
+#: src/infrastructure/setting_mapper.py:93
+#: src/infrastructure/setting_mapper.py:103
+#: src/infrastructure/setting_mapper.py:129
+#: src/infrastructure/setting_mapper.py:139
+msgid "Cancel"
+msgstr "qIl"
+
+#: src/infrastructure/setting_mapper.py:81
 msgid "options.laser_thickness_mm TITLE"
 msgstr "DuH 'uD thickness mm"
 
-#: src/infrastructure/setting_mapper.py:72
+#: src/infrastructure/setting_mapper.py:82
 msgid "options.laser_thickness_mm DESCRIPTION"
 msgstr "DuH 'uD thickness mm"
 
-#: src/infrastructure/setting_mapper.py:78
+#: src/infrastructure/setting_mapper.py:89
 msgid "options.scaling_factor TITLE"
 msgstr "ghISDen factor DuH"
 
-#: src/infrastructure/setting_mapper.py:79
+#: src/infrastructure/setting_mapper.py:90
 msgid "options.scaling_factor DESCRIPTION"
 msgstr "ghISDen factor DuH"
 
-#: src/infrastructure/setting_mapper.py:85
+#: src/infrastructure/setting_mapper.py:99
 msgid "options.overlap_amount_mm TITLE"
 msgstr "DuH overlap amount"
 
-#: src/infrastructure/setting_mapper.py:86
+#: src/infrastructure/setting_mapper.py:100
 msgid "options.overlap_amount_mm DESCRIPTION"
 msgstr "DuH overlap amount"
 
-#: src/infrastructure/setting_mapper.py:92
+#: src/infrastructure/setting_mapper.py:110
 msgid "options.use_shufflelayers TITLE"
 msgstr "shufflelayers yIlo' DuH"
 
-#: src/infrastructure/setting_mapper.py:93
+#: src/infrastructure/setting_mapper.py:111
 msgid "options.use_shufflelayers DESCRIPTION"
 msgstr "shufflelayers yIlo' DuH"
 
-#: src/infrastructure/setting_mapper.py:99
+#: src/infrastructure/setting_mapper.py:118
 msgid "options.use_overlap TITLE"
 msgstr "overlap yIlo' DuH"
 
-#: src/infrastructure/setting_mapper.py:100
+#: src/infrastructure/setting_mapper.py:119
 msgid "options.use_overlap DESCRIPTION"
 msgstr "overlap yIlo' DuH"
 
-#: src/infrastructure/setting_mapper.py:106
+#: src/infrastructure/setting_mapper.py:125
 msgid "options.print_queue_delay TITLE"
 msgstr "DuH print queue mIm"
 
-#: src/infrastructure/setting_mapper.py:107
+#: src/infrastructure/setting_mapper.py:126
 msgid "options.print_queue_delay DESCRIPTION"
 msgstr "DuH print queue mIm"
 
-#: src/infrastructure/setting_mapper.py:113
+#: src/infrastructure/setting_mapper.py:135
 msgid "options.pre_layer_delay TITLE"
 msgstr "DuH pre patlh mIm"
 
-#: src/infrastructure/setting_mapper.py:114
+#: src/infrastructure/setting_mapper.py:136
 msgid "options.pre_layer_delay DESCRIPTION"
 msgstr "DuH pre patlh mIm"
 
-#: src/infrastructure/setting_mapper.py:118
+#: src/infrastructure/setting_mapper.py:145
 msgid "Info"
 msgstr "De'"
 
-#: src/infrastructure/setting_mapper.py:119
+#: src/infrastructure/setting_mapper.py:146
 msgid "Options"
 msgstr "DuH"
+

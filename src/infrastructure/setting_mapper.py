@@ -140,15 +140,77 @@ class SettingsMapper(object):
                 },]
 
     @property
+    def config_email(self):
+        return [
+                {
+                    'type': 'bool',
+                    'section': 'Email',
+                    'key': 'email_on',
+                    'title': _('email.on TITLE'),
+                    'desc': _('email.on DESCRIPTION'),
+                    'values': [True, False]
+                },
+                {
+                    'type': 'numeric',
+                    'section': 'Email',
+                    'key': 'email_port',
+                    'title': _('email.port TITLE'),
+                    'desc': _('email.port DESCRIPTION'),
+                    'value_range': [0, None],
+                    'ok_button_text': _("Ok"),
+                    'cancel_button_text': _("Cancel")
+                },
+                {
+                    'type': 'string',
+                    'section': 'Email',
+                    'key': 'email_host',
+                    'title': _('email.host TITLE'),
+                    'desc': _('email.host DESCRIPTION'),
+                },
+                {
+                    'type': 'string',
+                    'section': 'Email',
+                    'key': 'email_sender',
+                    'title': _('email.sender TITLE'),
+                    'desc': _('email.sender DESCRIPTION'),
+                    'ok_button_text': _("Ok"),
+                    'cancel_button_text': _("Cancel")
+                },
+                {
+                    'type': 'string',
+                    'section': 'Email',
+                    'key': 'email_recipient',
+                    'title': _('email.recipient TITLE'),
+                    'desc': _('email.recipient DESCRIPTION'),
+                    'ok_button_text': _("Ok"),
+                    'cancel_button_text': _("Cancel")
+                },
+                {
+                    'type': 'string',
+                    'section': 'Email',
+                    'key': 'email_username',
+                    'title': _('email.username TITLE'),
+                    'desc': _('email.username DESCRIPTION'),
+                    'ok_button_text': _("Ok"),
+                    'cancel_button_text': _("Cancel")
+                },
+                {
+                    'type': 'string',
+                    'section': 'Email',
+                    'key': 'email_password',
+                    'title': _('email.password TITLE'),
+                    'desc': _('email.password DESCRIPTION'),
+                    'ok_button_text': _("Ok"),
+                    'cancel_button_text': _("Cancel")
+                },]
+
+    @property
     def section_map(self):
         return {
             _('Info'): self.config_info,
             _('Options'): self.config_options,
-
+            _('Email'): self.config_email,
         }
-
-
-
 
     def refresh_settings(self, settings, config):
         settings.register_type('string', SettingString)
@@ -174,9 +236,12 @@ class SettingsMapper(object):
     def update_setting(self, section, key, value):
         Logger.info(u"Setting changed  %s, %s -> %s" % (section, key, value))
         entry_type = [entry['type'] for entry in self.section_map[section] if entry['key'] == key][0]
-        Logger.info("Wass a %s" % entry_type)
-        setter = key.split('.')[1]
+        if '.' in key:
+            setter = key.split('.')[1]
+        else:
+            setter = key
         getattr(self.configuration_api, 'set_' + setter)(self._convert(entry_type, value))
+        self.configuration_api.save()
 
     def load_config(self, config):
         Logger.info("Loading Configs")
@@ -194,8 +259,15 @@ class SettingsMapper(object):
             getter = 'get_' + key.split('.')[1]
             config_items[key] = getattr(self.configuration_api, getter)()
 
+        email_items = {}
+        for item in self.config_email:
+            key = item['key']
+            getter = 'get_' + key
+            email_items[key] = getattr(self.configuration_api, getter)()
+
         self.setall(config, 'Info', info_items)
         self.setall(config, 'Options', config_items)
+        self.setall(config, 'Email', email_items)
 
     def setall(self, config, section, items):
         config.add_section(section)
