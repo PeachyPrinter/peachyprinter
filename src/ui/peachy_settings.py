@@ -10,6 +10,7 @@ from kivy.uix.settings import SettingItem, SettingSpacer
 from kivy.uix.textinput import TextInput
 from kivy.uix.widget import Widget
 
+import re
 
 
 class SettingBoolean(SettingItem):
@@ -57,6 +58,13 @@ class SettingString(SettingItem):
     defaults to None.
     '''
 
+    validation_regex = StringProperty(".*")
+    '''Regular expression for determining a valid entry.
+
+    :attr:`validation_regex` is an :class:`~kivy.properties.StringProperty`
+    and defaults to '.*'.
+    '''
+
     ok_button_text = StringProperty("Ok")
     '''Used to store the desired text for the popup Ok button.
 
@@ -93,8 +101,9 @@ class SettingString(SettingItem):
         return True
 
     def _valid_entry(self, value):
-        #Controls allowable content. eg email address
-        return True
+        regex = re.compile(self.validation_regex)
+        match = re.match(regex, value)
+        return match
 
     def _on_text(self, instance, value):
         if self._valid_input(value):

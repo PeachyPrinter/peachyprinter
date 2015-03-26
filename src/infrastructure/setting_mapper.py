@@ -12,6 +12,7 @@ except:
 
 
 class SettingsMapper(object):
+    email_regex = """[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)"""
     def __init__(self, api):
         self.api = api
         self.configuration_api = self.api.get_configuration_api()
@@ -156,7 +157,7 @@ class SettingsMapper(object):
                     'key': 'email_port',
                     'title': _('email.port TITLE'),
                     'desc': _('email.port DESCRIPTION'),
-                    'value_range': [0, None],
+                    'value_range': [0, 49152],
                     'ok_button_text': _("Ok"),
                     'cancel_button_text': _("Cancel")
                 },
@@ -174,7 +175,8 @@ class SettingsMapper(object):
                     'title': _('email.sender TITLE'),
                     'desc': _('email.sender DESCRIPTION'),
                     'ok_button_text': _("Ok"),
-                    'cancel_button_text': _("Cancel")
+                    'cancel_button_text': _("Cancel"),
+                    'validation_regex': self.email_regex
                 },
                 {
                     'type': 'string',
@@ -183,7 +185,8 @@ class SettingsMapper(object):
                     'title': _('email.recipient TITLE'),
                     'desc': _('email.recipient DESCRIPTION'),
                     'ok_button_text': _("Ok"),
-                    'cancel_button_text': _("Cancel")
+                    'cancel_button_text': _("Cancel"),
+                    'validation_regex': self.email_regex
                 },
                 {
                     'type': 'string',
