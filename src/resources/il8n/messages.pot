@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-18 16:33-0600\n"
+"POT-Creation-Date: 2015-03-24 15:59-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,122 +47,130 @@ msgstr ""
 msgid "en_GB Text"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:18
+#: src/infrastructure/setting_mapper.py:25
 msgid "info.version_number DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:19
+#: src/infrastructure/setting_mapper.py:26
 msgid "info.version_number TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:26
+#: src/infrastructure/setting_mapper.py:33
 msgid "info.serial_number DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:27
+#: src/infrastructure/setting_mapper.py:34
 msgid "info.serial_number TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:34
+#: src/infrastructure/setting_mapper.py:41
 msgid "info.hardware_version_number DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:35
+#: src/infrastructure/setting_mapper.py:42
 msgid "info.hardware_version_number TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:42
+#: src/infrastructure/setting_mapper.py:49
 msgid "info.firmwware_version_number DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:43
+#: src/infrastructure/setting_mapper.py:50
 msgid "info.firmwware_version_number TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:56
+#: src/infrastructure/setting_mapper.py:63
 msgid "options.use_sublayers TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:57
+#: src/infrastructure/setting_mapper.py:64
 msgid "options.use_sublayers DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:58
-msgid "On"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:58
-msgid "Off"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:64
+#: src/infrastructure/setting_mapper.py:71
 msgid "options.sublayer_height_mm TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:65
+#: src/infrastructure/setting_mapper.py:72
 msgid "options.sublayer_height_mm DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:71
+#: src/infrastructure/setting_mapper.py:74
+#: src/infrastructure/setting_mapper.py:92
+#: src/infrastructure/setting_mapper.py:102
+#: src/infrastructure/setting_mapper.py:128
+#: src/infrastructure/setting_mapper.py:138
+msgid "Ok"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:75
+#: src/infrastructure/setting_mapper.py:93
+#: src/infrastructure/setting_mapper.py:103
+#: src/infrastructure/setting_mapper.py:129
+#: src/infrastructure/setting_mapper.py:139
+msgid "Cancel"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:81
 msgid "options.laser_thickness_mm TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:72
+#: src/infrastructure/setting_mapper.py:82
 msgid "options.laser_thickness_mm DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:78
+#: src/infrastructure/setting_mapper.py:89
 msgid "options.scaling_factor TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:79
+#: src/infrastructure/setting_mapper.py:90
 msgid "options.scaling_factor DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:85
+#: src/infrastructure/setting_mapper.py:99
 msgid "options.overlap_amount_mm TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:86
+#: src/infrastructure/setting_mapper.py:100
 msgid "options.overlap_amount_mm DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:92
+#: src/infrastructure/setting_mapper.py:110
 msgid "options.use_shufflelayers TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:93
+#: src/infrastructure/setting_mapper.py:111
 msgid "options.use_shufflelayers DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:99
+#: src/infrastructure/setting_mapper.py:118
 msgid "options.use_overlap TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:100
+#: src/infrastructure/setting_mapper.py:119
 msgid "options.use_overlap DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:106
+#: src/infrastructure/setting_mapper.py:125
 msgid "options.print_queue_delay TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:107
+#: src/infrastructure/setting_mapper.py:126
 msgid "options.print_queue_delay DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:113
+#: src/infrastructure/setting_mapper.py:135
 msgid "options.pre_layer_delay TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:114
+#: src/infrastructure/setting_mapper.py:136
 msgid "options.pre_layer_delay DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:118
+#: src/infrastructure/setting_mapper.py:145
 msgid "Info"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:119
+#: src/infrastructure/setting_mapper.py:146
 msgid "Options"
 msgstr ""

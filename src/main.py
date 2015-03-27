@@ -1,42 +1,63 @@
-import kivy
-from kivy.app import App
-from kivy.uix.settings import SettingsWithSidebar
-from kivy.properties import StringProperty
-from kivy.logger import Logger
-
+import logging
+import os
+import sys
+import time
+from peachyprinter import config, PrinterAPI
+import argparse
 from infrastructure.langtools import _
-from infrastructure.setting_mapper import SettingsMapper
-from peachyprinter import PrinterAPI
 
 
-kivy.require('1.9.0')
+def setup_logging(args):
+    peachy_logger = logging.getLogger('peachy')
+    if args.devmode:
+        timestr = time.strftime("%Y-%m-%d-%H%M%S")
+        logfile = os.path.join(config.PEACHY_PATH, 'peachyprinter-%s.log' % timestr)
+    else:
+        logfile = os.path.join(config.PEACHY_PATH, 'peachyprinter.log')
+    if os.path.isfile(logfile):
+        os.remove(logfile)
+    logging_format = '%(levelname)s: %(asctime)s %(module)s - %(message)s'
+    logging_level = getattr(logging, args.loglevel.upper(), "INFO")
+    if not isinstance(logging_level, int):
+        raise ValueError('Invalid log level: %s' % args.loglevel)
+    if True:
+        peachy_logger = logging.getLogger('peachy')
+        peachy_logger.propagate = False
+        logFormatter = logging.Formatter(logging_format)
+
+        fileHandler = logging.FileHandler(logfile)
+        consoleHandler = logging.StreamHandler()
+
+        fileHandler.setFormatter(logFormatter)
+        consoleHandler.setFormatter(logFormatter)
+
+        peachy_logger.addHandler(fileHandler)
+        peachy_logger.addHandler(consoleHandler)
+
+        peachy_logger.setLevel(logging_level)
+    else:
+        logging.basicConfig(filename=logfile, format=logging_format, level=logging_level)
 
 
-class PeachyPrinter(App):
-    lang = StringProperty('en_GB')
+if __name__ == "__main__":
+    if not os.path.exists(config.PEACHY_PATH):
+        os.makedirs(config.PEACHY_PATH)
 
-    def __init__(self, **kwargs):
-        self.api = PrinterAPI()
-        self.setting_translation = SettingsMapper(self.api)
-        super(PeachyPrinter, self).__init__(**kwargs)
+    parser = argparse.ArgumentParser("Configure and print with Peachy Printer")
+    parser.add_argument('-l', '--log',     dest='loglevel', action='store',      required=False, default="WARNING", help="Enter the loglevel [DEBUG|INFO|WARNING|ERROR] default: WARNING")
+    parser.add_argument('-c', '--console', dest='console',  action='store_true', required=False, help="Logs to console not file")
+    parser.add_argument('-d', '--development', dest='devmode',  action='store_true', required=False, help="Enable Developer Testing Mode")
+    args, unknown = parser.parse_known_args()
 
-    def build(self):
-        self.settings_cls = SettingsWithSidebar
-        self.setting_translation.load_config(self.config)
-        self.config.add_callback(self.setting_translation.update_setting)
+    setup_logging(args)
+    if args.devmode:
+        config.devmode = True
 
-    def build_config(self, config):
-        self.setting_translation.set_defaults(config)
+    if getattr(sys, 'frozen', False):
+        path = os.path.dirname(sys.executable)
+    else:
+        path = os.path.dirname(os.path.realpath(__file__))
 
-    def build_settings(self, settings):
-        Logger.info("Building Settings")
-        self.setting_translation.refresh_settings(settings, self.config)
-
-    def on_lang(self, instance, lang):
-        _.switch_lang(lang)
-        self.destroy_settings()
-        if hasattr(self, 'settings'):
-            self.settings.interface.menu.close_button.text = _("Close")
-
-if __name__ == '__main__':
-    PeachyPrinter().run()
+    api = PrinterAPI()
+    from gui import PeachyPrinter
+    PeachyPrinter(api).run()
