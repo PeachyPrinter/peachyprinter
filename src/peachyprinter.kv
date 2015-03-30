@@ -40,15 +40,9 @@
                 ScrollView:
                     LabelGridLayout:
                         id: print_settings
-                        padding:[10,10]
                         size_hint_y:None
+                        text_padding_x: 10
                         cols: 1
-                        canvas:
-                            Color:
-                                rgba:  1.0, 1.0, 1.0, 0.2
-                            Rectangle:
-                                pos: self.pos
-                                size: self.size
         Label:
             text: 'Printing UI'
         Button:
