@@ -1,20 +1,56 @@
 #:kivy 1.8.0
 #:import _ __main__._
 
-BoxLayout:
+
+<MyScreenManager>:
+    MainUI:
+
+<MainUI>:
+    name: 'mainui'
+    FloatLayout:
+        BoxLayout:
+            size: root.size
+            pos: root.pos
+            orientation: 'vertical'
+            Button:
+                text: 'Print from file'
+                size_hint: [0.3, 0.1]
+                on_release: app.root.current = 'printingui'
+            Button:
+                size_hint: [0.3, 0.1]
+                text: 'Print from library'
+        FloatLayout:
+            Button:
+                size_hint: [0.06, 0.06]
+                pos: [root.size[0] - root.size[0] * 0.06, root.size[1] - root.size[1] * 0.06 ]
+                on_release: app.open_settings()
+                background_normal: 'resources/icons/settings-up.png'
+                background_down:   'resources/icons/settings-down.png'
+
+<PrintingUI>:
+    name: 'printingui'
     BoxLayout:
-        orientation: 'vertical'
+        Accordion:
+            orientation: 'vertical'
+            AccordionItem:
+                id: print_details
+                title: _("Print Details")
+            AccordionItem:
+                title: _("Printer Settings")
+                ScrollView:
+                    GridLayout:
+                        id: print_settings
+                        size_hint_y:None
+                        height: 1200
+                        cols: 1
+                        canvas:
+                            Color:
+                                rgba:  1.0, 1.0, 1.0, 0.2
+                            Rectangle:
+                                pos: self.pos
+                                size: self.size
         Label:
-            text: _('Hello World')
+            text: 'Printing UI'
         Button:
-            text: _('English (Canada/UK)')
-            on_release: app.lang = 'en_GB'
-        Button:
-            text: _('English (American)')
-            on_release: app.lang = 'en_US'
-        Button:
-            text: _('Klingon')
-            on_release: app.lang = 'tlh'
-    Button:
-        text: _('Settings')
-        on_release: app.open_settings()
+            text: "Abort"
+            on_release: app.root.current = 'mainui'

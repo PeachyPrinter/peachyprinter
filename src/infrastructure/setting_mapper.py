@@ -367,3 +367,9 @@ class SettingsMapper(object):
             if not config.has_section(section):
                 config.add_section(section)
             config.set(section, key, value)
+
+    def get_settings(self):
+        setting_values = {}
+        for setting in self.config_info:
+            setting_values[setting['title']] = str(getattr(self.configuration_api, 'get_' + setting['key'])())
+        return setting_values
