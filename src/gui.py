@@ -1,7 +1,10 @@
+import os
+
 from kivy.app import App
 from kivy.uix.settings import SettingsWithSidebar
-from kivy.properties import StringProperty
+from kivy.properties import StringProperty, ObjectProperty
 from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.popup import Popup
 
 from kivy.uix.screenmanager import ScreenManager, Screen
 
@@ -12,16 +15,46 @@ from ui.printui import PrintingUI
 from ui.custom_widgets import *
 
 
+class SelectedFile(object):
+    def __init__(self, path=None, filename=None):
+        self.path = path
+        self.filename = filename
+
+
+class LoadDialog(FloatLayout):
+    load = ObjectProperty(None)
+    cancel = ObjectProperty(None)
+
+
 class MainUI(Screen):
-    pass
+    def __init__(self, selected_file, **kwargs):
+        super(MainUI, self).__init__(**kwargs)
+        self.selected_file = selected_file
+
+    def show_load(self):
+        content = LoadDialog(load=self.load, cancel=self.dismiss_popup)
+        self._popup = Popup(title=_("Load file"), content=content, size_hint=(0.9, 0.9))
+        self._popup.open()
+
+    def load(self, path, filename):
+        self.selected_file.path = path
+        self.selected_file.filename = filename
+        self.dismiss_popup()
+        self.parent.current = 'printingui'
+
+    def dismiss_popup(self):
+        self._popup.dismiss()
 
 
 class MyScreenManager(ScreenManager):
     def __init__(self, api, setting_translation,  **kwargs):
         super(MyScreenManager, self).__init__(**kwargs)
         self.api = api
+        selected_file = SelectedFile()
         self.setting_translation = setting_translation
-        self.printing_ui = PrintingUI(self.api)
+        self.main_ui = MainUI(selected_file)
+        self.printing_ui = PrintingUI(self.api, selected_file)
+        self.add_widget(self.main_ui)
         self.add_widget(self.printing_ui)
 
 

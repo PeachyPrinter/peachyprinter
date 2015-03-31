@@ -3,10 +3,14 @@
 
 
 <MyScreenManager>:
-    MainUI:
+
+<PrintStatus>:
+    Label:
+        text: path
 
 <MainUI>:
     name: 'mainui'
+    id: mainui
     FloatLayout:
         BoxLayout:
             size: root.size
@@ -15,7 +19,7 @@
             Button:
                 text: 'Print from file'
                 size_hint: [0.3, 0.1]
-                on_release: app.root.current = 'printingui'
+                on_release: mainui.show_load()
             Button:
                 size_hint: [0.3, 0.1]
                 text: 'Print from library'
@@ -34,10 +38,15 @@
             orientation: 'vertical'
             size_hint_x:0.6
             AccordionItem:
+                collapse:False
                 id: print_details
                 title: _("Print Details")
+                BoxLayout:
+                    Label:
+                        text: root.path
             AccordionItem:
                 title: _("Printer Settings")
+                collapse:True
                 ScrollView:
                     LabelGridLayout:
                         id: print_settings
@@ -52,3 +61,24 @@
                 text: "Abort"
                 size_hint:[0.2,0.1]
                 on_release: app.root.current = 'mainui'
+
+<LoadDialog>:
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserListView:
+            id: filechooser
+            filters: ['*.gcode']
+            path: u'~'
+
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            Button:
+                text: "Cancel"
+                on_release: root.cancel()
+
+            Button:
+                text: "Load"
+                on_release: root.load(filechooser.path, filechooser.selection)
