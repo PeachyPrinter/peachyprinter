@@ -32,7 +32,7 @@
     BoxLayout:
         Accordion:
             orientation: 'vertical'
-            size_hint_x:0.3
+            size_hint_x:0.6
             AccordionItem:
                 id: print_details
                 title: _("Print Details")
@@ -44,9 +44,11 @@
                         size_hint_y:None
                         text_padding_x: 10
                         cols: 1
-        Label:
-            text: 'Printing UI'
-        Button:
-            text: "Abort"
-            size_hint:[0.2,0.1]
-            on_release: app.root.current = 'mainui'
+        BoxLayout:
+            id: displaywindow
+            Label:
+                text: 'Printing UI'
+            Button:
+                text: "Abort"
+                size_hint:[0.2,0.1]
+                on_release: app.root.current = 'mainui'
