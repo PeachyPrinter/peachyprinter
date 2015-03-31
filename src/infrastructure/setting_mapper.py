@@ -347,7 +347,10 @@ class SettingsMapper(object):
             else:
                 return int(value)
         if entry_type == 'bool':
-            return bool(value)
+            if value == 'True':
+                return True
+            else:
+                return False
 
     def update_setting(self, section, key, value):
         Logger.info(u"Setting changed  %s, %s -> %s" % (section, key, value))
