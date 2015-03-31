@@ -3,11 +3,49 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.properties import ObjectProperty, StringProperty, NumericProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.label import Label
+from kivy.graphics import *
+from kivy.clock import Clock
+import time
 
 from ui.custom_widgets import BorderedLabel, LabelGridLayout
 import os
 
 from kivy.logger import Logger
+
+class Dripper(BoxLayout):
+    def __init__(self, **kwargs):
+        super(Dripper, self).__init__(**kwargs)
+        self.index = 0.0
+        self.sections = 20
+        self.section_height = 1
+        self.lasttime = time.time()
+        Clock.schedule_once(self.redraw)
+
+    def update(self, data):
+        self.drip_history = data['drip_history']
+
+    def redraw(self, key):
+        self.index += (time.time() - self.lasttime) * self.sections
+        self.lasttime = time.time()
+        if self.index > self.section_height * 2:
+            self.index = 0
+        self.draw()
+        Clock.schedule_once(self.redraw, 1.0 / 60.0)
+
+    def on_height(self, instance, value):
+        self.section_height = self.height / self.sections
+
+    def draw(self):
+        self.canvas.clear()
+        for i in range(0, self.sections + 3):
+            if i % 2 == 0:
+                self.canvas.add(Color(0.6, 0.65, 0.6, 1))
+            else:
+                self.canvas.add(Color(0.4, 0.45, 0.4, 1))
+            p = (i * self.section_height) - self.index
+            self.canvas.add(Rectangle(pos=(self.x, p), size=(self.width, self.section_height)))
+            
+
 
 
 class PrintStatus(LabelGridLayout):
@@ -49,6 +87,7 @@ class PrintingUI(Screen):
 
     def callback(self, data):
         self.ids.print_status.update(data)
+        self.ids.dripper.update(data)
 
     def on_pre_enter(self):
         for (title, value) in self.parent.setting_translation.get_settings().items():
