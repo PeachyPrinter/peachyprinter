@@ -14,12 +14,12 @@ class LabelGridLayout(GridLayout):
         super(LabelGridLayout, self).add_widget(widget)
         self._resize()
 
-    def clear_widget(self, children=None):
-        super(LabelGridLayout, self).clear_widget(children)
+    def clear_widgets(self, children=None):
+        super(LabelGridLayout, self).clear_widgets(children)
         self._resize()
 
-    def remove_widget(self, children=None):
-        super(LabelGridLayout, self).clear_widget(children)
+    def remove_widget(self, widget):
+        super(LabelGridLayout, self).remove_widget(widget)
         self._resize()
 
     def on_child_height(self, instance, value):
@@ -42,6 +42,7 @@ class BorderedLabel(Label):
         self.bottom_points = [0, 0, 0, 0]
         self.left_points = [0, 0, 0, 0]
         self.right_points = [0, 0, 0, 0]
+        self._new = True
 
     def draw_border(self):
         with self.canvas.after:
@@ -57,14 +58,16 @@ class BorderedLabel(Label):
 
 
     def update_border(self, *args):
-        if hasattr(self, 'top_border'):
-            self.top_border.points =    [self.pos[0]               , self.pos[1] - self.size[1],        self.pos[0] + self.size[0], self.pos[1] - self.size[1]]
-        if hasattr(self, 'right_border'):
-            self.right_border.points =  [self.pos[0] + self.size[0], self.pos[1],                       self.pos[0] + self.size[0], self.pos[1] + self.size[1]]
-        if hasattr(self, 'bottom_border'):
-            self.bottom_border.points = [self.pos[0]               , self.pos[1],                       self.pos[0] + self.size[0], self.pos[1]               ]
-        if hasattr(self, 'left_border'):
-            self.left_border.points =   [self.pos[0]               , self.pos[1],                       self.pos[0]               , self.pos[1] + self.size[1]]
-        else:
+        if self._new:
             self.draw_border()
+            self._new = False
+        else:
+            if hasattr(self, 'top_border'):
+                self.top_border.points =    [self.pos[0]               , self.pos[1] - self.size[1],        self.pos[0] + self.size[0], self.pos[1] - self.size[1]]
+            if hasattr(self, 'right_border'):
+                self.right_border.points =  [self.pos[0] + self.size[0], self.pos[1],                       self.pos[0] + self.size[0], self.pos[1] + self.size[1]]
+            if hasattr(self, 'bottom_border'):
+                self.bottom_border.points = [self.pos[0]               , self.pos[1],                       self.pos[0] + self.size[0], self.pos[1]               ]
+            if hasattr(self, 'left_border'):
+                self.left_border.points =   [self.pos[0]               , self.pos[1],                       self.pos[0]               , self.pos[1] + self.size[1]]
 

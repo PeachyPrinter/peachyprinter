@@ -1,6 +1,7 @@
 from langtools import _
 
 import json
+import collections
 from kivy.logger import Logger
 from ui.peachy_settings import SettingString, SettingNumeric, SettingBoolean
 
@@ -369,7 +370,7 @@ class SettingsMapper(object):
             config.set(section, key, value)
 
     def get_settings(self):
-        setting_values = {}
-        for setting in self.config_info:
+        setting_values = collections.OrderedDict()
+        for setting in sorted(self.config_info, key=lambda t: t['key']):
             setting_values[setting['title']] = str(getattr(self.configuration_api, 'get_' + setting['key'])())
         return setting_values

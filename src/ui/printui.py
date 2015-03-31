@@ -25,4 +25,4 @@ class PrintingUI(Screen):
         Logger.info("PrintUI Entered")
 
     def on_pre_leave(self):
-        self.ids.print_settings.clear_widget()
+        self.ids.print_settings.clear_widgets()
