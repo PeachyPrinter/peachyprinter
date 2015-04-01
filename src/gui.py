@@ -25,8 +25,10 @@ class LoadDialog(FloatLayout):
     load = ObjectProperty(None)
     cancel = ObjectProperty(None)
 
+
 class SettingsSelector(Popup):
     pass
+
 
 class MainUI(Screen):
     setting = ObjectProperty()
@@ -54,7 +56,6 @@ class MainUI(Screen):
         self.settings.open()
 
 
-
 class MyScreenManager(ScreenManager):
     def __init__(self, api, setting_translation,  **kwargs):
         super(MyScreenManager, self).__init__(**kwargs)
@@ -74,12 +75,14 @@ class PeachyPrinter(App):
         self.api = api
         self.setting_translation = SettingsMapper(self.api)
         super(PeachyPrinter, self).__init__(**kwargs)
+        self.manager = None
 
     def build(self):
         self.settings_cls = SettingsWithSidebar
         self.setting_translation.load_config(self.config)
         self.config.add_callback(self.setting_translation.update_setting)
-        return MyScreenManager(self.api, self.setting_translation)
+        self.manager = MyScreenManager(self.api, self.setting_translation)
+        return self.manager
 
     def build_config(self, config):
         self.setting_translation.set_defaults(config)
@@ -92,3 +95,7 @@ class PeachyPrinter(App):
         self.destroy_settings()
         if hasattr(self, 'settings'):
             self.settings.interface.menu.close_button.text = _("Close")
+
+    def on_stop(self):
+        if self.manager:
+            self.manager.current = 'mainui'
