@@ -29,14 +29,19 @@
         BoxLayout:
             size: root.size
             pos: root.pos
-            orientation: 'vertical'
-            Button:
-                text: 'Print from file'
-                size_hint: [0.3, 0.1]
-                on_release: mainui.show_load()
-            Button:
-                size_hint: [0.3, 0.1]
-                text: 'Print from library'
+            orientation: 'horizontal'
+            BoxLayout:
+                size_hint: [0.3, 1.0]
+                orientation: 'vertical'
+                Button:
+                    text: 'Print from file'
+                    on_release: mainui.show_load()
+                Button:
+                    text: 'Print from library'
+            Image:
+                source: 'resources/logo.png'
+                allow_stretch: True
+                keep_ratio: True
         FloatLayout:
             Button:
                 size_hint: [0.06, 0.06]
