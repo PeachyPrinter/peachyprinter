@@ -4,6 +4,24 @@
 
 <MyScreenManager>:
 
+<SettingsSelector>:
+    size_hint: [0.6, 0.6]
+    title: _('Settings Selection')
+    BoxLayout:
+        orientation: 'vertical'
+        Button:
+            text: _('Laser Calibration')
+            #on_release: app.open_settings()
+        Button:
+            text: _('Dripper Calibration')
+            #on_release: app.open_settings()
+        Button:
+            text: _('Resin Curing Calibration')
+            #on_release: app.open_settings()
+        Button:
+            text: _('Advanced Settings')
+            on_release: app.open_settings()
+
 <MainUI>:
     name: 'mainui'
     id: mainui
@@ -23,7 +41,7 @@
             Button:
                 size_hint: [0.06, 0.06]
                 pos: [root.size[0] - root.size[0] * 0.06, root.size[1] - root.size[1] * 0.06 ]
-                on_release: app.open_settings()
+                on_release: root.setting_selected()
                 background_normal: 'resources/icons/settings-up.png'
                 background_down:   'resources/icons/settings-down.png'
 

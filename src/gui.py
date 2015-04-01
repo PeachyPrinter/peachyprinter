@@ -25,11 +25,16 @@ class LoadDialog(FloatLayout):
     load = ObjectProperty(None)
     cancel = ObjectProperty(None)
 
+class SettingsSelector(Popup):
+    pass
 
 class MainUI(Screen):
+    setting = ObjectProperty()
+
     def __init__(self, selected_file, **kwargs):
         super(MainUI, self).__init__(**kwargs)
         self.selected_file = selected_file
+        self.settings = SettingsSelector()
 
     def show_load(self):
         content = LoadDialog(load=self.load, cancel=self.dismiss_popup)
@@ -44,6 +49,10 @@ class MainUI(Screen):
 
     def dismiss_popup(self):
         self._popup.dismiss()
+
+    def setting_selected(self):
+        self.settings.open()
+
 
 
 class MyScreenManager(ScreenManager):
