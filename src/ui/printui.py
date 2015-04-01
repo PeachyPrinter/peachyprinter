@@ -1,16 +1,17 @@
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.gridlayout import GridLayout
 from kivy.properties import ObjectProperty, StringProperty, NumericProperty
-from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.uix.label import Label
+from kivy.uix.screenmanager import Screen
 from kivy.graphics import *
 from kivy.clock import Clock
 import time
 
-from ui.custom_widgets import BorderedLabel, LabelGridLayout
+from ui.custom_widgets import BorderedLabel, LabelGridLayout, ErrorPopup
+from infrastructure.langtools import _
+
 import os
 
 from kivy.logger import Logger
+
 
 class Dripper(BoxLayout):
     def __init__(self, **kwargs):
@@ -44,23 +45,21 @@ class Dripper(BoxLayout):
                 self.canvas.add(Color(0.4, 0.45, 0.4, 1))
             p = (i * self.section_height) - self.index
             self.canvas.add(Rectangle(pos=(self.x, p), size=(self.width, self.section_height)))
-            
-
 
 
 class PrintStatus(LabelGridLayout):
     data_points = {
-     'status': 'Status',
-     'model_height': 'Model Height',
-     'start_time': 'Start Time',
-     'drips': 'Drips Counted',
-     'height': 'Actual Height',
-     'drips_per_second': 'Drips per second',
-     'errors': 'Error List',
-     'waiting_for_drips': 'Waiting for drip',
-     'elapsed_time': 'Elapsed Time',
-     'current_layer': 'Current Layer',
-     'skipped_layers': 'Skipped Layers'
+     'status': _('Status'),
+     'model_height': _('Model Height'),
+     'start_time': _('Start Time'),
+     'drips': _('Drips Counted'),
+     'height': _('Actual Height'),
+     'drips_per_second': _('Drips per second'),
+     'errors': _('Error List'),
+     'waiting_for_drips': _('Waiting for drip'),
+     'elapsed_time': _('Elapsed Time'),
+     'current_layer': _('Current Layer'),
+     'skipped_layers': _('Skipped Layers')
     }
 
     def __init__(self, **kwargs):
@@ -76,7 +75,6 @@ class PrintStatus(LabelGridLayout):
             if child.id is not "":
                 if str(child.id) in data:
                     child.text = str(data[child.id])
-
 
 class PrintingUI(Screen):
     def __init__(self, api, selected_file, **kwargs):
@@ -98,10 +96,14 @@ class PrintingUI(Screen):
         Logger.info("Path: %s>" % self.selected_file.filename)
         Logger.info("PrintUI Entered")
         filepath = self.selected_file.filename[0].encode('utf-8')
-
-        self.print_api = self.api.get_print_api(status_call_back=self.callback)
-        self.path = os.path.basename(filepath)
-        self.print_api.print_gcode(filepath)
+        try:
+            self.print_api = self.api.get_print_api(status_call_back=self.callback)
+            self.path = os.path.basename(filepath)
+            self.print_api.print_gcode(filepath)
+        except Exception as ex:
+            popup = ErrorPopup(title='Error', text=str(ex), size_hint=(0.6, 0.6))
+            popup.open()
+            self.parent.current = 'mainui'
 
     def on_pre_leave(self):
         if self.print_api:

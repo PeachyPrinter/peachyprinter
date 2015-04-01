@@ -1,10 +1,27 @@
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
-
 from kivy.graphics import Line, Color, InstructionGroup
-
 from kivy.properties import NumericProperty
 from kivy.logger import Logger
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.popup import Popup
+from kivy.uix.button import Button
+from infrastructure.langtools import _
+
+
+
+class ErrorPopup(Popup):
+    def __init__(self, text=None, **kwargs):
+        super(ErrorPopup, self).__init__(**kwargs)
+        if text is None:
+            text = _('Bad Stuff Happened')
+        layout = BoxLayout(orientation='vertical')
+        message = Label(text=text)
+        close = Button(text=_("Close"), on_release=self.dismiss, size_hint=[1.0, 0.5])
+        layout.add_widget(message)
+        layout.add_widget(close)
+        self.add_widget(layout)
+
 
 class LabelGridLayout(GridLayout):
     text_padding_x = NumericProperty(0)
