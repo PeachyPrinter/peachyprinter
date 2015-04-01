@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-31 09:03-0600\n"
+"POT-Creation-Date: 2015-04-01 16:54-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,35 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/peachyprinter.kv:38
+#: src/peachyprinter.kv:9
+msgid "Settings Selection"
+msgstr ""
+
+#: src/peachyprinter.kv:13
+msgid "Laser Calibration"
+msgstr ""
+
+#: src/peachyprinter.kv:16
+msgid "Dripper Calibration"
+msgstr ""
+
+#: src/peachyprinter.kv:19
+msgid "Resin Curing Calibration"
+msgstr ""
+
+#: src/peachyprinter.kv:22
+msgid "Advanced Settings"
+msgstr ""
+
+#: src/peachyprinter.kv:25
+msgid "Close"
+msgstr ""
+
+#: src/peachyprinter.kv:65
 msgid "Print Details"
 msgstr ""
 
-#: src/peachyprinter.kv:40
+#: src/peachyprinter.kv:73
 msgid "Printer Settings"
 msgstr ""
 

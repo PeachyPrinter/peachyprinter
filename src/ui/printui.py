@@ -46,7 +46,7 @@ class Dripper(BoxLayout):
         bottom = top - self.sections
         for (index, drip) in zip(range(len(self.drip_history),0,-1), self.drip_history):
             if drip > bottom:
-                self.canvas.add(Color(0.0, 0.0, 1.0, 1.0))
+                self.canvas.add(Color(0.35, 0.4, 1.0, 1.0))
                 y = ((drip - bottom) / self.sections) * self.height
                 s = sin((self.count - index) / (2 * pi))
                 self.canvas.add(Ellipse(pos=(self.x + abs(self.width / 2.0 * s), y), size=(self.width / 5.0, 5)))
@@ -80,6 +80,7 @@ class PrintStatus(LabelGridLayout):
             if child.id is not "":
                 if str(child.id) in data:
                     child.text = str(data[child.id])
+
 
 class PrintingUI(Screen):
     def __init__(self, api, selected_file, **kwargs):
