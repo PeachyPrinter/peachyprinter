@@ -11,6 +11,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from infrastructure.setting_mapper import SettingsMapper
 from infrastructure.langtools import _
 from ui.printui import PrintingUI
+from ui.libraryui import LibraryUI
 
 from ui.custom_widgets import *
 
@@ -64,8 +65,10 @@ class MyScreenManager(ScreenManager):
         self.setting_translation = setting_translation
         self.main_ui = MainUI(selected_file)
         self.printing_ui = PrintingUI(self.api, selected_file)
+        self.library_ui = LibraryUI(self.api)
         self.add_widget(self.main_ui)
         self.add_widget(self.printing_ui)
+        self.add_widget(self.library_ui)
 
 
 class PeachyPrinter(App):
