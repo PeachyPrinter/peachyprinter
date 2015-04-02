@@ -60,7 +60,7 @@ class SettingsMapper(object):
                     'key': 'options_use_sublayers',
                     'title': _('options_use_sublayers TITLE'),
                     'desc': _('options_use_sublayers DESCRIPTION'),
-                    'values': [True, False]
+                    'values': [False, True]
                 },
                 {
                     'type': 'numeric',
@@ -78,7 +78,7 @@ class SettingsMapper(object):
                     'key': 'options_use_shufflelayers',
                     'title': _('options_use_shufflelayers TITLE'),
                     'desc': _('options_use_shufflelayers DESCRIPTION'),
-                    'values': [True, False],
+                    'values': [False, True],
                 },
                 {
                     'type': 'numeric',
@@ -92,7 +92,7 @@ class SettingsMapper(object):
                 },
                 {
                     'type': 'bool',
-                    'values': [True, False],
+                    'values': [False, True],
                     'section': _('Options'),
                     'key': 'options_use_overlap',
                     'title': _('options_use_overlap TITLE'),
@@ -195,7 +195,7 @@ class SettingsMapper(object):
                     'key': 'email_on',
                     'title': _('email.on TITLE'),
                     'desc': _('email.on DESCRIPTION'),
-                    'values': [True, False]
+                    'values': [False, True]
                 },
                 {
                     'type': 'numeric',
@@ -259,7 +259,7 @@ class SettingsMapper(object):
                     'key': 'serial_enabled',
                     'title': _('serial_enabled TITLE'),
                     'desc': _('serial_enabled DESCRIPTION'),
-                    'values': [True, False]
+                    'values': [False, True]
                 },
                 {
                     'type': 'string',
@@ -319,6 +319,45 @@ class SettingsMapper(object):
                     'ok_button_text': _("Ok"),
                     'cancel_button_text': _("Cancel"),
                     'validation_regex': ".$"
+                },
+# ----------- BEGIN Cure Rate --------------------
+                {
+                    'type': 'numeric',
+                    'key': 'cure_rate_draw_speed',
+                    'section': _('Cure Rate'),
+                    'title': _('cure_rate_draw_speed TITLE'),
+                    'desc': _('cure_rate_draw_speed DESCRIPTION'),
+                    'ok_button_text': _('Ok'),
+                    'cancel_button_text': _('Cancel'),
+                    'value_range': [1, None],
+                },
+                {
+                    'type': 'bool',
+                    'key': 'cure_rate_use_draw_speed',
+                    'section': _('Cure Rate'),
+                    'title': _('cure_rate_use_draw_speed TITLE'),
+                    'desc': _('cure_rate_use_draw_speed DESCRIPTION'),
+                    'values': [False, True]
+                },
+                {
+                    'type': 'bool',
+                    'key': 'cure_rate_override_laser_power',
+                    'section': _('Cure Rate'),
+                    'title': _('cure_rate_override_laser_power TITLE'),
+                    'desc': _('cure_rate_override_laser_power DESCRIPTION'),
+                    'ok_button_text': _('Ok'),
+                    'cancel_button_text': _('Cancel'),
+                    'values': [False, True],
+                },
+                {
+                    'type': 'numeric',
+                    'key': 'cure_rate_override_laser_power_amount',
+                    'section': _('Cure Rate'),
+                    'title': _('cure_rate_override_laser_power_amount TITLE'),
+                    'desc': _('cure_rate_override_laser_power_amount DESCRIPTION'),
+                    'ok_button_text': _('Ok'),
+                    'cancel_button_text': _('Cancel'),
+                    'value_range': [0, 1],
                 },
                 ]
 
