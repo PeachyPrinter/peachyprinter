@@ -157,7 +157,7 @@ class SettingsMapper(object):
                     'ok_button_text': _("Ok"),
                     'cancel_button_text': _("Cancel")
                 },
-                                {
+                {
                     'type': 'numeric',
                     'section': _('Options'),
                     'key': 'options_slew_delay',
@@ -177,7 +177,6 @@ class SettingsMapper(object):
                     'ok_button_text': _("Ok"),
                     'cancel_button_text': _("Cancel")
                 },
-
                 {
                     'type': 'numeric',
                     'section': _('Options'),
@@ -322,6 +321,14 @@ class SettingsMapper(object):
                 },
 # ----------- BEGIN Cure Rate --------------------
                 {
+                    'type': 'bool',
+                    'key': 'cure_rate_use_draw_speed',
+                    'section': _('Cure Rate'),
+                    'title': _('cure_rate_use_draw_speed TITLE'),
+                    'desc': _('cure_rate_use_draw_speed DESCRIPTION'),
+                    'values': [False, True]
+                },
+                {
                     'type': 'numeric',
                     'key': 'cure_rate_draw_speed',
                     'section': _('Cure Rate'),
@@ -330,14 +337,6 @@ class SettingsMapper(object):
                     'ok_button_text': _('Ok'),
                     'cancel_button_text': _('Cancel'),
                     'value_range': [1, None],
-                },
-                {
-                    'type': 'bool',
-                    'key': 'cure_rate_use_draw_speed',
-                    'section': _('Cure Rate'),
-                    'title': _('cure_rate_use_draw_speed TITLE'),
-                    'desc': _('cure_rate_use_draw_speed DESCRIPTION'),
-                    'values': [False, True]
                 },
                 {
                     'type': 'bool',
@@ -359,7 +358,7 @@ class SettingsMapper(object):
                     'cancel_button_text': _('Cancel'),
                     'value_range': [0, 1],
                 },
-                # ----------- BEGIN Dripper --------------------
+# ----------- BEGIN Dripper --------------------
                 {
                     'type': 'options',
                     'key': 'dripper_type',
@@ -436,7 +435,7 @@ class SettingsMapper(object):
 
     def update_setting(self, section, key, value):
         Logger.info(u"Setting changed  %s, %s -> %s" % (section, key, value))
-        item =  [item for item in self.config_info if item['key'] == key][0]
+        item = [item for item in self.config_info if item['key'] == key][0]
         if hasattr(self.configuration_api, 'set_' + key):
             getattr(self.configuration_api, 'set_' + key)(self._convert(item, value))
         self.configuration_api.save()
