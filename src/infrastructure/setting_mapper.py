@@ -359,6 +359,46 @@ class SettingsMapper(object):
                     'cancel_button_text': _('Cancel'),
                     'value_range': [0, 1],
                 },
+                # ----------- BEGIN Dripper --------------------
+                {
+                    'type': 'options',
+                    'key': 'dripper_type',
+                    'section': _('Dripper'),
+                    'title': _('dripper_type TITLE'),
+                    'desc': _('dripper_type DESCRIPTION'),
+                    'options': [_('Emulated'), _('Photo'), _('Circut')],
+                    'options_id': ['emulated', 'photo', 'microcontroller']
+                },
+                {
+                    'type': 'numeric',
+                    'key': 'dripper_drips_per_mm',
+                    'section': _('Dripper'),
+                    'title': _('dripper_drips_per_mm TITLE'),
+                    'desc': _('dripper_drips_per_mm DESCRIPTION'),
+                    'ok_button_text': _('Ok'),
+                    'cancel_button_text': _('Cancel'),
+                    'value_range': [1, None],
+                },
+                {
+                    'type': 'numeric',
+                    'key': 'dripper_emulated_drips_per_second',
+                    'section': _('Dripper'),
+                    'title': _('dripper_emulated_drips_per_second TITLE'),
+                    'desc': _('dripper_emulated_drips_per_second DESCRIPTION'),
+                    'ok_button_text': _('Ok'),
+                    'cancel_button_text': _('Cancel'),
+                    'value_range': [0, None],
+                },
+                {
+                    'type': 'numeric',
+                    'key': 'dripper_photo_zaxis_delay',
+                    'section': _('Dripper'),
+                    'title': _('dripper_photo_zaxis_delay TITLE'),
+                    'desc': _('dripper_photo_zaxis_delay DESCRIPTION'),
+                    'ok_button_text': _('Ok'),
+                    'cancel_button_text': _('Cancel'),
+                    'value_range': [0, 1],
+                },
                 ]
 
     def refresh_settings(self, settings, config):
@@ -377,7 +417,8 @@ class SettingsMapper(object):
     def set_defaults(self, config):
         Logger.info("Setting Defaults")
 
-    def _convert(self, entry_type, value):
+    def _convert(self, item, value):
+        entry_type = item['type']
         if entry_type == 'string':
             return str(value)
         if entry_type == 'numeric':
@@ -390,16 +431,21 @@ class SettingsMapper(object):
                 return True
             else:
                 return False
+        if entry_type == 'options':
+            return item['options_id'][item['options'].index(value)]
 
     def update_setting(self, section, key, value):
         Logger.info(u"Setting changed  %s, %s -> %s" % (section, key, value))
-        entry_type = [item['type'] for item in self.config_info if item['key'] == key][0]
+        item =  [item for item in self.config_info if item['key'] == key][0]
         if hasattr(self.configuration_api, 'set_' + key):
-            getattr(self.configuration_api, 'set_' + key)(self._convert(entry_type, value))
+            getattr(self.configuration_api, 'set_' + key)(self._convert(item, value))
         self.configuration_api.save()
 
     def load_config(self, config):
         Logger.info("Loading Configs")
+        printers = self.configuration_api.get_available_printers()
+        if not printers:
+            self.configuration_api.add_printer("Peachy Printer")
         self.configuration_api.load_printer(self.configuration_api.get_available_printers()[0])
 
         for item in self.config_info:
@@ -407,6 +453,8 @@ class SettingsMapper(object):
             section = item['section']
             getter = 'get_' + key
             value = getattr(self.configuration_api, getter)()
+            if item['type'] == 'options':
+                value = item['options'][item['options_id'].index(value)]
             if not config.has_section(section):
                 config.add_section(section)
             config.set(section, key, value)
