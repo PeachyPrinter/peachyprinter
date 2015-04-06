@@ -1,5 +1,6 @@
 #:kivy 1.8.0
 #:import _ __main__._
+#Limport FloatInput ui.custom_widgets.FloatInput
 
 
 <MyScreenManager>:
@@ -63,31 +64,38 @@
             source: root.image()
         BoxLayout:
             orientation: 'vertical'
+            StackLayout:
+                orientation: 'lr-tb'
+                BoxLayout:
+                    size_hint: [1.0, 40 / root.height]
+                    orientation: 'horizontal'
+                    Label:
+                        text: _("Height (mm)")
+                    FloatInput:
+                        text: '20'
+                BoxLayout:
+                    size_hint: [1.0, 40 / root.height]
+                    orientation: 'horizontal'
+                    Label:
+                        text: _("Width (mm)")
+                    FloatInput:
+                        text: '20'
+                BoxLayout:
+                    size_hint: [1.0, 40 / root.height]
+                    orientation: 'horizontal'
+                    Label:
+                        text: _("Layer Height (mm)")
+                    FloatInput:
+                        text: '0.01'
+                BoxLayout:
+                    size_hint: [1.0, 40 / root.height]
+                    orientation: 'horizontal'
+                    Label:
+                        text: _("Speed (mm/sec)")
+                    FloatInput:
+                        text: '120'
             BoxLayout:
-                orientation: 'horizontal'
-                Label:
-                    text: _("Height (mm)")
-                TextInput:
-                    text: '20'
-            BoxLayout:
-                orientation: 'horizontal'
-                Label:
-                    text: _("Width (mm)")
-                TextInput:
-                    text: '20'
-            BoxLayout:
-                orientation: 'horizontal'
-                Label:
-                    text: _("Layer Height (mm)")
-                TextInput:
-                    text: '0.01'
-            BoxLayout:
-                orientation: 'horizontal'
-                Label:
-                    text: _("Speed (mm/sec)")
-                TextInput:
-                    text: '120'
-            BoxLayout:
+                size_hint: [1.0, 40 / root.height]
                 orientation: 'horizontal'
                 Button:
                     text: _("Cancel")

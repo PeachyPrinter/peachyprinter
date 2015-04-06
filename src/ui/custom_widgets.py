@@ -5,8 +5,11 @@ from kivy.properties import NumericProperty
 from kivy.logger import Logger
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.popup import Popup
+from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from infrastructure.langtools import _
+
+import re
 
 
 
@@ -73,7 +76,6 @@ class BorderedLabel(Label):
             if self.borders[3]:
                 self.left_border = Line(points=self.left_points, width=self.borders[3])
 
-
     def update_border(self, *args):
         if self._new:
             self.draw_border()
@@ -88,3 +90,18 @@ class BorderedLabel(Label):
             if hasattr(self, 'left_border'):
                 self.left_border.points =   [self.pos[0]               , self.pos[1],                       self.pos[0]               , self.pos[1] + self.size[1]]
 
+
+class FloatInput(TextInput):
+    valid_characters = re.compile('[^0-9]')
+
+    def __init__(self, **kwargs):
+        super(FloatInput, self).__init__(**kwargs)
+        self.multiline = False
+
+    def insert_text(self, substring, from_undo=False):
+
+        if '.' in self.text:
+            string_value = re.sub(self.valid_characters, '', substring)
+        else:
+            string_value = '.'.join([re.sub(self.valid_characters, '', string_value) for string_value in substring.split('.', 1)])
+        return super(FloatInput, self).insert_text(string_value, from_undo=from_undo)
