@@ -47,6 +47,7 @@ if __name__ == "__main__":
     parser.add_argument('-l', '--log',     dest='loglevel', action='store',      required=False, default="WARNING", help="Enter the loglevel [DEBUG|INFO|WARNING|ERROR] default: WARNING")
     parser.add_argument('-t', '--console', dest='console',  action='store_true', required=False, help="Logs to console not file")
     parser.add_argument('-d', '--development', dest='devmode',  action='store_true', required=False, help="Enable Developer Testing Mode")
+    parser.add_argument('-m', '--module', dest='mod',  action='store', required=False, help='Activate a module (use "list" to get a list of available modules).')
     args, unknown = parser.parse_known_args()
 
     setup_logging(args)
@@ -59,6 +60,10 @@ if __name__ == "__main__":
         path = os.path.dirname(os.path.realpath(__file__))
 
     api = PrinterAPI()
-    sys.argv = [sys.argv[0], '-m', 'inspector']
+    sys.argv = [sys.argv[0]]
+    if args.mod:
+        sys.argv.append("-m")
+        sys.argv.append(args.mod)
+
     from gui import PeachyPrinter
     PeachyPrinter(api).run()

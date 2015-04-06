@@ -271,6 +271,8 @@
                 Label:
                     text: _('Height (mm)')
                 FloatInput:
+                    on_text: root.update_image()
+                    id: cure_height
                     text: '40'
             BoxLayout:
                 orientation:"horizontal"
@@ -278,6 +280,8 @@
                 Label:
                     text: _('Width (mm)')
                 FloatInput:
+                    on_text: root.update_image()
+                    id: cure_width
                     text: '10'
             BoxLayout:
                 orientation:"horizontal"
@@ -285,6 +289,8 @@
                 Label:
                     text: _("Start Speed")
                 FloatInput:
+                    on_text: root.update_image()
+                    id: cure_start_speed
                     text: '90'
             BoxLayout:
                 orientation:"horizontal"
@@ -292,6 +298,8 @@
                 Label:
                     text: _("Finish Speed")
                 FloatInput:
+                    on_text: root.update_image()
+                    id: cure_stop_speed
                     text: '250'
             Label:
             BoxLayout:
@@ -301,5 +309,5 @@
                     on_release: app.root.current = 'mainui'
                 Button:
                     text: _("Start Test")
-        Label:
-            text: "Graphics here"
+        BoxLayout:
+            id: cure_test_canvas
