@@ -237,6 +237,28 @@
 
 <CureTestUI>:
     name: 'curetestui'
-    Button:
-        text: ' back'
-        on_release: app.root.current = 'mainui'
+    BoxLayout:
+        orientation: 'horizontal'
+        Button:
+            text: _('Back')
+            on_release: app.root.current = 'mainui'
+        GridLayout:
+            cols: 2
+            Label:
+                text: _('Height (mm)')
+            FloatInput:
+                text: '40'
+            Label:
+                text: _('Width (mm)')
+            FloatInput:
+                text: '10'
+            Label:
+                text: _("Start Speed")
+            FloatInput:
+                text: '90'
+            Label:
+                text: _("Finish Speed")
+            FloatInput:
+                text: '250'
+        Button:
+            text: _("Start Test")
