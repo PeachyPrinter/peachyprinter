@@ -59,6 +59,6 @@ if __name__ == "__main__":
         path = os.path.dirname(os.path.realpath(__file__))
 
     api = PrinterAPI()
-    sys.argv = [sys.argv[0]]
+    sys.argv = [sys.argv[0], '-m', 'inspector']
     from gui import PeachyPrinter
     PeachyPrinter(api).run()
