@@ -15,7 +15,7 @@
             #on_release: app.open_settings()
         Button:
             text: _('Dripper Calibration')
-            #on_release: app.open_settings()
+            on_release: root.dismiss(); app.root.current = 'drippercalibrationui'
         Button:
             text: _('Resin Curing Calibration')
             #on_release: app.open_settings()
@@ -103,7 +103,61 @@
                 Button:
                     text: _("Print Now")
 
+<DripperCalibrationUI>:
+    name: 'drippercalibrationui'
+    BoxLayout:
+        orientation: 'horizontal'
+        BoxLayout:
+            orientation: 'vertical'
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: 'Dripper Type'
+                Spinner:
+                    values: [_("Peachy Printer"), _("Emulated Dripper")]
+            Button:
+                text: _("Start Count Drips")
+            Button:
+                text: _("Stop Counting Drips")
+            Button:
+                text: _("Reset Drip Count")
+            Button:
+                text:"Back"
+                on_release: app.root.current = 'mainui'
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: _('Drips Calculator')
+            GridLayout:
+                cols: 2
+                Label:
+                    text: _("Start Height (mm)")
+                FloatInput:
+                    text: '0'
+                Label:
+                    text: _("End Height (mm)")
+                FloatInput:
+                    text: '100'
+                Label:
+                    text: _("Total Height (mm)")
+                FloatInput:
+                    text: '0'
+                    disabled: True
+                Label:
+                    text: _('Drips')
+                FloatInput:
+                    text: '100'
+                Label:
+                    text: _('Drips per mm')
+                FloatInput:
+                    text: '1'
+                Label:
+                    text: ''
+                Button:
+                    text: _("Save")
 
+        Label:
+            text: 'Drip Visualizatin Here'
 
 
 

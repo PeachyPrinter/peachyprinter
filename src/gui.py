@@ -12,6 +12,7 @@ from infrastructure.setting_mapper import SettingsMapper
 from infrastructure.langtools import _
 from ui.printui import PrintingUI
 from ui.libraryui import LibraryUI
+from ui.dripper_calibration_ui import DripperCalibrationUI
 
 from ui.custom_widgets import *
 
@@ -29,7 +30,6 @@ class LoadDialog(FloatLayout):
 
 class SettingsSelector(Popup):
     pass
-
 
 class MainUI(Screen):
     setting = ObjectProperty()
@@ -66,9 +66,12 @@ class MyScreenManager(ScreenManager):
         self.main_ui = MainUI(selected_file)
         self.printing_ui = PrintingUI(self.api, selected_file)
         self.library_ui = LibraryUI(self.api)
+        self.dripper_calibration_ui = DripperCalibrationUI(self.api)
         self.add_widget(self.main_ui)
         self.add_widget(self.printing_ui)
         self.add_widget(self.library_ui)
+        self.add_widget(self.dripper_calibration_ui)
+
 
 
 class PeachyPrinter(App):
