@@ -18,7 +18,7 @@
             on_release: root.dismiss(); app.root.current = 'drippercalibrationui'
         Button:
             text: _('Resin Curing Calibration')
-            #on_release: app.open_settings()
+            on_release: root.dismiss(); app.root.current = 'curetestui'
         Button:
             text: _('Advanced Settings')
             on_release: app.open_settings()
@@ -233,3 +233,10 @@
             Button:
                 text: 'Load'
                 on_release: root.load(filechooser.path, filechooser.selection)
+
+
+<CureTestUI>:
+    name: 'curetestui'
+    Button:
+        text: ' back'
+        on_release: app.root.current = 'mainui'

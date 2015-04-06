@@ -13,6 +13,7 @@ from infrastructure.langtools import _
 from ui.printui import PrintingUI
 from ui.libraryui import LibraryUI
 from ui.dripper_calibration_ui import DripperCalibrationUI
+from ui.cure_test_ui import CureTestUI
 
 from ui.custom_widgets import *
 
@@ -67,11 +68,12 @@ class MyScreenManager(ScreenManager):
         self.printing_ui = PrintingUI(self.api, selected_file)
         self.library_ui = LibraryUI(self.api)
         self.dripper_calibration_ui = DripperCalibrationUI(self.api)
+        self.cure_test_ui = CureTestUI()
         self.add_widget(self.main_ui)
         self.add_widget(self.printing_ui)
         self.add_widget(self.library_ui)
         self.add_widget(self.dripper_calibration_ui)
-
+        self.add_widget(self.cure_test_ui)
 
 
 class PeachyPrinter(App):
