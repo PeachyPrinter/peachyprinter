@@ -1,0 +1,132 @@
+#:kivy 1.8.0
+#:import _ __main__._
+#:import FloatInput ui.custom_widgets.FloatInput
+
+<CalibrateUI>:
+    name: 'calibrationui'
+    TabbedPanel:
+        tab_pos: "top_left"
+        do_default_tab: False
+        TabbedPanelItem:
+            text: _("Center")
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    size_hint_x: 0.6
+                    text: "INFO BOX HERE"
+                Image:
+                    pos: self.parent.pos
+                    size: self.parent.size
+                    source: "resources/grid.png"
+                    allow_stretch: True
+        TabbedPanelItem:
+            text: _("Orientation")
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    size_hint_x: 0.6
+                    text: "INFO BOX HERE"
+                GridLayout:
+                    cols:2
+                    ToggleButton:
+                        group: 'orientation'
+                        Image:
+                            allow_stretch: True
+                            center: self.parent.center
+                            source: 'resources/orientation.png'
+                    ToggleButton:
+                        group: 'orientation'
+                        Image:
+                            allow_stretch: True
+                            center: self.parent.center
+                            source: 'resources/orientation.png'
+                            canvas.before:
+                                PushMatrix
+                                Rotate:
+                                    angle: 270
+                                    axis: 0, 0, 1
+                                    origin: self.parent.center
+                            canvas.after:
+                                PopMatrix
+                    ToggleButton:
+                        group: 'orientation'
+                        Image:
+                            allow_stretch: True
+                            center: self.parent.center
+                            source: 'resources/orientation.png'
+                            canvas.before:
+                                PushMatrix
+                                Rotate:
+                                    angle: 90
+                                    axis: 0, 0, 1
+                                    origin: self.parent.center
+                            canvas.after:
+                                PopMatrix
+                    ToggleButton:
+                        group: 'orientation'
+                        Image:
+                            allow_stretch: True
+                            center: self.parent.center
+                            source: 'resources/orientation.png'
+                            canvas.before:
+                                PushMatrix
+                                Rotate:
+                                    angle: 180
+                                    axis: 0, 0, 1
+                                    origin: self.parent.center
+                            canvas.after:
+                                PopMatrix
+        TabbedPanelItem:
+            text: _("Print Area")
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    size_hint_x: 0.6
+                    text: "INFO BOX HERE"
+                BoxLayout:
+                    orientation: 'vertical'
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        Label:
+                            text: _('Height (mm)')
+                        FloatInput:
+                            text: '40'
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        Label:
+                            text: _('Depth (mm)')
+                        FloatInput:
+                            text: '40'
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        Label:
+                            text: _('Width (mm)')
+                        FloatInput:
+                            text: '40'
+        TabbedPanelItem:
+            text: _("Aligment")
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    size_hint_x: 0.6
+                    text: "INFO BOX HERE"
+                Label:
+                    text: "Just a picture of a line"
+        TabbedPanelItem:
+            text: _("Top")
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    size_hint_x: 0.6
+                    text: "INFO BOX HERE"
+                Label:
+                    text: "stuff"
+        TabbedPanelItem:
+            text: _("Bottom")
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    size_hint_x: 0.6
+                    text: "INFO BOX HERE"
+                Label:
+                    text: "stuff"

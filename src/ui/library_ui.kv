@@ -1,0 +1,64 @@
+#:kivy 1.8.0
+#:import _ __main__._
+#:import FloatInput ui.custom_widgets.FloatInput
+
+<PrintPop>:
+    size_hint: [0.9, 0.9]
+    BoxLayout:
+        orientation: 'horizontal'
+        Image:
+            size_hint: (0.8,1.0)
+            source: root.image()
+        BoxLayout:
+            orientation: 'vertical'
+            StackLayout:
+                orientation: 'lr-tb'
+                BoxLayout:
+                    size_hint: [1.0, 60 / root.height]
+                    orientation: 'horizontal'
+                    Label:
+                        text: _("Height (mm)")
+                    FloatInput:
+                        text: '20'
+                BoxLayout:
+                    size_hint: [1.0, 60 / root.height]
+                    orientation: 'horizontal'
+                    Label:
+                        text: _("Width (mm)")
+                    FloatInput:
+                        text: '20'
+                BoxLayout:
+                    size_hint: [1.0, 60 / root.height]
+                    orientation: 'horizontal'
+                    Label:
+                        text: _("Layer Height (mm)")
+                    FloatInput:
+                        text: '0.01'
+                BoxLayout:
+                    size_hint: [1.0, 60 / root.height]
+                    orientation: 'horizontal'
+                    Label:
+                        text: _("Speed (mm/sec)")
+                    FloatInput:
+                        text: '120'
+            BoxLayout:
+                size_hint: [1.0, 60 / root.height]
+                orientation: 'horizontal'
+                Button:
+                    text: _("Cancel")
+                    on_release: root.dismiss()
+                Button:
+                    text: _("Print Now")
+
+<LibraryUI>:
+    name: 'libraryui'
+    BoxLayout:
+        orientation: 'vertical'
+        ScrollView:
+            GridLayout:
+                id: library_grid
+                cols: 2
+        Button:
+            size_hint: [1.0, 0.05]
+            text: _('Back')
+            on_release: app.root.current = 'mainui'

@@ -12,6 +12,10 @@ from infrastructure.langtools import _
 import os
 
 from kivy.logger import Logger
+from kivy.lang import Builder
+
+
+Builder.load_file('ui/print_ui.kv')
 
 
 class Dripper(BoxLayout):

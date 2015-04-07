@@ -1,7 +1,10 @@
 from kivy.uix.screenmanager import Screen
+from kivy.lang import Builder
 
 from kivy.logger import Logger
 
+
+Builder.load_file('ui/cure_test_ui.kv')
 
 class CureTestUI(Screen):
     def __init__(self, **kwargs):
