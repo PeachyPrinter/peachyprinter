@@ -147,64 +147,70 @@
                             orientation: 'vertical'
                             GridLayout:
                                 cols: 2
-                                Label:
+                                ToggleButton:
+                                    group:"top_calibaration"
                                     id: upper_left
+                                    on_release: root.on_upper_left()
+                                    state:'down'
                                     text: _('Upper Left')
-                                    color: [1,0,0,1]
+                                    ellipse_color: [1,0,0,1]
                                     canvas.after:
                                         Color:
-                                            rgba: self.color
+                                            rgba: self.ellipse_color
                                         Ellipse:
                                             pos: [self.x + self.width - self.height * 0.4, self.y]
                                             size: [self.height * 0.4, self.height * 0.4]
-                                Label:
+                                ToggleButton:
+                                    group:"top_calibaration"
                                     id: upper_right
+                                    on_release: root.on_upper_right()
                                     text: _('Upper Right')
-                                    color: [1,0,0,1]
+                                    ellipse_color: [1,0,0,1]
                                     canvas.after:
                                         Color:
-                                            rgba: self.color
+                                            rgba: self.ellipse_color
                                         Ellipse:
                                             pos: [self.x, self.y]
                                             size: [self.height * 0.4, self.height * 0.4]
-                                Label:
+                                ToggleButton:
+                                    group:"top_calibaration"
                                     id: lower_left
+                                    on_release: root.on_lower_left()
                                     text: _('Lower Left')
-                                    color: [1,0,0,1]
+                                    ellipse_color: [1,0,0,1]
                                     canvas.after:
                                         Color:
-                                            rgba: self.color
+                                            rgba: self.ellipse_color
                                         Ellipse:
                                             pos: [self.x + self.width - self.height * 0.4, self.y + self.height * 0.6]
                                             size: [self.height * 0.4, self.height * 0.4]
-                                Label:
+                                ToggleButton:
+                                    group:"top_calibaration"
                                     id: lower_right
+                                    on_release: root.on_lower_right()
                                     text: _('Lower Right')
-                                    color: [1,0,0,1]
+                                    ellipse_color: [1,0,0,1]
                                     canvas.after:
                                         Color:
-                                            rgba: self.color
+                                            rgba: self.ellipse_color
                                         Ellipse:
                                             pos: [self.x, self.y + self.height * 0.6]
                                             size: [self.height * 0.4, self.height * 0.4]
-                            BoxLayout:
-                                orientation: 'horizontal'
-                                size_hint_y: 40.0 / root.height
-                                Button:
-                                    text: _('Percision')
-                                Button:
-                                    text: _('Next')
-                        Label:
+                            Label:
+                            ToggleButton:
+                                text: _('Super Accurate Mode')
+                            Label:
                         Image:
+                            id: example_grid
                             pos: self.parent.pos
                             size: self.parent.size
                             source: "resources/grid_small.png"
                             allow_stretch: True
-                            canvas.after:
+                            canvas:
                                 Color:
                                     rgba: 0, 1, 0, 1
                                 Ellipse:
-                                    pos: [self.center[0] - min(self.size) / 2 + 4, self.center[1] - min(self.size) / 2 + 4]
+                                    pos: root.example_dot
                                     size: [8,8]
                     Image:
                         id: top_calibration_grid
