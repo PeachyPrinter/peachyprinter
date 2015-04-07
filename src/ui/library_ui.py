@@ -7,6 +7,10 @@ from kivy.uix.screenmanager import Screen
 from kivy.uix.popup import Popup
 from kivy.logger import Logger
 from kivy.properties import StringProperty
+from kivy.lang import Builder
+
+
+Builder.load_file('ui/library_ui.kv')
 
 
 class PrintPop(Popup):

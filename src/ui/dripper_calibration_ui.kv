@@ -1,0 +1,79 @@
+#:kivy 1.8.0
+#:import _ __main__._
+#:import FloatInput ui.custom_widgets.FloatInput
+
+<DripperCalibrationUI>:
+    name: 'drippercalibrationui'
+    BoxLayout:
+        orientation: 'horizontal'
+        BoxLayout:
+            orientation: 'vertical'
+            BoxLayout:
+                size_hint_y: 60.0 / root.height
+                orientation: 'horizontal'
+                Label:
+                    text: 'Dripper Type'
+                Spinner:
+                    values: [_("Peachy Printer"), _("Emulated Dripper")]
+                    text: _("Peachy Printer")
+            BoxLayout:
+                size_hint_y: 60.0 / root.height
+                orientation: 'horizontal'
+                Label:
+                    text: _("Start Height (mm)")
+                FloatInput:
+                    text: '0'
+            BoxLayout:
+                size_hint_y: 60.0 / root.height
+                orientation: 'horizontal'
+                Label:
+                    text: _("End Height (mm)")
+                FloatInput:
+                    text: '100'
+            BoxLayout:
+                size_hint_y: 60.0 / root.height
+                orientation: 'horizontal'
+                Label:
+                    text: _("Total Height (mm)")
+                FloatInput:
+                    text: '0'
+                    disabled: True
+            BoxLayout:
+                size_hint_y: 60.0 / root.height
+                orientation: 'horizontal'
+                Label:
+                    text: _('Drips')
+                FloatInput:
+                    text: '100'
+            BoxLayout:
+                size_hint_y: 60.0 / root.height
+                orientation: 'horizontal'
+                Label:
+                    text: _('Drips per mm')
+                FloatInput:
+                    text: '1'
+            BoxLayout:
+                size_hint_y: 60.0 / root.height
+                orientation: 'horizontal'
+                Label:
+                Button:
+                    text: _("Save")
+            Label:
+                size_hint_y: 60.0 / root.height
+            Button:
+                size_hint_y: 60.0 / root.height
+                text: _("Start Count Drips")
+            Button:
+                size_hint_y: 60.0 / root.height
+                text: _("Stop Counting Drips")
+            Button:
+                size_hint_y: 60.0 / root.height
+                text: _("Reset Drip Count")
+            Label:
+            Button:
+                size_hint_y: 60.0 / root.height
+                text:"Back"
+                on_release: app.root.current = 'mainui'
+        Label:
+            text: 'Drip Visualization Here'
+
