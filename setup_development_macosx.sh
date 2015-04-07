@@ -71,7 +71,7 @@ echo "--------Setting up pygame----"
 python -c"import pygame" 2>&1 >/dev/null
 if [ $? != 0 ]; then
     echo "pygame not available adding"
-    pip install -U opygame
+    pip install -U pygame
     if [ $? != 0 ]; then
         echo "FAILURE: pygame failed installing"
         WILL_FAIL=1
