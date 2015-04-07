@@ -11,6 +11,7 @@
             text: _("Center")
             BoxLayout:
                 orientation: 'horizontal'
+                padding: 5
                 Label:
                     size_hint_x: 0.6
                     text: "INFO BOX HERE"
@@ -19,6 +20,12 @@
                     size: self.parent.size
                     source: "resources/grid.png"
                     allow_stretch: True
+                    canvas.after:
+                        Color:
+                            rgba: 0, 1, 0, 1
+                        Ellipse:
+                            pos: [self.center[0] - 4, self.center[1] -4]
+                            size: [8,8]
         TabbedPanelItem:
             text: _("Orientation")
             BoxLayout:
@@ -31,6 +38,7 @@
                     ToggleButton:
                         group: 'orientation'
                         Image:
+
                             allow_stretch: True
                             center: self.parent.center
                             source: 'resources/orientation.png'
@@ -80,6 +88,7 @@
             text: _("Print Area")
             BoxLayout:
                 orientation: 'horizontal'
+                padding: 5
                 Label:
                     size_hint_x: 0.6
                     text: "INFO BOX HERE"
@@ -107,26 +116,75 @@
             text: _("Aligment")
             BoxLayout:
                 orientation: 'horizontal'
+                padding: 5
                 Label:
                     size_hint_x: 0.6
                     text: "INFO BOX HERE"
-                Label:
-                    text: "Just a picture of a line"
+                Image:
+                    pos: self.parent.pos
+                    size: self.parent.size
+                    source: "resources/grid.png"
+                    allow_stretch: True
+                    canvas.after:
+                        Color:
+                            rgba: 0, 1, 0, 1
+                        Line:
+                            points: [self.pos[0] +5, self.center[1], self.pos[0]+self.size[0] -5, self.center[1]]
+                            width: 4
+                            cap: 'round'
         TabbedPanelItem:
             text: _("Top")
             BoxLayout:
                 orientation: 'horizontal'
-                Label:
+                padding: 5
+                BoxLayout:
+                    padding: 5
                     size_hint_x: 0.6
-                    text: "INFO BOX HERE"
-                Label:
-                    text: "stuff"
+                    orientation: 'vertical'
+                    Label:
+                        
+                        text: "INFO BOX HERE"
+                    Image:
+                        pos: self.parent.pos
+                        size: self.parent.size
+                        source: "resources/grid_small.png"
+                        allow_stretch: True
+                        canvas.after:
+                            Color:
+                                rgba: 0, 1, 0, 1
+                            Ellipse:
+                                pos: [self.center[0] - min(self.size) / 2 + 4, self.center[1] - min(self.size) / 2 + 4]
+                                size: [8,8]
+                Image:
+                    id: top_calibration_grid
+                    pos: self.parent.pos
+                    size: self.parent.size
+                    source: "resources/grid.png"
+                    allow_stretch: True
+                    canvas.before:
+                        Color:
+                            rgba: 0.0, 0.0, 0.0, 1
+                        Rectangle:
+                            pos:  [ self.x + max(0, self.width - self.height) / 2, self.y + max(0, self.height - self.width) / 2 ]
+                            size: (min(self.size), min(self.size))
+                    canvas.after:
+                        Color:
+                            rgba: 1, 0, 0, 1
+                        Ellipse:
+                            pos: [root.calibration_point[0] - 4,root.calibration_point[1] - 4]
+                            size: [8,8]
+
         TabbedPanelItem:
             text: _("Bottom")
             BoxLayout:
                 orientation: 'horizontal'
+                padding: 5
                 Label:
                     size_hint_x: 0.6
                     text: "INFO BOX HERE"
-                Label:
-                    text: "stuff"
+                Image:
+                    pos: self.parent.pos
+                    size: self.parent.size
+                    source: "resources/grid.png"
+                    allow_stretch: True
+
