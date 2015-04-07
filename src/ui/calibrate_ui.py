@@ -26,6 +26,7 @@ class CalibrateUI(Screen):
             peachyy = (imagey / grid_height * 2) - 1
             Logger.info('%s, %s' % (peachyx, peachyy))
             self.calibration_point = mouse_pos.pos
+            # CALL TO API HERE
 
 
     def on_pre_enter(self):
