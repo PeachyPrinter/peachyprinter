@@ -7,10 +7,10 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.popup import Popup
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
+from kivy.uix.tabbedpanel import TabbedPanel
 from infrastructure.langtools import _
 
 import re
-
 
 
 class ErrorPopup(Popup):
@@ -52,6 +52,7 @@ class LabelGridLayout(GridLayout):
         self.height = len(self.children) * self.child_height
         for child in self.children:
             child.text_size = [self.size[0] - self.text_padding_x, self.child_height]
+
 
 class BorderedLabel(Label):
     def __init__(self, borders=[0, 0, 0, 0], **kwargs):
@@ -105,3 +106,17 @@ class FloatInput(TextInput):
         else:
             string_value = '.'.join([re.sub(self.valid_characters, '', string_value) for string_value in substring.split('.', 1)])
         return super(FloatInput, self).insert_text(string_value, from_undo=from_undo)
+
+
+class CommunicativeTabbedPanel(TabbedPanel):
+    def __init__(self, **kwargs):
+        super(CommunicativeTabbedPanel, self).__init__(**kwargs)
+        self.last_tab = self.current_tab
+
+    def on_current_tab(self, instance, value):
+        if hasattr(self.last_tab, 'on_leave'):
+            self.last_tab.on_leave()
+        if hasattr(value, 'on_enter'):
+            value.on_enter()
+        self.last_tab = value
+

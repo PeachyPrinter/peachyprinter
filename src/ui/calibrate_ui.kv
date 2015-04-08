@@ -1,413 +1,383 @@
 #:kivy 1.8.0
 #:import _ __main__._
 #:import FloatInput ui.custom_widgets.FloatInput
+#:import CommunicativeTabbedPanel ui.custom_widgets.CommunicativeTabbedPanel
+
 
 <CalibrateUI>:
     name: 'calibrationui'
     BoxLayout:
         orientation: 'vertical'
-        TabbedPanel:
+        CommunicativeTabbedPanel:
             tab_pos: "top_left"
             do_default_tab: False
-            TabbedPanelItem:
-                text: _("Center")
-                BoxLayout:
-                    orientation: 'horizontal'
-                    padding: 5
-                    Label:
-                        size_hint_x: 0.6
-                        text: "INFO BOX HERE"
-                    Image:
-                        pos: self.parent.pos
-                        size: self.parent.size
-                        source: "resources/grid.png"
-                        allow_stretch: True
-                        canvas.after:
-                            Color:
-                                rgba: 0, 1, 0, 1
-                            Ellipse:
-                                pos: [self.center[0] - 4, self.center[1] -4]
-                                size: [8,8]
-            TabbedPanelItem:
-                text: _("Orientation")
-                BoxLayout:
-                    orientation: 'horizontal'
-                    BoxLayout:
-                        orientation: 'vertical'
-                        size_hint_x: 0.6
-                        BoxLayout
-                            orientation: 'horizontal'
-                            Label:
-                                text: 'Rotated:'
-                            Label:
-                                text: root.orient_rotated
-                        BoxLayout
-                            orientation: 'horizontal'
-                            Label:
-                                text: "Flipped on X:"
-                            Label:
-                                text: root.orient_xflip
-                        BoxLayout
-                            orientation: 'horizontal'
-                            Label:
-                                text: "Flipped on y:"
-                            Label:
-                                text: root.orient_yflip
-
-                    GridLayout:
-                        cols:4
-                        ToggleButton:
-                            on_release: root.update_orientation(0,0,0)
-                            id: orient_000
-                            allow_no_selection: False
-                            group: 'orientation'
-                            Image:
-                                allow_stretch: True
-                                center: self.parent.center
-                                source: 'resources/orientation.png'
-                        ToggleButton:
-                            on_release: root.update_orientation(1,0,0)
-                            id: orient_100
-                            allow_no_selection: False
-                            group: 'orientation'
-                            Image:
-                                allow_stretch: True
-                                center: self.parent.center
-                                source: 'resources/orientation.png'
-                                canvas.before:
-                                    PushMatrix
-                                    Rotate:
-                                        angle: 270
-                                        axis: 0, 0, 1
-                                        origin: self.parent.center
-                                canvas.after:
-                                    PopMatrix
-                        ToggleButton:
-                            on_release: root.update_orientation(1,0,1)
-                            id: orient_101
-                            allow_no_selection: False
-                            group: 'orientation'
-                            Image:
-                                allow_stretch: True
-                                center: self.parent.center
-                                source: 'resources/orientation.png'
-                                canvas.before:
-                                    PushMatrix
-                                    Rotate:
-                                        angle: 90
-                                        axis: 0, 0, 1
-                                        origin: self.parent.center
-                                canvas.after:
-                                    PopMatrix
-                        ToggleButton:
-                            on_release: root.update_orientation(0,1,1)
-                            id: orient_011
-                            allow_no_selection: False
-                            group: 'orientation'
-                            Image:
-                                allow_stretch: True
-                                center: self.parent.center
-                                source: 'resources/orientation.png'
-                                canvas.before:
-                                    PushMatrix
-                                    Rotate:
-                                        angle: 180
-                                        axis: 0, 0, 1
-                                        origin: self.parent.center
-                                canvas.after:
-                                    PopMatrix
-                        ToggleButton:
-                            on_release: root.update_orientation(0,1,0)
-                            id: orient_010
-                            allow_no_selection: False
-                            group: 'orientation'
-                            Image:
-                                allow_stretch: True
-                                center: self.parent.center
-                                source: 'resources/orientation.png'
-                                canvas.before:
-                                    PushMatrix
-                                    Rotate:
-                                        angle: 0
-                                        axis: 0, 0, 1
-                                        origin: self.parent.center
-                                    Rotate:
-                                        angle: 180
-                                        axis: 1, 0, 0
-                                        origin:self.parent.center
-                                canvas.after:
-                                    PopMatrix
-                        ToggleButton:
-                            on_release: root.update_orientation(1,1,1)
-                            id: orient_111
-                            allow_no_selection: False
-                            group: 'orientation'
-                            Image:
-                                allow_stretch: True
-                                center: self.parent.center
-                                source: 'resources/orientation.png'
-                                canvas.before:
-                                    PushMatrix
-                                    Rotate:
-                                        angle: 270
-                                        axis: 0, 0, 1
-                                        origin: self.parent.center
-                                    Rotate:
-                                        angle: 180
-                                        axis: 1, 0, 0
-                                        origin:self.parent.center
-                                canvas.after:
-                                    PopMatrix
-                        ToggleButton:
-                            on_release: root.update_orientation(1,1,0)
-                            id: orient_110
-                            allow_no_selection: False
-                            group: 'orientation'
-                            Image:
-                                allow_stretch: True
-                                center: self.parent.center
-                                source: 'resources/orientation.png'
-                                canvas.before:
-                                    PushMatrix
-                                    Rotate:
-                                        angle: 90
-                                        axis: 0, 0, 1
-                                        origin: self.parent.center
-                                    Rotate:
-                                        angle: 180
-                                        axis: 1, 0, 0
-                                        origin:self.parent.center
-                                canvas.after:
-                                    PopMatrix
-                        ToggleButton:
-                            on_release: root.update_orientation(0,0,1)
-                            id: orient_001
-                            allow_no_selection: False
-                            group: 'orientation'
-                            Image:
-                                allow_stretch: True
-                                center: self.parent.center
-                                source: 'resources/orientation.png'
-                                canvas.before:
-                                    PushMatrix
-                                    Rotate:
-                                        angle: 180
-                                        axis: 0, 0, 1
-                                        origin: self.parent.center
-                                    Rotate:
-                                        angle: 180
-                                        axis: 1, 0, 0
-                                        origin:self.parent.center
-                                canvas.after:
-                                    PopMatrix
-            TabbedPanelItem:
-                text: _("Print Area")
-                BoxLayout:
-                    orientation: 'horizontal'
-                    padding: 5
-                    Label:
-                        size_hint_x: 0.6
-                        text: "INFO BOX HERE"
-                    BoxLayout:
-                        orientation: 'vertical'
-                        BoxLayout:
-                            orientation: 'horizontal'
-                            Label:
-                                text: _('Height (mm)')
-                            FloatInput:
-                                text: '40'
-                        BoxLayout:
-                            orientation: 'horizontal'
-                            Label:
-                                text: _('Depth (mm)')
-                            FloatInput:
-                                text: '40'
-                        BoxLayout:
-                            orientation: 'horizontal'
-                            Label:
-                                text: _('Width (mm)')
-                            FloatInput:
-                                text: '40'
-            TabbedPanelItem:
-                text: _("Aligment")
-                BoxLayout:
-                    orientation: 'horizontal'
-                    padding: 5
-                    Label:
-                        size_hint_x: 0.6
-                        text: "INFO BOX HERE"
-                    Image:
-                        pos: self.parent.pos
-                        size: self.parent.size
-                        source: "resources/grid.png"
-                        allow_stretch: True
-                        canvas.after:
-                            Color:
-                                rgba: 0, 1, 0, 1
-                            Line:
-                                points: [self.pos[0] +5, self.center[1], self.pos[0]+self.size[0] -5, self.center[1]]
-                                width: 4
-                                cap: 'round'
-            TabbedPanelItem:
-                text: _("Top")
-                BoxLayout:
-                    orientation: 'horizontal'
-                    padding: 5
-                    BoxLayout:
-                        padding: 5
-                        size_hint_x: 0.6
-                        orientation: 'vertical'
-                        BoxLayout:
-                            orientation: 'vertical'
-                            GridLayout:
-                                cols: 2
-                                ToggleButton:
-                                    group:"top_calibaration"
-                                    id: upper_left
-                                    on_release: root.on_upper_left()
-                                    state:'down'
-                                    text: _('Upper Left')
-                                    ellipse_color: [1,0,0,1]
-                                    canvas.after:
-                                        Color:
-                                            rgba: self.ellipse_color
-                                        Ellipse:
-                                            pos: [self.x + self.width - self.height * 0.4, self.y]
-                                            size: [self.height * 0.4, self.height * 0.4]
-                                ToggleButton:
-                                    group:"top_calibaration"
-                                    id: upper_right
-                                    on_release: root.on_upper_right()
-                                    text: _('Upper Right')
-                                    ellipse_color: [1,0,0,1]
-                                    canvas.after:
-                                        Color:
-                                            rgba: self.ellipse_color
-                                        Ellipse:
-                                            pos: [self.x, self.y]
-                                            size: [self.height * 0.4, self.height * 0.4]
-                                ToggleButton:
-                                    group:"top_calibaration"
-                                    id: lower_left
-                                    on_release: root.on_lower_left()
-                                    text: _('Lower Left')
-                                    ellipse_color: [1,0,0,1]
-                                    canvas.after:
-                                        Color:
-                                            rgba: self.ellipse_color
-                                        Ellipse:
-                                            pos: [self.x + self.width - self.height * 0.4, self.y + self.height * 0.6]
-                                            size: [self.height * 0.4, self.height * 0.4]
-                                ToggleButton:
-                                    group:"top_calibaration"
-                                    id: lower_right
-                                    on_release: root.on_lower_right()
-                                    text: _('Lower Right')
-                                    ellipse_color: [1,0,0,1]
-                                    canvas.after:
-                                        Color:
-                                            rgba: self.ellipse_color
-                                        Ellipse:
-                                            pos: [self.x, self.y + self.height * 0.6]
-                                            size: [self.height * 0.4, self.height * 0.4]
-                            Label:
-                            ToggleButton:
-                                text: _('Super Accurate Mode')
-                                on_release: root.super_accurate_mode(self)
-                            Button:
-                                text: _('Save Point')
-                            Label:
-                        Image:
-                            id: example_grid
-                            pos: self.parent.pos
-                            size: self.parent.size
-                            source: "resources/grid_small.png"
-                            allow_stretch: True
-                            canvas:
-                                Color:
-                                    rgba: 0, 1, 0, 1
-                                Ellipse:
-                                    pos: root.example_dot
-                                    size: [8,8]
-                    Image:
-                        id: top_calibration_grid
-                        pos: self.parent.pos
-                        size: self.parent.size
-                        source: "resources/grid.png"
-                        allow_stretch: True
-                        canvas.before:
-                            Color:
-                                rgba: 0.0, 0.0, 0.0, 1
-                            Rectangle:
-                                pos:  [ self.x + max(0, self.width - self.height) / 2, self.y + max(0, self.height - self.width) / 2 ]
-                                size: (min(self.size), min(self.size))
-                        canvas.after:
-                            Color:
-                                rgba: 1, 0, 0, 1
-                            Ellipse:
-                                pos: [root.calibration_point[0] - 4,root.calibration_point[1] - 4]
-                                size: [8,8]
-            TabbedPanelItem:
-                text: _("Bottom")
-                BoxLayout:
-                    orientation: 'horizontal'
-                    padding: 5
-                    Label:
-                        size_hint_x: 0.6
-                        text: "INFO BOX HERE"
-                    Image:
-                        pos: self.parent.pos
-                        size: self.parent.size
-                        source: "resources/grid.png"
-                        allow_stretch: True
-            TabbedPanelItem:
-                text: _("Test Patterns")
-                BoxLayout:
-                    orientation: 'horizontal'
-                    padding: 5
-                    Label:
-                        size_hint_x: 0.6
-                        text: "INFO BOX HERE"
-                    GridLayout:
-                        cols: 4
-                        ToggleButton:
-                            group: "test_patterns"
-                            text:_("Test Pattern")
-                        ToggleButton:
-                            group: "test_patterns"
-                            text:_("Test Pattern")
-                        ToggleButton:
-                            group: "test_patterns"
-                            text:_("Test Pattern")
-                        ToggleButton:
-                            group: "test_patterns"
-                            text:_("Test Pattern")
-                        ToggleButton:
-                            group: "test_patterns"
-                            text:_("Test Pattern")
-                        ToggleButton:
-                            group: "test_patterns"
-                            text:_("Test Pattern")
-                        ToggleButton:
-                            group: "test_patterns"
-                            text:_("Test Pattern")
-                        ToggleButton:
-                            group: "test_patterns"
-                            text:_("Test Pattern")
-                        ToggleButton:
-                            group: "test_patterns"
-                            text:_("Test Pattern")
-                        ToggleButton:
-                            group: "test_patterns"
-                            text:_("Test Pattern")
-                        ToggleButton:
-                            group: "test_patterns"
-                            text:_("Test Pattern")
-                        ToggleButton:
-                            group: "test_patterns"
-                            text:_("Test Pattern")
+            CenterPanel:
+            OrientationPanel:
+            PrintAreaPanel:
+            AlignmentPanel:
+            CalibrationPanel:
+                text: _('Top')
+                calibration_height: 666
+            CalibrationPanel:
+                text: _('Bottom')
+                calibration_height: 0
+            TestPatternPanel:
         Button:
             text: _("Back")
             size_hint_y: 30.0 / root.height
             on_release: app.root.current = 'mainui'
 
+<CenterPanel@TabbedPanelItem>:
+    text: _("Center")
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 5
+        Label:
+            size_hint_x: 0.6
+            text: "INFO BOX HERE"
+        Image:
+            pos: self.parent.pos
+            size: self.parent.size
+            source: "resources/grid.png"
+            allow_stretch: True
+            canvas.after:
+                Color:
+                    rgba: 0, 1, 0, 1
+                Ellipse:
+                    pos: [self.center[0] - 4, self.center[1] -4]
+                    size: [8,8]
+
+<OrientationPanel>:
+    text: _("Orientation")
+    BoxLayout:
+        orientation: 'horizontal'
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.6
+            BoxLayout
+                orientation: 'horizontal'
+                Label:
+                    text: 'Rotated:'
+                Label:
+                    text: root.orient_rotated
+            BoxLayout
+                orientation: 'horizontal'
+                Label:
+                    text: "Flipped on X:"
+                Label:
+                    text: root.orient_xflip
+            BoxLayout
+                orientation: 'horizontal'
+                Label:
+                    text: "Flipped on y:"
+                Label:
+                    text: root.orient_yflip
+        GridLayout:
+            cols:4
+            ToggleButton:
+                on_release: root.update_orientation(0,0,0)
+                id: orient_000
+                allow_no_selection: False
+                group: 'orientation'
+                Image:
+                    allow_stretch: True
+                    center: self.parent.center
+                    source: 'resources/orientation.png'
+            ToggleButton:
+                on_release: root.update_orientation(1,0,0)
+                id: orient_100
+                allow_no_selection: False
+                group: 'orientation'
+                Image:
+                    allow_stretch: True
+                    center: self.parent.center
+                    source: 'resources/orientation.png'
+                    canvas.before:
+                        PushMatrix
+                        Rotate:
+                            angle: 270
+                            axis: 0, 0, 1
+                            origin: self.parent.center
+                    canvas.after:
+                        PopMatrix
+            ToggleButton:
+                on_release: root.update_orientation(1,0,1)
+                id: orient_101
+                allow_no_selection: False
+                group: 'orientation'
+                Image:
+                    allow_stretch: True
+                    center: self.parent.center
+                    source: 'resources/orientation.png'
+                    canvas.before:
+                        PushMatrix
+                        Rotate:
+                            angle: 90
+                            axis: 0, 0, 1
+                            origin: self.parent.center
+                    canvas.after:
+                        PopMatrix
+            ToggleButton:
+                on_release: root.update_orientation(0,1,1)
+                id: orient_011
+                allow_no_selection: False
+                group: 'orientation'
+                Image:
+                    allow_stretch: True
+                    center: self.parent.center
+                    source: 'resources/orientation.png'
+                    canvas.before:
+                        PushMatrix
+                        Rotate:
+                            angle: 180
+                            axis: 0, 0, 1
+                            origin: self.parent.center
+                    canvas.after:
+                        PopMatrix
+            ToggleButton:
+                on_release: root.update_orientation(0,1,0)
+                id: orient_010
+                allow_no_selection: False
+                group: 'orientation'
+                Image:
+                    allow_stretch: True
+                    center: self.parent.center
+                    source: 'resources/orientation.png'
+                    canvas.before:
+                        PushMatrix
+                        Rotate:
+                            angle: 0
+                            axis: 0, 0, 1
+                            origin: self.parent.center
+                        Rotate:
+                            angle: 180
+                            axis: 1, 0, 0
+                            origin:self.parent.center
+                    canvas.after:
+                        PopMatrix
+            ToggleButton:
+                on_release: root.update_orientation(1,1,1)
+                id: orient_111
+                allow_no_selection: False
+                group: 'orientation'
+                Image:
+                    allow_stretch: True
+                    center: self.parent.center
+                    source: 'resources/orientation.png'
+                    canvas.before:
+                        PushMatrix
+                        Rotate:
+                            angle: 270
+                            axis: 0, 0, 1
+                            origin: self.parent.center
+                        Rotate:
+                            angle: 180
+                            axis: 1, 0, 0
+                            origin:self.parent.center
+                    canvas.after:
+                        PopMatrix
+            ToggleButton:
+                on_release: root.update_orientation(1,1,0)
+                id: orient_110
+                allow_no_selection: False
+                group: 'orientation'
+                Image:
+                    allow_stretch: True
+                    center: self.parent.center
+                    source: 'resources/orientation.png'
+                    canvas.before:
+                        PushMatrix
+                        Rotate:
+                            angle: 90
+                            axis: 0, 0, 1
+                            origin: self.parent.center
+                        Rotate:
+                            angle: 180
+                            axis: 1, 0, 0
+                            origin:self.parent.center
+                    canvas.after:
+                        PopMatrix
+            ToggleButton:
+                on_release: root.update_orientation(0,0,1)
+                id: orient_001
+                allow_no_selection: False
+                group: 'orientation'
+                Image:
+                    allow_stretch: True
+                    center: self.parent.center
+                    source: 'resources/orientation.png'
+                    canvas.before:
+                        PushMatrix
+                        Rotate:
+                            angle: 180
+                            axis: 0, 0, 1
+                            origin: self.parent.center
+                        Rotate:
+                            angle: 180
+                            axis: 1, 0, 0
+                            origin:self.parent.center
+                    canvas.after:
+                        PopMatrix
+
+<PrintAreaPanel@TabbedPanelItem>:
+    text: _("Print Area")
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 5
+        Label:
+            size_hint_x: 0.6
+            text: "INFO BOX HERE"
+        BoxLayout:
+            orientation: 'vertical'
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: _('Height (mm)')
+                FloatInput:
+                    text: '40'
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: _('Depth (mm)')
+                FloatInput:
+                    text: '40'
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: _('Width (mm)')
+                FloatInput:
+                    text: '40'
+
+<AlignmentPanel>:
+    text: _("Aligment")
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 5
+        Label:
+            size_hint_x: 0.6
+            text: "INFO BOX HERE"
+        Image:
+            pos: self.parent.pos
+            size: self.parent.size
+            source: "resources/grid.png"
+            allow_stretch: True
+            canvas.after:
+                Color:
+                    rgba: 0, 1, 0, 1
+                Line:
+                    points: [self.pos[0] +5, self.center[1], self.pos[0]+self.size[0] -5, self.center[1]]
+                    width: 4
+                    cap: 'round'
+
+
+<CalibrationPanel>:
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 5
+        BoxLayout:
+            padding: 5
+            size_hint_x: 0.6
+            orientation: 'vertical'
+            BoxLayout:
+                orientation: 'vertical'
+                GridLayout:
+                    cols: 2
+                    ToggleButton:
+                        group:"top_calibaration"
+                        id: upper_left
+                        on_release: root.on_upper_left()
+                        state:'down'
+                        text: _('Upper Left')
+                        ellipse_color: [1,0,0,1]
+                        canvas.after:
+                            Color:
+                                rgba: self.ellipse_color
+                            Ellipse:
+                                pos: [self.x + self.width - self.height * 0.4, self.y]
+                                size: [self.height * 0.4, self.height * 0.4]
+                    ToggleButton:
+                        group:"top_calibaration"
+                        id: upper_right
+                        on_release: root.on_upper_right()
+                        text: _('Upper Right')
+                        ellipse_color: [1,0,0,1]
+                        canvas.after:
+                            Color:
+                                rgba: self.ellipse_color
+                            Ellipse:
+                                pos: [self.x, self.y]
+                                size: [self.height * 0.4, self.height * 0.4]
+                    ToggleButton:
+                        group:"top_calibaration"
+                        id: lower_left
+                        on_release: root.on_lower_left()
+                        text: _('Lower Left')
+                        ellipse_color: [1,0,0,1]
+                        canvas.after:
+                            Color:
+                                rgba: self.ellipse_color
+                            Ellipse:
+                                pos: [self.x + self.width - self.height * 0.4, self.y + self.height * 0.6]
+                                size: [self.height * 0.4, self.height * 0.4]
+                    ToggleButton:
+                        group:"top_calibaration"
+                        id: lower_right
+                        on_release: root.on_lower_right()
+                        text: _('Lower Right')
+                        ellipse_color: [1,0,0,1]
+                        canvas.after:
+                            Color:
+                                rgba: self.ellipse_color
+                            Ellipse:
+                                pos: [self.x, self.y + self.height * 0.6]
+                                size: [self.height * 0.4, self.height * 0.4]
+                Label:
+                ToggleButton:
+                    text: _('Super Accurate Mode')
+                    on_release: root.super_accurate_mode(self)
+                Button:
+                    text: _('Save Point')
+                Label:
+            Image:
+                id: example_grid
+                pos: self.parent.pos
+                size: self.parent.size
+                source: "resources/grid_small.png"
+                allow_stretch: True
+                canvas:
+                    Color:
+                        rgba: 0, 1, 0, 1
+                    Ellipse:
+                        pos: root.example_dot
+                        size: [8,8]
+        Image:
+            id: top_calibration_grid
+            pos: self.parent.pos
+            size: self.parent.size
+            source: "resources/grid.png"
+            allow_stretch: True
+            canvas.before:
+                Color:
+                    rgba: 0.0, 0.0, 0.0, 1
+                Rectangle:
+                    pos:  [ self.x + max(0, self.width - self.height) / 2, self.y + max(0, self.height - self.width) / 2 ]
+                    size: (min(self.size), min(self.size))
+            canvas.after:
+                Color:
+                    rgba: 1, 0, 0, 1
+                Ellipse:
+                    pos: [root.calibration_point[0] - 4,root.calibration_point[1] - 4]
+                    size: [8,8]
+        
+
+<TestPatternPanel>:
+    text: _("Test Patterns")
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 5
+        Label:
+            size_hint_x: 0.6
+            text: "INFO BOX HERE"
+        GridLayout:
+            id: patterns
+            cols: 4
