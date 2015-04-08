@@ -1,5 +1,5 @@
 from kivy.uix.screenmanager import Screen
-from kivy.uix.tabbedpanel import TabbedPanelItem, TabbedPanel
+from kivy.uix.tabbedpanel import TabbedPanelItem
 from kivy.uix.togglebutton import ToggleButton
 from kivy.properties import ListProperty, StringProperty, NumericProperty
 from kivy.lang import Builder
@@ -115,19 +115,20 @@ class TestPatternPanel(TabbedPanelItem):
 
     def on_enter(self):
         if not self.loaded:
-            Logger.info(':IDS: %s' % str( self.ids) )
-            items = ["Test #%s" % str(i + 1) for i in range(0, 12)]
+            items = ["Test #%s" % str(i + 1) for i in range(0, 8)]
             for item in items:
                 self.ids.patterns.add_widget(ToggleButton(group='test_patterns', text=item))
             self.loaded = True
+
 
 Builder.load_file('ui/calibrate_ui.kv')
 
 
 class CalibrateUI(Screen):
 
-    def __init__(self, **kwargs):
+    def __init__(self, api, **kwargs):
         super(CalibrateUI, self).__init__(**kwargs)
+        self.api = api
 
     def on_pre_enter(self):
         pass

@@ -22,21 +22,25 @@
                 Label:
                     text: _("Start Height (mm)")
                 FloatInput:
-                    text: '0'
+                    on_text: root.update_total_height()
+                    id: start_height
+                    text: "0"
             BoxLayout:
                 size_hint_y: 60.0 / root.height
                 orientation: 'horizontal'
                 Label:
                     text: _("End Height (mm)")
                 FloatInput:
-                    text: '100'
+                    on_text: root.update_total_height()
+                    id: end_height
+                    text: "100"
             BoxLayout:
                 size_hint_y: 60.0 / root.height
                 orientation: 'horizontal'
                 Label:
                     text: _("Total Height (mm)")
                 FloatInput:
-                    text: '0'
+                    text: root.total_height
                     disabled: True
             BoxLayout:
                 size_hint_y: 60.0 / root.height
@@ -44,14 +48,16 @@
                 Label:
                     text: _('Drips')
                 FloatInput:
-                    text: '100'
+                    text: root.drips
+                    disabled: True
             BoxLayout:
                 size_hint_y: 60.0 / root.height
                 orientation: 'horizontal'
                 Label:
                     text: _('Drips per mm')
                 FloatInput:
-                    text: '1'
+                    text: root.drips_per_mm
+                    disabled: True
             BoxLayout:
                 size_hint_y: 60.0 / root.height
                 orientation: 'horizontal'
@@ -60,12 +66,6 @@
                     text: _("Save")
             Label:
                 size_hint_y: 60.0 / root.height
-            Button:
-                size_hint_y: 60.0 / root.height
-                text: _("Start Count Drips")
-            Button:
-                size_hint_y: 60.0 / root.height
-                text: _("Stop Counting Drips")
             Button:
                 size_hint_y: 60.0 / root.height
                 text: _("Reset Drip Count")
