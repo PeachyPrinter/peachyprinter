@@ -50,16 +50,14 @@ class Calibration(object):
         Logger.info("Called %s,%s" % (self.example_dot[0],self.example_dot[1]))
 
     def set_printer_pos_from_screen(self, x, y):
-        Logger.info("Moved")
         if self.is_accurate:
-            peachyx = self.center_point[0] + (x * 0.2) - 0.1
-            peachyy = self.center_point[1] + (y * 0.2) - 0.1
+            peachyx = self.center_point[0] + (x * 0.1)
+            peachyy = self.center_point[1] + (y * 0.1)
+            peachyx = max(-1.0, min(1.0, peachyx))
+            peachyy = max(-1.0, min(1.0, peachyy))
         else:
-            peachyx = (x * 2.0) - 1.0
-            peachyy = (y * 2.0) - 1.0
-
-        peachyx = max(-1.0, min(1.0, peachyx))
-        peachyy = max(-1.0, min(1.0, peachyy))
+            peachyx = x
+            peachyy = y
 
         self.printer_point = [peachyx, peachyy]
         Logger.info('%s, %s' % (peachyx, peachyy))
@@ -91,16 +89,13 @@ class CalibrateUI(Screen, Orientation, Calibration):
         self.bind(example_point=self.on_example_point)
 
     def on_motion(self, etype, motionevent, mouse_pos):
-        (x, y) = self.ids.top_calibration_grid.pos
-        (grid_width, grid_height) = self.ids.top_calibration_grid.size
-        (mousex, mousey) = mouse_pos.pos
-        imagex = (mousex - x)
-        imagey = (mousey - y)
-        if imagex >= 0 and imagex <= grid_width and imagey >= 0 and imagey <= grid_height:
-            self.set_printer_pos_from_screen(imagex / grid_width, imagey / grid_height)
+        grid_extents = min(self.ids.top_calibration_grid.size) / 2.0
+        grid_center = self.ids.top_calibration_grid.center
+        rel_x = mouse_pos.pos[0] - grid_center[0]
+        rel_y = mouse_pos.pos[1] - grid_center[1]
+        if abs(rel_x) <= grid_extents and abs(rel_y) <= grid_extents:
+            self.set_printer_pos_from_screen(rel_x / grid_extents, rel_y / grid_extents)
             self.calibration_point = mouse_pos.pos
-            # CALL TO API HERE
-
 
     def on_pre_enter(self):
         Window.bind(on_motion=self.on_motion)

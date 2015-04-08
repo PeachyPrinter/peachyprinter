@@ -49,12 +49,14 @@
                 keep_ratio: True
         FloatLayout:
             Button:
+                background_color: 1,1,1,0
                 size_hint: [0.06, 0.06]
                 pos: [root.size[0] - root.size[0] * 0.06, root.size[1] - root.size[1] * 0.06 ]
                 on_release: root.setting_selected()
-                background_normal: 'resources/icons/settings-up.png'
-                background_down:   'resources/icons/settings-down.png'
-
+                Image:
+                    pos: self.parent.pos
+                    size: self.parent.size
+                    source: 'resources/icons/settings-up.png'
 <LoadDialog>:
     BoxLayout:
         size: root.size
