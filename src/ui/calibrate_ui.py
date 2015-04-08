@@ -57,18 +57,31 @@ class Calibration(object):
         else:
             peachyx = (x * 2.0) - 1.0
             peachyy = (y * 2.0) - 1.0
+
+        peachyx = max(-1.0, min(1.0, peachyx))
+        peachyy = max(-1.0, min(1.0, peachyy))
+
         self.printer_point = [peachyx, peachyy]
         Logger.info('%s, %s' % (peachyx, peachyy))
-
 
     def super_accurate_mode(self, instance):
         if instance.state == 'normal':
             self.is_accurate = False
             self.center_point = [0.0, 0.0]
+            self.set_screen_point_from_printer()
         else:
             self.is_accurate = True
             self.center_point = self.printer_point
+            self.calibration_point = self.ids.top_calibration_grid.center
 
+    def set_screen_point_from_printer(self):
+        (grid_width, grid_height) = self.ids.top_calibration_grid.size
+        rel_x_percent = (self.printer_point[0] + 1.0) / 2.0
+        rel_y_percent = (self.printer_point[1] + 1.0) / 2.0
+        rel_x = rel_x_percent * grid_width
+        rel_y = rel_y_percent * grid_height
+        (x, y) = self.ids.top_calibration_grid.pos
+        self.calibration_point = [x + rel_x, y + rel_y]
 
 
 class CalibrateUI(Screen, Orientation, Calibration):
