@@ -1,5 +1,5 @@
 from kivy.uix.screenmanager import Screen
-from kivy.properties import ListProperty
+from kivy.properties import ListProperty, StringProperty
 from kivy.lang import Builder
 from kivy.logger import Logger
 from kivy.core.window import Window
@@ -7,8 +7,17 @@ from kivy.core.window import Window
 
 Builder.load_file('ui/calibrate_ui.kv')
 
+class Orientation(object):
+    orient_rotated = StringProperty("False")
+    orient_xflip = StringProperty("False")
+    orient_yflip = StringProperty("False")
 
-class CalibrateUI(Screen):
+    def update_orientation(self, rotate, xflip, yflip):
+        self.orient_rotated = "True" if rotate else "False"
+        self.orient_xflip = "True" if xflip else "False"
+        self.orient_yflip = "True" if yflip else "False"
+
+class CalibrateUI(Screen, Orientation):
     calibration_point = ListProperty([0, 0])
     example_point = ListProperty([0, 0])
     example_dot = ListProperty([100, 100])

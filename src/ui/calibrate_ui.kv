@@ -32,19 +32,43 @@
                 text: _("Orientation")
                 BoxLayout:
                     orientation: 'horizontal'
-                    Label:
+                    BoxLayout:
+                        orientation: 'vertical'
                         size_hint_x: 0.6
-                        text: "INFO BOX HERE"
+                        BoxLayout
+                            orientation: 'horizontal'
+                            Label:
+                                text: 'Rotated:'
+                            Label:
+                                text: root.orient_rotated
+                        BoxLayout
+                            orientation: 'horizontal'
+                            Label:
+                                text: "Flipped on X:"
+                            Label:
+                                text: root.orient_xflip
+                        BoxLayout
+                            orientation: 'horizontal'
+                            Label:
+                                text: "Flipped on y:"
+                            Label:
+                                text: root.orient_yflip
+
                     GridLayout:
-                        cols:2
+                        cols:4
                         ToggleButton:
+                            on_release: root.update_orientation(0,0,0)
+                            id: orient_000
+                            allow_no_selection: False
                             group: 'orientation'
                             Image:
-
                                 allow_stretch: True
                                 center: self.parent.center
                                 source: 'resources/orientation.png'
                         ToggleButton:
+                            on_release: root.update_orientation(1,0,0)
+                            id: orient_100
+                            allow_no_selection: False
                             group: 'orientation'
                             Image:
                                 allow_stretch: True
@@ -59,6 +83,9 @@
                                 canvas.after:
                                     PopMatrix
                         ToggleButton:
+                            on_release: root.update_orientation(1,0,1)
+                            id: orient_101
+                            allow_no_selection: False
                             group: 'orientation'
                             Image:
                                 allow_stretch: True
@@ -73,6 +100,9 @@
                                 canvas.after:
                                     PopMatrix
                         ToggleButton:
+                            on_release: root.update_orientation(0,1,1)
+                            id: orient_011
+                            allow_no_selection: False
                             group: 'orientation'
                             Image:
                                 allow_stretch: True
@@ -84,6 +114,90 @@
                                         angle: 180
                                         axis: 0, 0, 1
                                         origin: self.parent.center
+                                canvas.after:
+                                    PopMatrix
+                        ToggleButton:
+                            on_release: root.update_orientation(0,1,0)
+                            id: orient_010
+                            allow_no_selection: False
+                            group: 'orientation'
+                            Image:
+                                allow_stretch: True
+                                center: self.parent.center
+                                source: 'resources/orientation.png'
+                                canvas.before:
+                                    PushMatrix
+                                    Rotate:
+                                        angle: 0
+                                        axis: 0, 0, 1
+                                        origin: self.parent.center
+                                    Rotate:
+                                        angle: 180
+                                        axis: 1, 0, 0
+                                        origin:self.parent.center
+                                canvas.after:
+                                    PopMatrix
+                        ToggleButton:
+                            on_release: root.update_orientation(1,1,1)
+                            id: orient_111
+                            allow_no_selection: False
+                            group: 'orientation'
+                            Image:
+                                allow_stretch: True
+                                center: self.parent.center
+                                source: 'resources/orientation.png'
+                                canvas.before:
+                                    PushMatrix
+                                    Rotate:
+                                        angle: 270
+                                        axis: 0, 0, 1
+                                        origin: self.parent.center
+                                    Rotate:
+                                        angle: 180
+                                        axis: 1, 0, 0
+                                        origin:self.parent.center
+                                canvas.after:
+                                    PopMatrix
+                        ToggleButton:
+                            on_release: root.update_orientation(1,1,0)
+                            id: orient_110
+                            allow_no_selection: False
+                            group: 'orientation'
+                            Image:
+                                allow_stretch: True
+                                center: self.parent.center
+                                source: 'resources/orientation.png'
+                                canvas.before:
+                                    PushMatrix
+                                    Rotate:
+                                        angle: 90
+                                        axis: 0, 0, 1
+                                        origin: self.parent.center
+                                    Rotate:
+                                        angle: 180
+                                        axis: 1, 0, 0
+                                        origin:self.parent.center
+                                canvas.after:
+                                    PopMatrix
+                        ToggleButton:
+                            on_release: root.update_orientation(0,0,1)
+                            id: orient_001
+                            allow_no_selection: False
+                            group: 'orientation'
+                            Image:
+                                allow_stretch: True
+                                center: self.parent.center
+                                source: 'resources/orientation.png'
+                                canvas.before:
+                                    PushMatrix
+                                    Rotate:
+                                        angle: 180
+                                        axis: 0, 0, 1
+                                        origin: self.parent.center
+                                    Rotate:
+                                        angle: 180
+                                        axis: 1, 0, 0
+                                        origin:self.parent.center
                                 canvas.after:
                                     PopMatrix
             TabbedPanelItem:
