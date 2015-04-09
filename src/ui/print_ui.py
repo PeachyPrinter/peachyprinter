@@ -97,14 +97,9 @@ class PrintingUI(Screen):
         self.ids.print_status.update(data)
         self.ids.dripper.update(data)
 
-    def on_pre_enter(self):
-        for (title, value) in self.parent.setting_translation.get_settings().items():
-            title_label = BorderedLabel(text=title, bold=True, borders=[0, 1.0, 0, 0])
-            value_label = BorderedLabel(text=value,  halign='right', borders=[0, 1.0, 1.0, 0])
-            self.ids.print_settings.add_widget(title_label)
-            self.ids.print_settings.add_widget(value_label)
+    def print_file(self, filename):
         try:
-            filepath = self.selected_file.filename[0].encode('utf-8')
+            filepath = filename[0].encode('utf-8')
             self.print_api = self.api.get_print_api(status_call_back=self.callback)
             self.path = os.path.basename(filepath)
             self.print_api.print_gcode(filepath)
@@ -112,6 +107,22 @@ class PrintingUI(Screen):
             popup = ErrorPopup(title='Error', text=str(ex), size_hint=(0.6, 0.6))
             popup.open()
             self.parent.current = 'mainui'
+
+    def print_generator(self, generator):
+        try:
+            self.print_api = self.api.get_print_api(status_call_back=self.callback)
+            self.print_api.print_layers(generator)
+        except Exception as ex:
+            popup = ErrorPopup(title='Error', text=str(ex), size_hint=(0.6, 0.6))
+            popup.open()
+            self.parent.current = 'mainui'
+
+    def on_pre_enter(self):
+        for (title, value) in self.parent.setting_translation.get_settings().items():
+            title_label = BorderedLabel(text=title, bold=True, borders=[0, 1.0, 0, 0])
+            value_label = BorderedLabel(text=value,  halign='right', borders=[0, 1.0, 1.0, 0])
+            self.ids.print_settings.add_widget(title_label)
+            self.ids.print_settings.add_widget(value_label)
 
     def on_pre_leave(self):
         if self.print_api:

@@ -19,6 +19,7 @@
                     Label:
                         text: _("Height (mm)")
                     FloatInput:
+                        id: height
                         text: '20'
                 BoxLayout:
                     size_hint: [1.0, 60 / root.height]
@@ -26,6 +27,7 @@
                     Label:
                         text: _("Width (mm)")
                     FloatInput:
+                        id: width
                         text: '20'
                 BoxLayout:
                     size_hint: [1.0, 60 / root.height]
@@ -33,6 +35,7 @@
                     Label:
                         text: _("Layer Height (mm)")
                     FloatInput:
+                        id: layer_height
                         text: '0.01'
                 BoxLayout:
                     size_hint: [1.0, 60 / root.height]
@@ -40,6 +43,7 @@
                     Label:
                         text: _("Speed (mm/sec)")
                     FloatInput:
+                        id: speed
                         text: '120'
             BoxLayout:
                 size_hint: [1.0, 60 / root.height]
@@ -49,6 +53,7 @@
                     on_release: root.dismiss()
                 Button:
                     text: _("Print Now")
+                    on_release: root.dismiss(); root.print_from_library()
 
 <LibraryUI>:
     name: 'libraryui'

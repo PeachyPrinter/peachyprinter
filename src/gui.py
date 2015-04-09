@@ -51,6 +51,7 @@ class MainUI(Screen):
         self.selected_file.filename = filename
         self.dismiss_popup()
         self.parent.current = 'printingui'
+        self.printingui.print_file(filename)
 
     def dismiss_popup(self):
         self._popup.dismiss()
