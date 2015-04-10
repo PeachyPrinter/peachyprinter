@@ -300,8 +300,12 @@
             orientation: 'vertical'
             BoxLayout:
                 orientation: 'vertical'
+                Button:
+                    text: _('Reset All Points')
+                Label:
                 GridLayout:
                     cols: 2
+                    size_hint: [1.0, 2.0]
                     ToggleButton:
                         group:"top_calibaration"
                         id: upper_left

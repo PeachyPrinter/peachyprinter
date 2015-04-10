@@ -401,7 +401,6 @@ class SettingsMapper(object):
                 ]
 
     def refresh_settings(self, settings, config):
-        Logger.info("Starting :%s " % dir(config))
         self.load_config(config)
         settings.register_type('string', SettingString)
         settings.register_type('bool', SettingBoolean)

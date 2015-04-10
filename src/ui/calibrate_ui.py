@@ -5,6 +5,7 @@ from kivy.properties import ListProperty, StringProperty, NumericProperty, Objec
 from kivy.lang import Builder
 from kivy.logger import Logger
 from kivy.core.window import Window
+from kivy.clock import Clock
 
 
 class CenterPanel(TabbedPanelItem):
@@ -13,7 +14,6 @@ class CenterPanel(TabbedPanelItem):
         super(CenterPanel, self).__init__(**kwargs)
 
     def on_enter(self):
-        Logger.info(str(dir(self)))
         if self.calibration_api:
              self.calibration_api.show_point([0.5, 0.5, 0.0])
 
@@ -108,6 +108,14 @@ class CalibrationPanel(TabbedPanelItem):
     def on_lower_left(self):
         self.example_point = [0, 0]
 
+    def on_resize(self, *args):
+        Clock.schedule_once(self.fix_sizes, 0)
+
+    def fix_sizes(self, *args):
+        Logger.info("Resizing in my stuff")
+        self.set_screen_point_from_printer()
+        self.on_example_point()
+
     def on_example_point(self, *args):
         image_size = min(self.ids.example_grid.size)
         pos_x = self.ids.example_grid.x + (self.ids.example_grid.width - image_size) / 2
@@ -164,20 +172,23 @@ class CalibrationPanel(TabbedPanelItem):
         if 0 <= rel_x and rel_x <= grid_size and 0 <= rel_y and rel_y <= grid_size:
             print_x = rel_x / grid_size
             print_y = rel_y / grid_size
-            
             self.set_printer_pos_from_screen(print_x, print_y)
             self.calibration_point = mouse_pos.pos
 
     def on_enter(self):
         Window.bind(on_motion=self.on_motion)
+        Window.bind(on_resize=self.on_resize)
         if self.calibration_api:
             self.calibration_api.show_point([self.printer_point[0], self.printer_point[1], self.calibration_height])
 
     def on_leave(self):
         Window.unbind(on_motion=self.on_motion)
+        Window.unbind(on_resize=self.on_resize)
+
 
 class TestPatternToggle(ToggleButton):
     pass
+
 
 class TestPatternPanel(TabbedPanelItem):
     calibration_api = ObjectProperty()
@@ -195,7 +206,6 @@ class TestPatternPanel(TabbedPanelItem):
 
     def show_pattern(self, instance):
         self.calibration_api.show_test_pattern(instance.text)
-
 
 
 Builder.load_file('ui/calibrate_ui.kv')
@@ -220,4 +230,4 @@ class CalibrateUI(Screen):
         self.is_active = False
         if self.calibration_api:
             self.calibration_api.close()
-        self.api = None
+        self.calibration_api = False
