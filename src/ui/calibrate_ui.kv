@@ -9,25 +9,33 @@
     BoxLayout:
         orientation: 'vertical'
         CommunicativeTabbedPanel:
+            id:tab_panel
             tab_pos: "top_left"
             do_default_tab: False
             CenterPanel:
+                calibration_api: root.calibration_api
             OrientationPanel:
+                calibration_api: root.calibration_api
             PrintAreaPanel:
+                calibration_api: root.calibration_api
             AlignmentPanel:
+                calibration_api: root.calibration_api
             CalibrationPanel:
                 text: _('Top')
                 calibration_height: 666
+                calibration_api: root.calibration_api
             CalibrationPanel:
                 text: _('Bottom')
                 calibration_height: 0
+                calibration_api: root.calibration_api
             TestPatternPanel:
+                calibration_api: root.calibration_api
         Button:
             text: _("Back")
             size_hint_y: 30.0 / root.height
             on_release: app.root.current = 'mainui'
 
-<CenterPanel@TabbedPanelItem>:
+<CenterPanel>:
     text: _("Center")
     BoxLayout:
         orientation: 'horizontal'
@@ -219,7 +227,7 @@
                     canvas.after:
                         PopMatrix
 
-<PrintAreaPanel@TabbedPanelItem>:
+<PrintAreaPanel>:
     text: _("Print Area")
     BoxLayout:
         orientation: 'horizontal'
@@ -378,4 +386,4 @@
             text: "INFO BOX HERE"
         GridLayout:
             id: patterns
-            cols: 4
+            cols: 2

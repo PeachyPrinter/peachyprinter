@@ -1,18 +1,51 @@
 from kivy.uix.screenmanager import Screen
 from kivy.uix.tabbedpanel import TabbedPanelItem
 from kivy.uix.togglebutton import ToggleButton
-from kivy.properties import ListProperty, StringProperty, NumericProperty
+from kivy.properties import ListProperty, StringProperty, NumericProperty, ObjectProperty
 from kivy.lang import Builder
 from kivy.logger import Logger
 from kivy.core.window import Window
 
 
+class CenterPanel(TabbedPanelItem):
+    calibration_api = ObjectProperty()
+    def __init__(self,  **kwargs):
+        super(CenterPanel, self).__init__(**kwargs)
+
+    def on_enter(self):
+        Logger.info(str(dir(self)))
+        if self.calibration_api:
+             self.calibration_api.show_point([0.5, 0.5, 0.0])
+        pass
+
+    def on_exit(self):
+        pass
+
+
+class PrintAreaPanel(TabbedPanelItem):
+    calibration_api = ObjectProperty()
+
+    def __init__(self,  **kwargs):
+        super(PrintAreaPanel, self).__init__(**kwargs)
+
+    def on_enter(self):
+        if self.calibration_api:
+             self.calibration_api.show_point()
+
+
 class AlignmentPanel(TabbedPanelItem):
+    calibration_api = ObjectProperty()
+
     def __init__(self, **kwargs):
         super(AlignmentPanel, self).__init__(**kwargs)
 
+    def on_enter(self):
+        if self.calibration_api:
+             self.calibration_api.show_line()
+
 
 class OrientationPanel(TabbedPanelItem):
+    calibration_api = ObjectProperty()
     orient_rotated = StringProperty("False")
     orient_xflip = StringProperty("False")
     orient_yflip = StringProperty("False")
@@ -25,14 +58,20 @@ class OrientationPanel(TabbedPanelItem):
         self.orient_xflip = "True" if xflip else "False"
         self.orient_yflip = "True" if yflip else "False"
 
+    def on_enter(self):
+        if self.calibration_api:
+            self.calibration_api.show_orientation()
+
 
 class CalibrationPanel(TabbedPanelItem):
     calibration_height = NumericProperty(0)
     calibration_point = ListProperty([0, 0])
     example_point = ListProperty([0, 0])
     example_dot = ListProperty([0, 0])
-    printer_point = ListProperty([0.0, 0.0])
+    printer_point = ListProperty([0.5, 0.5, calibration_height])
     center_point = ListProperty([0.0, 0.0])
+
+    calibration_api = ObjectProperty()
 
     def __init__(self, **kwargs):
         super(CalibrationPanel, self).__init__(**kwargs)
@@ -64,14 +103,15 @@ class CalibrationPanel(TabbedPanelItem):
         if self.is_accurate:
             peachyx = self.center_point[0] + (x * 0.1)
             peachyy = self.center_point[1] + (y * 0.1)
-            peachyx = max(-1.0, min(1.0, peachyx))
-            peachyy = max(-1.0, min(1.0, peachyy))
+            peachyx = max(0, min(1.0, peachyx))
+            peachyy = max(0, min(1.0, peachyy))
         else:
             peachyx = x
             peachyy = y
 
         self.printer_point = [peachyx, peachyy]
-        Logger.info('%s, %s' % (peachyx, peachyy))
+        self.calibration_api.show_point([self.printer_point[0], self.printer_point[1], self.calibration_height])
+        # Logger.info('%s, %s' % (peachyx, peachyy))
 
     def super_accurate_mode(self, instance):
         if instance.state == 'normal':
@@ -84,54 +124,82 @@ class CalibrationPanel(TabbedPanelItem):
             self.calibration_point = self.ids.top_calibration_grid.center
 
     def set_screen_point_from_printer(self):
-        (grid_width, grid_height) = self.ids.top_calibration_grid.size
-        rel_x_percent = (self.printer_point[0] + 1.0) / 2.0
-        rel_y_percent = (self.printer_point[1] + 1.0) / 2.0
-        rel_x = rel_x_percent * grid_width
-        rel_y = rel_y_percent * grid_height
-        (x, y) = self.ids.top_calibration_grid.pos
-        self.calibration_point = [x + rel_x, y + rel_y]
+        #NOT RIGHT
+        grid_size = min(self.ids.top_calibration_grid.size)
+        grid_extents = grid_size / 2.0
+        grid_x = self.ids.top_calibration_grid.center[0] - grid_extents
+        grid_y = self.ids.top_calibration_grid.center[1] - grid_extents
+
+        rel_x = self.printer_point[0] * grid_size
+        rel_y = self.printer_point[1] * grid_size
+
+        self.calibration_point = [grid_x + rel_x, grid_y + rel_y]
 
     def on_motion(self, etype, motionevent, mouse_pos):
-        grid_extents = min(self.ids.top_calibration_grid.size) / 2.0
-        grid_center = self.ids.top_calibration_grid.center
-        rel_x = mouse_pos.pos[0] - grid_center[0]
-        rel_y = mouse_pos.pos[1] - grid_center[1]
-        if abs(rel_x) <= grid_extents and abs(rel_y) <= grid_extents:
-            self.set_printer_pos_from_screen(rel_x / grid_extents, rel_y / grid_extents)
+        grid_size = min(self.ids.top_calibration_grid.size)
+        grid_extents = grid_size / 2.0
+        grid_x = self.ids.top_calibration_grid.center[0] - grid_extents
+        grid_y = self.ids.top_calibration_grid.center[1] - grid_extents
+        rel_x = mouse_pos.pos[0] - grid_x
+        rel_y = mouse_pos.pos[1] - grid_y
+        # Logger.info("X,Y -> %s,%s" % (rel_x, rel_y))
+        if 0 <= rel_x and rel_x <= grid_size and 0 <= rel_y and rel_y <= grid_size:
+            print_x = rel_x / grid_size
+            print_y = rel_y / grid_size
+            
+            self.set_printer_pos_from_screen(print_x, print_y)
             self.calibration_point = mouse_pos.pos
 
     def on_enter(self):
         Window.bind(on_motion=self.on_motion)
+        if self.calibration_api:
+            self.calibration_api.show_point([self.printer_point[0], self.printer_point[1], self.calibration_height])
 
     def on_leave(self):
         Window.unbind(on_motion=self.on_motion)
 
+class TestPatternToggle(ToggleButton):
+    pass
 
 class TestPatternPanel(TabbedPanelItem):
+    calibration_api = ObjectProperty()
+
     def __init__(self, **kwargs):
         super(TestPatternPanel, self).__init__(**kwargs)
         self.loaded = False
 
     def on_enter(self):
         if not self.loaded:
-            items = ["Test #%s" % str(i + 1) for i in range(0, 8)]
+            items = self.calibration_api.get_test_patterns()
             for item in items:
-                self.ids.patterns.add_widget(ToggleButton(group='test_patterns', text=item))
+                self.ids.patterns.add_widget(ToggleButton(group='test_patterns',  text=item, on_release=self.show_pattern))
             self.loaded = True
+
+    def show_pattern(self, instance):
+        self.calibration_api.show_test_pattern(instance.text)
+
 
 
 Builder.load_file('ui/calibrate_ui.kv')
 
 
 class CalibrateUI(Screen):
+    calibration_api = ObjectProperty()
 
     def __init__(self, api, **kwargs):
+        self.is_active = False
         super(CalibrateUI, self).__init__(**kwargs)
         self.api = api
 
     def on_pre_enter(self):
-        pass
+        self.is_active = True
+        self.calibration_api = self.api.get_calibration_api()
+        self.calibration_api.show_point([0.5, 0.5, 0.0])
+        panel = self.ids.tab_panel.tab_list[-1]
+        self.ids.tab_panel.switch_to(panel)
 
     def on_pre_leave(self):
-        pass
+        self.is_active = False
+        if self.calibration_api:
+            self.calibration_api.close()
+        self.api = None
