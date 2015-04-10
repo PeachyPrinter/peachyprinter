@@ -302,6 +302,7 @@
                 orientation: 'vertical'
                 Button:
                     text: _('Reset All Points')
+                    on_release: root.reset_points()
                 Label:
                 GridLayout:
                     cols: 2
@@ -309,7 +310,11 @@
                     ToggleButton:
                         group:"top_calibaration"
                         id: upper_left
-                        on_release: root.on_upper_left()
+                        actual: [0.0, 0.0]
+                        peachy: [0.0, 0.0]
+                        example: [0.0, 1.0]
+                        valid: False
+                        on_release: root.on_point_selection(self)
                         state:'down'
                         text: _('Upper Left')
                         ellipse_color: [1,0,0,1]
@@ -322,7 +327,11 @@
                     ToggleButton:
                         group:"top_calibaration"
                         id: upper_right
-                        on_release: root.on_upper_right()
+                        actual: [0.0, 0.0]
+                        peachy: [0.0, 0.0]
+                        example: [1.0, 1.0]
+                        valid: False
+                        on_release: root.on_point_selection(self)
                         text: _('Upper Right')
                         ellipse_color: [1,0,0,1]
                         canvas.after:
@@ -334,7 +343,11 @@
                     ToggleButton:
                         group:"top_calibaration"
                         id: lower_left
-                        on_release: root.on_lower_left()
+                        actual: [0.0, 0.0]
+                        peachy: [0.0, 0.0]
+                        example: [1.0, 0.0]
+                        valid: False
+                        on_release: root.on_point_selection(self)
                         text: _('Lower Left')
                         ellipse_color: [1,0,0,1]
                         canvas.after:
@@ -346,7 +359,11 @@
                     ToggleButton:
                         group:"top_calibaration"
                         id: lower_right
-                        on_release: root.on_lower_right()
+                        actual: [0.0, 0.0]
+                        peachy: [0.0, 0.0]
+                        example: [0.0, 0.0]
+                        valid: False
+                        on_release: root.on_point_selection(self)
                         text: _('Lower Right')
                         ellipse_color: [1,0,0,1]
                         canvas.after:
@@ -361,6 +378,7 @@
                     on_release: root.super_accurate_mode(self)
                 Button:
                     text: _('Save Point')
+                    on_release: root.save_point()
                 Label:
             Image:
                 id: example_grid

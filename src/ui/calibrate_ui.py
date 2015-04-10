@@ -88,6 +88,7 @@ class CalibrationPanel(TabbedPanelItem):
     example_dot = ListProperty([0, 0])
     printer_point = ListProperty([0.5, 0.5, calibration_height])
     center_point = ListProperty([0.0, 0.0])
+    selected = ObjectProperty()
 
     calibration_api = ObjectProperty()
 
@@ -96,17 +97,44 @@ class CalibrationPanel(TabbedPanelItem):
         self.is_accurate = False
         self.bind(example_point=self.on_example_point)
 
-    def on_upper_left(self):
-        self.example_point = [0, 1]
+    def save_point(self):
+        self.selected.valid = True
+        self.selected.ellipse_color = [0, 1, 0, 1]
+        self.selected.peachy = self.printer_point
 
-    def on_upper_right(self):
-        self.example_point = [1, 1]
+    def load_point(self, key):
+        self.selected = key
+        self.printer_point = self.selected.peachy
+        self.example_point = self.selected.example
+        self.set_screen_point_from_printer()
 
-    def on_lower_right(self):
-        self.example_point = [1, 0]
+    def reset_points(self):
+        width, depth, height = self.calibration_api.get_print_area()
 
-    def on_lower_left(self):
-        self.example_point = [0, 0]
+        self.ids.upper_left.ellipse_color = [1, 0, 0, 1]
+        self.ids.upper_left.actual = [-width / 2.0,  depth / 2.0]
+        self.ids.upper_left.peachy = [0.5, 0.5]
+        self.ids.upper_left.valid = False
+
+        self.ids.upper_right.ellipse_color = [1, 0, 0, 1]
+        self.ids.upper_right.actual = [ width / 2.0,  depth / 2.0]
+        self.ids.upper_right.peachy = [0.5, 0.5]
+        self.ids.upper_right.valid = False
+
+        self.ids.lower_left.ellipse_color = [1, 0, 0, 1]
+        self.ids.lower_left.actual = [ width / 2.0, -depth / 2.0]
+        self.ids.lower_left.peachy = [0.5, 0.5]
+        self.ids.lower_left.valid = False
+
+        self.ids.lower_right.ellipse_color = [1, 0, 0, 1]
+        self.ids.lower_right.actual = [-width / 2.0, -depth / 2.0]
+        self.ids.lower_right.peachy = [0.5, 0.5]
+        self.ids.lower_right.valid = False
+
+
+    def on_point_selection(self, point):
+        self.save_point()
+        self.load_point(point)
 
     def on_resize(self, *args):
         Clock.schedule_once(self.fix_sizes, 0)
@@ -180,6 +208,7 @@ class CalibrationPanel(TabbedPanelItem):
         Window.bind(on_resize=self.on_resize)
         if self.calibration_api:
             self.calibration_api.show_point([self.printer_point[0], self.printer_point[1], self.calibration_height])
+        self.selected = self.ids.upper_left
 
     def on_leave(self):
         Window.unbind(on_motion=self.on_motion)
