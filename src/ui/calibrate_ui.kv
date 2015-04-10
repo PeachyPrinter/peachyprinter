@@ -65,9 +65,9 @@
             BoxLayout
                 orientation: 'horizontal'
                 Label:
-                    text: 'Rotated:'
+                    text: 'Swapped Axis:'
                 Label:
-                    text: root.orient_rotated
+                    text: root.orient_swap_axis
             BoxLayout
                 orientation: 'horizontal'
                 Label:
@@ -81,9 +81,12 @@
                 Label:
                     text: root.orient_yflip
         GridLayout:
+            id: orientations
             cols:4
             ToggleButton:
-                on_release: root.update_orientation(0,0,0)
+                state: 'down'
+                configuration: (0, 0, 0)
+                on_release: root.update_orientation(*self.configuration)
                 id: orient_000
                 allow_no_selection: False
                 group: 'orientation'
@@ -92,7 +95,8 @@
                     center: self.parent.center
                     source: 'resources/orientation.png'
             ToggleButton:
-                on_release: root.update_orientation(1,0,0)
+                configuration: (0, 1, 0)
+                on_release: root.update_orientation(*self.configuration)
                 id: orient_100
                 allow_no_selection: False
                 group: 'orientation'
@@ -109,7 +113,8 @@
                     canvas.after:
                         PopMatrix
             ToggleButton:
-                on_release: root.update_orientation(1,0,1)
+                configuration: (1, 1, 0)
+                on_release: root.update_orientation(*self.configuration)
                 id: orient_101
                 allow_no_selection: False
                 group: 'orientation'
@@ -126,7 +131,8 @@
                     canvas.after:
                         PopMatrix
             ToggleButton:
-                on_release: root.update_orientation(0,1,1)
+                configuration: (1, 0, 1)
+                on_release: root.update_orientation(*self.configuration)
                 id: orient_011
                 allow_no_selection: False
                 group: 'orientation'
@@ -143,7 +149,8 @@
                     canvas.after:
                         PopMatrix
             ToggleButton:
-                on_release: root.update_orientation(0,1,0)
+                configuration: (0, 0, 1)
+                on_release: root.update_orientation(*self.configuration)
                 id: orient_010
                 allow_no_selection: False
                 group: 'orientation'
@@ -164,7 +171,8 @@
                     canvas.after:
                         PopMatrix
             ToggleButton:
-                on_release: root.update_orientation(1,1,1)
+                configuration: (1, 1, 1)
+                on_release: root.update_orientation(*self.configuration)
                 id: orient_111
                 allow_no_selection: False
                 group: 'orientation'
@@ -185,7 +193,8 @@
                     canvas.after:
                         PopMatrix
             ToggleButton:
-                on_release: root.update_orientation(1,1,0)
+                configuration: (0, 1, 1)
+                on_release: root.update_orientation(*self.configuration)
                 id: orient_110
                 allow_no_selection: False
                 group: 'orientation'
@@ -206,7 +215,8 @@
                     canvas.after:
                         PopMatrix
             ToggleButton:
-                on_release: root.update_orientation(0,0,1)
+                configuration: (1, 0, 0)
+                on_release: root.update_orientation(*self.configuration)
                 id: orient_001
                 allow_no_selection: False
                 group: 'orientation'

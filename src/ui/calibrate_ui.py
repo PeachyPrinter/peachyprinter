@@ -46,21 +46,33 @@ class AlignmentPanel(TabbedPanelItem):
 
 class OrientationPanel(TabbedPanelItem):
     calibration_api = ObjectProperty()
-    orient_rotated = StringProperty("False")
+    orient_swap_axis = StringProperty("False")
     orient_xflip = StringProperty("False")
     orient_yflip = StringProperty("False")
+
+    calibration_api = ObjectProperty()
 
     def __init__(self, **kwargs):
         super(OrientationPanel, self).__init__(**kwargs)
 
-    def update_orientation(self, rotate, xflip, yflip):
-        self.orient_rotated = "True" if rotate else "False"
+    def update_orientation(self, xflip, yflip, swap_axis):
+        self.orient_swap_axis = "True" if swap_axis else "False"
         self.orient_xflip = "True" if xflip else "False"
         self.orient_yflip = "True" if yflip else "False"
+        self.calibration_api.set_orientation(bool(xflip), bool(yflip), bool(swap_axis))
 
     def on_enter(self):
         if self.calibration_api:
             self.calibration_api.show_orientation()
+            current = list(self.calibration_api.get_orientation())
+            for child in self.ids.orientations.children:
+                print("child config :%s" % child.configuration)
+                print("current config :%s" % current)
+                if child.configuration == current:
+                    print("Bingo")
+                    child.state = 'down'
+                else:
+                    child.state = 'normal'
 
 
 class CalibrationPanel(TabbedPanelItem):
