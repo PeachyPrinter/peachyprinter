@@ -16,21 +16,27 @@ class CenterPanel(TabbedPanelItem):
         Logger.info(str(dir(self)))
         if self.calibration_api:
              self.calibration_api.show_point([0.5, 0.5, 0.0])
-        pass
-
-    def on_exit(self):
-        pass
 
 
 class PrintAreaPanel(TabbedPanelItem):
     calibration_api = ObjectProperty()
+    print_area_width = StringProperty("")
+    print_area_depth = StringProperty("")
+    print_area_height = StringProperty("")
 
     def __init__(self,  **kwargs):
         super(PrintAreaPanel, self).__init__(**kwargs)
 
     def on_enter(self):
         if self.calibration_api:
-             self.calibration_api.show_point()
+            self.calibration_api.show_point()
+            print_area_width, print_area_depth, print_area_height = self.calibration_api.get_print_area()
+            self.ids.print_area_width.text = str(print_area_width)
+            self.ids.print_area_depth.text = str(print_area_depth)
+            self.ids.print_area_height.text = str(print_area_height)
+
+    def on_leave(self,):
+        self.calibration_api.set_print_area(float(self.ids.print_area_width.text), float(self.ids.print_area_depth.text), float(self.ids.print_area_height.text))
 
 
 class AlignmentPanel(TabbedPanelItem):
@@ -41,7 +47,7 @@ class AlignmentPanel(TabbedPanelItem):
 
     def on_enter(self):
         if self.calibration_api:
-             self.calibration_api.show_line()
+            self.calibration_api.show_line()
 
 
 class OrientationPanel(TabbedPanelItem):
