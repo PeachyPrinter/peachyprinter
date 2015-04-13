@@ -1,7 +1,8 @@
 from kivy.uix.screenmanager import Screen
 from kivy.uix.tabbedpanel import TabbedPanelItem
 from kivy.uix.togglebutton import ToggleButton
-from kivy.properties import ListProperty, StringProperty, NumericProperty, ObjectProperty
+from kivy.uix.boxlayout import BoxLayout
+from kivy.properties import ListProperty, StringProperty, NumericProperty, ObjectProperty, BooleanProperty
 from kivy.lang import Builder
 from kivy.logger import Logger
 from kivy.core.window import Window
@@ -96,46 +97,29 @@ class CalibrationPanel(TabbedPanelItem):
         super(CalibrationPanel, self).__init__(**kwargs)
         self.is_accurate = False
         self.bind(example_point=self.on_example_point)
-        self._points = ['upper_left', 'upper_right', 'lower_left', 'lower_right', ]
-        self._save_buttons = [point +'_save' for point in self._points]
 
-    def save_point(self):
-        self.selected.valid = True
-        self.selected.ellipse_color = [0, 1, 0, 1]
-        self.selected.peachy = self.printer_point
-
-    def save_points(self):
-        self.selected.valid = True
-        self.selected.ellipse_color = [0, 1, 0, 1]
-        self.selected.peachy = self.printer_point
-
-    def load_point(self, point_button):
-        self.disable_save_buttons()
-        self.selected = point_button
-        self.ids[self.selected.save_button_id].disabled = False
-        self.printer_point = self.selected.peachy
-        self.example_point = self.selected.example
+    def set_points(self, peachy, example):
+        self.printer_point = peachy
+        self.example_point = example
         self.set_screen_point_from_printer()
 
-    def disable_save_buttons(self):
-        for widget_name in self._save_buttons:
-            self.ids[widget_name].disabled = True
-
     def reset_points(self):
-        width, depth, height = self.calibration_api.get_print_area()
+        for child in self.ids.point_selections.children:
+            self.remove(child)
 
-        for point in self._points:
-            self.ids[point].ellipse_color = [1, 0, 0, 1]
-            self.ids[point].peachy = [0.5, 0.5]
-            self.ids[point].valid = False
-
-        self.ids.upper_left.actual = [-width / 2.0,  depth / 2.0]
-        self.ids.upper_right.actual = [ width / 2.0,  depth / 2.0]
-        self.ids.lower_left.actual = [ width / 2.0, -depth / 2.0]
-        self.ids.lower_right.actual = [-width / 2.0, -depth / 2.0]
-
-    def on_point_selection(self, point):
-        self.load_point(point)
+        for point in [[-1.0, 1.0], [1.0, 1.0], [1.0, -1.0], [-1.0, -1.0]]:
+            c_point = CalibrationPoint(
+                caller=self,
+                active=False,
+                actual=[point[0] * self.printer_width / 2.0, point[1] * self.printer_depth / 2.0],
+                peachy=[(point[0] + 1) / 2, (point[1] + 1) / 2],
+                example=point,
+                valid=False,
+                indicator_color=[1.0, 0.0, 0.0, 1.0],
+                text="Select",
+                group="current",
+            )
+            self.ids.point_selections.add_widget(c_point)
 
     def on_resize(self, *args):
         Clock.schedule_once(self.fix_sizes, 0)
@@ -204,16 +188,65 @@ class CalibrationPanel(TabbedPanelItem):
             self.set_printer_pos_from_screen(print_x, print_y)
             self.calibration_point = mouse_pos.pos
 
+    def load_points_from_exisiting_calibration(self):
+        self.reset_points()
+        # if self.calibration_type == 'top':
+        #     points = self.calibration_api.get_upper_points()
+        #     height = self.calibration_api.get_height()
+        # else:
+        #     points = self.calibration_api.get_lower_points()
+        #     height = 0
+
+        # if self.printer_height != height:
+        #     self.reset_points()
+
+        # for point in points:
+        #     peachy = point[0]
+        #     actual = point[1]
+        #     if abs(actual[0] * 2 ) != self.printer_width or abs(actual[1] * 2 ) != self.printer_depth:
+        #         self.reset_points()
+        #         return
+
     def on_enter(self):
         Window.bind(on_motion=self.on_motion)
         Window.bind(on_resize=self.on_resize)
+        self.printer_width, self.printer_depth, self.printer_height = self.calibration_api.get_print_area()
+
         if self.calibration_api:
             self.calibration_api.show_point([self.printer_point[0], self.printer_point[1], self.calibration_height])
-        self.selected = self.ids.upper_left
+        self.load_points_from_exisiting_calibration()
 
     def on_leave(self):
         Window.unbind(on_motion=self.on_motion)
         Window.unbind(on_resize=self.on_resize)
+
+
+class CalibrationPoint(BoxLayout):
+    active = BooleanProperty(False)
+    actual = ListProperty([0.0, 0.0])
+    peachy = ListProperty([0.0, 0.0])
+    example = ListProperty([0.0, 0.0])
+    valid = BooleanProperty(False)
+    indicator_color = ListProperty([1.0, 0.0, 0.0, 1.0])
+    text = StringProperty()
+    group = StringProperty()
+    caller = ObjectProperty()
+
+    def save_point(self):
+        self.valid = True
+        self.indicator_color = [0.0, 1.0, 0.0, 1.0]
+        self.peachy = self.caller.printer_point
+
+    def on_state(self, instance, value):
+        if value == 'normal':
+            
+            self.active = True
+        else:
+            self.active = False
+
+    def select_point(self):
+        self.active = True
+        
 
 
 class TestPatternToggle(ToggleButton):
