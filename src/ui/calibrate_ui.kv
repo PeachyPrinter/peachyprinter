@@ -299,6 +299,7 @@
     ToggleButton:
         group: root.group
         on_state: root.on_state(self.state)
+        text: root.toggle_text
         canvas.after:
             Color:
                 rgba: root.indicator_color
@@ -306,6 +307,7 @@
                 pos: [self.x - self.height * 0.8, self.y + self.height * 0.1]
                 size: [self.height * 0.8, self.height * 0.8]
     Button:
+        size_hint_x: 0.5
         text: _("Save")
         disabled: not root.active
         on_release: root.save_point()

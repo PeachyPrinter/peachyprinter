@@ -99,9 +99,11 @@ class CalibrationPanel(TabbedPanelItem):
         self.bind(example_point=self.on_example_point)
 
     def set_points(self, peachy, example):
+        Logger.info("Setting points")
         self.printer_point = peachy
         self.example_point = example
         self.set_screen_point_from_printer()
+        self.calibration_api.show_point([self.printer_point[0], self.printer_point[1], self.calibration_height])
 
     def reset_points(self):
         for child in self.ids.point_selections.children:
@@ -112,11 +114,10 @@ class CalibrationPanel(TabbedPanelItem):
                 caller=self,
                 active=False,
                 actual=[point[0] * self.printer_width / 2.0, point[1] * self.printer_depth / 2.0],
-                peachy=[(point[0] + 1) / 2, (point[1] + 1) / 2],
-                example=point,
+                peachy=[(point[0] / 2 + 1) / 2, (point[1] / 2 + 1) / 2],
+                example=[(point[0] + 1) / 2, (point[1] + 1) / 2],
                 valid=False,
                 indicator_color=[1.0, 0.0, 0.0, 1.0],
-                text="Select",
                 group="current",
             )
             self.ids.point_selections.add_widget(c_point)
@@ -228,12 +229,13 @@ class CalibrationPoint(BoxLayout):
     example = ListProperty([0.0, 0.0])
     valid = BooleanProperty()
     indicator_color = ListProperty([1.0, 0.0, 0.0, 1.0])
-    text = StringProperty()
+    toggle_text = StringProperty()
     group = StringProperty()
     caller = ObjectProperty()
 
     def __init__(self, **kwargs):
         super(CalibrationPoint, self).__init__(**kwargs)
+        self.toggle_text = 'X:%.1f , Y:%.1f' % (self.actual[0], self.actual[1])
 
     def save_point(self):
         self.valid = True
