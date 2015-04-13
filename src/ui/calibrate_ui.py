@@ -81,6 +81,7 @@ class OrientationPanel(TabbedPanelItem):
                     child.state = 'down'
                 else:
                     child.state = 'normal'
+            self.update_orientation(*current)
 
 
 class CalibrationPanel(TabbedPanelItem):
@@ -94,6 +95,10 @@ class CalibrationPanel(TabbedPanelItem):
     center_point = ListProperty([0.0, 0.0])
     selected = ObjectProperty()
     valid = BooleanProperty(False)
+    swap_axis = BooleanProperty()
+    xflip = BooleanProperty()
+    yflip = BooleanProperty()
+
 
     calibration_api = ObjectProperty()
 
@@ -106,7 +111,12 @@ class CalibrationPanel(TabbedPanelItem):
         self.printer_point = peachy
         self.example_point = example
         self.set_screen_point_from_printer()
-        self.calibration_api.show_point([self.printer_point[0], self.printer_point[1], self.calibration_height])
+        self.print_peachy_point()
+        self.printer_point_emphasis = True
+        if self._all_points_are_valid():
+            self.valid = True
+
+    def save_point(self):
         self.printer_point_emphasis = True
         if self._all_points_are_valid():
             self.valid = True
@@ -161,8 +171,25 @@ class CalibrationPanel(TabbedPanelItem):
             peachyy = y
 
         self.printer_point = [peachyx, peachyy]
+
+        if self.xflip:
+            Logger.info('xflip')
+            peachyx = 1.0 - peachyx
+
+        if self.yflip:
+            Logger.info('yflip')
+            peachyy = 1.0 - peachyy
+
+        if self.swap_axis:
+            Logger.info('swap_axis')
+            xt, yt = peachyx, peachyy
+            peachyx, peachyy = yt, xt
+
+        self.printer_point = [peachyx, peachyy]
+        self.print_peachy_point()
+
+    def print_peachy_point(self):
         self.calibration_api.show_point([self.printer_point[0], self.printer_point[1], self.calibration_height])
-        # Logger.info('%s, %s' % (peachyx, peachyy))
 
     def super_accurate_mode(self, instance):
         if instance.state == 'normal':
@@ -248,8 +275,13 @@ class CalibrationPanel(TabbedPanelItem):
         self.printer_width, self.printer_depth, self.printer_height = self.calibration_api.get_print_area()
 
         if self.calibration_api:
-            self.calibration_api.show_point([self.printer_point[0], self.printer_point[1], self.calibration_height])
-        self.load_points_from_exisiting_calibration()
+            x, y, s = self.calibration_api.get_orientation()
+            self.swap_axis = s
+            self.xflip = x
+            self.yflip = y
+            Logger.info('X-%s, Y-%s, S-%s' % (str(self.swap_axis), str(self.xflip), str(self.yflip),))
+            self.load_points_from_exisiting_calibration()
+            self.print_peachy_point()
 
     def on_leave(self):
         Window.unbind(on_motion=self.on_motion)
@@ -274,7 +306,8 @@ class CalibrationPoint(BoxLayout):
     def save_point(self):
         self.valid = True
         self.indicator_color = [0.0, 1.0, 0.0, 1.0]
-        self.caller.set_points(self.peachy, self.example)
+        self.peachy = self.caller.printer_point
+        self.caller.save_point()
         
 
     def on_state(self, value):

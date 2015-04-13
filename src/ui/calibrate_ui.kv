@@ -97,7 +97,7 @@
                     center: self.parent.center
                     source: 'resources/orientation.png'
             ToggleButton:
-                configuration: (0, 1, 0)
+                configuration: (1, 0, 0)
                 on_release: root.update_orientation(*self.configuration)
                 id: orient_100
                 allow_no_selection: False
@@ -115,7 +115,7 @@
                     canvas.after:
                         PopMatrix
             ToggleButton:
-                configuration: (1, 1, 0)
+                configuration: (1, 0, 1)
                 on_release: root.update_orientation(*self.configuration)
                 id: orient_101
                 allow_no_selection: False
@@ -133,7 +133,7 @@
                     canvas.after:
                         PopMatrix
             ToggleButton:
-                configuration: (1, 0, 1)
+                configuration: (0, 1, 1)
                 on_release: root.update_orientation(*self.configuration)
                 id: orient_011
                 allow_no_selection: False
@@ -151,7 +151,7 @@
                     canvas.after:
                         PopMatrix
             ToggleButton:
-                configuration: (0, 0, 1)
+                configuration: (0, 1, 0)
                 on_release: root.update_orientation(*self.configuration)
                 id: orient_010
                 allow_no_selection: False
@@ -195,7 +195,7 @@
                     canvas.after:
                         PopMatrix
             ToggleButton:
-                configuration: (0, 1, 1)
+                configuration: (1, 1, 0)
                 on_release: root.update_orientation(*self.configuration)
                 id: orient_110
                 allow_no_selection: False
@@ -217,7 +217,7 @@
                     canvas.after:
                         PopMatrix
             ToggleButton:
-                configuration: (1, 0, 0)
+                configuration: (0, 0, 1)
                 on_release: root.update_orientation(*self.configuration)
                 id: orient_001
                 allow_no_selection: False
