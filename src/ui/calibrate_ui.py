@@ -8,6 +8,7 @@ from kivy.logger import Logger
 from kivy.core.window import Window
 from kivy.clock import Clock
 
+from infrastructure.langtools import _
 
 class CenterPanel(TabbedPanelItem):
     calibration_api = ObjectProperty()
@@ -88,8 +89,11 @@ class CalibrationPanel(TabbedPanelItem):
     example_point = ListProperty([0, 0])
     example_dot = ListProperty([0, 0])
     printer_point = ListProperty([0.5, 0.5, calibration_height])
+    printer_point_text = StringProperty('')
+    printer_point_emphasis = BooleanProperty(False)
     center_point = ListProperty([0.0, 0.0])
     selected = ObjectProperty()
+    valid = BooleanProperty(False)
 
     calibration_api = ObjectProperty()
 
@@ -99,15 +103,23 @@ class CalibrationPanel(TabbedPanelItem):
         self.bind(example_point=self.on_example_point)
 
     def set_points(self, peachy, example):
-        Logger.info("Setting points")
         self.printer_point = peachy
         self.example_point = example
         self.set_screen_point_from_printer()
         self.calibration_api.show_point([self.printer_point[0], self.printer_point[1], self.calibration_height])
+        self.printer_point_emphasis = True
+        if self._all_points_are_valid():
+            self.valid = True
+
+    def _all_points_are_valid(self):
+        is_valid = True
+        for child in self.ids.point_selections.children:
+            is_valid = is_valid and child.valid
+        return is_valid
 
     def reset_points(self):
-        for child in self.ids.point_selections.children:
-            self.remove(child)
+        self.ids.point_selections.clear_widgets()
+        self.valid = False
 
         for point in [[-1.0, 1.0], [1.0, 1.0], [1.0, -1.0], [-1.0, -1.0]]:
             c_point = CalibrationPoint(
@@ -126,7 +138,6 @@ class CalibrationPanel(TabbedPanelItem):
         Clock.schedule_once(self.fix_sizes, 0)
 
     def fix_sizes(self, *args):
-        Logger.info("Resizing in my stuff")
         self.set_screen_point_from_printer()
         self.on_example_point()
 
@@ -189,24 +200,47 @@ class CalibrationPanel(TabbedPanelItem):
             self.set_printer_pos_from_screen(print_x, print_y)
             self.calibration_point = mouse_pos.pos
 
+    def on_printer_point(self, instance, value):
+        self.printer_point_emphasis = False
+        self.printer_point_text = _('Printer Posisition || ') + 'X: %.1f, Y: %.1f' % ((value[0] * 200) - 100, (value[1] * 200) - 100)
+
     def load_points_from_exisiting_calibration(self):
-        self.reset_points()
-        # if self.calibration_type == 'top':
-        #     points = self.calibration_api.get_upper_points()
-        #     height = self.calibration_api.get_height()
-        # else:
-        #     points = self.calibration_api.get_lower_points()
-        #     height = 0
+        self.ids.point_selections.clear_widgets()
+        self.valid = True
 
-        # if self.printer_height != height:
-        #     self.reset_points()
+        if self.calibration_type == 'top':
+            calibration_points = self.calibration_api.get_upper_points()
+            height = self.calibration_api.get_height()
+            if self.printer_height != height:
+                self.reset_points()
+                return
+        else:
+            calibration_points = self.calibration_api.get_lower_points()
+            height = 0
 
-        # for point in points:
-        #     peachy = point[0]
-        #     actual = point[1]
-        #     if abs(actual[0] * 2 ) != self.printer_width or abs(actual[1] * 2 ) != self.printer_depth:
-        #         self.reset_points()
-        #         return
+        for (peachy, actual) in calibration_points.items():
+            # if abs(actual[0] * 2.0) != self.printer_width or abs(actual[1] * 2.0) != self.printer_depth:
+            #     self.reset_points()
+            #     return
+            c_point = CalibrationPoint(
+                caller=self,
+                active=False,
+                actual=actual,
+                peachy=peachy,
+                example=[(actual[0] / abs(actual[0]) + 1.0) / 2.0, (actual[1] / abs(actual[1]) + 1.0) / 2.0],
+                valid=True,
+                indicator_color=[0.0, 1.0, 0.0, 1.0],
+                group="current",
+            )
+            self.ids.point_selections.add_widget(c_point)
+
+    def save_all_points(self):
+        points = dict([((child.peachy[0], child.peachy[1]), (child.actual[0], child.actual[1])) for child in self.ids.point_selections.children])
+        if self.calibration_type == 'top':
+            self.calibration_api.set_upper_points(points)
+            self.calibration_api.set_height(self.printer_height)
+        else:
+            self.calibration_api.set_lower_points(points)
 
     def on_enter(self):
         Window.bind(on_motion=self.on_motion)
@@ -240,7 +274,8 @@ class CalibrationPoint(BoxLayout):
     def save_point(self):
         self.valid = True
         self.indicator_color = [0.0, 1.0, 0.0, 1.0]
-        self.peachy = self.caller.printer_point
+        self.caller.set_points(self.peachy, self.example)
+        
 
     def on_state(self, value):
         if value == 'down':

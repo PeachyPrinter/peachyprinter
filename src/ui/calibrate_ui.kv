@@ -296,16 +296,16 @@
     orientation: 'horizontal'
     Label:
         size_hint_x: 0.1
-    ToggleButton:
-        group: root.group
-        on_state: root.on_state(self.state)
-        text: root.toggle_text
         canvas.after:
             Color:
                 rgba: root.indicator_color
             Ellipse:
-                pos: [self.x - self.height * 0.8, self.y + self.height * 0.1]
-                size: [self.height * 0.8, self.height * 0.8]
+                pos: [self.center[0] - (self.width * 0.8) / 2.0, self.center[1] - (self.width * 0.8) / 2.0]
+                size: [min(self.height, self.width) * 0.8, min(self.height, self.width) * 0.8]
+    ToggleButton:
+        group: root.group
+        on_state: root.on_state(self.state)
+        text: root.toggle_text
     Button:
         size_hint_x: 0.5
         text: _("Save")
@@ -322,23 +322,30 @@
             orientation: 'vertical'
             BoxLayout:
                 orientation: 'vertical'
-                Button:
-                    text: _('Reset All Points')
-                    on_release: root.reset_points()
+                size_hint_y: 2.0
+                ToggleButton:
+                    text: _('Super Accurate Mode')
+                    on_release: root.super_accurate_mode(self)
                 Label:
+                    size_hint_y:0.2
                 BoxLayout:
                     orientation: 'vertical'
                     size_hint: [1.0, len(self.children)]
                     id: point_selections
                 Label:
-                ToggleButton:
-                    text: _('Super Accurate Mode')
-                    on_release: root.super_accurate_mode(self)
-                Button:
-                    text: _('Save All Points')
-                    disabled: True
-                    on_release: root.save_points()
+                    text: root.printer_point_text
+                    bold: root.printer_point_emphasis
+                BoxLayout:
+                    orientation: 'horizontal'
+                    Button:
+                        text: _('Reset All')
+                        on_release: root.reset_points()
+                    Button:
+                        text: _('Save All')
+                        disabled: not root.valid
+                        on_release: root.save_all_points()
                 Label:
+                    size_hint_y:0.2
             Image:
                 id: example_grid
                 pos: self.parent.pos
