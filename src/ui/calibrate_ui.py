@@ -226,27 +226,27 @@ class CalibrationPoint(BoxLayout):
     actual = ListProperty([0.0, 0.0])
     peachy = ListProperty([0.0, 0.0])
     example = ListProperty([0.0, 0.0])
-    valid = BooleanProperty(False)
+    valid = BooleanProperty()
     indicator_color = ListProperty([1.0, 0.0, 0.0, 1.0])
     text = StringProperty()
     group = StringProperty()
     caller = ObjectProperty()
+
+    def __init__(self, **kwargs):
+        super(CalibrationPoint, self).__init__(**kwargs)
 
     def save_point(self):
         self.valid = True
         self.indicator_color = [0.0, 1.0, 0.0, 1.0]
         self.peachy = self.caller.printer_point
 
-    def on_state(self, instance, value):
-        if value == 'normal':
-            
+    def on_state(self, value):
+        if value == 'down':
+            self.caller.set_points(self.peachy, self.example)
             self.active = True
         else:
             self.active = False
 
-    def select_point(self):
-        self.active = True
-        
 
 
 class TestPatternToggle(ToggleButton):

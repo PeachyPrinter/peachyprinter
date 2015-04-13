@@ -298,6 +298,7 @@
         size_hint_x: 0.1
     ToggleButton:
         group: root.group
+        on_state: root.on_state(self.state)
         canvas.after:
             Color:
                 rgba: root.indicator_color
@@ -306,7 +307,7 @@
                 size: [self.height * 0.8, self.height * 0.8]
     Button:
         text: _("Save")
-        disabled: root.active
+        disabled: not root.active
         on_release: root.save_point()
 
 <CalibrationPanel>:
