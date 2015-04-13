@@ -305,11 +305,14 @@
                     on_release: root.reset_points()
                 Label:
                 GridLayout:
-                    cols: 2
-                    size_hint: [1.0, 2.0]
+                    cols: 3
+                    size_hint: [1.0, 4.0]
+                    Label:
+                        size_hint_x: 0.1
                     ToggleButton:
                         group:"top_calibaration"
                         id: upper_left
+                        save_button_id: 'upper_left_save'
                         actual: [0.0, 0.0]
                         peachy: [0.0, 0.0]
                         example: [0.0, 1.0]
@@ -322,11 +325,19 @@
                             Color:
                                 rgba: self.ellipse_color
                             Ellipse:
-                                pos: [self.x + self.width - self.height * 0.4, self.y]
-                                size: [self.height * 0.4, self.height * 0.4]
+                                pos: [self.x - self.height * 0.8, self.y + self.height * 0.1]
+                                size: [self.height * 0.8, self.height * 0.8]
+                    Button:
+                        id: upper_left_save
+                        text: _("Save")
+                        disabled: False
+                        on_release: root.save_point()
+                    Label:
+                        size_hint_x: 0.1
                     ToggleButton:
                         group:"top_calibaration"
                         id: upper_right
+                        save_button_id: 'upper_right_save'
                         actual: [0.0, 0.0]
                         peachy: [0.0, 0.0]
                         example: [1.0, 1.0]
@@ -338,11 +349,19 @@
                             Color:
                                 rgba: self.ellipse_color
                             Ellipse:
-                                pos: [self.x, self.y]
-                                size: [self.height * 0.4, self.height * 0.4]
+                                pos: [self.x - self.height * 0.8, self.y + self.height * 0.1]
+                                size: [self.height * 0.8, self.height * 0.8]
+                    Button:
+                        id: upper_right_save
+                        text: _("Save")
+                        disabled: True
+                        on_release: root.save_point()
+                    Label:
+                        size_hint_x: 0.1
                     ToggleButton:
                         group:"top_calibaration"
                         id: lower_left
+                        save_button_id: 'lower_left_save'
                         actual: [0.0, 0.0]
                         peachy: [0.0, 0.0]
                         example: [1.0, 0.0]
@@ -354,11 +373,19 @@
                             Color:
                                 rgba: self.ellipse_color
                             Ellipse:
-                                pos: [self.x + self.width - self.height * 0.4, self.y + self.height * 0.6]
-                                size: [self.height * 0.4, self.height * 0.4]
+                                pos: [self.x - self.height * 0.8, self.y + self.height * 0.1]
+                                size: [self.height * 0.8, self.height * 0.8]
+                    Button:
+                        id: lower_left_save
+                        text: _("Save")
+                        disabled: True
+                        on_release: root.save_point()
+                    Label:
+                        size_hint_x: 0.1
                     ToggleButton:
                         group:"top_calibaration"
                         id: lower_right
+                        save_button_id: 'lower_right_save'
                         actual: [0.0, 0.0]
                         peachy: [0.0, 0.0]
                         example: [0.0, 0.0]
@@ -370,15 +397,21 @@
                             Color:
                                 rgba: self.ellipse_color
                             Ellipse:
-                                pos: [self.x, self.y + self.height * 0.6]
-                                size: [self.height * 0.4, self.height * 0.4]
+                                pos: [self.x - self.height * 0.8, self.y + self.height * 0.1]
+                                size: [self.height * 0.8, self.height * 0.8]
+                    Button:
+                        id: lower_right_save
+                        text: _("Save")
+                        disabled: True
+                        on_release: root.save_point()
                 Label:
                 ToggleButton:
                     text: _('Super Accurate Mode')
                     on_release: root.super_accurate_mode(self)
                 Button:
-                    text: _('Save Point')
-                    on_release: root.save_point()
+                    text: _('Save All Points')
+                    disabled: True
+                    on_release: root.save_points()
                 Label:
             Image:
                 id: example_grid

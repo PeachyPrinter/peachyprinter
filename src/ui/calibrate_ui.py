@@ -96,44 +96,45 @@ class CalibrationPanel(TabbedPanelItem):
         super(CalibrationPanel, self).__init__(**kwargs)
         self.is_accurate = False
         self.bind(example_point=self.on_example_point)
+        self._points = ['upper_left', 'upper_right', 'lower_left', 'lower_right', ]
+        self._save_buttons = [point +'_save' for point in self._points]
 
     def save_point(self):
         self.selected.valid = True
         self.selected.ellipse_color = [0, 1, 0, 1]
         self.selected.peachy = self.printer_point
 
-    def load_point(self, key):
-        self.selected = key
+    def save_points(self):
+        self.selected.valid = True
+        self.selected.ellipse_color = [0, 1, 0, 1]
+        self.selected.peachy = self.printer_point
+
+    def load_point(self, point_button):
+        self.disable_save_buttons()
+        self.selected = point_button
+        self.ids[self.selected.save_button_id].disabled = False
         self.printer_point = self.selected.peachy
         self.example_point = self.selected.example
         self.set_screen_point_from_printer()
 
+    def disable_save_buttons(self):
+        for widget_name in self._save_buttons:
+            self.ids[widget_name].disabled = True
+
     def reset_points(self):
         width, depth, height = self.calibration_api.get_print_area()
 
-        self.ids.upper_left.ellipse_color = [1, 0, 0, 1]
+        for point in self._points:
+            self.ids[point].ellipse_color = [1, 0, 0, 1]
+            self.ids[point].peachy = [0.5, 0.5]
+            self.ids[point].valid = False
+
         self.ids.upper_left.actual = [-width / 2.0,  depth / 2.0]
-        self.ids.upper_left.peachy = [0.5, 0.5]
-        self.ids.upper_left.valid = False
-
-        self.ids.upper_right.ellipse_color = [1, 0, 0, 1]
         self.ids.upper_right.actual = [ width / 2.0,  depth / 2.0]
-        self.ids.upper_right.peachy = [0.5, 0.5]
-        self.ids.upper_right.valid = False
-
-        self.ids.lower_left.ellipse_color = [1, 0, 0, 1]
         self.ids.lower_left.actual = [ width / 2.0, -depth / 2.0]
-        self.ids.lower_left.peachy = [0.5, 0.5]
-        self.ids.lower_left.valid = False
-
-        self.ids.lower_right.ellipse_color = [1, 0, 0, 1]
         self.ids.lower_right.actual = [-width / 2.0, -depth / 2.0]
-        self.ids.lower_right.peachy = [0.5, 0.5]
-        self.ids.lower_right.valid = False
-
 
     def on_point_selection(self, point):
-        self.save_point()
         self.load_point(point)
 
     def on_resize(self, *args):
