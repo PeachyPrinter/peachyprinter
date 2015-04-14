@@ -325,13 +325,9 @@ class CalibrationPoint(BoxLayout):
             self.active = False
 
 
-class TestPatternToggle(ToggleButton):
-    pass
-
-
 class TestPatternPanel(TabbedPanelItem):
     calibration_api = ObjectProperty()
-    speed = NumericProperty(1000)
+    speed = NumericProperty(100)
 
     def __init__(self, **kwargs):
         super(TestPatternPanel, self).__init__(**kwargs)
@@ -342,6 +338,9 @@ class TestPatternPanel(TabbedPanelItem):
             items = self.calibration_api.get_test_patterns()
             for item in items:
                 self.ids.patterns.add_widget(ToggleButton(group='test_patterns',  text=item, on_release=self.show_pattern))
+            self.calibration_api.set_test_pattern_speed(self.speed)
+            self.ids.patterns.children[-1].state = "down"
+            self.show_pattern(self.ids.patterns.children[-1])
             self.loaded = True
 
     def show_pattern(self, instance):

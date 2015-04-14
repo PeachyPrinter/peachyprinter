@@ -73,23 +73,27 @@
                 size_hint_y: 0.5
                 orientation: 'vertical'
                 BoxLayout:
+                    size_hint_y: 40.0 / self.parent.height
                     orientation: 'horizontal'
                     Label:
                         text: "Flipped on X:"
                     Label:
                         text: root.orient_xflip
                 BoxLayout:
+                    size_hint_y: 40.0 / self.parent.height
                     orientation: 'horizontal'
                     Label:
                         text: "Flipped on y:"
                     Label:
                         text: root.orient_yflip
                 BoxLayout:
+                    size_hint_y: 40.0 / self.parent.height
                     orientation: 'horizontal'
                     Label:
                         text: 'Swapped Axis:'
                     Label:
                         text: root.orient_swap_axis
+                Label:
             ScrollView:
                 Label:
                     text: _("MARKUP - Orientation Instructions")
@@ -270,26 +274,36 @@
         BoxLayout:
             orientation: 'vertical'
             BoxLayout:
+                size_hint_y: 40.0 / self.parent.height
                 orientation: 'horizontal'
                 Label:
                     text: _('Height (mm)')
                 FloatInput:
+                    size_hint_x: 0.3
                     id: print_area_height
                     text: ""
+                Label:
             BoxLayout:
+                size_hint_y: 40.0 / self.parent.height
                 orientation: 'horizontal'
                 Label:
                     text: _('Depth (mm)')
                 FloatInput:
+                    size_hint_x: 0.3
                     id: print_area_depth
                     text: ""
+                Label:
             BoxLayout:
+                size_hint_y: 40.0 / self.parent.height
                 orientation: 'horizontal'
                 Label:
                     text: _('Width (mm)')
                 FloatInput:
+                    size_hint_x: 0.3
                     id: print_area_width
                     text: ""
+                Label:
+            Label:
 
 <AlignmentPanel>:
     text: _("Aligment")
