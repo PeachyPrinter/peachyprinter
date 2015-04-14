@@ -13,67 +13,100 @@
                 orientation: 'horizontal'
                 Label:
                     text: 'Dripper Type'
-                Spinner:
-                    values: [_("Peachy Printer"), _("Emulated Dripper")]
-                    text: _("Peachy Printer")
+                KeyedSpinner:
+                    id: dripper_type_selector
+                    values: [_('Emulated'), _('Photo'), _('Circut')]
+                    keys: ['emulated', 'photo', 'microcontroller']
+                    text: _("Circut")
+                    key:  'microcontroller'
+                    on_key: root.dripper_type_changed(self, self.key)
             BoxLayout:
-                size_hint_y: 60.0 / root.height
-                orientation: 'horizontal'
-                Label:
-                    text: _("Start Height (mm)")
-                FloatInput:
-                    on_text: root.update_total_height()
-                    id: start_height
-                    text: "0"
-            BoxLayout:
-                size_hint_y: 60.0 / root.height
-                orientation: 'horizontal'
-                Label:
-                    text: _("End Height (mm)")
-                FloatInput:
-                    on_text: root.update_total_height()
-                    id: end_height
-                    text: "100"
-            BoxLayout:
-                size_hint_y: 60.0 / root.height
-                orientation: 'horizontal'
-                Label:
-                    text: _("Total Height (mm)")
-                FloatInput:
-                    text: root.total_height
-                    disabled: True
-            BoxLayout:
-                size_hint_y: 60.0 / root.height
-                orientation: 'horizontal'
-                Label:
-                    text: _('Drips')
-                FloatInput:
-                    text: root.drips
-                    disabled: True
-            BoxLayout:
-                size_hint_y: 60.0 / root.height
-                orientation: 'horizontal'
-                Label:
-                    text: _('Drips per mm')
-                FloatInput:
-                    text: root.drips_per_mm
-                    disabled: True
-            BoxLayout:
-                size_hint_y: 60.0 / root.height
-                orientation: 'horizontal'
-                Label:
-                Button:
-                    text: _("Save")
-            Label:
-                size_hint_y: 60.0 / root.height
-            Button:
-                size_hint_y: 60.0 / root.height
-                text: _("Reset Drip Count")
-            Label:
-            Button:
-                size_hint_y: 60.0 / root.height
-                text:"Back"
-                on_release: app.root.current = 'mainui'
+                id: dripper_setup
         Label:
             text: 'Drip Visualization Here'
+    Button:
+        text: _("Back")
+        size_hint_y: 30.0 / root.height
+        on_release: app.root.current = 'mainui'
 
+<EmulatedDripSetup>:
+    orientation: 'vertical'
+    BoxLayout:
+        size_hint_y: 40.0 / root.height
+        Label:
+            text: _("Drips Per Second")
+        FloatInput:
+            text: str(root.drips_per_second)
+            on_text: root.drips_per_second = float(self.text)
+    BoxLayout:
+        size_hint_y: 40.0 / root.height
+        Label:
+            text: _("Drips Per Millimeter")
+        FloatInput:
+            text: str(root.drips_per_mm)
+            on_text: root.drips_per_mm = float(self.text)
+    Label:
+
+<PhotoDripSetup>:
+    orientation: 'vertical'
+    BoxLayout:
+        size_hint_y: 40.0 / root.height
+        Label:
+            text: _("Delay After Layer")
+        FloatInput:
+            text: str(root.photo_zaxis_delay)
+            on_text: root.photo_zaxis_delay = float(self.text)
+    Label:
+
+<MicrocontrollerDripSetup>:
+    orientation: 'vertical'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        canvas.before:
+            Color:
+                rgba:[0.2,0.2,0.2,1.0]
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Label:
+            text: _("Drip Calculator")
+            size_hint_y: 60.0 / self.parent.height
+        Label:
+        BoxLayout:
+            size_hint_y: 60.0 / self.parent.height
+            orientation: 'horizontal'
+            Label:
+                text: _("Distance to Measure (mm)")
+            FloatInput:
+                text: '%.2f' % root.total_height
+                disabled: True
+        Label:
+        Button:
+            size_hint_y: 60.0 / self.parent.height
+            text: _("Start Counting Drips")
+        Button:
+            size_hint_y: 60.0 / self.parent.height
+            text: _("Stop Counting Drips")
+        Button:
+            size_hint_y: 60.0 / self.parent.height
+            text: _("Reset Drip Count")
+        BoxLayout:
+            size_hint_y: 60.0 / self.parent.height
+            orientation: 'horizontal'
+            Label:
+                text: _('Drips')
+            Label:
+                text: '%.2f' % root.drips
+        Button:
+            size_hint_y: 60.0 / self.parent.height
+            text: _("Calculate Drips Per mm")
+
+    BoxLayout:
+        size_hint_y: 60.0 / self.parent.height
+        orientation: 'horizontal'
+        Label:
+            text: _('Drips per mm')
+        FloatInput:
+            text: '%.2f' % root.drips_per_mm
+    Label:
