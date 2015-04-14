@@ -162,8 +162,11 @@ class CalibrationPanel(TabbedPanelItem):
 
     def set_printer_pos_from_screen(self, x, y):
         if self.is_accurate:
-            peachyx = self.center_point[0] + (x * 0.1)
-            peachyy = self.center_point[1] + (y * 0.1)
+            dx, dy = self.remove_orientation_correction(*self.center_point)
+            x = (x * 2) - 1
+            y = (y * 2) - 1
+            peachyx = dx + (x * 0.1)
+            peachyy = dy + (y * 0.1)
             peachyx = max(0, min(1.0, peachyx))
             peachyy = max(0, min(1.0, peachyy))
         else:
@@ -181,7 +184,16 @@ class CalibrationPanel(TabbedPanelItem):
         if self.swap_axis:
             xt, yt = x, y
             x, y = yt, xt
+        return [x, y]
 
+    def remove_orientation_correction(self, x, y):
+        if self.swap_axis:
+            xt, yt = x, y
+            x, y = yt, xt
+        if self.yflip:
+            y = 1.0 - y
+        if self.xflip:
+            x = 1.0 - x
         return [x, y]
 
     def print_peachy_point(self):
