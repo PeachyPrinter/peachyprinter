@@ -42,9 +42,14 @@
     BoxLayout:
         orientation: 'horizontal'
         padding: 5
-        Label:
+        ScrollView:
             size_hint_x: 0.6
-            text: "INFO BOX HERE"
+            Label:
+                text: _("MARKUP - Center Calibration Instructions")
+                markup: True
+                text_size: self.width, None
+                size_hint_y: None
+                height: self.texture_size[1]
         Image:
             pos: self.parent.pos
             size: self.parent.size
@@ -62,26 +67,36 @@
     BoxLayout:
         orientation: 'horizontal'
         BoxLayout:
-            orientation: 'vertical'
             size_hint_x: 0.6
+            orientation: 'vertical'
             BoxLayout:
-                orientation: 'horizontal'
+                size_hint_y: 0.5
+                orientation: 'vertical'
+                BoxLayout:
+                    orientation: 'horizontal'
+                    Label:
+                        text: "Flipped on X:"
+                    Label:
+                        text: root.orient_xflip
+                BoxLayout:
+                    orientation: 'horizontal'
+                    Label:
+                        text: "Flipped on y:"
+                    Label:
+                        text: root.orient_yflip
+                BoxLayout:
+                    orientation: 'horizontal'
+                    Label:
+                        text: 'Swapped Axis:'
+                    Label:
+                        text: root.orient_swap_axis
+            ScrollView:
                 Label:
-                    text: "Flipped on X:"
-                Label:
-                    text: root.orient_xflip
-            BoxLayout:
-                orientation: 'horizontal'
-                Label:
-                    text: "Flipped on y:"
-                Label:
-                    text: root.orient_yflip
-            BoxLayout:
-                orientation: 'horizontal'
-                Label:
-                    text: 'Swapped Axis:'
-                Label:
-                    text: root.orient_swap_axis
+                    text: _("MARKUP - Orientation Instructions")
+                    markup: True
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
         GridLayout:
             id: orientations
             cols:4
@@ -244,9 +259,14 @@
     BoxLayout:
         orientation: 'horizontal'
         padding: 5
-        Label:
+        ScrollView:
             size_hint_x: 0.6
-            text: "INFO BOX HERE"
+            Label:
+                text: _("MARKUP - Print Area Instructions")
+                markup: True
+                text_size: self.width, None
+                size_hint_y: None
+                height: self.texture_size[1]
         BoxLayout:
             orientation: 'vertical'
             BoxLayout:
@@ -276,9 +296,14 @@
     BoxLayout:
         orientation: 'horizontal'
         padding: 5
-        Label:
+        ScrollView:
             size_hint_x: 0.6
-            text: "INFO BOX HERE"
+            Label:
+                text: _("MARKUP - Alignment Instructions")
+                markup: True
+                text_size: self.width, None
+                size_hint_y: None
+                height: self.texture_size[1]
         Image:
             pos: self.parent.pos
             size: self.parent.size
@@ -358,6 +383,13 @@
                     Ellipse:
                         pos: root.example_dot
                         size: [8,8]
+            ScrollView:
+                Label:
+                    text: _("MARKUP - Calibration Instructions")
+                    markup: True
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
         Image:
             id: top_calibration_grid
             pos: self.parent.pos
@@ -382,9 +414,32 @@
     BoxLayout:
         orientation: 'horizontal'
         padding: 5
-        Label:
+        BoxLayout:
             size_hint_x: 0.6
-            text: "INFO BOX HERE"
+            orientation: 'vertical'
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: 0.2
+                BoxLayout:
+                    Label:
+                        text: _("Speed")
+                    Label:
+                        text: '%.f (mm/sec)' % root.speed
+                Slider:
+                    id: speed_slider
+                    min: 1
+                    step:5
+                    max: 1000
+                    value: root.speed
+                    on_value: root.speed = self.value
+            ScrollView:
+                Label:
+                    text: _("MARKUP - Test Pattern Instructions")
+                    markup: True
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
         GridLayout:
             id: patterns
             cols: 2

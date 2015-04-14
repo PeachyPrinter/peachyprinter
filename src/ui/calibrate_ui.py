@@ -325,13 +325,13 @@ class CalibrationPoint(BoxLayout):
             self.active = False
 
 
-
 class TestPatternToggle(ToggleButton):
     pass
 
 
 class TestPatternPanel(TabbedPanelItem):
     calibration_api = ObjectProperty()
+    speed = NumericProperty(1000)
 
     def __init__(self, **kwargs):
         super(TestPatternPanel, self).__init__(**kwargs)
@@ -346,6 +346,10 @@ class TestPatternPanel(TabbedPanelItem):
 
     def show_pattern(self, instance):
         self.calibration_api.show_test_pattern(instance.text)
+
+    def on_speed(self, instance, value):
+        Logger.info("On Speed: %s" % value)
+        self.calibration_api.set_test_pattern_speed(value)
 
 
 Builder.load_file('ui/calibrate_ui.kv')
