@@ -9,7 +9,8 @@
         BoxLayout:
             orientation: 'vertical'
             BoxLayout:
-                size_hint_y: 60.0 / root.height
+                size_hint_y: None
+                height: 40
                 orientation: 'horizontal'
                 Label:
                     text: 'Dripper Type'
@@ -61,52 +62,68 @@
 <MicrocontrollerDripSetup>:
     orientation: 'vertical'
     BoxLayout:
+        size_hint_y: None
+        height: 270
         orientation: 'vertical'
-        padding: 10
+        padding: 20
         canvas.before:
             Color:
                 rgba:[0.2,0.2,0.2,1.0]
             Rectangle:
-                size: self.size
-                pos: self.pos
+                size: [self.size[0] - 20, self.size[1] - 20]
+                pos: [self.pos[0] + 10, self.pos[1] + 10]
         Label:
+            size_hint_y: None
+            height: 30
             text: _("Drip Calculator")
-            size_hint_y: 60.0 / self.parent.height
         Label:
+            size_hint_y: None
+            height: 10
         BoxLayout:
-            size_hint_y: 60.0 / self.parent.height
+            size_hint_y: None
+            height: 30
             orientation: 'horizontal'
             Label:
                 text: _("Distance to Measure (mm)")
             FloatInput:
                 text: '%.2f' % root.total_height
-                disabled: True
         Label:
+            size_hint_y: None
+            height: 10
         Button:
-            size_hint_y: 60.0 / self.parent.height
+            size_hint_y: None
+            height: 30
             text: _("Start Counting Drips")
         Button:
-            size_hint_y: 60.0 / self.parent.height
+            size_hint_y: None
+            height: 30
             text: _("Stop Counting Drips")
         Button:
-            size_hint_y: 60.0 / self.parent.height
+            size_hint_y: None
+            height: 30
             text: _("Reset Drip Count")
         BoxLayout:
-            size_hint_y: 60.0 / self.parent.height
+            size_hint_y: None
+            height: 30
             orientation: 'horizontal'
             Label:
                 text: _('Drips')
             Label:
                 text: '%.2f' % root.drips
         Button:
-            size_hint_y: 60.0 / self.parent.height
+            size_hint_y: None
+            height: 30
             text: _("Calculate Drips Per mm")
-
+    Label:
+        size_hint_y: None
+        height: 30
     BoxLayout:
-        size_hint_y: 60.0 / self.parent.height
         orientation: 'horizontal'
+        size_hint_y: None
+        height: 30
         Label:
             text: _('Drips per mm')
         FloatInput:
             text: '%.2f' % root.drips_per_mm
     Label:
+        
