@@ -136,7 +136,7 @@ class CalibrationPanel(TabbedPanelItem):
                 caller=self,
                 active=False,
                 actual=[point[0] * self.printer_width / 2.0, point[1] * self.printer_depth / 2.0],
-                peachy=[(point[0] / 2 + 1) / 2, (point[1] / 2 + 1) / 2],
+                peachy=self.correct_point_for_orientation((point[0] / 2 + 1) / 2, (point[1] / 2 + 1) / 2),
                 example=[(point[0] + 1) / 2, (point[1] + 1) / 2],
                 valid=False,
                 indicator_color=[1.0, 0.0, 0.0, 1.0],
@@ -170,23 +170,19 @@ class CalibrationPanel(TabbedPanelItem):
             peachyx = x
             peachyy = y
 
-        self.printer_point = [peachyx, peachyy]
-
-        if self.xflip:
-            Logger.info('xflip')
-            peachyx = 1.0 - peachyx
-
-        if self.yflip:
-            Logger.info('yflip')
-            peachyy = 1.0 - peachyy
-
-        if self.swap_axis:
-            Logger.info('swap_axis')
-            xt, yt = peachyx, peachyy
-            peachyx, peachyy = yt, xt
-
-        self.printer_point = [peachyx, peachyy]
+        self.printer_point = self.correct_point_for_orientation(peachyx, peachyy)
         self.print_peachy_point()
+
+    def correct_point_for_orientation(self, x, y):
+        if self.xflip:
+            x = 1.0 - x
+        if self.yflip:
+            y = 1.0 - y
+        if self.swap_axis:
+            xt, yt = x, y
+            x, y = yt, xt
+
+        return [x, y]
 
     def print_peachy_point(self):
         self.calibration_api.show_point([self.printer_point[0], self.printer_point[1], self.calibration_height])
@@ -208,8 +204,10 @@ class CalibrationPanel(TabbedPanelItem):
         grid_x = self.ids.top_calibration_grid.center[0] - grid_extents
         grid_y = self.ids.top_calibration_grid.center[1] - grid_extents
 
-        rel_x = self.printer_point[0] * grid_size
-        rel_y = self.printer_point[1] * grid_size
+        xt, yt = self.correct_point_for_orientation(self.printer_point[0], self.printer_point[1])
+
+        rel_x = xt * grid_size
+        rel_y = yt * grid_size
 
         self.calibration_point = [grid_x + rel_x, grid_y + rel_y]
 
