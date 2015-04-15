@@ -5,30 +5,41 @@
 <DripperCalibrationUI>:
     name: 'drippercalibrationui'
     BoxLayout:
-        orientation: 'horizontal'
+        orientation: 'vertical'
         BoxLayout:
-            orientation: 'vertical'
+            orientation: 'horizontal'
             BoxLayout:
-                size_hint_y: None
-                height: 40
-                orientation: 'horizontal'
-                Label:
-                    text: 'Dripper Type'
-                KeyedSpinner:
-                    id: dripper_type_selector
-                    values: [_('Emulated'), _('Photo'), _('Circut')]
-                    keys: ['emulated', 'photo', 'microcontroller']
-                    text: _("Circut")
-                    key:  'microcontroller'
-                    on_key: root.dripper_type_changed(self, self.key)
+                orientation: 'vertical'
+                BoxLayout:
+                    size_hint_y: None
+                    height: 40
+                    orientation: 'horizontal'
+                    Label:
+                        text: 'Dripper Type'
+                    KeyedSpinner:
+                        id: dripper_type_selector
+                        values: [_('Emulated'), _('Photo'), _('Circut')]
+                        keys: ['emulated', 'photo', 'microcontroller']
+                        text: _("Circut")
+                        key:  'microcontroller'
+                        on_key: root.dripper_type_changed(self, self.key)
+                BoxLayout:
+                    id: dripper_setup
+                ScrollView:
+                    size_hint_y: 0.8
+                    Label:
+                        text: _("MARKUP - Dripper Instructions")
+                        markup: True
+                        text_size: self.width, None
+                        size_hint_y: None
+                        height: self.texture_size[1]
             BoxLayout:
-                id: dripper_setup
-        Label:
-            text: 'Drip Visualization Here'
-    Button:
-        text: _("Back")
-        size_hint_y: 30.0 / root.height
-        on_release: app.root.current = 'mainui'
+                id: visualizations
+        Button:
+            text: _("Back")
+            size_hint_y: None
+            height: 30
+            on_release: app.root.current = 'mainui'
 
 <EmulatedDripSetup>:
     orientation: 'vertical'
@@ -61,72 +72,73 @@
 
 <MicrocontrollerDripSetup>:
     orientation: 'vertical'
-    BoxLayout:
-        size_hint_y: None
-        height: 270
-        orientation: 'vertical'
-        padding: 20
-        canvas.before:
-            Color:
-                rgba:[0.2,0.2,0.2,1.0]
-            Rectangle:
-                size: [self.size[0] - 20, self.size[1] - 20]
-                pos: [self.pos[0] + 10, self.pos[1] + 10]
-        Label:
-            size_hint_y: None
-            height: 30
-            text: _("Drip Calculator")
-        Label:
-            size_hint_y: None
-            height: 10
+    ScrollView:
         BoxLayout:
             size_hint_y: None
-            height: 30
-            orientation: 'horizontal'
+            height: 270
+            orientation: 'vertical'
+            padding: 20
+            canvas.before:
+                Color:
+                    rgba:[0.2,0.2,0.2,1.0]
+                Rectangle:
+                    size: [self.size[0] - 20, self.size[1] - 20]
+                    pos: [self.pos[0] + 10, self.pos[1] + 10]
             Label:
-                text: _("Distance to Measure (mm)")
-            FloatInput:
-                text: '%.2f' % root.total_height
-        Label:
-            size_hint_y: None
-            height: 10
-        Button:
-            size_hint_y: None
-            height: 30
-            text: _("Reset Drip Count")
-            on_release: root.reset_drip_count()
-        BoxLayout:
-            size_hint_y: None
-            height: 30
-            orientation: 'horizontal'
+                size_hint_y: None
+                height: 30
+                text: _("Drip Calculator")
             Label:
-                text: _('Drips')
+                size_hint_y: None
+                height: 10
+            BoxLayout:
+                size_hint_y: None
+                height: 30
+                orientation: 'horizontal'
+                Label:
+                    text: _("Distance to Measure (mm)")
+                FloatInput:
+                    text: '%.2f' % root.total_height
             Label:
-                text: '%.2f' % root.drips
-        BoxLayout:
-            size_hint_y: None
-            height: 30
-            orientation: 'horizontal'
-            Label:
-                text: _('Average Drips per Second')
-            Label:
-                text: '%.2f' % root.average_drips
-        BoxLayout:
-            size_hint_y: None
-            height: 30
-            orientation: 'horizontal'
-            Label:
-                text: _('Current Drips per mm')
-            Label:
-                text: '%.2f' % root.current_drips_per_mm
-        Button:
-            size_hint_y: None
-            height: 30
-            text: _("Use Current Drips per mm")
-            on_release: root.use_current()
+                size_hint_y: None
+                height: 10
+            Button:
+                size_hint_y: None
+                height: 30
+                text: _("Reset Drip Count")
+                on_release: root.reset_drip_count()
+            BoxLayout:
+                size_hint_y: None
+                height: 30
+                orientation: 'horizontal'
+                Label:
+                    text: _('Drips')
+                Label:
+                    text: '%.2f' % root.drips
+            BoxLayout:
+                size_hint_y: None
+                height: 30
+                orientation: 'horizontal'
+                Label:
+                    text: _('Average Drips per Second')
+                Label:
+                    text: '%.2f' % root.average_drips
+            BoxLayout:
+                size_hint_y: None
+                height: 30
+                orientation: 'horizontal'
+                Label:
+                    text: _('Current Drips per mm')
+                Label:
+                    text: '%.2f' % root.current_drips_per_mm
+            Button:
+                size_hint_y: None
+                height: 30
+                text: _("Use Current Drips per mm")
+                on_release: root.use_current()
     Label:
         size_hint_y: None
-        height: 30
+        height: 10
     BoxLayout:
         orientation: 'horizontal'
         size_hint_y: None
@@ -138,4 +150,5 @@
             text: '0.0'
             on_text: root.drips_per_mm = float(self.text)
     Label:
-        
+        size_hint_y: None
+        height: 10        

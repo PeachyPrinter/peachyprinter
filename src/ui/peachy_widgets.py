@@ -25,6 +25,10 @@ class Dripper(BoxLayout):
         self.drip_history = data['drip_history']
         self.count = data['drips']
 
+    def update_parts(self, drips, history):
+        self.drip_history = history
+        self.count = drips
+
     def redraw(self, key):
         self.index += (time.time() - self.lasttime) * self.sections
         self.lasttime = time.time()
@@ -40,6 +44,8 @@ class Dripper(BoxLayout):
         self.canvas.clear()
         top = time.time()
         bottom = top - self.sections
+        self.canvas.add(Color(0.99, 0.99, 0.6, 1.0))
+        self.canvas.add(Rectangle(pos=self.pos, size=self.size))
         for (index, drip) in zip(range(len(self.drip_history), 0, -1), self.drip_history):
             if drip > bottom:
                 self.canvas.add(Color(0.35, 0.4, 1.0, 1.0))

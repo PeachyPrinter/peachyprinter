@@ -2,10 +2,11 @@ from kivy.uix.screenmanager import Screen
 from kivy.lang import Builder
 from kivy.properties import NumericProperty, ListProperty, StringProperty
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.label import Label
 from kivy.uix.spinner import Spinner
 
 from kivy.logger import Logger
-
+from ui.peachy_widgets import Dripper
 
 Builder.load_file('ui/dripper_calibration_ui.kv')
 
@@ -34,13 +35,15 @@ class DripperCalibrationUI(Screen):
     def dripper_type_changed(self, instance, value):
         Logger.info("Drippper Type change to %s" % value)
         self.ids.dripper_setup.clear_widgets()
+        self.ids.visualizations.clear_widgets()
 
         if value == 'emulated':
             self.ids.dripper_setup.add_widget(EmulatedDripSetup(self.configuration_api))
         elif value == 'photo':
             self.ids.dripper_setup.add_widget(PhotoDripSetup(self.configuration_api))
         elif value == 'microcontroller':
-            self.ids.dripper_setup.add_widget(MicrocontrollerDripSetup(self.configuration_api))
+            self.ids.dripper_setup.add_widget(MicrocontrollerDripSetup(self.configuration_api, visualizations=self.ids.visualizations))
+
 
         self.configuration_api.set_dripper_type(value)
 
@@ -102,6 +105,12 @@ class MicrocontrollerDripSetup(BoxLayout):
 
     def __init__(self, api, **kwargs):
         self.is_active = False
+        self.dripper = None
+        if "visualizations" in kwargs: 
+            self.visualizations = kwargs["visualizations"]
+            self.dripper = Dripper(size_hint_x=None, width=30)
+            self.visualizations.add_widget(Label())
+            self.visualizations.add_widget(self.dripper)
         self.configuration_api = api
         super(MicrocontrollerDripSetup, self).__init__(**kwargs)
         Logger.info("Starting up dripper")
@@ -111,6 +120,8 @@ class MicrocontrollerDripSetup(BoxLayout):
     def drip_call_back(self, drips, current_z_location_mm, average_drips, drip_history):
         self.drips = drips
         self.average_drips = average_drips
+        if self.dripper:
+            self.dripper.update_parts(drips, drip_history)
 
     def on_parent(self, instance, value):
         if value is None:
