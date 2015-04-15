@@ -3,7 +3,6 @@ from kivy.lang import Builder
 from kivy.properties import NumericProperty, ListProperty, StringProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.spinner import Spinner
-from kivy.clock import Clock
 
 from kivy.logger import Logger
 
@@ -22,6 +21,7 @@ class KeyedSpinner(Spinner):
     def on_key(self, instance, key):
         idx = self.keys.index(key)
         self.text = self.values[idx]
+
 
 class DripperCalibrationUI(Screen):
 
@@ -128,7 +128,7 @@ class MicrocontrollerDripSetup(BoxLayout):
         self.update_drips_per_mm()
 
     def on_drips_per_mm(self, instance, value):
-        Logger.info("Useing the drips per mm amount %.2f" % value)
+        Logger.info("Useing the drips per mm amount of %.2f" % value)
         self.ids.ui_drips_per_mm.text = '%.2f' % value
         self.configuration_api.set_dripper_drips_per_mm(value)
 
