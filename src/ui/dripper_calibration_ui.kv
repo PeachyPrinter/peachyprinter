@@ -93,15 +93,8 @@
         Button:
             size_hint_y: None
             height: 30
-            text: _("Start Counting Drips")
-        Button:
-            size_hint_y: None
-            height: 30
-            text: _("Stop Counting Drips")
-        Button:
-            size_hint_y: None
-            height: 30
             text: _("Reset Drip Count")
+            on_release: root.reset_drip_count()
         BoxLayout:
             size_hint_y: None
             height: 30
@@ -110,10 +103,27 @@
                 text: _('Drips')
             Label:
                 text: '%.2f' % root.drips
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            orientation: 'horizontal'
+            Label:
+                text: _('Average Drips per Second')
+            Label:
+                text: '%.2f' % root.average_drips
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            orientation: 'horizontal'
+            Label:
+                text: _('Current Drips per mm')
+            Label:
+                text: '%.2f' % root.average_drips
         Button:
             size_hint_y: None
             height: 30
-            text: _("Calculate Drips Per mm")
+            text: _("Use Current Drips per mm")
+            on_release: root.use_current()
     Label:
         size_hint_y: None
         height: 30
@@ -124,6 +134,8 @@
         Label:
             text: _('Drips per mm')
         FloatInput:
-            text: '%.2f' % root.drips_per_mm
+            id: ui_drips_per_mm
+            text: '0.0'
+            on_text: root.drips_per_mm = float(self.text)
     Label:
         
