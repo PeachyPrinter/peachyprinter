@@ -5,49 +5,103 @@
 <CureTestUI>:
     name: 'curetestui'
     BoxLayout:
-        orientation: 'horizontal'
+        orientation: 'vertical'
         BoxLayout:
-            orientation: 'vertical'
-            size_hint_x: 0.6
-            Label:
-                size_hint_y: 40.0 / root.height
-                text: _('Cure Test Setup')
-                bold: True
+            orientation: 'horizontal'
             BoxLayout:
-                orientation:"horizontal"
-                size_hint_y: 40.0 / root.height
-                Label:
-                    text: _('Height (mm)')
-                FloatInput:
-                    text: '40'
-            BoxLayout:
-                orientation:"horizontal"
-                size_hint_y: 40.0 / root.height
-                Label:
-                    text: _('Width (mm)')
-                FloatInput:
-                    text: '10'
-            BoxLayout:
-                orientation:"horizontal"
-                size_hint_y: 40.0 / root.height
-                Label:
-                    text: _("Start Speed")
-                FloatInput:
-                    text: '90'
-            BoxLayout:
-                orientation:"horizontal"
-                size_hint_y: 40.0 / root.height
-                Label:
-                    text: _("Finish Speed")
-                FloatInput:
-                    text: '250'
-            Label:
-            BoxLayout:
-                size_hint_y: 40.0 / root.height
+                orientation: 'vertical'
+                size_hint_x: 0.6
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: sum([child.height for child in self.children])
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint_y: None
+                        height: 30
+                        Label:
+                            text: _('base')
+                        FloatInput:
+                            id: base_id
+                            text: '0.0'
+                            on_text: root.base = float(self.text)
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint_y: None
+                        height: 30
+                        Label:
+                            text: _('height')
+                        FloatInput:
+                            id: height_id
+                            text: '0.0'
+                            on_text: root.height = float(self.text)
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint_y: None
+                        height: 30
+                        Label:
+                            text: _('start_speed')
+                        FloatInput:
+                            id: start_speed_id
+                            text: '0.0'
+                            on_text: root.start_speed = float(self.text)
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint_y: None
+                        height: 30
+                        Label:
+                            text: _('stop_speed')
+                        FloatInput:
+                            id: stop_speed_id
+                            text: '0.0'
+                            on_text: root.stop_speed = float(self.text)
                 Button:
-                    text: _('Back')
-                    on_release: app.root.current = 'mainui'
-                Button:
-                    text: _("Start Test")
-        Label:
-            text: "Graphics here"
+                    text: _('Run Cure')
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: sum([child.height for child in self.children])
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint_y: None
+                        height: 30
+                        Label:
+                            text: _('use_draw_speed')
+                        Switch:
+                            id: use_draw_speed_id
+                            active: root.use_draw_speed
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint_y: None
+                        height: 30
+                        Label:
+                            text: _('draw_speed')
+                        FloatInput:
+                            id: draw_speed_id
+                            text: '0.0'
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint_y: None
+                        height: 30
+                        Label:
+                            text: _('override_laser_power')
+                        Switch:
+                            id: override_laser_power_id
+                            active: root.override_laser_power
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint_y: None
+                        height: 30
+                        Label:
+                            text: _('override_laser_power_amount')
+                        FloatInput:
+                            id: override_laser_power_amount_id
+                            text: '0.0'
+
+            Label:
+                text: "Graphics here"
+    Button:
+        size_hint_y: None
+        height: 30
+        text:_('Back')
+        on_release: app.root.current = 'mainui'

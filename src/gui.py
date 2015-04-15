@@ -71,7 +71,7 @@ class MyScreenManager(ScreenManager):
         self.library_ui = LibraryUI(self.api)
         self.dripper_calibration_ui = DripperCalibrationUI(self.api)
         self.calibration_ui = CalibrateUI(self.api)
-        self.cure_test_ui = CureTestUI()
+        self.cure_test_ui = CureTestUI(self.api)
         self.add_widget(self.main_ui)
         self.add_widget(self.printing_ui)
         self.add_widget(self.library_ui)
