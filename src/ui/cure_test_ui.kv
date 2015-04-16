@@ -129,8 +129,50 @@
                     on_release: HelpPopup(text=_('Markup- Cure Rate'), title=_("Help - Cure Rate Settings"), size_hint=(0.9, 0.9)).open()
                     size_hint_y:None
                     height: 30
-            Label:
-                text: "Graphics here"
+            BoxLayout:
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_x: 0.5
+                    Label:
+                        size_hint_y: None
+                        height: 30
+                        text: "%.2f" % best_height.max
+                    Slider:
+                        id: best_height
+                        orientation: 'vertical'
+                        min: 0
+                        max: root.test_height
+                        value: 0
+                    Label:
+                        size_hint_y: None
+                        height: 30
+                        text: "%.2f" % best_height.min
+                BoxLayout:
+                    Label:
+                        text: 'IMAGE HERE ?'
+                BoxLayout:
+                    orientation: 'vertical'
+                    BoxLayout:
+                        size_hint_y: None
+                        height: 30
+                        Label:
+                            text: _('Best Height')
+                        Label:
+                            text: '%.2f' % best_height.value
+                    BoxLayout:
+                        size_hint_y: None
+                        height: 30
+                        Label:
+                            text: _("Best Draw Speed")
+                        Label:
+                            id: best_draw_speed
+                            text: '%.2f' % ((best_height.value / root.test_height) * (root.stop_speed - root.start_speed) + root.start_speed)
+                    Button:
+                        size_hint_y: None
+                        height: 30
+                        text: _('Use Best Draw Speed')
+                        on_release: draw_speed_id.text = best_draw_speed.text; root.draw_speed = float(best_draw_speed.text)
+                    Label:
         Button:
             size_hint_y: None
             height: 30

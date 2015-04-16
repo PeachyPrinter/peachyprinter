@@ -73,6 +73,7 @@ class CureTestUI(Screen):
             self.configuration_api.set_cure_rate_override_laser_power_amount(float(value))
             self.configuration_api.save()
 
+
     def print_now(self):
         generator = self.configuration_api.get_cure_test(self.base, self.test_height, self.start_speed, self.stop_speed)
         self.manager.current = 'printingui'
