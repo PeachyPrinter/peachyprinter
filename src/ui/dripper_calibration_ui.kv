@@ -12,7 +12,7 @@
                 orientation: 'vertical'
                 BoxLayout:
                     size_hint_y: None
-                    height: 40
+                    height: 30
                     orientation: 'horizontal'
                     Label:
                         text: 'Dripper Type'
@@ -25,14 +25,11 @@
                         on_key: root.dripper_type_changed(self, self.key)
                 BoxLayout:
                     id: dripper_setup
-                ScrollView:
-                    size_hint_y: 0.8
-                    Label:
-                        text: _("MARKUP - Dripper Instructions")
-                        markup: True
-                        text_size: self.width, None
-                        size_hint_y: None
-                        height: self.texture_size[1]
+                Button:
+                    text: _("Help me")
+                    on_release: HelpPopup(text=_('MARKUP - Dripper Instructions'), title=_("Help - Dripper Settings"), size_hint=(0.9, 0.9)).open()
+                    size_hint_y:None
+                    height: 30
             BoxLayout:
                 id: visualizations
         Button:
@@ -75,9 +72,9 @@
     ScrollView:
         BoxLayout:
             size_hint_y: None
-            height: 270
+            height: 250
             orientation: 'vertical'
-            padding: 20
+            padding: 10
             canvas.before:
                 Color:
                     rgba:[0.2,0.2,0.2,1.0]

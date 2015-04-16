@@ -1,6 +1,7 @@
 #:kivy 1.8.0
 #:import _ __main__._
 #:import FloatInput ui.custom_widgets.FloatInput
+#:import HelpPopup ui.peachy_widgets.HelpPopup
 
 <CureTestUI>:
     name: 'curetestui'
@@ -122,19 +123,18 @@
                             size_hint_x: 0.5
                             id: override_laser_power_amount_id
                             text: '0.0'
-                ScrollView:
-                    padding: 10
-                    Label:
-                        text: _("MARKUP - Cure Rate Instructions")
-                        markup: True
-                        text_size: self.width, None
-                        size_hint_y: None
-                        height: self.texture_size[1]
-
+                Label:
+                Button:
+                    text: _("Help me")
+                    on_release: HelpPopup(text=_('Markup- Cure Rate'), title=_("Help - Cure Rate Settings"), size_hint=(0.9, 0.9)).open()
+                    size_hint_y:None
+                    height: 30
             Label:
                 text: "Graphics here"
-    Button:
-        size_hint_y: None
-        height: 30
-        text:_('Back')
-        on_release: app.root.current = 'mainui'
+        Button:
+            size_hint_y: None
+            height: 30
+            text:_('Back')
+            on_release: app.root.current = 'mainui'
+
+

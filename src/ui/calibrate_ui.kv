@@ -43,14 +43,11 @@
     BoxLayout:
         orientation: 'horizontal'
         padding: 5
-        ScrollView:
-            size_hint_x: 0.6
-            Label:
-                text: _("MARKUP - Center Calibration Instructions")
-                markup: True
-                text_size: self.width, None
-                size_hint_y: None
-                height: self.texture_size[1]
+        Button:
+            text: _("Help me")
+            on_release: HelpPopup(text=_('MARKUP - Center Calibration Instructions'), title=_("Help - Calibration Setup"), size_hint=(0.9, 0.9)).open()
+            size_hint_y:None
+            height: 30
         Image:
             pos: self.parent.pos
             size: self.parent.size
@@ -95,13 +92,11 @@
                     Label:
                         text: root.orient_swap_axis
                 Label:
-            ScrollView:
-                Label:
-                    text: _("MARKUP - Orientation Instructions")
-                    markup: True
-                    text_size: self.width, None
-                    size_hint_y: None
-                    height: self.texture_size[1]
+            Button:
+                text: _("Help me")
+                on_release: HelpPopup(text=_('MARKUP - Orientation Instructions'), title=_("Help - Orientation"), size_hint=(0.9, 0.9)).open()
+                size_hint_y:None
+                height: 30
         GridLayout:
             id: orientations
             cols:4
@@ -264,14 +259,11 @@
     BoxLayout:
         orientation: 'horizontal'
         padding: 5
-        ScrollView:
-            size_hint_x: 0.6
-            Label:
-                text: _("MARKUP - Print Area Instructions")
-                markup: True
-                text_size: self.width, None
-                size_hint_y: None
-                height: self.texture_size[1]
+        Button:
+            text: _("Help me")
+            on_release: HelpPopup(text=_('MARKUP - Print Area Instructions'), title=_("Help - Print Area"), size_hint=(0.9, 0.9)).open()
+            size_hint_y:None
+            height: 30
         BoxLayout:
             orientation: 'vertical'
             BoxLayout:
@@ -311,14 +303,11 @@
     BoxLayout:
         orientation: 'horizontal'
         padding: 5
-        ScrollView:
-            size_hint_x: 0.6
-            Label:
-                text: _("MARKUP - Alignment Instructions")
-                markup: True
-                text_size: self.width, None
-                size_hint_y: None
-                height: self.texture_size[1]
+        Button:
+            text: _("Help me")
+            on_release: HelpPopup(text=_('MARKUP - Alignment Instructions'), title=_("Help - Alignment"), size_hint=(0.9, 0.9)).open()
+            size_hint_y:None
+            height: 30
         Image:
             pos: self.parent.pos
             size: self.parent.size
@@ -398,13 +387,11 @@
                     Ellipse:
                         pos: root.example_dot
                         size: [8,8]
-            ScrollView:
-                Label:
-                    text: _("MARKUP - Calibration Instructions")
-                    markup: True
-                    text_size: self.width, None
-                    size_hint_y: None
-                    height: self.texture_size[1]
+            Button:
+                text: _("Help me")
+                on_release: HelpPopup(text=_('MARKUP - Calibration Instructions'), title=_("Help - Calibration"), size_hint=(0.9, 0.9)).open()
+                size_hint_y:None
+                height: 30
         Image:
             id: top_calibration_grid
             pos: self.parent.pos
@@ -447,14 +434,11 @@
                     max: 1000
                     value: root.speed
                     on_value: root.speed = self.value
-            ScrollView:
-                Label:
-                    text: _("MARKUP - Test Pattern Instructions")
-                    markup: True
-                    text_size: self.width, None
-                    size_hint_y: None
-                    height: self.texture_size[1]
-
+            Button:
+                text: _("Help me")
+                on_release: HelpPopup(text=_('MARKUP - Test Pattern Instructions'), title=_("Help - Test Patterns"), size_hint=(0.9, 0.9)).open()
+                size_hint_y:None
+                height: 30
         GridLayout:
             id: patterns
             cols: 2

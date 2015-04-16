@@ -1,6 +1,8 @@
 from kivy.uix.boxlayout import BoxLayout
 from kivy.graphics import *
 from kivy.clock import Clock
+from kivy.properties import StringProperty
+from kivy.uix.popup import Popup
 import time
 from math import sin, pi
 
@@ -8,6 +10,10 @@ from kivy.lang import Builder
 
 
 Builder.load_file('ui/peachy_widgets.kv')
+
+
+class HelpPopup(Popup):
+    text = StringProperty()
 
 
 class Dripper(BoxLayout):
