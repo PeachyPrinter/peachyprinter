@@ -17,13 +17,6 @@ from ui.calibrate_ui import CalibrateUI
 from ui.custom_widgets import *
 
 
-
-class SelectedFile(object):
-    def __init__(self, path=None, filename=None):
-        self.path = path
-        self.filename = filename
-
-
 class LoadDialog(FloatLayout):
     load = ObjectProperty(None)
     cancel = ObjectProperty(None)
@@ -36,9 +29,8 @@ class SettingsSelector(Popup):
 class MainUI(Screen):
     setting = ObjectProperty()
 
-    def __init__(self, selected_file, **kwargs):
+    def __init__(self, **kwargs):
         super(MainUI, self).__init__(**kwargs)
-        self.selected_file = selected_file
         self.settings = SettingsSelector()
 
     def show_load(self):
@@ -47,8 +39,6 @@ class MainUI(Screen):
         self._popup.open()
 
     def load(self, path, filename):
-        self.selected_file.path = path
-        self.selected_file.filename = filename
         self.dismiss_popup()
         self.parent.current = 'printingui'
         self.printingui.print_file(filename)
@@ -64,10 +54,9 @@ class MyScreenManager(ScreenManager):
     def __init__(self, api, setting_translation,  **kwargs):
         super(MyScreenManager, self).__init__(**kwargs)
         self.api = api
-        selected_file = SelectedFile()
         self.setting_translation = setting_translation
-        self.main_ui = MainUI(selected_file)
-        self.printing_ui = PrintingUI(self.api, selected_file)
+        self.main_ui = MainUI()
+        self.printing_ui = PrintingUI(self.api)
         self.library_ui = LibraryUI(self.api)
         self.dripper_calibration_ui = DripperCalibrationUI(self.api)
         self.calibration_ui = CalibrateUI(self.api)

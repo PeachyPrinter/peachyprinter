@@ -14,14 +14,26 @@
                 BoxLayout:
                     orientation: 'vertical'
                     size_hint_y: None
-                    height: sum([child.height for child in self.children])
+                    height: 230
+                    padding: 20
+                    canvas.before:
+                        Color:
+                            rgba:[0.2,0.2,0.2,1.0]
+                        Rectangle:
+                            size: [self.size[0] - 20, self.size[1] - 20]
+                            pos: [self.pos[0] + 10, self.pos[1] + 10]
+                    Label:
+                        size_hint_y: None
+                        height: 30
+                        text: _('Cure Rate Test')
                     BoxLayout:
                         orientation: 'horizontal'
                         size_hint_y: None
                         height: 30
                         Label:
-                            text: _('base')
+                            text: _('Base Height')
                         FloatInput:
+                            size_hint_x: 0.5
                             id: base_id
                             text: '0.0'
                             on_text: root.base = float(self.text)
@@ -30,18 +42,20 @@
                         size_hint_y: None
                         height: 30
                         Label:
-                            text: _('height')
+                            text: _('Test Height')
                         FloatInput:
+                            size_hint_x: 0.5
                             id: height_id
                             text: '0.0'
-                            on_text: root.height = float(self.text)
+                            on_text: root.test_height = float(self.text)
                     BoxLayout:
                         orientation: 'horizontal'
                         size_hint_y: None
                         height: 30
                         Label:
-                            text: _('start_speed')
+                            text: _('Starting Speed')
                         FloatInput:
+                            size_hint_x: 0.5
                             id: start_speed_id
                             text: '0.0'
                             on_text: root.start_speed = float(self.text)
@@ -50,24 +64,32 @@
                         size_hint_y: None
                         height: 30
                         Label:
-                            text: _('stop_speed')
+                            text: _('Stopping Speed')
                         FloatInput:
+                            size_hint_x: 0.5
                             id: stop_speed_id
                             text: '0.0'
                             on_text: root.stop_speed = float(self.text)
-                Button:
-                    text: _('Run Cure')
+                    Label:
+                        size_hint_y: None
+                        height: 10
+                    Button:
+                        size_hint_y: None
+                        height: 30
+                        text: _('Run Cure Test Now')
+                        on_release: root.print_now()
                 BoxLayout:
                     orientation: 'vertical'
                     size_hint_y: None
-                    height: sum([child.height for child in self.children])
+                    height: 120
                     BoxLayout:
                         orientation: 'horizontal'
                         size_hint_y: None
                         height: 30
                         Label:
-                            text: _('use_draw_speed')
+                            text: _('Always Use Draw Speed')
                         Switch:
+                            size_hint_x: 0.5
                             id: use_draw_speed_id
                             active: root.use_draw_speed
                     BoxLayout:
@@ -75,8 +97,9 @@
                         size_hint_y: None
                         height: 30
                         Label:
-                            text: _('draw_speed')
+                            text: _('Draw Speed (mm)')
                         FloatInput:
+                            size_hint_x: 0.5
                             id: draw_speed_id
                             text: '0.0'
                     BoxLayout:
@@ -84,8 +107,9 @@
                         size_hint_y: None
                         height: 30
                         Label:
-                            text: _('override_laser_power')
+                            text: _('Always Use Laser Power')
                         Switch:
+                            size_hint_x: 0.5
                             id: override_laser_power_id
                             active: root.override_laser_power
                     BoxLayout:
@@ -93,10 +117,19 @@
                         size_hint_y: None
                         height: 30
                         Label:
-                            text: _('override_laser_power_amount')
+                            text: _('Laser Power')
                         FloatInput:
+                            size_hint_x: 0.5
                             id: override_laser_power_amount_id
                             text: '0.0'
+                ScrollView:
+                    padding: 10
+                    Label:
+                        text: _("MARKUP - Cure Rate Instructions")
+                        markup: True
+                        text_size: self.width, None
+                        size_hint_y: None
+                        height: self.texture_size[1]
 
             Label:
                 text: "Graphics here"

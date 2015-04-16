@@ -42,17 +42,20 @@ class PrintStatus(LabelGridLayout):
 
 
 class PrintingUI(Screen):
-    def __init__(self, api, selected_file, **kwargs):
+    def __init__(self, api, **kwargs):
+        self.return_to = 'mainui'
         super(PrintingUI, self).__init__(**kwargs)
         self.api = api
         self.print_api = None
-        self.selected_file = selected_file
 
     def callback(self, data):
         self.ids.print_status.update(data)
         self.ids.dripper.update(data)
+        if data['status'] == 'Complete':
+            self.ids.navigate_button.text = _("Print Complete, Close")
 
-    def print_file(self, filename):
+    def print_file(self, filename, return_name='mainui'):
+        self.return_to = return_name
         try:
             filepath = filename[0].encode('utf-8')
             self.print_api = self.api.get_print_api(status_call_back=self.callback)
@@ -61,16 +64,17 @@ class PrintingUI(Screen):
         except Exception as ex:
             popup = ErrorPopup(title='Error', text=str(ex), size_hint=(0.6, 0.6))
             popup.open()
-            self.parent.current = 'mainui'
+            self.parent.current = self.return_to
 
-    def print_generator(self, generator):
+    def print_generator(self, generator, return_name='mainui'):
+        self.return_to = return_name
         try:
             self.print_api = self.api.get_print_api(status_call_back=self.callback)
             self.print_api.print_layers(generator)
         except Exception as ex:
             popup = ErrorPopup(title='Error', text=str(ex), size_hint=(0.6, 0.6))
             popup.open()
-            self.parent.current = 'mainui'
+            self.parent.current = self.return_to
 
     def on_pre_enter(self):
         for (title, value) in self.parent.setting_translation.get_settings().items():

@@ -8,6 +8,7 @@ from kivy.uix.popup import Popup
 from kivy.logger import Logger
 from kivy.properties import StringProperty
 from kivy.lang import Builder
+from kivy.app import App
 
 
 Builder.load_file('ui/library_ui.kv')
