@@ -5,7 +5,7 @@ from kivy.properties import StringProperty, ObjectProperty
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.popup import Popup
 from kivy.uix.screenmanager import ScreenManager, Screen
-
+from kivy.config import Config
 from infrastructure.setting_mapper import SettingsMapper
 from infrastructure.langtools import _
 
@@ -15,6 +15,7 @@ from ui.dripper_calibration_ui import DripperCalibrationUI
 from ui.cure_test_ui import CureTestUI
 from ui.calibrate_ui import CalibrateUI
 from ui.custom_widgets import *
+
 
 
 class LoadDialog(FloatLayout):
@@ -76,6 +77,7 @@ class PeachyPrinter(App):
         self.api = api
         self.setting_translation = SettingsMapper(self.api)
         super(PeachyPrinter, self).__init__(**kwargs)
+        Config.set("input", "mouse", "mouse,disable_multitouch")
         self.manager = None
 
     def build(self):
