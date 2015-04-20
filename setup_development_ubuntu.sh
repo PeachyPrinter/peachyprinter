@@ -79,7 +79,7 @@ echo "--------Setting up pygame----"
 python -c"import pygame" 2>&1 >/dev/null
 if [ $? != 0 ]; then
     echo "pygame not available adding"
-    pip install -U pygame
+    pip install -U pygame --allow-externals peachy --allow-unverified peachy
     if [ $? != 0 ]; then
         echo "FAILURE: pygame failed installing"
         WILL_FAIL=1
