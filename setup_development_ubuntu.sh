@@ -91,7 +91,7 @@ echo "--------Setting up kivy----"
 python -c"import kivy" 2>&1 >/dev/null
 if [ $? != 0 ]; then
     echo "kivy not available adding"
-    pip install -U kivy==1.8.0
+    pip install -U kivy==1.9.0
     if [ $? != 0 ]; then
         echo "FAILURE: kivy failed installing"
         WILL_FAIL=1
