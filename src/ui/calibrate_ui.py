@@ -252,7 +252,7 @@ class CalibrationPanel(TabbedPanelItem):
             calibration_points = self.calibration_api.get_lower_points()
             height = 0
 
-        for (peachy, actual) in calibration_points.items():
+        for (peachy, actual) in sorted(calibration_points.items(), key=lambda item: (item[1][0], item[1][1])):
             if abs(actual[0] * 2.0) != self.printer_width or abs(actual[1] * 2.0) != self.printer_depth:
                 self.reset_points()
                 return
