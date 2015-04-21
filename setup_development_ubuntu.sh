@@ -19,18 +19,13 @@ if [ $? != 0 ]; then
     fi
 fi
 
-echo "----Checking for virtualenv----"
-command -v virtualenv 2>&1 >/dev/null
+echo "virtualenv not available, you should be prompted for install:"
+sudo apt-get install -U python-virtualenv
 if [ $? != 0 ]; then
-    echo "virtualenv not available, you should be prompted for install:"
-    sudo apt-get install python-virtualenv
-    if [ $? != 0 ]; then
-        echo "FAILURE: virtualenv failed installing"
-        WILL_FAIL=12
-        FAIL_REASONS="$FAIL_REASONS\nFAILURE: virtualenv failed installing"
-    fi
+    echo "FAILURE: virtualenv failed installing"
+    WILL_FAIL=12
+    FAIL_REASONS="$FAIL_REASONS\nFAILURE: virtualenv failed installing"
 fi
-
 
 echo "----Checking for existing and (re)create a virtual environment----"
 if [ -d "venv" ]; then

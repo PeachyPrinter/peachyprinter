@@ -26,9 +26,10 @@ git clone https://github.com/PeachyPrinter/kivypeachyprinter.git
 git clone https://github.com/PeachyPrinter/peachyprintertools.git
 cd kivypeachyprinter
 ./setup_development_ubuntu.sh
-echo "for api dev"
-
-
+./get_latest_api.sh
+echo "for api dev this links to api checkout"
+rm -rf venv/lib/python2.7/site-packages/peachyprinter
+ln -s /opt/git/peachyprintertools/src/peachyprinter venv/lib/python2.7/site-packages/peachyprinter
 ``` -->
 
 ### Centos (RedHat)
