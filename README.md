@@ -17,13 +17,14 @@ Complete packages are available at [http://software.peachyprinter.com/]
 
 ## Development Requirements
 <!-- ### Ubuntu (Debian)
-via apt
- - python-pip
- - python-virtualenv
-
-You can prepare your enviroment using the following command:
-```sh
-sudo apt-get install python-pip python-virtualenv
+sudo apt-get install python-pip git python-dev libsdl1.2-dev
+sudo mkdir /opt/git
+sudo chown peachy.peachy /opt/git/
+sudo chmod 777 /opt/git
+cd /opt/git
+git clone https://github.com/PeachyPrinter/kivypeachyprinter.git
+git clone https://github.com/PeachyPrinter/peachyprintertools.git
+cd kivypeachyprinter
 ``` -->
 
 ### Centos (RedHat)
