@@ -87,6 +87,7 @@ class OrientationPanel(TabbedPanelItem):
 class CalibrationPanel(TabbedPanelItem):
     calibration_height = NumericProperty(0)
     calibration_point = ListProperty([0, 0])
+    calibration_point_color = ListProperty([1, 0, 0, 1])
     example_point = ListProperty([0, 0])
     example_dot = ListProperty([0, 0])
     printer_point = ListProperty([0.5, 0.5, calibration_height])
@@ -199,10 +200,12 @@ class CalibrationPanel(TabbedPanelItem):
     def super_accurate_mode(self):
         if self.ids.super_accurate.state == 'normal':
             self.is_accurate = False
+            self.calibration_point_color = [1, 0, 0, 1]
             self.center_point = [0.0, 0.0]
             self.set_screen_point_from_printer()
         else:
             self.is_accurate = True
+            self.calibration_point_color = [0.78, 0, 1, 1]
             self.center_point = self.remove_orientation_correction(*self.printer_point)
             self.calibration_point = self.ids.top_calibration_grid.center
 

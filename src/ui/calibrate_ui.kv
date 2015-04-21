@@ -379,6 +379,7 @@
             Image:
                 id: example_grid
                 pos: self.parent.pos
+                padding:10
                 size: self.parent.size
                 source: "resources/grid_small.png"
                 allow_stretch: True
@@ -407,7 +408,7 @@
                     size: (min(self.size), min(self.size))
             canvas.after:
                 Color:
-                    rgba: 1, 0, 0, 1
+                    rgba: root.calibration_point_color
                 Ellipse:
                     pos: [root.calibration_point[0] - 4,root.calibration_point[1] - 4]
                     size: [8,8]
