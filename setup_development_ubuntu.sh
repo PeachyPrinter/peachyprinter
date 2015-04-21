@@ -67,7 +67,7 @@ echo "--------Setting up cython----"
 python -c"import cython" 2>&1 >/dev/null
 if [ $? != 0 ]; then
     echo "cython not available adding"
-    pip install -U cython==0.22
+    pip install -U cython==0.21.2
     if [ $? != 0 ]; then
         echo "FAILURE: cython failed installing"
         WILL_FAIL=1
