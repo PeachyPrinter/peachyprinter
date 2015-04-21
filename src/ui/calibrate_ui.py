@@ -196,8 +196,8 @@ class CalibrationPanel(TabbedPanelItem):
     def print_peachy_point(self):
         self.calibration_api.show_point([self.printer_point[0], self.printer_point[1], self.calibration_height])
 
-    def super_accurate_mode(self, instance):
-        if instance.state == 'normal':
+    def super_accurate_mode(self):
+        if self.ids.super_accurate.state == 'normal':
             self.is_accurate = False
             self.center_point = [0.0, 0.0]
             self.set_screen_point_from_printer()
@@ -268,6 +268,10 @@ class CalibrationPanel(TabbedPanelItem):
             )
             self.ids.point_selections.add_widget(c_point)
 
+    def disable_super_accurate_mode(self):
+        self.ids.super_accurate.state = 'normal'
+        self.super_accurate_mode()
+
     def save_all_points(self):
         points = dict([((child.peachy[0], child.peachy[1]), (child.actual[0], child.actual[1])) for child in self.ids.point_selections.children])
         if self.calibration_type == 'top':
@@ -319,7 +323,9 @@ class CalibrationPoint(BoxLayout):
 
     def on_state(self, value):
         if value == 'down':
+            self.caller.disable_super_accurate_mode()
             self.caller.set_points(self.peachy, self.example)
+
             self.active = True
         else:
             self.active = False

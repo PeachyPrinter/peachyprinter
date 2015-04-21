@@ -353,8 +353,9 @@
                 orientation: 'vertical'
                 size_hint_y: 2.0
                 ToggleButton:
+                    id: super_accurate
                     text: _('Super Accurate Mode')
-                    on_release: root.super_accurate_mode(self)
+                    on_release: root.super_accurate_mode()
                 Label:
                     size_hint_y:0.2
                 BoxLayout:
