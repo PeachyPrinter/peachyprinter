@@ -32,25 +32,17 @@ if [ $? != 0 ]; then
 fi
 
 
-echo "----Checking for and create a virtual environment----"
-CREATE_VENV="TRUE"
+echo "----Checking for existing and (re)create a virtual environment----"
 if [ -d "venv" ]; then
-    while true; do
-    read -p "Do you wish remove and re-install this environment?" yn
-    case $yn in
-        [Yy]* ) rm -rf venv && CREATE_VENV="TRUE"; break;;
-        [Nn]* ) CREATE_VENV="FALSE"; break;;
-        * ) echo "Please answer yes or no.";;
-    esac
-    done
+    rm -rf venv
 fi
-if [ $CREATE_VENV == "TRUE" ]; then
-    virtualenv -p python2.7 --system-site-packages venv
-    if [ $? != 0 ]; then
-        echo "Virutal environment failed"
-        exit 59
-    fi
+
+virtualenv -p python2.7 --system-site-packages venv
+if [ $? != 0 ]; then
+    echo "Virutal environment failed"
+    exit 59
 fi
+
 source venv/bin/activate
 if [[ "$VIRTUAL_ENV" == "" ]]; then
     echo "FAILURE: Virutal environment creation failed"
@@ -62,41 +54,28 @@ SETUP_TMP="setup_tmp"
 WILL_FAIL=0
 FAIL_REASONS=""
 
-
 echo "--------Setting up cython----"
-python -c"import cython" 2>&1 >/dev/null
+pip install -U cython==0.21.2
 if [ $? != 0 ]; then
-    echo "cython not available adding"
-    pip install -U cython==0.21.2
-    if [ $? != 0 ]; then
-        echo "FAILURE: cython failed installing"
-        WILL_FAIL=1
-        FAIL_REASONS="$FAIL_REASONS\nFAILURE: cython failed installing"
-    fi
+    echo "FAILURE: cython failed installing"
+    WILL_FAIL=1
+    FAIL_REASONS="$FAIL_REASONS\nFAILURE: cython failed installing"
 fi
 
 echo "--------Setting up pygame----"
-python -c"import pygame" 2>&1 >/dev/null
+pip install hg+http://bitbucket.org/pygame/pygame
 if [ $? != 0 ]; then
-    echo "pygame not available adding"
-    pip install hg+http://bitbucket.org/pygame/pygame
-    if [ $? != 0 ]; then
-        echo "FAILURE: pygame failed installing"
-        WILL_FAIL=1
-        FAIL_REASONS="$FAIL_REASONS\nFAILURE: pygame failed installing"
-    fi
+    echo "FAILURE: pygame failed installing"
+    WILL_FAIL=1
+    FAIL_REASONS="$FAIL_REASONS\nFAILURE: pygame failed installing"
 fi
 
 echo "--------Setting up kivy----"
-python -c"import kivy" 2>&1 >/dev/null
+pip install -U kivy==1.9.0
 if [ $? != 0 ]; then
-    echo "kivy not available adding"
-    pip install -U kivy==1.9.0
-    if [ $? != 0 ]; then
-        echo "FAILURE: kivy failed installing"
-        WILL_FAIL=1
-        FAIL_REASONS="$FAIL_REASONS\nFAILURE: kivy failed installing"
-    fi
+    echo "FAILURE: kivy failed installing"
+    WILL_FAIL=1
+    FAIL_REASONS="$FAIL_REASONS\nFAILURE: kivy failed installing"
 fi
 
 echo "--------Getting Latest API----"
