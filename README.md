@@ -16,22 +16,24 @@ Complete packages are available at [http://software.peachyprinter.com/]
 
 
 ## Development Requirements
-<!-- ### Ubuntu (Debian)
-sudo apt-get install python-pip git python-dev libsdl1.2-dev python-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev
-sudo usermod -a -G dialout peachy
-sudo mkdir /opt/git
-sudo chown peachy.peachy /opt/git/
-sudo chmod 777 /opt/git
-cd /opt/git
-git clone https://github.com/PeachyPrinter/kivypeachyprinter.git
-git clone https://github.com/PeachyPrinter/peachyprintertools.git
-cd kivypeachyprinter
-./setup_development_ubuntu.sh
-echo "for api dev this links to api checkout"
-rm -rf venv/lib/python2.7/site-packages/peachyprinter
-rm -rf venv/local/lib/python2.7/site-packages/peachyprinter
-ln -s /opt/git/peachyprintertools/src/peachyprinter venv/lib/python2.7/site-packages/peachyprinter
-``` -->
+### Ubuntu (Debian)
+
+### Steps (Rough example)
+ - sudo apt-get install python-pip git python-dev libsdl1.2-dev python-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev mercurial
+ - sudo usermod -a -G dialout username
+ - sudo mkdir /opt/git
+ - sudo chown username.username /opt/git/
+ - sudo chmod 777 /opt/git
+ - cd /opt/git
+ - git clone https://github.com/PeachyPrinter/kivypeachyprinter.git
+ - git clone https://github.com/PeachyPrinter/peachyprintertools.git
+ - cd kivypeachyprinter
+ - ./setup_development_ubuntu.sh
+ - echo "for api dev this links to api checkout"
+ - rm -rf venv/lib/python2.7/site-packages/peachyprinter
+ - rm -rf venv/local/lib/python2.7/site-packages/peachyprinter
+ - ln -s /opt/git/peachyprintertools/src/peachyprinter venv/lib/python2.7/site-packages/peachyprinter
+
 
 ### Centos (RedHat)
 <!-- via yum
