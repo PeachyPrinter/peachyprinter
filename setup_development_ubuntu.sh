@@ -20,7 +20,7 @@ if [ $? != 0 ]; then
 fi
 
 echo "virtualenv not available, you should be prompted for install:"
-sudo apt-get install -U python-virtualenv
+sudo pip install -U virtualenv
 if [ $? != 0 ]; then
     echo "FAILURE: virtualenv failed installing"
     WILL_FAIL=12
