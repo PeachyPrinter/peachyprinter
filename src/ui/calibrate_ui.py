@@ -137,7 +137,7 @@ class CalibrationPanel(TabbedPanelItem):
                 caller=self,
                 active=False,
                 actual=[point[0] * self.printer_width / 2.0, point[1] * self.printer_depth / 2.0],
-                peachy=self.correct_point_for_orientation((point[0] / 2 + 1) / 2, (point[1] / 2 + 1) / 2),
+                peachy=self.get_orientation_correction((point[0] / 2 + 1) / 2, (point[1] / 2 + 1) / 2),
                 example=[(point[0] + 1) / 2, (point[1] + 1) / 2],
                 valid=False,
                 indicator_color=[1.0, 0.0, 0.0, 1.0],
@@ -161,20 +161,8 @@ class CalibrationPanel(TabbedPanelItem):
             pos_y - 4 + (self.example_point[1] * image_size),
             ]
 
-    def set_printer_pos_from_screen(self, x, y):
-        if self.is_accurate:
-            dx = ((x * 2) - 1) * 0.1
-            dy = ((y * 2) - 1) * 0.1
-            peachyx = max(0, min(1.0, self.center_point[0] + dx))
-            peachyy = max(0, min(1.0, self.center_point[1] + dy))
-        else:
-            peachyx = x
-            peachyy = y
 
-        self.printer_point = self.correct_point_for_orientation(peachyx, peachyy)
-        self.print_peachy_point()
-
-    def correct_point_for_orientation(self, x, y):
+    def get_orientation_correction(self, x, y):
         if self.xflip:
             x = 1.0 - x
         if self.yflip:
@@ -210,18 +198,32 @@ class CalibrationPanel(TabbedPanelItem):
             self.calibration_point = self.ids.top_calibration_grid.center
 
     def set_screen_point_from_printer(self):
-        #NOT RIGHT
         grid_size = min(self.ids.top_calibration_grid.size)
         grid_extents = grid_size / 2.0
         grid_x = self.ids.top_calibration_grid.center[0] - grid_extents
         grid_y = self.ids.top_calibration_grid.center[1] - grid_extents
 
-        xt, yt = self.correct_point_for_orientation(self.printer_point[0], self.printer_point[1])
+        xt, yt = self.remove_orientation_correction(self.printer_point[0], self.printer_point[1])
+
+        Logger.info("Adjusted Printer Points %s,%s" % (xt, yt))
 
         rel_x = xt * grid_size
         rel_y = yt * grid_size
 
         self.calibration_point = [grid_x + rel_x, grid_y + rel_y]
+
+    def set_printer_pos_from_screen(self, x, y):
+        if self.is_accurate:
+            dx = ((x * 2) - 1) * 0.1
+            dy = ((y * 2) - 1) * 0.1
+            peachyx = max(0, min(1.0, self.center_point[0] + dx))
+            peachyy = max(0, min(1.0, self.center_point[1] + dy))
+        else:
+            peachyx = x
+            peachyy = y
+
+        self.printer_point = self.get_orientation_correction(peachyx, peachyy)
+        self.print_peachy_point()
 
     def on_motion(self, etype, motionevent, mouse_pos):
         grid_size = min(self.ids.top_calibration_grid.size)
@@ -255,7 +257,7 @@ class CalibrationPanel(TabbedPanelItem):
             calibration_points = self.calibration_api.get_lower_points()
             height = 0
 
-        for (peachy, actual) in sorted(calibration_points.items(), key=lambda item: (item[1][0], item[1][1])):
+        for (peachy, actual) in sorted(calibration_points.items(), key=lambda item: (item[1][0], item[1][1]), reverse=True):
             if abs(actual[0] * 2.0) != self.printer_width or abs(actual[1] * 2.0) != self.printer_depth:
                 self.reset_points()
                 return
