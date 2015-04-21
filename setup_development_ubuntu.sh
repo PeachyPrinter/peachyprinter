@@ -28,9 +28,7 @@ if [ $? != 0 ]; then
 fi
 
 echo "----Checking for existing and (re)create a virtual environment----"
-if [ -d "venv" ]; then
-    rm -rf venv
-fi
+rm -rf venv
 
 virtualenv -p python2.7 --system-site-packages venv
 if [ $? != 0 ]; then
@@ -71,6 +69,30 @@ if [ $? != 0 ]; then
     echo "FAILURE: kivy failed installing"
     WILL_FAIL=1
     FAIL_REASONS="$FAIL_REASONS\nFAILURE: kivy failed installing"
+fi
+
+echo "--------Setting up numpy----"
+pip install -U numpy
+if [ $? != 0 ]; then
+    echo "FAILURE: numpy failed installing"
+    WILL_FAIL=1
+    FAIL_REASONS="$FAIL_REASONS\nFAILURE: numpy failed installing"
+fi
+
+echo "--------Setting up protobuf----"
+pip install -U protobuf
+if [ $? != 0 ]; then
+    echo "FAILURE: protobuf failed installing"
+    WILL_FAIL=1
+    FAIL_REASONS="$FAIL_REASONS\nFAILURE: protobuf failed installing"
+fi
+
+echo "--------Setting up pyserial----"
+pip install -U pyserial
+if [ $? != 0 ]; then
+    echo "FAILURE: pyserial failed installing"
+    WILL_FAIL=1
+    FAIL_REASONS="$FAIL_REASONS\nFAILURE: pyserial failed installing"
 fi
 
 echo "--------Getting Latest API----"
