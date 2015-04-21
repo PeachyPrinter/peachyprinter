@@ -79,7 +79,7 @@ echo "--------Setting up pygame----"
 python -c"import pygame" 2>&1 >/dev/null
 if [ $? != 0 ]; then
     echo "pygame not available adding"
-    pip install -U http://pygame.org/ftp/pygame-1.9.1release.tar.gz
+    pip install hg+http://bitbucket.org/pygame/pygame
     if [ $? != 0 ]; then
         echo "FAILURE: pygame failed installing"
         WILL_FAIL=1

@@ -17,7 +17,7 @@ Complete packages are available at [http://software.peachyprinter.com/]
 
 ## Development Requirements
 <!-- ### Ubuntu (Debian)
-sudo apt-get install python-pip git python-dev libsdl1.2-dev
+sudo apt-get install python-pip git python-dev libsdl1.2-dev python-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev 
 sudo mkdir /opt/git
 sudo chown peachy.peachy /opt/git/
 sudo chmod 777 /opt/git
