@@ -17,3 +17,23 @@
 
 <I18NAccordionItem>:
     title: app.translation(self.title_source)
+
+<I18NImageButton>:
+    on_press: image.color = [1.0,1.0,1.0,0.5]
+    on_release: image.color = [1.0,1.0,1.0,1.0]
+    text_height: 30
+    BoxLayout:
+        pos: self.parent.pos
+        size: self.parent.size
+        orientation: 'vertical'
+        padding: 10
+        Image:
+            id: image
+            allow_stretch: True
+            keep_ratio: True
+            source: root.source
+            pos: [root.pos[0], root.pos[1]]
+        Label:
+            text: app.translation(root.text_source)
+            size_hint_y: None
+            height: root.text_height

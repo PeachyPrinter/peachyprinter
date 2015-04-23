@@ -38,8 +38,14 @@ class I18NPopup(Popup):
 class I18NTabbedPanelItem(TabbedPanelItem):
     text_source = StringProperty('')
 
+
 class I18NAccordionItem(AccordionItem):
     title_source = StringProperty('')
+
+
+class I18NImageButton(Button):
+    text_source = StringProperty()
+    source = StringProperty()
 
 
 class ErrorPopup(I18NPopup):
