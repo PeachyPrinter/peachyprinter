@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-01 16:54-0600\n"
+"POT-Creation-Date: 2015-04-23 08:35-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -11,36 +11,32 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/peachyprinter.kv:9
-msgid "Settings Selection"
+#: src/gui.py:42
+msgid "Load file"
 msgstr ""
 
-#: src/peachyprinter.kv:13
-msgid "Laser Calibration"
-msgstr ""
-
-#: src/peachyprinter.kv:16
-msgid "Dripper Calibration"
-msgstr ""
-
-#: src/peachyprinter.kv:19
-msgid "Resin Curing Calibration"
-msgstr ""
-
-#: src/peachyprinter.kv:22
-msgid "Advanced Settings"
-msgstr ""
-
-#: src/peachyprinter.kv:25
+#: src/gui.py:111 src/peachyprinter.kv:26 src/ui/custom_widgets.py:43
 msgid "Close"
 msgstr ""
 
-#: src/peachyprinter.kv:65
-msgid "Print Details"
+#: src/peachyprinter.kv:10
+msgid "Settings Selection"
 msgstr ""
 
-#: src/peachyprinter.kv:73
-msgid "Printer Settings"
+#: src/peachyprinter.kv:14
+msgid "Laser Calibration"
+msgstr ""
+
+#: src/peachyprinter.kv:17
+msgid "Dripper Calibration"
+msgstr ""
+
+#: src/peachyprinter.kv:20
+msgid "Resin Curing Calibration"
+msgstr ""
+
+#: src/peachyprinter.kv:23
+msgid "Advanced Settings"
 msgstr ""
 
 #: test/infrastructure_test/langtoolstest.py:18
@@ -101,7 +97,7 @@ msgstr ""
 #: src/infrastructure/setting_mapper.py:152
 #: src/infrastructure/setting_mapper.py:162
 #: src/infrastructure/setting_mapper.py:172
-#: src/infrastructure/setting_mapper.py:183
+#: src/infrastructure/setting_mapper.py:182
 msgid "Options"
 msgstr ""
 
@@ -130,18 +126,24 @@ msgstr ""
 #: src/infrastructure/setting_mapper.py:157
 #: src/infrastructure/setting_mapper.py:167
 #: src/infrastructure/setting_mapper.py:177
-#: src/infrastructure/setting_mapper.py:188
-#: src/infrastructure/setting_mapper.py:207
-#: src/infrastructure/setting_mapper.py:223
-#: src/infrastructure/setting_mapper.py:233
-#: src/infrastructure/setting_mapper.py:243
-#: src/infrastructure/setting_mapper.py:252
-#: src/infrastructure/setting_mapper.py:270
-#: src/infrastructure/setting_mapper.py:279
-#: src/infrastructure/setting_mapper.py:289
-#: src/infrastructure/setting_mapper.py:299
-#: src/infrastructure/setting_mapper.py:309
-#: src/infrastructure/setting_mapper.py:319
+#: src/infrastructure/setting_mapper.py:187
+#: src/infrastructure/setting_mapper.py:206
+#: src/infrastructure/setting_mapper.py:222
+#: src/infrastructure/setting_mapper.py:232
+#: src/infrastructure/setting_mapper.py:242
+#: src/infrastructure/setting_mapper.py:251
+#: src/infrastructure/setting_mapper.py:269
+#: src/infrastructure/setting_mapper.py:278
+#: src/infrastructure/setting_mapper.py:288
+#: src/infrastructure/setting_mapper.py:298
+#: src/infrastructure/setting_mapper.py:308
+#: src/infrastructure/setting_mapper.py:318
+#: src/infrastructure/setting_mapper.py:337
+#: src/infrastructure/setting_mapper.py:347
+#: src/infrastructure/setting_mapper.py:357
+#: src/infrastructure/setting_mapper.py:377
+#: src/infrastructure/setting_mapper.py:387
+#: src/infrastructure/setting_mapper.py:397
 msgid "Ok"
 msgstr "Ok"
 
@@ -154,18 +156,24 @@ msgstr "Ok"
 #: src/infrastructure/setting_mapper.py:158
 #: src/infrastructure/setting_mapper.py:168
 #: src/infrastructure/setting_mapper.py:178
-#: src/infrastructure/setting_mapper.py:189
-#: src/infrastructure/setting_mapper.py:208
-#: src/infrastructure/setting_mapper.py:224
-#: src/infrastructure/setting_mapper.py:234
-#: src/infrastructure/setting_mapper.py:244
-#: src/infrastructure/setting_mapper.py:253
-#: src/infrastructure/setting_mapper.py:271
-#: src/infrastructure/setting_mapper.py:280
-#: src/infrastructure/setting_mapper.py:290
-#: src/infrastructure/setting_mapper.py:300
-#: src/infrastructure/setting_mapper.py:310
-#: src/infrastructure/setting_mapper.py:320
+#: src/infrastructure/setting_mapper.py:188
+#: src/infrastructure/setting_mapper.py:207
+#: src/infrastructure/setting_mapper.py:223
+#: src/infrastructure/setting_mapper.py:233
+#: src/infrastructure/setting_mapper.py:243
+#: src/infrastructure/setting_mapper.py:252
+#: src/infrastructure/setting_mapper.py:270
+#: src/infrastructure/setting_mapper.py:279
+#: src/infrastructure/setting_mapper.py:289
+#: src/infrastructure/setting_mapper.py:299
+#: src/infrastructure/setting_mapper.py:309
+#: src/infrastructure/setting_mapper.py:319
+#: src/infrastructure/setting_mapper.py:338
+#: src/infrastructure/setting_mapper.py:348
+#: src/infrastructure/setting_mapper.py:358
+#: src/infrastructure/setting_mapper.py:378
+#: src/infrastructure/setting_mapper.py:388
+#: src/infrastructure/setting_mapper.py:398 src/ui/library_ui.kv:52
 msgid "Cancel"
 msgstr "Cancel"
 
@@ -257,144 +265,553 @@ msgstr ""
 msgid "options_wait_after_move_milliseconds DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:185
+#: src/infrastructure/setting_mapper.py:184
 msgid "options_print_queue_delay TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:186
+#: src/infrastructure/setting_mapper.py:185
 msgid "options_print_queue_delay DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:194
-#: src/infrastructure/setting_mapper.py:202
-#: src/infrastructure/setting_mapper.py:212
-#: src/infrastructure/setting_mapper.py:219
-#: src/infrastructure/setting_mapper.py:229
-#: src/infrastructure/setting_mapper.py:239
-#: src/infrastructure/setting_mapper.py:248
+#: src/infrastructure/setting_mapper.py:193
+#: src/infrastructure/setting_mapper.py:201
+#: src/infrastructure/setting_mapper.py:211
+#: src/infrastructure/setting_mapper.py:218
+#: src/infrastructure/setting_mapper.py:228
+#: src/infrastructure/setting_mapper.py:238
+#: src/infrastructure/setting_mapper.py:247
 msgid "Email"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:196
+#: src/infrastructure/setting_mapper.py:195
 msgid "email.on TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:197
+#: src/infrastructure/setting_mapper.py:196
 msgid "email.on DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:204
+#: src/infrastructure/setting_mapper.py:203
 msgid "email.port TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:205
+#: src/infrastructure/setting_mapper.py:204
 msgid "email.port DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:214
+#: src/infrastructure/setting_mapper.py:213
 msgid "email.host TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:215
+#: src/infrastructure/setting_mapper.py:214
 msgid "email.host DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:221
+#: src/infrastructure/setting_mapper.py:220
 msgid "email.sender TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:222
+#: src/infrastructure/setting_mapper.py:221
 msgid "email.sender DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:231
+#: src/infrastructure/setting_mapper.py:230
 msgid "email.recipient TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:232
+#: src/infrastructure/setting_mapper.py:231
 msgid "email.recipient DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:241
+#: src/infrastructure/setting_mapper.py:240
 msgid "email.username TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:242
+#: src/infrastructure/setting_mapper.py:241
 msgid "email.username DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:250
+#: src/infrastructure/setting_mapper.py:249
 msgid "email.password TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:251
+#: src/infrastructure/setting_mapper.py:250
 msgid "email.password DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:258
-#: src/infrastructure/setting_mapper.py:266
-#: src/infrastructure/setting_mapper.py:275
-#: src/infrastructure/setting_mapper.py:285
-#: src/infrastructure/setting_mapper.py:295
-#: src/infrastructure/setting_mapper.py:305
-#: src/infrastructure/setting_mapper.py:315
+#: src/infrastructure/setting_mapper.py:257
+#: src/infrastructure/setting_mapper.py:265
+#: src/infrastructure/setting_mapper.py:274
+#: src/infrastructure/setting_mapper.py:284
+#: src/infrastructure/setting_mapper.py:294
+#: src/infrastructure/setting_mapper.py:304
+#: src/infrastructure/setting_mapper.py:314
 msgid "Serial"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:260
+#: src/infrastructure/setting_mapper.py:259
 msgid "serial_enabled TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:261
+#: src/infrastructure/setting_mapper.py:260
 msgid "serial_enabled DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:268
+#: src/infrastructure/setting_mapper.py:267
 msgid "serial_port TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:269
+#: src/infrastructure/setting_mapper.py:268
 msgid "serial_port DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:277
+#: src/infrastructure/setting_mapper.py:276
 msgid "serial_on_command TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:278
+#: src/infrastructure/setting_mapper.py:277
 msgid "serial_on_command DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:287
+#: src/infrastructure/setting_mapper.py:286
 msgid "serial_off_command TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:288
+#: src/infrastructure/setting_mapper.py:287
 msgid "serial_off_command DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:297
+#: src/infrastructure/setting_mapper.py:296
 msgid "serial_layer_started_command TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:298
+#: src/infrastructure/setting_mapper.py:297
 msgid "serial_layer_started_command DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:307
+#: src/infrastructure/setting_mapper.py:306
 msgid "serial_layer_ended_command TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:308
+#: src/infrastructure/setting_mapper.py:307
 msgid "serial_layer_ended_command DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:317
+#: src/infrastructure/setting_mapper.py:316
 msgid "serial_print_ended_command TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:318
+#: src/infrastructure/setting_mapper.py:317
 msgid "serial_print_ended_command DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:326
+#: src/infrastructure/setting_mapper.py:334
+#: src/infrastructure/setting_mapper.py:344
+#: src/infrastructure/setting_mapper.py:354
+msgid "Cure Rate"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:327
+msgid "cure_rate_use_draw_speed TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:328
+msgid "cure_rate_use_draw_speed DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:335
+msgid "cure_rate_draw_speed TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:336
+msgid "cure_rate_draw_speed DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:345
+msgid "cure_rate_override_laser_power TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:346
+msgid "cure_rate_override_laser_power DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:355
+msgid "cure_rate_override_laser_power_amount TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:356
+msgid "cure_rate_override_laser_power_amount DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:365
+#: src/infrastructure/setting_mapper.py:374
+#: src/infrastructure/setting_mapper.py:384
+#: src/infrastructure/setting_mapper.py:394
+msgid "Dripper"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:366
+msgid "dripper_type TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:367
+msgid "dripper_type DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:368
+#: src/ui/dripper_calibration_ui.kv:21
+msgid "Emulated"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:368
+#: src/ui/dripper_calibration_ui.kv:21
+msgid "Photo"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:368
+#: src/ui/dripper_calibration_ui.kv:21 src/ui/dripper_calibration_ui.kv:23
+msgid "Circut"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:375
+msgid "dripper_drips_per_mm TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:376
+msgid "dripper_drips_per_mm DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:385
+msgid "dripper_emulated_drips_per_second TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:386
+msgid "dripper_emulated_drips_per_second DESCRIPTION"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:395
+msgid "dripper_photo_zaxis_delay TITLE"
+msgstr ""
+
+#: src/infrastructure/setting_mapper.py:396
+msgid "dripper_photo_zaxis_delay DESCRIPTION"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:24
+msgid "Top"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:29
+msgid "Bottom"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:36 src/ui/cure_test_ui.kv:179
+#: src/ui/dripper_calibration_ui.kv:36 src/ui/library_ui.kv:68
+msgid "Back"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:42
+msgid "Center"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:47 src/ui/calibrate_ui.kv:96
+#: src/ui/calibrate_ui.kv:263 src/ui/calibrate_ui.kv:307
+#: src/ui/calibrate_ui.kv:393 src/ui/calibrate_ui.kv:445
+#: src/ui/cure_test_ui.kv:128 src/ui/dripper_calibration_ui.kv:29
+msgid "Help me"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:48
+msgid "MARKUP - Center Calibration Instructions"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:48
+msgid "Help - Calibration Setup"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:64
+msgid "Orientation"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:97
+msgid "MARKUP - Orientation Instructions"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:97
+msgid "Help - Orientation"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:258
+msgid "Print Area"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:264
+msgid "MARKUP - Print Area Instructions"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:264
+msgid "Help - Print Area"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:273 src/ui/library_ui.kv:20
+msgid "Height (mm)"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:283
+msgid "Depth (mm)"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:293 src/ui/library_ui.kv:28
+msgid "Width (mm)"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:302
+msgid "Aligment"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:308
+msgid "MARKUP - Alignment Instructions"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:308
+msgid "Help - Alignment"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:340
+msgid "Save"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:357
+msgid "Super Accurate Mode"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:371
+msgid "Reset All"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:374
+msgid "Save All"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:394
+msgid "MARKUP - Calibration Instructions"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:394
+msgid "Help - Calibration"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:417
+msgid "Test Patterns"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:430
+msgid "Speed"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:446
+msgid "MARKUP - Test Pattern Instructions"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:446
+msgid "Help - Test Patterns"
+msgstr ""
+
+#: src/ui/cure_test_ui.kv:29
+msgid "Cure Rate Test"
+msgstr ""
+
+#: src/ui/cure_test_ui.kv:35
+msgid "Base Height"
+msgstr ""
+
+#: src/ui/cure_test_ui.kv:46
+msgid "Test Height"
+msgstr ""
+
+#: src/ui/cure_test_ui.kv:57
+msgid "Starting Speed"
+msgstr ""
+
+#: src/ui/cure_test_ui.kv:68
+msgid "Stopping Speed"
+msgstr ""
+
+#: src/ui/cure_test_ui.kv:80
+msgid "Run Cure Test Now"
+msgstr ""
+
+#: src/ui/cure_test_ui.kv:91
+msgid "Always Use Draw Speed"
+msgstr ""
+
+#: src/ui/cure_test_ui.kv:101
+msgid "Draw Speed (mm)"
+msgstr ""
+
+#: src/ui/cure_test_ui.kv:111
+msgid "Always Use Laser Power"
+msgstr ""
+
+#: src/ui/cure_test_ui.kv:121
+msgid "Laser Power"
+msgstr ""
+
+#: src/ui/cure_test_ui.kv:129
+msgid "Markup- Cure Rate"
+msgstr ""
+
+#: src/ui/cure_test_ui.kv:129
+msgid "Help - Cure Rate Settings"
+msgstr ""
+
+#: src/ui/cure_test_ui.kv:159
+msgid "Best Height"
+msgstr ""
+
+#: src/ui/cure_test_ui.kv:166
+msgid "Best Draw Speed"
+msgstr ""
+
+#: src/ui/cure_test_ui.kv:173
+msgid "Use Best Draw Speed"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:30
+msgid "MARKUP - Dripper Instructions"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:30
+msgid "Help - Dripper Settings"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:46
+msgid "Drips Per Second"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:53
+msgid "Drips Per Millimeter"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:64
+msgid "Delay After Layer"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:87
+msgid "Drip Calculator"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:96
+msgid "Distance to Measure (mm)"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:105
+msgid "Reset Drip Count"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:112
+msgid "Drips"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:120
+msgid "Average Drips per Second"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:128
+msgid "Current Drips per mm"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:134
+msgid "Use Current Drips per mm"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:144
+msgid "Drips per mm"
+msgstr ""
+
+#: src/ui/library_ui.kv:36
+msgid "Layer Height (mm)"
+msgstr ""
+
+#: src/ui/library_ui.kv:44
+msgid "Speed (mm/sec)"
+msgstr ""
+
+#: src/ui/library_ui.kv:55
+msgid "Print Now"
+msgstr ""
+
+#: src/ui/peachy_widgets.kv:15
+msgid "Done"
+msgstr ""
+
+#: src/ui/print_ui.kv:17
+msgid "Print Details"
+msgstr ""
+
+#: src/ui/print_ui.kv:25
+msgid "Printer Settings"
+msgstr ""
+
+#: src/ui/print_ui.kv:42
+msgid "Cancel Print"
+msgstr ""
+
+#: src/ui/calibrate_ui.py:244
+msgid "Printer Posisition || "
+msgstr ""
+
+#: src/ui/custom_widgets.py:40
+msgid "Bad Stuff Happened"
+msgstr ""
+
+#: src/ui/print_ui.py:16
+msgid "Status"
+msgstr ""
+
+#: src/ui/print_ui.py:17
+msgid "Model Height"
+msgstr ""
+
+#: src/ui/print_ui.py:18
+msgid "Start Time"
+msgstr ""
+
+#: src/ui/print_ui.py:19
+msgid "Drips Counted"
+msgstr ""
+
+#: src/ui/print_ui.py:20
+msgid "Actual Height"
+msgstr ""
+
+#: src/ui/print_ui.py:21
+msgid "Drips per second"
+msgstr ""
+
+#: src/ui/print_ui.py:22
+msgid "Error List"
+msgstr ""
+
+#: src/ui/print_ui.py:23
+msgid "Waiting for drip"
+msgstr ""
+
+#: src/ui/print_ui.py:24
+msgid "Elapsed Time"
+msgstr ""
+
+#: src/ui/print_ui.py:25
+msgid "Current Layer"
+msgstr ""
+
+#: src/ui/print_ui.py:26
+msgid "Skipped Layers"
+msgstr ""
+
+#: src/ui/print_ui.py:55
+msgid "Print Complete, Close"
 msgstr ""
 
 #~ msgid "Hello World"

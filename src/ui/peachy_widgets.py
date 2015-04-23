@@ -12,8 +12,8 @@ from kivy.lang import Builder
 Builder.load_file('ui/peachy_widgets.kv')
 
 
-class HelpPopup(Popup):
-    text = StringProperty()
+class I18NHelpPopup(Popup):
+    source_text = StringProperty()
 
 
 class Dripper(BoxLayout):

@@ -1,26 +1,50 @@
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.graphics import Line, Color, InstructionGroup
-from kivy.properties import NumericProperty
+from kivy.properties import NumericProperty, StringProperty
 from kivy.logger import Logger
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.popup import Popup
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
-from kivy.uix.tabbedpanel import TabbedPanel
+from kivy.uix.tabbedpanel import TabbedPanel, TabbedPanelItem
+from kivy.lang import Builder
+
 from infrastructure.langtools import _
 
 import re
 
+Builder.load_file('ui/custom_widgets.kv')
 
-class ErrorPopup(Popup):
+
+class I18NLabel(Label):
+    text_source = StringProperty('')
+
+
+class I18NButton(Button):
+    text_source = StringProperty('')
+
+
+class I18NToggleButton(Button):
+    text_source = StringProperty('')
+
+
+class I18NPopup(Popup):
+    title_source = StringProperty('')
+
+
+class I18NTabbedPanelItem(TabbedPanelItem):
+    text_source = StringProperty('')
+
+
+class ErrorPopup(I18NPopup):
     def __init__(self, text=None, **kwargs):
         super(ErrorPopup, self).__init__(**kwargs)
         if text is None:
             text = _('Bad Stuff Happened')
         layout = BoxLayout(orientation='vertical')
-        message = Label(text=text)
-        close = Button(text=_("Close"), on_release=self.dismiss, size_hint=[1.0, 0.5])
+        message = I18NLabel(text_source=text)
+        close = I18NButton(text_source=_("Close"), on_release=self.dismiss, size_hint=[1.0, 0.5])
         layout.add_widget(message)
         layout.add_widget(close)
         self.add_widget(layout)
@@ -54,7 +78,7 @@ class LabelGridLayout(GridLayout):
             child.text_size = [self.size[0] - self.text_padding_x, self.child_height]
 
 
-class BorderedLabel(Label):
+class BorderedLabel(I18NLabel):
     def __init__(self, borders=[0, 0, 0, 0], **kwargs):
         super(BorderedLabel, self).__init__(**kwargs)
         self.bind(pos=self.update_border, size=self.update_border)
@@ -119,4 +143,3 @@ class CommunicativeTabbedPanel(TabbedPanel):
         if hasattr(value, 'on_enter'):
             value.on_enter()
         self.last_tab = value
-
