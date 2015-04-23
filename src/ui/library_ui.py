@@ -10,13 +10,16 @@ from kivy.properties import StringProperty
 from kivy.lang import Builder
 from kivy.app import App
 
+from ui.custom_widgets import I18NPopup
+
 
 Builder.load_file('ui/library_ui.kv')
 
 
-class PrintPop(Popup):
-    def __init__(self, name, api, screen_manager, **kwargs):
-        self.title = name
+class PrintPop(I18NPopup):
+    name = StringProperty()
+
+    def __init__(self, api, screen_manager, **kwargs):
         self.screen_manager = screen_manager
         super(PrintPop, self).__init__(**kwargs)
         self.test_print_api = api

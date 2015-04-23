@@ -8,7 +8,9 @@ from kivy.uix.popup import Popup
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.tabbedpanel import TabbedPanel, TabbedPanelItem
+from kivy.uix.accordion import AccordionItem
 from kivy.lang import Builder
+
 
 from infrastructure.langtools import _
 
@@ -35,6 +37,9 @@ class I18NPopup(Popup):
 
 class I18NTabbedPanelItem(TabbedPanelItem):
     text_source = StringProperty('')
+
+class I18NAccordionItem(AccordionItem):
+    title_source = StringProperty('')
 
 
 class ErrorPopup(I18NPopup):

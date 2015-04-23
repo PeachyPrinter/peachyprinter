@@ -29,7 +29,7 @@ class PrintStatus(LabelGridLayout):
     def __init__(self, **kwargs):
         super(PrintStatus, self).__init__(**kwargs)
         for (key, value) in self.data_points.items():
-            label = BorderedLabel(text=value, bold=True, borders=[0, 1.0, 0, 0])
+            label = BorderedLabel(text_source=value, bold=True, borders=[0, 1.0, 0, 0])
             content = BorderedLabel(id=key, text="asd", halign='right', borders=[0, 1.0, 1.0, 0])
             self.add_widget(label)
             self.add_widget(content)
@@ -78,8 +78,8 @@ class PrintingUI(Screen):
 
     def on_pre_enter(self):
         for (title, value) in self.parent.setting_translation.get_settings().items():
-            title_label = BorderedLabel(text=title, bold=True, borders=[0, 1.0, 0, 0])
-            value_label = BorderedLabel(text=value,  halign='right', borders=[0, 1.0, 1.0, 0])
+            title_label = BorderedLabel(text_source=title, bold=True, borders=[0, 1.0, 0, 0])
+            value_label = BorderedLabel(text_source=value,  halign='right', borders=[0, 1.0, 1.0, 0])
             self.ids.print_settings.add_widget(title_label)
             self.ids.print_settings.add_widget(value_label)
 

@@ -31,7 +31,7 @@
                     id: dripper_setup
                 I18NButton:
                     text_source: _("Help me")
-                    on_release: HelpPopup(text=_('MARKUP - Dripper Instructions'), title=_("Help - Dripper Settings"), size_hint=(0.9, 0.9)).open()
+                    on_release: I18NHelpPopup(text_source=_('MARKUP - Dripper Instructions'), title_source=_("Help - Dripper Settings"), size_hint=(0.9, 0.9)).open()
                     size_hint_y:None
                     height: 30
             BoxLayout:

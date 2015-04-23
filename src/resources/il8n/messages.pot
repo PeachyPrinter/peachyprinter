@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-23 08:48-0600\n"
+"POT-Creation-Date: 2015-04-23 12:15-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "Load file"
 msgstr ""
 
-#: src/gui.py:111 src/peachyprinter.kv:26 src/ui/custom_widgets.py:43
+#: src/gui.py:113 src/peachyprinter.kv:26 src/ui/custom_widgets.py:52
 msgid "Close"
 msgstr ""
 
@@ -43,6 +43,48 @@ msgstr ""
 
 #: src/peachyprinter.kv:23
 msgid "Advanced Settings"
+msgstr ""
+
+#: src/peachyprinter.kv:41
+msgid "Print from file"
+msgstr ""
+
+#: src/peachyprinter.kv:44
+msgid "Print from library"
+msgstr ""
+
+#: src/peachyprinter.kv:74 src/infrastructure/setting_mapper.py:73
+#: src/infrastructure/setting_mapper.py:91
+#: src/infrastructure/setting_mapper.py:109
+#: src/infrastructure/setting_mapper.py:127
+#: src/infrastructure/setting_mapper.py:138
+#: src/infrastructure/setting_mapper.py:148
+#: src/infrastructure/setting_mapper.py:158
+#: src/infrastructure/setting_mapper.py:168
+#: src/infrastructure/setting_mapper.py:178
+#: src/infrastructure/setting_mapper.py:188
+#: src/infrastructure/setting_mapper.py:207
+#: src/infrastructure/setting_mapper.py:223
+#: src/infrastructure/setting_mapper.py:233
+#: src/infrastructure/setting_mapper.py:243
+#: src/infrastructure/setting_mapper.py:252
+#: src/infrastructure/setting_mapper.py:270
+#: src/infrastructure/setting_mapper.py:279
+#: src/infrastructure/setting_mapper.py:289
+#: src/infrastructure/setting_mapper.py:299
+#: src/infrastructure/setting_mapper.py:309
+#: src/infrastructure/setting_mapper.py:319
+#: src/infrastructure/setting_mapper.py:338
+#: src/infrastructure/setting_mapper.py:348
+#: src/infrastructure/setting_mapper.py:358
+#: src/infrastructure/setting_mapper.py:378
+#: src/infrastructure/setting_mapper.py:388
+#: src/infrastructure/setting_mapper.py:398 src/ui/library_ui.kv:53
+msgid "Cancel"
+msgstr ""
+
+#: src/peachyprinter.kv:78
+msgid "Load"
 msgstr ""
 
 #: test/infrastructure_test/langtoolstest.py:18
@@ -151,36 +193,6 @@ msgstr ""
 #: src/infrastructure/setting_mapper.py:387
 #: src/infrastructure/setting_mapper.py:397
 msgid "Ok"
-msgstr ""
-
-#: src/infrastructure/setting_mapper.py:73
-#: src/infrastructure/setting_mapper.py:91
-#: src/infrastructure/setting_mapper.py:109
-#: src/infrastructure/setting_mapper.py:127
-#: src/infrastructure/setting_mapper.py:138
-#: src/infrastructure/setting_mapper.py:148
-#: src/infrastructure/setting_mapper.py:158
-#: src/infrastructure/setting_mapper.py:168
-#: src/infrastructure/setting_mapper.py:178
-#: src/infrastructure/setting_mapper.py:188
-#: src/infrastructure/setting_mapper.py:207
-#: src/infrastructure/setting_mapper.py:223
-#: src/infrastructure/setting_mapper.py:233
-#: src/infrastructure/setting_mapper.py:243
-#: src/infrastructure/setting_mapper.py:252
-#: src/infrastructure/setting_mapper.py:270
-#: src/infrastructure/setting_mapper.py:279
-#: src/infrastructure/setting_mapper.py:289
-#: src/infrastructure/setting_mapper.py:299
-#: src/infrastructure/setting_mapper.py:309
-#: src/infrastructure/setting_mapper.py:319
-#: src/infrastructure/setting_mapper.py:338
-#: src/infrastructure/setting_mapper.py:348
-#: src/infrastructure/setting_mapper.py:358
-#: src/infrastructure/setting_mapper.py:378
-#: src/infrastructure/setting_mapper.py:388
-#: src/infrastructure/setting_mapper.py:398 src/ui/library_ui.kv:52
-msgid "Cancel"
 msgstr ""
 
 #: src/infrastructure/setting_mapper.py:79
@@ -466,17 +478,17 @@ msgid "dripper_type DESCRIPTION"
 msgstr ""
 
 #: src/infrastructure/setting_mapper.py:368
-#: src/ui/dripper_calibration_ui.kv:21
+#: src/ui/dripper_calibration_ui.kv:25
 msgid "Emulated"
 msgstr ""
 
 #: src/infrastructure/setting_mapper.py:368
-#: src/ui/dripper_calibration_ui.kv:21
+#: src/ui/dripper_calibration_ui.kv:25
 msgid "Photo"
 msgstr ""
 
 #: src/infrastructure/setting_mapper.py:368
-#: src/ui/dripper_calibration_ui.kv:21 src/ui/dripper_calibration_ui.kv:23
+#: src/ui/dripper_calibration_ui.kv:25
 msgid "Circut"
 msgstr ""
 
@@ -513,7 +525,7 @@ msgid "Bottom"
 msgstr ""
 
 #: src/ui/calibrate_ui.kv:36 src/ui/cure_test_ui.kv:179
-#: src/ui/dripper_calibration_ui.kv:36 src/ui/library_ui.kv:68
+#: src/ui/dripper_calibration_ui.kv:40 src/ui/library_ui.kv:69
 msgid "Back"
 msgstr ""
 
@@ -524,7 +536,7 @@ msgstr ""
 #: src/ui/calibrate_ui.kv:47 src/ui/calibrate_ui.kv:96
 #: src/ui/calibrate_ui.kv:263 src/ui/calibrate_ui.kv:307
 #: src/ui/calibrate_ui.kv:393 src/ui/calibrate_ui.kv:445
-#: src/ui/cure_test_ui.kv:128 src/ui/dripper_calibration_ui.kv:29
+#: src/ui/cure_test_ui.kv:128 src/ui/dripper_calibration_ui.kv:33
 msgid "Help me"
 msgstr ""
 
@@ -560,7 +572,7 @@ msgstr ""
 msgid "Help - Print Area"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:273 src/ui/library_ui.kv:20
+#: src/ui/calibrate_ui.kv:273 src/ui/library_ui.kv:21
 msgid "Height (mm)"
 msgstr ""
 
@@ -568,7 +580,7 @@ msgstr ""
 msgid "Depth (mm)"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:293 src/ui/library_ui.kv:28
+#: src/ui/calibrate_ui.kv:293 src/ui/library_ui.kv:29
 msgid "Width (mm)"
 msgstr ""
 
@@ -684,67 +696,71 @@ msgstr ""
 msgid "Use Best Draw Speed"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:30
+#: src/ui/dripper_calibration_ui.kv:22
+msgid "Dripper Type"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:34
 msgid "MARKUP - Dripper Instructions"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:30
+#: src/ui/dripper_calibration_ui.kv:34
 msgid "Help - Dripper Settings"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:46
+#: src/ui/dripper_calibration_ui.kv:50
 msgid "Drips Per Second"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:53
+#: src/ui/dripper_calibration_ui.kv:57
 msgid "Drips Per Millimeter"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:64
+#: src/ui/dripper_calibration_ui.kv:68
 msgid "Delay After Layer"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:87
+#: src/ui/dripper_calibration_ui.kv:91
 msgid "Drip Calculator"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:96
+#: src/ui/dripper_calibration_ui.kv:100
 msgid "Distance to Measure (mm)"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:105
+#: src/ui/dripper_calibration_ui.kv:109
 msgid "Reset Drip Count"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:112
+#: src/ui/dripper_calibration_ui.kv:116
 msgid "Drips"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:120
+#: src/ui/dripper_calibration_ui.kv:124
 msgid "Average Drips per Second"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:128
+#: src/ui/dripper_calibration_ui.kv:132
 msgid "Current Drips per mm"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:134
+#: src/ui/dripper_calibration_ui.kv:138
 msgid "Use Current Drips per mm"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:144
+#: src/ui/dripper_calibration_ui.kv:148
 msgid "Drips per mm"
 msgstr ""
 
-#: src/ui/library_ui.kv:36
+#: src/ui/library_ui.kv:37
 msgid "Layer Height (mm)"
 msgstr ""
 
-#: src/ui/library_ui.kv:44
+#: src/ui/library_ui.kv:45
 msgid "Speed (mm/sec)"
 msgstr ""
 
-#: src/ui/library_ui.kv:55
+#: src/ui/library_ui.kv:56
 msgid "Print Now"
 msgstr ""
 
@@ -752,15 +768,19 @@ msgstr ""
 msgid "Done"
 msgstr ""
 
-#: src/ui/print_ui.kv:17
+#: src/ui/print_ui.kv:14
 msgid "Print Details"
 msgstr ""
 
-#: src/ui/print_ui.kv:25
+#: src/ui/print_ui.kv:22
 msgid "Printer Settings"
 msgstr ""
 
-#: src/ui/print_ui.kv:42
+#: src/ui/print_ui.kv:33
+msgid "Printing UI"
+msgstr ""
+
+#: src/ui/print_ui.kv:39
 msgid "Cancel Print"
 msgstr ""
 
@@ -768,7 +788,7 @@ msgstr ""
 msgid "Printer Posisition || "
 msgstr ""
 
-#: src/ui/custom_widgets.py:40
+#: src/ui/custom_widgets.py:49
 msgid "Bad Stuff Happened"
 msgstr ""
 

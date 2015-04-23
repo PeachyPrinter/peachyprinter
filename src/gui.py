@@ -26,7 +26,7 @@ class LoadDialog(FloatLayout):
     cancel = ObjectProperty(None)
 
 
-class SettingsSelector(Popup):
+class SettingsSelector(I18NPopup):
     pass
 
 
@@ -94,6 +94,8 @@ class PeachyPrinter(App):
         locale_dir = join(dirname(__file__), 'resources', 'il8n', 'locales')
         locales = gettext.translation('peachyprinter', locale_dir, languages=[self.lang])
         self.translation = locales.ugettext
+        if hasattr(self, 'settings'):
+            self.settings.interface.menu.close_button.text = self.translation(_("Close"))
 
     def build(self):
         self.settings_cls = SettingsWithSidebar
@@ -107,10 +109,7 @@ class PeachyPrinter(App):
 
     def build_settings(self, settings):
         self.setting_translation.refresh_settings(settings, self.config)
-
-    def on_lang(self, instance, lang):
-        if hasattr(self, 'settings'):
-            self.settings.interface.menu.close_button.text = _("Close")
+        settings.interface.menu.close_button.text = self.translation(_("Close"))
 
     def on_stop(self):
         if self.manager:

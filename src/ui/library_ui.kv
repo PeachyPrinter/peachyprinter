@@ -3,6 +3,7 @@
 #:import FloatInput ui.custom_widgets.FloatInput
 
 <PrintPop>:
+    title_source: self.name
     size_hint: [0.9, 0.9]
     BoxLayout:
         orientation: 'horizontal'
@@ -16,43 +17,43 @@
                 BoxLayout:
                     size_hint: [1.0, 60 / root.height]
                     orientation: 'horizontal'
-                    Label:
-                        text: _("Height (mm)")
+                    I18NLabel:
+                        text_source: _("Height (mm)")
                     FloatInput:
                         id: height
                         text: '20'
                 BoxLayout:
                     size_hint: [1.0, 60 / root.height]
                     orientation: 'horizontal'
-                    Label:
-                        text: _("Width (mm)")
+                    I18NLabel:
+                        text_source: _("Width (mm)")
                     FloatInput:
                         id: width
                         text: '20'
                 BoxLayout:
                     size_hint: [1.0, 60 / root.height]
                     orientation: 'horizontal'
-                    Label:
-                        text: _("Layer Height (mm)")
+                    I18NLabel:
+                        text_source: _("Layer Height (mm)")
                     FloatInput:
                         id: layer_height
                         text: '0.01'
                 BoxLayout:
                     size_hint: [1.0, 60 / root.height]
                     orientation: 'horizontal'
-                    Label:
-                        text: _("Speed (mm/sec)")
+                    I18NLabel:
+                        text_source: _("Speed (mm/sec)")
                     FloatInput:
                         id: speed
                         text: '120'
             BoxLayout:
                 size_hint: [1.0, 60 / root.height]
                 orientation: 'horizontal'
-                Button:
-                    text: _("Cancel")
+                I18NButton:
+                    text_source: _("Cancel")
                     on_release: root.dismiss()
-                Button:
-                    text: _("Print Now")
+                I18NButton:
+                    text_source: _("Print Now")
                     on_release: root.dismiss(); root.print_from_library()
 
 <LibraryUI>:
@@ -63,7 +64,7 @@
             GridLayout:
                 id: library_grid
                 cols: 2
-        Button:
+        I18NButton:
             size_hint: [1.0, 0.05]
-            text: _('Back')
+            text_source: _('Back')
             on_release: app.root.current = 'mainui'
