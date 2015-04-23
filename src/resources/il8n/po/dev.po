@@ -13,76 +13,76 @@ msgstr ""
 
 #: src/gui.py:42
 msgid "Load file"
-msgstr "@@@@@@@@@@"
+msgstr "#!00000!#"
 
 #: src/gui.py:111 src/peachyprinter.kv:26 src/ui/custom_widgets.py:43
 msgid "Close"
-msgstr "@@@@@@@@@@"
+msgstr "#!00001!#"
 
 #: src/peachyprinter.kv:10
 msgid "Settings Selection"
-msgstr "@@@@@@@@@@"
+msgstr "#!00002!#"
 
 #: src/peachyprinter.kv:14
 msgid "Laser Calibration"
-msgstr "@@@@@@@@@@"
+msgstr "#!00003!#"
 
 #: src/peachyprinter.kv:17
 msgid "Dripper Calibration"
-msgstr "@@@@@@@@@@"
+msgstr "#!00004!#"
 
 #: src/peachyprinter.kv:20
 msgid "Resin Curing Calibration"
-msgstr "@@@@@@@@@@"
+msgstr "#!00005!#"
 
 #: src/peachyprinter.kv:23
 msgid "Advanced Settings"
-msgstr "@@@@@@@@@@"
+msgstr "#!00006!#"
 
 #: test/infrastructure_test/langtoolstest.py:18
 #: test/infrastructure_test/langtoolstest.py:22
 #: test/infrastructure_test/langtoolstest.py:26
 msgid "en_GB Text"
-msgstr "@@@@@@@@@@"
+msgstr "#!00007!#"
 
 #: src/infrastructure/setting_mapper.py:26
 #: src/infrastructure/setting_mapper.py:34
 #: src/infrastructure/setting_mapper.py:42
 #: src/infrastructure/setting_mapper.py:50
 msgid "Info"
-msgstr "@@@@@@@@@@"
+msgstr "#!00008!#"
 
 #: src/infrastructure/setting_mapper.py:27
 msgid "info_version_number DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00009!#"
 
 #: src/infrastructure/setting_mapper.py:28
 msgid "info_version_number TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00010!#"
 
 #: src/infrastructure/setting_mapper.py:35
 msgid "info_serial_number DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00011!#"
 
 #: src/infrastructure/setting_mapper.py:36
 msgid "info_serial_number TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00012!#"
 
 #: src/infrastructure/setting_mapper.py:43
 msgid "info_hardware_version_number DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00013!#"
 
 #: src/infrastructure/setting_mapper.py:44
 msgid "info_hardware_version_number TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00014!#"
 
 #: src/infrastructure/setting_mapper.py:51
 msgid "info_firmware_version_number DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00015!#"
 
 #: src/infrastructure/setting_mapper.py:52
 msgid "info_firmware_version_number TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00016!#"
 
 #: src/infrastructure/setting_mapper.py:59
 #: src/infrastructure/setting_mapper.py:67
@@ -99,23 +99,23 @@ msgstr "@@@@@@@@@@"
 #: src/infrastructure/setting_mapper.py:172
 #: src/infrastructure/setting_mapper.py:182
 msgid "Options"
-msgstr "@@@@@@@@@@"
+msgstr "#!00017!#"
 
 #: src/infrastructure/setting_mapper.py:61
 msgid "options_use_sublayers TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00018!#"
 
 #: src/infrastructure/setting_mapper.py:62
 msgid "options_use_sublayers DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00019!#"
 
 #: src/infrastructure/setting_mapper.py:69
 msgid "options_sublayer_height_mm TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00020!#"
 
 #: src/infrastructure/setting_mapper.py:70
 msgid "options_sublayer_height_mm DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00021!#"
 
 #: src/infrastructure/setting_mapper.py:72
 #: src/infrastructure/setting_mapper.py:90
@@ -145,7 +145,7 @@ msgstr "@@@@@@@@@@"
 #: src/infrastructure/setting_mapper.py:387
 #: src/infrastructure/setting_mapper.py:397
 msgid "Ok"
-msgstr "@@@@@@@@@@"
+msgstr "#!00022!#"
 
 #: src/infrastructure/setting_mapper.py:73
 #: src/infrastructure/setting_mapper.py:91
@@ -175,103 +175,103 @@ msgstr "@@@@@@@@@@"
 #: src/infrastructure/setting_mapper.py:388
 #: src/infrastructure/setting_mapper.py:398 src/ui/library_ui.kv:52
 msgid "Cancel"
-msgstr "@@@@@@@@@@"
+msgstr "#!00023!#"
 
 #: src/infrastructure/setting_mapper.py:79
 msgid "options_use_shufflelayers TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00024!#"
 
 #: src/infrastructure/setting_mapper.py:80
 msgid "options_use_shufflelayers DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00025!#"
 
 #: src/infrastructure/setting_mapper.py:87
 msgid "options_shuffle_layers_amount TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00026!#"
 
 #: src/infrastructure/setting_mapper.py:88
 msgid "options_shuffle_layers_amount DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00027!#"
 
 #: src/infrastructure/setting_mapper.py:98
 msgid "options_use_overlap TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00028!#"
 
 #: src/infrastructure/setting_mapper.py:99
 msgid "options_use_overlap DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00029!#"
 
 #: src/infrastructure/setting_mapper.py:105
 msgid "options_overlap_amount_mm TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00030!#"
 
 #: src/infrastructure/setting_mapper.py:106
 msgid "options_overlap_amount_mm DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00031!#"
 
 #: src/infrastructure/setting_mapper.py:115
 msgid "options_laser_thickness_mm TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00032!#"
 
 #: src/infrastructure/setting_mapper.py:116
 msgid "options_laser_thickness_mm DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00033!#"
 
 #: src/infrastructure/setting_mapper.py:123
 msgid "options_scaling_factor TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00034!#"
 
 #: src/infrastructure/setting_mapper.py:124
 msgid "options_scaling_factor DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00035!#"
 
 #: src/infrastructure/setting_mapper.py:134
 msgid "options_max_lead_distance_mm TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00036!#"
 
 #: src/infrastructure/setting_mapper.py:135
 msgid "options_max_lead_distance_mm DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00037!#"
 
 #: src/infrastructure/setting_mapper.py:144
 msgid "options_pre_layer_delay TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00038!#"
 
 #: src/infrastructure/setting_mapper.py:145
 msgid "options_pre_layer_delay DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00039!#"
 
 #: src/infrastructure/setting_mapper.py:154
 msgid "options_post_fire_delay TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00040!#"
 
 #: src/infrastructure/setting_mapper.py:155
 msgid "options_post_fire_delay DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00041!#"
 
 #: src/infrastructure/setting_mapper.py:164
 msgid "options_slew_delay TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00042!#"
 
 #: src/infrastructure/setting_mapper.py:165
 msgid "options_slew_delay DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00043!#"
 
 #: src/infrastructure/setting_mapper.py:174
 msgid "options_wait_after_move_milliseconds TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00044!#"
 
 #: src/infrastructure/setting_mapper.py:175
 msgid "options_wait_after_move_milliseconds DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00045!#"
 
 #: src/infrastructure/setting_mapper.py:184
 msgid "options_print_queue_delay TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00046!#"
 
 #: src/infrastructure/setting_mapper.py:185
 msgid "options_print_queue_delay DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00047!#"
 
 #: src/infrastructure/setting_mapper.py:193
 #: src/infrastructure/setting_mapper.py:201
@@ -281,63 +281,63 @@ msgstr "@@@@@@@@@@"
 #: src/infrastructure/setting_mapper.py:238
 #: src/infrastructure/setting_mapper.py:247
 msgid "Email"
-msgstr "@@@@@@@@@@"
+msgstr "#!00048!#"
 
 #: src/infrastructure/setting_mapper.py:195
 msgid "email.on TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00049!#"
 
 #: src/infrastructure/setting_mapper.py:196
 msgid "email.on DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00050!#"
 
 #: src/infrastructure/setting_mapper.py:203
 msgid "email.port TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00051!#"
 
 #: src/infrastructure/setting_mapper.py:204
 msgid "email.port DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00052!#"
 
 #: src/infrastructure/setting_mapper.py:213
 msgid "email.host TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00053!#"
 
 #: src/infrastructure/setting_mapper.py:214
 msgid "email.host DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00054!#"
 
 #: src/infrastructure/setting_mapper.py:220
 msgid "email.sender TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00055!#"
 
 #: src/infrastructure/setting_mapper.py:221
 msgid "email.sender DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00056!#"
 
 #: src/infrastructure/setting_mapper.py:230
 msgid "email.recipient TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00057!#"
 
 #: src/infrastructure/setting_mapper.py:231
 msgid "email.recipient DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00058!#"
 
 #: src/infrastructure/setting_mapper.py:240
 msgid "email.username TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00059!#"
 
 #: src/infrastructure/setting_mapper.py:241
 msgid "email.username DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00060!#"
 
 #: src/infrastructure/setting_mapper.py:249
 msgid "email.password TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00061!#"
 
 #: src/infrastructure/setting_mapper.py:250
 msgid "email.password DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00062!#"
 
 #: src/infrastructure/setting_mapper.py:257
 #: src/infrastructure/setting_mapper.py:265
@@ -347,469 +347,469 @@ msgstr "@@@@@@@@@@"
 #: src/infrastructure/setting_mapper.py:304
 #: src/infrastructure/setting_mapper.py:314
 msgid "Serial"
-msgstr "@@@@@@@@@@"
+msgstr "#!00063!#"
 
 #: src/infrastructure/setting_mapper.py:259
 msgid "serial_enabled TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00064!#"
 
 #: src/infrastructure/setting_mapper.py:260
 msgid "serial_enabled DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00065!#"
 
 #: src/infrastructure/setting_mapper.py:267
 msgid "serial_port TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00066!#"
 
 #: src/infrastructure/setting_mapper.py:268
 msgid "serial_port DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00067!#"
 
 #: src/infrastructure/setting_mapper.py:276
 msgid "serial_on_command TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00068!#"
 
 #: src/infrastructure/setting_mapper.py:277
 msgid "serial_on_command DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00069!#"
 
 #: src/infrastructure/setting_mapper.py:286
 msgid "serial_off_command TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00070!#"
 
 #: src/infrastructure/setting_mapper.py:287
 msgid "serial_off_command DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00071!#"
 
 #: src/infrastructure/setting_mapper.py:296
 msgid "serial_layer_started_command TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00072!#"
 
 #: src/infrastructure/setting_mapper.py:297
 msgid "serial_layer_started_command DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00073!#"
 
 #: src/infrastructure/setting_mapper.py:306
 msgid "serial_layer_ended_command TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00074!#"
 
 #: src/infrastructure/setting_mapper.py:307
 msgid "serial_layer_ended_command DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00075!#"
 
 #: src/infrastructure/setting_mapper.py:316
 msgid "serial_print_ended_command TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00076!#"
 
 #: src/infrastructure/setting_mapper.py:317
 msgid "serial_print_ended_command DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00077!#"
 
 #: src/infrastructure/setting_mapper.py:326
 #: src/infrastructure/setting_mapper.py:334
 #: src/infrastructure/setting_mapper.py:344
 #: src/infrastructure/setting_mapper.py:354
 msgid "Cure Rate"
-msgstr "@@@@@@@@@@"
+msgstr "#!00078!#"
 
 #: src/infrastructure/setting_mapper.py:327
 msgid "cure_rate_use_draw_speed TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00079!#"
 
 #: src/infrastructure/setting_mapper.py:328
 msgid "cure_rate_use_draw_speed DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00080!#"
 
 #: src/infrastructure/setting_mapper.py:335
 msgid "cure_rate_draw_speed TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00081!#"
 
 #: src/infrastructure/setting_mapper.py:336
 msgid "cure_rate_draw_speed DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00082!#"
 
 #: src/infrastructure/setting_mapper.py:345
 msgid "cure_rate_override_laser_power TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00083!#"
 
 #: src/infrastructure/setting_mapper.py:346
 msgid "cure_rate_override_laser_power DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00084!#"
 
 #: src/infrastructure/setting_mapper.py:355
 msgid "cure_rate_override_laser_power_amount TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00085!#"
 
 #: src/infrastructure/setting_mapper.py:356
 msgid "cure_rate_override_laser_power_amount DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00086!#"
 
 #: src/infrastructure/setting_mapper.py:365
 #: src/infrastructure/setting_mapper.py:374
 #: src/infrastructure/setting_mapper.py:384
 #: src/infrastructure/setting_mapper.py:394
 msgid "Dripper"
-msgstr "@@@@@@@@@@"
+msgstr "#!00087!#"
 
 #: src/infrastructure/setting_mapper.py:366
 msgid "dripper_type TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00088!#"
 
 #: src/infrastructure/setting_mapper.py:367
 msgid "dripper_type DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00089!#"
 
 #: src/infrastructure/setting_mapper.py:368
 #: src/ui/dripper_calibration_ui.kv:21
 msgid "Emulated"
-msgstr "@@@@@@@@@@"
+msgstr "#!00090!#"
 
 #: src/infrastructure/setting_mapper.py:368
 #: src/ui/dripper_calibration_ui.kv:21
 msgid "Photo"
-msgstr "@@@@@@@@@@"
+msgstr "#!00091!#"
 
 #: src/infrastructure/setting_mapper.py:368
 #: src/ui/dripper_calibration_ui.kv:21 src/ui/dripper_calibration_ui.kv:23
 msgid "Circut"
-msgstr "@@@@@@@@@@"
+msgstr "#!00092!#"
 
 #: src/infrastructure/setting_mapper.py:375
 msgid "dripper_drips_per_mm TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00093!#"
 
 #: src/infrastructure/setting_mapper.py:376
 msgid "dripper_drips_per_mm DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00094!#"
 
 #: src/infrastructure/setting_mapper.py:385
 msgid "dripper_emulated_drips_per_second TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00095!#"
 
 #: src/infrastructure/setting_mapper.py:386
 msgid "dripper_emulated_drips_per_second DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00096!#"
 
 #: src/infrastructure/setting_mapper.py:395
 msgid "dripper_photo_zaxis_delay TITLE"
-msgstr "@@@@@@@@@@"
+msgstr "#!00097!#"
 
 #: src/infrastructure/setting_mapper.py:396
 msgid "dripper_photo_zaxis_delay DESCRIPTION"
-msgstr "@@@@@@@@@@"
+msgstr "#!00098!#"
 
 #: src/ui/calibrate_ui.kv:24
 msgid "Top"
-msgstr "@@@@@@@@@@"
+msgstr "#!00099!#"
 
 #: src/ui/calibrate_ui.kv:29
 msgid "Bottom"
-msgstr "@@@@@@@@@@"
+msgstr "#!00100!#"
 
 #: src/ui/calibrate_ui.kv:36 src/ui/cure_test_ui.kv:179
 #: src/ui/dripper_calibration_ui.kv:36 src/ui/library_ui.kv:68
 msgid "Back"
-msgstr "@@@@@@@@@@"
+msgstr "#!00101!#"
 
 #: src/ui/calibrate_ui.kv:42
 msgid "Center"
-msgstr "@@@@@@@@@@"
+msgstr "#!00102!#"
 
 #: src/ui/calibrate_ui.kv:47 src/ui/calibrate_ui.kv:96
 #: src/ui/calibrate_ui.kv:263 src/ui/calibrate_ui.kv:307
 #: src/ui/calibrate_ui.kv:393 src/ui/calibrate_ui.kv:445
 #: src/ui/cure_test_ui.kv:128 src/ui/dripper_calibration_ui.kv:29
 msgid "Help me"
-msgstr "@@@@@@@@@@"
+msgstr "#!00103!#"
 
 #: src/ui/calibrate_ui.kv:48
 msgid "MARKUP - Center Calibration Instructions"
-msgstr "@@@@@@@@@@"
+msgstr "#!00104!#"
 
 #: src/ui/calibrate_ui.kv:48
 msgid "Help - Calibration Setup"
-msgstr "@@@@@@@@@@"
+msgstr "#!00105!#"
 
 #: src/ui/calibrate_ui.kv:64
 msgid "Orientation"
-msgstr "@@@@@@@@@@"
+msgstr "#!00106!#"
 
 #: src/ui/calibrate_ui.kv:97
 msgid "MARKUP - Orientation Instructions"
-msgstr "@@@@@@@@@@"
+msgstr "#!00107!#"
 
 #: src/ui/calibrate_ui.kv:97
 msgid "Help - Orientation"
-msgstr "@@@@@@@@@@"
+msgstr "#!00108!#"
 
 #: src/ui/calibrate_ui.kv:258
 msgid "Print Area"
-msgstr "@@@@@@@@@@"
+msgstr "#!00109!#"
 
 #: src/ui/calibrate_ui.kv:264
 msgid "MARKUP - Print Area Instructions"
-msgstr "@@@@@@@@@@"
+msgstr "#!00110!#"
 
 #: src/ui/calibrate_ui.kv:264
 msgid "Help - Print Area"
-msgstr "@@@@@@@@@@"
+msgstr "#!00111!#"
 
 #: src/ui/calibrate_ui.kv:273 src/ui/library_ui.kv:20
 msgid "Height (mm)"
-msgstr "@@@@@@@@@@"
+msgstr "#!00112!#"
 
 #: src/ui/calibrate_ui.kv:283
 msgid "Depth (mm)"
-msgstr "@@@@@@@@@@"
+msgstr "#!00113!#"
 
 #: src/ui/calibrate_ui.kv:293 src/ui/library_ui.kv:28
 msgid "Width (mm)"
-msgstr "@@@@@@@@@@"
+msgstr "#!00114!#"
 
 #: src/ui/calibrate_ui.kv:302
 msgid "Aligment"
-msgstr "@@@@@@@@@@"
+msgstr "#!00115!#"
 
 #: src/ui/calibrate_ui.kv:308
 msgid "MARKUP - Alignment Instructions"
-msgstr "@@@@@@@@@@"
+msgstr "#!00116!#"
 
 #: src/ui/calibrate_ui.kv:308
 msgid "Help - Alignment"
-msgstr "@@@@@@@@@@"
+msgstr "#!00117!#"
 
 #: src/ui/calibrate_ui.kv:340
 msgid "Save"
-msgstr "@@@@@@@@@@"
+msgstr "#!00118!#"
 
 #: src/ui/calibrate_ui.kv:357
 msgid "Super Accurate Mode"
-msgstr "@@@@@@@@@@"
+msgstr "#!00119!#"
 
 #: src/ui/calibrate_ui.kv:371
 msgid "Reset All"
-msgstr "@@@@@@@@@@"
+msgstr "#!00120!#"
 
 #: src/ui/calibrate_ui.kv:374
 msgid "Save All"
-msgstr "@@@@@@@@@@"
+msgstr "#!00121!#"
 
 #: src/ui/calibrate_ui.kv:394
 msgid "MARKUP - Calibration Instructions"
-msgstr "@@@@@@@@@@"
+msgstr "#!00122!#"
 
 #: src/ui/calibrate_ui.kv:394
 msgid "Help - Calibration"
-msgstr "@@@@@@@@@@"
+msgstr "#!00123!#"
 
 #: src/ui/calibrate_ui.kv:417
 msgid "Test Patterns"
-msgstr "@@@@@@@@@@"
+msgstr "#!00124!#"
 
 #: src/ui/calibrate_ui.kv:430
 msgid "Speed"
-msgstr "@@@@@@@@@@"
+msgstr "#!00125!#"
 
 #: src/ui/calibrate_ui.kv:446
 msgid "MARKUP - Test Pattern Instructions"
-msgstr "@@@@@@@@@@"
+msgstr "#!00126!#"
 
 #: src/ui/calibrate_ui.kv:446
 msgid "Help - Test Patterns"
-msgstr "@@@@@@@@@@"
+msgstr "#!00127!#"
 
 #: src/ui/cure_test_ui.kv:29
 msgid "Cure Rate Test"
-msgstr "@@@@@@@@@@"
+msgstr "#!00128!#"
 
 #: src/ui/cure_test_ui.kv:35
 msgid "Base Height"
-msgstr "@@@@@@@@@@"
+msgstr "#!00129!#"
 
 #: src/ui/cure_test_ui.kv:46
 msgid "Test Height"
-msgstr "@@@@@@@@@@"
+msgstr "#!00130!#"
 
 #: src/ui/cure_test_ui.kv:57
 msgid "Starting Speed"
-msgstr "@@@@@@@@@@"
+msgstr "#!00131!#"
 
 #: src/ui/cure_test_ui.kv:68
 msgid "Stopping Speed"
-msgstr "@@@@@@@@@@"
+msgstr "#!00132!#"
 
 #: src/ui/cure_test_ui.kv:80
 msgid "Run Cure Test Now"
-msgstr "@@@@@@@@@@"
+msgstr "#!00133!#"
 
 #: src/ui/cure_test_ui.kv:91
 msgid "Always Use Draw Speed"
-msgstr "@@@@@@@@@@"
+msgstr "#!00134!#"
 
 #: src/ui/cure_test_ui.kv:101
 msgid "Draw Speed (mm)"
-msgstr "@@@@@@@@@@"
+msgstr "#!00135!#"
 
 #: src/ui/cure_test_ui.kv:111
 msgid "Always Use Laser Power"
-msgstr "@@@@@@@@@@"
+msgstr "#!00136!#"
 
 #: src/ui/cure_test_ui.kv:121
 msgid "Laser Power"
-msgstr "@@@@@@@@@@"
+msgstr "#!00137!#"
 
 #: src/ui/cure_test_ui.kv:129
 msgid "Markup- Cure Rate"
-msgstr "@@@@@@@@@@"
+msgstr "#!00138!#"
 
 #: src/ui/cure_test_ui.kv:129
 msgid "Help - Cure Rate Settings"
-msgstr "@@@@@@@@@@"
+msgstr "#!00139!#"
 
 #: src/ui/cure_test_ui.kv:159
 msgid "Best Height"
-msgstr "@@@@@@@@@@"
+msgstr "#!00140!#"
 
 #: src/ui/cure_test_ui.kv:166
 msgid "Best Draw Speed"
-msgstr "@@@@@@@@@@"
+msgstr "#!00141!#"
 
 #: src/ui/cure_test_ui.kv:173
 msgid "Use Best Draw Speed"
-msgstr "@@@@@@@@@@"
+msgstr "#!00142!#"
 
 #: src/ui/dripper_calibration_ui.kv:30
 msgid "MARKUP - Dripper Instructions"
-msgstr "@@@@@@@@@@"
+msgstr "#!00143!#"
 
 #: src/ui/dripper_calibration_ui.kv:30
 msgid "Help - Dripper Settings"
-msgstr "@@@@@@@@@@"
+msgstr "#!00144!#"
 
 #: src/ui/dripper_calibration_ui.kv:46
 msgid "Drips Per Second"
-msgstr "@@@@@@@@@@"
+msgstr "#!00145!#"
 
 #: src/ui/dripper_calibration_ui.kv:53
 msgid "Drips Per Millimeter"
-msgstr "@@@@@@@@@@"
+msgstr "#!00146!#"
 
 #: src/ui/dripper_calibration_ui.kv:64
 msgid "Delay After Layer"
-msgstr "@@@@@@@@@@"
+msgstr "#!00147!#"
 
 #: src/ui/dripper_calibration_ui.kv:87
 msgid "Drip Calculator"
-msgstr "@@@@@@@@@@"
+msgstr "#!00148!#"
 
 #: src/ui/dripper_calibration_ui.kv:96
 msgid "Distance to Measure (mm)"
-msgstr "@@@@@@@@@@"
+msgstr "#!00149!#"
 
 #: src/ui/dripper_calibration_ui.kv:105
 msgid "Reset Drip Count"
-msgstr "@@@@@@@@@@"
+msgstr "#!00150!#"
 
 #: src/ui/dripper_calibration_ui.kv:112
 msgid "Drips"
-msgstr "@@@@@@@@@@"
+msgstr "#!00151!#"
 
 #: src/ui/dripper_calibration_ui.kv:120
 msgid "Average Drips per Second"
-msgstr "@@@@@@@@@@"
+msgstr "#!00152!#"
 
 #: src/ui/dripper_calibration_ui.kv:128
 msgid "Current Drips per mm"
-msgstr "@@@@@@@@@@"
+msgstr "#!00153!#"
 
 #: src/ui/dripper_calibration_ui.kv:134
 msgid "Use Current Drips per mm"
-msgstr "@@@@@@@@@@"
+msgstr "#!00154!#"
 
 #: src/ui/dripper_calibration_ui.kv:144
 msgid "Drips per mm"
-msgstr "@@@@@@@@@@"
+msgstr "#!00155!#"
 
 #: src/ui/library_ui.kv:36
 msgid "Layer Height (mm)"
-msgstr "@@@@@@@@@@"
+msgstr "#!00156!#"
 
 #: src/ui/library_ui.kv:44
 msgid "Speed (mm/sec)"
-msgstr "@@@@@@@@@@"
+msgstr "#!00157!#"
 
 #: src/ui/library_ui.kv:55
 msgid "Print Now"
-msgstr "@@@@@@@@@@"
+msgstr "#!00158!#"
 
 #: src/ui/peachy_widgets.kv:15
 msgid "Done"
-msgstr "@@@@@@@@@@"
+msgstr "#!00159!#"
 
 #: src/ui/print_ui.kv:17
 msgid "Print Details"
-msgstr "@@@@@@@@@@"
+msgstr "#!00160!#"
 
 #: src/ui/print_ui.kv:25
 msgid "Printer Settings"
-msgstr "@@@@@@@@@@"
+msgstr "#!00161!#"
 
 #: src/ui/print_ui.kv:42
 msgid "Cancel Print"
-msgstr "@@@@@@@@@@"
+msgstr "#!00162!#"
 
 #: src/ui/calibrate_ui.py:244
 msgid "Printer Posisition || "
-msgstr "@@@@@@@@@@"
+msgstr "#!00163!#"
 
 #: src/ui/custom_widgets.py:40
 msgid "Bad Stuff Happened"
-msgstr "@@@@@@@@@@"
+msgstr "#!00164!#"
 
 #: src/ui/print_ui.py:16
 msgid "Status"
-msgstr "@@@@@@@@@@"
+msgstr "#!00165!#"
 
 #: src/ui/print_ui.py:17
 msgid "Model Height"
-msgstr "@@@@@@@@@@"
+msgstr "#!00166!#"
 
 #: src/ui/print_ui.py:18
 msgid "Start Time"
-msgstr "@@@@@@@@@@"
+msgstr "#!00167!#"
 
 #: src/ui/print_ui.py:19
 msgid "Drips Counted"
-msgstr "@@@@@@@@@@"
+msgstr "#!00168!#"
 
 #: src/ui/print_ui.py:20
 msgid "Actual Height"
-msgstr "@@@@@@@@@@"
+msgstr "#!00169!#"
 
 #: src/ui/print_ui.py:21
 msgid "Drips per second"
-msgstr "@@@@@@@@@@"
+msgstr "#!00170!#"
 
 #: src/ui/print_ui.py:22
 msgid "Error List"
-msgstr "@@@@@@@@@@"
+msgstr "#!00171!#"
 
 #: src/ui/print_ui.py:23
 msgid "Waiting for drip"
-msgstr "@@@@@@@@@@"
+msgstr "#!00172!#"
 
 #: src/ui/print_ui.py:24
 msgid "Elapsed Time"
-msgstr "@@@@@@@@@@"
+msgstr "#!00173!#"
 
 #: src/ui/print_ui.py:25
 msgid "Current Layer"
-msgstr "@@@@@@@@@@"
+msgstr "#!00174!#"
 
 #: src/ui/print_ui.py:26
 msgid "Skipped Layers"
-msgstr "@@@@@@@@@@"
+msgstr "#!00175!#"
 
 #: src/ui/print_ui.py:55
 msgid "Print Complete, Close"
-msgstr "@@@@@@@@@@"
+msgstr "#!00176!#"
