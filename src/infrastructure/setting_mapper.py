@@ -467,5 +467,5 @@ class SettingsMapper(object):
     def get_settings(self):
         setting_values = collections.OrderedDict()
         for setting in sorted(self.config_info, key=lambda t: t['key']):
-            setting_values[setting['title']] = str(getattr(self.configuration_api, 'get_' + setting['key'])())
+            setting_values[setting['title_source']] = str(getattr(self.configuration_api, 'get_' + setting['key'])())
         return setting_values
