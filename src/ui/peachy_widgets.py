@@ -7,13 +7,14 @@ import time
 from math import sin, pi
 
 from kivy.lang import Builder
+from ui.custom_widgets import I18NPopup
 
 
 Builder.load_file('ui/peachy_widgets.kv')
 
 
-class HelpPopup(Popup):
-    text = StringProperty()
+class I18NHelpPopup(I18NPopup):
+    text_source = StringProperty()
 
 
 class Dripper(BoxLayout):

@@ -1,4 +1,4 @@
-#:kivy 1.8.0
+#:kivy 1.9.0
 #:import _ __main__._
 #:import FloatInput ui.custom_widgets.FloatInput
 
@@ -10,20 +10,20 @@
     title: _('Settings Selection')
     BoxLayout:
         orientation: 'vertical'
-        Button:
-            text: _('Laser Calibration')
+        I18NButton:
+            text_source: _('Laser Calibration')
             on_release: root.dismiss(); app.root.current = 'calibrationui'
-        Button:
-            text: _('Dripper Calibration')
+        I18NButton:
+            text_source: _('Dripper Calibration')
             on_release: root.dismiss(); app.root.current = 'drippercalibrationui'
-        Button:
-            text: _('Resin Curing Calibration')
+        I18NButton:
+            text_source: _('Resin Curing Calibration')
             on_release: root.dismiss(); app.root.current = 'curetestui'
-        Button:
-            text: _('Advanced Settings')
+        I18NButton:
+            text_source: _('Advanced Settings')
             on_release: app.open_settings()
-        Button:
-            text: _('Close')
+        I18NButton:
+            text_source: _('Close')
             on_release: root.dismiss()
 
 <MainUI>:
@@ -37,11 +37,11 @@
             BoxLayout:
                 size_hint: [0.3, 1.0]
                 orientation: 'vertical'
-                Button:
-                    text: 'Print from file'
+                I18NButton:
+                    text_source: _('Print from file')
                     on_release: mainui.show_load()
-                Button:
-                    text: 'Print from library'
+                I18NButton:
+                    text_source: _('Print from library')
                     on_release: app.root.current = 'libraryui'
             Image:
                 source: 'resources/logo.png'
@@ -70,10 +70,10 @@
         BoxLayout:
             size_hint_y: None
             height: 30
-            Button:
-                text: 'Cancel'
+            I18NButton:
+                text_source: _('Cancel')
                 on_release: root.cancel()
 
-            Button:
-                text: 'Load'
+            I18NButton:
+                text_source: _('Load')
                 on_release: root.load(filechooser.path, filechooser.selection)

@@ -11,11 +11,14 @@ from ui.peachy_widgets import Dripper
 Builder.load_file('ui/dripper_calibration_ui.kv')
 
 
-class KeyedSpinner(Spinner):
+class I18NKeyedSpinner(Spinner):
     keys = ListProperty()
     key = StringProperty()
+    text_source = StringProperty('')
+    values_source = ListProperty()
 
     def on_text(self, instance, value):
+        print(self.values)
         idx = self.values.index(value)
         self.key = self.keys[idx]
 

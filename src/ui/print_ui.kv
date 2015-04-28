@@ -1,7 +1,4 @@
-#:kivy 1.8.0
-#:import _ __main__._
-#:import Dripper ui.peachy_widgets.Dripper
-
+#:kivy 1.9.0
 
 <PrintingUI>:
     name: 'printingui'
@@ -11,18 +8,18 @@
             Accordion:
                 orientation: 'vertical'
                 size_hint_x:0.6
-                AccordionItem:
+                I18NAccordionItem:
                     collapse:False
                     id: print_details
-                    title: _('Print Details')
+                    title_source: _('Print Details')
                     ScrollView:
                         PrintStatus:
                             id: print_status
                             cols: 1
                             size_hint_y:None
                             text_padding_x: 10
-                AccordionItem:
-                    title: _('Printer Settings')
+                I18NAccordionItem:
+                    title_source: _('Printer Settings')
                     collapse:True
                     ScrollView:
                         LabelGridLayout:
@@ -32,14 +29,14 @@
                             cols: 1
             BoxLayout:
                 id: displaywindow
-                Label:
-                    text: 'Printing UI'
+                I18NLabel:
+                    text_source: _('Printing UI')
                 Dripper:
                     id: dripper
                     size_hint_x: 0.05
-        Button:
+        I18NButton:
             id: navigate_button
-            text: _('Cancel Print')
+            text_source: _('Cancel Print')
             size_hint_y: None
             height: 30
             on_release: app.root.current = root.return_to

@@ -48,6 +48,7 @@ if __name__ == "__main__":
     parser.add_argument('-t', '--console', dest='console',  action='store_true', required=False, help="Logs to console not file")
     parser.add_argument('-d', '--development', dest='devmode',  action='store_true', required=False, help="Enable Developer Testing Mode")
     parser.add_argument('-m', '--module', dest='mod',  action='store', required=False, help='Activate a module (use "list" to get a list of available modules).')
+    parser.add_argument('-y', '--language', dest='lang', action='store', required=False, default=None, help='override locale code')
     args, unknown = parser.parse_known_args()
 
     setup_logging(args)
@@ -66,4 +67,4 @@ if __name__ == "__main__":
         sys.argv.append(args.mod)
 
     from gui import PeachyPrinter
-    PeachyPrinter(api).run()
+    PeachyPrinter(api, language=args.lang).run()

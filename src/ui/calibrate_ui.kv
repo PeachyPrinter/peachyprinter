@@ -1,5 +1,5 @@
 #:kivy 1.8.0
-#:import _ __main__._
+#:import _ infrastructure.langtools._
 #:import FloatInput ui.custom_widgets.FloatInput
 #:import CommunicativeTabbedPanel ui.custom_widgets.CommunicativeTabbedPanel
 
@@ -21,31 +21,31 @@
             AlignmentPanel:
                 calibration_api: root.calibration_api
             CalibrationPanel:
-                text: _('Top')
+                text_source: _('Top')
                 calibration_type: 'top'
                 calibration_height: 666
                 calibration_api: root.calibration_api
             CalibrationPanel:
-                text: _('Bottom')
+                text_source: _('Bottom')
                 calibration_type: 'bottom'
                 calibration_height: 0
                 calibration_api: root.calibration_api
             TestPatternPanel:
                 calibration_api: root.calibration_api
-        Button:
-            text: _("Back")
+        I18NButton:
+            text_source: _("Back")
             size_hint_y: None
             height: 30
             on_release: app.root.current = 'mainui'
 
 <CenterPanel>:
-    text: _("Center")
+    text_source: _("Center")
     BoxLayout:
         orientation: 'horizontal'
         padding: 5
-        Button:
-            text: _("Help me")
-            on_release: HelpPopup(text=_('MARKUP - Center Calibration Instructions'), title=_("Help - Calibration Setup"), size_hint=(0.9, 0.9)).open()
+        I18NButton:
+            text_source: _("Help me")
+            on_release: I18NHelpPopup(text_source=_('MARKUP - Center Calibration Instructions'), title_source=_("Help - Calibration Setup"), size_hint=(0.9, 0.9)).open()
             size_hint_y:None
             height: 30
         Image:
@@ -61,7 +61,7 @@
                     size: [8,8]
 
 <OrientationPanel>:
-    text: _("Orientation")
+    text_source: _("Orientation")
     BoxLayout:
         orientation: 'horizontal'
         BoxLayout:
@@ -92,9 +92,9 @@
                     Label:
                         text: root.orient_swap_axis
                 Label:
-            Button:
-                text: _("Help me")
-                on_release: HelpPopup(text=_('MARKUP - Orientation Instructions'), title=_("Help - Orientation"), size_hint=(0.9, 0.9)).open()
+            I18NButton:
+                text_source: _("Help me")
+                on_release: I18NHelpPopup(text_source=_('MARKUP - Orientation Instructions'), title_source=_("Help - Orientation"), size_hint=(0.9, 0.9)).open()
                 size_hint_y:None
                 height: 30
         GridLayout:
@@ -255,13 +255,13 @@
                         PopMatrix
 
 <PrintAreaPanel>:
-    text: _("Print Area")
+    text_source: _("Print Area")
     BoxLayout:
         orientation: 'horizontal'
         padding: 5
-        Button:
-            text: _("Help me")
-            on_release: HelpPopup(text=_('MARKUP - Print Area Instructions'), title=_("Help - Print Area"), size_hint=(0.9, 0.9)).open()
+        I18NButton:
+            text_source: _("Help me")
+            on_release: I18NHelpPopup(text_source=_('MARKUP - Print Area Instructions'), title_source=_("Help - Print Area"), size_hint=(0.9, 0.9)).open()
             size_hint_y:None
             height: 30
         BoxLayout:
@@ -269,8 +269,8 @@
             BoxLayout:
                 size_hint_y: 40.0 / self.parent.height
                 orientation: 'horizontal'
-                Label:
-                    text: _('Height (mm)')
+                I18NLabel:
+                    text_source: _('Height (mm)')
                 FloatInput:
                     size_hint_x: 0.3
                     id: print_area_height
@@ -279,8 +279,8 @@
             BoxLayout:
                 size_hint_y: 40.0 / self.parent.height
                 orientation: 'horizontal'
-                Label:
-                    text: _('Depth (mm)')
+                I18NLabel:
+                    text_source: _('Depth (mm)')
                 FloatInput:
                     size_hint_x: 0.3
                     id: print_area_depth
@@ -289,8 +289,8 @@
             BoxLayout:
                 size_hint_y: 40.0 / self.parent.height
                 orientation: 'horizontal'
-                Label:
-                    text: _('Width (mm)')
+                I18NLabel:
+                    text_source: _('Width (mm)')
                 FloatInput:
                     size_hint_x: 0.3
                     id: print_area_width
@@ -299,13 +299,13 @@
             Label:
 
 <AlignmentPanel>:
-    text: _("Aligment")
+    text_source: _("Aligment")
     BoxLayout:
         orientation: 'horizontal'
         padding: 5
-        Button:
-            text: _("Help me")
-            on_release: HelpPopup(text=_('MARKUP - Alignment Instructions'), title=_("Help - Alignment"), size_hint=(0.9, 0.9)).open()
+        I18NButton:
+            text_source: _("Help me")
+            on_release: I18NHelpPopup(text_source=_('MARKUP - Alignment Instructions'), title_source=_("Help - Alignment"), size_hint=(0.9, 0.9)).open()
             size_hint_y:None
             height: 30
         Image:
@@ -335,9 +335,9 @@
         group: root.group
         on_state: root.on_state(self.state)
         text: root.toggle_text
-    Button:
+    I18NButton:
         size_hint_x: 0.5
-        text: _("Save")
+        text_source: _("Save")
         disabled: not root.active
         on_release: root.save_point()
 
@@ -352,9 +352,9 @@
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: 2.0
-                ToggleButton:
+                I18NToggleButton:
                     id: super_accurate
-                    text: _('Super Accurate Mode')
+                    text_source: _('Super Accurate Mode')
                     on_release: root.super_accurate_mode()
                 Label:
                     size_hint_y:0.2
@@ -367,11 +367,11 @@
                     bold: root.printer_point_emphasis
                 BoxLayout:
                     orientation: 'horizontal'
-                    Button:
-                        text: _('Reset All')
+                    I18NButton:
+                        text_source: _('Reset All')
                         on_release: root.reset_points()
-                    Button:
-                        text: _('Save All')
+                    I18NButton:
+                        text_source: _('Save All')
                         disabled: not root.valid
                         on_release: root.save_all_points()
                 Label:
@@ -389,9 +389,9 @@
                     Ellipse:
                         pos: root.example_dot
                         size: [8,8]
-            Button:
-                text: _("Help me")
-                on_release: HelpPopup(text=_('MARKUP - Calibration Instructions'), title=_("Help - Calibration"), size_hint=(0.9, 0.9)).open()
+            I18NButton:
+                text_source: _("Help me")
+                on_release: I18NHelpPopup(text_source=_('MARKUP - Calibration Instructions'), title_source=_("Help - Calibration"), size_hint=(0.9, 0.9)).open()
                 size_hint_y:None
                 height: 30
         Image:
@@ -414,7 +414,7 @@
                     size: [8,8]
 
 <TestPatternPanel>:
-    text: _("Test Patterns")
+    text_source: _("Test Patterns")
     BoxLayout:
         orientation: 'horizontal'
         padding: 5
@@ -426,8 +426,8 @@
                 BoxLayout:
                     size_hint_y: None
                     height: 30
-                    Label:
-                        text: _("Speed")
+                    I18NLabel:
+                        text_source: _("Speed")
                     Label:
                         text: '%.f (mm/sec)' % root.speed
                 Slider:
@@ -441,9 +441,9 @@
                     on_value: root.speed = self.value
                 Label:
 
-            Button:
-                text: _("Help me")
-                on_release: HelpPopup(text=_('MARKUP - Test Pattern Instructions'), title=_("Help - Test Patterns"), size_hint=(0.9, 0.9)).open()
+            I18NButton:
+                text_source: _("Help me")
+                on_release: I18NHelpPopup(text_source=_('MARKUP - Test Pattern Instructions'), title_source=_("Help - Test Patterns"), size_hint=(0.9, 0.9)).open()
                 size_hint_y:None
                 height: 30
         GridLayout:

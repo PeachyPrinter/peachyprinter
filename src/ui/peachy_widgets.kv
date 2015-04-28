@@ -1,18 +1,18 @@
 <Dripper>:
 
-<HelpPopup>:
+<I18NHelpPopup>:
     BoxLayout:
         orientation: 'vertical'
         ScrollView:
             padding: 10
-            Label:
-                text: root.text
+            I18NLabel:
+                text_source: root.text_source
                 markup: True
                 text_size: self.width, None
                 size_hint_y: None
                 height: self.texture_size[1]
-        Button:
-            text: _('Done')
+        I18NButton:
+            text_source: _('Done')
             size_hint_y:None
             height: 30
             on_release: root.dismiss()

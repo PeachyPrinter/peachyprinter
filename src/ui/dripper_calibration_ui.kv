@@ -2,6 +2,10 @@
 #:import _ __main__._
 #:import FloatInput ui.custom_widgets.FloatInput
 
+<I18NKeyedSpinner>:
+    #text: app.translation(self.text_source)
+    values: [app.translation(value) for value in self.values_source]
+
 <DripperCalibrationUI>:
     name: 'drippercalibrationui'
     BoxLayout:
@@ -14,26 +18,26 @@
                     size_hint_y: None
                     height: 30
                     orientation: 'horizontal'
-                    Label:
-                        text: 'Dripper Type'
-                    KeyedSpinner:
+                    I18NLabel:
+                        text_source: _('Dripper Type')
+                    I18NKeyedSpinner:
                         id: dripper_type_selector
-                        values: [_('Emulated'), _('Photo'), _('Circut')]
+                        values_source: [_('Emulated'), _('Photo'), _('Circut')]
                         keys: ['emulated', 'photo', 'microcontroller']
-                        text: _("Circut")
+                        #text_source: _("Circut")
                         key:  'microcontroller'
                         on_key: root.dripper_type_changed(self, self.key)
                 BoxLayout:
                     id: dripper_setup
-                Button:
-                    text: _("Help me")
-                    on_release: HelpPopup(text=_('MARKUP - Dripper Instructions'), title=_("Help - Dripper Settings"), size_hint=(0.9, 0.9)).open()
+                I18NButton:
+                    text_source: _("Help me")
+                    on_release: I18NHelpPopup(text_source=_('MARKUP - Dripper Instructions'), title_source=_("Help - Dripper Settings"), size_hint=(0.9, 0.9)).open()
                     size_hint_y:None
                     height: 30
             BoxLayout:
                 id: visualizations
-        Button:
-            text: _("Back")
+        I18NButton:
+            text_source: _("Back")
             size_hint_y: None
             height: 30
             on_release: app.root.current = 'mainui'
@@ -42,15 +46,15 @@
     orientation: 'vertical'
     BoxLayout:
         size_hint_y: 40.0 / root.height
-        Label:
-            text: _("Drips Per Second")
+        I18NLabel:
+            text_source: _("Drips Per Second")
         FloatInput:
             text: str(root.drips_per_second)
             on_text: root.drips_per_second = float(self.text)
     BoxLayout:
         size_hint_y: 40.0 / root.height
-        Label:
-            text: _("Drips Per Millimeter")
+        I18NLabel:
+            text_source: _("Drips Per Millimeter")
         FloatInput:
             text: str(root.drips_per_mm)
             on_text: root.drips_per_mm = float(self.text)
@@ -60,8 +64,8 @@
     orientation: 'vertical'
     BoxLayout:
         size_hint_y: 40.0 / root.height
-        Label:
-            text: _("Delay After Layer")
+        I18NLabel:
+            text_source: _("Delay After Layer")
         FloatInput:
             text: str(root.photo_zaxis_delay)
             on_text: root.photo_zaxis_delay = float(self.text)
@@ -81,10 +85,10 @@
                 Rectangle:
                     size: [self.size[0] - 20, self.size[1] - 20]
                     pos: [self.pos[0] + 10, self.pos[1] + 10]
-            Label:
+            I18NLabel:
                 size_hint_y: None
                 height: 30
-                text: _("Drip Calculator")
+                text_source: _("Drip Calculator")
             Label:
                 size_hint_y: None
                 height: 10
@@ -93,7 +97,7 @@
                 height: 30
                 orientation: 'horizontal'
                 Label:
-                    text: _("Distance to Measure (mm)")
+                    text_source: _("Distance to Measure (mm)")
                 FloatInput:
                     text: '%.2f' % root.total_height
             Label:
@@ -102,22 +106,22 @@
             Button:
                 size_hint_y: None
                 height: 30
-                text: _("Reset Drip Count")
+                text_source: _("Reset Drip Count")
                 on_release: root.reset_drip_count()
             BoxLayout:
                 size_hint_y: None
                 height: 30
                 orientation: 'horizontal'
-                Label:
-                    text: _('Drips')
+                I18NLabel:
+                    text_source: _('Drips')
                 Label:
                     text: '%.2f' % root.drips
             BoxLayout:
                 size_hint_y: None
                 height: 30
                 orientation: 'horizontal'
-                Label:
-                    text: _('Average Drips per Second')
+                I18NLabel:
+                    text_source: _('Average Drips per Second')
                 Label:
                     text: '%.2f' % root.average_drips
             BoxLayout:
@@ -125,13 +129,13 @@
                 height: 30
                 orientation: 'horizontal'
                 Label:
-                    text: _('Current Drips per mm')
+                    text_source: _('Current Drips per mm')
                 Label:
                     text: '%.2f' % root.current_drips_per_mm
-            Button:
+            I18NButton:
                 size_hint_y: None
                 height: 30
-                text: _("Use Current Drips per mm")
+                text_source: _("Use Current Drips per mm")
                 on_release: root.use_current()
     Label:
         size_hint_y: None
@@ -140,8 +144,8 @@
         orientation: 'horizontal'
         size_hint_y: None
         height: 30
-        Label:
-            text: _('Drips per mm')
+        I18NLabel:
+            text_source: _('Drips per mm')
         FloatInput:
             id: ui_drips_per_mm
             text: '0.0'

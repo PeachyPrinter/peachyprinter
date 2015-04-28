@@ -17,13 +17,16 @@ from ui.calibrate_ui import CalibrateUI
 from ui.custom_widgets import *
 
 
+from os.path import join, dirname
+import gettext
+
 
 class LoadDialog(FloatLayout):
     load = ObjectProperty(None)
     cancel = ObjectProperty(None)
 
 
-class SettingsSelector(Popup):
+class SettingsSelector(I18NPopup):
     pass
 
 
@@ -36,7 +39,7 @@ class MainUI(Screen):
 
     def show_load(self):
         content = LoadDialog(load=self.load, cancel=self.dismiss_popup)
-        self._popup = Popup(title=_("Load file"), content=content, size_hint=(0.9, 0.9))
+        self._popup = I18NPopup(title_source=_("Load file"), content=content, size_hint=(0.9, 0.9))
         self._popup.open()
 
     def load(self, path, filename):
@@ -72,13 +75,27 @@ class MyScreenManager(ScreenManager):
 
 class PeachyPrinter(App):
     lang = StringProperty('en_GB')
+    translation = ObjectProperty(None, allownone=True)
 
-    def __init__(self, api, **kwargs):
+    def __init__(self, api, language=None, **kwargs):
         self.api = api
         self.setting_translation = SettingsMapper(self.api)
         super(PeachyPrinter, self).__init__(**kwargs)
         Config.set("input", "mouse", "mouse,disable_multitouch")
+        if language:
+            self.lang = language
+        self.switch_lang(self.lang)
         self.manager = None
+
+    def on_lang(self, instance, lang):
+        self.switch_lang(lang)
+
+    def switch_lang(self, lang):
+        locale_dir = join(dirname(__file__), 'resources', 'il8n', 'locales')
+        locales = gettext.translation('peachyprinter', locale_dir, languages=[self.lang])
+        self.translation = locales.ugettext
+        if hasattr(self, 'settings'):
+            self.settings.interface.menu.close_button.text = self.translation(_("Close"))
 
     def build(self):
         self.settings_cls = SettingsWithSidebar
@@ -92,12 +109,7 @@ class PeachyPrinter(App):
 
     def build_settings(self, settings):
         self.setting_translation.refresh_settings(settings, self.config)
-
-    def on_lang(self, instance, lang):
-        _.switch_lang(lang)
-        self.destroy_settings()
-        if hasattr(self, 'settings'):
-            self.settings.interface.menu.close_button.text = _("Close")
+        settings.interface.menu.close_button.text = self.translation(_("Close"))
 
     def on_stop(self):
         if self.manager:

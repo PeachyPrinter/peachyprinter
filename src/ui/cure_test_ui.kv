@@ -1,7 +1,7 @@
-#:kivy 1.8.0
-#:import _ __main__._
+#:kivy 1.9.0
+#:import _ infrastructure.langtools._
 #:import FloatInput ui.custom_widgets.FloatInput
-#:import HelpPopup ui.peachy_widgets.HelpPopup
+#:import I18NHelpPopup ui.peachy_widgets.I18NHelpPopup
 
 <CureTestUI>:
     name: 'curetestui'
@@ -23,16 +23,16 @@
                         Rectangle:
                             size: [self.size[0] - 20, self.size[1] - 20]
                             pos: [self.pos[0] + 10, self.pos[1] + 10]
-                    Label:
+                    I18NLabel:
                         size_hint_y: None
                         height: 30
-                        text: _('Cure Rate Test')
+                        text_source: _('Cure Rate Test')
                     BoxLayout:
                         orientation: 'horizontal'
                         size_hint_y: None
                         height: 30
-                        Label:
-                            text: _('Base Height')
+                        I18NLabel:
+                            text_source: _('Base Height')
                         FloatInput:
                             size_hint_x: 0.5
                             id: base_id
@@ -42,8 +42,8 @@
                         orientation: 'horizontal'
                         size_hint_y: None
                         height: 30
-                        Label:
-                            text: _('Test Height')
+                        I18NLabel:
+                            text_source: _('Test Height')
                         FloatInput:
                             size_hint_x: 0.5
                             id: height_id
@@ -53,8 +53,8 @@
                         orientation: 'horizontal'
                         size_hint_y: None
                         height: 30
-                        Label:
-                            text: _('Starting Speed')
+                        I18NLabel:
+                            text_source: _('Starting Speed')
                         FloatInput:
                             size_hint_x: 0.5
                             id: start_speed_id
@@ -64,8 +64,8 @@
                         orientation: 'horizontal'
                         size_hint_y: None
                         height: 30
-                        Label:
-                            text: _('Stopping Speed')
+                        I18NLabel:
+                            text_source: _('Stopping Speed')
                         FloatInput:
                             size_hint_x: 0.5
                             id: stop_speed_id
@@ -74,10 +74,10 @@
                     Label:
                         size_hint_y: None
                         height: 10
-                    Button:
+                    I18NButton:
                         size_hint_y: None
                         height: 30
-                        text: _('Run Cure Test Now')
+                        text_source: _('Run Cure Test Now')
                         on_release: root.print_now()
                 BoxLayout:
                     orientation: 'vertical'
@@ -87,8 +87,8 @@
                         orientation: 'horizontal'
                         size_hint_y: None
                         height: 30
-                        Label:
-                            text: _('Always Use Draw Speed')
+                        I18NLabel:
+                            text_source: _('Always Use Draw Speed')
                         Switch:
                             size_hint_x: 0.5
                             id: use_draw_speed_id
@@ -97,8 +97,8 @@
                         orientation: 'horizontal'
                         size_hint_y: None
                         height: 30
-                        Label:
-                            text: _('Draw Speed (mm)')
+                        I18NLabel:
+                            text_source: _('Draw Speed (mm)')
                         FloatInput:
                             size_hint_x: 0.5
                             id: draw_speed_id
@@ -107,8 +107,8 @@
                         orientation: 'horizontal'
                         size_hint_y: None
                         height: 30
-                        Label:
-                            text: _('Always Use Laser Power')
+                        I18NLabel:
+                            text_source: _('Always Use Laser Power')
                         Switch:
                             size_hint_x: 0.5
                             id: override_laser_power_id
@@ -117,16 +117,16 @@
                         orientation: 'horizontal'
                         size_hint_y: None
                         height: 30
-                        Label:
-                            text: _('Laser Power')
+                        I18NLabel:
+                            text_source: _('Laser Power')
                         FloatInput:
                             size_hint_x: 0.5
                             id: override_laser_power_amount_id
                             text: '0.0'
                 Label:
-                Button:
-                    text: _("Help me")
-                    on_release: HelpPopup(text=_('Markup- Cure Rate'), title=_("Help - Cure Rate Settings"), size_hint=(0.9, 0.9)).open()
+                I18NButton:
+                    text_source: _("Help me")
+                    on_release: I18NHelpPopup(text=_('Markup- Cure Rate'), title=_("Help - Cure Rate Settings"), size_hint=(0.9, 0.9)).open()
                     size_hint_y:None
                     height: 30
             BoxLayout:
@@ -155,28 +155,28 @@
                     BoxLayout:
                         size_hint_y: None
                         height: 30
-                        Label:
-                            text: _('Best Height')
+                        I18NLabel:
+                            text_source: _('Best Height')
                         Label:
                             text: '%.2f' % best_height.value
                     BoxLayout:
                         size_hint_y: None
                         height: 30
-                        Label:
-                            text: _("Best Draw Speed")
+                        I18NLabel:
+                            text_source: _("Best Draw Speed")
                         Label:
                             id: best_draw_speed
                             text: '%.2f' % ((best_height.value / root.test_height) * (root.stop_speed - root.start_speed) + root.start_speed)
-                    Button:
+                    I18NButton:
                         size_hint_y: None
                         height: 30
-                        text: _('Use Best Draw Speed')
+                        text_source: _('Use Best Draw Speed')
                         on_release: draw_speed_id.text = best_draw_speed.text; root.draw_speed = float(best_draw_speed.text)
                     Label:
-        Button:
+        I18NButton:
             size_hint_y: None
             height: 30
-            text:_('Back')
+            text_source: _('Back')
             on_release: app.root.current = 'mainui'
 
 

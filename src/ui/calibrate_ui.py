@@ -1,5 +1,4 @@
 from kivy.uix.screenmanager import Screen
-from kivy.uix.tabbedpanel import TabbedPanelItem
 from kivy.uix.togglebutton import ToggleButton
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ListProperty, StringProperty, NumericProperty, ObjectProperty, BooleanProperty
@@ -9,9 +8,10 @@ from kivy.core.window import Window
 from kivy.clock import Clock
 
 from infrastructure.langtools import _
+from ui.custom_widgets import I18NTabbedPanelItem
 
 
-class CenterPanel(TabbedPanelItem):
+class CenterPanel(I18NTabbedPanelItem):
     calibration_api = ObjectProperty()
 
     def __init__(self,  **kwargs):
@@ -22,7 +22,7 @@ class CenterPanel(TabbedPanelItem):
             self.calibration_api.show_point([0.5, 0.5, 0.0])
 
 
-class PrintAreaPanel(TabbedPanelItem):
+class PrintAreaPanel(I18NTabbedPanelItem):
     calibration_api = ObjectProperty()
     print_area_width = StringProperty("")
     print_area_depth = StringProperty("")
@@ -43,7 +43,7 @@ class PrintAreaPanel(TabbedPanelItem):
         self.calibration_api.set_print_area(float(self.ids.print_area_width.text), float(self.ids.print_area_depth.text), float(self.ids.print_area_height.text))
 
 
-class AlignmentPanel(TabbedPanelItem):
+class AlignmentPanel(I18NTabbedPanelItem):
     calibration_api = ObjectProperty()
 
     def __init__(self, **kwargs):
@@ -54,7 +54,7 @@ class AlignmentPanel(TabbedPanelItem):
             self.calibration_api.show_line()
 
 
-class OrientationPanel(TabbedPanelItem):
+class OrientationPanel(I18NTabbedPanelItem):
     calibration_api = ObjectProperty()
     orient_swap_axis = StringProperty("False")
     orient_xflip = StringProperty("False")
@@ -86,7 +86,7 @@ class OrientationPanel(TabbedPanelItem):
             self.update_orientation(*current)
 
 
-class CalibrationPanel(TabbedPanelItem):
+class CalibrationPanel(I18NTabbedPanelItem):
     calibration_height = NumericProperty(0)
     calibration_point = ListProperty([0, 0])
     calibration_point_color = ListProperty([1, 0, 0, 1])
@@ -335,7 +335,7 @@ class CalibrationPoint(BoxLayout):
             self.active = False
 
 
-class TestPatternPanel(TabbedPanelItem):
+class TestPatternPanel(I18NTabbedPanelItem):
     calibration_api = ObjectProperty()
     speed = NumericProperty(100)
 
