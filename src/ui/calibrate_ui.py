@@ -10,14 +10,16 @@ from kivy.clock import Clock
 
 from infrastructure.langtools import _
 
+
 class CenterPanel(TabbedPanelItem):
     calibration_api = ObjectProperty()
+
     def __init__(self,  **kwargs):
         super(CenterPanel, self).__init__(**kwargs)
 
     def on_enter(self):
         if self.calibration_api:
-             self.calibration_api.show_point([0.5, 0.5, 0.0])
+            self.calibration_api.show_point([0.5, 0.5, 0.0])
 
 
 class PrintAreaPanel(TabbedPanelItem):
@@ -100,7 +102,6 @@ class CalibrationPanel(TabbedPanelItem):
     xflip = BooleanProperty()
     yflip = BooleanProperty()
 
-
     calibration_api = ObjectProperty()
 
     def __init__(self, **kwargs):
@@ -160,7 +161,6 @@ class CalibrationPanel(TabbedPanelItem):
             pos_x - 4 + (self.example_point[0] * image_size),
             pos_y - 4 + (self.example_point[1] * image_size),
             ]
-
 
     def get_orientation_correction(self, x, y):
         if self.xflip:
@@ -324,7 +324,6 @@ class CalibrationPoint(BoxLayout):
         self.indicator_color = [0.0, 1.0, 0.0, 1.0]
         self.peachy = self.caller.printer_point
         self.caller.save_point()
-        
 
     def on_state(self, value):
         if value == 'down':

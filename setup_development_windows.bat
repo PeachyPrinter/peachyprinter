@@ -10,31 +10,13 @@ IF "%kivy_portable_root%" == "" (
 )
 
 ECHO ----Adding PyInstaller----
-python -c"import PyInstaller" 2> nul > nul
-IF NOT "%ERRORLEVEL%" == "0" (
-    ECHO --------PyInstaller not available adding----
-    pip install PyInstaller==2.1
-    IF NOT "%ERRORLEVEL%" == "0" (
-        ECHO --------PyInstaller Failed to install----
-        EXIT /B 53 
-    )
-)
+call pip install --upgrade PyInstaller==2.1
 
 ECHO --------Setting up numpy----
-python -c"import numpy" 2> nul > nul
-IF NOT "%ERRORLEVEL%" == "0" (
-    ECHO Numpy not available adding
-    pip install -U --force http://www.lfd.uci.edu/~gohlke/pythonlibs/z94jfosk/numpy-1.9.2+mkl-cp27-none-win32.whl
-    python -c"import numpy" 2> nul > nul
-    IF NOT "%ERRORLEVEL%" == "0" (
-        ECHO FAILURE: Numpy failed installing, you can manually install it from http://sourceforge.net/projects/numpy/
-        SET will_fail=1
-        fail_reasons="%fail_reasons%\nFAILURE: Numpy failed installing, you can manually install it from http://sourceforge.net/projects/numpy/"
-    )
-)
+call pip install -U --force http://www.lfd.uci.edu/~gohlke/pythonlibs/vks9zi2k/numpy-1.9.2+mkl-cp27-none-win_amd64.whl
 
 ECHO --------Getting Latest API----
-call "get_latest_api.bat"
+call get_latest_api.bat
 IF NOT "%ERRORLEVEL%" == "0" (
     ECHO FAILURE: Getting lastest api failed Check log for details
     SET will_fail=%lastest_result%

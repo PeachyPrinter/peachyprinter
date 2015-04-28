@@ -20,6 +20,7 @@ Complete packages are available at [http://software.peachyprinter.com/]
 
 ### Steps (Rough example)
  - sudo apt-get install python-pip git python-dev libsdl1.2-dev python-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev mercurial
+ - sudo pip install --upgrade virtualenv
  - sudo usermod -a -G dialout username
  - sudo mkdir /opt/git
  - sudo chown username.username /opt/git/
@@ -28,7 +29,7 @@ Complete packages are available at [http://software.peachyprinter.com/]
  - git clone https://github.com/PeachyPrinter/kivypeachyprinter.git
  - git clone https://github.com/PeachyPrinter/peachyprintertools.git
  - cd kivypeachyprinter
- - ./setup_development_ubuntu.sh
+ - ./setup_development_linux.sh
  - echo "for api dev this links to api checkout"
  - rm -rf venv/lib/python2.7/site-packages/peachyprinter
  - rm -rf venv/local/lib/python2.7/site-packages/peachyprinter
@@ -63,6 +64,7 @@ To setup up your enviroment it helps to have a package manager such as "Homebrew
 ### Windows
 via (oh yeah there is no package manager in windows)
  - kivy [http://kivy.org/#download]
+ - c++ compiler for python http://www.microsoft.com/en-us/download/details.aspx?id=44266
 
 ##Getting Started
 ###Creating a development environment
