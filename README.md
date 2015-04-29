@@ -50,16 +50,8 @@ sudo yum -y install python-virtualenv
 ``` -->
 
 ### Mac OSX
-To setup up your enviroment it helps to have a package manager such as "Homebrew" [http://brew.sh/]
 ####Pre-Script Requirements
- - python2.7
- - xcode
- - pip
- - virtualenv
- - mercurial  ('brew install mercurial')   -- Needed for pygame
- - sdl   ('brew install sdl sdl_image sdl_mixer sdl_ttf portmidi') -- Needed for pygame
- - Xquartz  a X11 interface for mac [http://xquartz.macosforge.org/landing/] -- Needed for pygame
-
+ - Kivy from source see http://kivy.org/docs/installation/installation-macosx.html
 
 ### Windows
 via (oh yeah there is no package manager in windows)
