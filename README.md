@@ -55,7 +55,7 @@ sudo yum -y install python-virtualenv
 
 ### Windows Setup
  - kivy [http://kivy.org/#download] or [http://kivy.org/downloads/1.9.0/Kivy-1.9.0-py2.7-win32-x86.exe]
- - Assumed extraction point as c:\kivy_x86
+ - Assumed extraction point as c:\kivy_x86 or kivy_amd64
  - Fix the kivy to point at master (I know, i know)
  -- open the kivy_x86 directory in a  terminal windows
  -- move kivy27 kivy27_old

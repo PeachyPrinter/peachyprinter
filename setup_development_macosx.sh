@@ -10,7 +10,7 @@ source ${KIVY_APP_PATH}/venv/bin/activate
 
 # setup the environment to not mess with the system
 export PYTHONPATH="${KIVY_APP_PATH}/kivy:${PYTHONPATH}"
-export DYLD_FALLBACK_LIBRARY_PATH="${KIVY_APP_PATH}/lib,$DYLD_FALLBACK_LIBRARY_PATH"
+# export DYLD_FALLBACK_LIBRARY_PATH="${KIVY_APP_PATH}/lib"
 export LD_PRELOAD_PATH="${KIVY_APP_PATH}/lib"
 export GST_REGISTRY="${KIVY_APP_PATH}/gst.registry"
 export GST_PLUGIN_SCANNER="${KIVY_APP_PATH}/gst-plugin-scanner"
@@ -33,5 +33,3 @@ echo ""
 echo "-----------------------------------"
 echo "Enviroment setup complete and seemingly successful."
 
-export DYLD_FALLBACK_LIBRARY_PATH="${SCRIPT_PATH}/lib"
-export DYLD_FALLBACK_LIBRARY_PATH="${SCRIPT_PATH}/lib,$DYLD_FALLBACK_LIBRARY_PATH"
