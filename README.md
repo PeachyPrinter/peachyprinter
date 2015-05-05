@@ -53,10 +53,19 @@ sudo yum -y install python-virtualenv
 ####Pre-Script Requirements
  - Kivy from source see http://kivy.org/docs/installation/installation-macosx.html
 
-### Windows
-via (oh yeah there is no package manager in windows)
- - kivy [http://kivy.org/#download]
- - c++ compiler for python http://www.microsoft.com/en-us/download/details.aspx?id=44266
+### Windows Setup
+ - kivy [http://kivy.org/#download] or [http://kivy.org/downloads/1.9.0/Kivy-1.9.0-py2.7-win32-x86.exe]
+ - Assumed extraction point as c:\kivy_x86
+ - Fix the kivy to point at master (I know, i know)
+ -- open the kivy_x86 directory in a  terminal windows
+ -- move kivy27 kivy27_old
+ -- git clone https://github.com/kivy/kivy.git kivy27
+ -- close the windows
+ -- open a terminal window as an administrator
+ -- cd \kivy
+ -- kivy-2.7.bat
+ -- cd kivy27
+ -- make force
 
 ##Getting Started
 ###Creating a development environment

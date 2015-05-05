@@ -1,0 +1,26 @@
+# -*- mode: python -*-
+
+from kivy.tools.packaging.pyinstaller_hooks import install_hooks
+install_hooks(globals())
+from VERSION import version
+
+a = Analysis(['src\\main.py'],
+             pathex=['C:\\Users\\jtownley\\git\\kivypeachyprinter'],
+             hiddenimports=[],
+             runtime_hooks=None)
+a.datas += [('libusb-1.0.dll','libusb-1.0.dll','')]
+pyz = PYZ(a.pure)
+exe = EXE(pyz,
+          Tree('src'),
+          Tree([f for f in os.environ.get('KIVY_SDL2_PATH', '').split(';') if 'bin' in f][0]),
+          a.scripts,
+          a.binaries,
+          a.zipfiles,
+          a.datas,
+          name='PeachyPrinter-%s.exe' % version,
+          debug=False,
+          strip=None,
+          upx=True,
+          console=True , 
+          icon='src\\resources\\peachy.ico'
+          )

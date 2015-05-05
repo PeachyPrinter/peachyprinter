@@ -13,7 +13,8 @@ ECHO ------------------------------------
 ECHO Setting up Enviroment
 ECHO ------------------------------------
 
-CALL setup_development_windows.bat
+CALL c:\kivy_x86\kivy-2.7.bat
+CALL setup_development_windows_x86.bat
 IF NOT "%ERRORLEVEL%" == "0" (
     ECHO FAILURE: Environment setup failed, check log
     EXIT /B 23
@@ -46,20 +47,21 @@ ECHO version='%VERSION%' >> version.properties
 ECHO revision='%GIT_REV%' >> version.properties
 ECHO Git Revision Number is %GIT_REV_COUNT%
 copy version.properties src\VERSION.py
+copy version.properties VERSION.py
 
 ECHO ------------------------------------
 ECHO Creating Package
 ECHO ------------------------------------
 
-COPY /Y PeachyPrinter.spec.source PeachyPrinter.spec
+COPY /Y PeachyPrinter-win32.spec.source PeachyPrinter.spec
 IF NOT "%ERRORLEVEL%" == "0" (
-  ECHO FAILED executing command: COPY /Y PeachyPrinter.spec.source PeachyPrinter.spec
+  ECHO FAILED executing command: COPY /Y PeachyPrinter-win32.spec.source PeachyPrinter.spec
   EXIT /B 78
 )
 
 pyinstaller --clean --noconfirm PeachyPrinter.spec
 IF NOT "%ERRORLEVEL%" == "0" (
-  ECHO FAILED executing command: pyinstaller --noconfirm PeachyPrinter.spec
+  ECHO FAILED executing command: pyinstaller --clean --noconfirm PeachyPrinter.spec
   EXIT /B 78
 )
 
@@ -67,7 +69,7 @@ ECHO ------------------------------------
 ECHO Moving file
 ECHO ------------------------------------
 
-COPY dist\PeachyPrinter\PeachyPrinter.exe PeachyPrinter-%VERSION%.exe
+COPY dist\PeachyPrinter*.exe .
 IF NOT "%ERRORLEVEL%" == "0" (
     ECHO "FAILED moving files"
     EXIT /B 798
