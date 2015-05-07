@@ -92,7 +92,7 @@
                         Switch:
                             size_hint_x: 0.5
                             id: use_draw_speed_id
-                            active: root.use_draw_speed
+                            on_active: root.use_draw_speed = self.active
                     BoxLayout:
                         orientation: 'horizontal'
                         size_hint_y: None
@@ -103,6 +103,7 @@
                             size_hint_x: 0.5
                             id: draw_speed_id
                             text: '0.0'
+                            on_text: root.draw_speed = float(self.text)
                     BoxLayout:
                         orientation: 'horizontal'
                         size_hint_y: None
@@ -112,7 +113,7 @@
                         Switch:
                             size_hint_x: 0.5
                             id: override_laser_power_id
-                            active: root.override_laser_power
+                            on_active: root.override_laser_power = self.active
                     BoxLayout:
                         orientation: 'horizontal'
                         size_hint_y: None
@@ -123,6 +124,7 @@
                             size_hint_x: 0.5
                             id: override_laser_power_amount_id
                             text: '0.0'
+                            on_text: root.override_laser_power_amount = float(self.text)
                 Label:
                 I18NButton:
                     text_source: _("Help me")
