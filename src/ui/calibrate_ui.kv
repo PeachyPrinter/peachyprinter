@@ -413,6 +413,8 @@
                     pos: [root.calibration_point[0] - 4,root.calibration_point[1] - 4]
                     size: [8,8]
 
+<TouchyLabel>:
+
 <TestPatternPanel>:
     text_source: _("Test Patterns")
     BoxLayout:
@@ -426,7 +428,8 @@
                 BoxLayout:
                     size_hint_y: None
                     height: 30
-                    I18NLabel:
+                    TouchyLabel:
+                        on_oh_my: speed_slider.max = 10000
                         text_source: _("Speed")
                     Label:
                         text: '%.f (mm/sec)' % root.speed
@@ -440,6 +443,7 @@
                     value: root.speed
                     on_value: root.speed = self.value
                 Label:
+                    
 
             I18NButton:
                 text_source: _("Help me")
