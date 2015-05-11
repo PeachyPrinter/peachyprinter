@@ -76,10 +76,7 @@ class OrientationPanel(I18NTabbedPanelItem):
             self.calibration_api.show_orientation()
             current = list(self.calibration_api.get_orientation())
             for child in self.ids.orientations.children:
-                print("child config :%s" % child.configuration)
-                print("current config :%s" % current)
                 if child.configuration == current:
-                    print("Bingo")
                     child.state = 'down'
                 else:
                     child.state = 'normal'
@@ -386,8 +383,8 @@ class CalibrateUI(Screen):
         try:
             self.calibration_api = self.api.get_calibration_api()
             self.calibration_api.show_point([0.5, 0.5, 0.0])
-        except:
-            ep = ErrorPopup(title=_("Error"), text=_("No Peachy Printer Detected"))
+        except Exception as ex:
+            ep = ErrorPopup(title_source=_("Error"), text=_("No Peachy Printer Detected"), details="%s\n%s" % (type(ex), ex))
             ep.open()
             App.get_running_app().root.current = 'mainui'
         panel = self.ids.tab_panel.tab_list[-1]
