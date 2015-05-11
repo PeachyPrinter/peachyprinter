@@ -6,9 +6,9 @@ from kivy.lang import Builder
 from kivy.logger import Logger
 from kivy.core.window import Window
 from kivy.clock import Clock
-
+from kivy.app import App
 from infrastructure.langtools import _
-from ui.custom_widgets import I18NTabbedPanelItem
+from ui.custom_widgets import I18NTabbedPanelItem,ErrorPopup
 
 
 class CenterPanel(I18NTabbedPanelItem):
@@ -374,8 +374,13 @@ class CalibrateUI(Screen):
 
     def on_pre_enter(self):
         self.is_active = True
-        self.calibration_api = self.api.get_calibration_api()
-        self.calibration_api.show_point([0.5, 0.5, 0.0])
+        try:
+            self.calibration_api = self.api.get_calibration_api()
+            self.calibration_api.show_point([0.5, 0.5, 0.0])
+        except:
+            ep = ErrorPopup(title=_("Error"), text=_("No Peachy Printer Detected"))
+            ep.open()
+            App.get_running_app().root.current = 'mainui'
         panel = self.ids.tab_panel.tab_list[-1]
         self.ids.tab_panel.switch_to(panel)
 

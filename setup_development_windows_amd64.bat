@@ -38,4 +38,3 @@ IF NOT "%will_fail%" == "0" (
 
 ECHO -----------------------------------
 ECHO Enviroment Setup complete and seemingly successful.
-ECHO You can start the enviroment with the command\"source venv/bin/activate\"

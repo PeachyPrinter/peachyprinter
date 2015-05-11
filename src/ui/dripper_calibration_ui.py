@@ -4,9 +4,12 @@ from kivy.properties import NumericProperty, ListProperty, StringProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.spinner import Spinner
+from kivy.app import App
 
 from kivy.logger import Logger
 from ui.peachy_widgets import Dripper
+from ui.custom_widgets import ErrorPopup
+from infrastructure.langtools import _
 
 Builder.load_file('ui/dripper_calibration_ui.kv')
 
@@ -51,11 +54,16 @@ class DripperCalibrationUI(Screen):
         self.configuration_api.set_dripper_type(value)
 
     def on_pre_enter(self):
-        self.is_active = True
-        self.configuration_api = self.api.get_configuration_api()
-        dripper_type = self.configuration_api.get_dripper_type()
-        self.ids.dripper_type_selector.key = dripper_type
-        self.dripper_type_changed(None, dripper_type)
+        try:
+            self.is_active = True
+            self.configuration_api = self.api.get_configuration_api()
+            dripper_type = self.configuration_api.get_dripper_type()
+            self.ids.dripper_type_selector.key = dripper_type
+            self.dripper_type_changed(None, dripper_type)
+        except:
+            ep = ErrorPopup(title=_("Error"), text=_("No Peachy Printer Detected"))
+            ep.open()
+            App.get_running_app().root.current = 'mainui'
 
     def on_pre_leave(self):
         self.is_active = False
