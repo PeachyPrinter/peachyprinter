@@ -98,6 +98,10 @@ class PeachyPrinter(App):
     def on_lang(self, instance, lang):
         self.switch_lang(lang)
 
+    def open_settings(self):
+        self.destroy_settings()
+        super(PeachyPrinter, self).open_settings()
+
     def switch_lang(self, lang):
         locale_dir = join(dirname(__file__), 'resources', 'il8n', 'locales')
         locales = gettext.translation('peachyprinter', locale_dir, languages=[self.lang])
