@@ -9,6 +9,7 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.tabbedpanel import TabbedPanel, TabbedPanelItem
 from kivy.uix.accordion import AccordionItem
+from kivy.uix.scrollview import ScrollView
 from kivy.lang import Builder
 
 
@@ -49,16 +50,23 @@ class I18NImageButton(Button):
 
 
 class ErrorPopup(I18NPopup):
-    def __init__(self, text=None, **kwargs):
-        super(ErrorPopup, self).__init__(**kwargs)
+    text = StringProperty()
+    details = StringProperty()
+
+    def __init__(self, text=None, details=None, title_source=None, **kwargs):
         if text is None:
-            text = _('Bad Stuff Happened')
-        layout = BoxLayout(orientation='vertical')
-        message = I18NLabel(text_source=text)
-        close = I18NButton(text_source=_("Close"), on_release=self.dismiss, size_hint=[1.0, 0.5])
-        layout.add_widget(message)
-        layout.add_widget(close)
-        self.add_widget(layout)
+            self.text = _('Bad Stuff Happened')
+        else:
+            self.text = text
+        if title_source is None:
+            self.title_source = _("No Title")
+        else:
+            self.title_source = title_source
+        if details is None:
+            self.details = ""
+        else:
+            self.details = details
+        super(ErrorPopup, self).__init__(**kwargs)
 
 
 class LabelGridLayout(GridLayout):

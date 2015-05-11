@@ -75,7 +75,7 @@ class MyScreenManager(ScreenManager):
 
 class PeachyPrinter(App):
     lang = StringProperty('en_GB')
-    translation = ObjectProperty(None, allownone=True)
+    translator = ObjectProperty(None, allownone=True)
 
     def __init__(self, api, language=None, **kwargs):
         self.api = api
@@ -87,13 +87,21 @@ class PeachyPrinter(App):
         self.switch_lang(self.lang)
         self.manager = None
 
+    def translation(self, text):
+        if text:
+            translated = self.translator(text)
+        else:
+            translated = ""
+        Logger.info("Translating '%s' -> '%s'" % (text, translated))
+        return translated
+
     def on_lang(self, instance, lang):
         self.switch_lang(lang)
 
     def switch_lang(self, lang):
         locale_dir = join(dirname(__file__), 'resources', 'il8n', 'locales')
         locales = gettext.translation('peachyprinter', locale_dir, languages=[self.lang])
-        self.translation = locales.ugettext
+        self.translator = locales.ugettext
         if hasattr(self, 'settings'):
             self.settings.interface.menu.close_button.text = self.translation(_("Close"))
 
