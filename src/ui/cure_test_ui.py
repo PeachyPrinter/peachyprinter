@@ -1,8 +1,6 @@
 from kivy.uix.screenmanager import Screen
 from kivy.lang import Builder
 from kivy.properties import BoundedNumericProperty, BooleanProperty
-from kivy.app import App
-
 from kivy.logger import Logger
 
 
@@ -72,7 +70,6 @@ class CureTestUI(Screen):
             Logger.info("Saving override_laser_power_amount value of %.2f" % float(value))
             self.configuration_api.set_cure_rate_override_laser_power_amount(float(value))
             self.configuration_api.save()
-
 
     def print_now(self):
         generator = self.configuration_api.get_cure_test(self.base, self.test_height, self.start_speed, self.stop_speed)
