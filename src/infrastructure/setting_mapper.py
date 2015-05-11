@@ -357,7 +357,7 @@ class SettingsMapper(object):
                     'desc_source': _('cure_rate_override_laser_power_amount DESCRIPTION'),
                     'ok_button_text': _('Ok'),
                     'cancel_button_text': _('Cancel'),
-                    'value_range': [0, 1],
+                    'value_range': [0, 0.1567],
                 },
 # ----------- BEGIN Dripper --------------------
                 {
@@ -441,9 +441,13 @@ class SettingsMapper(object):
     def update_setting(self, section, key, value):
         Logger.info(u"Setting changed  %s, %s -> %s" % (section, key, value))
         item = [item for item in self.config_info if item['key'] == key][0]
-        if hasattr(self.configuration_api, 'set_' + key):
-            getattr(self.configuration_api, 'set_' + key)(self._convert(item, value))
-        self.configuration_api.save()
+        try:
+            if hasattr(self.configuration_api, 'set_' + key):
+                getattr(self.configuration_api, 'set_' + key)(self._convert(item, value))
+            self.configuration_api.save()
+        except Exception as ex:
+            Logger.info("Save to %s,%s of %s resulted in an error %s, changes not saved" % (section, key, value, ex))
+
 
     def load_config(self, config):
         Logger.info("Loading Configs")
