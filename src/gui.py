@@ -45,7 +45,7 @@ class MainUI(Screen):
     def load(self, path, filename):
         self.dismiss_popup()
         self.parent.current = 'printingui'
-        self.printingui.print_file(filename)
+        self.parent.printingui.print_file(filename)
 
     def dismiss_popup(self):
         self._popup.dismiss()
