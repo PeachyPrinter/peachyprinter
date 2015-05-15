@@ -384,6 +384,8 @@ class CalibrateUI(Screen):
             self.calibration_api = self.api.get_calibration_api()
             self.calibration_api.show_point([0.5, 0.5, 0.0])
         except Exception as ex:
+            import traceback
+            traceback.print_exc()
             ep = ErrorPopup(title_source=_("Error"), text=_("No Peachy Printer Detected"), details="%s\n%s" % (type(ex), ex))
             ep.open()
             App.get_running_app().root.current = 'mainui'

@@ -54,6 +54,14 @@ class SettingsMapper(object):
                     'key': 'info_firmware_version_number',
                     'disabled': True
                 },
+                {
+                    'type': 'numeric',
+                    'section': _('Info'),
+                    'desc_source': _('info_firmware_data_rate DESCRIPTION'),
+                    'title_source': _('info_firmware_data_rate TITLE'),
+                    'key': 'info_firmware_data_rate',
+                    'disabled': True
+                },
 # ----------- BEGIN Options --------------------
                 {
                     'type': 'bool',
@@ -448,13 +456,9 @@ class SettingsMapper(object):
         except Exception as ex:
             Logger.info("Save to %s,%s of %s resulted in an error %s, changes not saved" % (section, key, value, ex))
 
-
     def load_config(self, config):
         Logger.info("Loading Configs")
-        printers = self.configuration_api.get_available_printers()
-        if not printers:
-            self.configuration_api.add_printer("Peachy Printer")
-        self.configuration_api.load_printer(self.configuration_api.get_available_printers()[0])
+        self.configuration_api.load_printer()
 
         for item in self.config_info:
             key = item['key']
