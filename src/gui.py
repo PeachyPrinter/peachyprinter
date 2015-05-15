@@ -15,6 +15,7 @@ from ui.dripper_calibration_ui import DripperCalibrationUI
 from ui.cure_test_ui import CureTestUI
 from ui.calibrate_ui import CalibrateUI
 from ui.custom_widgets import *
+from peachyprinter import MissingPrinterException
 
 
 from os.path import join, dirname
@@ -118,8 +119,16 @@ class PeachyPrinter(App):
 
     def build(self):
         self.settings_cls = SettingsWithSidebar
-        self.setting_translation.load_config(self.config)
-        self.config.add_callback(self.setting_translation.update_setting)
+        try:
+            self.setting_translation.load_config(self.config)
+            self.config.add_callback(self.setting_translation.update_setting)
+        except MissingPrinterException:
+            fail_box = BoxLayout(orientation="vertical")
+            pop_message = I18NLabel(text_source=_("Please connect your peachy printer before starting the software"))
+            pop_exit = I18NButton(text_source=_("Exit"), size_hint_y = None, height=30, on_release=exit)
+            fail_box.add_widget(pop_message)
+            fail_box.add_widget(pop_exit)
+            return fail_box
         self.manager = MyScreenManager(self.api, self.setting_translation)
         return self.manager
 
