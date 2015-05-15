@@ -21,9 +21,10 @@ from os.path import join, dirname
 import gettext
 
 
-class LoadDialog(FloatLayout):
+class LoadDialog(BoxLayout):
     load = ObjectProperty(None)
     cancel = ObjectProperty(None)
+    last_directory = StringProperty('~')
 
 
 class SettingsSelector(I18NPopup):
@@ -32,17 +33,23 @@ class SettingsSelector(I18NPopup):
 
 class MainUI(Screen):
     setting = ObjectProperty()
+    last_directory = StringProperty('~')
 
     def __init__(self, **kwargs):
         super(MainUI, self).__init__(**kwargs)
         self.settings = SettingsSelector()
 
     def show_load(self):
-        content = LoadDialog(load=self.load, cancel=self.dismiss_popup)
+        Config.adddefaultsection('internal')
+        self.last_directory = Config.getdefault('internal', 'last_directory', self.last_directory)
+        content = LoadDialog(load=self.load, cancel=self.dismiss_popup, last_directory=self.last_directory)
         self._popup = I18NPopup(title_source=_("Load file"), content=content, size_hint=(0.9, 0.9))
         self._popup.open()
 
     def load(self, path, filename):
+        self.last_directory = path
+        Config.set('internal', 'last_directory', self.last_directory)
+        Config.write()
         self.dismiss_popup()
         self.parent.current = 'printingui'
         self.parent.printing_ui.print_file(filename)
