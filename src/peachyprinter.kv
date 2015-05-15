@@ -61,11 +61,8 @@
     BoxLayout:
         orientation: 'vertical'
         BoxLayout:
-            size: root.size
-            pos: root.pos
             orientation: "vertical"
             FileChooserListView:
-                pos: self.parent.pos
                 id: filechooser
                 filters: ['*.gcode']
                 path: root.last_directory
