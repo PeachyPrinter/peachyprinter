@@ -405,7 +405,7 @@ class SettingsMapper(object):
                     'desc_source': _('dripper_photo_zaxis_delay DESCRIPTION'),
                     'ok_button_text': _('Ok'),
                     'cancel_button_text': _('Cancel'),
-                    'value_range': [0, 1],
+                    'value_range': [0, None],
                 },
                 ]
 
