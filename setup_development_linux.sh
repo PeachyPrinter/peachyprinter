@@ -31,6 +31,13 @@ fi
 echo "----Setting up virtual environment----"
 SETUP_TMP="setup_tmp"
 
+echo "--------Setting up cython----"
+pip install -U cython==0.21.2
+if [ $? != 0 ]; then
+    echo "FAILURE: cython failed installing"
+    exit 666
+fi
+
 echo "--------Setting up kivy----"
 pip install -U kivy==1.9.0
 if [ $? != 0 ]; then
