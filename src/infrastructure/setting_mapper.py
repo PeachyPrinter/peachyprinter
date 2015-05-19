@@ -348,6 +348,16 @@ class SettingsMapper(object):
                     'value_range': [1, None],
                 },
                 {
+                    'type': 'numeric',
+                    'key': 'cure_rate_move_speed',
+                    'section': _('Cure Rate'),
+                    'title_source': _('cure_rate_move_speed TITLE'),
+                    'desc_source': _('cure_rate_move_speed DESCRIPTION'),
+                    'ok_button_text': _('Ok'),
+                    'cancel_button_text': _('Cancel'),
+                    'value_range': [1, None],
+                },
+                {
                     'type': 'bool',
                     'key': 'cure_rate_override_laser_power',
                     'section': _('Cure Rate'),
