@@ -344,6 +344,7 @@ class TouchyLabel(I18NLabel):
 class TestPatternPanel(I18NTabbedPanelItem):
     calibration_api = ObjectProperty()
     speed = NumericProperty(100)
+    current_height = NumericProperty(0.0)
 
     def __init__(self, **kwargs):
         super(TestPatternPanel, self).__init__(**kwargs)
@@ -355,16 +356,26 @@ class TestPatternPanel(I18NTabbedPanelItem):
             for item in items:
                 self.ids.patterns.add_widget(ToggleButton(group='test_patterns',  text=item, on_release=self.show_pattern))
             self.calibration_api.set_test_pattern_speed(self.speed)
+            printer_width, printer_depth, printer_height = self.calibration_api.get_print_area()
             self.ids.patterns.children[-1].state = "down"
+            self.ids.current_height_slider.max = printer_height
+            self.ids.current_height_slider.step = printer_height / 500
             self.show_pattern(self.ids.patterns.children[-1])
             self.loaded = True
 
     def show_pattern(self, instance):
-        self.calibration_api.show_test_pattern(instance.text)
+        if self.loaded:
+            self.calibration_api.show_test_pattern(instance.text)
 
     def on_speed(self, instance, value):
-        Logger.info("On Speed: %s" % value)
-        self.calibration_api.set_test_pattern_speed(value)
+        if self.loaded:
+            Logger.info("On Speed: %s" % value)
+            self.calibration_api.set_test_pattern_speed(value)
+
+    def on_current_height(self, instance, value):
+        if self.loaded:
+            Logger.info("On height: %s" % value)
+            self.calibration_api.set_test_pattern_current_height(float(value))
 
 
 Builder.load_file('ui/calibrate_ui.kv')

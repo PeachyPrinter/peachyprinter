@@ -424,26 +424,44 @@
             size_hint_x: 0.6
             orientation: 'vertical'
             BoxLayout:
-                orientation: 'vertical'
+                orientation: 'horizontal'
                 BoxLayout:
-                    size_hint_y: None
-                    height: 30
+                    orientation: 'vertical'
                     TouchyLabel:
                         on_oh_my: speed_slider.max = 100000
                         text_source: _("Speed")
+                        size_hint_y: None
+                        height: 30
                     Label:
                         text: '%.f (mm/sec)' % root.speed
-                Slider:
-                    size_hint_y: None
-                    height: 50
-                    id: speed_slider
-                    min: 20
-                    step:5
-                    max: 500
-                    value: root.speed
-                    on_value: root.speed = self.value
-                Label:
-                    
+                        size_hint_y: None
+                        height: 30
+                    Slider:
+                        orientation: 'vertical'
+                        id: speed_slider
+                        min: 20
+                        step:5
+                        max: 500
+                        value: root.speed
+                        on_value: root.speed = self.value
+                BoxLayout:
+                    orientation: 'vertical'
+                    I18NLabel:
+                        text_source: _("Height")
+                        size_hint_y: None
+                        height: 30
+                    Label:
+                        text: '%.2f (mm)' % root.current_height
+                        size_hint_y: None
+                        height: 30
+                    Slider:
+                        orientation: 'vertical'
+                        id: current_height_slider
+                        min: 0.0
+                        step:1.0
+                        max: 100.0
+                        value: 0.0
+                        on_value: root.current_height = self.value
 
             I18NButton:
                 text_source: _("Help me")
