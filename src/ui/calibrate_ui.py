@@ -389,11 +389,15 @@ class CalibrateUI(Screen):
             ep = ErrorPopup(title_source=_("Error"), text=_("No Peachy Printer Detected"), details="%s\n%s" % (type(ex), ex))
             ep.open()
             App.get_running_app().root.current = 'mainui'
-        panel = self.ids.tab_panel.tab_list[-1]
-        self.ids.tab_panel.switch_to(panel)
+        self._switch_to_default_panel()
 
     def on_pre_leave(self):
+        self._switch_to_default_panel()
         self.is_active = False
         if self.calibration_api:
             self.calibration_api.close()
         self.calibration_api = False
+
+    def _switch_to_default_panel(self):
+        panel = self.ids.tab_panel.tab_list[-1]
+        self.ids.tab_panel.switch_to(panel)
