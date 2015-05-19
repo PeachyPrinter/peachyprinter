@@ -14,6 +14,7 @@ from ui.library_ui import LibraryUI
 from ui.dripper_calibration_ui import DripperCalibrationUI
 from ui.cure_test_ui import CureTestUI
 from ui.calibrate_ui import CalibrateUI
+from ui.restore_ui import RestoreUI
 from ui.custom_widgets import *
 from peachyprinter import MissingPrinterException
 
@@ -73,12 +74,14 @@ class MyScreenManager(ScreenManager):
         self.dripper_calibration_ui = DripperCalibrationUI(self.api)
         self.calibration_ui = CalibrateUI(self.api)
         self.cure_test_ui = CureTestUI(self.api)
+        self.restore_ui = RestoreUI(self.api)
         self.add_widget(self.main_ui)
         self.add_widget(self.printing_ui)
         self.add_widget(self.library_ui)
         self.add_widget(self.dripper_calibration_ui)
         self.add_widget(self.cure_test_ui)
         self.add_widget(self.calibration_ui)
+        self.add_widget(self.restore_ui)
 
 
 class PeachyPrinter(App):
