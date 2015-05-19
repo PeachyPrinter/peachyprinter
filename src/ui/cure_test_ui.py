@@ -14,6 +14,7 @@ class CureTestUI(Screen):
     stop_speed = BoundedNumericProperty(200.0, min=0.0001, max=None)
     use_draw_speed = BooleanProperty(False)
     draw_speed = BoundedNumericProperty(100.0, min=0.0001, max=None)
+    move_speed = BoundedNumericProperty(100.0, min=0.0001, max=None)
     override_laser_power = BooleanProperty(False)
     override_laser_power_amount = BoundedNumericProperty(0.01, min=0, max=1)
 
@@ -59,6 +60,12 @@ class CureTestUI(Screen):
             self.configuration_api.set_cure_rate_draw_speed(float(value))
             self.configuration_api.save()
 
+    def on_draw_speed(self, instance, value):
+        if self.loaded:
+            Logger.info("Saving move_speed value of%.2f" % float(value))
+            self.configuration_api.set_cure_rate_move_speed(float(value))
+            self.configuration_api.save()
+
     def on_override_laser_power(self, instance, value):
         if self.loaded:
             Logger.info("Saving override_laser_power value of %s" % value)
@@ -84,6 +91,7 @@ class CureTestUI(Screen):
         self.ids.stop_speed_id.text = '%.2f' % self.configuration_api.get_cure_rate_finish_speed()
         self.ids.use_draw_speed_id.active = self.configuration_api.get_cure_rate_use_draw_speed()
         self.ids.draw_speed_id.text = '%.2f' % self.configuration_api.get_cure_rate_draw_speed()
+        self.ids.move_speed_id.text = '%.2f' % self.configuration_api.get_cure_rate_move_speed()
         self.ids.override_laser_power_id.active = self.configuration_api.get_cure_rate_override_laser_power()
         self.ids.override_laser_power_amount_id.text = '%.2f' % self.configuration_api.get_cure_rate_override_laser_power_amount()
 
