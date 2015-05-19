@@ -23,6 +23,9 @@
             text_source: _('Advanced Settings')
             on_release: app.open_settings()
         I18NButton:
+            text_source: _('Restore Defaults')
+            on_release: root.dismiss(); app.root.current = 'restoreui'
+        I18NButton:
             text_source: _('Close')
             on_release: root.dismiss()
 
