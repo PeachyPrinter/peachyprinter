@@ -2,7 +2,7 @@ from kivy.uix.screenmanager import Screen
 from kivy.graphics import *
 from kivy.logger import Logger
 from kivy.lang import Builder
-
+from kivy.app import App
 from ui.custom_widgets import BorderedLabel, LabelGridLayout, ErrorPopup
 from infrastructure.langtools import _
 
@@ -75,6 +75,20 @@ class PrintingUI(Screen):
             popup = ErrorPopup(title='Error', text=str(ex), size_hint=(0.6, 0.6))
             popup.open()
             self.parent.current = self.return_to
+
+    def restart(self):
+        if self.print_api:
+            self.print_api.close()
+        self.print_api = None
+        self.ids.navigate_button.text = _('Cancel Print')
+        last_print = App.get_running_app().last_print
+        if last_print.print_type is "file":
+            self.print_file(last_print.source, self.return_to)
+        elif last_print.print_type is "test_print":
+            generator = self.api.get_test_print_api().get_test_print(*last_print.source)
+            self.print_generator(generator, self.return_to)
+        else:
+            raise("Unsupported Print Type %s" % last_print.print_type)
 
     def on_pre_enter(self):
         for (title, value) in self.parent.setting_translation.get_settings().items():
