@@ -32,6 +32,15 @@ class LoadDialog(BoxLayout):
 class SettingsSelector(I18NPopup):
     pass
 
+class LastPrint(object):
+    def __init__(self):
+        self.print_type=None
+        self.source=None
+
+    def set(self, print_type,source):
+        self.print_type = print_type
+        self.source = source
+        Logger.info("Last print was from: %s with %s" % (self.print_type, str(self.source)))
 
 class MainUI(Screen):
     setting = ObjectProperty()
@@ -53,6 +62,7 @@ class MainUI(Screen):
         Config.set('internal', 'last_directory', self.last_directory)
         Config.write()
         self.dismiss_popup()
+        App.get_running_app().last_print.set("file",filename)
         self.parent.current = 'printingui'
         self.parent.printing_ui.print_file(filename)
 
@@ -88,7 +98,9 @@ class PeachyPrinter(App):
     lang = StringProperty('en_GB')
     translator = ObjectProperty(None, allownone=True)
 
+
     def __init__(self, api, language=None, **kwargs):
+        self.last_print = LastPrint()
         self.api = api
         self.setting_translation = SettingsMapper(self.api)
         super(PeachyPrinter, self).__init__(**kwargs)
@@ -103,7 +115,7 @@ class PeachyPrinter(App):
             translated = self.translator(text)
         else:
             translated = ""
-        Logger.info("Translating '%s' -> '%s'" % (text, translated))
+        Logger.debug("Translating '%s' -> '%s'" % (text, translated))
         return translated
 
     def on_lang(self, instance, lang):

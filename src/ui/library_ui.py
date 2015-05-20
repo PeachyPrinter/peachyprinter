@@ -9,7 +9,6 @@ from kivy.logger import Logger
 from kivy.properties import StringProperty
 from kivy.lang import Builder
 from kivy.app import App
-
 from ui.custom_widgets import I18NPopup
 
 
@@ -33,6 +32,7 @@ class PrintPop(I18NPopup):
         width = float(self.ids.width.text)
         layer_height = float(self.ids.layer_height.text)
         speed = float(self.ids.speed.text)
+        App.get_running_app().last_print.set("test_print",(name, height, width, layer_height, speed))
         generator = self.test_print_api.get_test_print(name, height, width, layer_height, speed)
         self.screen_manager.current = 'printingui'
         self.screen_manager.printing_ui.print_generator(generator)
