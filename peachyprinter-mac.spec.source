@@ -30,4 +30,4 @@ coll = COLLECT(exe,
                name='peachyprinter-mac')
 app = BUNDLE(coll,
              name='peachyprinter-mac.app',
-             icon=None)
+             icon='src/resources/peachy.icns')
