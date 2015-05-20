@@ -1,12 +1,13 @@
 #!/bin/bash
-echo "----------Creating symlinks to kivy venv------------"
-ln -s /Applications/Kivy.app/Contents/Resources/venv venv
-
 echo "----------Activating kivy venv------------"
 KIVY_APP_PATH="/Applications/Kivy.app/Contents/Resources";
+echo "Kivy Path: ${KIVY_APP_PATH}"
+
+echo "----------Creating symlinks to kivy venv------------"
+ln -s $KIVY_APP_PATH/venv venv
 
 # activate the virtualenv
-source ${KIVY_APP_PATH}/venv/bin/activate
+source venv/bin/activate
 
 # setup the environment to not mess with the system
 export PYTHONPATH="${KIVY_APP_PATH}/kivy:${PYTHONPATH}"
@@ -26,8 +27,8 @@ echo "--------Getting Latest API----"
 ./get_latest_api.sh
 
 echo "--------Applying work around to googles protobuf library----"
-touch ${KIVY_APP_PATH}/venv/lib/python2.7/site-packages/google/__init__.py
-python -m compileall ${KIVY_APP_PATH}/venv/lib/python2.7/site-packages/google/
+touch venv/lib/python2.7/site-packages/google/__init__.py
+python -m compileall venv/lib/python2.7/site-packages/google/
 
 echo ""
 echo "-----------------------------------"
