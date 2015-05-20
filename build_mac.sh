@@ -10,7 +10,7 @@ echo "------------------------------------"
 rm -rf dist
 rm -rf build
 rm -rf *.app
-rm venv
+rm -f venv
 rm -f src/VERSION.py
 rm -f version.properties 
 find . -name "*.pyc" -exec rm -rf {} \;
