@@ -74,3 +74,14 @@ if [ $? != 0 ]; then
     echo "FAILURE: Copying app"
     exit 233
 fi
+
+echo "------------------------------------"
+echo "Packaging Application"
+echo "------------------------------------"
+
+
+hdiutil create ./peachyprinter-$VERSION.dmg -srcfolder peachyprinter-$VERSION.app -ov
+if [ $? != 0 ]; then
+    echo "FAILURE: packaging app"
+    exit 234
+fi
