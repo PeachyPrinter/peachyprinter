@@ -6,6 +6,7 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.popup import Popup
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.config import Config
+from kivy.resources import resource_add_path
 from infrastructure.setting_mapper import SettingsMapper
 from infrastructure.langtools import _
 
@@ -18,7 +19,7 @@ from ui.restore_ui import RestoreUI
 from ui.custom_widgets import *
 from peachyprinter import MissingPrinterException
 
-
+import os
 from os.path import join, dirname
 import gettext
 
@@ -100,6 +101,8 @@ class PeachyPrinter(App):
 
 
     def __init__(self, api, language=None, **kwargs):
+        resource_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'resources')
+        resource_add_path(resource_path)
         self.last_print = LastPrint()
         self.api = api
         self.setting_translation = SettingsMapper(self.api)

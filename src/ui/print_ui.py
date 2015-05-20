@@ -3,6 +3,9 @@ from kivy.graphics import *
 from kivy.logger import Logger
 from kivy.lang import Builder
 from kivy.app import App
+from kivy.core.audio import SoundLoader
+from kivy.resources import resource_find
+
 from ui.custom_widgets import BorderedLabel, LabelGridLayout, ErrorPopup
 from infrastructure.langtools import _
 
@@ -52,6 +55,7 @@ class PrintingUI(Screen):
         self.ids.print_status.update(data)
         self.ids.dripper.update(data)
         if data['status'] == 'Complete':
+            self.play_complete_sound()
             self.ids.navigate_button.text = _("Print Complete, Close")
 
     def print_file(self, filename, return_name='mainui'):
@@ -89,6 +93,15 @@ class PrintingUI(Screen):
             self.print_generator(generator, self.return_to)
         else:
             raise("Unsupported Print Type %s" % last_print.print_type)
+
+    def play_complete_sound(self):
+        sound_file = resource_find("complete.wav")
+        if sound_file:
+            sound = SoundLoader.load(sound_file)
+            if sound:
+                sound.play()
+        else:
+            Logger.warning("Sound was unfound")
 
     def on_pre_enter(self):
         for (title, value) in self.parent.setting_translation.get_settings().items():
