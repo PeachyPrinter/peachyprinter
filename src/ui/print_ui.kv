@@ -34,11 +34,17 @@
                 Dripper:
                     id: dripper
                     size_hint_x: 0.05
-        I18NButton:
-            id: navigate_button
-            text_source: _('Cancel Print')
+        BoxLayout:
             size_hint_y: None
             height: 30
-            on_release: app.root.current = root.return_to
+            orientation: "horizontal"
+            I18NButton:
+                id: restart_button
+                text_source: _('Restart Print')
+                on_release: root.restart()
+            I18NButton:
+                id: navigate_button
+                text_source: _('Cancel Print')
+                on_release: app.root.current = root.return_to
 
 
