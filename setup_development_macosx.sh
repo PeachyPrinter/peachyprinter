@@ -26,8 +26,8 @@ echo "--------Getting Latest API----"
 ./get_latest_api.sh
 
 echo "--------Applying work around to googles protobuf library----"
-touch venv/lib/python2.7/site-packages/google/__init__.py
-python -m compileall venv/lib/python2.7/site-packages/google/
+touch ${KIVY_APP_PATH}/venv/lib/python2.7/site-packages/google/__init__.py
+python -m compileall ${KIVY_APP_PATH}/venv/lib/python2.7/site-packages/google/
 
 echo ""
 echo "-----------------------------------"
