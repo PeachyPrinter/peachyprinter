@@ -63,6 +63,11 @@ if [ $? != 0 ]; then
     echo "FAILURE: Building app"
     exit 232
 fi
+
+echo "------------------------------------"
+echo "Moving Application"
+echo "------------------------------------"
+
 cp -R dist/peachyprinter-mac.app peachyprinter-$VERSION.app
 if [ $? != 0 ]; then
     echo "FAILURE: Copying app"
