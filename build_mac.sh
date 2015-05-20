@@ -10,6 +10,7 @@ echo "------------------------------------"
 rm -rf dist
 rm -rf build
 rm -rf *.app
+rm -f *.dmg
 rm -f venv
 rm -f src/VERSION.py
 rm -f version.properties 
