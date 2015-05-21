@@ -4,7 +4,7 @@ ECHO ------------------------------------
 ECHO Cleaning workspace
 ECHO ------------------------------------
 
-DEL /Q PeachyPrinter*.exe
+DEL /Q *.exe
 RMDIR /S /Q src\build
 RMDIR /S /Q src\dist
 DEL /S *.pyc
