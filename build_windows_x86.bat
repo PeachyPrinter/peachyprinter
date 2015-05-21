@@ -5,8 +5,8 @@ ECHO Cleaning workspace
 ECHO ------------------------------------
 
 DEL /Q *.exe
-RMDIR /S /Q src\build
-RMDIR /S /Q src\dist
+RMDIR /S /Q build
+RMDIR /S /Q dist
 DEL /S *.pyc
 
 ECHO ------------------------------------
