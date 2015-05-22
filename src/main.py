@@ -38,6 +38,15 @@ def setup_logging(args):
     else:
         logging.basicConfig(filename=logfile, format=logging_format, level=logging_level)
 
+def setup_env(path):
+    python_64 = sys.maxsize > 2**32
+    if os.name == 'nt':
+        dll_base = os.path.join(path, 'resources', 'DLL')
+        if python_64:
+            os.environ['PEACHY_API_DLL_PATH'] = os.path.join(dll_base, "AMD64")
+        else:
+            os.environ['PEACHY_API_DLL_PATH'] = os.path.join(dll_base, "x86")
+
 
 if __name__ == "__main__":
     if not os.path.exists(config.PEACHY_PATH):
@@ -55,11 +64,12 @@ if __name__ == "__main__":
     if args.devmode:
         config.devmode = True
 
+
     if getattr(sys, 'frozen', False):
         path = os.path.dirname(sys.executable)
     else:
         path = os.path.dirname(os.path.realpath(__file__))
-
+    setup_env(path) 
     api = PrinterAPI()
     sys.argv = [sys.argv[0]]
     if args.mod:
