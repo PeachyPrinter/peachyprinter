@@ -12,29 +12,6 @@ from kivy.uix.widget import Widget
 import re
 
 
-
-class SettingBoolean(SettingItem):
-    '''Implementation of a boolean setting on top of a :class:`SettingItem`. It
-    is visualized with a :class:`~kivy.uix.switch.Switch` widget. By default,
-    0 and 1 are used for values: you can change them by setting :attr:`values`.
-    '''
-
-    values = ListProperty(['0', '1'])
-    '''Values used to represent the state of the setting. If you want to use
-    "yes" and "no" in your ConfigParser instance::
-
-        SettingBoolean(..., values=['no', 'yes'])
-
-    .. warning::
-
-        You need a minimum of two values, the index 0 will be used as False,
-        and index 1 as True
-
-    :attr:`values` is a :class:`~kivy.properties.ListProperty` and defaults to
-    ['0', '1']
-    '''
-
-
 class SettingString(SettingItem):
     '''Implementation of a string setting on top of a :class:`SettingItem`.
     It is visualized with a :class:`~kivy.uix.label.Label` widget that, when
