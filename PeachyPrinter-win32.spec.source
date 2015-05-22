@@ -1,6 +1,10 @@
 # -*- mode: python -*-
 
 from kivy.tools.packaging.pyinstaller_hooks import install_hooks
+import kivy.core.video
+import os
+
+gst_plugin_path = os.environ.get('GST_PLUGIN_PATH').split('lib')[0]
 install_hooks(globals())
 from VERSION import version
 
@@ -13,6 +17,8 @@ pyz = PYZ(a.pure)
 exe = EXE(pyz,
           Tree('src'),
           Tree([f for f in os.environ.get('KIVY_SDL2_PATH', '').split(';') if 'bin' in f][0]),
+          Tree(gst_plugin_path),
+          Tree(os.path.join(gst_plugin_path, 'bin')),
           a.scripts,
           a.binaries,
           a.zipfiles,
