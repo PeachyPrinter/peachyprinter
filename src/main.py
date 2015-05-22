@@ -56,12 +56,8 @@ if __name__ == "__main__":
     parser.add_argument('-y', '--language', dest='lang', action='store', required=False, default=None, help='override locale code')
     args, unknown = parser.parse_known_args()
 
-    if getattr(sys, 'frozen', False):
-        path = os.path.dirname(sys.executable)
-        print("Frozen")
-    else:
-        path = os.path.dirname(os.path.realpath(__file__))
-        print("unFrozen")
+    path = os.path.dirname(os.path.realpath(__file__))
+    print("PATH: path")
     setup_env(path) 
 
     from peachyprinter import config, PrinterAPI
