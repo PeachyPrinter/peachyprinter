@@ -2,7 +2,6 @@ import logging
 import os
 import sys
 import time
-from peachyprinter import config, PrinterAPI
 import argparse
 from infrastructure.langtools import _
 
@@ -70,6 +69,9 @@ if __name__ == "__main__":
     else:
         path = os.path.dirname(os.path.realpath(__file__))
     setup_env(path) 
+
+    from peachyprinter import config, PrinterAPI
+    
     api = PrinterAPI()
     sys.argv = [sys.argv[0]]
     if args.mod:
