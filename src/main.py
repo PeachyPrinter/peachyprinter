@@ -56,8 +56,6 @@ if __name__ == "__main__":
     parser.add_argument('-y', '--language', dest='lang', action='store', required=False, default=None, help='override locale code')
     args, unknown = parser.parse_known_args()
 
-    setup_logging(args)
-
     if getattr(sys, 'frozen', False):
         path = os.path.dirname(sys.executable)
     else:
@@ -65,8 +63,10 @@ if __name__ == "__main__":
     setup_env(path) 
 
     from peachyprinter import config, PrinterAPI
+
     if not os.path.exists(config.PEACHY_PATH):
         os.makedirs(config.PEACHY_PATH)
+    setup_logging(args)
     if args.devmode:
         config.devmode = True
 
