@@ -48,9 +48,6 @@ def setup_env(path):
 
 
 if __name__ == "__main__":
-    if not os.path.exists(config.PEACHY_PATH):
-        os.makedirs(config.PEACHY_PATH)
-
     parser = argparse.ArgumentParser("Configure and print with Peachy Printer")
     parser.add_argument('-l', '--log',     dest='loglevel', action='store',      required=False, default="WARNING", help="Enter the loglevel [DEBUG|INFO|WARNING|ERROR] default: WARNING")
     parser.add_argument('-t', '--console', dest='console',  action='store_true', required=False, help="Logs to console not file")
@@ -60,9 +57,6 @@ if __name__ == "__main__":
     args, unknown = parser.parse_known_args()
 
     setup_logging(args)
-    if args.devmode:
-        config.devmode = True
-
 
     if getattr(sys, 'frozen', False):
         path = os.path.dirname(sys.executable)
@@ -71,7 +65,11 @@ if __name__ == "__main__":
     setup_env(path) 
 
     from peachyprinter import config, PrinterAPI
-    
+    if not os.path.exists(config.PEACHY_PATH):
+        os.makedirs(config.PEACHY_PATH)
+    if args.devmode:
+        config.devmode = True
+
     api = PrinterAPI()
     sys.argv = [sys.argv[0]]
     if args.mod:
