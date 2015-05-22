@@ -57,7 +57,6 @@ if __name__ == "__main__":
     args, unknown = parser.parse_known_args()
 
     path = os.path.dirname(os.path.realpath(__file__))
-    print("PATH: path")
     setup_env(path) 
 
     from peachyprinter import config, PrinterAPI
