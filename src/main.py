@@ -58,17 +58,19 @@ if __name__ == "__main__":
 
     if getattr(sys, 'frozen', False):
         path = os.path.dirname(sys.executable)
+        print("Frozen")
     else:
         path = os.path.dirname(os.path.realpath(__file__))
+        print("unFrozen")
     setup_env(path) 
 
     from peachyprinter import config, PrinterAPI
 
     if not os.path.exists(config.PEACHY_PATH):
         os.makedirs(config.PEACHY_PATH)
-    setup_logging(args)
     if args.devmode:
         config.devmode = True
+    setup_logging(args)
 
     api = PrinterAPI()
     sys.argv = [sys.argv[0]]
