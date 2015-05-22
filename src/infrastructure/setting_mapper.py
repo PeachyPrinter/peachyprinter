@@ -4,7 +4,8 @@ import json
 import collections
 from kivy.logger import Logger
 from kivy.app import App
-from ui.peachy_settings import SettingString, SettingNumeric, SettingBoolean
+from kivy.uix.settings import SettingBoolean 
+from ui.peachy_settings import SettingString, SettingNumeric
 
 try:
     from VERSION import version, revision
@@ -68,9 +69,7 @@ class SettingsMapper(object):
                     'section': _('Options'),
                     'key': 'options_use_sublayers',
                     'title_source': _('options_use_sublayers TITLE'),
-                    'desc_source': _('options_use_sublayers DESCRIPTION'),
-                    'values': [False, True]
-                },
+                    'desc_source': _('options_use_sublayers DESCRIPTION'),                },
                 {
                     'type': 'numeric',
                     'section': _('Options'),
@@ -87,7 +86,6 @@ class SettingsMapper(object):
                     'key': 'options_use_shufflelayers',
                     'title_source': _('options_use_shufflelayers TITLE'),
                     'desc_source': _('options_use_shufflelayers DESCRIPTION'),
-                    'values': [False, True],
                 },
                 {
                     'type': 'numeric',
@@ -101,7 +99,6 @@ class SettingsMapper(object):
                 },
                 {
                     'type': 'bool',
-                    'values': [False, True],
                     'section': _('Options'),
                     'key': 'options_use_overlap',
                     'title_source': _('options_use_overlap TITLE'),
@@ -203,7 +200,7 @@ class SettingsMapper(object):
                     'key': 'email_on',
                     'title_source': _('email.on TITLE'),
                     'desc_source': _('email.on DESCRIPTION'),
-                    'values': [False, True]
+                    'true': 'auto' 
                 },
                 {
                     'type': 'numeric',
@@ -266,9 +263,7 @@ class SettingsMapper(object):
                     'section': _('Serial'),
                     'key': 'serial_enabled',
                     'title_source': _('serial_enabled TITLE'),
-                    'desc_source': _('serial_enabled DESCRIPTION'),
-                    'values': [False, True]
-                },
+                    'desc_source': _('serial_enabled DESCRIPTION'),                },
                 {
                     'type': 'string',
                     'section': _('Serial'),
@@ -334,9 +329,7 @@ class SettingsMapper(object):
                     'key': 'cure_rate_use_draw_speed',
                     'section': _('Cure Rate'),
                     'title_source': _('cure_rate_use_draw_speed TITLE'),
-                    'desc_source': _('cure_rate_use_draw_speed DESCRIPTION'),
-                    'values': [False, True]
-                },
+                    'desc_source': _('cure_rate_use_draw_speed DESCRIPTION'),                },
                 {
                     'type': 'numeric',
                     'key': 'cure_rate_draw_speed',
@@ -365,7 +358,6 @@ class SettingsMapper(object):
                     'desc_source': _('cure_rate_override_laser_power DESCRIPTION'),
                     'ok_button_text': _('Ok'),
                     'cancel_button_text': _('Cancel'),
-                    'values': [False, True],
                 },
                 {
                     'type': 'numeric',
@@ -422,7 +414,7 @@ class SettingsMapper(object):
     def refresh_settings(self, settings, config):
         self.load_config(config)
         settings.register_type('string', SettingString)
-        settings.register_type('bool', SettingBoolean)
+        # settings.register_type('bool', SettingBoolean)
         settings.register_type('numeric', SettingNumeric)
 
         sections = set([item['section'] for item in self.config_info])
@@ -449,7 +441,7 @@ class SettingsMapper(object):
             else:
                 return int(value)
         if entry_type == 'bool':
-            if value == 'True':
+            if value == '1' or value == True:
                 return True
             else:
                 return False
@@ -478,11 +470,14 @@ class SettingsMapper(object):
             value = getattr(self.configuration_api, getter)()
             if item['type'] == 'options':
                 value = item['options'][item['options_id'].index(value)]
+            if item['type'] == 'bool':
+                value = '1' if value else '0'
             if not config.has_section(translated_section_name):
                 config.add_section(translated_section_name)
             config.set(translated_section_name, key, value)
 
     def get_settings(self):
+        Logger.info("getting Settings")
         setting_values = collections.OrderedDict()
         for setting in sorted(self.config_info, key=lambda t: t['key']):
             setting_values[setting['title_source']] = str(getattr(self.configuration_api, 'get_' + setting['key'])())
