@@ -35,19 +35,19 @@
         I18NButton:
             text_source: _("Back")
             size_hint_y: None
-            height: 30
+            height: "30dp"
             on_release: app.root.current = 'mainui'
 
 <CenterPanel>:
     text_source: _("Center")
     BoxLayout:
         orientation: 'horizontal'
-        padding: 5
+        padding: "5dp"
         I18NButton:
             text_source: _("Help me")
             on_release: I18NHelpPopup(text_source=_('MARKUP - Center Calibration Instructions'), title_source=_("Help - Calibration Setup"), size_hint=(0.9, 0.9)).open()
             size_hint_y:None
-            height: 30
+            height: "30dp"
         Image:
             pos: self.parent.pos
             size: self.parent.size
@@ -96,7 +96,7 @@
                 text_source: _("Help me")
                 on_release: I18NHelpPopup(text_source=_('MARKUP - Orientation Instructions'), title_source=_("Help - Orientation"), size_hint=(0.9, 0.9)).open()
                 size_hint_y:None
-                height: 30
+                height: "30dp"
         GridLayout:
             id: orientations
             cols:4
@@ -258,12 +258,12 @@
     text_source: _("Print Area")
     BoxLayout:
         orientation: 'horizontal'
-        padding: 5
+        padding: "5dp"
         I18NButton:
             text_source: _("Help me")
             on_release: I18NHelpPopup(text_source=_('MARKUP - Print Area Instructions'), title_source=_("Help - Print Area"), size_hint=(0.9, 0.9)).open()
             size_hint_y:None
-            height: 30
+            height: "30dp"
         BoxLayout:
             orientation: 'vertical'
             BoxLayout:
@@ -302,12 +302,12 @@
     text_source: _("Aligment")
     BoxLayout:
         orientation: 'horizontal'
-        padding: 5
+        padding: "5dp"
         I18NButton:
             text_source: _("Help me")
             on_release: I18NHelpPopup(text_source=_('MARKUP - Alignment Instructions'), title_source=_("Help - Alignment"), size_hint=(0.9, 0.9)).open()
             size_hint_y:None
-            height: 30
+            height: "30dp"
         Image:
             pos: self.parent.pos
             size: self.parent.size
@@ -340,9 +340,9 @@
 <CalibrationPanel>:
     BoxLayout:
         orientation: 'horizontal'
-        padding: 5
+        padding: "5dp"
         BoxLayout:
-            padding: 5
+            padding: "5dp"
             size_hint_x: 0.6
             orientation: 'vertical'
             BoxLayout:
@@ -385,7 +385,7 @@
                 text_source: _("Help me")
                 on_release: I18NHelpPopup(text_source=_('MARKUP - Calibration Instructions'), title_source=_("Help - Calibration"), size_hint=(0.9, 0.9)).open()
                 size_hint_y:None
-                height: 30
+                height: "30dp"
         Image:
             id: top_calibration_grid
             pos: self.parent.pos
@@ -411,7 +411,7 @@
     text_source: _("Test Patterns")
     BoxLayout:
         orientation: 'horizontal'
-        padding: 5
+        padding: "5dp"
         BoxLayout:
             size_hint_x: 0.6
             orientation: 'vertical'
@@ -423,11 +423,11 @@
                         on_oh_my: speed_slider.max = 100000
                         text_source: _("Speed")
                         size_hint_y: None
-                        height: 30
+                        height: "30dp"
                     Label:
                         text: '%.f (mm/sec)' % root.speed
                         size_hint_y: None
-                        height: 30
+                        height: "30dp"
                     Slider:
                         orientation: 'vertical'
                         id: speed_slider
@@ -441,11 +441,11 @@
                     I18NLabel:
                         text_source: _("Height")
                         size_hint_y: None
-                        height: 30
+                        height: "30dp"
                     Label:
                         text: '%.2f (mm)' % root.current_height
                         size_hint_y: None
-                        height: 30
+                        height: "30dp"
                     Slider:
                         orientation: 'vertical'
                         id: current_height_slider
@@ -459,7 +459,7 @@
                 text_source: _("Help me")
                 on_release: I18NHelpPopup(text_source=_('MARKUP - Test Pattern Instructions'), title_source=_("Help - Test Patterns"), size_hint=(0.9, 0.9)).open()
                 size_hint_y:None
-                height: 30
+                height: "30dp"
         GridLayout:
             id: patterns
             cols: 2

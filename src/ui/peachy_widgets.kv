@@ -4,7 +4,7 @@
     BoxLayout:
         orientation: 'vertical'
         ScrollView:
-            padding: 10
+            padding: "10dp"
             I18NLabel:
                 text_source: root.text_source
                 markup: True
@@ -14,5 +14,5 @@
         I18NButton:
             text_source: _('Done')
             size_hint_y:None
-            height: 30
+            height: "30dp"
             on_release: root.dismiss()
