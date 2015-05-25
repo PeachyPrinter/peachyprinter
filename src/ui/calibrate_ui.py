@@ -115,11 +115,6 @@ class CalibrationPanel(I18NTabbedPanelItem):
         if self._all_points_are_valid():
             self.valid = True
 
-    def save_point(self):
-        self.printer_point_emphasis = True
-        if self._all_points_are_valid():
-            self.valid = True
-
     def _all_points_are_valid(self):
         is_valid = True
         for child in self.ids.point_selections.children:
@@ -235,6 +230,16 @@ class CalibrationPanel(I18NTabbedPanelItem):
             print_y = rel_y / grid_size
             self.set_printer_pos_from_screen(print_x, print_y)
             self.calibration_point = mouse_pos.pos
+        if motionevent == 'end':
+            self._save_current_point()
+
+    def _save_current_point(self):
+        selected_point = [point for point in self.ids.point_selections.children if point.ids.toggle.state =='down']
+        if selected_point:
+            selected_point[0].save_point(self.printer_point)
+            self.printer_point_emphasis = True
+            if self._all_points_are_valid():
+                self.valid = True
 
     def on_printer_point(self, instance, value):
         self.printer_point_emphasis = False
@@ -297,6 +302,7 @@ class CalibrationPanel(I18NTabbedPanelItem):
             self.print_peachy_point()
 
     def on_leave(self):
+        self.save_all_points()
         Window.unbind(on_motion=self.on_motion)
         Window.unbind(on_resize=self.on_resize)
 
@@ -316,11 +322,14 @@ class CalibrationPoint(BoxLayout):
         super(CalibrationPoint, self).__init__(**kwargs)
         self.toggle_text = 'X:%.1f , Y:%.1f' % (self.actual[0], self.actual[1])
 
-    def save_point(self):
-        self.valid = True
-        self.indicator_color = [0.0, 1.0, 0.0, 1.0]
-        self.peachy = self.caller.printer_point
-        self.caller.save_point()
+    def save_point(self, point):
+        if not self._points_equal(point, self.peachy):
+            self.valid = True
+            self.indicator_color = [0.0, 1.0, 0.0, 1.0]
+            self.peachy = point
+
+    def _points_equal(self, p1, p2, error=0.001):
+        return (abs(p1[0] - p2[0]) <= error) and (abs(p1[0] - p2[0]) <= error)
 
     def on_state(self, value):
         if value == 'down':
