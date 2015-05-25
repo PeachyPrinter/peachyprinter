@@ -16,7 +16,7 @@
                 orientation: 'vertical'
                 BoxLayout:
                     size_hint_y: None
-                    height: 30
+                    height: "30dp"
                     orientation: 'horizontal'
                     I18NLabel:
                         text_source: _('Dripper Type')
@@ -33,13 +33,13 @@
                     text_source: _("Help me")
                     on_release: I18NHelpPopup(text_source=_('MARKUP - Dripper Instructions'), title_source=_("Help - Dripper Settings"), size_hint=(0.9, 0.9)).open()
                     size_hint_y:None
-                    height: 30
+                    height: "30dp"
             BoxLayout:
                 id: visualizations
         I18NButton:
             text_source: _("Back")
             size_hint_y: None
-            height: 30
+            height: "30dp"
             on_release: app.root.current = 'mainui'
 
 <EmulatedDripSetup>:
@@ -76,9 +76,9 @@
     ScrollView:
         BoxLayout:
             size_hint_y: None
-            height: 250
+            height: "250dp"
             orientation: 'vertical'
-            padding: 10
+            padding: "10dp"
             canvas.before:
                 Color:
                     rgba:[0.2,0.2,0.2,1.0]
@@ -87,14 +87,14 @@
                     pos: [self.pos[0] + 10, self.pos[1] + 10]
             I18NLabel:
                 size_hint_y: None
-                height: 30
+                height: "30dp"
                 text_source: _("Drip Calculator")
             Label:
                 size_hint_y: None
-                height: 10
+                height: "10dp"
             BoxLayout:
                 size_hint_y: None
-                height: 30
+                height: "30dp"
                 orientation: 'horizontal'
                 Label:
                     text_source: _("Distance to Measure (mm)")
@@ -102,15 +102,15 @@
                     text: '%.2f' % root.total_height
             Label:
                 size_hint_y: None
-                height: 10
+                height: "10dp"
             Button:
                 size_hint_y: None
-                height: 30
+                height: "30dp"
                 text_source: _("Reset Drip Count")
                 on_release: root.reset_drip_count()
             BoxLayout:
                 size_hint_y: None
-                height: 30
+                height: "30dp"
                 orientation: 'horizontal'
                 I18NLabel:
                     text_source: _('Drips')
@@ -118,7 +118,7 @@
                     text: '%.2f' % root.drips
             BoxLayout:
                 size_hint_y: None
-                height: 30
+                height: "30dp"
                 orientation: 'horizontal'
                 I18NLabel:
                     text_source: _('Average Drips per Second')
@@ -126,7 +126,7 @@
                     text: '%.2f' % root.average_drips
             BoxLayout:
                 size_hint_y: None
-                height: 30
+                height: "30dp"
                 orientation: 'horizontal'
                 Label:
                     text_source: _('Current Drips per mm')
@@ -134,16 +134,16 @@
                     text: '%.2f' % root.current_drips_per_mm
             I18NButton:
                 size_hint_y: None
-                height: 30
+                height: "30dp"
                 text_source: _("Use Current Drips per mm")
                 on_release: root.use_current()
     Label:
         size_hint_y: None
-        height: 10
+        height: "10dp"
     BoxLayout:
         orientation: 'horizontal'
         size_hint_y: None
-        height: 30
+        height: "30dp"
         I18NLabel:
             text_source: _('Drips per mm')
         FloatInput:
@@ -152,4 +152,4 @@
             on_text: root.drips_per_mm = float(self.text)
     Label:
         size_hint_y: None
-        height: 10        
+        height: "10dp"        

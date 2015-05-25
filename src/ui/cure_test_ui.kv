@@ -15,8 +15,8 @@
                 BoxLayout:
                     orientation: 'vertical'
                     size_hint_y: None
-                    height: 230
-                    padding: 20
+                    height: "230dp"
+                    padding: "20dp"
                     canvas.before:
                         Color:
                             rgba:[0.2,0.2,0.2,1.0]
@@ -25,12 +25,12 @@
                             pos: [self.pos[0] + 10, self.pos[1] + 10]
                     I18NLabel:
                         size_hint_y: None
-                        height: 30
+                        height: "30dp"
                         text_source: _('Cure Rate Test')
                     BoxLayout:
                         orientation: 'horizontal'
                         size_hint_y: None
-                        height: 30
+                        height: "30dp"
                         I18NLabel:
                             text_source: _('Base Height')
                         FloatInput:
@@ -41,7 +41,7 @@
                     BoxLayout:
                         orientation: 'horizontal'
                         size_hint_y: None
-                        height: 30
+                        height: "30dp"
                         I18NLabel:
                             text_source: _('Test Height')
                         FloatInput:
@@ -52,7 +52,7 @@
                     BoxLayout:
                         orientation: 'horizontal'
                         size_hint_y: None
-                        height: 30
+                        height: "30dp"
                         I18NLabel:
                             text_source: _('Starting Speed')
                         FloatInput:
@@ -63,7 +63,7 @@
                     BoxLayout:
                         orientation: 'horizontal'
                         size_hint_y: None
-                        height: 30
+                        height: "30dp"
                         I18NLabel:
                             text_source: _('Stopping Speed')
                         FloatInput:
@@ -73,10 +73,10 @@
                             on_text: root.stop_speed = float(self.text)
                     Label:
                         size_hint_y: None
-                        height: 10
+                        height: "10dp"
                     I18NButton:
                         size_hint_y: None
-                        height: 30
+                        height: "30dp"
                         text_source: _('Run Cure Test Now')
                         on_release: root.print_now()
                 BoxLayout:
@@ -84,7 +84,7 @@
                     BoxLayout:
                         orientation: 'horizontal'
                         size_hint_y: None
-                        height: 30
+                        height: "30dp"
                         I18NLabel:
                             text_source: _('Always Override Speeds')
                         Switch:
@@ -94,7 +94,7 @@
                     BoxLayout:
                         orientation: 'horizontal'
                         size_hint_y: None
-                        height: 30
+                        height: "30dp"
                         I18NLabel:
                             text_source: _('Draw Speed (mm)')
                         FloatInput:
@@ -105,7 +105,7 @@
                     BoxLayout:
                         orientation: 'horizontal'
                         size_hint_y: None
-                        height: 30
+                        height: "30dp"
                         I18NLabel:
                             text_source: _('Move Speed (mm)')
                         FloatInput:
@@ -116,7 +116,7 @@
                     BoxLayout:
                         orientation: 'horizontal'
                         size_hint_y: None
-                        height: 30
+                        height: "30dp"
                         I18NLabel:
                             text_source: _('Always Use Laser Power')
                         Switch:
@@ -126,7 +126,7 @@
                     BoxLayout:
                         orientation: 'horizontal'
                         size_hint_y: None
-                        height: 30
+                        height: "30dp"
                         I18NLabel:
                             text_source: _('Laser Power')
                         FloatInput:
@@ -139,14 +139,14 @@
                     text_source: _("Help me")
                     on_release: I18NHelpPopup(text=_('Markup- Cure Rate'), title=_("Help - Cure Rate Settings"), size_hint=(0.9, 0.9)).open()
                     size_hint_y:None
-                    height: 30
+                    height: "30dp"
             BoxLayout:
                 BoxLayout:
                     orientation: 'vertical'
                     size_hint_x: 0.5
                     Label:
                         size_hint_y: None
-                        height: 30
+                        height: "30dp"
                         text: "%.2f" % best_height.max
                     Slider:
                         id: best_height
@@ -156,7 +156,7 @@
                         value: 0
                     Label:
                         size_hint_y: None
-                        height: 30
+                        height: "30dp"
                         text: "%.2f" % best_height.min
                 BoxLayout:
                     Label:
@@ -165,14 +165,14 @@
                     orientation: 'vertical'
                     BoxLayout:
                         size_hint_y: None
-                        height: 30
+                        height: "30dp"
                         I18NLabel:
                             text_source: _('Best Height')
                         Label:
                             text: '%.2f' % best_height.value
                     BoxLayout:
                         size_hint_y: None
-                        height: 30
+                        height: "30dp"
                         I18NLabel:
                             text_source: _("Best Draw Speed")
                         Label:
@@ -180,13 +180,13 @@
                             text: '%.2f' % ((best_height.value / root.test_height) * (root.stop_speed - root.start_speed) + root.start_speed)
                     I18NButton:
                         size_hint_y: None
-                        height: 30
+                        height: "30dp"
                         text_source: _('Use Best Draw Speed')
                         on_release: draw_speed_id.text = best_draw_speed.text; root.draw_speed = float(best_draw_speed.text)
                     Label:
         I18NButton:
             size_hint_y: None
-            height: 30
+            height: "30dp"
             text_source: _('Back')
             on_release: app.root.current = 'mainui'
 

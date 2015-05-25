@@ -92,9 +92,9 @@ class LabelGridLayout(GridLayout):
         self._resize()
 
     def _resize(self):
-        self.height = len(self.children) * self.child_height
+        self.height = str(len(self.children) * self.child_height) + "dp"
         for child in self.children:
-            child.text_size = [self.size[0] - self.text_padding_x, self.child_height]
+             child.text_size = [self.size[0] - self.text_padding_x, child.height]
 
 
 class BorderedLabel(I18NLabel):

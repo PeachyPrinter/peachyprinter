@@ -22,12 +22,12 @@
 <I18NImageButton>:
     on_press: image.color = [1.0,1.0,1.0,0.5]
     on_release: image.color = [1.0,1.0,1.0,1.0]
-    text_height: 30
+    text_height: "30dp"
     BoxLayout:
         pos: self.parent.pos
         size: self.parent.size
         orientation: 'vertical'
-        padding: 10
+        padding: "10dp"
         Image:
             id: image
             allow_stretch: True
@@ -44,7 +44,7 @@
         orientation: 'vertical'
         I18NLabel:
             text_source: root.text
-            height: 30
+            height: "30dp"
             size_hint_y: None
         ScrollView:
             Label:
@@ -54,5 +54,5 @@
         I18NButton:
             text_source: _("Close")
             on_release: root.dismiss()
-            height: 30
+            height: "30dp"
             size_hint_y: None
