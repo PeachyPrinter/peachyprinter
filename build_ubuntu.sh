@@ -1,7 +1,41 @@
 #!/bin/bash
 
-red='\033[0;31m'
-NC='\033[0m'
+params=`getopt -o :hc? -l clean,help --name "$0" -- "$@"`
+eval set -- "$params"
+
+RS="\033[0m"    # reset
+FRED="\033[31m" # foreground red
+FGRN="\033[32m" # foreground green
+
+
+function help ()
+{
+  echo "Peachy Printer Build Script"
+  echo "-h | --help             Displayes this message and exits"
+  echo "-c | --clean            Removes Virtual Environment"
+  echo "-i | --ignore           Ignores enviroment setup"
+}
+
+function clean ()
+{
+  echo "------------------------------------"
+  echo "Removing Virtual Environment"
+  echo "------------------------------------"
+  rm -rf venv
+}
+
+while true
+do
+  case "$1" in
+    -h | --help )    help ; exit 0 ;;
+    -c | --clean )   clean ; shift ;;
+    -i | --ignore )  ignore="1" ; shift ;;
+    -- )             shift ; break ;;
+    * )              echo "Unexpected entry: $1" ; help ; exit 1 ;;
+  esac
+done
+
+
 
 echo "------------------------------------"
 echo "Checking for already running Virtual Environment"
@@ -12,43 +46,42 @@ if [[ "$VIRTUAL_ENV" != "" ]]; then
     echo "This can be done with the \"deactivate\" command."
     exit 89 
 fi
+echo -e "${FGRN}Complete${RS}"
+echo""
 
 echo "------------------------------------"
 echo "Cleaning workspace"
 echo "------------------------------------"
 
-# TODO JT 2014-02-13 - Should clean the workspace
 rm -rf src/build
 rm -rf *.deb
 rm -f src/VERSION.py
 rm -f version.properties 
-rm -rf venv
+echo -e "${FGRN}Complete${RS}"
+echo""
 
-echo "------------------------------------"
-echo "Create Virtual Environment"
-echo "------------------------------------"
-
-source setup_development_ubuntu.sh
-if [ $? != 0 ]; then
-        echo -e "${red}FAILED Setting up Enviroment${NC}"
-        exit 90
+if [ "${ignore}" != "1" ]; then
+  echo "------------------------------------"
+  echo "Upgrading / Starting Virtual Environment"
+  echo "------------------------------------"
+  source setup_development_linux.sh
+  if [ $? != 0 ]; then
+    echo -e "${red}FAILED Setting up Enviroment${NC}"
+    exit 90
+  fi
+else
+  echo "------------------------------------"
+  echo "Starting Virtual Environment"
+  echo "------------------------------------"
+  if [ -f venv/bin/activate ]; then
+    source venv/bin/activate
+  else
+    echo -e "${FRED}Missing virtual enviroment try running with --clean${RS}"
+    exit 91
+  fi
 fi
-
-echo "------------------------------------"
-echo "Load Virtual Environment"
-echo "------------------------------------"
-
-source venv/bin/activate
-
-echo "------------------------------------"
-echo "Install Latest API"
-echo "------------------------------------"
-
-source get_latest_api.sh
-if [ $? != 0 ]; then
-        echo -e "${red}FAILED Installing LatestAPI${NC}"
-        exit 91
-fi
+echo -e "${FGRN}Complete${RS}"
+echo""
 
 echo "------------------------------------"
 echo "Extracting Git Revision Number"
@@ -82,6 +115,7 @@ echo "version='$VERSION'" >> version.properties
 echo "revision='$GIT_REV'" >> version.properties
 echo "Git Revision Number is $GIT_REV_COUNT"
 cp version.properties src/VERSION.py
+echo ""
 
 echo "------------------------------------"
 echo "Running Tests"
@@ -92,6 +126,12 @@ if [ $? != 0 ]; then
         echo -e "${red}FAILED Running tests${NC}"
         exit 91
 fi
+echo -e "${FGRN}Complete${RS}"
+echo""
 
-echo "NOT COMPLETE- MORE CODES BE NEEDED"
+echo "------------------------------------"
+echo "Building Deistribution"
+echo "------------------------------------"
+
+echo -e "${FRED}NOT COMPLETE- MORE CODES BE NEEDED${RS}"
 exit 1
