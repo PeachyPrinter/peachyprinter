@@ -58,14 +58,14 @@ class MainUI(Screen):
         self._popup = I18NPopup(title_source=_("Load file"), content=content, size_hint=(0.9, 0.9))
         self._popup.open()
 
-    def load(self, path, filename):
+    def load(self, path, filename, start_height):
         self.last_directory = path
         Config.set('internal', 'last_directory', self.last_directory)
         Config.write()
         self.dismiss_popup()
         App.get_running_app().last_print.set("file",filename)
         self.parent.current = 'printingui'
-        self.parent.printing_ui.print_file(filename)
+        self.parent.printing_ui.print_file(filename, start_height)
 
     def dismiss_popup(self):
         self._popup.dismiss()

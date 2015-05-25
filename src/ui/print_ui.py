@@ -58,11 +58,11 @@ class PrintingUI(Screen):
             self.play_complete_sound()
             self.ids.navigate_button.text = _("Print Complete, Close")
 
-    def print_file(self, filename, return_name='mainui'):
+    def print_file(self, filename, start_height= 0.0, return_name='mainui'):
         self.return_to = return_name
         try:
             filepath = filename[0].encode('utf-8')
-            self.print_api = self.api.get_print_api(status_call_back=self.callback)
+            self.print_api = self.api.get_print_api(start_height= start_height, status_call_back=self.callback)
             self.path = os.path.basename(filepath)
             self.print_api.print_gcode(filepath)
         except Exception as ex:
