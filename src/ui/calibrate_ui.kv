@@ -332,14 +332,10 @@
                 pos: [self.center[0] - (self.width * 0.8) / 2.0, self.center[1] - (self.width * 0.8) / 2.0]
                 size: [min(self.height, self.width) * 0.8, min(self.height, self.width) * 0.8]
     ToggleButton:
+        id: toggle
         group: root.group
         on_state: root.on_state(self.state)
         text: root.toggle_text
-    I18NButton:
-        size_hint_x: 0.5
-        text_source: _("Save")
-        disabled: not root.active
-        on_release: root.save_point()
 
 <CalibrationPanel>:
     BoxLayout:
@@ -370,10 +366,6 @@
                     I18NButton:
                         text_source: _('Reset All')
                         on_release: root.reset_points()
-                    I18NButton:
-                        text_source: _('Save All')
-                        disabled: not root.valid
-                        on_release: root.save_all_points()
                 Label:
                     size_hint_y:0.2
             Image:
