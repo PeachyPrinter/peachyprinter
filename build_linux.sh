@@ -4,7 +4,7 @@ params=`getopt -o :hrnpcis -l install_dep,remove-venv,no_setup,pull,clean,help,s
 eval set -- "$params"
 
 DEBIAN_DEP="python-pip python-dev libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev mercurial libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev"
-CENTOS_DEP="python-pip python-devel python-distutils-extra python-enchant freeglut SDL_ttf-devel SDL_mixer-devel khrplatform-devel mesa-libGLES mesa-libGLES-devel gstreamer-plugins-good gstreamer gstreamer-devel gstreamer-python mtdev-devel"
+CENTOS_DEP="python-pip python-devel python-distutils-extra python-enchant freeglut SDL_image SDL_image-devel SDL_ttf-devel SDL_mixer-devel khrplatform-devel mesa-libGLES mesa-libGLES-devel gstreamer-plugins-good gstreamer gstreamer-devel gstreamer-python mtdev-devel"
 
 RS="\033[0m"    # reset
 FRED="\033[31m" # foreground red
@@ -17,6 +17,8 @@ function remove_venv ()
   echo "Removing Virtual Environment"
   echo "------------------------------------"
   rm -rf venv
+  echo -e "${FGRN}Complete${RS}"
+  echo""
 }
 
 function clean ()
@@ -180,6 +182,19 @@ function build ()
 
   echo -e "${FRED}NOT COMPLETE- MORE CODES BE NEEDED${RS}"
   exit 1
+}
+
+function update ()
+{
+  echo "------------------------------------"
+  echo "Getting latest "
+  echo "------------------------------------"
+
+  git pull
+  if [ $? != 0 ]; then
+    echo -e "${FRED}Pull failed${RS}"
+    exit 134
+  fi
 }
 
 function ensure_no_active_venv ()
