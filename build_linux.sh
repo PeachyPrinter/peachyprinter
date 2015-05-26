@@ -1,22 +1,15 @@
 #!/bin/bash
 
-params=`getopt -o :hrnpc -l remove-venv,no_setup,pull,clean,help --name "$0" -- "$@"`
+params=`getopt -o :hrnpci -l install_dep,remove-venv,no_setup,pull,clean,help --name "$0" -- "$@"`
 eval set -- "$params"
+
+DEBIAN_DEP="python-pip git python-dev libsdl1.2-dev python-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev mercurial libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev"
+CENTOS_DEP=""
 
 RS="\033[0m"    # reset
 FRED="\033[31m" # foreground red
 FGRN="\033[32m" # foreground green
 
-
-function help ()
-{
-  echo "Peachy Printer Build Script"
-  echo "-h | --help             Displayes this message and exits"
-  echo "-r | --remove-venv      Removes Virtual Environment"
-  echo "-i | --ignore           Ignores enviroment setup"
-  echo "-p | --pull             Pulls from git before running setup"
-  echo "-c | --clean            Performs a git reset and clean"
-}
 
 function remove_venv ()
 {
@@ -28,8 +21,13 @@ function remove_venv ()
 
 function clean ()
 {
-  git reset --hard HEAD
-  git clean -e api.source
+  read -p "Are you sure? " -n 1 -r
+  echo ""
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    git reset --hard HEAD
+    git clean -e api.source
+  fi
 }
 
 function clean_workspace ()
@@ -59,6 +57,41 @@ function enable_venv ()
     fi
   fi
   source venv/bin/activate
+  echo -e "${FGRN}Complete${RS}"
+  echo""
+}
+
+function setup_venv ()
+{
+  echo "------------------------------------"
+  echo "Setting up virtual env"
+  echo "------------------------------------"
+  echo "--------Setting up cython----"
+  pip install -U cython==0.21.2
+  if [ $? != 0 ]; then
+      echo "FAILURE: cython failed installing"
+      exit 666
+  fi
+
+  echo "--------Setting up kivy----"
+  pip install -U kivy==1.9.0
+  if [ $? != 0 ]; then
+    echo "FAILURE: kivy failed installing"
+    exit 666
+  fi
+
+  if [ -f api.source ]; then
+    api_source=`cat api.source`
+  else
+    api_source=http://software.peachyprinter.com/builds/api/latest.tar.gz
+  fi
+
+  pip install --upgrade $api_source
+  if [ $? != 0 ]; then
+    echo -e "${FRED}FAILED TO UPDATE${RS}"
+    exit 59
+  fi
+
   echo -e "${FGRN}Complete${RS}"
   echo""
 }
@@ -115,6 +148,62 @@ function run_tests ()
   echo""
 }
 
+function dependancies ()
+{
+  apt-get -h > /dev/null
+  if [ $? == 0 ]; then
+    echo "${FGRN}APT detected using APT${RS}"
+    echo "You will be prompted to elevate permissions"
+    sudo apt-get install $DEBIAN_DEP
+    return
+  fi
+  yum -h > /dev/null
+  if [ $? == 0 ]; then
+    echo "${FGRN}YUM detected using YUM${RS}"
+    echo "You will be prompted to elevate permissions"
+    sudo yum install $DEBIAN_DEP
+    return
+  fi
+  echo "${FRED}APT or YUM not found aborting${RS}"
+  exit 12
+}
+
+function build ()
+{
+  echo "------------------------------------"
+  echo "Building Deistribution"
+  echo "------------------------------------"
+
+  echo -e "${FRED}NOT COMPLETE- MORE CODES BE NEEDED${RS}"
+  exit 1
+}
+
+function ensure_no_active_venv ()
+{
+  echo "------------------------------------"
+  echo "Checking for already running Virtual Environment"
+  echo "------------------------------------"
+
+  if [[ "$VIRTUAL_ENV" != "" ]]; then
+      echo "Deactivitate the existing virtual enviroment before running this script."
+      echo "This can be done with the \"deactivate\" command."
+      exit 89 
+  fi
+  echo -e "${FGRN}Complete${RS}"
+  echo""
+}
+
+function help ()
+{
+  echo "Peachy Printer Build Script"
+  echo "-h | --help             Displayes this message and exits"
+  echo "-r | --remove-venv      Removes Virtual Environment"
+  echo "-n | --no_setup         Ignores enviroment setup"
+  echo "-p | --pull             Pulls from git before running setup"
+  echo "-c | --clean            Performs a git reset and clean"
+  echo "-i | --install_dep      Install the linux dependancies (sudo required)"
+}
+
 while true
 do
   case "$1" in
@@ -123,72 +212,18 @@ do
     -n | --no_setup )      no_setup="1" ; shift ;;
     -p | --pull )          update ; shift ;;
     -c | --clean )         clean ; shift ;;
+    -i | --install_dep )   dependancies ; shift ;;
     -- )                   shift ; break ;;
     * )                    echo "Unexpected entry: $1" ; help ; exit 1 ;;
   esac
 done
 
-
-echo "------------------------------------"
-echo "Checking for already running Virtual Environment"
-echo "------------------------------------"
-
-if [[ "$VIRTUAL_ENV" != "" ]]; then
-    echo "Deactivitate the existing virtual enviroment before running this script."
-    echo "This can be done with the \"deactivate\" command."
-    exit 89 
-fi
-echo -e "${FGRN}Complete${RS}"
-echo""
-
+ensure_no_active_venv
 clean_workspace
 enable_venv
 if [ "${no_setup}" != "1" ]; then
-  $$$$$$$$
+  setup_venv
+fi
 find_version_number
 run_tests
-
-echo "----Checking for Pip----"
-command -v pip 2>&1 >/dev/null
-if [ $? != 0 ]; then
-    echo "Pip not available"
-fi
-
-source venv/bin/activate
-if [[ "$VIRTUAL_ENV" == "" ]]; then
-    echo "FAILURE: Virutal environment creation failed"
-    exit 666
-fi
-
-echo "----Setting up virtual environment----"
-SETUP_TMP="setup_tmp"
-
-echo "--------Setting up cython----"
-pip install -U cython==0.21.2
-if [ $? != 0 ]; then
-    echo "FAILURE: cython failed installing"
-    exit 666
-fi
-
-echo "--------Setting up kivy----"
-pip install -U kivy==1.9.0
-if [ $? != 0 ]; then
-    echo "FAILURE: kivy failed installing"
-    exit 666
-fi
-
-echo "--------Getting Latest API----"
-./get_latest_api.sh
-if [ $? != 0 ]; then
-    echo "FAILURE: Failed Fetching Latest API"
-    exit 667
-fi
-
-
-
-echo "------------------------------------"
-echo "Building Deistribution"
-echo "------------------------------------"
-
-echo -e "${FRED}NOT COMPLETE- MORE CODES BE NEEDED${RS}"
-exit 1
+build
