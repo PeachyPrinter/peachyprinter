@@ -155,6 +155,7 @@ function dependancies ()
     echo "${FGRN}APT detected using APT${RS}"
     echo "You will be prompted to elevate permissions"
     sudo apt-get install $DEBIAN_DEP
+    sudo pip install virtualenv
     return
   fi
   yum -h > /dev/null
@@ -162,6 +163,7 @@ function dependancies ()
     echo "${FGRN}YUM detected using YUM${RS}"
     echo "You will be prompted to elevate permissions"
     sudo yum install $DEBIAN_DEP
+    sudo pip install virtualenv
     return
   fi
   echo "${FRED}APT or YUM not found aborting${RS}"
