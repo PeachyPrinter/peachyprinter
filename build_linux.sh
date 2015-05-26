@@ -1,10 +1,10 @@
 #!/bin/bash
 
-params=`getopt -o :hrnpci -l install_dep,remove-venv,no_setup,pull,clean,help --name "$0" -- "$@"`
+params=`getopt -o :hrnpcis -l install_dep,remove-venv,no_setup,pull,clean,help,setup_only --name "$0" -- "$@"`
 eval set -- "$params"
 
 DEBIAN_DEP="python-pip python-dev libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev mercurial libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev"
-CENTOS_DEP="python-pip python-devel python-distutils-extra python-enchant freeglut SDL_ttf-devel SDL_mixer-devel pygame pygame-devel khrplatform-devel mesa-libGLES mesa-libGLES-devel gstreamer-plugins-good gstreamer gstreamer-python mtdev-devel"
+CENTOS_DEP="python-pip python-devel python-distutils-extra python-enchant freeglut SDL_ttf-devel SDL_mixer-devel khrplatform-devel mesa-libGLES mesa-libGLES-devel gstreamer-plugins-good gstreamer gstreamer-python mtdev-devel"
 
   python-pip
 
@@ -208,6 +208,7 @@ function help ()
   echo "-p | --pull             Pulls from git before running setup"
   echo "-c | --clean            Performs a git reset and clean"
   echo "-i | --install_dep      Install the linux dependancies (sudo required)"
+  echo "-s | --setup_only       Setups the enviroment only and does not package"
 }
 
 while true
@@ -219,6 +220,7 @@ do
     -p | --pull )          update ; shift ;;
     -c | --clean )         clean ; shift ;;
     -i | --install_dep )   dependancies ; shift ;;
+    -s | --setup_only )    setup_only="1" ; shift ;;
     -- )                   shift ; break ;;
     * )                    echo "Unexpected entry: $1" ; help ; exit 1 ;;
   esac
@@ -230,6 +232,8 @@ enable_venv
 if [ "${no_setup}" != "1" ]; then
   setup_venv
 fi
-find_version_number
-run_tests
-build
+if [ "${setup_only}" != "1" ]; then
+  find_version_number
+  run_tests
+  build
+fi
