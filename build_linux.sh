@@ -166,7 +166,7 @@ function dependancies ()
     echo "Assumes the EPEL repos are available"
     echo "You will be prompted to elevate permissions"
 
-    sudo yum install $DEBIAN_DEP
+    sudo yum install $CENTOS_DEP
     sudo pip install virtualenv
     return
   fi
