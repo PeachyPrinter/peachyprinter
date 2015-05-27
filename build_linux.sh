@@ -1,10 +1,10 @@
 #!/bin/bash
 
-params=`getopt -o :hrnpcir -l build_runner,install_dep,remove-venv,no_setup,pull,clean,help --name "$0" -- "$@"`
+params=`getopt -o :hrnpcisr -l build_runner,install_dep,remove-venv,no_setup,pull,clean,help,setup_only --name "$0" -- "$@"`
 eval set -- "$params"
 
-DEBIAN_DEP="python-pip git python-dev libsdl1.2-dev python-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev mercurial libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev"
-CENTOS_DEP=""
+DEBIAN_DEP="python-pip python-dev libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev mercurial libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev"
+CENTOS_DEP="python-pip python-devel python-distutils-extra python-enchant freeglut SDL_image SDL_image-devel SDL_ttf-devel SDL_mixer-devel khrplatform-devel mesa-libGLES mesa-libGLES-devel gstreamer-plugins-good gstreamer gstreamer-devel gstreamer-python mtdev-devel"
 
 RS="\033[0m"    # reset
 FRED="\033[31m" # foreground red
@@ -16,6 +16,8 @@ function remove_venv ()
   echo "Removing Virtual Environment"
   echo "------------------------------------"
   rm -rf venv
+  echo -e "${FGRN}Complete${RS}"
+  echo""
 }
 
 function clean ()
@@ -166,8 +168,10 @@ function dependancies ()
   yum -h > /dev/null
   if [ $? == 0 ]; then
     echo "${FGRN}YUM detected using YUM${RS}"
+    echo "Assumes the EPEL repos are available"
     echo "You will be prompted to elevate permissions"
-    sudo yum install $DEBIAN_DEP
+
+    sudo yum install $CENTOS_DEP
     sudo pip install virtualenv
     return
   fi
@@ -185,6 +189,19 @@ function build ()
   echo -e "${FRED}NOT COMPLETE- MORE CODES BE NEEDED${RS}"
   EXIT_CODE=1
   failed_exit
+}
+
+function update ()
+{
+  echo "------------------------------------"
+  echo "Getting latest "
+  echo "------------------------------------"
+
+  git pull
+  if [ $? != 0 ]; then
+    echo -e "${FRED}Pull failed${RS}"
+    exit 134
+  fi
 }
 
 function ensure_no_active_venv ()
@@ -224,6 +241,7 @@ function help ()
   echo "-p | --pull             Pulls from git before running setup"
   echo "-c | --clean            Performs a git reset and clean"
   echo "-i | --install_dep      Install the linux dependancies (sudo required)"
+  echo "-s | --setup_only       Setups the enviroment only and does not package"
   echo "-r | --build_runner     Creates the rules and files required to run peachy printer(sudo required)"
 }
 
@@ -243,6 +261,7 @@ do
     -c | --clean )         clean ; shift ;;
     -i | --install_dep )   dependancies ; shift ;;
     -r | --build_runner )  build_runner ; shift ;;
+    -s | --setup_only )    setup_only="1" ; shift ;;
     -- )                   shift ; break ;;
     * )                    echo "Unexpected entry: $1" ; help ; exit 1 ;;
   esac
@@ -256,8 +275,9 @@ enable_venv
 if [ "${no_setup}" != "1" ]; then
   setup_venv
 fi
-find_version_number
-run_tests
-build
-
+if [ "${setup_only}" != "1" ]; then
+  find_version_number
+  run_tests
+  build
+fi
 popd
