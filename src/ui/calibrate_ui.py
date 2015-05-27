@@ -33,7 +33,7 @@ class PrintAreaPanel(I18NTabbedPanelItem):
 
     def on_enter(self):
         if self.calibration_api:
-            self.calibration_api.show_point()
+            self.calibration_api.show_scale()
             print_area_width, print_area_depth, print_area_height = self.calibration_api.get_print_area()
             self.ids.print_area_width.text = str(print_area_width)
             self.ids.print_area_depth.text = str(print_area_depth)
