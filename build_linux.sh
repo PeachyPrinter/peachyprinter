@@ -267,7 +267,7 @@ do
   esac
 done
 
-pushd
+pushd .
 cd "$(dirname "$0")"
 ensure_no_active_venv
 clean_workspace
