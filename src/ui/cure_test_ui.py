@@ -8,7 +8,7 @@ Builder.load_file('ui/cure_test_ui.kv')
 
 
 class CureTestUI(Screen):
-    base = BoundedNumericProperty(10.0, min=0.0001, max=None)
+    base = BoundedNumericProperty(10.0, min=0.00, max=None)
     test_height = BoundedNumericProperty(10.0, min=0.0001, max=None)
     start_speed = BoundedNumericProperty(100.0, min=0.0001, max=None)
     stop_speed = BoundedNumericProperty(200.0, min=0.0001, max=None)
