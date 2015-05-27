@@ -1,6 +1,6 @@
 #!/bin/bash
 
-params=`getopt -o :hrnpci -l install_dep,remove-venv,no_setup,pull,clean,help --name "$0" -- "$@"`
+params=`getopt -o :hrnpcir -l build_runner,install_dep,remove-venv,no_setup,pull,clean,help --name "$0" -- "$@"`
 eval set -- "$params"
 
 DEBIAN_DEP="python-pip git python-dev libsdl1.2-dev python-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev mercurial libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev"
@@ -9,7 +9,6 @@ CENTOS_DEP=""
 RS="\033[0m"    # reset
 FRED="\033[31m" # foreground red
 FGRN="\033[32m" # foreground green
-
 
 function remove_venv ()
 {
@@ -52,8 +51,9 @@ function enable_venv ()
   if [ ! -f venv/bin/activate ]; then
     virtualenv -p python2.7 venv
     if [ $? != 0 ]; then
-      echo "${red}FAILED Setting up Enviroment${NC}"
-      exit 59
+      echo "${FRED}FAILED Setting up virtual enviroment${RS}"
+      EXIT_CODE=59
+      failed_exit
     fi
   fi
   source venv/bin/activate
@@ -69,15 +69,17 @@ function setup_venv ()
   echo "--------Setting up cython----"
   pip install -U cython==0.21.2
   if [ $? != 0 ]; then
-      echo "FAILURE: cython failed installing"
-      exit 666
+      echo "${FRED}FAILURE: cython failed installing${RS}"
+      EXIT_CODE=666
+      failed_exit
   fi
 
   echo "--------Setting up kivy----"
   pip install -U kivy==1.9.0
   if [ $? != 0 ]; then
-    echo "FAILURE: kivy failed installing"
-    exit 666
+    echo "${FRED}FAILURE: kivy failed installing${RS}"
+    EXIT_CODE=666
+    failed_exit
   fi
 
   if [ -f api.source ]; then
@@ -89,7 +91,8 @@ function setup_venv ()
   pip install --upgrade $api_source
   if [ $? != 0 ]; then
     echo -e "${FRED}FAILED TO UPDATE${RS}"
-    exit 59
+    EXIT_CODE=59
+    failed_exit
   fi
 
   echo -e "${FGRN}Complete${RS}"
@@ -114,8 +117,9 @@ function find_version_number ()
     elif [ -f "/bin/git" ]; then
       export GIT_HOME=/bin/git
     else
-      echo "Could not find git."
-      exit 1
+      ${FRED}GIT Could not be located${RS}
+      EXIT_CODE=55
+      failed_exit
     fi
   fi
 
@@ -141,8 +145,9 @@ function run_tests ()
 
   python test/test-all.py
   if [ $? != 0 ]; then
-          echo -e "${red}FAILED Running tests${NC}"
-          exit 91
+          echo -e "${FRED}FAILED Running tests${RS}"
+          EXIT_CODE=91
+          failed_exit
   fi
   echo -e "${FGRN}Complete${RS}"
   echo""
@@ -167,7 +172,8 @@ function dependancies ()
     return
   fi
   echo "${FRED}APT or YUM not found aborting${RS}"
-  exit 12
+  EXIT_CODE=12
+  failed_exit
 }
 
 function build ()
@@ -177,7 +183,8 @@ function build ()
   echo "------------------------------------"
 
   echo -e "${FRED}NOT COMPLETE- MORE CODES BE NEEDED${RS}"
-  exit 1
+  EXIT_CODE=1
+  failed_exit
 }
 
 function ensure_no_active_venv ()
@@ -189,10 +196,23 @@ function ensure_no_active_venv ()
   if [[ "$VIRTUAL_ENV" != "" ]]; then
       echo "Deactivitate the existing virtual enviroment before running this script."
       echo "This can be done with the \"deactivate\" command."
-      exit 89 
+      EXIT_CODE=89 
+      failed_exit
   fi
   echo -e "${FGRN}Complete${RS}"
   echo""
+}
+
+function build_runnner () {
+  echo "------------------------------------"
+  echo "Checking for already running Virtual Environment"
+  echo "------------------------------------"
+  if [ ! -f /etc/udev/rules.d/99-peachy.rules ]; then
+    echo "You will be prompted to elevate permissions"
+    sudo echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="16d0", ATTR{idProduct}=="0af3", MODE="0666"' > /etc/udev/rules.d/99-peachy.rules
+  fi
+  echo "python src/main.py -tl INFO" > run.sh
+  chmod +x run.sh
 }
 
 function help ()
@@ -204,6 +224,13 @@ function help ()
   echo "-p | --pull             Pulls from git before running setup"
   echo "-c | --clean            Performs a git reset and clean"
   echo "-i | --install_dep      Install the linux dependancies (sudo required)"
+  echo "-r | --build_runner     Creates the rules and files required to run peachy printer(sudo required)"
+}
+
+function failed_exit()
+{
+  popd
+  exit $EXIT_CODE
 }
 
 while true
@@ -215,11 +242,14 @@ do
     -p | --pull )          update ; shift ;;
     -c | --clean )         clean ; shift ;;
     -i | --install_dep )   dependancies ; shift ;;
+    -r | --build_runner )  build_runner ; shift ;;
     -- )                   shift ; break ;;
     * )                    echo "Unexpected entry: $1" ; help ; exit 1 ;;
   esac
 done
 
+pushd
+cd "$(dirname "$0")"
 ensure_no_active_venv
 clean_workspace
 enable_venv
@@ -229,3 +259,5 @@ fi
 find_version_number
 run_tests
 build
+
+popd
