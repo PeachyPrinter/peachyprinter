@@ -1,17 +1,21 @@
 from kivy.uix.screenmanager import Screen
 from kivy.lang import Builder
+from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import BoundedNumericProperty, BooleanProperty
 from kivy.logger import Logger
 
 
 Builder.load_file('ui/cure_test_ui.kv')
 
+class BaseSpeed(BoxLayout):
+    base_speed = BoundedNumericProperty(150.0, min=0.0001, max=None)
 
 class CureTestUI(Screen):
     base = BoundedNumericProperty(10.0, min=0.00, max=None)
     test_height = BoundedNumericProperty(10.0, min=0.0001, max=None)
     start_speed = BoundedNumericProperty(100.0, min=0.0001, max=None)
     stop_speed = BoundedNumericProperty(200.0, min=0.0001, max=None)
+    use_base_speed = BooleanProperty(False)
     use_draw_speed = BooleanProperty(False)
     draw_speed = BoundedNumericProperty(100.0, min=0.0001, max=None)
     move_speed = BoundedNumericProperty(100.0, min=0.0001, max=None)
@@ -23,6 +27,17 @@ class CureTestUI(Screen):
         self.configuration_api = None
         self.loaded = False
         super(CureTestUI, self).__init__(**kwargs)
+        self.base_speed = BaseSpeed()
+
+    def show_base_speed(self, value):
+        if value is True:
+            self.use_base_speed = True
+            self.ids.cure_test_panel.height += self.base_speed.height
+            self.ids.cure_test_panel.add_widget(self.base_speed, index=5)
+        else:
+            self.use_base_speed = False
+            self.ids.cure_test_panel.height -= self.base_speed.height
+            self.ids.cure_test_panel.remove_widget(self.base_speed)
 
     def on_base(self, instance, value):
         if self.loaded:
@@ -79,7 +94,11 @@ class CureTestUI(Screen):
             self.configuration_api.save()
 
     def print_now(self):
-        generator = self.configuration_api.get_cure_test(self.base, self.test_height, self.start_speed, self.stop_speed)
+        if self.use_base_speed:
+            base_speed = self.base_speed.base_speed
+        else:
+            base_speed = None
+        generator = self.configuration_api.get_cure_test(self.base, self.test_height, self.start_speed, self.stop_speed, base_speed)
         self.manager.current = 'printingui'
         self.manager.printing_ui.print_generator(generator, self.name, force_source_speed=True)
 

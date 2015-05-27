@@ -405,8 +405,6 @@
                     pos: [root.calibration_point[0] - 4,root.calibration_point[1] - 4]
                     size: [8,8]
 
-<TouchyLabel>:
-
 <TestPatternPanel>:
     text_source: _("Test Patterns")
     BoxLayout:
@@ -420,7 +418,7 @@
                 BoxLayout:
                     orientation: 'vertical'
                     TouchyLabel:
-                        on_oh_my: speed_slider.max = 100000
+                        on_is_on: speed_slider.max = 100000
                         text_source: _("Speed")
                         size_hint_y: None
                         height: "30dp"

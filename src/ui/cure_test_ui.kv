@@ -3,6 +3,18 @@
 #:import FloatInput ui.custom_widgets.FloatInput
 #:import I18NHelpPopup ui.peachy_widgets.I18NHelpPopup
 
+<BaseSpeed>:
+    orientation: 'horizontal'
+    size_hint_y: None
+    height: "30dp"
+    I18NLabel:
+        text_source: _('Base Speed')
+    FloatInput:
+        size_hint_x: 0.5
+        id: base_speed_id
+        text: '150.0'
+        on_text: root.base_speed = float(self.text)
+
 <CureTestUI>:
     name: 'curetestui'
     BoxLayout:
@@ -13,6 +25,7 @@
                 orientation: 'vertical'
                 size_hint_x: 0.6
                 BoxLayout:
+                    id: cure_test_panel
                     orientation: 'vertical'
                     size_hint_y: None
                     height: "230dp"
@@ -23,7 +36,8 @@
                         Rectangle:
                             size: [self.size[0] - 20, self.size[1] - 20]
                             pos: [self.pos[0] + 10, self.pos[1] + 10]
-                    I18NLabel:
+                    TouchyLabel:
+                        on_is_on: root.show_base_speed(self.is_on)
                         size_hint_y: None
                         height: "30dp"
                         text_source: _('Cure Rate Test')

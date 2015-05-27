@@ -340,16 +340,6 @@ class CalibrationPoint(BoxLayout):
         else:
             self.active = False
 
-
-class TouchyLabel(I18NLabel):
-
-    oh_my = BooleanProperty(False)
-
-    def on_touch_down(self, touch):
-        if touch.is_triple_tap:
-            self.oh_my = not self.oh_my
-
-
 class TestPatternPanel(I18NTabbedPanelItem):
     calibration_api = ObjectProperty()
     speed = NumericProperty(100)
