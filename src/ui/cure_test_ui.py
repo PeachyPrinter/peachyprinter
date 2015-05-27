@@ -81,7 +81,7 @@ class CureTestUI(Screen):
     def print_now(self):
         generator = self.configuration_api.get_cure_test(self.base, self.test_height, self.start_speed, self.stop_speed)
         self.manager.current = 'printingui'
-        self.manager.printing_ui.print_generator(generator, self.name)
+        self.manager.printing_ui.print_generator(generator, self.name, force_source_speed=True)
 
     def on_pre_enter(self):
         self.configuration_api = self.api.get_configuration_api()

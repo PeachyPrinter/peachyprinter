@@ -58,23 +58,23 @@ class PrintingUI(Screen):
             self.play_complete_sound()
             self.ids.navigate_button.text = _("Print Complete, Close")
 
-    def print_file(self, filename, start_height= 0.0, return_name='mainui'):
+    def print_file(self, filename, start_height= 0.0, return_name='mainui', force_source_speed=False):
         self.return_to = return_name
         try:
             filepath = filename[0].encode('utf-8')
             self.print_api = self.api.get_print_api(start_height= start_height, status_call_back=self.callback)
             self.path = os.path.basename(filepath)
-            self.print_api.print_gcode(filepath)
+            self.print_api.print_gcode(filepath, force_source_speed=force_source_speed)
         except Exception as ex:
             popup = ErrorPopup(title='Error', text=str(ex), size_hint=(0.6, 0.6))
             popup.open()
             self.parent.current = self.return_to
 
-    def print_generator(self, generator, return_name='mainui'):
+    def print_generator(self, generator, return_name='mainui', force_source_speed=False):
         self.return_to = return_name
         try:
             self.print_api = self.api.get_print_api(status_call_back=self.callback)
-            self.print_api.print_layers(generator)
+            self.print_api.print_layers(generator, force_source_speed=force_source_speed)
         except Exception as ex:
             popup = ErrorPopup(title='Error', text=str(ex), size_hint=(0.6, 0.6))
             popup.open()
