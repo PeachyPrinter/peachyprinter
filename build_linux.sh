@@ -1,6 +1,6 @@
 #!/bin/bash
 
-params=`getopt -o :hrnpcisr -l build_runner,install_dep,remove-venv,no_setup,pull,clean,help,setup_only --name "$0" -- "$@"`
+params=`getopt -o :hrnpcisj -l build_runner,install_dep,remove-venv,no_setup,pull,clean,help,setup_only --name "$0" -- "$@"`
 eval set -- "$params"
 
 DEBIAN_DEP="python-pip python-dev libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev mercurial libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev"
@@ -220,16 +220,20 @@ function ensure_no_active_venv ()
   echo""
 }
 
-function build_runnner () {
+function build_runner () {
   echo "------------------------------------"
-  echo "Checking for already running Virtual Environment"
+  echo "Creating Rules and Runner Script"
   echo "------------------------------------"
+
   if [ ! -f /etc/udev/rules.d/99-peachy.rules ]; then
     echo "You will be prompted to elevate permissions"
     sudo echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="16d0", ATTR{idProduct}=="0af3", MODE="0666"' > /etc/udev/rules.d/99-peachy.rules
   fi
-  echo "python src/main.py -tl INFO" > run.sh
+  echo "source venv/bin/activate" > run.sh
+  echo "python src/main.py -tl INFO" >> run.sh
   chmod +x run.sh
+
+  echo -e "${FGRN}Complete${RS}"
 }
 
 function help ()
@@ -242,7 +246,7 @@ function help ()
   echo "-c | --clean            Performs a git reset and clean"
   echo "-i | --install_dep      Install the linux dependancies (sudo required)"
   echo "-s | --setup_only       Setups the enviroment only and does not package"
-  echo "-r | --build_runner     Creates the rules and files required to run peachy printer(sudo required)"
+  echo "-j | --build_runner     Creates the rules and files required to run peachy printer(sudo required)"
 }
 
 function failed_exit()
@@ -260,7 +264,7 @@ do
     -p | --pull )          update ; shift ;;
     -c | --clean )         clean ; shift ;;
     -i | --install_dep )   dependancies ; shift ;;
-    -r | --build_runner )  build_runner ; shift ;;
+    -j | --build_runner )  build_runner ; shift ;;
     -s | --setup_only )    setup_only="1" ; shift ;;
     -- )                   shift ; break ;;
     * )                    echo "Unexpected entry: $1" ; help ; exit 1 ;;
