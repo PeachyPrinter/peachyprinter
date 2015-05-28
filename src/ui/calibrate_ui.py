@@ -356,13 +356,17 @@ class TestPatternPanel(I18NTabbedPanelItem):
                 self.ids.patterns.add_widget(ToggleButton(group='test_patterns',  text=item, on_release=self.show_pattern))
             self.calibration_api.set_test_pattern_speed(self.speed)
             self.ids.patterns.children[-1].state = "down"
-            self.show_pattern(self.ids.patterns.children[-1])
             self.loaded = True
+        for child in self.ids.patterns.children:
+            if child.state == "down":
+                self.show_pattern(child)
+                break
         printer_width, printer_depth, printer_height = self.calibration_api.get_print_area()
         self.ids.current_height_slider.max = printer_height
         self.ids.current_height_slider.step = printer_height / 500
 
     def show_pattern(self, instance):
+        Logger.info("Loading: %s" % instance.text)
         if self.loaded:
             self.calibration_api.show_test_pattern(instance.text)
 
