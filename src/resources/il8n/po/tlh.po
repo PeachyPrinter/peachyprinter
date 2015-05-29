@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-27 16:14-0600\n"
+"POT-Creation-Date: 2015-05-29 12:53-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -13,56 +13,56 @@ msgstr ""
 
 #: src/gui.py:58
 msgid "Load file"
-msgstr ""
+msgstr "load teywI'"
 
 #: src/gui.py:136 src/gui.py:158 src/peachyprinter.kv:29
 #: src/ui/custom_widgets.kv:55
 msgid "Close"
-msgstr ""
+msgstr "SoQmoH"
 
 #: src/gui.py:145
 msgid "Please connect your peachy printer before starting the software"
-msgstr ""
+msgstr "nuqneH peachy printer rar pa' software starting"
 
 #: src/gui.py:146
 msgid "Exit"
-msgstr ""
+msgstr "mej"
 
 #: src/peachyprinter.kv:10
 msgid "Settings Selection"
-msgstr ""
+msgstr "settings Selection"
 
 #: src/peachyprinter.kv:14
 msgid "Laser Calibration"
-msgstr ""
+msgstr "'uD Calibration"
 
 #: src/peachyprinter.kv:17
 msgid "Dripper Calibration"
-msgstr ""
+msgstr "dripper Calibration"
 
 #: src/peachyprinter.kv:20
 msgid "Resin Curing Calibration"
-msgstr ""
+msgstr "resin Calibration vor"
 
 #: src/peachyprinter.kv:23
 msgid "Advanced Settings"
-msgstr ""
+msgstr "'Itlh Settings"
 
 #: src/peachyprinter.kv:26
 msgid "Restore Defaults"
-msgstr ""
+msgstr "Defaults SabHa'"
 
 #: src/peachyprinter.kv:44
 msgid "Print from file"
-msgstr ""
+msgstr "print vo' teywI'"
 
 #: src/peachyprinter.kv:47
 msgid "Print from library"
-msgstr ""
+msgstr "print vo' be'nI''a'wI', Datu'"
 
 #: src/peachyprinter.kv:76
 msgid "Starting Height"
-msgstr ""
+msgstr "start 'ab"
 
 #: src/peachyprinter.kv:84 src/infrastructure/setting_mapper.py:81
 #: src/infrastructure/setting_mapper.py:98
@@ -92,12 +92,13 @@ msgstr ""
 #: src/infrastructure/setting_mapper.py:389
 #: src/infrastructure/setting_mapper.py:399
 #: src/infrastructure/setting_mapper.py:409 src/ui/library_ui.kv:53
+#: src/ui/peachy_widgets.kv:42
 msgid "Cancel"
 msgstr "qIl"
 
 #: src/peachyprinter.kv:88
 msgid "Load"
-msgstr ""
+msgstr "load"
 
 #: src/infrastructure/setting_mapper.py:28
 #: src/infrastructure/setting_mapper.py:36
@@ -105,47 +106,47 @@ msgstr ""
 #: src/infrastructure/setting_mapper.py:52
 #: src/infrastructure/setting_mapper.py:60
 msgid "Info"
-msgstr "De'"
+msgstr "info"
 
 #: src/infrastructure/setting_mapper.py:29
 msgid "info_version_number DESCRIPTION"
-msgstr ""
+msgstr "info version mI' "
 
 #: src/infrastructure/setting_mapper.py:30
 msgid "info_version_number TITLE"
-msgstr ""
+msgstr "info version mI' "
 
 #: src/infrastructure/setting_mapper.py:37
 msgid "info_serial_number DESCRIPTION"
-msgstr ""
+msgstr "info serial mI' "
 
 #: src/infrastructure/setting_mapper.py:38
 msgid "info_serial_number TITLE"
-msgstr ""
+msgstr "info serial mI' "
 
 #: src/infrastructure/setting_mapper.py:45
 msgid "info_hardware_version_number DESCRIPTION"
-msgstr ""
+msgstr "info hardware version mI' "
 
 #: src/infrastructure/setting_mapper.py:46
 msgid "info_hardware_version_number TITLE"
-msgstr ""
+msgstr "info hardware version mI' "
 
 #: src/infrastructure/setting_mapper.py:53
 msgid "info_firmware_version_number DESCRIPTION"
-msgstr ""
+msgstr "info firmware version mI' "
 
 #: src/infrastructure/setting_mapper.py:54
 msgid "info_firmware_version_number TITLE"
-msgstr ""
+msgstr "info firmware version mI' "
 
 #: src/infrastructure/setting_mapper.py:61
 msgid "info_firmware_data_rate DESCRIPTION"
-msgstr ""
+msgstr "info firmware De' rate "
 
 #: src/infrastructure/setting_mapper.py:62
 msgid "info_firmware_data_rate TITLE"
-msgstr ""
+msgstr "info firmware De' rate "
 
 #: src/infrastructure/setting_mapper.py:69
 #: src/infrastructure/setting_mapper.py:75
@@ -166,19 +167,19 @@ msgstr "DuH"
 
 #: src/infrastructure/setting_mapper.py:71
 msgid "options_use_sublayers TITLE"
-msgstr ""
+msgstr "DuH malja' sublayers "
 
 #: src/infrastructure/setting_mapper.py:72
 msgid "options_use_sublayers DESCRIPTION"
-msgstr ""
+msgstr "DuH malja' sublayers "
 
 #: src/infrastructure/setting_mapper.py:77
 msgid "options_sublayer_height_mm TITLE"
-msgstr ""
+msgstr "'ab mm  sublayer DuH"
 
 #: src/infrastructure/setting_mapper.py:78
 msgid "options_sublayer_height_mm DESCRIPTION"
-msgstr ""
+msgstr "'ab mm  sublayer DuH"
 
 #: src/infrastructure/setting_mapper.py:80
 #: src/infrastructure/setting_mapper.py:97
@@ -209,103 +210,103 @@ msgstr ""
 #: src/infrastructure/setting_mapper.py:398
 #: src/infrastructure/setting_mapper.py:408
 msgid "Ok"
-msgstr "lu'"
+msgstr "luq"
 
 #: src/infrastructure/setting_mapper.py:87
 msgid "options_use_shufflelayers TITLE"
-msgstr ""
+msgstr "shufflelayers  lo' DuH"
 
 #: src/infrastructure/setting_mapper.py:88
 msgid "options_use_shufflelayers DESCRIPTION"
-msgstr ""
+msgstr "shufflelayers  lo' DuH"
 
 #: src/infrastructure/setting_mapper.py:94
 msgid "options_shuffle_layers_amount TITLE"
-msgstr ""
+msgstr "DuH shuffle patlh amount "
 
 #: src/infrastructure/setting_mapper.py:95
 msgid "options_shuffle_layers_amount DESCRIPTION"
-msgstr ""
+msgstr "DuH shuffle patlh amount "
 
 #: src/infrastructure/setting_mapper.py:104
 msgid "options_use_overlap TITLE"
-msgstr ""
+msgstr " overlap DuH malja'"
 
 #: src/infrastructure/setting_mapper.py:105
 msgid "options_use_overlap DESCRIPTION"
-msgstr ""
+msgstr " overlap DuH malja'"
 
 #: src/infrastructure/setting_mapper.py:111
 msgid "options_overlap_amount_mm TITLE"
-msgstr ""
+msgstr "amount mm  overlap DuH"
 
 #: src/infrastructure/setting_mapper.py:112
 msgid "options_overlap_amount_mm DESCRIPTION"
-msgstr ""
+msgstr "amount mm  overlap DuH"
 
 #: src/infrastructure/setting_mapper.py:121
 msgid "options_laser_thickness_mm TITLE"
-msgstr ""
+msgstr "thickness mm  'uD DuH"
 
 #: src/infrastructure/setting_mapper.py:122
 msgid "options_laser_thickness_mm DESCRIPTION"
-msgstr ""
+msgstr "thickness mm  'uD DuH"
 
 #: src/infrastructure/setting_mapper.py:129
 msgid "options_scaling_factor TITLE"
-msgstr ""
+msgstr "DuH factor  ghISDen"
 
 #: src/infrastructure/setting_mapper.py:130
 msgid "options_scaling_factor DESCRIPTION"
-msgstr ""
+msgstr "DuH factor  ghISDen"
 
 #: src/infrastructure/setting_mapper.py:140
 msgid "options_max_lead_distance_mm TITLE"
-msgstr ""
+msgstr "DuH max Dev chuq mm "
 
 #: src/infrastructure/setting_mapper.py:141
 msgid "options_max_lead_distance_mm DESCRIPTION"
-msgstr ""
+msgstr "DuH max Dev chuq mm "
 
 #: src/infrastructure/setting_mapper.py:150
 msgid "options_pre_layer_delay TITLE"
-msgstr ""
+msgstr "DuH pre patlh mIm "
 
 #: src/infrastructure/setting_mapper.py:151
 msgid "options_pre_layer_delay DESCRIPTION"
-msgstr ""
+msgstr "DuH pre patlh mIm "
 
 #: src/infrastructure/setting_mapper.py:160
 msgid "options_post_fire_delay TITLE"
-msgstr ""
+msgstr "DuH post qul mIm "
 
 #: src/infrastructure/setting_mapper.py:161
 msgid "options_post_fire_delay DESCRIPTION"
-msgstr ""
+msgstr "DuH post qul mIm "
 
 #: src/infrastructure/setting_mapper.py:170
 msgid "options_slew_delay TITLE"
-msgstr ""
+msgstr "mIm  slew DuH"
 
 #: src/infrastructure/setting_mapper.py:171
 msgid "options_slew_delay DESCRIPTION"
-msgstr ""
+msgstr "mIm  slew DuH"
 
 #: src/infrastructure/setting_mapper.py:180
 msgid "options_wait_after_move_milliseconds TITLE"
-msgstr ""
+msgstr "qaSpu'DI' vIH milliseconds  loS DuH"
 
 #: src/infrastructure/setting_mapper.py:181
 msgid "options_wait_after_move_milliseconds DESCRIPTION"
-msgstr ""
+msgstr "qaSpu'DI' vIH milliseconds  loS DuH"
 
 #: src/infrastructure/setting_mapper.py:190
 msgid "options_print_queue_delay TITLE"
-msgstr ""
+msgstr "queue mIm  print DuH"
 
 #: src/infrastructure/setting_mapper.py:191
 msgid "options_print_queue_delay DESCRIPTION"
-msgstr ""
+msgstr "queue mIm  print DuH"
 
 #: src/infrastructure/setting_mapper.py:199
 #: src/infrastructure/setting_mapper.py:207
@@ -315,63 +316,63 @@ msgstr ""
 #: src/infrastructure/setting_mapper.py:244
 #: src/infrastructure/setting_mapper.py:253
 msgid "Email"
-msgstr "Email Hol"
+msgstr "email"
 
 #: src/infrastructure/setting_mapper.py:201
 msgid "email.on TITLE"
-msgstr ""
+msgstr "email "
 
 #: src/infrastructure/setting_mapper.py:202
 msgid "email.on DESCRIPTION"
-msgstr ""
+msgstr "email "
 
 #: src/infrastructure/setting_mapper.py:209
 msgid "email.port TITLE"
-msgstr ""
+msgstr "rut mutlha'taH  email"
 
 #: src/infrastructure/setting_mapper.py:210
 msgid "email.port DESCRIPTION"
-msgstr ""
+msgstr "rut mutlha'taH  email"
 
 #: src/infrastructure/setting_mapper.py:219
 msgid "email.host TITLE"
-msgstr ""
+msgstr "email host "
 
 #: src/infrastructure/setting_mapper.py:220
 msgid "email.host DESCRIPTION"
-msgstr ""
+msgstr "email host "
 
 #: src/infrastructure/setting_mapper.py:226
 msgid "email.sender TITLE"
-msgstr ""
+msgstr "email sender "
 
 #: src/infrastructure/setting_mapper.py:227
 msgid "email.sender DESCRIPTION"
-msgstr ""
+msgstr "email sender "
 
 #: src/infrastructure/setting_mapper.py:236
 msgid "email.recipient TITLE"
-msgstr ""
+msgstr "email SIQwI' "
 
 #: src/infrastructure/setting_mapper.py:237
 msgid "email.recipient DESCRIPTION"
-msgstr ""
+msgstr "email SIQwI' "
 
 #: src/infrastructure/setting_mapper.py:246
 msgid "email.username TITLE"
-msgstr ""
+msgstr "username  email"
 
 #: src/infrastructure/setting_mapper.py:247
 msgid "email.username DESCRIPTION"
-msgstr ""
+msgstr "username  email"
 
 #: src/infrastructure/setting_mapper.py:255
 msgid "email.password TITLE"
-msgstr ""
+msgstr "email mu'wIj "
 
 #: src/infrastructure/setting_mapper.py:256
 msgid "email.password DESCRIPTION"
-msgstr ""
+msgstr "email mu'wIj "
 
 #: src/infrastructure/setting_mapper.py:263
 #: src/infrastructure/setting_mapper.py:269
@@ -381,63 +382,63 @@ msgstr ""
 #: src/infrastructure/setting_mapper.py:308
 #: src/infrastructure/setting_mapper.py:318
 msgid "Serial"
-msgstr "serial Hol"
+msgstr "serial"
 
 #: src/infrastructure/setting_mapper.py:265
 msgid "serial_enabled TITLE"
-msgstr ""
+msgstr "serial enabled "
 
 #: src/infrastructure/setting_mapper.py:266
 msgid "serial_enabled DESCRIPTION"
-msgstr ""
+msgstr "serial enabled "
 
 #: src/infrastructure/setting_mapper.py:271
 msgid "serial_port TITLE"
-msgstr ""
+msgstr "serial rut mutlha'taH "
 
 #: src/infrastructure/setting_mapper.py:272
 msgid "serial_port DESCRIPTION"
-msgstr ""
+msgstr "serial rut mutlha'taH "
 
 #: src/infrastructure/setting_mapper.py:280
 msgid "serial_on_command TITLE"
-msgstr ""
+msgstr "serial ra' "
 
 #: src/infrastructure/setting_mapper.py:281
 msgid "serial_on_command DESCRIPTION"
-msgstr ""
+msgstr "serial ra' "
 
 #: src/infrastructure/setting_mapper.py:290
 msgid "serial_off_command TITLE"
-msgstr ""
+msgstr "DoH ra'  serial"
 
 #: src/infrastructure/setting_mapper.py:291
 msgid "serial_off_command DESCRIPTION"
-msgstr ""
+msgstr "DoH ra'  serial"
 
 #: src/infrastructure/setting_mapper.py:300
 msgid "serial_layer_started_command TITLE"
-msgstr ""
+msgstr "ra'  started serial patlh"
 
 #: src/infrastructure/setting_mapper.py:301
 msgid "serial_layer_started_command DESCRIPTION"
-msgstr ""
+msgstr "ra'  started serial patlh"
 
 #: src/infrastructure/setting_mapper.py:310
 msgid "serial_layer_ended_command TITLE"
-msgstr ""
+msgstr " ra' qabna'Daj serial patlh"
 
 #: src/infrastructure/setting_mapper.py:311
 msgid "serial_layer_ended_command DESCRIPTION"
-msgstr ""
+msgstr " ra' qabna'Daj serial patlh"
 
 #: src/infrastructure/setting_mapper.py:320
 msgid "serial_print_ended_command TITLE"
-msgstr ""
+msgstr " ra' qabna'Daj serial print"
 
 #: src/infrastructure/setting_mapper.py:321
 msgid "serial_print_ended_command DESCRIPTION"
-msgstr ""
+msgstr " ra' qabna'Daj serial print"
 
 #: src/infrastructure/setting_mapper.py:330
 #: src/infrastructure/setting_mapper.py:336
@@ -445,472 +446,484 @@ msgstr ""
 #: src/infrastructure/setting_mapper.py:356
 #: src/infrastructure/setting_mapper.py:365
 msgid "Cure Rate"
-msgstr ""
+msgstr "vor Rate"
 
 #: src/infrastructure/setting_mapper.py:331
 msgid "cure_rate_use_draw_speed TITLE"
-msgstr ""
+msgstr "speed  tu'lu'be' vor rate malja'"
 
 #: src/infrastructure/setting_mapper.py:332
 msgid "cure_rate_use_draw_speed DESCRIPTION"
-msgstr ""
+msgstr "speed  tu'lu'be' vor rate malja'"
 
 #: src/infrastructure/setting_mapper.py:337
 msgid "cure_rate_draw_speed TITLE"
-msgstr ""
+msgstr "speed  tu'lu'be' vor rate"
 
 #: src/infrastructure/setting_mapper.py:338
 msgid "cure_rate_draw_speed DESCRIPTION"
-msgstr ""
+msgstr "speed  tu'lu'be' vor rate"
 
 #: src/infrastructure/setting_mapper.py:347
 msgid "cure_rate_move_speed TITLE"
-msgstr ""
+msgstr "speed  vIH vor rate"
 
 #: src/infrastructure/setting_mapper.py:348
 msgid "cure_rate_move_speed DESCRIPTION"
-msgstr ""
+msgstr "speed  vIH vor rate"
 
 #: src/infrastructure/setting_mapper.py:357
 msgid "cure_rate_override_laser_power TITLE"
-msgstr ""
+msgstr "rate ngep 'uD HoS  vor"
 
 #: src/infrastructure/setting_mapper.py:358
 msgid "cure_rate_override_laser_power DESCRIPTION"
-msgstr ""
+msgstr "rate ngep 'uD HoS  vor"
 
 #: src/infrastructure/setting_mapper.py:366
 msgid "cure_rate_override_laser_power_amount TITLE"
-msgstr ""
+msgstr "'uD HoS amount  ngep vor rate"
 
 #: src/infrastructure/setting_mapper.py:367
 msgid "cure_rate_override_laser_power_amount DESCRIPTION"
-msgstr ""
+msgstr "'uD HoS amount  ngep vor rate"
 
 #: src/infrastructure/setting_mapper.py:376
 #: src/infrastructure/setting_mapper.py:385
 #: src/infrastructure/setting_mapper.py:395
 #: src/infrastructure/setting_mapper.py:405
 msgid "Dripper"
-msgstr ""
+msgstr "dripper"
 
 #: src/infrastructure/setting_mapper.py:377
 msgid "dripper_type TITLE"
-msgstr ""
+msgstr "dripper Segh "
 
 #: src/infrastructure/setting_mapper.py:378
 msgid "dripper_type DESCRIPTION"
-msgstr ""
+msgstr "dripper Segh "
 
 #: src/infrastructure/setting_mapper.py:379
 #: src/ui/dripper_calibration_ui.kv:25
 msgid "Emulated"
-msgstr ""
+msgstr "emulate"
 
 #: src/infrastructure/setting_mapper.py:379
 #: src/ui/dripper_calibration_ui.kv:25
 msgid "Photo"
-msgstr ""
+msgstr "photo"
 
 #: src/infrastructure/setting_mapper.py:379
 #: src/ui/dripper_calibration_ui.kv:25
 msgid "Circut"
-msgstr ""
+msgstr "circut"
 
 #: src/infrastructure/setting_mapper.py:386
 msgid "dripper_drips_per_mm TITLE"
-msgstr ""
+msgstr "dripper drips mm  per"
 
 #: src/infrastructure/setting_mapper.py:387
 msgid "dripper_drips_per_mm DESCRIPTION"
-msgstr ""
+msgstr "dripper drips mm  per"
 
 #: src/infrastructure/setting_mapper.py:396
 msgid "dripper_emulated_drips_per_second TITLE"
-msgstr ""
+msgstr "dripper emulated drips per cha'DIch "
 
 #: src/infrastructure/setting_mapper.py:397
 msgid "dripper_emulated_drips_per_second DESCRIPTION"
-msgstr ""
+msgstr "dripper emulated drips per cha'DIch "
 
 #: src/infrastructure/setting_mapper.py:406
 msgid "dripper_photo_zaxis_delay TITLE"
-msgstr ""
+msgstr " mIm dripper photo zaxis"
 
 #: src/infrastructure/setting_mapper.py:407
 msgid "dripper_photo_zaxis_delay DESCRIPTION"
-msgstr ""
+msgstr " mIm dripper photo zaxis"
 
 #: src/ui/calibrate_ui.kv:24
 msgid "Top"
-msgstr ""
+msgstr "yor"
 
 #: src/ui/calibrate_ui.kv:29
 msgid "Bottom"
-msgstr ""
+msgstr "bIS'ub"
 
 #: src/ui/calibrate_ui.kv:36 src/ui/cure_test_ui.kv:204
 #: src/ui/dripper_calibration_ui.kv:40 src/ui/library_ui.kv:69
 msgid "Back"
-msgstr ""
+msgstr "chap"
 
 #: src/ui/calibrate_ui.kv:42
 msgid "Center"
-msgstr ""
+msgstr "botlh"
 
 #: src/ui/calibrate_ui.kv:47 src/ui/calibrate_ui.kv:96
 #: src/ui/calibrate_ui.kv:263 src/ui/calibrate_ui.kv:307
 #: src/ui/calibrate_ui.kv:385 src/ui/calibrate_ui.kv:457
 #: src/ui/cure_test_ui.kv:153 src/ui/dripper_calibration_ui.kv:33
 msgid "Help me"
-msgstr ""
+msgstr "HIQaH"
 
 #: src/ui/calibrate_ui.kv:48
 msgid "MARKUP - Center Calibration Instructions"
-msgstr ""
+msgstr "MARKUP-botlh Calibration Instructions"
 
 #: src/ui/calibrate_ui.kv:48
 msgid "Help - Calibration Setup"
-msgstr ""
+msgstr "QaH-Calibration Setup"
 
 #: src/ui/calibrate_ui.kv:64
 msgid "Orientation"
-msgstr ""
+msgstr "orientation"
 
 #: src/ui/calibrate_ui.kv:97
 msgid "MARKUP - Orientation Instructions"
-msgstr ""
+msgstr "MARKUP-Orientation Instructions"
 
 #: src/ui/calibrate_ui.kv:97
 msgid "Help - Orientation"
-msgstr ""
+msgstr "QaH-Orientation"
 
 #: src/ui/calibrate_ui.kv:258
 msgid "Print Area"
-msgstr ""
+msgstr "yoS print"
 
 #: src/ui/calibrate_ui.kv:264
 msgid "MARKUP - Print Area Instructions"
-msgstr ""
+msgstr "MARKUP-Print yoS Instructions"
 
 #: src/ui/calibrate_ui.kv:264
 msgid "Help - Print Area"
-msgstr ""
+msgstr "QaH-Print yoS"
 
 #: src/ui/calibrate_ui.kv:273 src/ui/library_ui.kv:21
 msgid "Height (mm)"
-msgstr ""
+msgstr "'ab (mm)"
 
 #: src/ui/calibrate_ui.kv:283
 msgid "Depth (mm)"
-msgstr ""
+msgstr "natlhlu'mo' (mm)"
 
 #: src/ui/calibrate_ui.kv:293 src/ui/library_ui.kv:29
 msgid "Width (mm)"
-msgstr ""
+msgstr "width (mm)"
 
 #: src/ui/calibrate_ui.kv:302
 msgid "Aligment"
-msgstr ""
+msgstr "aligment"
 
 #: src/ui/calibrate_ui.kv:308
 msgid "MARKUP - Alignment Instructions"
-msgstr ""
+msgstr "MARKUP-Alignment Instructions"
 
 #: src/ui/calibrate_ui.kv:308
 msgid "Help - Alignment"
-msgstr ""
+msgstr "QaH-Alignment"
 
 #: src/ui/calibrate_ui.kv:353
 msgid "Super Accurate Mode"
-msgstr ""
+msgstr "super qar Mode"
 
 #: src/ui/calibrate_ui.kv:367
 msgid "Reset All"
-msgstr ""
+msgstr "Hoch reset"
 
 #: src/ui/calibrate_ui.kv:386
 msgid "MARKUP - Calibration Instructions"
-msgstr ""
+msgstr "MARKUP-Calibration Instructions"
 
 #: src/ui/calibrate_ui.kv:386
 msgid "Help - Calibration"
-msgstr ""
+msgstr "QaH-Calibration"
 
 #: src/ui/calibrate_ui.kv:409
 msgid "Test Patterns"
-msgstr ""
+msgstr "waH patterns"
 
 #: src/ui/calibrate_ui.kv:422
 msgid "Speed"
-msgstr ""
+msgstr "speed"
 
 #: src/ui/calibrate_ui.kv:440
 msgid "Height"
-msgstr ""
+msgstr "'ab"
 
 #: src/ui/calibrate_ui.kv:458
 msgid "MARKUP - Test Pattern Instructions"
-msgstr ""
+msgstr "MARKUP-waH pattern Instructions"
 
 #: src/ui/calibrate_ui.kv:458
 msgid "Help - Test Patterns"
-msgstr ""
+msgstr "QaH-waH patterns"
 
 #: src/ui/cure_test_ui.kv:11
 msgid "Base Speed"
-msgstr ""
+msgstr "waw' Speed"
 
 #: src/ui/cure_test_ui.kv:43
 msgid "Cure Rate Test"
-msgstr ""
+msgstr "vor Rate waH"
 
 #: src/ui/cure_test_ui.kv:49
 msgid "Base Height"
-msgstr ""
+msgstr "waw' 'ab"
 
 #: src/ui/cure_test_ui.kv:60
 msgid "Test Height"
-msgstr ""
+msgstr "waH 'ab"
 
 #: src/ui/cure_test_ui.kv:71
 msgid "Starting Speed"
-msgstr ""
+msgstr "Speed starting"
 
 #: src/ui/cure_test_ui.kv:82
 msgid "Stopping Speed"
-msgstr ""
+msgstr "Speed mev"
 
 #: src/ui/cure_test_ui.kv:94
 msgid "Run Cure Test Now"
-msgstr ""
+msgstr "vor waH qet DaH"
 
 #: src/ui/cure_test_ui.kv:103
 msgid "Always Override Speeds"
-msgstr ""
+msgstr "reH Speeds ngep"
 
 #: src/ui/cure_test_ui.kv:113
 msgid "Draw Speed (mm)"
-msgstr ""
+msgstr "(mm) Speed tu'lu'be'"
 
 #: src/ui/cure_test_ui.kv:124
 msgid "Move Speed (mm)"
-msgstr ""
+msgstr "(mm) Speed vIH"
 
 #: src/ui/cure_test_ui.kv:135
 msgid "Always Use Laser Power"
-msgstr ""
+msgstr "reH 'uD HoS yIlo'"
 
 #: src/ui/cure_test_ui.kv:145
 msgid "Laser Power"
-msgstr ""
+msgstr "'uD HoS"
 
 #: src/ui/cure_test_ui.kv:154
 msgid "Markup- Cure Rate"
-msgstr ""
+msgstr "markup-vor Rate"
 
 #: src/ui/cure_test_ui.kv:154
 msgid "Help - Cure Rate Settings"
-msgstr ""
+msgstr "QaH-vor Rate Settings"
 
 #: src/ui/cure_test_ui.kv:184
 msgid "Best Height"
-msgstr ""
+msgstr "Qaghbe'meH 'ab"
 
 #: src/ui/cure_test_ui.kv:191
 msgid "Best Draw Speed"
-msgstr ""
+msgstr "Qaghbe'meH tu'lu'be' Speed"
 
 #: src/ui/cure_test_ui.kv:198
 msgid "Use Best Draw Speed"
-msgstr ""
+msgstr "Qaghbe'meH tu'lu'be' Speed yIlo'"
 
 #: src/ui/dripper_calibration_ui.kv:22
 msgid "Dripper Type"
-msgstr ""
+msgstr "dripper Segh"
 
 #: src/ui/dripper_calibration_ui.kv:34
 msgid "MARKUP - Dripper Instructions"
-msgstr ""
+msgstr "MARKUP-Dripper Instructions"
 
 #: src/ui/dripper_calibration_ui.kv:34
 msgid "Help - Dripper Settings"
-msgstr ""
+msgstr "QaH-Dripper Settings"
 
 #: src/ui/dripper_calibration_ui.kv:50
 msgid "Drips Per Second"
-msgstr ""
+msgstr "drips Per cha'DIch"
 
 #: src/ui/dripper_calibration_ui.kv:57
 msgid "Drips Per Millimeter"
-msgstr ""
+msgstr "drips Millimeter Per"
 
 #: src/ui/dripper_calibration_ui.kv:68
 msgid "Delay After Layer"
-msgstr ""
+msgstr "qaSpu'DI' patlh mIm"
 
 #: src/ui/dripper_calibration_ui.kv:91
 msgid "Drip Calculator"
-msgstr ""
+msgstr "drip Calculator"
 
 #: src/ui/dripper_calibration_ui.kv:100
 msgid "Distance to Measure (mm)"
-msgstr ""
+msgstr "chuq 'aD (mm)"
 
 #: src/ui/dripper_calibration_ui.kv:109
 msgid "Reset Drip Count"
-msgstr ""
+msgstr "reset Drip 'ech"
 
 #: src/ui/dripper_calibration_ui.kv:116
 msgid "Drips"
-msgstr ""
+msgstr "drip"
 
 #: src/ui/dripper_calibration_ui.kv:124
 msgid "Average Drips per Second"
-msgstr ""
+msgstr "motlhbogh Drips per cha'DIch"
 
 #: src/ui/dripper_calibration_ui.kv:132
 msgid "Current Drips per mm"
-msgstr ""
+msgstr "Qu'mey potlh Drips mm per"
 
 #: src/ui/dripper_calibration_ui.kv:138
 msgid "Use Current Drips per mm"
-msgstr ""
+msgstr "Qu'mey potlh Drips per mm yIlo'"
 
 #: src/ui/dripper_calibration_ui.kv:148
 msgid "Drips per mm"
-msgstr ""
+msgstr "drips mm per"
 
 #: src/ui/library_ui.kv:37
 msgid "Layer Height (mm)"
-msgstr ""
+msgstr "patlh 'ab (mm)"
 
 #: src/ui/library_ui.kv:45
 msgid "Speed (mm/sec)"
-msgstr ""
+msgstr "speed (mm ghap sec)"
 
 #: src/ui/library_ui.kv:56
 msgid "Print Now"
-msgstr ""
+msgstr "DaH print"
 
 #: src/ui/peachy_widgets.kv:15
 msgid "Done"
-msgstr ""
+msgstr "pItlh"
+
+#: src/ui/peachy_widgets.kv:23 src/ui/print_ui.py:91
+msgid "Laser Safety Notice"
+msgstr "'uD vanglu'Qo'DI' tu'"
+
+#: src/ui/peachy_widgets.kv:30
+msgid "You are about to turn on the laser. Do you wish to proceed"
+msgstr "jIqapruppu': tlhe' 'uD ruch DaneHchugh"
+
+#: src/ui/peachy_widgets.kv:37
+msgid "Turn on Laser"
+msgstr "tlhe' 'uD"
 
 #: src/ui/print_ui.kv:14
 msgid "Print Details"
-msgstr ""
+msgstr "Details print"
 
 #: src/ui/print_ui.kv:22
 msgid "Printer Settings"
-msgstr ""
+msgstr "printer Settings"
 
 #: src/ui/print_ui.kv:33
 msgid "Printing UI"
-msgstr ""
+msgstr "printing ui"
 
 #: src/ui/print_ui.kv:43
 msgid "Restart Print"
-msgstr ""
+msgstr "Print restart"
 
-#: src/ui/print_ui.kv:47 src/ui/print_ui.py:87
+#: src/ui/print_ui.kv:47 src/ui/print_ui.py:133
 msgid "Cancel Print"
-msgstr ""
+msgstr "Print qIl"
 
 #: src/ui/restore_ui.kv:9
 msgid ""
 "You are about to destory all of those settings you spent forever setting up"
-msgstr ""
+msgstr "jIqapruppu': Hoch settings reH beH SoH rep destory"
 
 #: src/ui/restore_ui.kv:13
 msgid "Yep, Nuke Em."
-msgstr ""
+msgstr "yep, Em Nuke"
 
 #: src/ui/restore_ui.kv:16
 msgid "No, No, Abort, Stop."
-msgstr ""
+msgstr "ghobe', ghobe', Abort, mev"
 
-#: src/ui/calibrate_ui.py:246
+#: src/ui/calibrate_ui.py:247
 msgid "Printer Posisition || "
-msgstr ""
+msgstr "printer Posisition ||"
 
-#: src/ui/calibrate_ui.py:399 src/ui/dripper_calibration_ui.py:64
+#: src/ui/calibrate_ui.py:416 src/ui/dripper_calibration_ui.py:64
 #: src/ui/restore_ui.py:28
 msgid "Error"
-msgstr ""
+msgstr "Qagh"
 
-#: src/ui/calibrate_ui.py:399 src/ui/dripper_calibration_ui.py:64
+#: src/ui/calibrate_ui.py:416 src/ui/dripper_calibration_ui.py:64
 #: src/ui/restore_ui.py:28
 msgid "No Peachy Printer Detected"
-msgstr ""
+msgstr "pagh Peachy Printer Detected"
 
 #: src/ui/custom_widgets.py:58
 msgid "Bad Stuff Happened"
-msgstr ""
+msgstr "qaS qab ghoD"
 
 #: src/ui/custom_widgets.py:62
 msgid "No Title"
-msgstr ""
-
-#: src/ui/print_ui.py:19
-msgid "Status"
-msgstr ""
+msgstr "pagh "
 
 #: src/ui/print_ui.py:20
-msgid "Model Height"
-msgstr ""
+msgid "Status"
+msgstr "Dotlh"
 
 #: src/ui/print_ui.py:21
-msgid "Start Time"
-msgstr ""
+msgid "Model Height"
+msgstr "ghantoH 'ab"
 
 #: src/ui/print_ui.py:22
-msgid "Drips Counted"
-msgstr ""
+msgid "Start Time"
+msgstr "start poH"
 
 #: src/ui/print_ui.py:23
-msgid "Actual Height"
-msgstr ""
+msgid "Drips Counted"
+msgstr "drips 'ech"
 
 #: src/ui/print_ui.py:24
-msgid "Drips per second"
-msgstr ""
+msgid "Actual Height"
+msgstr "actual 'ab"
 
 #: src/ui/print_ui.py:25
-msgid "Error List"
-msgstr ""
+msgid "Drips per second"
+msgstr "drips per cha'DIch"
 
 #: src/ui/print_ui.py:26
-msgid "Waiting for drip"
-msgstr ""
+msgid "Error List"
+msgstr "Qagh tetlh"
 
 #: src/ui/print_ui.py:27
-msgid "Elapsed Time"
-msgstr ""
+msgid "Waiting for drip"
+msgstr "loS drip"
 
 #: src/ui/print_ui.py:28
-msgid "Current Layer"
-msgstr ""
+msgid "Elapsed Time"
+msgstr "elapsed poH"
 
 #: src/ui/print_ui.py:29
-msgid "Skipped Layers"
-msgstr ""
+msgid "Current Layer"
+msgstr "patlh Qu'mey potlh"
 
-#: src/ui/print_ui.py:59
+#: src/ui/print_ui.py:30
+msgid "Skipped Layers"
+msgstr "skip patlh"
+
+#: src/ui/print_ui.py:87
 msgid "Print Complete, Close"
-msgstr ""
+msgstr "print naQmoH wanI'mey, SoQ"
 
 #~ msgid "en_GB Text"
-#~ msgstr "tlh Text"
+#~ msgstr "vI gb bIngDaq ghItlh leghlu'"
 
 #~ msgid "Hello World"
 #~ msgstr "qo' vIvan"
 
 #~ msgid "English (Canada/UK)"
-#~ msgstr "ta'be' English Hol"
+#~ msgstr "English Hol (qa'naDa' ghap uk)"
 
 #~ msgid "English (American)"
-#~ msgstr "English Hol"
+#~ msgstr "English Hol (american)"
 
 #~ msgid "Klingon"
 #~ msgstr "tlhIngan"

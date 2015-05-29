@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-27 16:14-0600\n"
+"POT-Creation-Date: 2015-05-29 13:07-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,6 +98,7 @@ msgstr ""
 #: src/infrastructure/setting_mapper.py:389
 #: src/infrastructure/setting_mapper.py:399
 #: src/infrastructure/setting_mapper.py:409 src/ui/library_ui.kv:53
+#: src/ui/peachy_widgets.kv:42
 msgid "Cancel"
 msgstr ""
 
@@ -803,6 +804,18 @@ msgstr ""
 msgid "Done"
 msgstr ""
 
+#: src/ui/peachy_widgets.kv:23 src/ui/print_ui.py:91
+msgid "Laser Safety Notice"
+msgstr ""
+
+#: src/ui/peachy_widgets.kv:30
+msgid "You are about to turn on the laser. Do you wish to proceed"
+msgstr ""
+
+#: src/ui/peachy_widgets.kv:37
+msgid "Turn on Laser"
+msgstr ""
+
 #: src/ui/print_ui.kv:14
 msgid "Print Details"
 msgstr ""
@@ -819,7 +832,7 @@ msgstr ""
 msgid "Restart Print"
 msgstr ""
 
-#: src/ui/print_ui.kv:47 src/ui/print_ui.py:87
+#: src/ui/print_ui.kv:47 src/ui/print_ui.py:133
 msgid "Cancel Print"
 msgstr ""
 
@@ -836,16 +849,16 @@ msgstr ""
 msgid "No, No, Abort, Stop."
 msgstr ""
 
-#: src/ui/calibrate_ui.py:246
+#: src/ui/calibrate_ui.py:247
 msgid "Printer Posisition || "
 msgstr ""
 
-#: src/ui/calibrate_ui.py:399 src/ui/dripper_calibration_ui.py:64
+#: src/ui/calibrate_ui.py:416 src/ui/dripper_calibration_ui.py:64
 #: src/ui/restore_ui.py:28
 msgid "Error"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:399 src/ui/dripper_calibration_ui.py:64
+#: src/ui/calibrate_ui.py:416 src/ui/dripper_calibration_ui.py:64
 #: src/ui/restore_ui.py:28
 msgid "No Peachy Printer Detected"
 msgstr ""
@@ -858,50 +871,50 @@ msgstr ""
 msgid "No Title"
 msgstr ""
 
-#: src/ui/print_ui.py:19
+#: src/ui/print_ui.py:20
 msgid "Status"
 msgstr ""
 
-#: src/ui/print_ui.py:20
+#: src/ui/print_ui.py:21
 msgid "Model Height"
 msgstr ""
 
-#: src/ui/print_ui.py:21
+#: src/ui/print_ui.py:22
 msgid "Start Time"
 msgstr ""
 
-#: src/ui/print_ui.py:22
+#: src/ui/print_ui.py:23
 msgid "Drips Counted"
 msgstr ""
 
-#: src/ui/print_ui.py:23
+#: src/ui/print_ui.py:24
 msgid "Actual Height"
 msgstr ""
 
-#: src/ui/print_ui.py:24
+#: src/ui/print_ui.py:25
 msgid "Drips per second"
 msgstr ""
 
-#: src/ui/print_ui.py:25
+#: src/ui/print_ui.py:26
 msgid "Error List"
 msgstr ""
 
-#: src/ui/print_ui.py:26
+#: src/ui/print_ui.py:27
 msgid "Waiting for drip"
 msgstr ""
 
-#: src/ui/print_ui.py:27
+#: src/ui/print_ui.py:28
 msgid "Elapsed Time"
 msgstr ""
 
-#: src/ui/print_ui.py:28
+#: src/ui/print_ui.py:29
 msgid "Current Layer"
 msgstr ""
 
-#: src/ui/print_ui.py:29
+#: src/ui/print_ui.py:30
 msgid "Skipped Layers"
 msgstr ""
 
-#: src/ui/print_ui.py:59
+#: src/ui/print_ui.py:87
 msgid "Print Complete, Close"
 msgstr ""
