@@ -30,19 +30,44 @@ class PrintStatus(LabelGridLayout):
     }
 
     def __init__(self, **kwargs):
+        self.content = {}
         super(PrintStatus, self).__init__(**kwargs)
         for (key, value) in self.data_points.items():
             label = BorderedLabel(text_source=value, bold=True, borders=[0, 1.0, 0, 0])
-            content = BorderedLabel(id=key, text="asd", halign='right', borders=[0, 1.0, 1.0, 0])
+            self.content[key] = BorderedLabel(id=key, text="asd", halign='right', borders=[0, 1.0, 1.0, 0])
             self.add_widget(label)
-            self.add_widget(content)
+            self.add_widget(self.content[key])
 
     def update(self, data):
-        for child in self.children:
-            if child.id is not "":
-                if str(child.id) in data:
-                    child.text = str(data[child.id])
+        if 'status' in data:
+            self.content['status'].text = '{0}'.format(data['status'])
+        if 'model_height' in data:
+            self.content['model_height'].text = '{:.2f}'.format(data['model_height'])
+        if 'start_time' in data:
+            self.content['start_time'].text = '{0}'.format(data['start_time'].strftime("%H:%M"))
+        if 'drips' in data:
+            self.content['drips'].text = '{0:.0f}'.format(data['drips'])
+        if 'height' in data:
+            self.content['height'].text = '{:.2f}'.format(data['height'])
+        if 'drips_per_second' in data:
+            self.content['drips_per_second'].text = '{:.2f}'.format(data['drips_per_second'])
+        if 'errors' in data:
+            self.content['errors'].text = ''.format(data['errors'])
+        if 'waiting_for_drips' in data:
+            self.content['waiting_for_drips'].text = '{0}'.format(data['waiting_for_drips'])
+        if 'elapsed_time' in data:
+            self.content['elapsed_time'].text = '~{0}'.format(self.time_delta_format(data['elapsed_time']))
+        if 'current_layer' in data:
+            self.content['current_layer'].text = '{0}'.format(data['current_layer'])
+        if 'skipped_layers' in data:
+            self.content['skipped_layers'].text = '{0}'.format(data['skipped_layers'])
 
+    def time_delta_format(self, td):
+        total_seconds = td.total_seconds()
+        hours = int(total_seconds) / (60 * 60)
+        remainder = int(total_seconds) % (60 * 60)
+        minutes = remainder / 60
+        return "{0}:{1:02d}".format(hours, minutes)
 
 class PrintingUI(Screen):
     def __init__(self, api, **kwargs):
