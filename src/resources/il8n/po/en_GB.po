@@ -536,11 +536,11 @@ msgstr ""
 
 #: src/infrastructure/setting_mapper.py:406
 msgid "dripper_photo_zaxis_delay TITLE"
-msgstr ""
+msgstr "Minimum Layer Time"
 
 #: src/infrastructure/setting_mapper.py:407
 msgid "dripper_photo_zaxis_delay DESCRIPTION"
-msgstr ""
+msgstr "The minimum time the Peachy will take to draw a layer"
 
 #: src/ui/calibrate_ui.kv:24
 msgid "Top"
