@@ -8,7 +8,8 @@ from kivy.core.window import Window
 from kivy.clock import Clock
 from kivy.app import App
 from infrastructure.langtools import _
-from ui.custom_widgets import I18NTabbedPanelItem, ErrorPopup, I18NLabel
+from ui.custom_widgets import I18NTabbedPanelItem, ErrorPopup
+from ui.peachy_widgets import LaserWarningPopup
 
 
 class CenterPanel(I18NTabbedPanelItem):
@@ -340,6 +341,7 @@ class CalibrationPoint(BoxLayout):
         else:
             self.active = False
 
+
 class TestPatternPanel(I18NTabbedPanelItem):
     calibration_api = ObjectProperty()
     speed = NumericProperty(100)
@@ -392,7 +394,18 @@ class CalibrateUI(Screen):
         super(CalibrateUI, self).__init__(**kwargs)
         self.api = api
 
-    def on_pre_enter(self):
+    def on_enter(self):
+        popup = LaserWarningPopup()
+        popup.bind(on_dismiss=self.is_safe)
+        popup.open()
+
+    def is_safe(self, instance):
+        if instance.is_safe():
+            self.turn_on()
+        else:
+            App.get_running_app().root.current = 'mainui'
+
+    def turn_on(self):
         self.is_active = True
         try:
             self.calibration_api = self.api.get_calibration_api()
