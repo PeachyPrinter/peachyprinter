@@ -117,7 +117,7 @@ class PeachyPrinter(App):
         super(PeachyPrinter, self).__init__(**kwargs)
         self.lang = lang
         Config.set("input", "mouse", "mouse,disable_multitouch")
-
+        self.switch_lang(self.lang)
         self.manager = None
 
     def translation(self, text):
