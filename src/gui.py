@@ -2,8 +2,6 @@
 from kivy.app import App
 from kivy.uix.settings import SettingsWithSidebar
 from kivy.properties import StringProperty, ObjectProperty
-from kivy.uix.floatlayout import FloatLayout
-from kivy.uix.popup import Popup
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.config import Config
 from kivy.resources import resource_add_path
@@ -21,6 +19,7 @@ from peachyprinter import MissingPrinterException
 
 import os
 from os.path import join, dirname
+import locale
 import gettext
 
 
@@ -33,15 +32,17 @@ class LoadDialog(BoxLayout):
 class SettingsSelector(I18NPopup):
     pass
 
+
 class LastPrint(object):
     def __init__(self):
-        self.print_type=None
-        self.source=None
+        self.print_type = None
+        self.source = None
 
-    def set(self, print_type,source):
+    def set(self, print_type, source):
         self.print_type = print_type
         self.source = source
         Logger.info("Last print was from: %s with %s" % (self.print_type, str(self.source)))
+
 
 class MainUI(Screen):
     setting = ObjectProperty()
@@ -63,7 +64,7 @@ class MainUI(Screen):
         Config.set('internal', 'last_directory', self.last_directory)
         Config.write()
         self.dismiss_popup()
-        App.get_running_app().last_print.set("file",filename)
+        App.get_running_app().last_print.set("file", filename)
         self.parent.current = 'printingui'
         self.parent.printing_ui.print_file(filename, start_height)
 
@@ -98,7 +99,7 @@ class MyScreenManager(ScreenManager):
 class PeachyPrinter(App):
     lang = StringProperty('en_GB')
     translator = ObjectProperty(None, allownone=True)
-
+    supported_languages = ['en_GB', 'en_US', 'tlh']
 
     def __init__(self, api, language=None, **kwargs):
         resource_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'resources')
@@ -106,11 +107,17 @@ class PeachyPrinter(App):
         self.last_print = LastPrint()
         self.api = api
         self.setting_translation = SettingsMapper(self.api)
-        super(PeachyPrinter, self).__init__(**kwargs)
-        Config.set("input", "mouse", "mouse,disable_multitouch")
         if language:
-            self.lang = language
-        self.switch_lang(self.lang)
+            lang = language
+        else:
+            lang = locale.getdefaultlocale()[0]
+        Logger.info("Specifed Language Locale: %s" % lang)
+        if lang not in self.supported_languages:
+            lang = 'en_GB'
+        super(PeachyPrinter, self).__init__(**kwargs)
+        self.lang = lang
+        Config.set("input", "mouse", "mouse,disable_multitouch")
+
         self.manager = None
 
     def translation(self, text):
@@ -129,6 +136,7 @@ class PeachyPrinter(App):
         super(PeachyPrinter, self).open_settings()
 
     def switch_lang(self, lang):
+        Logger.info("Using Language Locale: %s" % self.lang)
         locale_dir = join(dirname(__file__), 'resources', 'il8n', 'locales')
         locales = gettext.translation('peachyprinter', locale_dir, languages=[self.lang])
         self.translator = locales.ugettext
@@ -143,7 +151,7 @@ class PeachyPrinter(App):
         except MissingPrinterException:
             fail_box = BoxLayout(orientation="vertical")
             pop_message = I18NLabel(text_source=_("Please connect your peachy printer before starting the software"))
-            pop_exit = I18NButton(text_source=_("Exit"), size_hint_y = None, height=30, on_release=exit)
+            pop_exit = I18NButton(text_source=_("Exit"), size_hint_y=None, height=30, on_release=exit)
             fail_box.add_widget(pop_message)
             fail_box.add_widget(pop_exit)
             return fail_box
