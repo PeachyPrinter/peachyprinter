@@ -7,6 +7,7 @@ from kivy.core.audio import SoundLoader
 from kivy.resources import resource_find
 
 from ui.custom_widgets import BorderedLabel, LabelGridLayout, ErrorPopup
+from ui.peachy_widgets import LaserWarningPopup
 from infrastructure.langtools import _
 
 import os
@@ -69,12 +70,14 @@ class PrintStatus(LabelGridLayout):
         minutes = remainder / 60
         return "{0}:{1:02d}".format(hours, minutes)
 
+
 class PrintingUI(Screen):
     def __init__(self, api, **kwargs):
         self.return_to = 'mainui'
         super(PrintingUI, self).__init__(**kwargs)
         self.api = api
         self.print_api = None
+        self.print_options = []
 
     def callback(self, data):
         self.ids.print_status.update(data)
@@ -83,11 +86,17 @@ class PrintingUI(Screen):
             self.play_complete_sound()
             self.ids.navigate_button.text = _("Print Complete, Close")
 
-    def print_file(self, filename, start_height= 0.0, return_name='mainui', force_source_speed=False):
+    def print_file(self, *args, **kwargs):
+        self.print_options = [self._print_file, args, kwargs]
+        popup = LaserWarningPopup(title=_('Laser Safety Notice'), size_hint=(0.6, 0.6))
+        popup.bind(on_dismiss=self.is_safe)
+        popup.open()
+
+    def _print_file(self, filename, start_height=0.0, return_name='mainui', force_source_speed=False):
         self.return_to = return_name
         try:
             filepath = filename[0].encode('utf-8')
-            self.print_api = self.api.get_print_api(start_height= start_height, status_call_back=self.callback)
+            self.print_api = self.api.get_print_api(start_height=start_height, status_call_back=self.callback)
             self.path = os.path.basename(filepath)
             self.print_api.print_gcode(filepath, force_source_speed=force_source_speed)
         except Exception as ex:
@@ -95,7 +104,19 @@ class PrintingUI(Screen):
             popup.open()
             self.parent.current = self.return_to
 
-    def print_generator(self, generator, return_name='mainui', force_source_speed=False):
+    def is_safe(self, instance):
+        if instance.is_safe():
+            self.print_options[0](*self.print_options[1], **self.print_options[2])
+        else:
+            self.parent.current = self.return_to
+
+    def print_generator(self, *args, **kwargs):
+        self.print_options = [self._print_generator, args, kwargs]
+        popup = LaserWarningPopup()
+        popup.bind(on_dismiss=self.is_safe)
+        popup.open()
+
+    def _print_generator(self, generator, return_name='mainui', force_source_speed=False):
         self.return_to = return_name
         try:
             self.print_api = self.api.get_print_api(status_call_back=self.callback)
