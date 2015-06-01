@@ -1,16 +1,25 @@
 from kivy.uix.boxlayout import BoxLayout
 from kivy.graphics import *
 from kivy.clock import Clock
-from kivy.properties import StringProperty
+from kivy.properties import StringProperty, BooleanProperty
 from kivy.uix.popup import Popup
 import time
 from math import sin, pi
 
 from kivy.lang import Builder
-from ui.custom_widgets import I18NPopup
+from ui.custom_widgets import I18NPopup, I18NLabel
 
 
 Builder.load_file('ui/peachy_widgets.kv')
+
+
+class TouchyLabel(I18NLabel):
+
+    is_on = BooleanProperty(False)
+
+    def on_touch_down(self, touch):
+        if touch.is_triple_tap:
+            self.is_on = not self.is_on
 
 
 class I18NHelpPopup(I18NPopup):
@@ -60,3 +69,15 @@ class Dripper(BoxLayout):
                 s = sin((self.count - index) / (2 * pi))
                 self.canvas.add(Ellipse(pos=(self.x + abs(self.width / 2.0 * s), y), size=(self.width / 5.0, 5)))
 
+
+class LaserWarningPopup(I18NPopup):
+    text_source = StringProperty()
+    accepted = StringProperty(None)
+
+    def __init__(self, **kwargs):
+        super(LaserWarningPopup, self).__init__(**kwargs)
+
+    def is_safe(self):
+        if self.accepted is "True":
+            return True
+        return False

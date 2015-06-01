@@ -96,14 +96,14 @@
                 size_hint_y: None
                 height: "30dp"
                 orientation: 'horizontal'
-                Label:
+                I18NLabel:
                     text_source: _("Distance to Measure (mm)")
                 FloatInput:
                     text: '%.2f' % root.total_height
             Label:
                 size_hint_y: None
                 height: "10dp"
-            Button:
+            I18NButton:
                 size_hint_y: None
                 height: "30dp"
                 text_source: _("Reset Drip Count")
@@ -128,7 +128,7 @@
                 size_hint_y: None
                 height: "30dp"
                 orientation: 'horizontal'
-                Label:
+                I18NLabel:
                     text_source: _('Current Drips per mm')
                 Label:
                     text: '%.2f' % root.current_drips_per_mm
