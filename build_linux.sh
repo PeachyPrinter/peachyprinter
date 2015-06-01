@@ -3,7 +3,7 @@
 params=`getopt -o :hrnpcis -l install_dep,remove-venv,no_setup,pull,clean,help,setup_only --name "$0" -- "$@"`
 eval set -- "$params"
 
-DEBIAN_DEP="python-pip python-dev libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev mercurial libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev"
+DEBIAN_DEP="python-pip python-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev"
 CENTOS_DEP="python-pip python-devel python-distutils-extra python-enchant freeglut SDL_image SDL_image-devel SDL_ttf-devel SDL_mixer-devel khrplatform-devel mesa-libGLES mesa-libGLES-devel gstreamer-plugins-good gstreamer gstreamer-devel gstreamer-python mtdev-devel"
 
 RS="\033[0m"    # reset
@@ -157,7 +157,7 @@ function dependancies ()
     echo "${FGRN}APT detected using APT${RS}"
     echo "You will be prompted to elevate permissions"
     sudo apt-get install $DEBIAN_DEP
-    sudo pip install virtualenv
+    sudo pip install --upgrade virtualenv
     return
   fi
   yum -h > /dev/null
@@ -167,7 +167,7 @@ function dependancies ()
     echo "You will be prompted to elevate permissions"
 
     sudo yum install $CENTOS_DEP
-    sudo pip install virtualenv
+    sudo pip install --upgrade virtualenv
     return
   fi
   echo "${FRED}APT or YUM not found aborting${RS}"
