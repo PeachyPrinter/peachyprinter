@@ -7,6 +7,7 @@ from kivy.core.audio import SoundLoader
 from kivy.resources import resource_find
 
 from ui.custom_widgets import BorderedLabel, LabelGridLayout, ErrorPopup
+from ui.peachy_widgets import LaserWarningPopup
 from infrastructure.langtools import _
 
 import os
@@ -30,18 +31,44 @@ class PrintStatus(LabelGridLayout):
     }
 
     def __init__(self, **kwargs):
+        self.content = {}
         super(PrintStatus, self).__init__(**kwargs)
         for (key, value) in self.data_points.items():
             label = BorderedLabel(text_source=value, bold=True, borders=[0, 1.0, 0, 0])
-            content = BorderedLabel(id=key, text="asd", halign='right', borders=[0, 1.0, 1.0, 0])
+            self.content[key] = BorderedLabel(id=key, text="asd", halign='right', borders=[0, 1.0, 1.0, 0])
             self.add_widget(label)
-            self.add_widget(content)
+            self.add_widget(self.content[key])
 
     def update(self, data):
-        for child in self.children:
-            if child.id is not "":
-                if str(child.id) in data:
-                    child.text = str(data[child.id])
+        if 'status' in data:
+            self.content['status'].text = '{0}'.format(data['status'])
+        if 'model_height' in data:
+            self.content['model_height'].text = '{:.2f}'.format(data['model_height'])
+        if 'start_time' in data:
+            self.content['start_time'].text = '{0}'.format(data['start_time'].strftime("%H:%M"))
+        if 'drips' in data:
+            self.content['drips'].text = '{0:.0f}'.format(data['drips'])
+        if 'height' in data:
+            self.content['height'].text = '{:.2f}'.format(data['height'])
+        if 'drips_per_second' in data:
+            self.content['drips_per_second'].text = '{:.2f}'.format(data['drips_per_second'])
+        if 'errors' in data:
+            self.content['errors'].text = ''.format(data['errors'])
+        if 'waiting_for_drips' in data:
+            self.content['waiting_for_drips'].text = '{0}'.format(data['waiting_for_drips'])
+        if 'elapsed_time' in data:
+            self.content['elapsed_time'].text = '~{0}'.format(self.time_delta_format(data['elapsed_time']))
+        if 'current_layer' in data:
+            self.content['current_layer'].text = '{0}'.format(data['current_layer'])
+        if 'skipped_layers' in data:
+            self.content['skipped_layers'].text = '{0}'.format(data['skipped_layers'])
+
+    def time_delta_format(self, td):
+        total_seconds = td.total_seconds()
+        hours = int(total_seconds) / (60 * 60)
+        remainder = int(total_seconds) % (60 * 60)
+        minutes = remainder / 60
+        return "{0}:{1:02d}".format(hours, minutes)
 
 
 class PrintingUI(Screen):
@@ -50,6 +77,7 @@ class PrintingUI(Screen):
         super(PrintingUI, self).__init__(**kwargs)
         self.api = api
         self.print_api = None
+        self.print_options = []
 
     def callback(self, data):
         self.ids.print_status.update(data)
@@ -58,23 +86,41 @@ class PrintingUI(Screen):
             self.play_complete_sound()
             self.ids.navigate_button.text = _("Print Complete, Close")
 
-    def print_file(self, filename, start_height= 0.0, return_name='mainui'):
+    def print_file(self, *args, **kwargs):
+        self.print_options = [self._print_file, args, kwargs]
+        popup = LaserWarningPopup(title=_('Laser Safety Notice'), size_hint=(0.6, 0.6))
+        popup.bind(on_dismiss=self.is_safe)
+        popup.open()
+
+    def _print_file(self, filename, start_height=0.0, return_name='mainui', force_source_speed=False):
         self.return_to = return_name
         try:
             filepath = filename[0].encode('utf-8')
-            self.print_api = self.api.get_print_api(start_height= start_height, status_call_back=self.callback)
+            self.print_api = self.api.get_print_api(start_height=start_height, status_call_back=self.callback)
             self.path = os.path.basename(filepath)
-            self.print_api.print_gcode(filepath)
+            self.print_api.print_gcode(filepath, force_source_speed=force_source_speed)
         except Exception as ex:
             popup = ErrorPopup(title='Error', text=str(ex), size_hint=(0.6, 0.6))
             popup.open()
             self.parent.current = self.return_to
 
-    def print_generator(self, generator, return_name='mainui'):
+    def is_safe(self, instance):
+        if instance.is_safe():
+            self.print_options[0](*self.print_options[1], **self.print_options[2])
+        else:
+            self.parent.current = self.return_to
+
+    def print_generator(self, *args, **kwargs):
+        self.print_options = [self._print_generator, args, kwargs]
+        popup = LaserWarningPopup()
+        popup.bind(on_dismiss=self.is_safe)
+        popup.open()
+
+    def _print_generator(self, generator, return_name='mainui', force_source_speed=False):
         self.return_to = return_name
         try:
             self.print_api = self.api.get_print_api(status_call_back=self.callback)
-            self.print_api.print_layers(generator)
+            self.print_api.print_layers(generator, force_source_speed=force_source_speed)
         except Exception as ex:
             popup = ErrorPopup(title='Error', text=str(ex), size_hint=(0.6, 0.6))
             popup.open()

@@ -8,7 +8,8 @@ from kivy.core.window import Window
 from kivy.clock import Clock
 from kivy.app import App
 from infrastructure.langtools import _
-from ui.custom_widgets import I18NTabbedPanelItem, ErrorPopup, I18NLabel
+from ui.custom_widgets import I18NTabbedPanelItem, ErrorPopup
+from ui.peachy_widgets import LaserWarningPopup
 
 
 class CenterPanel(I18NTabbedPanelItem):
@@ -33,7 +34,7 @@ class PrintAreaPanel(I18NTabbedPanelItem):
 
     def on_enter(self):
         if self.calibration_api:
-            self.calibration_api.show_point()
+            self.calibration_api.show_scale()
             print_area_width, print_area_depth, print_area_height = self.calibration_api.get_print_area()
             self.ids.print_area_width.text = str(print_area_width)
             self.ids.print_area_depth.text = str(print_area_depth)
@@ -341,15 +342,6 @@ class CalibrationPoint(BoxLayout):
             self.active = False
 
 
-class TouchyLabel(I18NLabel):
-
-    oh_my = BooleanProperty(False)
-
-    def on_touch_down(self, touch):
-        if touch.is_triple_tap:
-            self.oh_my = not self.oh_my
-
-
 class TestPatternPanel(I18NTabbedPanelItem):
     calibration_api = ObjectProperty()
     speed = NumericProperty(100)
@@ -366,13 +358,17 @@ class TestPatternPanel(I18NTabbedPanelItem):
                 self.ids.patterns.add_widget(ToggleButton(group='test_patterns',  text=item, on_release=self.show_pattern))
             self.calibration_api.set_test_pattern_speed(self.speed)
             self.ids.patterns.children[-1].state = "down"
-            self.show_pattern(self.ids.patterns.children[-1])
             self.loaded = True
+        for child in self.ids.patterns.children:
+            if child.state == "down":
+                self.show_pattern(child)
+                break
         printer_width, printer_depth, printer_height = self.calibration_api.get_print_area()
         self.ids.current_height_slider.max = printer_height
         self.ids.current_height_slider.step = printer_height / 500
 
     def show_pattern(self, instance):
+        Logger.info("Loading: %s" % instance.text)
         if self.loaded:
             self.calibration_api.show_test_pattern(instance.text)
 
@@ -398,7 +394,18 @@ class CalibrateUI(Screen):
         super(CalibrateUI, self).__init__(**kwargs)
         self.api = api
 
-    def on_pre_enter(self):
+    def on_enter(self):
+        popup = LaserWarningPopup()
+        popup.bind(on_dismiss=self.is_safe)
+        popup.open()
+
+    def is_safe(self, instance):
+        if instance.is_safe():
+            self.turn_on()
+        else:
+            App.get_running_app().root.current = 'mainui'
+
+    def turn_on(self):
         self.is_active = True
         try:
             self.calibration_api = self.api.get_calibration_api()
