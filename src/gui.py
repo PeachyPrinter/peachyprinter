@@ -97,6 +97,7 @@ class MyScreenManager(ScreenManager):
 
 
 class PeachyPrinter(App):
+    use_kivy_settings = False
     lang = StringProperty('en_GB')
     translator = ObjectProperty(None, allownone=True)
     supported_languages = ['en_GB', 'en_US', 'tlh']
