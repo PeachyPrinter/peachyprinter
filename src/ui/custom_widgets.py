@@ -7,6 +7,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.popup import Popup
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
+from kivy.uix.togglebutton import ToggleButton
 from kivy.uix.tabbedpanel import TabbedPanel, TabbedPanelItem
 from kivy.uix.accordion import AccordionItem
 from kivy.uix.scrollview import ScrollView
@@ -31,6 +32,9 @@ class I18NButton(Button):
 class I18NToggleButton(Button):
     text_source = StringProperty('')
 
+class I18NImageToggleButton(ToggleButton):
+    text_source = StringProperty('')
+    source = StringProperty()
 
 class I18NPopup(Popup):
     title_source = StringProperty('')
