@@ -84,7 +84,7 @@ class PrintingUI(Screen):
         self.ids.dripper.update(data)
         if data['status'] == 'Complete':
             self.play_complete_sound()
-            self.ids.navigate_button.text = _("Print Complete, Close")
+            self.ids.navigate_button.text_source = _("Print Complete, Close")
 
     def print_file(self, *args, **kwargs):
         self.print_options = [self._print_file, args, kwargs]
@@ -130,7 +130,7 @@ class PrintingUI(Screen):
         if self.print_api:
             self.print_api.close()
         self.print_api = None
-        self.ids.navigate_button.text = _('Cancel Print')
+        self.ids.navigate_button.text_source = _('Cancel Print')
         last_print = App.get_running_app().last_print
         if last_print.print_type is "file":
             self.print_file(last_print.source, self.return_to)
@@ -155,6 +155,7 @@ class PrintingUI(Screen):
             value_label = BorderedLabel(text_source=value,  halign='right', borders=[0, 1.0, 1.0, 0])
             self.ids.print_settings.add_widget(title_label)
             self.ids.print_settings.add_widget(value_label)
+        self.ids.navigate_button.text_source = _('Cancel Print')
 
     def on_pre_leave(self):
         if self.print_api:

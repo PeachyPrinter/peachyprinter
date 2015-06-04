@@ -51,6 +51,8 @@ class I18NAccordionItem(AccordionItem):
 class I18NImageButton(Button):
     text_source = StringProperty()
     source = StringProperty()
+    # def on_text(*args):
+    #     Logger.error("FAIL FAIL")
 
 
 class ErrorPopup(I18NPopup):

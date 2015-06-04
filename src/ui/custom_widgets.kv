@@ -50,6 +50,7 @@
     on_press: image.color = [1.0,1.0,1.0,0.5]
     on_release: image.color = [1.0,1.0,1.0,1.0]
     text_height: "30dp"
+    atext: app.translation(root.text_source)
     orientation: 'horizontal'
     BoxLayout:
         pos: self.parent.pos
@@ -68,9 +69,8 @@
             pos: [root.pos[0], root.pos[1]]
         Label:
             id: label_text
-            text: app.translation(root.text_source)
+            text: root.atext
             size_hint_y: self.size_hint_y if root.orientation == 'horizontal' else None
-            #size_hint_x: self.size_hint_x if root.orientation == 'vertical' else None
             height: root.text_height
 
 <ErrorPopup>:
