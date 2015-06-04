@@ -8,7 +8,7 @@ from kivy.core.window import Window
 from kivy.clock import Clock
 from kivy.app import App
 from infrastructure.langtools import _
-from ui.custom_widgets import I18NTabbedPanelItem, ErrorPopup
+from ui.custom_widgets import I18NTabbedPanelItem, ErrorPopup, I18NImageToggleButton
 from ui.peachy_widgets import LaserWarningPopup
 
 
@@ -355,7 +355,8 @@ class TestPatternPanel(I18NTabbedPanelItem):
         if not self.loaded:
             items = self.calibration_api.get_test_patterns()
             for item in items:
-                self.ids.patterns.add_widget(ToggleButton(group='test_patterns',  text=item, on_release=self.show_pattern))
+                image_source = "resources/icons/laser_calibration-test_pattern_{0}-100x100.png".format(item.lower().replace(' ', '_'))
+                self.ids.patterns.add_widget(I18NImageToggleButton(group='test_patterns',  text_source=item, source=image_source, on_release=self.show_pattern))
             self.calibration_api.set_test_pattern_speed(self.speed)
             self.ids.patterns.children[-1].state = "down"
             self.loaded = True
@@ -368,9 +369,9 @@ class TestPatternPanel(I18NTabbedPanelItem):
         self.ids.current_height_slider.step = printer_height / 500
 
     def show_pattern(self, instance):
-        Logger.info("Loading: %s" % instance.text)
+        Logger.info("Loading: %s" % instance.text_source)
         if self.loaded:
-            self.calibration_api.show_test_pattern(instance.text)
+            self.calibration_api.show_test_pattern(instance.text_source)
 
     def on_speed(self, instance, value):
         if self.loaded:

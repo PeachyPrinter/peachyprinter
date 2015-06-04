@@ -9,9 +9,13 @@
             text_source: _("You are about to destory all of those settings you spent forever setting up")
         BoxLayout:
             orientation: "horizontal"
-            I18NButton:
+            I18NImageButton:
+                orientation: 'vertical'
+                source: "resources/icons/restore_defaults_proceed-48x48.png"
                 text_source: _("Yep, Nuke Em.")
                 on_release: root.restore_defaults(); app.root.current = 'mainui'
-            I18NButton:
+            I18NImageButton:
+                orientation: 'vertical'
+                source: "resources/icons/restore_defaults_abort_cancel-48x48.png"
                 text_source: _("No, No, Abort, Stop.")
                 on_release: app.root.current = 'mainui'
