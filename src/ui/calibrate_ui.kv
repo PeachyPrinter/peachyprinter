@@ -32,7 +32,8 @@
                 calibration_api: root.calibration_api
             TestPatternPanel:
                 calibration_api: root.calibration_api
-        I18NButton:
+        I18NImageButton:
+            source: "resources/icons/laser_calibration_back-24x24.png"
             text_source: _("Back")
             size_hint_y: None
             height: "30dp"
@@ -43,7 +44,8 @@
     BoxLayout:
         orientation: 'horizontal'
         padding: "5dp"
-        I18NButton:
+        I18NImageButton:
+            source: "resources/icons/general_help-24x24.png"
             text_source: _("Help me")
             on_release: I18NHelpPopup(text_source=_('MARKUP - Center Calibration Instructions'), title_source=_("Help - Calibration Setup"), size_hint=(0.9, 0.9)).open()
             size_hint_y:None
@@ -92,7 +94,8 @@
                     Label:
                         text: root.orient_swap_axis
                 Label:
-            I18NButton:
+            I18NImageButton:
+                source: "resources/icons/general_help-24x24.png"
                 text_source: _("Help me")
                 on_release: I18NHelpPopup(text_source=_('MARKUP - Orientation Instructions'), title_source=_("Help - Orientation"), size_hint=(0.9, 0.9)).open()
                 size_hint_y:None
@@ -259,7 +262,8 @@
     BoxLayout:
         orientation: 'horizontal'
         padding: "5dp"
-        I18NButton:
+        I18NImageButton:
+            source: "resources/icons/general_help-24x24.png"
             text_source: _("Help me")
             on_release: I18NHelpPopup(text_source=_('MARKUP - Print Area Instructions'), title_source=_("Help - Print Area"), size_hint=(0.9, 0.9)).open()
             size_hint_y:None
@@ -303,7 +307,8 @@
     BoxLayout:
         orientation: 'horizontal'
         padding: "5dp"
-        I18NButton:
+        I18NImageButton:
+            source: "resources/icons/general_help-24x24.png"
             text_source: _("Help me")
             on_release: I18NHelpPopup(text_source=_('MARKUP - Alignment Instructions'), title_source=_("Help - Alignment"), size_hint=(0.9, 0.9)).open()
             size_hint_y:None
@@ -363,7 +368,8 @@
                     bold: root.printer_point_emphasis
                 BoxLayout:
                     orientation: 'horizontal'
-                    I18NButton:
+                    I18NImageButton:
+                        source: "resources/icons/laser_calibration_rest_all_points-24x24.png"
                         text_source: _('Reset All')
                         on_release: root.reset_points()
                 Label:
@@ -381,7 +387,8 @@
                     Ellipse:
                         pos: root.example_dot
                         size: [8,8]
-            I18NButton:
+            I18NImageButton:
+                source: "resources/icons/general_help-24x24.png"
                 text_source: _("Help me")
                 on_release: I18NHelpPopup(text_source=_('MARKUP - Calibration Instructions'), title_source=_("Help - Calibration"), size_hint=(0.9, 0.9)).open()
                 size_hint_y:None
@@ -453,7 +460,8 @@
                         value: 0.0
                         on_value: root.current_height = self.value
 
-            I18NButton:
+            I18NImageButton:
+                source: "resources/icons/general_help-24x24.png"
                 text_source: _("Help me")
                 on_release: I18NHelpPopup(text_source=_('MARKUP - Test Pattern Instructions'), title_source=_("Help - Test Patterns"), size_hint=(0.9, 0.9)).open()
                 size_hint_y:None

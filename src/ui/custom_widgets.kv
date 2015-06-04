@@ -35,13 +35,15 @@
             keep_ratio: True
             size_hint_y: self.size_hint_y if root.orientation == 'horizontal' else None
             size_hint_x: self.size_hint_x if root.orientation == 'vertical' else None
-            width: min(self.texture_size[0], self.parent.width)
-            height: min(self.texture_size[1], self.parent.height)
+            width: min(self.texture_size[0], root.width) if root.orientation == 'horizontal' else max(self.texture_size[0], root.width)
+            height: min(self.texture_size[1], root.height) if root.orientation == 'vertical' else max(self.texture_size[1], root.height)
             source: root.source
             pos: [root.pos[0], root.pos[1]]
         Label:
+            id: label_text
             text: app.translation(root.text_source)
-            size_hint_y: None
+            size_hint_y: self.size_hint_y if root.orientation == 'horizontal' else None
+            #size_hint_x: self.size_hint_x if root.orientation == 'vertical' else None
             height: root.text_height
 
 <ErrorPopup>:

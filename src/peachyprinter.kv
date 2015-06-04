@@ -90,11 +90,13 @@
         BoxLayout:
             size_hint_y: None
             height: "30dp"
-            I18NButton:
+            I18NImageButton:
+                source: "resources/icons/main_screen-load_file_cancel-24x24.png"
                 text_source: _('Cancel')
                 on_release: root.cancel()
 
-            I18NButton:
+            I18NImageButton:
+                source: "resources/icons/main_screen-load_file_load-24x24.png"
                 text_source: _('Load')
                 on_release: root.load(filechooser.path, filechooser.selection, float(starting_height.text))
 
