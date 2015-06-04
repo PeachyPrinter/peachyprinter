@@ -38,13 +38,15 @@
             size_hint_y: None
             height: "30dp"
             orientation: "horizontal"
-            I18NButton:
+            I18NImageButton:
+                source: "resources/icons/printing_restart-24x24.png"
                 id: restart_button
                 text_source: _('Restart Print')
                 on_release: root.restart()
-            I18NButton:
+            I18NImageButton:
+                source: "resources/icons/printing_cancel-24x24.png"
                 id: navigate_button
                 text_source: _('Cancel Print')
                 on_release: app.root.current = root.return_to
-
+                
 

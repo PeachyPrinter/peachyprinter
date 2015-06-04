@@ -18,7 +18,7 @@
                     size_hint_y: None
                     height: "30dp"
                     orientation: 'horizontal'
-                    I18NLabel:
+                    I18NLabel:k
                         text_source: _('Dripper Type')
                     I18NKeyedSpinner:
                         id: dripper_type_selector
@@ -29,14 +29,16 @@
                         on_key: root.dripper_type_changed(self, self.key)
                 BoxLayout:
                     id: dripper_setup
-                I18NButton:
+                I18NImageButton:
+                    source: "/resources/icons/general_help-24x24.png"
                     text_source: _("Help me")
                     on_release: I18NHelpPopup(text_source=_('MARKUP - Dripper Instructions'), title_source=_("Help - Dripper Settings"), size_hint=(0.9, 0.9)).open()
                     size_hint_y:None
                     height: "30dp"
             BoxLayout:
                 id: visualizations
-        I18NButton:
+        I18NImageButton:
+            source: "/resources/icons/general_back-24x24.png"
             text_source: _("Back")
             size_hint_y: None
             height: "30dp"
@@ -103,7 +105,8 @@
             Label:
                 size_hint_y: None
                 height: "10dp"
-            I18NButton:
+            I18NImageButton:
+                source: "/resources/icons/dripper_calibration_reset_drip_count-24x24.png"
                 size_hint_y: None
                 height: "30dp"
                 text_source: _("Reset Drip Count")
@@ -132,7 +135,8 @@
                     text_source: _('Current Drips per mm')
                 Label:
                     text: '%.2f' % root.current_drips_per_mm
-            I18NButton:
+            I18NImageButton:
+                source: "/resources/icons/dripper_calibration_use_current_drips_per_mm-24x24.png"
                 size_hint_y: None
                 height: "30dp"
                 text_source: _("Use Current Drips per mm")
@@ -152,4 +156,4 @@
             on_text: root.drips_per_mm = float(self.text)
     Label:
         size_hint_y: None
-        height: "10dp"        
+        height: "10dp"
