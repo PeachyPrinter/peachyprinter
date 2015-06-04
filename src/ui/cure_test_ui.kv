@@ -88,7 +88,8 @@
                     Label:
                         size_hint_y: None
                         height: "10dp"
-                    I18NButton:
+                    I18NImageButton:
+                        source: "resources/icons/cure_rate_test_run_cure_test-24x24.png"
                         size_hint_y: None
                         height: "30dp"
                         text_source: _('Run Cure Test Now')
@@ -149,7 +150,8 @@
                             text: '0.0'
                             on_text: root.override_laser_power_amount = float(self.text)
                 Label:
-                I18NButton:
+                I18NImageButton:
+                    source: "resources/icons/general_help-24x24.png"
                     text_source: _("Help me")
                     on_release: I18NHelpPopup(text=_('Markup- Cure Rate'), title=_("Help - Cure Rate Settings"), size_hint=(0.9, 0.9)).open()
                     size_hint_y:None
@@ -192,13 +194,15 @@
                         Label:
                             id: best_draw_speed
                             text: '%.2f' % ((best_height.value / root.test_height) * (root.stop_speed - root.start_speed) + root.start_speed)
-                    I18NButton:
+                    I18NImageButton:
+                        source: "resources/icons/cure_rate_test_use_best_draw_speed-24x24.png"
                         size_hint_y: None
                         height: "30dp"
                         text_source: _('Use Best Draw Speed')
                         on_release: draw_speed_id.text = best_draw_speed.text; root.draw_speed = float(best_draw_speed.text)
                     Label:
-        I18NButton:
+        I18NImageButton:
+            source: "resources/icons/general_back-24x24.png"
             size_hint_y: None
             height: "30dp"
             text_source: _('Back')
