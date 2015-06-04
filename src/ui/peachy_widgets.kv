@@ -1,3 +1,6 @@
+#:kivy 1.9.0
+#:import _ __main__._
+
 <Dripper>:
 
 <I18NHelpPopup>:
@@ -33,12 +36,14 @@
                 size_hint_y: None
                 height: self.texture_size[1]
         BoxLayout:
-            I18NButton:
+            I18NImageButton:
+                source: "resources/icons/laser_safety_turn_on_laser-24x24.png"
                 text_source: _('Turn on Laser')
                 size_hint_y:None
                 height: "30dp"
                 on_release: root.accepted = "True"; root.dismiss()
-            I18NButton:
+            I18NImageButton:
+                source: "resources/icons/laser_safety_cancel-24x24.png"
                 text_source: _('Cancel')
                 size_hint_y:None
                 height: "30dp"
