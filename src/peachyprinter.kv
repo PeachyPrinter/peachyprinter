@@ -10,22 +10,28 @@
     title: _('Settings Selection')
     BoxLayout:
         orientation: 'vertical'
-        I18NButton:
+        I18NImageButton:
+            source: "resources/icons/main_screen-setting_selection_laser_calibration-48x48.png"
             text_source: _('Laser Calibration')
             on_release: root.dismiss(); app.root.current = 'calibrationui'
-        I18NButton:
+        I18NImageButton:
+            source: "resources/icons/main_screen-setting_selection_dripper_calibration-48x48.png"
             text_source: _('Dripper Calibration')
             on_release: root.dismiss(); app.root.current = 'drippercalibrationui'
-        I18NButton:
+        I18NImageButton:
+            source: "resources/icons/main_screen-setting_selection_resin_curing_calibration-48x48.png"
             text_source: _('Resin Curing Calibration')
             on_release: root.dismiss(); app.root.current = 'curetestui'
-        I18NButton:
+        I18NImageButton:
+            source: "resources/icons/main_screen-setting_selection_advanced_settings-48x48.png"
             text_source: _('Advanced Settings')
             on_release: app.open_settings()
-        I18NButton:
+        I18NImageButton:
+            source: "resources/icons/main_screen-setting_selection_restore_defaults-48x48.png"
             text_source: _('Restore Defaults')
             on_release: root.dismiss(); app.root.current = 'restoreui'
-        I18NButton:
+        I18NImageButton:
+            source: "resources/icons/main_screen-setting_selection_close-48x48.png"
             text_source: _('Close')
             on_release: root.dismiss()
 
@@ -40,10 +46,14 @@
             BoxLayout:
                 size_hint: [0.3, 1.0]
                 orientation: 'vertical'
-                I18NButton:
+                I18NImageButton:
+                    orientation:'vertical'
+                    source: "resources/icons/main_screen_print_from_file-48x48.png"
                     text_source: _('Print from file')
                     on_release: mainui.show_load()
-                I18NButton:
+                I18NImageButton:
+                    orientation:'vertical'
+                    source: "resources/icons/main_screen_print_from_library-48x48.png"
                     text_source: _('Print from library')
                     on_release: app.root.current = 'libraryui'
             Image:
