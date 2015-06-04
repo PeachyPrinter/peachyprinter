@@ -40,6 +40,7 @@ class PrintStatus(LabelGridLayout):
             self.add_widget(self.content[key])
 
     def update(self, data):
+        Logger.info(str(data))
         if 'status' in data:
             self.content['status'].text = '{0}'.format(data['status'])
         if 'model_height' in data:
@@ -53,7 +54,7 @@ class PrintStatus(LabelGridLayout):
         if 'drips_per_second' in data:
             self.content['drips_per_second'].text = '{:.2f}'.format(data['drips_per_second'])
         if 'errors' in data:
-            self.content['errors'].text = ''.format(data['errors'])
+            self.content['errors'].text = '{0}'.format(','.join([str(error['message']) for error in data['errors']]))
         if 'waiting_for_drips' in data:
             self.content['waiting_for_drips'].text = '{0}'.format(data['waiting_for_drips'])
         if 'elapsed_time' in data:
@@ -85,6 +86,9 @@ class PrintingUI(Screen):
         if data['status'] == 'Complete':
             self.play_complete_sound()
             self.ids.navigate_button.text_source = _("Print Complete, Close")
+        if data['status'] == 'Failed':
+            self.play_failed_sound()
+            self.ids.navigate_button.text_source = _("Print Failed, Close")
 
     def print_file(self, *args, **kwargs):
         self.print_options = [self._print_file, args, kwargs]
@@ -142,6 +146,15 @@ class PrintingUI(Screen):
 
     def play_complete_sound(self):
         sound_file = resource_find("complete.wav")
+        if sound_file:
+            sound = SoundLoader.load(sound_file)
+            if sound:
+                sound.play()
+        else:
+            Logger.warning("Sound was unfound")
+
+    def play_failed_sound(self):
+        sound_file = resource_find("fail.wav")
         if sound_file:
             sound = SoundLoader.load(sound_file)
             if sound:
