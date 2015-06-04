@@ -49,10 +49,12 @@
             BoxLayout:
                 size_hint: [1.0, 60 / root.height]
                 orientation: 'horizontal'
-                I18NButton:
+                I18NImageButton:
+                    source: "resources/icons/library_cancel-24x24.png"
                     text_source: _("Cancel")
                     on_release: root.dismiss()
-                I18NButton:
+                I18NImageButton:
+                    source: "resources/icons/library_print_now-24x24.png"
                     text_source: _("Print Now")
                     on_release: root.dismiss(); root.print_from_library()
 
@@ -64,7 +66,8 @@
             GridLayout:
                 id: library_grid
                 cols: 2
-        I18NButton:
+        I18NImageButton:
+            source: "resources/icons/general_back-24x24.png"
             size_hint: [1.0, 0.05]
             text_source: _('Back')
             on_release: app.root.current = 'mainui'
