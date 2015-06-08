@@ -12,26 +12,34 @@
             id:tab_panel
             tab_pos: "top_left"
             do_default_tab: False
-            CenterPanel:
-                calibration_api: root.calibration_api
-            OrientationPanel:
-                calibration_api: root.calibration_api
-            AlignmentPanel:
-                calibration_api: root.calibration_api
-            PrintAreaPanel:
-                calibration_api: root.calibration_api
-            CalibrationPanel:
+            I18NImageTabbedPanelHeader:
+                id: center_panel
+                text_source: _("Center")
+                source: "resources/icons/laser_calibration_center-24x24.png"
+            I18NImageTabbedPanelHeader:
+                id: orientation_panel
+                text_source: _("Orientation")
+                source: "resources/icons/laser_calibration_orientation-24x24.png"
+            I18NImageTabbedPanelHeader:
+                id: alignment_panel
+                text_source: _("Aligment")
+                source: "resources/icons/laser_calibration_alignment-24x24.png"
+            I18NImageTabbedPanelHeader:
+                id: print_area_panel
+                text_source: _("Print Area")
+                source: "resources/icons/laser_calibration_print_area-24x24.png"
+            I18NImageTabbedPanelHeader:
+                id: calibration_panel_top
                 text_source: _('Top')
-                calibration_type: 'top'
-                calibration_height: 666
-                calibration_api: root.calibration_api
-            CalibrationPanel:
+                source: "resources/icons/laser_calibration_top-24x24.png"
+            I18NImageTabbedPanelHeader:
+                id: calibration_panel_bottom
                 text_source: _('Bottom')
-                calibration_type: 'bottom'
-                calibration_height: 0
-                calibration_api: root.calibration_api
-            TestPatternPanel:
-                calibration_api: root.calibration_api
+                source: "resources/icons/laser_calibration_bottom-24x24.png"
+            I18NImageTabbedPanelHeader:
+                id: test_pattern_panel
+                text_source: _("Test Patterns")
+                source: "resources/icons/laser_calibration_patterns-24x24.png"
         I18NImageButton:
             source: "resources/icons/general_back-24x24.png"
             text_source: _("Back")
@@ -40,291 +48,289 @@
             on_release: app.root.current = 'mainui'
 
 <CenterPanel>:
-    text_source: _("Center")
-    BoxLayout:
-        orientation: 'horizontal'
-        padding: "5dp"
-        I18NImageButton:
-            source: "resources/icons/general_help-24x24.png"
-            text_source: _("Help me")
-            on_release: I18NHelpPopup(text_source=_('MARKUP - Center Calibration Instructions'), title_source=_("Help - Calibration Setup"), size_hint=(0.9, 0.9)).open()
-            size_hint_y:None
-            height: "30dp"
-        Image:
-            pos: self.parent.pos
-            size: self.parent.size
-            source: "resources/grid.png"
-            allow_stretch: True
-            canvas.after:
-                Color:
-                    rgba: 0, 1, 0, 1
-                Ellipse:
-                    pos: [self.center[0] - 4, self.center[1] -4]
-                    size: [8,8]
+    orientation: 'horizontal'
+    padding: "5dp"
+    I18NImageButton:
+        source: "resources/icons/general_help-24x24.png"
+        text_source: _("Help me")
+        on_release: I18NHelpPopup(text_source=_('MARKUP - Center Calibration Instructions'), title_source=_("Help - Calibration Setup"), size_hint=(0.9, 0.9)).open()
+        size_hint_y:None
+        height: "30dp"
+    Image:
+        pos: self.parent.pos
+        size: self.parent.size
+        source: "resources/grid.png"
+        allow_stretch: True
+        canvas.after:
+            Color:
+                rgba: 0, 1, 0, 1
+            Ellipse:
+                pos: [self.center[0] - 4, self.center[1] -4]
+                size: [8,8]
 
 <OrientationPanel>:
-    text_source: _("Orientation")
+    orientation: 'horizontal'
     BoxLayout:
-        orientation: 'horizontal'
+        size_hint_x: 0.6
+        orientation: 'vertical'
         BoxLayout:
-            size_hint_x: 0.6
+            size_hint_y: 0.5
             orientation: 'vertical'
             BoxLayout:
-                size_hint_y: 0.5
-                orientation: 'vertical'
-                BoxLayout:
-                    size_hint_y: 40.0 / self.parent.height
-                    orientation: 'horizontal'
-                    Label:
-                        text: "Flipped on X:"
-                    Label:
-                        text: root.orient_xflip
-                BoxLayout:
-                    size_hint_y: 40.0 / self.parent.height
-                    orientation: 'horizontal'
-                    Label:
-                        text: "Flipped on y:"
-                    Label:
-                        text: root.orient_yflip
-                BoxLayout:
-                    size_hint_y: 40.0 / self.parent.height
-                    orientation: 'horizontal'
-                    Label:
-                        text: 'Swapped Axis:'
-                    Label:
-                        text: root.orient_swap_axis
-                Label:
-            I18NImageButton:
-                source: "resources/icons/general_help-24x24.png"
-                text_source: _("Help me")
-                on_release: I18NHelpPopup(text_source=_('MARKUP - Orientation Instructions'), title_source=_("Help - Orientation"), size_hint=(0.9, 0.9)).open()
-                size_hint_y:None
+                size_hint_y: None
                 height: "30dp"
-        GridLayout:
-            id: orientations
-            cols:4
-            ToggleButton:
-                state: 'down'
-                configuration: (0, 0, 0)
-                on_release: root.update_orientation(*self.configuration)
-                id: orient_000
-                allow_no_selection: False
-                group: 'orientation'
-                Image:
-                    allow_stretch: True
-                    center: self.parent.center
-                    source: 'resources/orientation.png'
-            ToggleButton:
-                configuration: (0, 1, 1)
-                on_release: root.update_orientation(*self.configuration)
-                id: orient_011
-                allow_no_selection: False
-                group: 'orientation'
-                Image:
-                    allow_stretch: True
-                    center: self.parent.center
-                    source: 'resources/orientation.png'
-                    canvas.before:
-                        PushMatrix
-                        Rotate:
-                            angle: 270
-                            axis: 0, 0, 1
-                            origin: self.parent.center
-                    canvas.after:
-                        PopMatrix
-            ToggleButton:
-                configuration: (1, 0, 1)
-                on_release: root.update_orientation(*self.configuration)
-                id: orient_101
-                allow_no_selection: False
-                group: 'orientation'
-                Image:
-                    allow_stretch: True
-                    center: self.parent.center
-                    source: 'resources/orientation.png'
-                    canvas.before:
-                        PushMatrix
-                        Rotate:
-                            angle: 90
-                            axis: 0, 0, 1
-                            origin: self.parent.center
-                    canvas.after:
-                        PopMatrix
-            ToggleButton:
-                configuration: (1, 1, 0)
-                on_release: root.update_orientation(*self.configuration)
-                id: orient_110
-                allow_no_selection: False
-                group: 'orientation'
-                Image:
-                    allow_stretch: True
-                    center: self.parent.center
-                    source: 'resources/orientation.png'
-                    canvas.before:
-                        PushMatrix
-                        Rotate:
-                            angle: 180
-                            axis: 0, 0, 1
-                            origin: self.parent.center
-                    canvas.after:
-                        PopMatrix
-            ToggleButton:
-                configuration: (0, 1, 0)
-                on_release: root.update_orientation(*self.configuration)
-                id: orient_010
-                allow_no_selection: False
-                group: 'orientation'
-                Image:
-                    allow_stretch: True
-                    center: self.parent.center
-                    source: 'resources/orientation.png'
-                    canvas.before:
-                        PushMatrix
-                        Rotate:
-                            angle: 0
-                            axis: 0, 0, 1
-                            origin: self.parent.center
-                        Rotate:
-                            angle: 180
-                            axis: 1, 0, 0
-                            origin:self.parent.center
-                    canvas.after:
-                        PopMatrix
-            ToggleButton:
-                configuration: (1, 1, 1)
-                on_release: root.update_orientation(*self.configuration)
-                id: orient_111
-                allow_no_selection: False
-                group: 'orientation'
-                Image:
-                    allow_stretch: True
-                    center: self.parent.center
-                    source: 'resources/orientation.png'
-                    canvas.before:
-                        PushMatrix
-                        Rotate:
-                            angle: 270
-                            axis: 0, 0, 1
-                            origin: self.parent.center
-                        Rotate:
-                            angle: 180
-                            axis: 1, 0, 0
-                            origin:self.parent.center
-                    canvas.after:
-                        PopMatrix
-            ToggleButton:
-                configuration: (0, 0, 1)
-                on_release: root.update_orientation(*self.configuration)
-                id: orient_001
-                allow_no_selection: False
-                group: 'orientation'
-                Image:
-                    allow_stretch: True
-                    center: self.parent.center
-                    source: 'resources/orientation.png'
-                    canvas.before:
-                        PushMatrix
-                        Rotate:
-                            angle: 90
-                            axis: 0, 0, 1
-                            origin: self.parent.center
-                        Rotate:
-                            angle: 180
-                            axis: 1, 0, 0
-                            origin:self.parent.center
-                    canvas.after:
-                        PopMatrix
-            ToggleButton:
-                configuration: (1, 0, 0)
-                on_release: root.update_orientation(*self.configuration)
-                id: orient_100
-                allow_no_selection: False
-                group: 'orientation'
-                Image:
-                    allow_stretch: True
-                    center: self.parent.center
-                    source: 'resources/orientation.png'
-                    canvas.before:
-                        PushMatrix
-                        Rotate:
-                            angle: 180
-                            axis: 0, 0, 1
-                            origin: self.parent.center
-                        Rotate:
-                            angle: 180
-                            axis: 1, 0, 0
-                            origin:self.parent.center
-                    canvas.after:
-                        PopMatrix
+                orientation: 'horizontal'
+                Label:
+                    text: "Flipped on X:"
+                Label:
+                    text: root.orient_xflip
+            BoxLayout:
+                size_hint_y: None
+                height: "30dp"
+                orientation: 'horizontal'
+                Label:
+                    text: "Flipped on y:"
+                Label:
+                    text: root.orient_yflip
+            BoxLayout:
+                size_hint_y: None
+                height: "30dp"
+                orientation: 'horizontal'
+                Label:
+                    text: 'Swapped Axis:'
+                Label:
+                    text: root.orient_swap_axis
+            Label:
+        I18NImageButton:
+            source: "resources/icons/general_help-24x24.png"
+            text_source: _("Help me")
+            on_release: I18NHelpPopup(text_source=_('MARKUP - Orientation Instructions'), title_source=_("Help - Orientation"), size_hint=(0.9, 0.9)).open()
+            size_hint_y:None
+            height: "30dp"
+    GridLayout:
+        id: orientations
+        cols:4
+        ToggleButton:
+            state: 'down'
+            configuration: (0, 0, 0)
+            on_release: root.update_orientation(*self.configuration)
+            id: orient_000
+            allow_no_selection: False
+            group: 'orientation'
+            Image:
+                allow_stretch: True
+                center: self.parent.center
+                source: 'resources/orientation.png'
+        ToggleButton:
+            configuration: (0, 1, 1)
+            on_release: root.update_orientation(*self.configuration)
+            id: orient_011
+            allow_no_selection: False
+            group: 'orientation'
+            Image:
+                allow_stretch: True
+                center: self.parent.center
+                source: 'resources/orientation.png'
+                canvas.before:
+                    PushMatrix
+                    Rotate:
+                        angle: 270
+                        axis: 0, 0, 1
+                        origin: self.parent.center
+                canvas.after:
+                    PopMatrix
+        ToggleButton:
+            configuration: (1, 0, 1)
+            on_release: root.update_orientation(*self.configuration)
+            id: orient_101
+            allow_no_selection: False
+            group: 'orientation'
+            Image:
+                allow_stretch: True
+                center: self.parent.center
+                source: 'resources/orientation.png'
+                canvas.before:
+                    PushMatrix
+                    Rotate:
+                        angle: 90
+                        axis: 0, 0, 1
+                        origin: self.parent.center
+                canvas.after:
+                    PopMatrix
+        ToggleButton:
+            configuration: (1, 1, 0)
+            on_release: root.update_orientation(*self.configuration)
+            id: orient_110
+            allow_no_selection: False
+            group: 'orientation'
+            Image:
+                allow_stretch: True
+                center: self.parent.center
+                source: 'resources/orientation.png'
+                canvas.before:
+                    PushMatrix
+                    Rotate:
+                        angle: 180
+                        axis: 0, 0, 1
+                        origin: self.parent.center
+                canvas.after:
+                    PopMatrix
+        ToggleButton:
+            configuration: (0, 1, 0)
+            on_release: root.update_orientation(*self.configuration)
+            id: orient_010
+            allow_no_selection: False
+            group: 'orientation'
+            Image:
+                allow_stretch: True
+                center: self.parent.center
+                source: 'resources/orientation.png'
+                canvas.before:
+                    PushMatrix
+                    Rotate:
+                        angle: 0
+                        axis: 0, 0, 1
+                        origin: self.parent.center
+                    Rotate:
+                        angle: 180
+                        axis: 1, 0, 0
+                        origin:self.parent.center
+                canvas.after:
+                    PopMatrix
+        ToggleButton:
+            configuration: (1, 1, 1)
+            on_release: root.update_orientation(*self.configuration)
+            id: orient_111
+            allow_no_selection: False
+            group: 'orientation'
+            Image:
+                allow_stretch: True
+                center: self.parent.center
+                source: 'resources/orientation.png'
+                canvas.before:
+                    PushMatrix
+                    Rotate:
+                        angle: 270
+                        axis: 0, 0, 1
+                        origin: self.parent.center
+                    Rotate:
+                        angle: 180
+                        axis: 1, 0, 0
+                        origin:self.parent.center
+                canvas.after:
+                    PopMatrix
+        ToggleButton:
+            configuration: (0, 0, 1)
+            on_release: root.update_orientation(*self.configuration)
+            id: orient_001
+            allow_no_selection: False
+            group: 'orientation'
+            Image:
+                allow_stretch: True
+                center: self.parent.center
+                source: 'resources/orientation.png'
+                canvas.before:
+                    PushMatrix
+                    Rotate:
+                        angle: 90
+                        axis: 0, 0, 1
+                        origin: self.parent.center
+                    Rotate:
+                        angle: 180
+                        axis: 1, 0, 0
+                        origin:self.parent.center
+                canvas.after:
+                    PopMatrix
+        ToggleButton:
+            configuration: (1, 0, 0)
+            on_release: root.update_orientation(*self.configuration)
+            id: orient_100
+            allow_no_selection: False
+            group: 'orientation'
+            Image:
+                allow_stretch: True
+                center: self.parent.center
+                source: 'resources/orientation.png'
+                canvas.before:
+                    PushMatrix
+                    Rotate:
+                        angle: 180
+                        axis: 0, 0, 1
+                        origin: self.parent.center
+                    Rotate:
+                        angle: 180
+                        axis: 1, 0, 0
+                        origin:self.parent.center
+                canvas.after:
+                    PopMatrix
 
 <PrintAreaPanel>:
-    text_source: _("Print Area")
+    orientation: 'horizontal'
+    padding: "5dp"
+    I18NImageButton:
+        source: "resources/icons/general_help-24x24.png"
+        text_source: _("Help me")
+        on_release: I18NHelpPopup(text_source=_('MARKUP - Print Area Instructions'), title_source=_("Help - Print Area"), size_hint=(0.9, 0.9)).open()
+        size_hint_y:None
+        height: "30dp"
     BoxLayout:
-        orientation: 'horizontal'
-        padding: "5dp"
-        I18NImageButton:
-            source: "resources/icons/general_help-24x24.png"
-            text_source: _("Help me")
-            on_release: I18NHelpPopup(text_source=_('MARKUP - Print Area Instructions'), title_source=_("Help - Print Area"), size_hint=(0.9, 0.9)).open()
-            size_hint_y:None
-            height: "30dp"
+        orientation: 'vertical'
         BoxLayout:
-            orientation: 'vertical'
-            BoxLayout:
-                size_hint_y: 40.0 / self.parent.height
-                orientation: 'horizontal'
-                I18NLabel:
-                    text_source: _('Height (mm)')
-                FloatInput:
-                    size_hint_x: 0.3
-                    id: print_area_height
-                    text: ""
-                Label:
-            BoxLayout:
-                size_hint_y: 40.0 / self.parent.height
-                orientation: 'horizontal'
-                I18NLabel:
-                    text_source: _('Depth (mm)')
-                FloatInput:
-                    size_hint_x: 0.3
-                    id: print_area_depth
-                    text: ""
-                Label:
-            BoxLayout:
-                size_hint_y: 40.0 / self.parent.height
-                orientation: 'horizontal'
-                I18NLabel:
-                    text_source: _('Width (mm)')
-                FloatInput:
-                    size_hint_x: 0.3
-                    id: print_area_width
-                    text: ""
-                Label:
+            size_hint_y: None
+            height: "30dp"
+            orientation: 'horizontal'
+            I18NLabel:
+                text_source: _('Height (mm)')
+            FloatInput:
+                size_hint_x: 0.3
+                id: print_area_height
+                text: ""
             Label:
+        BoxLayout:
+            size_hint_y: None
+            height: "30dp"
+            orientation: 'horizontal'
+            I18NLabel:
+                text_source: _('Depth (mm)')
+            FloatInput:
+                size_hint_x: 0.3
+                id: print_area_depth
+                text: ""
+            Label:
+        BoxLayout:
+            size_hint_y: None
+            height: "30dp"
+            orientation: 'horizontal'
+            I18NLabel:
+                text_source: _('Width (mm)')
+            FloatInput:
+                size_hint_x: 0.3
+                id: print_area_width
+                text: ""
+            Label:
+        Label:
 
 <AlignmentPanel>:
-    text_source: _("Aligment")
-    BoxLayout:
-        orientation: 'horizontal'
-        padding: "5dp"
-        I18NImageButton:
-            source: "resources/icons/general_help-24x24.png"
-            text_source: _("Help me")
-            on_release: I18NHelpPopup(text_source=_('MARKUP - Alignment Instructions'), title_source=_("Help - Alignment"), size_hint=(0.9, 0.9)).open()
-            size_hint_y:None
-            height: "30dp"
-        Image:
-            pos: self.parent.pos
-            size: self.parent.size
-            source: "resources/grid.png"
-            allow_stretch: True
-            canvas.after:
-                Color:
-                    rgba: 0, 1, 0, 1
-                Line:
-                    points: [self.pos[0] +5, self.center[1], self.pos[0]+self.size[0] -5, self.center[1]]
-                    width: 4
-                    cap: 'round'
+    orientation: 'horizontal'
+    padding: "5dp"
+    I18NImageButton:
+        source: "resources/icons/general_help-24x24.png"
+        text_source: _("Help me")
+        on_release: I18NHelpPopup(text_source=_('MARKUP - Alignment Instructions'), title_source=_("Help - Alignment"), size_hint=(0.9, 0.9)).open()
+        size_hint_y:None
+        height: "30dp"
+    Image:
+        pos: self.parent.pos
+        size: self.parent.size
+        source: "resources/grid.png"
+        allow_stretch: True
+        canvas.after:
+            Color:
+                rgba: 0, 1, 0, 1
+            Line:
+                points: [self.pos[0] +5, self.center[1], self.pos[0]+self.size[0] -5, self.center[1]]
+                width: 4
+                cap: 'round'
 
 <CalibrationPoint>:
     orientation: 'horizontal'
@@ -343,129 +349,126 @@
         text: root.toggle_text
 
 <CalibrationPanel>:
+    orientation: 'horizontal'
+    padding: "5dp"
     BoxLayout:
-        orientation: 'horizontal'
         padding: "5dp"
+        size_hint_x: 0.6
+        orientation: 'vertical'
         BoxLayout:
-            padding: "5dp"
-            size_hint_x: 0.6
             orientation: 'vertical'
+            size_hint_y: 2.0
+            I18NImageToggleButton:
+                id: super_accurate
+                source: "resources/icons/laser_calibration_super_accurate_mode-24x24.png"
+                text_source: _('Super Accurate Mode')
+                on_release: root.super_accurate_mode()
+            Label:
+                size_hint_y:0.2
             BoxLayout:
                 orientation: 'vertical'
-                size_hint_y: 2.0
-                I18NImageToggleButton:
-                    id: super_accurate
-                    source: "resources/icons/laser_calibration_super_accurate_mode-24x24.png"
-                    text_source: _('Super Accurate Mode')
-                    on_release: root.super_accurate_mode()
-                Label:
-                    size_hint_y:0.2
-                BoxLayout:
-                    orientation: 'vertical'
-                    size_hint: [1.0, len(self.children)]
-                    id: point_selections
-                Label:
-                    text: root.printer_point_text
-                    bold: root.printer_point_emphasis
-                BoxLayout:
-                    orientation: 'horizontal'
-                    I18NImageButton:
-                        source: "resources/icons/laser_calibration_rest_all_points-24x24.png"
-                        text_source: _('Reset All')
-                        on_release: root.reset_points()
-                Label:
-                    size_hint_y:0.2
-            Image:
-                id: example_grid
-                pos: self.parent.pos
-                padding:10
-                size: self.parent.size
-                source: "resources/grid_small.png"
-                allow_stretch: True
-                canvas:
-                    Color:
-                        rgba: 0, 1, 0, 1
-                    Ellipse:
-                        pos: root.example_dot
-                        size: [8,8]
-            I18NImageButton:
-                source: "resources/icons/general_help-24x24.png"
-                text_source: _("Help me")
-                on_release: I18NHelpPopup(text_source=_('MARKUP - Calibration Instructions'), title_source=_("Help - Calibration"), size_hint=(0.9, 0.9)).open()
-                size_hint_y:None
-                height: "30dp"
-        Image:
-            id: top_calibration_grid
-            pos: self.parent.pos
-            size: self.parent.size
-            source: "resources/grid.png"
-            allow_stretch: True
-            canvas.before:
-                Color:
-                    rgba: 0.0, 0.0, 0.0, 1
-                Rectangle:
-                    pos:  [ self.x + max(0, self.width - self.height) / 2, self.y + max(0, self.height - self.width) / 2 ]
-                    size: (min(self.size), min(self.size))
-            canvas.after:
-                Color:
-                    rgba: root.calibration_point_color
-                Ellipse:
-                    pos: [root.calibration_point[0] - 4,root.calibration_point[1] - 4]
-                    size: [8,8]
-
-<TestPatternPanel>:
-    text_source: _("Test Patterns")
-    BoxLayout:
-        orientation: 'horizontal'
-        padding: "5dp"
-        BoxLayout:
-            size_hint_x: 0.6
-            orientation: 'vertical'
+                size_hint: [1.0, len(self.children)]
+                id: point_selections
+            Label:
+                text: root.printer_point_text
+                bold: root.printer_point_emphasis
             BoxLayout:
                 orientation: 'horizontal'
-                BoxLayout:
+                I18NImageButton:
+                    source: "resources/icons/laser_calibration_rest_all_points-24x24.png"
+                    text_source: _('Reset All')
+                    on_release: root.reset_points()
+            Label:
+                size_hint_y:0.2
+        Image:
+            id: example_grid
+            pos: self.parent.pos
+            padding:10
+            size: self.parent.size
+            source: "resources/grid_small.png"
+            allow_stretch: True
+            canvas:
+                Color:
+                    rgba: 0, 1, 0, 1
+                Ellipse:
+                    pos: root.example_dot
+                    size: [8,8]
+        I18NImageButton:
+            source: "resources/icons/general_help-24x24.png"
+            text_source: _("Help me")
+            on_release: I18NHelpPopup(text_source=_('MARKUP - Calibration Instructions'), title_source=_("Help - Calibration"), size_hint=(0.9, 0.9)).open()
+            size_hint_y:None
+            height: "30dp"
+    Image:
+        id: top_calibration_grid
+        pos: self.parent.pos
+        size: self.parent.size
+        source: "resources/grid.png"
+        allow_stretch: True
+        canvas.before:
+            Color:
+                rgba: 0.0, 0.0, 0.0, 1
+            Rectangle:
+                pos:  [ self.x + max(0, self.width - self.height) / 2, self.y + max(0, self.height - self.width) / 2 ]
+                size: (min(self.size), min(self.size))
+        canvas.after:
+            Color:
+                rgba: root.calibration_point_color
+            Ellipse:
+                pos: [root.calibration_point[0] - 4,root.calibration_point[1] - 4]
+                size: [8,8]
+
+<TestPatternPanel>:
+    orientation: 'horizontal'
+    padding: "5dp"
+    BoxLayout:
+        size_hint_x: 0.6
+        orientation: 'vertical'
+        BoxLayout:
+            orientation: 'horizontal'
+            BoxLayout:
+                orientation: 'vertical'
+                TouchyLabel:
+                    on_is_on: speed_slider.max = 100000
+                    text_source: _("Speed")
+                    size_hint_y: None
+                    height: "30dp"
+                Label:
+                    text: '%.f (mm/sec)' % root.speed
+                    size_hint_y: None
+                    height: "30dp"
+                Slider:
                     orientation: 'vertical'
-                    TouchyLabel:
-                        on_is_on: speed_slider.max = 100000
-                        text_source: _("Speed")
-                        size_hint_y: None
-                        height: "30dp"
-                    Label:
-                        text: '%.f (mm/sec)' % root.speed
-                        size_hint_y: None
-                        height: "30dp"
-                    Slider:
-                        orientation: 'vertical'
-                        id: speed_slider
-                        min: 20
-                        step:5
-                        max: 500
-                        value: root.speed
-                        on_value: root.speed = self.value
-                BoxLayout:
+                    id: speed_slider
+                    min: 20
+                    step:5
+                    max: 500
+                    value: root.speed
+                    on_value: root.speed = self.value
+            BoxLayout:
+                orientation: 'vertical'
+                I18NLabel:
+                    text_source: _("Height")
+                    size_hint_y: None
+                    height: "30dp"
+                Label:
+                    text: '%.2f (mm)' % root.current_height
+                    size_hint_y: None
+                    height: "30dp"
+                Slider:
                     orientation: 'vertical'
-                    I18NLabel:
-                        text_source: _("Height")
-                        size_hint_y: None
-                        height: "30dp"
-                    Label:
-                        text: '%.2f (mm)' % root.current_height
-                        size_hint_y: None
-                        height: "30dp"
-                    Slider:
-                        orientation: 'vertical'
-                        id: current_height_slider
-                        min: 0.0
-                        step:1.0
-                        max: 100.0
-                        value: 0.0
-                        on_value: root.current_height = self.value
-            I18NImageButton:
-                source: "resources/icons/general_help-24x24.png"
-                text_source: _("Help me")
-                on_release: I18NHelpPopup(text_source=_('MARKUP - Test Pattern Instructions'), title_source=_("Help - Test Patterns"), size_hint=(0.9, 0.9)).open()
-                size_hint_y:None
-                height: "30dp"
-        GridLayout:
-            id: patterns
-            cols: 2
+                    id: current_height_slider
+                    min: 0.0
+                    step:1.0
+                    max: 100.0
+                    value: 0.0
+                    on_value: root.current_height = self.value
+        I18NImageButton:
+            source: "resources/icons/general_help-24x24.png"
+            text_source: _("Help me")
+            on_release: I18NHelpPopup(text_source=_('MARKUP - Test Pattern Instructions'), title_source=_("Help - Test Patterns"), size_hint=(0.9, 0.9)).open()
+            size_hint_y:None
+            height: "30dp"
+    GridLayout:
+        id: patterns
+        cols: 2

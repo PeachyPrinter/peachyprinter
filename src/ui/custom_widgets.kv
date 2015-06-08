@@ -2,15 +2,28 @@
 #:import _ __main__._
 
 <I18NImageTabbedPanelHeader>:
+    on_press: image.color = [1.0,1.0,1.0,0.5]
+    on_release: image.color = [1.0,1.0,1.0,1.0]
+    text_height: "30dp"
     BoxLayout:
         pos: root.pos
         size: root.size
         orientation: root.orientation
         Image:
+            id: image
+            allow_stretch: True
+            keep_ratio: True
+            size_hint_y: self.size_hint_y if root.orientation == 'horizontal' else None
+            size_hint_x: self.size_hint_x if root.orientation == 'vertical' else None
+            width: min(self.texture_size[0], root.width) if root.orientation == 'horizontal' else max(self.texture_size[0], root.width)
+            height: min(self.texture_size[1], root.height) if root.orientation == 'vertical' else max(self.texture_size[1], root.height)
             source: root.source
+            pos: [root.pos[0], root.pos[1]]
         Label:
             text: app.translation(root.text_source)
-            
+            size_hint_y: self.size_hint_y if root.orientation == 'horizontal' else None
+            height: root.text_height
+
 <I18NImageSpinnerOption>:
     size_hint_y: None
     height: '48dp'
