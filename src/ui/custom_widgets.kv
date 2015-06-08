@@ -1,6 +1,16 @@
 #:kivy 1.9.0
 #:import _ __main__._
 
+<I18NImageTabbedPanelHeader>:
+    BoxLayout:
+        pos: root.pos
+        size: root.size
+        orientation: root.orientation
+        Image:
+            source: root.source
+        Label:
+            text: app.translation(root.text_source)
+            
 <I18NImageSpinnerOption>:
     size_hint_y: None
     height: '48dp'
@@ -9,7 +19,7 @@
     background_normal: 'atlas://data/images/defaulttheme/spinner'
     background_disabled_normal: 'atlas://data/images/defaulttheme/spinner_disabled'
     background_down: 'atlas://data/images/defaulttheme/spinner_pressed'
-    
+
 <I18NLabel>:
     text: app.translation(self.text_source)
 
