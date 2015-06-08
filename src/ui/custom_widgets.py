@@ -6,7 +6,7 @@ from kivy.uix.popup import Popup
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.togglebutton import ToggleButton
-from kivy.uix.tabbedpanel import TabbedPanel, TabbedPanelItem
+from kivy.uix.tabbedpanel import TabbedPanel, TabbedPanelItem, TabbedPanelHeader
 from kivy.uix.accordion import AccordionItem
 from kivy.compat import string_types
 from kivy.factory import Factory
@@ -20,6 +20,10 @@ from infrastructure.langtools import _
 
 Builder.load_file('ui/custom_widgets.kv')
 
+class I18NImageTabbedPanelHeader(TabbedPanelHeader):
+    text_source = StringProperty()
+    source = StringProperty()
+    orientation = StringProperty('horizontal')
 
 class I18NLabel(Label):
     text_source = StringProperty('')
