@@ -53,9 +53,6 @@ class I18NAccordionItem(AccordionItem):
 class I18NImageButton(Button):
     text_source = StringProperty()
     source = StringProperty()
-    # def on_text(*args):
-    #     Logger.error("FAIL FAIL")
-
 
 class ErrorPopup(I18NPopup):
     text = StringProperty()
@@ -102,7 +99,7 @@ class LabelGridLayout(GridLayout):
     def _resize(self):
         self.height = str(len(self.children) * self.child_height) + "dp"
         for child in self.children:
-             child.text_size = [self.size[0] - self.text_padding_x, child.height]
+            child.text_size = [self.size[0] - self.text_padding_x, child.height]
 
 
 class BorderedLabel(I18NLabel):
@@ -173,7 +170,7 @@ class CommunicativeTabbedPanel(TabbedPanel):
 
 
 class I18NImageSpinnerOption(I18NImageButton):
-    pass
+    key = StringProperty()
 
 
 class I18NImageSpinner(I18NImageButton):
@@ -181,6 +178,7 @@ class I18NImageSpinner(I18NImageButton):
     option_cls = ObjectProperty(I18NImageSpinnerOption)
     dropdown_cls = ObjectProperty(DropDown)
     is_open = BooleanProperty(False)
+    selected = StringProperty()
 
     def __init__(self, **kwargs):
         self._dropdown = None
@@ -214,8 +212,8 @@ class I18NImageSpinner(I18NImageButton):
             cls = Factory.get(cls)
         dp.clear_widgets()
         for value in self.values:
-            item = cls(text_source=value[0], source=value[1])
-            item.bind(on_release=lambda option: dp.select([option.text_source, option.source]))
+            item = cls(text_source=value[0], key=value[1], source=value[2])
+            item.bind(on_release=lambda option: dp.select([option.text_source, option.key, option.source]))
             dp.add_widget(item)
 
     def _toggle_dropdown(self, *largs):
@@ -224,10 +222,15 @@ class I18NImageSpinner(I18NImageButton):
     def _close_dropdown(self, *largs):
         self.is_open = False
 
-    def _on_dropdown_select(self, instance, data, *largs):
-        Logger.info("DATA: {}".format(str(data)))
+    def on_selected(self, instance, value):
+        data = [data for data in self.values if data[1] == value][0]
         self.text_source = data[0]
-        self.source = data[1]
+        self.source = data[2]
+
+    def _on_dropdown_select(self, instance, data, *largs):
+        self.text_source = data[0]
+        self.selected = data[1]
+        self.source = data[2]
         self.is_open = False
 
     def on_is_open(self, instance, value):

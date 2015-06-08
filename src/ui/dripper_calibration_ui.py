@@ -1,9 +1,8 @@
 from kivy.uix.screenmanager import Screen
 from kivy.lang import Builder
-from kivy.properties import NumericProperty, ListProperty, StringProperty
+from kivy.properties import NumericProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
-from kivy.uix.spinner import Spinner
 from kivy.app import App
 
 from kivy.logger import Logger
@@ -12,22 +11,6 @@ from ui.custom_widgets import ErrorPopup
 from infrastructure.langtools import _
 
 Builder.load_file('ui/dripper_calibration_ui.kv')
-
-
-class I18NKeyedSpinner(Spinner):
-    keys = ListProperty()
-    key = StringProperty()
-    text_source = StringProperty('')
-    values_source = ListProperty()
-
-    def on_text(self, instance, value):
-        print(self.values)
-        idx = self.values.index(value)
-        self.key = self.keys[idx]
-
-    def on_key(self, instance, key):
-        idx = self.keys.index(key)
-        self.text = self.values[idx]
 
 
 class DripperCalibrationUI(Screen):
@@ -49,8 +32,6 @@ class DripperCalibrationUI(Screen):
             self.ids.dripper_setup.add_widget(PhotoDripSetup(self.configuration_api))
         elif value == 'microcontroller':
             self.ids.dripper_setup.add_widget(MicrocontrollerDripSetup(self.configuration_api, visualizations=self.ids.visualizations))
-
-
         self.configuration_api.set_dripper_type(value)
 
     def on_pre_enter(self):
@@ -58,7 +39,7 @@ class DripperCalibrationUI(Screen):
             self.is_active = True
             self.configuration_api = self.api.get_configuration_api()
             dripper_type = self.configuration_api.get_dripper_type()
-            self.ids.dripper_type_selector.key = dripper_type
+            self.ids.dripper_type_selector.selected = dripper_type
             self.dripper_type_changed(None, dripper_type)
         except:
             ep = ErrorPopup(title=_("Error"), text=_("No Peachy Printer Detected"))
@@ -117,7 +98,7 @@ class MicrocontrollerDripSetup(BoxLayout):
     def __init__(self, api, **kwargs):
         self.is_active = False
         self.dripper = None
-        if "visualizations" in kwargs: 
+        if "visualizations" in kwargs:
             self.visualizations = kwargs["visualizations"]
             self.dripper = Dripper(size_hint_x=None, width=30)
             self.visualizations.add_widget(Label())
