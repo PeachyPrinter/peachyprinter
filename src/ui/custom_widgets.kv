@@ -1,6 +1,15 @@
 #:kivy 1.9.0
 #:import _ __main__._
 
+<I18NImageSpinnerOption>:
+    size_hint_y: None
+    height: '48dp'
+
+<I18NImageSpinner>:
+    background_normal: 'atlas://data/images/defaulttheme/spinner'
+    background_disabled_normal: 'atlas://data/images/defaulttheme/spinner_disabled'
+    background_down: 'atlas://data/images/defaulttheme/spinner_pressed'
+    
 <I18NLabel>:
     text: app.translation(self.text_source)
 

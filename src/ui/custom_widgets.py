@@ -1,22 +1,22 @@
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
-from kivy.graphics import Line, Color, InstructionGroup
-from kivy.properties import NumericProperty, StringProperty
+from kivy.graphics import Line, Color
 from kivy.logger import Logger
-from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.popup import Popup
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.togglebutton import ToggleButton
 from kivy.uix.tabbedpanel import TabbedPanel, TabbedPanelItem
 from kivy.uix.accordion import AccordionItem
-from kivy.uix.scrollview import ScrollView
+from kivy.compat import string_types
+from kivy.factory import Factory
+from kivy.properties import ListProperty, ObjectProperty, BooleanProperty, NumericProperty, StringProperty
+from kivy.uix.dropdown import DropDown
 from kivy.lang import Builder
-
+import re
 
 from infrastructure.langtools import _
 
-import re
 
 Builder.load_file('ui/custom_widgets.kv')
 
@@ -32,9 +32,11 @@ class I18NButton(Button):
 class I18NToggleButton(Button):
     text_source = StringProperty('')
 
+
 class I18NImageToggleButton(ToggleButton):
     text_source = StringProperty('')
     source = StringProperty()
+
 
 class I18NPopup(Popup):
     title_source = StringProperty('')
@@ -168,3 +170,69 @@ class CommunicativeTabbedPanel(TabbedPanel):
         if hasattr(value, 'on_enter'):
             value.on_enter()
         self.last_tab = value
+
+
+class I18NImageSpinnerOption(I18NImageButton):
+    pass
+
+
+class I18NImageSpinner(I18NImageButton):
+    values = ListProperty()
+    option_cls = ObjectProperty(I18NImageSpinnerOption)
+    dropdown_cls = ObjectProperty(DropDown)
+    is_open = BooleanProperty(False)
+
+    def __init__(self, **kwargs):
+        self._dropdown = None
+        super(I18NImageSpinner, self).__init__(**kwargs)
+        fbind = self.fast_bind
+        build_dropdown = self._build_dropdown
+        fbind('on_release', self._toggle_dropdown)
+        fbind('dropdown_cls', build_dropdown)
+        fbind('option_cls', build_dropdown)
+        fbind('values', self._update_dropdown)
+        build_dropdown()
+
+    def _build_dropdown(self, *largs):
+        if self._dropdown:
+            self._dropdown.unbind(on_select=self._on_dropdown_select)
+            self._dropdown.unbind(on_dismiss=self._close_dropdown)
+            self._dropdown.dismiss()
+            self._dropdown = None
+        cls = self.dropdown_cls
+        if isinstance(cls, string_types):
+            cls = Factory.get(cls)
+        self._dropdown = cls()
+        self._dropdown.bind(on_select=self._on_dropdown_select)
+        self._dropdown.bind(on_dismiss=self._close_dropdown)
+        self._update_dropdown()
+
+    def _update_dropdown(self, *largs):
+        dp = self._dropdown
+        cls = self.option_cls
+        if isinstance(cls, string_types):
+            cls = Factory.get(cls)
+        dp.clear_widgets()
+        for value in self.values:
+            item = cls(text_source=value[0], source=value[1])
+            item.bind(on_release=lambda option: dp.select([option.text_source, option.source]))
+            dp.add_widget(item)
+
+    def _toggle_dropdown(self, *largs):
+        self.is_open = not self.is_open
+
+    def _close_dropdown(self, *largs):
+        self.is_open = False
+
+    def _on_dropdown_select(self, instance, data, *largs):
+        Logger.info("DATA: {}".format(str(data)))
+        self.text_source = data[0]
+        self.source = data[1]
+        self.is_open = False
+
+    def on_is_open(self, instance, value):
+        if value:
+            self._dropdown.open(self)
+        else:
+            if self._dropdown.attach_to:
+                self._dropdown.dismiss()
