@@ -11,10 +11,10 @@ from infrastructure.langtools import _
 from ui.custom_widgets import I18NTabbedPanelItem, ErrorPopup, I18NImageToggleButton
 from ui.peachy_widgets import LaserWarningPopup
 
+class SetupPanel(BoxLayout):
+    calibration_api = ObjectProperty(None)
 
-class CenterPanel(I18NTabbedPanelItem):
-    calibration_api = ObjectProperty()
-
+class CenterPanel(SetupPanel):
     def __init__(self,  **kwargs):
         super(CenterPanel, self).__init__(**kwargs)
 
@@ -23,8 +23,7 @@ class CenterPanel(I18NTabbedPanelItem):
             self.calibration_api.show_point([0.5, 0.5, 0.0])
 
 
-class PrintAreaPanel(I18NTabbedPanelItem):
-    calibration_api = ObjectProperty()
+class PrintAreaPanel(SetupPanel):
     print_area_width = StringProperty("")
     print_area_depth = StringProperty("")
     print_area_height = StringProperty("")
@@ -44,8 +43,7 @@ class PrintAreaPanel(I18NTabbedPanelItem):
         self.calibration_api.set_print_area(float(self.ids.print_area_width.text), float(self.ids.print_area_depth.text), float(self.ids.print_area_height.text))
 
 
-class AlignmentPanel(I18NTabbedPanelItem):
-    calibration_api = ObjectProperty()
+class AlignmentPanel(SetupPanel):
 
     def __init__(self, **kwargs):
         super(AlignmentPanel, self).__init__(**kwargs)
@@ -55,13 +53,11 @@ class AlignmentPanel(I18NTabbedPanelItem):
             self.calibration_api.show_line()
 
 
-class OrientationPanel(I18NTabbedPanelItem):
-    calibration_api = ObjectProperty()
+class OrientationPanel(SetupPanel):
     orient_swap_axis = StringProperty("False")
     orient_xflip = StringProperty("False")
     orient_yflip = StringProperty("False")
 
-    calibration_api = ObjectProperty()
 
     def __init__(self, **kwargs):
         super(OrientationPanel, self).__init__(**kwargs)
@@ -84,7 +80,8 @@ class OrientationPanel(I18NTabbedPanelItem):
             self.update_orientation(*current)
 
 
-class CalibrationPanel(I18NTabbedPanelItem):
+class CalibrationPanel(SetupPanel):
+    calibration_type = StringProperty("top")
     calibration_height = NumericProperty(0)
     calibration_point = ListProperty([0, 0])
     calibration_point_color = ListProperty([1, 0, 0, 1])
@@ -100,7 +97,6 @@ class CalibrationPanel(I18NTabbedPanelItem):
     xflip = BooleanProperty()
     yflip = BooleanProperty()
 
-    calibration_api = ObjectProperty()
 
     def __init__(self, **kwargs):
         super(CalibrationPanel, self).__init__(**kwargs)
@@ -342,8 +338,7 @@ class CalibrationPoint(BoxLayout):
             self.active = False
 
 
-class TestPatternPanel(I18NTabbedPanelItem):
-    calibration_api = ObjectProperty()
+class TestPatternPanel(SetupPanel):
     speed = NumericProperty(100)
     current_height = NumericProperty(0.0)
 
@@ -388,12 +383,19 @@ Builder.load_file('ui/calibrate_ui.kv')
 
 
 class CalibrateUI(Screen):
-    calibration_api = ObjectProperty()
+    calibration_api = ObjectProperty(None)
 
     def __init__(self, api, **kwargs):
         self.is_active = False
         super(CalibrateUI, self).__init__(**kwargs)
         self.api = api
+        self.ids.center_panel.content = CenterPanel()
+        self.ids.orientation_panel.content = OrientationPanel()
+        self.ids.alignment_panel.content = AlignmentPanel()
+        self.ids.print_area_panel.content = PrintAreaPanel()
+        self.ids.calibration_panel_top.content = CalibrationPanel(calibration_type='top', calibration_height=666)
+        self.ids.calibration_panel_bottom.content = CalibrationPanel(calibration_type='bottom', calibration_height=0)
+        self.ids.test_pattern_panel.content = TestPatternPanel()
 
     def on_enter(self):
         popup = LaserWarningPopup()
@@ -418,6 +420,11 @@ class CalibrateUI(Screen):
             ep.open()
             App.get_running_app().root.current = 'mainui'
         self._switch_to_default_panel()
+
+    def on_calibration_api(self, instance, value):
+        for an_id in self.ids:
+            if hasattr(self.ids[an_id].content, 'calibration_api'):
+                self.ids[an_id].content.calibration_api = value
 
     def on_pre_leave(self):
         self._switch_to_default_panel()

@@ -166,10 +166,10 @@ class CommunicativeTabbedPanel(TabbedPanel):
         self.last_tab = self.current_tab
 
     def on_current_tab(self, instance, value):
-        if hasattr(self.last_tab, 'on_leave'):
-            self.last_tab.on_leave()
-        if hasattr(value, 'on_enter'):
-            value.on_enter()
+        if hasattr(self.last_tab.content, 'on_leave'):
+            self.last_tab.content.on_leave()
+        if hasattr(value.content, 'on_enter'):
+            value.content.on_enter()
         self.last_tab = value
 
 
