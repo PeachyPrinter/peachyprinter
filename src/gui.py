@@ -3,6 +3,7 @@ from kivy.app import App
 from kivy.uix.settings import SettingsWithSidebar
 from kivy.properties import StringProperty, ObjectProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.boxlayout import BoxLayout
 from kivy.config import Config
 from kivy.resources import resource_add_path
 from infrastructure.setting_mapper import SettingsMapper

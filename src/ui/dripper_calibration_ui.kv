@@ -2,10 +2,6 @@
 #:import _ __main__._
 #:import FloatInput ui.custom_widgets.FloatInput
 
-<I18NKeyedSpinner>:
-    #text: app.translation(self.text_source)
-    values: [app.translation(value) for value in self.values_source]
-
 <DripperCalibrationUI>:
     name: 'drippercalibrationui'
     BoxLayout:
@@ -20,13 +16,10 @@
                     orientation: 'horizontal'
                     I18NLabel:
                         text_source: _('Dripper Type')
-                    I18NKeyedSpinner:
+                    I18NImageSpinner:
                         id: dripper_type_selector
-                        values_source: [_('Emulated'), _('Photo'), _('Circut')]
-                        keys: ['emulated', 'photo', 'microcontroller']
-                        #text_source: _("Circut")
-                        key:  'microcontroller'
-                        on_key: root.dripper_type_changed(self, self.key)
+                        values: [[_('Emulated'), 'emulated', "resources/icons/dripper_calibration_type_-_emulated-24x24.png"], [_('Photo'), 'photo', "resources/icons/dripper_calibration_type_-_photo-24x24.png"],[ _('Circut'), 'microcontroller', "resources/icons/dripper_calibration_type_-_circut-24x24.png"]]
+                        on_selected: root.dripper_type_changed(self, self.selected)
                 BoxLayout:
                     id: dripper_setup
                 I18NImageButton:
