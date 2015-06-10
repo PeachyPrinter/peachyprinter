@@ -15,196 +15,170 @@
         text: '150.0'
         on_text: root.base_speed = float(self.text)
 
+<HorizontalLabelSlider>:
+    orientation: 'vertical'
+    size_hint_y:None
+    height: "60dp"
+    BoxLayout:
+        orientation:'horizontal'
+        I18NLabel:
+            text_size: self.size
+            halign: 'left'
+            valign: 'middle'
+            text_source: root.title
+        Label:
+            text_size: self.size
+            halign: 'right'
+            valign: 'middle'
+            text: "{:.2f} {}".format(slider.value, root.unit)
+    Slider:
+        id: slider
+        value: root.value
+        min: root.min_value
+        max: root.max_value
+        step: root.step
+        on_value: root.value = self.value
+
+<VerticalLabelSlider>:
+    orientation: 'vertical'
+    I18NLabel:
+        size_hint_y:None
+        height: "30dp"
+        text_source: root.title
+    Slider:
+        id: slider
+        orientation: 'vertical'
+        value: root.value
+        min: root.min_value
+        max: root.max_value
+        step: root.step
+        on_value: root.value = self.value
+    Label:
+        size_hint_y:None
+        height: "30dp"
+        text: "{:.2f} {}".format(slider.value, root.unit)
+
 <CureTestUI>:
     name: 'curetestui'
     BoxLayout:
         orientation: 'vertical'
         BoxLayout:
             orientation: 'horizontal'
+            spacing: "3dp"
             BoxLayout:
                 orientation: 'vertical'
-                size_hint_x: 0.6
+                padding: "5dp"
+                canvas.before:
+                    Color:
+                        rgba: 1.0, 1.0, 1.0, 0.2
+                    Rectangle:
+                        pos:  self.pos
+                        size: self.size
+                HorizontalLabelSlider:
+                    id: minimum_speed
+                    min_value: 10
+                    max_value: 800
+                    value: root.start_speed
+                    title: _("Start Speed")
+                    unit: "mm/s"
+                    step: 1
+                    on_value: root.start_speed = self.value
+                HorizontalLabelSlider:
+                    id: maximum_speed
+                    min_value: root.start_speed
+                    max_value: 1000
+                    value: max(root.start_speed, self.value)
+                    title: _("Stop Speed")
+                    unit: "mm/s"
+                    step: 1
+                    on_value: root.stop_speed = self.value
                 BoxLayout:
-                    id: cure_test_panel
-                    orientation: 'vertical'
-                    size_hint_y: None
-                    height: "230dp"
-                    padding: "20dp"
-                    canvas.before:
-                        Color:
-                            rgba:[0.2,0.2,0.2,1.0]
-                        Rectangle:
-                            size: [self.size[0] - 20, self.size[1] - 20]
-                            pos: [self.pos[0] + 10, self.pos[1] + 10]
-                    TouchyLabel:
-                        on_is_on: root.show_base_speed(self.is_on)
-                        size_hint_y: None
-                        height: "30dp"
-                        text_source: _('Cure Rate Test')
-                    BoxLayout:
-                        orientation: 'horizontal'
-                        size_hint_y: None
-                        height: "30dp"
-                        I18NLabel:
-                            text_source: _('Base Height')
-                        FloatInput:
-                            size_hint_x: 0.5
-                            id: base_id
-                            text: '0.0'
-                            on_text: root.base = float(self.text)
-                    BoxLayout:
-                        orientation: 'horizontal'
-                        size_hint_y: None
-                        height: "30dp"
-                        I18NLabel:
-                            text_source: _('Test Height')
-                        FloatInput:
-                            size_hint_x: 0.5
-                            id: height_id
-                            text: '0.0'
-                            on_text: root.test_height = float(self.text)
-                    BoxLayout:
-                        orientation: 'horizontal'
-                        size_hint_y: None
-                        height: "30dp"
-                        I18NLabel:
-                            text_source: _('Starting Speed')
-                        FloatInput:
-                            size_hint_x: 0.5
-                            id: start_speed_id
-                            text: '0.0'
-                            on_text: root.start_speed = float(self.text)
-                    BoxLayout:
-                        orientation: 'horizontal'
-                        size_hint_y: None
-                        height: "30dp"
-                        I18NLabel:
-                            text_source: _('Stopping Speed')
-                        FloatInput:
-                            size_hint_x: 0.5
-                            id: stop_speed_id
-                            text: '0.0'
-                            on_text: root.stop_speed = float(self.text)
-                    Label:
-                        size_hint_y: None
-                        height: "10dp"
-                    I18NImageButton:
-                        source: "resources/icons/cure_rate_test_run_cure_test-24x24.png"
-                        size_hint_y: None
-                        height: "30dp"
-                        text_source: _('Run Cure Test Now')
-                        on_release: root.print_now()
-                BoxLayout:
-                    orientation: 'vertical'
-                    BoxLayout:
-                        orientation: 'horizontal'
-                        size_hint_y: None
-                        height: "30dp"
-                        I18NLabel:
-                            text_source: _('Always Override Speeds')
-                        Switch:
-                            size_hint_x: 0.5
-                            id: use_draw_speed_id
-                            on_active: root.use_draw_speed = self.active
-                    BoxLayout:
-                        orientation: 'horizontal'
-                        size_hint_y: None
-                        height: "30dp"
-                        I18NLabel:
-                            text_source: _('Draw Speed (mm)')
-                        FloatInput:
-                            size_hint_x: 0.5
-                            id: draw_speed_id
-                            text: '0.0'
-                            on_text: root.draw_speed = float(self.text)
-                    BoxLayout:
-                        orientation: 'horizontal'
-                        size_hint_y: None
-                        height: "30dp"
-                        I18NLabel:
-                            text_source: _('Move Speed (mm)')
-                        FloatInput:
-                            size_hint_x: 0.5
-                            id: move_speed_id
-                            text: '0.0'
-                            on_text: root.move_speed = float(self.text)
-                    BoxLayout:
-                        orientation: 'horizontal'
-                        size_hint_y: None
-                        height: "30dp"
-                        I18NLabel:
-                            text_source: _('Always Use Laser Power')
-                        Switch:
-                            size_hint_x: 0.5
-                            id: override_laser_power_id
-                            on_active: root.override_laser_power = self.active
-                    BoxLayout:
-                        orientation: 'horizontal'
-                        size_hint_y: None
-                        height: "30dp"
-                        I18NLabel:
-                            text_source: _('Laser Power')
-                        FloatInput:
-                            size_hint_x: 0.5
-                            id: override_laser_power_amount_id
-                            text: '0.0'
-                            on_text: root.override_laser_power_amount = float(self.text)
-                Label:
+                    orientation:'horizontal'
+                    VerticalLabelSlider:
+                        id: base_height
+                        min_value: 1
+                        max_value: root.max_height - 1
+                        value: root.base
+                        title: _("Base Height")
+                        unit: "mm"
+                        step: 1
+                        on_value: root.base = self.value
+                    VerticalLabelSlider:
+                        id: total_height
+                        min_value: root.base + 1
+                        max_value: root.max_height
+                        value: max(root.base, self.value)
+                        title: _("Total Height")
+                        unit: "mm"
+                        step: 1
+                        on_value: root.test_height = self.value
                 I18NImageButton:
-                    source: "resources/icons/general_help-24x24.png"
-                    text_source: _("Help me")
-                    on_release: I18NHelpPopup(text=_('Markup- Cure Rate'), title=_("Help - Cure Rate Settings"), size_hint=(0.9, 0.9)).open()
-                    size_hint_y:None
+                    source: "resources/icons/cure_rate_test_run_cure_test-24x24.png"
+                    size_hint_y: None
                     height: "30dp"
+                    text_source: _('Run Cure Test Now')
+                    on_release: root.print_now()
             BoxLayout:
-                BoxLayout:
-                    orientation: 'vertical'
-                    size_hint_x: 0.5
+                canvas.before:
+                    Color:
+                        rgba: 1.0, 1.0, 1.0, 0.3
+                    Rectangle:
+                        pos:  self.pos
+                        size: self.size
+                RelativeLayout:
+                    id: moveit
                     Label:
-                        size_hint_y: None
+                        text: "Test"
+                        size_hint: [None,None]
+                        width: moveit.width / 3
                         height: "30dp"
-                        text: "%.2f" % best_height.max
-                    Slider:
-                        id: best_height
-                        orientation: 'vertical'
-                        min: 0
-                        max: root.test_height
-                        value: 0
-                    Label:
-                        size_hint_y: None
-                        height: "30dp"
-                        text: "%.2f" % best_height.min
-                BoxLayout:
-                    Label:
-                        text: 'IMAGE HERE ?'
-                BoxLayout:
-                    orientation: 'vertical'
+                        pos: [0, ((root.base / root.max_height) * (moveit.height - 30))]
                     BoxLayout:
-                        size_hint_y: None
-                        height: "30dp"
+                        id: base_image
+                        size_hint: [None,None]
+                        width: moveit.width / 3
+                        height: ((root.base / root.max_height) * (moveit.height - 30))
+                        pos: [moveit.width / 3, 0]
+                        canvas.before:
+                            Color:
+                                rgba: 0.8, 0.2, 0.0, 1.0
+                            Rectangle:
+                                pos:  self.pos
+                                size: self.size
                         I18NLabel:
-                            text_source: _('Best Height')
-                        Label:
-                            text: '%.2f' % best_height.value
+                            text_source: _("Base")
                     BoxLayout:
-                        size_hint_y: None
-                        height: "30dp"
+                        size_hint: [None,None]
+                        width: moveit.width / 3
+                        height:  ((root.test_height - root.base) / root.max_height) * (moveit.height - 30)
+                        pos: [moveit.width / 3,  base_image.height ]
+                        canvas.before:
+                            Color:
+                                rgba: 0.0, 0.8, 0.2, 1.0
+                            Rectangle:
+                                pos:  self.pos
+                                size: self.size
                         I18NLabel:
-                            text_source: _("Best Draw Speed")
-                        Label:
-                            id: best_draw_speed
-                            text: '%.2f' % ((best_height.value / root.test_height) * (root.stop_speed - root.start_speed) + root.start_speed)
-                    I18NImageButton:
-                        source: "resources/icons/cure_rate_test_use_best_draw_speed-24x24.png"
-                        size_hint_y: None
-                        height: "30dp"
-                        text_source: _('Use Best Draw Speed')
-                        on_release: draw_speed_id.text = best_draw_speed.text; root.draw_speed = float(best_draw_speed.text)
-                    Label:
+                            text_source: _("Height")
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        rgba: 0.0, 1.0, 0.0, 1.0
+                    Rectangle:
+                        pos:  self.pos
+                        size: self.size
+                Label:
+                    text: "Animated Image"
+        I18NImageButton:
+            source: "resources/icons/general_help-24x24.png"
+            text_source: _("Help me")
+            on_release: I18NHelpPopup(text=_('Markup- Cure Rate'), title=_("Help - Cure Rate Settings"), size_hint=(0.9, 0.9)).open()
+            size_hint_y:None
+            height: "30dp"
         I18NImageButton:
             source: "resources/icons/general_back-24x24.png"
             size_hint_y: None
-            height: "30dp"
+            height: app.button_height
             text_source: _('Back')
             on_release: app.root.current = 'mainui'
 
