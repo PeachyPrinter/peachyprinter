@@ -128,11 +128,35 @@
                 RelativeLayout:
                     id: moveit
                     Label:
-                        text: "Test"
+                        id: start_speed
+                        text: "{:.0f} mm/s".format(root.start_speed)
                         size_hint: [None,None]
                         width: moveit.width / 3
                         height: "30dp"
-                        pos: [0, ((root.base / root.max_height) * (moveit.height - 30))]
+                        pos: [0, ((root.base / root.max_height) * (moveit.height - 30)) - self.height / 2]
+                    Label:
+                        id: stop_speed
+                        text: "{:.0f} mm/s".format(root.stop_speed)
+                        size_hint: [None,None]
+                        width: moveit.width / 3
+                        height: "30dp"
+                        pos: [0, test_height_image.pos[1] + test_height_image.height - self.height / 2]
+
+                    Label:
+                        id: start_height
+                        text: "{:.0f} mm".format(root.base)
+                        size_hint: [None,None]
+                        width: moveit.width / 3
+                        height: "30dp"
+                        pos: [(moveit.width / 3) * 2, ((root.base / root.max_height) * (moveit.height - 30)) - self.height / 2]
+                    Label:
+                        id: stop_height
+                        text: "{:.0f} mm/s".format(root.test_height)
+                        size_hint: [None,None]
+                        width: moveit.width / 3
+                        height: "30dp"
+                        pos: [(moveit.width / 3) * 2, test_height_image.pos[1] + test_height_image.height - self.height / 2]
+
                     BoxLayout:
                         id: base_image
                         size_hint: [None,None]
@@ -141,25 +165,41 @@
                         pos: [moveit.width / 3, 0]
                         canvas.before:
                             Color:
-                                rgba: 0.8, 0.2, 0.0, 1.0
+                                rgba: 0.12, 0.18, 0.93, 1.0
                             Rectangle:
                                 pos:  self.pos
                                 size: self.size
                         I18NLabel:
                             text_source: _("Base")
                     BoxLayout:
+                        id: test_height_image
                         size_hint: [None,None]
                         width: moveit.width / 3
                         height:  ((root.test_height - root.base) / root.max_height) * (moveit.height - 30)
                         pos: [moveit.width / 3,  base_image.height ]
                         canvas.before:
                             Color:
-                                rgba: 0.0, 0.8, 0.2, 1.0
+                                rgba: 0.23, 0.04, 0.51, 1.0
                             Rectangle:
                                 pos:  self.pos
                                 size: self.size
                         I18NLabel:
                             text_source: _("Height")
+
+                    BoxLayout:
+                        id: best_height_image
+                        size_hint: [None,None]
+                        width: moveit.width / 3
+                        height:  "3dp"
+                        x: moveit.width / 3
+                        y: base_image.height + 10
+                        canvas.before:
+                            Color:
+                                rgba: 0., 0., 0., 1.0
+                            Rectangle:
+                                pos:  self.pos
+                                size: self.size
+
             BoxLayout:
                 canvas.before:
                     Color:
@@ -168,7 +208,7 @@
                         pos:  self.pos
                         size: self.size
                 Label:
-                    text: "Animated Image"
+                    text: "Final Settings"
         I18NImageButton:
             source: "resources/icons/general_help-24x24.png"
             text_source: _("Help me")
