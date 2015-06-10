@@ -1,16 +1,37 @@
 from kivy.uix.screenmanager import Screen
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
-from kivy.properties import BoundedNumericProperty, BooleanProperty
+from kivy.properties import BoundedNumericProperty, BooleanProperty, StringProperty, NumericProperty, OptionProperty
 from kivy.logger import Logger
+from kivy.metrics import sp
 
 
 Builder.load_file('ui/cure_test_ui.kv')
+
+
+class HorizontalLabelSlider(BoxLayout):
+    title = StringProperty()
+    unit = StringProperty()
+    value = NumericProperty(0.)
+    min_value = NumericProperty(0.)
+    max_value = NumericProperty(1.)
+    step = BoundedNumericProperty(0, min=0)
+
+class VerticalLabelSlider(BoxLayout):
+    title = StringProperty()
+    unit = StringProperty()
+    value = NumericProperty(0.)
+    min_value = NumericProperty(0.)
+    max_value = NumericProperty(1.)
+    step = BoundedNumericProperty(0, min=0)
+
 
 class BaseSpeed(BoxLayout):
     base_speed = BoundedNumericProperty(150.0, min=0.0001, max=None)
 
 class CureTestUI(Screen):
+    max_height = NumericProperty(100)
+    
     base = BoundedNumericProperty(10.0, min=0.00, max=None)
     test_height = BoundedNumericProperty(10.0, min=0.0001, max=None)
     start_speed = BoundedNumericProperty(100.0, min=0.0001, max=None)
@@ -35,7 +56,7 @@ class CureTestUI(Screen):
             self.ids.cure_test_panel.height += self.base_speed.height
             self.ids.cure_test_panel.add_widget(self.base_speed, index=5)
         else:
-            self.use_base_speed = False
+            self.use_base_speed = False 
             self.ids.cure_test_panel.height -= self.base_speed.height
             self.ids.cure_test_panel.remove_widget(self.base_speed)
 
@@ -104,15 +125,15 @@ class CureTestUI(Screen):
 
     def on_pre_enter(self):
         self.configuration_api = self.api.get_configuration_api()
-        self.ids.base_id.text = '%.2f' % self.configuration_api.get_cure_rate_base_height()
-        self.ids.height_id.text = '%.2f' % self.configuration_api.get_cure_rate_total_height()
-        self.ids.start_speed_id.text = '%.2f' % self.configuration_api.get_cure_rate_start_speed()
-        self.ids.stop_speed_id.text = '%.2f' % self.configuration_api.get_cure_rate_finish_speed()
-        self.ids.use_draw_speed_id.active = self.configuration_api.get_cure_rate_use_draw_speed()
-        self.ids.draw_speed_id.text = '%.2f' % self.configuration_api.get_cure_rate_draw_speed()
-        self.ids.move_speed_id.text = '%.2f' % self.configuration_api.get_cure_rate_move_speed()
-        self.ids.override_laser_power_id.active = self.configuration_api.get_cure_rate_override_laser_power()
-        self.ids.override_laser_power_amount_id.text = '%.2f' % self.configuration_api.get_cure_rate_override_laser_power_amount()
+        # self.ids.base_id.text = '%.2f' % self.configuration_api.get_cure_rate_base_height()
+        # self.ids.height_id.text = '%.2f' % self.configuration_api.get_cure_rate_total_height()
+        # self.ids.start_speed_id.text = '%.2f' % self.configuration_api.get_cure_rate_start_speed()
+        # self.ids.stop_speed_id.text = '%.2f' % self.configuration_api.get_cure_rate_finish_speed()
+        # self.ids.use_draw_speed_id.active = self.configuration_api.get_cure_rate_use_draw_speed()
+        # self.ids.draw_speed_id.text = '%.2f' % self.configuration_api.get_cure_rate_draw_speed()
+        # self.ids.move_speed_id.text = '%.2f' % self.configuration_api.get_cure_rate_move_speed()
+        # self.ids.override_laser_power_id.active = self.configuration_api.get_cure_rate_override_laser_power()
+        # self.ids.override_laser_power_amount_id.text = '%.2f' % self.configuration_api.get_cure_rate_override_laser_power_amount()
 
     def on_enter(self):
         self.loaded = True
