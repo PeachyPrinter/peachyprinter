@@ -31,7 +31,7 @@ class BaseSpeed(BoxLayout):
 
 class CureTestUI(Screen):
     max_height = NumericProperty(100)
-    
+
     base = BoundedNumericProperty(10.0, min=0.00, max=None)
     test_height = BoundedNumericProperty(10.0, min=0.0001, max=None)
     start_speed = BoundedNumericProperty(100.0, min=0.0001, max=None)
