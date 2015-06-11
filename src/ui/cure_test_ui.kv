@@ -4,16 +4,12 @@
 #:import I18NHelpPopup ui.peachy_widgets.I18NHelpPopup
 
 <BaseSpeed>:
-    orientation: 'horizontal'
-    size_hint_y: None
-    height: "30dp"
-    I18NLabel:
-        text_source: _('Base Speed')
-    FloatInput:
-        size_hint_x: 0.5
-        id: base_speed_id
-        text: '150.0'
-        on_text: root.base_speed = float(self.text)
+    title: _("Base Speed")
+    min_value: 10
+    max_value: 1000
+    value: 150
+    unit: "mm/s"
+    step: 1
 
 <HorizontalLabelSlider>:
     orientation: 'vertical'
@@ -80,6 +76,7 @@
             orientation: 'horizontal'
             spacing: "3dp"
             BoxLayout:
+                id: cure_test_panel_id
                 spacing: "3dp"
                 orientation: 'vertical'
                 padding: "5dp"
@@ -89,11 +86,12 @@
                     Rectangle:
                         pos:  self.pos
                         size: self.size
-                I18NLabel:
+                TouchyLabel:
                     size_hint_y: None
                     height: app.button_height
                     text: _("[b]Test Print Setup[/b]")
                     markup: True
+                    on_is_on: root.show_base_speed(self.is_on)
                 HorizontalLabelSlider:
                     id: minimum_speed_id
                     min_value: 10
@@ -188,6 +186,7 @@
 
                     Label:
                         id: selected_height_id
+                        color: [1., 1., 1., 0.]
                         text: "{:.0f} mm".format(best_height_image_id.y / max(1, (visualization_id.height - 30)) * root.max_height)
                         size_hint: [None,None]
                         width: visualization_id.width / 3
@@ -196,6 +195,7 @@
 
                     Label:
                         id: selected_speed_id
+                        color: [1., 1., 1., 0.]
                         speed_percent: (best_height_image_id.y  - base_image_id.height) / max(1, test_height_image_id.height)
                         text: "{:.0f} mm/s".format(((root.stop_speed - root.start_speed) * self.speed_percent) + root.start_speed)
                         size_hint: [None,None]
@@ -235,6 +235,7 @@
 
                     BoxLayout:
                         id: best_height_image_id
+                        alpha: 0.0
                         size_hint: [None,None]
                         width: visualization_id.width / 3
                         height:  "3dp"
@@ -242,7 +243,7 @@
                         y: base_image_id.height + 10
                         canvas.before:
                             Color:
-                                rgba: 0., 0., 0., 1.0
+                                rgba: 0., 0., 0., self.alpha
                             Rectangle:
                                 pos:  self.pos
                                 size: self.size
@@ -279,6 +280,7 @@
                         Switch:
                             size_hint_x: 0.5
                             id: use_draw_speed_id
+                            on_active: root.use_draw_speed = self.active
                     BoxLayout:
                         size_hint_y: None
                         height: app.button_height
@@ -319,6 +321,7 @@
                         Switch:
                             size_hint_x: 0.5
                             id: override_laser_power_id
+                            on_active: root.override_laser_power = self.active
                     BoxLayout:
                         size_hint_y: None
                         height: app.button_height
