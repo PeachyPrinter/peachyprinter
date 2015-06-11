@@ -1,6 +1,6 @@
 from kivy.uix.screenmanager import Screen
 from kivy.lang import Builder
-from kivy.properties import NumericProperty
+from kivy.properties import NumericProperty, BoundedNumericProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.app import App
@@ -20,18 +20,31 @@ class DripperCalibrationUI(Screen):
         self.api = api
         self.configuration_api = None
         super(DripperCalibrationUI, self).__init__(**kwargs)
+        self.circut_settings = CircutSettings()
+        self.circut_settings.bind(drips_per_mm=self.drips_per_mm)
+        self.emulated_settings = EmulatedSettings()
+        self.emulated_settings.bind(drips_per_mm=self.drips_per_mm, drips_per_second=self.drips_per_second)
+        self.photo_settings = PhotoSettings()
+        self.photo_settings.bind(photo_zaxis_delay=self.photo_zaxis_delay)
 
     def dripper_type_changed(self, instance, value):
         Logger.info("Drippper Type change to %s" % value)
-        self.ids.dripper_setup.clear_widgets()
-        self.ids.visualizations.clear_widgets()
+        self.ids.setup_box_id.clear_widgets()
+        self.ids.visuals_box_id.clear_widgets()
+        self.ids.settings_box_id.clear_widgets()
 
         if value == 'emulated':
-            self.ids.dripper_setup.add_widget(EmulatedDripSetup(self.configuration_api))
+            self.ids.setup_box_id.add_widget(Label(text="Emulated Setup"))
+            self.ids.visuals_box_id.add_widget(Label(text="Emulated Visuals"))
+            self.ids.settings_box_id.add_widget(self.emulated_settings)
         elif value == 'photo':
-            self.ids.dripper_setup.add_widget(PhotoDripSetup(self.configuration_api))
+            self.ids.setup_box_id.add_widget(Label(text="Photo Setup"))
+            self.ids.visuals_box_id.add_widget(Label(text="Photo Visuals"))
+            self.ids.settings_box_id.add_widget(self.photo_settings)
         elif value == 'microcontroller':
-            self.ids.dripper_setup.add_widget(MicrocontrollerDripSetup(self.configuration_api, visualizations=self.ids.visualizations))
+            self.ids.setup_box_id.add_widget(Label(text="Circut Setup"))
+            self.ids.visuals_box_id.add_widget(Label(text="Circut Visuals"))
+            self.ids.settings_box_id.add_widget(self.circut_settings)
         self.configuration_api.set_dripper_type(value)
 
     def on_pre_enter(self):
@@ -41,6 +54,11 @@ class DripperCalibrationUI(Screen):
             dripper_type = self.configuration_api.get_dripper_type()
             self.ids.dripper_type_selector.selected = dripper_type
             self.dripper_type_changed(None, dripper_type)
+
+            self.emulated_settings.drips_per_mm = self.configuration_api.get_dripper_drips_per_mm()
+            self.circut_settings.drips_per_mm = self.configuration_api.get_dripper_drips_per_mm()
+            self.photo_settings.photo_zaxis_delay = self.configuration_api.get_dripper_photo_zaxis_delay()
+
         except:
             ep = ErrorPopup(title=_("Error"), text=_("No Peachy Printer Detected"))
             ep.open()
@@ -48,44 +66,35 @@ class DripperCalibrationUI(Screen):
 
     def on_pre_leave(self):
         self.is_active = False
-        self.ids.dripper_setup.clear_widgets()
+        # self.ids.dripper_setup.clear_widgets()
         if self.configuration_api:
             self.configuration_api.stop_counting_drips()
         self.configuration_api = None
 
+    def drips_per_mm(self, instance, value):
+        Logger.info('Drips_Per_mm set to %s' % value)
+        self.configuration_api.set_dripper_drips_per_mm(value)
+        self.circut_settings.drips_per_mm = value
+        self.emulated_settings.drips_per_mm = value
 
-class EmulatedDripSetup(BoxLayout):
-    drips_per_second = NumericProperty()
-    drips_per_mm = NumericProperty()
-
-    def __init__(self, configuration_api, **kwargs):
-        self.is_active = False
-        self.configuration_api = configuration_api
-        self.drips_per_second = self.configuration_api.get_dripper_emulated_drips_per_second()
-        self.drips_per_mm = self.configuration_api.get_dripper_drips_per_mm()
-        super(EmulatedDripSetup, self).__init__(**kwargs)
-
-    def on_drips_per_second(self, instance, value):
+    def drips_per_second(self, instance, value):
         Logger.info('Drips_Per_Second set to %s' % value)
         self.configuration_api.set_dripper_emulated_drips_per_second(value)
 
-    def on_drips_per_mm(self, instance, value):
-        Logger.info('Drips_Per_mm set to %s' % value)
-        self.configuration_api.set_dripper_drips_per_mm(value)
-
-
-class PhotoDripSetup(BoxLayout):
-    photo_zaxis_delay = NumericProperty()
-
-    def __init__(self, configuration_api, **kwargs):
-        self.is_active = False
-        self.configuration_api = configuration_api
-        self.photo_zaxis_delay = self.configuration_api.get_dripper_photo_zaxis_delay()
-        super(PhotoDripSetup, self).__init__(**kwargs)
-
-    def on_photo_zaxis_delay(self, instance, value):
+    def photo_zaxis_delay(self, instance, value):
         Logger.info('photo zaxis delay set to %s' % value)
         self.configuration_api.set_dripper_photo_zaxis_delay(value)
+
+
+class CircutSettings(BoxLayout):
+    drips_per_mm = BoundedNumericProperty(10, min=0.0001, max=None)
+
+class EmulatedSettings(BoxLayout):
+    drips_per_second = BoundedNumericProperty(10, min=0.0001, max=None)
+    drips_per_mm = BoundedNumericProperty(10, min=0.0001, max=None)
+
+class PhotoSettings(BoxLayout):
+    photo_zaxis_delay = BoundedNumericProperty(10, min=0.0001, max=None)
 
 
 class MicrocontrollerDripSetup(BoxLayout):

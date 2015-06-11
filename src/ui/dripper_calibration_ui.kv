@@ -2,26 +2,112 @@
 #:import _ __main__._
 #:import FloatInput ui.custom_widgets.FloatInput
 
+<CircutSettings>:
+    orientation: 'vertical'
+    I18NLabel:
+        markup: True
+        size_hint_y:None
+        height: "30dp"
+        text_source:_("[b]Circut Settings[/b]")
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y:None
+        height: "30dp"
+        I18NLabel:
+            text_size: self.size
+            halign: 'left'
+            valign: 'middle'
+            text_source:_("Drips per mm")
+        FloatInput:
+            text: str(root.drips_per_mm)
+            on_text: root.drips_per_mm = float(self.text)
+    BoxLayout:
+
+<EmulatedSettings>:
+    orientation: 'vertical'
+    I18NLabel:
+        markup: True
+        size_hint_y:None
+        height: "30dp"
+        text_source:_("[b]Emulated Settings[/b]")
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y:None
+        height: "30dp"
+        I18NLabel:
+            text_size: self.size
+            halign: 'left'
+            valign: 'middle'
+            text_source:_("Drips per mm")
+        FloatInput:
+            text: str(root.drips_per_mm)
+            on_text: root.drips_per_mm = float(self.text)
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y:None
+        height: "30dp"
+        I18NLabel:
+            text_size: self.size
+            halign: 'left'
+            valign: 'middle'
+            text_source:_("Drips per second")
+        FloatInput:
+            text: str(root.drips_per_second)
+            on_text: root.drips_per_second = float(self.text)
+    BoxLayout:
+
+<PhotoSettings>:
+    orientation: 'vertical'
+    I18NLabel:
+        markup: True
+        size_hint_y:None
+        height: "30dp"
+        text_source:_("[b]Photo Settings[/b]")
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y:None
+        height: "30dp"
+        I18NLabel:
+            text_size: self.size
+            halign: 'left'
+            valign: 'middle'
+            text_source:_("Delay After Layer")
+        FloatInput:
+            text: str(root.photo_zaxis_delay)
+            on_text: root.photo_zaxis_delay = float(self.text)
+    BoxLayout:
+
+
 <DripperCalibrationUI>:
     name: 'drippercalibrationui'
     BoxLayout:
         orientation: 'vertical'
         BoxLayout:
             orientation: 'horizontal'
+            spacing: "3dp"
             BoxLayout:
                 orientation: 'vertical'
-                BoxLayout:
-                    size_hint_y: None
+                canvas.before:
+                    Color:
+                        rgba: 1.0, 0.0, 0.0, 0.1
+                    Rectangle:
+                        pos:  self.pos
+                        size: self.size
+                I18NLabel:
+                    size_hint_y:None
                     height: "30dp"
-                    orientation: 'horizontal'
-                    I18NLabel:
-                        text_source: _('Dripper Type')
-                    I18NImageSpinner:
-                        id: dripper_type_selector
-                        values: [[_('Emulated'), 'emulated', "resources/icons/dripper_calibration_type_-_emulated-24x24.png"], [_('Photo'), 'photo', "resources/icons/dripper_calibration_type_-_photo-24x24.png"],[ _('Circut'), 'microcontroller', "resources/icons/dripper_calibration_type_-_circut-24x24.png"]]
-                        on_selected: root.dripper_type_changed(self, self.selected)
+                    text_size: self.size
+                    halign: 'left'
+                    valign: 'middle'
+                    text_source:_("Dripper Type")
+                I18NImageSpinner:
+                    size_hint_y:None
+                    height: "40dp"
+                    id: dripper_type_selector
+                    values: [[_('Emulated'), 'emulated', "resources/icons/dripper_calibration_type_-_emulated-24x24.png"], [_('Photo'), 'photo', "resources/icons/dripper_calibration_type_-_photo-24x24.png"],[ _('Circut'), 'microcontroller', "resources/icons/dripper_calibration_type_-_circut-24x24.png"]]
+                    on_selected: root.dripper_type_changed(self, self.selected)
                 BoxLayout:
-                    id: dripper_setup
+                    id: setup_box_id
                 I18NImageButton:
                     source: "resources/icons/general_help-24x24.png"
                     text_source: _("Help me")
@@ -29,124 +115,27 @@
                     size_hint_y:None
                     height: "30dp"
             BoxLayout:
-                id: visualizations
+                id: visuals_box_id
+                orientation: 'vertical'
+                canvas.before:
+                    Color:
+                        rgba: 0.0, 1.0, 0.0, 0.2
+                    Rectangle:
+                        pos:  self.pos
+                        size: self.size
+            BoxLayout:
+                id: settings_box_id
+                orientation: 'vertical'
+                padding: "3dp"
+                canvas.before:
+                    Color:
+                        rgba: 1.0, 1.0, 1.0, 0.3
+                    Rectangle:
+                        pos:  self.pos
+                        size: self.size
         I18NImageButton:
             source: "resources/icons/general_back-24x24.png"
             text_source: _("Back")
             size_hint_y: None
             height: "30dp"
             on_release: app.root.current = 'mainui'
-
-<EmulatedDripSetup>:
-    orientation: 'vertical'
-    BoxLayout:
-        size_hint_y: 40.0 / root.height
-        I18NLabel:
-            text_source: _("Drips Per Second")
-        FloatInput:
-            text: str(root.drips_per_second)
-            on_text: root.drips_per_second = float(self.text)
-    BoxLayout:
-        size_hint_y: 40.0 / root.height
-        I18NLabel:
-            text_source: _("Drips Per Millimeter")
-        FloatInput:
-            text: str(root.drips_per_mm)
-            on_text: root.drips_per_mm = float(self.text)
-    Label:
-
-<PhotoDripSetup>:
-    orientation: 'vertical'
-    BoxLayout:
-        size_hint_y: 40.0 / root.height
-        I18NLabel:
-            text_source: _("Delay After Layer")
-        FloatInput:
-            text: str(root.photo_zaxis_delay)
-            on_text: root.photo_zaxis_delay = float(self.text)
-    Label:
-
-<MicrocontrollerDripSetup>:
-    orientation: 'vertical'
-    ScrollView:
-        BoxLayout:
-            size_hint_y: None
-            height: "250dp"
-            orientation: 'vertical'
-            padding: "10dp"
-            canvas.before:
-                Color:
-                    rgba:[0.2,0.2,0.2,1.0]
-                Rectangle:
-                    size: [self.size[0] - 20, self.size[1] - 20]
-                    pos: [self.pos[0] + 10, self.pos[1] + 10]
-            I18NLabel:
-                size_hint_y: None
-                height: "30dp"
-                text_source: _("Drip Calculator")
-            Label:
-                size_hint_y: None
-                height: "10dp"
-            BoxLayout:
-                size_hint_y: None
-                height: "30dp"
-                orientation: 'horizontal'
-                I18NLabel:
-                    text_source: _("Distance to Measure (mm)")
-                FloatInput:
-                    text: '%.2f' % root.total_height
-            Label:
-                size_hint_y: None
-                height: "10dp"
-            I18NImageButton:
-                source: "resources/icons/dripper_calibration_reset_drip_count-24x24.png"
-                size_hint_y: None
-                height: "30dp"
-                text_source: _("Reset Drip Count")
-                on_release: root.reset_drip_count()
-            BoxLayout:
-                size_hint_y: None
-                height: "30dp"
-                orientation: 'horizontal'
-                I18NLabel:
-                    text_source: _('Drips')
-                Label:
-                    text: '%.2f' % root.drips
-            BoxLayout:
-                size_hint_y: None
-                height: "30dp"
-                orientation: 'horizontal'
-                I18NLabel:
-                    text_source: _('Average Drips per Second')
-                Label:
-                    text: '%.2f' % root.average_drips
-            BoxLayout:
-                size_hint_y: None
-                height: "30dp"
-                orientation: 'horizontal'
-                I18NLabel:
-                    text_source: _('Current Drips per mm')
-                Label:
-                    text: '%.2f' % root.current_drips_per_mm
-            I18NImageButton:
-                source: "resources/icons/dripper_calibration_use_current_drips_per_mm-24x24.png"
-                size_hint_y: None
-                height: "30dp"
-                text_source: _("Use Current Drips per mm")
-                on_release: root.use_current()
-    Label:
-        size_hint_y: None
-        height: "10dp"
-    BoxLayout:
-        orientation: 'horizontal'
-        size_hint_y: None
-        height: "30dp"
-        I18NLabel:
-            text_source: _('Drips per mm')
-        FloatInput:
-            id: ui_drips_per_mm
-            text: '0.0'
-            on_text: root.drips_per_mm = float(self.text)
-    Label:
-        size_hint_y: None
-        height: "10dp"
