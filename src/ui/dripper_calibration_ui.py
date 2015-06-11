@@ -1,6 +1,6 @@
 from kivy.uix.screenmanager import Screen
 from kivy.lang import Builder
-from kivy.properties import NumericProperty, BoundedNumericProperty
+from kivy.properties import NumericProperty, BoundedNumericProperty, StringProperty, ListProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.app import App
@@ -20,31 +20,37 @@ class DripperCalibrationUI(Screen):
         self.api = api
         self.configuration_api = None
         super(DripperCalibrationUI, self).__init__(**kwargs)
+
         self.circut_settings = CircutSettings()
         self.circut_settings.bind(drips_per_mm=self.drips_per_mm)
+        self.circut_visuals = CircutVisuals()
+        self.circut_setup = CircutSetup()
+        self.circut_setup.bind(test_height=self.test_height)
         self.emulated_settings = EmulatedSettings()
         self.emulated_settings.bind(drips_per_mm=self.drips_per_mm, drips_per_second=self.drips_per_second)
         self.photo_settings = PhotoSettings()
         self.photo_settings.bind(photo_zaxis_delay=self.photo_zaxis_delay)
+        self.photo_visuals = PhotoVisuals()
 
     def dripper_type_changed(self, instance, value):
         Logger.info("Drippper Type change to %s" % value)
         self.ids.setup_box_id.clear_widgets()
         self.ids.visuals_box_id.clear_widgets()
         self.ids.settings_box_id.clear_widgets()
-
+        self.configuration_api.stop_counting_drips()
         if value == 'emulated':
-            self.ids.setup_box_id.add_widget(Label(text="Emulated Setup"))
+            self.ids.setup_box_id.add_widget(BoxLayout())
             self.ids.visuals_box_id.add_widget(Label(text="Emulated Visuals"))
             self.ids.settings_box_id.add_widget(self.emulated_settings)
         elif value == 'photo':
-            self.ids.setup_box_id.add_widget(Label(text="Photo Setup"))
-            self.ids.visuals_box_id.add_widget(Label(text="Photo Visuals"))
+            self.ids.setup_box_id.add_widget(BoxLayout())
+            self.ids.visuals_box_id.add_widget(self.photo_visuals)
             self.ids.settings_box_id.add_widget(self.photo_settings)
         elif value == 'microcontroller':
-            self.ids.setup_box_id.add_widget(Label(text="Circut Setup"))
-            self.ids.visuals_box_id.add_widget(Label(text="Circut Visuals"))
+            self.ids.setup_box_id.add_widget(self.circut_setup)
+            self.ids.visuals_box_id.add_widget(self.circut_visuals)
             self.ids.settings_box_id.add_widget(self.circut_settings)
+            self.configuration_api.start_counting_drips(self.drip_call_back)
         self.configuration_api.set_dripper_type(value)
 
     def on_pre_enter(self):
@@ -64,9 +70,13 @@ class DripperCalibrationUI(Screen):
             ep.open()
             App.get_running_app().root.current = 'mainui'
 
+    def drip_call_back(self, drips, current_z_location_mm, average_drips, drip_history):
+        self.circut_visuals.drips = str(drips)
+        self.circut_visuals.average_drips = "{:.2f}".format(average_drips)
+        self.circut_visuals.drip_history = drip_history
+
     def on_pre_leave(self):
         self.is_active = False
-        # self.ids.dripper_setup.clear_widgets()
         if self.configuration_api:
             self.configuration_api.stop_counting_drips()
         self.configuration_api = None
@@ -85,6 +95,19 @@ class DripperCalibrationUI(Screen):
         Logger.info('photo zaxis delay set to %s' % value)
         self.configuration_api.set_dripper_photo_zaxis_delay(value)
 
+    def test_height(self, instance, value):
+        Logger.info('Drip test height set to %s' % value)
+        self.circut_visuals.target_height = value
+
+
+class CircutSetup(BoxLayout):
+    test_height = BoundedNumericProperty(50)
+
+class CircutVisuals(BoxLayout):
+    drips = StringProperty("0")
+    average_drips = StringProperty("0.00")
+    target_height = StringProperty("0")
+    drip_history = ListProperty()
 
 class CircutSettings(BoxLayout):
     drips_per_mm = BoundedNumericProperty(10, min=0.0001, max=None)
@@ -95,6 +118,10 @@ class EmulatedSettings(BoxLayout):
 
 class PhotoSettings(BoxLayout):
     photo_zaxis_delay = BoundedNumericProperty(10, min=0.0001, max=None)
+
+class PhotoVisuals(BoxLayout):
+    pass
+
 
 
 class MicrocontrollerDripSetup(BoxLayout):

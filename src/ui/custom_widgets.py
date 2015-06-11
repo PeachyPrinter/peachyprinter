@@ -8,9 +8,10 @@ from kivy.uix.button import Button
 from kivy.uix.togglebutton import ToggleButton
 from kivy.uix.tabbedpanel import TabbedPanel, TabbedPanelItem, TabbedPanelHeader
 from kivy.uix.accordion import AccordionItem
+from kivy.uix.boxlayout import BoxLayout
 from kivy.compat import string_types
 from kivy.factory import Factory
-from kivy.properties import ListProperty, ObjectProperty, BooleanProperty, NumericProperty, StringProperty
+from kivy.properties import ListProperty, ObjectProperty, BooleanProperty, NumericProperty, StringProperty,BoundedNumericProperty
 from kivy.uix.dropdown import DropDown
 from kivy.lang import Builder
 import re
@@ -243,3 +244,20 @@ class I18NImageSpinner(I18NImageButton):
         else:
             if self._dropdown.attach_to:
                 self._dropdown.dismiss()
+
+class HorizontalLabelSlider(BoxLayout):
+    title = StringProperty()
+    unit = StringProperty()
+    value = NumericProperty(0.)
+    min_value = NumericProperty(0.)
+    max_value = NumericProperty(1.)
+    step = BoundedNumericProperty(0, min=0)
+
+
+class VerticalLabelSlider(BoxLayout):
+    title = StringProperty()
+    unit = StringProperty()
+    value = NumericProperty(0.)
+    min_value = NumericProperty(0.)
+    max_value = NumericProperty(1.)
+    step = BoundedNumericProperty(0, min=0)
