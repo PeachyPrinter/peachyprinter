@@ -4,27 +4,12 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import BoundedNumericProperty, BooleanProperty, StringProperty, NumericProperty, OptionProperty
 from kivy.logger import Logger
 from kivy.metrics import sp
-
+from ui.custom_widgets import HorizontalLabelSlider
 
 Builder.load_file('ui/cure_test_ui.kv')
 
 
-class HorizontalLabelSlider(BoxLayout):
-    title = StringProperty()
-    unit = StringProperty()
-    value = NumericProperty(0.)
-    min_value = NumericProperty(0.)
-    max_value = NumericProperty(1.)
-    step = BoundedNumericProperty(0, min=0)
 
-
-class VerticalLabelSlider(BoxLayout):
-    title = StringProperty()
-    unit = StringProperty()
-    value = NumericProperty(0.)
-    min_value = NumericProperty(0.)
-    max_value = NumericProperty(1.)
-    step = BoundedNumericProperty(0, min=0)
 
 
 class BaseSpeed(HorizontalLabelSlider):

@@ -2,6 +2,71 @@
 #:import _ __main__._
 #:import FloatInput ui.custom_widgets.FloatInput
 
+<CircutSetup>:
+    orientation: 'vertical'
+    I18NLabel:
+        markup: True
+        size_hint_y:None
+        height: "30dp"
+        text_source:_("[b]Dripper Test Setup[/b]")
+    BoxLayout:
+        orientation: 'vertical'
+        VerticalLabelSlider:
+            id: drip_count_final_height
+            min_value: 1
+            max_value: 1000
+            value: root.test_height
+            title: _("Test Height")
+            unit: "mm"
+            step: 1
+
+
+<CircutVisuals>:
+    orientation: 'vertical'
+    padding: "3dp"
+    I18NLabel:
+        size_hint_y:None
+        height: "30dp"
+        text_source:_("[b]Circut Setup[/b]")
+        markup: True
+    BoxLayout:
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y:None
+        height: "30dp"
+        I18NLabel:
+            halign: 'left'
+            valign: 'middle'
+            text_size: self.size
+            text_source:_("Drips")
+        Label:
+            halign: 'right'
+            valign: 'middle'
+            text_size: self.size
+            text: root.drips
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y:None
+        height: "30dp"
+        I18NLabel:
+            halign: 'left'
+            valign: 'middle'
+            text_size: self.size
+            text_source:_("Average Drips")
+        Label:
+            halign: 'right'
+            valign: 'middle'
+            text_size: self.size
+            text: root.average_drips
+    Button:
+        size_hint_y:None
+        halign: "center"
+        height: "60dp"
+        start: _("It takes")
+        middle: _("drips\n to make")
+        end: _("mm of water")
+        text: "{} {} {} {}{}".format(app.translation(self.start), root.drips, app.translation(self.middle), root.target_height, app.translation(self.end))
+
 <CircutSettings>:
     orientation: 'vertical'
     I18NLabel:
@@ -22,6 +87,7 @@
             text: str(root.drips_per_mm)
             on_text: root.drips_per_mm = float(self.text)
     BoxLayout:
+
 
 <EmulatedSettings>:
     orientation: 'vertical'
@@ -77,6 +143,20 @@
             on_text: root.photo_zaxis_delay = float(self.text)
     BoxLayout:
 
+<PhotoVisuals>:
+    orientation: 'vertical'
+    padding: "3dp"
+    I18NLabel:
+        size_hint_y:None
+        height: "30dp"
+        text_source:_("[b]Photo Dripper Setup[/b]")
+        markup: True
+    BoxLayout:
+
+
+
+
+
 
 <DripperCalibrationUI>:
     name: 'drippercalibrationui'
@@ -89,7 +169,7 @@
                 orientation: 'vertical'
                 canvas.before:
                     Color:
-                        rgba: 1.0, 0.0, 0.0, 0.1
+                        rgba: 1.0, 1.0, 1.0, 0.1
                     Rectangle:
                         pos:  self.pos
                         size: self.size
@@ -119,7 +199,7 @@
                 orientation: 'vertical'
                 canvas.before:
                     Color:
-                        rgba: 0.0, 1.0, 0.0, 0.2
+                        rgba: 1.0, 1.0, 1.0, 0.2
                     Rectangle:
                         pos:  self.pos
                         size: self.size

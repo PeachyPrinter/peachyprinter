@@ -11,62 +11,6 @@
     unit: "mm/s"
     step: 1
 
-<HorizontalLabelSlider>:
-    orientation: 'vertical'
-    size_hint_y:None
-    height: "60dp"
-    padding: "3dp"
-    canvas.before:
-        Color:
-            rgba: 1.0, 1.0, 1.0, 0.1
-        Rectangle:
-            pos:  self.pos
-            size: self.size
-    BoxLayout:
-        orientation:'horizontal'
-        I18NLabel:
-            text_size: self.size
-            halign: 'left'
-            valign: 'middle'
-            text_source: root.title
-        Label:
-            text_size: self.size
-            halign: 'right'
-            valign: 'middle'
-            text: "{:.2f} {}".format(slider.value, root.unit)
-    Slider:
-        id: slider
-        value: root.value
-        min: root.min_value
-        max: root.max_value
-        step: root.step
-        on_value: root.value = self.value
-
-<VerticalLabelSlider>:
-    orientation: 'vertical'
-    padding: "3dp"
-    canvas.before:
-        Color:
-            rgba: 1.0, 1.0, 1.0, 0.1
-        Rectangle:
-            pos:  self.pos
-            size: self.size
-    I18NLabel:
-        size_hint_y:None
-        height: "30dp"
-        text_source: root.title
-    Slider:
-        id: slider
-        orientation: 'vertical'
-        value: root.value
-        min: root.min_value
-        max: root.max_value
-        step: root.step
-        on_value: root.value = self.value
-    Label:
-        size_hint_y:None
-        height: "30dp"
-        text: "{:.2f} {}".format(slider.value, root.unit)
 
 <CureTestUI>:
     name: 'curetestui'
