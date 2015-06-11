@@ -158,6 +158,14 @@
                         height: "30dp"
                         pos: [(moveit.width / 3) * 2, test_height_image.pos[1] + test_height_image.height - self.height / 2]
 
+                    Label:
+                        id: selected_height
+                        text: "{:.0f} mm/s".format(best_height_image.y / max(1, (moveit.height - 30)) * root.max_height)
+                        size_hint: [None,None]
+                        width: moveit.width / 3
+                        height: "30dp"
+                        pos: [(moveit.width / 3) * 2, best_height_image.y]
+
                     BoxLayout:
                         id: base_image
                         size_hint: [None,None]
@@ -186,7 +194,7 @@
                                 pos:  self.pos 
                                 size: self.size
                         I18NLabel:
-                            text_source: _("Height")
+                            text_source: _("Test")
 
                     BoxLayout:
                         id: best_height_image

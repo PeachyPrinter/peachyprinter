@@ -115,6 +115,21 @@ class CureTestUI(Screen):
             self.configuration_api.set_cure_rate_override_laser_power_amount(float(value))
             self.configuration_api.save()
 
+    def on_touch_down(self, touch):
+        super(CureTestUI, self).on_touch_down(touch)
+        self.touched(touch)
+
+    def on_touch_move(self, touch):
+        super(CureTestUI, self).on_touch_move(touch)
+        self.touched(touch)
+
+    def touched(self, touch):
+        coords = self.ids.test_height_image.to_widget(*touch.pos)
+        if self.ids.test_height_image.collide_point(*coords):
+            self.ids.best_height_image.y = coords[1]
+            return True
+
+
     def print_now(self):
         if self.use_base_speed:
             base_speed = self.base_speed.base_speed
