@@ -17,6 +17,7 @@ class HorizontalLabelSlider(BoxLayout):
     max_value = NumericProperty(1.)
     step = BoundedNumericProperty(0, min=0)
 
+
 class VerticalLabelSlider(BoxLayout):
     title = StringProperty()
     unit = StringProperty()
@@ -26,8 +27,8 @@ class VerticalLabelSlider(BoxLayout):
     step = BoundedNumericProperty(0, min=0)
 
 
-class BaseSpeed(BoxLayout):
-    base_speed = BoundedNumericProperty(150.0, min=0.0001, max=None)
+class BaseSpeed(HorizontalLabelSlider):
+    pass
 
 class CureTestUI(Screen):
     max_height = NumericProperty(100)
@@ -54,12 +55,10 @@ class CureTestUI(Screen):
     def show_base_speed(self, value):
         if value is True:
             self.use_base_speed = True
-            self.ids.cure_test_panel.height += self.base_speed.height
-            self.ids.cure_test_panel.add_widget(self.base_speed, index=5)
+            self.ids.cure_test_panel_id.add_widget(self.base_speed, index=2)
         else:
-            self.use_base_speed = False 
-            self.ids.cure_test_panel.height -= self.base_speed.height
-            self.ids.cure_test_panel.remove_widget(self.base_speed)
+            self.use_base_speed = False
+            self.ids.cure_test_panel_id.remove_widget(self.base_speed)
 
     def on_base(self, instance, value):
         if self.loaded:
@@ -93,13 +92,13 @@ class CureTestUI(Screen):
 
     def on_draw_speed(self, instance, value):
         if self.loaded:
-            Logger.info("Saving draw_speed value of%.2f" % float(value))
+            Logger.info("Saving draw_speed value of %.2f" % float(value))
             self.configuration_api.set_cure_rate_draw_speed(float(value))
             self.configuration_api.save()
 
-    def on_draw_speed(self, instance, value):
+    def on_move_speed(self, instance, value):
         if self.loaded:
-            Logger.info("Saving move_speed value of%.2f" % float(value))
+            Logger.info("Saving move_speed value of %.2f" % float(value))
             self.configuration_api.set_cure_rate_move_speed(float(value))
             self.configuration_api.save()
 
@@ -127,12 +126,15 @@ class CureTestUI(Screen):
         coords = self.ids.test_height_image_id.to_widget(*touch.pos)
         if self.ids.test_height_image_id.collide_point(*coords):
             self.ids.best_height_image_id.y = coords[1]
+            self.ids.best_height_image_id.alpha = 1.0
+            self.ids.selected_height_id.color = [1., 1., 1., 1.]
+            self.ids.selected_speed_id.color = [1., 1., 1., 1.]
             return True
 
 
     def print_now(self):
         if self.use_base_speed:
-            base_speed = self.base_speed.base_speed
+            base_speed = self.base_speed.value
         else:
             base_speed = None
         generator = self.configuration_api.get_cure_test(self.base, self.test_height, self.start_speed, self.stop_speed, base_speed)
