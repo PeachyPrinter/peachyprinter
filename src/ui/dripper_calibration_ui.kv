@@ -19,11 +19,17 @@
             title: _("Test Height")
             unit: "mm"
             step: 1
+            on_value: root.test_height = self.value
 
 
 <CircutVisuals>:
     orientation: 'vertical'
     padding: "3dp"
+    I18NButton:
+        size_hint_y:None
+        height: "30dp"
+        text_source: _("Reset Drip Count")
+        on_release: root.reset = not root.reset
     I18NLabel:
         size_hint_y:None
         height: "30dp"
@@ -66,6 +72,7 @@
         middle: _("drips\n to make")
         end: _("mm of water")
         text: "{} {} {} {}{}".format(app.translation(self.start), root.drips, app.translation(self.middle), root.target_height, app.translation(self.end))
+        on_release: root.calculate_drips_per_mm()
 
 <CircutSettings>:
     orientation: 'vertical'
@@ -74,19 +81,19 @@
         size_hint_y:None
         height: "30dp"
         text_source:_("[b]Circut Settings[/b]")
-    BoxLayout:
-        orientation: 'horizontal'
+    I18NLabel:
         size_hint_y:None
         height: "30dp"
-        I18NLabel:
-            text_size: self.size
-            halign: 'left'
-            valign: 'middle'
-            text_source:_("Drips per mm")
-        FloatInput:
-            text: str(root.drips_per_mm)
-            on_text: root.drips_per_mm = float(self.text)
-    BoxLayout:
+        text_size: self.size
+        halign: 'left'
+        valign: 'middle'
+        text_source:_("Drips per mm")
+    FloatInput:
+        size_hint_y:None
+        height: "30dp"
+        text: str(root.drips_per_mm)
+        on_text: root.drips_per_mm = float(self.text)
+    Label:
 
 
 <EmulatedSettings>:

@@ -1,6 +1,6 @@
 from kivy.uix.screenmanager import Screen
 from kivy.lang import Builder
-from kivy.properties import NumericProperty, BoundedNumericProperty, StringProperty, ListProperty
+from kivy.properties import NumericProperty, BoundedNumericProperty, StringProperty, ListProperty, BooleanProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.app import App
@@ -24,10 +24,13 @@ class DripperCalibrationUI(Screen):
         self.circut_settings = CircutSettings()
         self.circut_settings.bind(drips_per_mm=self.drips_per_mm)
         self.circut_visuals = CircutVisuals()
+        self.circut_visuals.bind(drips_per_mm=self.drips_per_mm, reset=self.reset_drip_count)
         self.circut_setup = CircutSetup()
         self.circut_setup.bind(test_height=self.test_height)
+
         self.emulated_settings = EmulatedSettings()
         self.emulated_settings.bind(drips_per_mm=self.drips_per_mm, drips_per_second=self.drips_per_second)
+
         self.photo_settings = PhotoSettings()
         self.photo_settings.bind(photo_zaxis_delay=self.photo_zaxis_delay)
         self.photo_visuals = PhotoVisuals()
@@ -46,6 +49,7 @@ class DripperCalibrationUI(Screen):
             self.ids.setup_box_id.add_widget(BoxLayout())
             self.ids.visuals_box_id.add_widget(self.photo_visuals)
             self.ids.settings_box_id.add_widget(self.photo_settings)
+
         elif value == 'microcontroller':
             self.ids.setup_box_id.add_widget(self.circut_setup)
             self.ids.visuals_box_id.add_widget(self.circut_visuals)
@@ -63,9 +67,11 @@ class DripperCalibrationUI(Screen):
 
             self.emulated_settings.drips_per_mm = self.configuration_api.get_dripper_drips_per_mm()
             self.circut_settings.drips_per_mm = self.configuration_api.get_dripper_drips_per_mm()
+            self.circut_visuals.target_height = str(self.circut_setup.test_height)
             self.photo_settings.photo_zaxis_delay = self.configuration_api.get_dripper_photo_zaxis_delay()
 
         except:
+            raise
             ep = ErrorPopup(title=_("Error"), text=_("No Peachy Printer Detected"))
             ep.open()
             App.get_running_app().root.current = 'mainui'
@@ -97,7 +103,11 @@ class DripperCalibrationUI(Screen):
 
     def test_height(self, instance, value):
         Logger.info('Drip test height set to %s' % value)
-        self.circut_visuals.target_height = value
+        self.circut_visuals.target_height = str(value)
+
+    def reset_drip_count(self, instance, value):
+        self.configuration_api.reset_drips()
+
 
 
 class CircutSetup(BoxLayout):
@@ -108,6 +118,12 @@ class CircutVisuals(BoxLayout):
     average_drips = StringProperty("0.00")
     target_height = StringProperty("0")
     drip_history = ListProperty()
+    drips_per_mm = NumericProperty()
+    reset = BooleanProperty()
+
+    def calculate_drips_per_mm(self):
+        self.drips_per_mm = float(self.drips) / float(self.target_height)
+
 
 class CircutSettings(BoxLayout):
     drips_per_mm = BoundedNumericProperty(10, min=0.0001, max=None)
@@ -122,58 +138,3 @@ class PhotoSettings(BoxLayout):
 class PhotoVisuals(BoxLayout):
     pass
 
-
-
-class MicrocontrollerDripSetup(BoxLayout):
-    total_height = NumericProperty(100.0)
-    drips_per_mm = NumericProperty(1.0)
-    current_drips_per_mm = NumericProperty(0.0)
-    drips = NumericProperty(0.0)
-    average_drips = NumericProperty(0.0)
-
-    def __init__(self, api, **kwargs):
-        self.is_active = False
-        self.dripper = None
-        if "visualizations" in kwargs:
-            self.visualizations = kwargs["visualizations"]
-            self.dripper = Dripper(size_hint_x=None, width=30)
-            self.visualizations.add_widget(Label())
-            self.visualizations.add_widget(self.dripper)
-        self.configuration_api = api
-        super(MicrocontrollerDripSetup, self).__init__(**kwargs)
-        Logger.info("Starting up dripper")
-        self.ids.ui_drips_per_mm.text = '%.2f' % self.configuration_api.get_dripper_drips_per_mm()
-        self.configuration_api.start_counting_drips(self.drip_call_back)
-
-    def drip_call_back(self, drips, current_z_location_mm, average_drips, drip_history):
-        self.drips = drips
-        self.average_drips = average_drips
-        if self.dripper:
-            self.dripper.update_parts(drips, drip_history)
-
-    def on_parent(self, instance, value):
-        if value is None:
-            Logger.info("Shutting down dripper")
-            self.configuration_api.stop_counting_drips()
-
-    def update_total_height(self):
-        self.total_height = self.ids.end_height.text - self.ids.start_height.text
-        self.update_drips_per_mm()
-
-    def update_drips_per_mm(self):
-        self.current_drips_per_mm = self.drips / self.total_height
-
-    def on_drips(self, instance, value):
-        self.update_drips_per_mm()
-
-    def on_drips_per_mm(self, instance, value):
-        Logger.info("Useing the drips per mm amount of %.2f" % value)
-        self.ids.ui_drips_per_mm.text = '%.2f' % value
-        self.configuration_api.set_dripper_drips_per_mm(value)
-
-    def use_current(self):
-        Logger.info("Useing current drips")
-        self.drips_per_mm = self.current_drips_per_mm
-
-    def reset_drip_count(self):
-        self.configuration_api.reset_drips()
