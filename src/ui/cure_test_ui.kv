@@ -160,11 +160,20 @@
 
                     Label:
                         id: selected_height
-                        text: "{:.0f} mm/s".format(best_height_image.y / max(1, (moveit.height - 30)) * root.max_height)
+                        text: "{:.0f} mm".format(best_height_image.y / max(1, (moveit.height - 30)) * root.max_height)
                         size_hint: [None,None]
                         width: moveit.width / 3
                         height: "30dp"
                         pos: [(moveit.width / 3) * 2, best_height_image.y]
+
+                    Label:
+                        id: selected_speed
+                        speed_percent: (best_height_image.y  - base_image.height) / max(1, test_height_image.height)
+                        text: "{:.0f} mm/s".format(((root.stop_speed - root.start_speed) * self.speed_percent) + root.start_speed)
+                        size_hint: [None,None]
+                        width: moveit.width / 3
+                        height: "30dp"
+                        pos: [0, best_height_image.y]
 
                     BoxLayout:
                         id: base_image
