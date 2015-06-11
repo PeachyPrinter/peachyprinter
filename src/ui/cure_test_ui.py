@@ -49,6 +49,7 @@ class CureTestUI(Screen):
         self.loaded = False
         super(CureTestUI, self).__init__(**kwargs)
         self.base_speed = BaseSpeed()
+        self.ids.total_height.value = max(self.base + 10, self.test_height)
 
     def show_base_speed(self, value):
         if value is True:
