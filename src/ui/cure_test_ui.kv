@@ -19,6 +19,13 @@
     orientation: 'vertical'
     size_hint_y:None
     height: "60dp"
+    padding: "3dp"
+    canvas.before:
+        Color:
+            rgba: 1.0, 1.0, 1.0, 0.1
+        Rectangle:
+            pos:  self.pos
+            size: self.size
     BoxLayout:
         orientation:'horizontal'
         I18NLabel:
@@ -41,6 +48,13 @@
 
 <VerticalLabelSlider>:
     orientation: 'vertical'
+    padding: "3dp"
+    canvas.before:
+        Color:
+            rgba: 1.0, 1.0, 1.0, 0.1
+        Rectangle:
+            pos:  self.pos
+            size: self.size
     I18NLabel:
         size_hint_y:None
         height: "30dp"
@@ -66,16 +80,22 @@
             orientation: 'horizontal'
             spacing: "3dp"
             BoxLayout:
+                spacing: "3dp"
                 orientation: 'vertical'
                 padding: "5dp"
                 canvas.before:
                     Color:
-                        rgba: 1.0, 1.0, 1.0, 0.2
+                        rgba: 1.0, 1.0, 1.0, 0.1
                     Rectangle:
                         pos:  self.pos
                         size: self.size
+                I18NLabel:
+                    size_hint_y: None
+                    height: app.button_height
+                    text: _("[b]Test Print Setup[/b]")
+                    markup: True
                 HorizontalLabelSlider:
-                    id: minimum_speed
+                    id: minimum_speed_id
                     min_value: 10
                     max_value: 800
                     value: root.start_speed
@@ -84,7 +104,7 @@
                     step: 1
                     on_value: root.start_speed = self.value
                 HorizontalLabelSlider:
-                    id: maximum_speed
+                    id: maximum_speed_id
                     min_value: root.start_speed
                     max_value: 1000
                     value: max(root.start_speed, self.value)
@@ -94,8 +114,9 @@
                     on_value: root.stop_speed = self.value
                 BoxLayout:
                     orientation:'horizontal'
+                    spacing: "3dp"
                     VerticalLabelSlider:
-                        id: base_height
+                        id: base_height_id
                         min_value: 0
                         max_value: root.max_height - 10
                         value: root.base
@@ -104,7 +125,7 @@
                         step: 1
                         on_value: root.base = self.value
                     VerticalLabelSlider:
-                        id: total_height
+                        id: total_height_id
                         min_value: root.base + 10
                         max_value: root.max_height
                         value: root.test_height
@@ -119,68 +140,75 @@
                     text_source: _('Run Cure Test Now')
                     on_release: root.print_now()
             BoxLayout:
+                orientation: 'vertical'
                 padding: "5dp"
+                spacing: "5dp"
                 canvas.before:
                     Color:
-                        rgba: 1.0, 1.0, 1.0, 0.3
+                        rgba: 1.0, 1.0, 1.0, 0.2
                     Rectangle:
                         pos:  self.pos
                         size: self.size
+                I18NLabel:
+                    markup: True
+                    size_hint_y: None
+                    height: app.button_height
+                    text_source: _("[b]Result Selection[/b]")
                 RelativeLayout:
-                    id: moveit
+                    id: visualization_id
                     Label:
                         id: start_speed
                         text: "{:.0f} mm/s".format(root.start_speed)
                         size_hint: [None,None]
-                        width: moveit.width / 3
+                        width: visualization_id.width / 3
                         height: "30dp"
-                        pos: [0, ((root.base / root.max_height) * (moveit.height - 30)) - self.height / 2]
+                        pos: [0, ((root.base / root.max_height) * (visualization_id.height - 30)) - self.height / 2]
                     Label:
                         id: stop_speed
                         text: "{:.0f} mm/s".format(root.stop_speed)
                         size_hint: [None,None]
-                        width: moveit.width / 3
+                        width: visualization_id.width / 3
                         height: "30dp"
-                        pos: [0, test_height_image.pos[1] + test_height_image.height - self.height / 2]
+                        pos: [0, test_height_image_id.pos[1] + test_height_image_id.height - self.height / 2]
 
                     Label:
-                        id: start_height
+                        id: start_height_id
                         text: "{:.0f} mm".format(root.base)
                         size_hint: [None,None]
-                        width: moveit.width / 3
+                        width: visualization_id.width / 3
                         height: "30dp"
-                        pos: [(moveit.width / 3) * 2, ((root.base / root.max_height) * (moveit.height - 30)) - self.height / 2]
+                        pos: [(visualization_id.width / 3) * 2, ((root.base / root.max_height) * (visualization_id.height - 30)) - self.height / 2]
                     Label:
-                        id: stop_height
+                        id: stop_height_id
                         text: "{:.0f} mm/s".format(root.test_height)
                         size_hint: [None,None]
-                        width: moveit.width / 3
+                        width: visualization_id.width / 3
                         height: "30dp"
-                        pos: [(moveit.width / 3) * 2, test_height_image.pos[1] + test_height_image.height - self.height / 2]
+                        pos: [(visualization_id.width / 3) * 2, test_height_image_id.pos[1] + test_height_image_id.height - self.height / 2]
 
                     Label:
-                        id: selected_height
-                        text: "{:.0f} mm".format(best_height_image.y / max(1, (moveit.height - 30)) * root.max_height)
+                        id: selected_height_id
+                        text: "{:.0f} mm".format(best_height_image_id.y / max(1, (visualization_id.height - 30)) * root.max_height)
                         size_hint: [None,None]
-                        width: moveit.width / 3
+                        width: visualization_id.width / 3
                         height: "30dp"
-                        pos: [(moveit.width / 3) * 2, best_height_image.y]
+                        pos: [(visualization_id.width / 3) * 2, best_height_image_id.y]
 
                     Label:
-                        id: selected_speed
-                        speed_percent: (best_height_image.y  - base_image.height) / max(1, test_height_image.height)
+                        id: selected_speed_id
+                        speed_percent: (best_height_image_id.y  - base_image_id.height) / max(1, test_height_image_id.height)
                         text: "{:.0f} mm/s".format(((root.stop_speed - root.start_speed) * self.speed_percent) + root.start_speed)
                         size_hint: [None,None]
-                        width: moveit.width / 3
+                        width: visualization_id.width / 3
                         height: "30dp"
-                        pos: [0, best_height_image.y]
+                        pos: [0, best_height_image_id.y]
 
                     BoxLayout:
-                        id: base_image
+                        id: base_image_id
                         size_hint: [None,None]
-                        width: moveit.width / 3
-                        height: ((root.base / root.max_height) * (moveit.height - 30))
-                        pos: [moveit.width / 3, 0]
+                        width: visualization_id.width / 3
+                        height: ((root.base / root.max_height) * (visualization_id.height - 30))
+                        pos: [visualization_id.width / 3, 0]
                         canvas.before:
                             Color:
                                 rgba: 0.12, 0.18, 0.93, 1.0
@@ -191,11 +219,11 @@
                             id: label
                             text_source: _("Base")
                     BoxLayout:
-                        id: test_height_image
+                        id: test_height_image_id
                         size_hint: [None,None]
-                        width: moveit.width / 3
-                        height:  ((root.test_height - root.base) / root.max_height) * (moveit.height - 30)
-                        pos: [moveit.width / 3,  base_image.height ]
+                        width: visualization_id.width / 3
+                        height:  ((root.test_height - root.base) / root.max_height) * (visualization_id.height - 30)
+                        pos: [visualization_id.width / 3,  base_image_id.height ]
                         canvas.before:
                             Color:
                                 rgba: 0.23, 0.04, 0.51, 1.0
@@ -206,28 +234,106 @@
                             text_source: _("Test")
 
                     BoxLayout:
-                        id: best_height_image
+                        id: best_height_image_id
                         size_hint: [None,None]
-                        width: moveit.width / 3
+                        width: visualization_id.width / 3
                         height:  "3dp"
-                        x: moveit.width / 3
-                        y: base_image.height + 10
+                        x: visualization_id.width / 3
+                        y: base_image_id.height + 10
                         canvas.before:
                             Color:
                                 rgba: 0., 0., 0., 1.0
                             Rectangle:
                                 pos:  self.pos
                                 size: self.size
-
+                I18NImageButton:
+                    size_hint_y: None
+                    height: app.button_height
+                    text_source: _("Use These Settings")
+                    source: "resources/icons/cure_rate_test_use_best_draw_speed-24x24.png"
+                    on_release: draw_speed_id.text = selected_speed_id.text.split(' ')[0]; root.draw_speed = float(selected_speed_id.text.split(' ')[0])
             BoxLayout:
                 canvas.before:
                     Color:
-                        rgba: 0.0, 1.0, 0.0, 1.0
+                        rgba: 1.0, 1.0, 1.0, 0.3
                     Rectangle:
                         pos:  self.pos
                         size: self.size
-                Label:
-                    text: "Final Settings"
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: "5dp"
+                    I18NLabel:
+                        size_hint_y: None
+                        height: app.button_height
+                        text: _("[b]Print Settings[/b]")
+                        markup: True
+                    BoxLayout:
+                        size_hint_y: None
+                        height: app.button_height
+                        orientation: 'horizontal'
+                        I18NLabel:
+                            text_size: self.size
+                            halign: 'left'
+                            valign: 'middle'
+                            text: _("Override speeds")
+                        Switch:
+                            size_hint_x: 0.5
+                            id: use_draw_speed_id
+                    BoxLayout:
+                        size_hint_y: None
+                        height: app.button_height
+                        orientation: 'horizontal'
+                        I18NLabel:
+                            text_size: self.size
+                            halign: 'left'
+                            valign: 'middle'
+                            text: _("Draw Speed")
+                        FloatInput:
+                            size_hint_x: 0.5
+                            id: draw_speed_id
+                            text: '0.0'
+                            on_text: root.draw_speed = float(self.text)
+                    BoxLayout:
+                        size_hint_y: None
+                        height: app.button_height
+                        orientation: 'horizontal'
+                        I18NLabel:
+                            text_size: self.size
+                            halign: 'left'
+                            valign: 'middle'
+                            text: _("Move Speed")
+                        FloatInput:
+                            size_hint_x: 0.5
+                            id: move_speed_id
+                            text: '0.0'
+                            on_text: root.move_speed = float(self.text)
+                    BoxLayout:
+                        size_hint_y: None
+                        height: app.button_height
+                        orientation: 'horizontal'
+                        I18NLabel:
+                            text_size: self.size
+                            halign: 'left'
+                            valign: 'middle'
+                            text: _("Override laser power")
+                        Switch:
+                            size_hint_x: 0.5
+                            id: override_laser_power_id
+                    BoxLayout:
+                        size_hint_y: None
+                        height: app.button_height
+                        orientation: 'horizontal'
+                        I18NLabel:
+                            text_size: self.size
+                            halign: 'left'
+                            valign: 'middle'
+                            text: _("Laser Power %")
+                        FloatInput:
+                            size_hint_x: 0.5
+                            id: override_laser_power_amount_id
+                            text: '0.0'
+                            on_text: root.override_laser_power_amount = float(self.text)
+                    Label:
         I18NImageButton:
             source: "resources/icons/general_help-24x24.png"
             text_source: _("Help me")
