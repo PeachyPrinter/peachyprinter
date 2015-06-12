@@ -40,7 +40,6 @@ class PrintStatus(LabelGridLayout):
             self.add_widget(self.content[key])
 
     def update(self, data):
-        Logger.info(str(data))
         if 'status' in data:
             self.content['status'].text = '{0}'.format(data['status'])
         if 'model_height' in data:
