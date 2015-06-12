@@ -30,11 +30,11 @@
     cup_left: 10.0
     cup_right: self.cup_left + self.cup_width
     cup_dest_water_level: (self.cup_height - self.cup_water_level + self.cup_bottom) * (self.test_height / 1000.0)
-    dripper_left: cup_left + 10
-    dripper_right: dripper_left + 40
+    dripper_left: self.cup_left + 20
+    dripper_right: self.dripper_left + 40
     dripper_top: self.height - 10
-    dripper_bottom: self.height - 50
-    canvas.after:
+    dripper_bottom: self.height - 100
+    canvas.before:
         Color:
             rgba: 0.0, 0.4, 1.0, 0.8
         Rectangle:
@@ -57,8 +57,8 @@
             width: 4
         Line:
             points: 
-                [root.dripper_left, self.dripper_bottom,
-                root.dripper_left, self.dripper_top,
+                [self.dripper_left, self.dripper_bottom,
+                self.dripper_left, self.dripper_top,
                 self.dripper_right, self.dripper_top,
                 self.dripper_right, self.dripper_bottom
                 ]
