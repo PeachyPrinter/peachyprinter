@@ -2,11 +2,11 @@ from kivy.uix.screenmanager import Screen
 from kivy.lang import Builder
 from kivy.properties import NumericProperty, BoundedNumericProperty, StringProperty, ListProperty, BooleanProperty
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.label import Label
 from kivy.app import App
-
 from kivy.logger import Logger
-from ui.peachy_widgets import Dripper
+
 from ui.custom_widgets import ErrorPopup
 from infrastructure.langtools import _
 
@@ -109,9 +109,9 @@ class DripperCalibrationUI(Screen):
         self.configuration_api.reset_drips()
 
 
-
 class CircutSetup(BoxLayout):
     test_height = BoundedNumericProperty(50)
+
 
 class CircutVisuals(BoxLayout):
     drips = StringProperty("0")
@@ -124,17 +124,34 @@ class CircutVisuals(BoxLayout):
     def calculate_drips_per_mm(self):
         self.drips_per_mm = float(self.drips) / float(self.target_height)
 
+    def on_target_height(self, instance, value):
+        self.ids.dripper_animation.test_height = float(value)
+
+
+class DripperAnimation(RelativeLayout):
+    cup_width = NumericProperty()
+    cup_top = NumericProperty()
+    cup_bottom = NumericProperty()
+    cup_height = NumericProperty()
+    cup_water_level = NumericProperty()
+    cup_left = NumericProperty()
+    cup_right = NumericProperty()
+    cup_dest_water_level = NumericProperty()
+    test_height = NumericProperty()
+
 
 class CircutSettings(BoxLayout):
     drips_per_mm = BoundedNumericProperty(10, min=0.0001, max=None)
+
 
 class EmulatedSettings(BoxLayout):
     drips_per_second = BoundedNumericProperty(10, min=0.0001, max=None)
     drips_per_mm = BoundedNumericProperty(10, min=0.0001, max=None)
 
+
 class PhotoSettings(BoxLayout):
     photo_zaxis_delay = BoundedNumericProperty(10, min=0.0001, max=None)
 
+
 class PhotoVisuals(BoxLayout):
     pass
-
