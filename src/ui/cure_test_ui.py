@@ -9,11 +9,9 @@ from ui.custom_widgets import HorizontalLabelSlider
 Builder.load_file('ui/cure_test_ui.kv')
 
 
-
-
-
 class BaseSpeed(HorizontalLabelSlider):
     pass
+
 
 class CureTestUI(Screen):
     max_height = NumericProperty(100)
