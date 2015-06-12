@@ -5,8 +5,12 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.label import Label
 from kivy.uix.image import Image
+from kivy.clock import Clock
+
 from kivy.app import App
 from kivy.logger import Logger
+
+import time
 
 from ui.custom_widgets import ErrorPopup
 from infrastructure.langtools import _
@@ -31,6 +35,7 @@ class DripperCalibrationUI(Screen):
 
         self.emulated_settings = EmulatedSettings()
         self.emulated_settings.bind(drips_per_mm=self.drips_per_mm, drips_per_second=self.drips_per_second)
+        self.emulated_visuals = EmulatedVisuals()
 
         self.photo_settings = PhotoSettings()
         self.photo_settings.bind(photo_zaxis_delay=self.photo_zaxis_delay)
@@ -42,9 +47,11 @@ class DripperCalibrationUI(Screen):
         self.ids.visuals_box_id.clear_widgets()
         self.ids.settings_box_id.clear_widgets()
         self.configuration_api.stop_counting_drips()
+        self.configuration_api.set_dripper_type(value)
+
         if value == 'emulated':
             self.ids.setup_box_id.add_widget(BoxLayout())
-            self.ids.visuals_box_id.add_widget(Label(text="Emulated Visuals"))
+            self.ids.visuals_box_id.add_widget(self.emulated_visuals)
             self.ids.settings_box_id.add_widget(self.emulated_settings)
         elif value == 'photo':
             self.ids.setup_box_id.add_widget(BoxLayout())
@@ -56,7 +63,6 @@ class DripperCalibrationUI(Screen):
             self.ids.visuals_box_id.add_widget(self.circut_visuals)
             self.ids.settings_box_id.add_widget(self.circut_settings)
             self.configuration_api.start_counting_drips(self.drip_call_back)
-        self.configuration_api.set_dripper_type(value)
 
     def on_pre_enter(self):
         try:
@@ -153,20 +159,24 @@ class DripperAnimation(RelativeLayout):
         self.images = []
 
     def redraw(self, key):
+        while self.images:
+            self.remove_widget(self.images.pop())
         top = time.time()
         bottom = top - self.drip_time_range
-        for time in self.drip_history:
-            if time > bottom:
-                y_pos_percent = (top - time) / self.drip_time_range
-                drip_pos_y = self.drips_height * y_pos_percent
-                self.images.append(Image())
-        Clock.schedule_once(self.redraw, 1.0 / 30.0)
-
-
+        for drip_time in self.drip_history:
+            if drip_time > bottom:
+                time_ago = top - drip_time
+                y_pos_percent = (self.drip_time_range - time_ago) / self.drip_time_range
+                drip_pos_y = self.drips_height * y_pos_percent + self.cup_water_level 
+                image_widget = Image(source="resources/images/drop.png", size_hint=[None, None], size=[20, 20], pos=[self.dripper_left, drip_pos_y], allow_strech=True)
+                self.images.append(image_widget)
+        for image in self.images:
+            self.add_widget(image)
+        Clock.schedule_once(self.redraw, 1.0 / 10.0)
 
 
 class CircutSettings(BoxLayout):
-    drips_per_mm = BoundedNumericProperty(10, min=0.0001, max=None)
+    drips_per_mm = BoundedNumericProperty(10, min=0.0, max=None)
 
 
 class EmulatedSettings(BoxLayout):
@@ -176,6 +186,10 @@ class EmulatedSettings(BoxLayout):
 
 class PhotoSettings(BoxLayout):
     photo_zaxis_delay = BoundedNumericProperty(10, min=0.0001, max=None)
+
+
+class EmulatedVisuals(BoxLayout):
+    pass
 
 
 class PhotoVisuals(BoxLayout):

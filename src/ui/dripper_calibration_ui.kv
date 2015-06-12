@@ -31,9 +31,10 @@
     cup_right: self.cup_left + self.cup_width
     cup_dest_water_level: (self.cup_height - self.cup_water_level + self.cup_bottom) * (self.test_height / 1000.0)
     dripper_left: self.cup_left + 20
-    dripper_right: self.dripper_left + 40
+    dripper_right: self.dripper_left + 24
     dripper_top: self.height - 10
     dripper_bottom: self.height - 100
+    drips_height: self.dripper_top - self.cup_water_level - 24
     canvas.before:
         Color:
             rgba: 0.0, 0.4, 1.0, 0.8
@@ -62,7 +63,7 @@
                 self.dripper_right, self.dripper_top,
                 self.dripper_right, self.dripper_bottom
                 ]
-            width: 4
+            width: 2
     Label:
         text: "{:.2f}mm".format(root.test_height)
         pos: [root.cup_right + 5, root.cup_dest_water_level]
@@ -143,6 +144,23 @@
         text: str(root.drips_per_mm)
         on_text: root.drips_per_mm = float(self.text)
     Label:
+        size_hint_y:None
+        height: "5dp"
+    I18NLabel:
+        size_hint_y:None
+        height: "30dp"
+        text_size: self.size
+        halign: 'left'
+        valign: 'middle'
+        text_source:_("Microns per drip")
+    I18NLabel:
+        text_size: self.size
+        halign: 'right'
+        valign: 'middle'
+        size_hint_y:None
+        height: "30dp"
+        text: "{:.2f}".format((1.0 / root.drips_per_mm) * 1000.0)
+    Label:
 
 
 <EmulatedSettings>:
@@ -178,6 +196,20 @@
             on_text: root.drips_per_second = float(self.text)
     BoxLayout:
 
+<EmulatedVisuals>:
+    orientation: 'vertical'
+    padding: "3dp"
+    I18NLabel:
+        size_hint_y:None
+        height: "30dp"
+        text_source:_("[b]Emulated Dripper Setup[/b]")
+        markup: True
+    Label:
+    Image:
+        allow_strech: True
+        source: "resources/images/drinking_bird.png"
+    Label:
+
 <PhotoSettings>:
     orientation: 'vertical'
     I18NLabel:
@@ -207,7 +239,11 @@
         height: "30dp"
         text_source:_("[b]Photo Dripper Setup[/b]")
         markup: True
-    BoxLayout:
+    Label:
+    Image:
+        allow_strech: True
+        source: "resources/images/camera.png"
+    Label:
 
 
 
