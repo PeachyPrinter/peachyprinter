@@ -4,6 +4,7 @@ from kivy.properties import NumericProperty, BoundedNumericProperty, StringPrope
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.label import Label
+from kivy.uix.image import Image
 from kivy.app import App
 from kivy.logger import Logger
 
@@ -127,6 +128,9 @@ class CircutVisuals(BoxLayout):
     def on_target_height(self, instance, value):
         self.ids.dripper_animation.test_height = float(value)
 
+    def on_drip_history(self, instance,value):
+        self.ids.dripper_animation.drip_history = value
+
 
 class DripperAnimation(RelativeLayout):
     cup_width = NumericProperty()
@@ -138,6 +142,27 @@ class DripperAnimation(RelativeLayout):
     cup_right = NumericProperty()
     cup_dest_water_level = NumericProperty()
     test_height = NumericProperty()
+    drip_history = ListProperty()
+    drips_bottom = NumericProperty()
+    drips_height = NumericProperty()
+
+    def __init__(self, **kwargs):
+        super(DripperAnimation, self).__init__(**kwargs)
+        Clock.schedule_once(self.redraw)
+        self.drip_time_range = 5
+        self.images = []
+
+    def redraw(self, key):
+        top = time.time()
+        bottom = top - self.drip_time_range
+        for time in self.drip_history:
+            if time > bottom:
+                y_pos_percent = (top - time) / self.drip_time_range
+                drip_pos_y = self.drips_height * y_pos_percent
+                self.images.append(Image())
+        Clock.schedule_once(self.redraw, 1.0 / 30.0)
+
+
 
 
 class CircutSettings(BoxLayout):
