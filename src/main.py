@@ -39,12 +39,12 @@ def setup_logging(args):
 
 def setup_env(path):
     python_64 = sys.maxsize > 2**32
-    if os.name == 'nt':
-        dll_base = os.path.join(path, 'resources', 'DLL')
-        if python_64:
-            os.environ['PEACHY_API_DLL_PATH'] = os.path.join(dll_base, "AMD64")
-        else:
-            os.environ['PEACHY_API_DLL_PATH'] = os.path.join(dll_base, "x86")
+    # if os.name == 'nt':
+    #     dll_base = os.path.join(path, 'resources', 'DLL')
+    #     if python_64:
+    #         os.environ['PEACHY_API_DLL_PATH'] = os.path.join(dll_base, "AMD64")
+    #     else:
+    #         os.environ['PEACHY_API_DLL_PATH'] = os.path.join(dll_base, "x86")
 
 
 if __name__ == "__main__":

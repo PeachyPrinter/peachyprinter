@@ -1,4 +1,5 @@
 import datetime
+import time
 
 from kivy.uix.screenmanager import Screen
 from kivy.graphics import *
@@ -10,6 +11,8 @@ from kivy.resources import resource_find
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.properties import StringProperty, NumericProperty, ListProperty, ObjectProperty
+from kivy.clock import Clock
+from kivy.uix.image import Image
 
 from ui.custom_widgets import ErrorPopup
 from ui.peachy_widgets import LaserWarningPopup
@@ -32,15 +35,23 @@ class PrinterAnimation(RelativeLayout):
     printer_pixel_width = NumericProperty(1)
     resin_pixel_height = NumericProperty(20)
     water_pixel_height = NumericProperty(20)
+    dripper_height = NumericProperty()
     resin_y = NumericProperty(0)
 
     scale = NumericProperty(1.0)
 
     resin_color = ListProperty([0.0, 1.0, 0.0, 0.3])
-    water_color = ListProperty([0.0, 0.1, 1.0, 0.3])
+    water_color = ListProperty([0.4, 0.4, 1.0, 0.3])
     container_color = ListProperty([1.0, 1.0, 1.0, 1.0])
     padding = NumericProperty(40)
 
+    drip_history = ListProperty()
+
+    def __init__(self, **kwargs):
+        super(PrinterAnimation, self).__init__(**kwargs)
+        Clock.schedule_once(self.redraw)
+        self.drip_time_range = 5
+        self.images = []
 
     def on_size(self, *largs):
         bounds_y = (self.height * 0.7) - self.resin_pixel_height
@@ -52,7 +63,23 @@ class PrinterAnimation(RelativeLayout):
         self.printer_pixel_width = printer_x * self.scale
         self.printer_pixel_height = printer_y * self.scale
 
-        self.water_pixel_height = (self.scale * self.printer_current_actual_height) - self.resin_pixel_height 
+        self.water_pixel_height = (self.scale * self.printer_current_actual_height) - self.resin_pixel_height
+
+    def redraw(self, key):
+        while self.images:
+            self.remove_widget(self.images.pop())
+        top = time.time()
+        bottom = top - self.drip_time_range
+        for drip_time in self.drip_history:
+            if drip_time > bottom:
+                time_ago = top - drip_time
+                y_pos_percent = (self.drip_time_range - time_ago) / self.drip_time_range
+                drip_pos_y = (self.height * y_pos_percent) + self.padding
+                image_widget = Image(source="resources/images/drop.png", size_hint=[None, None], size=[20, 20], pos=[self.padding + 20, drip_pos_y], allow_strech=True)
+                self.images.append(image_widget)
+        for image in self.images:
+            self.add_widget(image)
+        Clock.schedule_once(self.redraw, 1.0 / 10.0)
 
 
 class PrintingUI(Screen):
@@ -113,6 +140,8 @@ class PrintingUI(Screen):
             self.current_layer = data['current_layer']
         if 'skipped_layers' in data:
             self.skipped_layers = data['skipped_layers']
+        if 'drip_history' in data:
+            self.ids.printer_animation.drip_history = data['drip_history']
 
         if self.status == 'Complete':
             self.play_complete_sound()
