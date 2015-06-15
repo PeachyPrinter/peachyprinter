@@ -26,17 +26,18 @@
         valign: 'middle'
 
 <PrinterAnimation>:
+    water_pixel_height: (root.scale * root.printer_current_actual_height)
     canvas.before:
         Color:
             rgba: root.resin_color
         Rectangle:
             size: [root.printer_pixel_width, root.resin_pixel_height]
-            pos: [self.padding, self.padding + (root.scale * root.printer_current_actual_height) ]
+            pos: [self.padding, self.padding + root.water_pixel_height ]
 
         Color:
             rgba: root.water_color
         Rectangle:
-            size: [root.printer_pixel_width, (root.scale * root.printer_current_actual_height)]
+            size: [root.printer_pixel_width, root.water_pixel_height]
             pos: [self.padding, self.padding]
         
         Color:
@@ -49,7 +50,11 @@
                 self.padding + root.printer_pixel_width, root.printer_pixel_height + root.resin_pixel_height
                 ]
             width: 4
-
+        Color:
+            rgba: root.laser_color
+        Line:
+            points: root.laser_points
+            width: 2
 
 <PrintingUI>:
     name: 'printingui'
