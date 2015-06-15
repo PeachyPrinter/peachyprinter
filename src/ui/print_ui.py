@@ -8,9 +8,10 @@ from kivy.app import App
 from kivy.core.audio import SoundLoader
 from kivy.resources import resource_find
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.relativelayout import RelativeLayout
 from kivy.properties import StringProperty, NumericProperty, ListProperty, ObjectProperty
 
-from ui.custom_widgets import BorderedLabel, LabelGridLayout, ErrorPopup, I18NLabel
+from ui.custom_widgets import ErrorPopup
 from ui.peachy_widgets import LaserWarningPopup
 from infrastructure.langtools import _
 
@@ -18,71 +19,45 @@ import os
 
 Builder.load_file('ui/print_ui.kv')
 
+
 class ListElement(BoxLayout):
     title = StringProperty()
     value = StringProperty()
 
 
-class PrintStatus(LabelGridLayout):
-    data_points = {
-     'status': _('Status'),
-     'model_height': _('Model Height'),
-     'start_time': _('Start Time'),
-     'drips': _('Drips Counted'),
-     'height': _('Actual Height'),
-     'drips_per_second': _('Drips per second'),
-     'errors': _('Error List'),
-     'waiting_for_drips': _('Waiting for drip'),
-     'elapsed_time': _('Elapsed Time'),
-     'current_layer': _('Current Layer'),
-     'skipped_layers': _('Skipped Layers')
-    }
+class PrinterAnimation(RelativeLayout):
+    printer_actual_dimensions = ListProperty([80, 80, 80])
+    printer_current_actual_height = NumericProperty(0.0)
+    printer_pixel_height = NumericProperty(1)
+    printer_pixel_width = NumericProperty(1)
+    resin_pixel_height = NumericProperty(20)
+    water_pixel_height = NumericProperty(20)
+    resin_y = NumericProperty(0)
 
-    def __init__(self, **kwargs):
-        self.content = {}
-        super(PrintStatus, self).__init__(**kwargs)
-        for (key, value) in self.data_points.items():
-            label = BorderedLabel(text_source=value, bold=True, borders=[0, 1.0, 0, 0])
-            self.content[key] = BorderedLabel(id=key, text="asd", halign='right', borders=[0, 1.0, 1.0, 0])
-            self.add_widget(label)
-            self.add_widget(self.content[key])
+    scale = NumericProperty(1.0)
 
-    def update(self, data):
-        if 'status' in data:
-            self.content['status'].text = '{0}'.format(data['status'])
-        if 'model_height' in data:
-            self.content['model_height'].text = '{:.2f}'.format(data['model_height'])
-        if 'start_time' in data:
-            self.content['start_time'].text = '{0}'.format(data['start_time'].strftime("%H:%M"))
-        if 'drips' in data:
-            self.content['drips'].text = '{0:.0f}'.format(data['drips'])
-        if 'height' in data:
-            self.content['height'].text = '{:.2f}'.format(data['height'])
-        if 'drips_per_second' in data:
-            self.content['drips_per_second'].text = '{:.2f}'.format(data['drips_per_second'])
-        if 'errors' in data:
-            self.content['errors'].text = '{0}'.format(','.join([str(error['message']) for error in data['errors']]))
-        if 'waiting_for_drips' in data:
-            self.content['waiting_for_drips'].text = '{0}'.format(data['waiting_for_drips'])
-        if 'elapsed_time' in data:
-            self.content['elapsed_time'].text = '~{0}'.format(self.time_delta_format(data['elapsed_time']))
-        if 'current_layer' in data:
-            self.content['current_layer'].text = '{0}'.format(data['current_layer'])
-        if 'skipped_layers' in data:
-            self.content['skipped_layers'].text = '{0}'.format(data['skipped_layers'])
+    resin_color = ListProperty([0.0, 1.0, 0.0, 0.3])
+    water_color = ListProperty([0.0, 0.1, 1.0, 0.3])
+    container_color = ListProperty([1.0, 1.0, 1.0, 1.0])
+    padding = NumericProperty(40)
 
-    def time_delta_format(self, td):
-        total_seconds = td.total_seconds()
-        hours = int(total_seconds) / (60 * 60)
-        remainder = int(total_seconds) % (60 * 60)
-        minutes = remainder / 60
-        return "{0}:{1:02d}".format(hours, minutes)
+
+    def on_size(self, *largs):
+        bounds_y = (self.height * 0.7) - self.resin_pixel_height
+        bounds_x = self.width - (self.padding * 2)
+        printer_x = self.printer_actual_dimensions[0]
+        printer_y = self.printer_actual_dimensions[1]
+
+        self.scale = min(bounds_y / printer_y, bounds_x / printer_x)
+        self.printer_pixel_width = printer_x * self.scale
+        self.printer_pixel_height = printer_y * self.scale
+
+        self.water_pixel_height = (self.scale * self.printer_current_actual_height) - self.resin_pixel_height 
 
 
 class PrintingUI(Screen):
-    printer_height = NumericProperty(10)
-    printer_width = NumericProperty(10)
-    printer_depth = NumericProperty(10)
+    printer_actual_dimensions = ListProperty([10, 10, 10])
+
     status = StringProperty("Starting")
     model_height = NumericProperty(0.0)
     start_time = ObjectProperty(datetime.datetime.now())
@@ -101,6 +76,12 @@ class PrintingUI(Screen):
         self.api = api
         self.print_api = None
         self.print_options = []
+
+    def on_printer_dimensions(self, instance, value):
+        self.ids.printer_animation.printer_actual_dimensions = value
+
+    def on_model_height(self, instance, value):
+        self.ids.printer_animation.printer_current_actual_height = value
 
     def time_delta_format(self, td):
         total_seconds = td.total_seconds()
