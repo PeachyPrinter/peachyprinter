@@ -25,6 +25,32 @@
         halign: 'right'
         valign: 'middle'
 
+<PrinterAnimation>:
+    canvas.before:
+        Color:
+            rgba: root.resin_color
+        Rectangle:
+            size: [root.printer_pixel_width, root.resin_pixel_height]
+            pos: [self.padding, self.padding + (root.scale * root.printer_current_actual_height) ]
+
+        Color:
+            rgba: root.water_color
+        Rectangle:
+            size: [root.printer_pixel_width, (root.scale * root.printer_current_actual_height)]
+            pos: [self.padding, self.padding]
+        
+        Color:
+            rgba: root.container_color
+        Line:
+            points: 
+                [self.padding, root.printer_pixel_height + root.resin_pixel_height,
+                self.padding, self.padding,
+                self.padding + root.printer_pixel_width, self.padding,
+                self.padding + root.printer_pixel_width, root.printer_pixel_height + root.resin_pixel_height
+                ]
+            width: 4
+
+
 <PrintingUI>:
     name: 'printingui'
     BoxLayout:
@@ -194,14 +220,8 @@
                         spacing: "3dp"
         BoxLayout:
             orientation: 'vertical'
-            canvas.before:
-                Color:
-                    rgba: 1.0, 0.0, 1.0, 1.0
-                Rectangle:
-                    pos:  self.pos
-                    size: self.size
-            RelativeLayout:
-
+            PrinterAnimation:
+                id: printer_animation
         BoxLayout:
             orientation: 'vertical'
             size_hint_x: 0.5
