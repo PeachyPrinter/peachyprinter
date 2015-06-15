@@ -35,7 +35,6 @@ class PrinterAnimation(RelativeLayout):
     printer_pixel_width = NumericProperty(1)
     resin_pixel_height = NumericProperty(20)
     water_pixel_height = NumericProperty(20)
-    dripper_height = NumericProperty()
     resin_y = NumericProperty(0)
 
     scale = NumericProperty(1.0)
