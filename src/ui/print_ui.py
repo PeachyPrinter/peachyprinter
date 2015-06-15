@@ -29,6 +29,7 @@ class ListElement(BoxLayout):
 
 
 class PrinterAnimation(RelativeLayout):
+    padding = NumericProperty(40)
     printer_actual_dimensions = ListProperty([80, 80, 80])
     printer_current_actual_height = NumericProperty(0.0)
     printer_pixel_height = NumericProperty(1)
@@ -42,15 +43,17 @@ class PrinterAnimation(RelativeLayout):
     resin_color = ListProperty([0.0, 1.0, 0.0, 0.3])
     water_color = ListProperty([0.4, 0.4, 1.0, 0.3])
     container_color = ListProperty([1.0, 1.0, 1.0, 1.0])
-    padding = NumericProperty(40)
+    laser_color = ListProperty([0.0, 0.0, 1.0, 1.0])
 
     drip_history = ListProperty()
+    laser_points = ListProperty()
 
     def __init__(self, **kwargs):
         super(PrinterAnimation, self).__init__(**kwargs)
-        Clock.schedule_once(self.redraw)
         self.drip_time_range = 5
         self.images = []
+        self.laser_pos = 60
+        self.laser_speed = 10
 
     def on_size(self, *largs):
         bounds_y = (self.height * 0.7) - self.resin_pixel_height
@@ -62,7 +65,6 @@ class PrinterAnimation(RelativeLayout):
         self.printer_pixel_width = printer_x * self.scale
         self.printer_pixel_height = printer_y * self.scale
 
-        self.water_pixel_height = (self.scale * self.printer_current_actual_height) - self.resin_pixel_height
 
     def redraw(self, key):
         while self.images:
@@ -78,8 +80,17 @@ class PrinterAnimation(RelativeLayout):
                 self.images.append(image_widget)
         for image in self.images:
             self.add_widget(image)
-        Clock.schedule_once(self.redraw, 1.0 / 10.0)
+        self._change_laser()
+        Clock.schedule_once(self.redraw, 1.0 / 20.0)
 
+    def _change_laser(self):
+        if self.laser_pos >= 90 or self.laser_pos <= 10:
+            self.laser_speed = self.laser_speed * -1
+        self.laser_pos += self.laser_speed
+        laser_x = self.padding + (self.printer_pixel_width * (self.laser_pos / 100.0))
+
+        self.laser_points = [self.width / 2.0, self.height - self.padding,
+                             laser_x,          self.water_pixel_height + self.padding]
 
 class PrintingUI(Screen):
     printer_actual_dimensions = ListProperty([10, 10, 10])
@@ -169,6 +180,7 @@ class PrintingUI(Screen):
 
     def is_safe(self, instance):
         if instance.is_safe():
+            Clock.schedule_once(self.ids.printer_animation.redraw)
             self.print_options[0](*self.print_options[1], **self.print_options[2])
         else:
             self.parent.current = self.return_to
