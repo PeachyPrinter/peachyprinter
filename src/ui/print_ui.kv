@@ -1,52 +1,286 @@
 #:kivy 1.9.0
 
+<ListElement>:
+    orientation: 'vertical'
+    size_hint_y: None
+    height:"50dp"
+    canvas.before:
+        Color:
+            rgba: 1.0, 1.0, 1.0, 0.1
+        Rectangle:
+            pos:  self.pos
+            size: self.size
+    I18NLabel:
+        text_source: root.title
+        size_hint_y: None
+        height: app.label_height
+        text_size: self.size
+        halign: 'left'
+        valign: 'middle'
+    Label:
+        text: root.value
+        size_hint_y: None
+        height: app.label_height
+        text_size: self.size
+        halign: 'right'
+        valign: 'middle'
+
 <PrintingUI>:
     name: 'printingui'
     BoxLayout:
-        orientation: 'vertical'
+        orientation: 'horizontal'
         BoxLayout:
-            Accordion:
-                orientation: 'vertical'
-                size_hint_x:0.6
-                I18NAccordionItem:
-                    collapse:False
-                    id: print_details
-                    title_source: _('Print Details')
-                    ScrollView:
-                        PrintStatus:
-                            id: print_status
-                            cols: 1
-                            size_hint_y:None
-                            text_padding_x: 10
-                I18NAccordionItem:
-                    title_source: _('Printer Settings')
-                    collapse:True
-                    ScrollView:
-                        LabelGridLayout:
-                            id: print_settings
-                            size_hint_y:None
-                            text_padding_x: 10
-                            cols: 1
+            size_hint_x: 0.7
+            orientation:'vertical'
+            padding: "3dp"
+            spacing:"10dp"
+            canvas.before:
+                Color:
+                    rgba: 1.0, 1.0, 1.0, 0.1
+                Rectangle:
+                    pos:  self.pos
+                    size: self.size
+            GridLayout:
+                padding: "3dp"
+                spacing:"3dp"
+                cols: 1
+                height: self.minimum_height
+                size_hint_y: None
+                canvas.before:
+                    Color:
+                        rgba: 1.0, 1.0, 1.0, 0.1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: app.button_height
+                    Image:
+                        size_hint: [None, None]
+                        size: [24, 24]
+                        source: "resources/icons/printing_dripper-24x24.png"
+                    I18NLabel:
+                        text_source: _("Dripper Informaiton")
+                GridLayout:
+                    height: self.minimum_height
+                    size_hint_y: None
+                    cols: 2
+                    I18NLabel:
+                        size_hint_y: None
+                        height: app.label_height
+                        text_size: self.size
+                        halign: 'left'
+                        valign: 'middle'
+                        text_source: _("Drips per second")
+                    Label:
+                        size_hint_y: None
+                        height: app.label_height
+                        text_size: self.size
+                        halign: 'right'
+                        valign: 'middle'
+                        id: drips_per_second_value_id
+                        text: "{:.2f}".format(root.drips_per_second)
+                    I18NLabel:
+                        size_hint_y: None
+                        height: app.label_height
+                        text_size: self.size
+                        halign: 'left'
+                        valign: 'middle'
+                        text_source: _("Total Drips")
+                    Label:
+                        size_hint_y: None
+                        height: app.label_height
+                        text_size: self.size
+                        halign: 'right'
+                        valign: 'middle'
+                        id: total_drips_value_id
+                        text: '{0:.0f}'.format(root.drips)
+                    I18NLabel:
+                        size_hint_y: None
+                        height: app.label_height
+                        text_size: self.size
+                        halign: 'left'
+                        valign: 'middle'
+                        text_source: _("Waiting for drips")
+                    Label:
+                        size_hint_y: None
+                        height: app.label_height
+                        text_size: self.size
+                        halign: 'right'
+                        valign: 'middle'
+                        id: waiting_for_drips_value_id
+                        text: root.waiting_for_drips
+            GridLayout:
+                padding: "3dp"
+                spacing:"dp"
+                cols: 1
+                height: self.minimum_height
+                size_hint_y: None
+                canvas.before:
+                    Color:
+                        rgba: 1.0, 1.0, 1.0, 0.1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: app.button_height
+                    Image:
+                        size_hint: [None, None]
+                        size: [24, 24]
+                        source: "resources/icons/printing_time-24x24.png"
+                    I18NLabel:
+                        text_source: _("Time")
+                GridLayout:
+                    cols: 2
+                    height: self.minimum_height
+                    size_hint_y: None
+                    I18NLabel:
+                        size_hint_y: None
+                        height: app.label_height
+                        text_size: self.size
+                        halign: 'left'
+                        valign: 'middle'
+                        text_source: _("Start Time")
+                    Label:
+                        size_hint_y: None
+                        height: app.label_height
+                        text_size: self.size
+                        halign: 'right'
+                        valign: 'middle'
+                        text: root.start_time.strftime("%H:%M")
+                    I18NLabel:
+                        size_hint_y: None
+                        height: app.label_height
+                        text_size: self.size
+                        halign: 'left'
+                        valign: 'middle'
+                        text_source: _("Elapsed Time")
+                    Label:
+                        size_hint_y: None
+                        height: app.label_height
+                        text_size: self.size
+                        halign: 'right'
+                        valign: 'middle'
+                        text: root.elapsed_time
             BoxLayout:
-                id: displaywindow
-                I18NLabel:
-                    text_source: _('Printing UI')
-                Dripper:
-                    id: dripper
-                    size_hint_x: 0.05
+                orientation: 'vertical'
+                padding: "3dp"
+                spacing:"3dp"
+                canvas.before:
+                    Color:
+                        rgba: 1.0, 1.0, 1.0, 0.1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: app.button_height
+                    Image:
+                        size_hint: [None, None]
+                        size: [24, 24]
+                        source: "resources/icons/printing_settings-24x24.png"
+                    I18NLabel:
+                        text_source: _("Settings")
+                ScrollView:
+                    BoxLayout:
+                        orientation:'vertical'
+                        id: print_settings
+                        size_hint_y: None
+                        height: sum([child.height + self.spacing for child in self.children])
+                        spacing: "3dp"
         BoxLayout:
-            size_hint_y: None
-            height: "30dp"
-            orientation: "horizontal"
+            orientation: 'vertical'
+            canvas.before:
+                Color:
+                    rgba: 1.0, 0.0, 1.0, 1.0
+                Rectangle:
+                    pos:  self.pos
+                    size: self.size
+            RelativeLayout:
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.5
+            spacing: "3dp"
+            padding: "3dp"
+            canvas.before:
+                Color:
+                    rgba: 1.0, 1.0, 1.0, 0.1
+                Rectangle:
+                    pos:  self.pos
+                    size: self.size
             I18NImageButton:
-                source: "resources/icons/printing_restart-24x24.png"
-                id: restart_button
-                text_source: _('Restart Print')
-                on_release: root.restart()
-            I18NImageButton:
+                text_source: _("Cancel Print")
+                background_color: 2.0, 0.0, 0.0, 1.0
                 source: "resources/icons/printing_cancel-24x24.png"
-                id: navigate_button
-                text_source: _('Cancel Print')
                 on_release: app.root.current = root.return_to
-                
+                id: navigate_button
+                size_hint_y: None
+                height: app.button_height
+            I18NImageButton:
+                text_source: _("Restart Print")
+                source: "resources/icons/printing_restart-24x24.png"
+                on_release: app.root.current = root.return_to
+                on_release: root.restart()
+                size_hint_y: None
+                height: app.button_height
+            Label:
+            GridLayout:
+                cols: 2
+                height: self.minimum_height
+                size_hint_y: None
+                canvas.before:
+                    Color:
+                        rgba: 1.0, 1.0, 1.0, 0.1
+                    Rectangle:
+                        pos:  self.pos
+                        size: self.size
+                I18NLabel:
+                    size_hint_y: None
+                    height: app.label_height
+                    text_size: self.size
+                    halign: 'left'
+                    valign: 'middle'
+                    text_source: _("Current Height")
+                Label:
+                    size_hint: [0.3, None]
+                    height: app.label_height
+                    text_size: self.size
+                    halign: 'right'
+                    valign: 'middle'
+                    text: "{:.2f}".format(root.print_height)
+                I18NLabel:
+                    size_hint_y: None
+                    height: app.label_height
+                    text_size: self.size
+                    halign: 'left'
+                    valign: 'middle'
+                    text_source: _("Layers")
+                Label:
+                    size_hint: [0.3, None]
+                    height: app.label_height
+                    text_size: self.size
+                    halign: 'right'
+                    valign: 'middle'
+                    text: "{:.0f}".format(root.current_layer)
+                I18NLabel:
+                    size_hint_y: None
+                    height: app.label_height
+                    text_size: self.size
+                    halign: 'left'
+                    valign: 'middle'
+                    text_source: _("Skipped Layers")
+                Label:
+                    size_hint: [0.3, None]
+                    height: app.label_height
+                    text_size: self.size
+                    halign: 'right'
+                    valign: 'middle'
+                    text: "{:.0f}".format(root.skipped_layers)
+            Label:
+
 

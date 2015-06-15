@@ -1,3 +1,5 @@
+import datetime
+
 from kivy.uix.screenmanager import Screen
 from kivy.graphics import *
 from kivy.logger import Logger
@@ -5,14 +7,20 @@ from kivy.lang import Builder
 from kivy.app import App
 from kivy.core.audio import SoundLoader
 from kivy.resources import resource_find
+from kivy.uix.boxlayout import BoxLayout
+from kivy.properties import StringProperty, NumericProperty, ListProperty, ObjectProperty
 
-from ui.custom_widgets import BorderedLabel, LabelGridLayout, ErrorPopup
+from ui.custom_widgets import BorderedLabel, LabelGridLayout, ErrorPopup, I18NLabel
 from ui.peachy_widgets import LaserWarningPopup
 from infrastructure.langtools import _
 
 import os
 
 Builder.load_file('ui/print_ui.kv')
+
+class ListElement(BoxLayout):
+    title = StringProperty()
+    value = StringProperty()
 
 
 class PrintStatus(LabelGridLayout):
@@ -72,6 +80,21 @@ class PrintStatus(LabelGridLayout):
 
 
 class PrintingUI(Screen):
+    printer_height = NumericProperty(10)
+    printer_width = NumericProperty(10)
+    printer_depth = NumericProperty(10)
+    status = StringProperty("Starting")
+    model_height = NumericProperty(0.0)
+    start_time = ObjectProperty(datetime.datetime.now())
+    drips = NumericProperty(0)
+    print_height = NumericProperty(0.0)
+    drips_per_second = NumericProperty(0.0)
+    errors = ListProperty()
+    waiting_for_drips = StringProperty("Starting")
+    elapsed_time = StringProperty("0")
+    current_layer = NumericProperty(0)
+    skipped_layers = NumericProperty(0)
+
     def __init__(self, api, **kwargs):
         self.return_to = 'mainui'
         super(PrintingUI, self).__init__(**kwargs)
@@ -79,13 +102,41 @@ class PrintingUI(Screen):
         self.print_api = None
         self.print_options = []
 
+    def time_delta_format(self, td):
+        total_seconds = td.total_seconds()
+        hours = int(total_seconds) / (60 * 60)
+        remainder = int(total_seconds) % (60 * 60)
+        minutes = remainder / 60
+        return "{0}:{1:02d}".format(hours, minutes)
+
     def callback(self, data):
-        self.ids.print_status.update(data)
-        self.ids.dripper.update(data)
-        if data['status'] == 'Complete':
+        if 'status' in data:
+            self.status = data['status']
+        if 'model_height' in data:
+            self.model_height = data['model_height']
+        if 'start_time' in data:
+            self.start_time = data['start_time']
+        if 'drips' in data:
+            self.drips = data['drips']
+        if 'height' in data:
+            self.print_height = data['height']
+        if 'drips_per_second' in data:
+            self.drips_per_second = data['drips_per_second']
+        if 'errors' in data:
+            self.errors = data['errors']
+        if 'waiting_for_drips' in data:
+            self.waiting_for_drips = str(data['waiting_for_drips'])
+        if 'elapsed_time' in data:
+            self.elapsed_time = self.time_delta_format(data['elapsed_time'])
+        if 'current_layer' in data:
+            self.current_layer = data['current_layer']
+        if 'skipped_layers' in data:
+            self.skipped_layers = data['skipped_layers']
+
+        if self.status == 'Complete':
             self.play_complete_sound()
             self.ids.navigate_button.text_source = _("Print Complete, Close")
-        if data['status'] == 'Failed':
+        if self.status == 'Failed':
             self.play_failed_sound()
             self.ids.navigate_button.text_source = _("Print Failed, Close")
 
@@ -163,10 +214,7 @@ class PrintingUI(Screen):
 
     def on_pre_enter(self):
         for (title, value) in self.parent.setting_translation.get_settings().items():
-            title_label = BorderedLabel(text_source=title, bold=True, borders=[0, 1.0, 0, 0])
-            value_label = BorderedLabel(text_source=value,  halign='right', borders=[0, 1.0, 1.0, 0])
-            self.ids.print_settings.add_widget(title_label)
-            self.ids.print_settings.add_widget(value_label)
+            self.ids.print_settings.add_widget(ListElement(title=title, value=value))
         self.ids.navigate_button.text_source = _('Cancel Print')
 
     def on_pre_leave(self):
