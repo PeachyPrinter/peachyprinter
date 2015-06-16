@@ -54,6 +54,7 @@ class PrinterAnimation(RelativeLayout):
         self.images = []
         self.laser_pos = 60
         self.laser_speed = 10
+        self.waiting_for_drips = True
 
     def on_size(self, *largs):
         bounds_y = (self.height * 0.7) - self.resin_pixel_height
@@ -64,7 +65,6 @@ class PrinterAnimation(RelativeLayout):
         self.scale = min(bounds_y / printer_y, bounds_x / printer_x)
         self.printer_pixel_width = printer_x * self.scale
         self.printer_pixel_height = printer_y * self.scale
-
 
     def redraw(self, key):
         while self.images:
@@ -81,16 +81,26 @@ class PrinterAnimation(RelativeLayout):
         for image in self.images:
             self.add_widget(image)
         self._change_laser()
+        Clock.unschedule(self.redraw)
         Clock.schedule_once(self.redraw, 1.0 / 20.0)
 
-    def _change_laser(self):
-        if self.laser_pos >= 90 or self.laser_pos <= 10:
-            self.laser_speed = self.laser_speed * -1
-        self.laser_pos += self.laser_speed
-        laser_x = self.padding + (self.printer_pixel_width * (self.laser_pos / 100.0))
+    def animation_stop(self):
+        Clock.unschedule(self.redraw)
+        self.laser_points = []
+        while self.images:
+            self.remove_widget(self.images.pop())
 
-        self.laser_points = [self.width / 2.0, self.height - self.padding,
-                             laser_x,          self.water_pixel_height + self.padding]
+    def _change_laser(self):
+        if self.waiting_for_drips:
+            self.laser_points = []
+        else:
+            if self.laser_pos >= 90 or self.laser_pos <= 10:
+                self.laser_speed = self.laser_speed * -1
+            self.laser_pos += self.laser_speed
+            laser_x = self.padding + (self.printer_pixel_width * (self.laser_pos / 100.0))
+
+            self.laser_points = [self.width / 2.0, self.height - self.padding,
+                                 laser_x,          self.water_pixel_height + self.padding + self.resin_pixel_height]
 
 class PrintingUI(Screen):
     printer_actual_dimensions = ListProperty([10, 10, 10])
@@ -143,6 +153,7 @@ class PrintingUI(Screen):
         if 'errors' in data:
             self.errors = data['errors']
         if 'waiting_for_drips' in data:
+            self.ids.printer_animation.waiting_for_drips = data['waiting_for_drips']
             self.waiting_for_drips = str(data['waiting_for_drips'])
         if 'elapsed_time' in data:
             self.elapsed_time = self.time_delta_format(data['elapsed_time'])
@@ -154,11 +165,15 @@ class PrintingUI(Screen):
             self.ids.printer_animation.drip_history = data['drip_history']
 
         if self.status == 'Complete':
+            self.ids.printer_animation.animation_stop()
             self.play_complete_sound()
-            self.ids.navigate_button.text_source = _("Print Complete, Close")
+            self.ids.navigate_button.text_source = _("Print Complete")
+            self.ids.navigate_button.background_color = [0.0, 2.0, 0.0, 1.0]
         if self.status == 'Failed':
+            self.ids.printer_animation.animation_stop()
             self.play_failed_sound()
-            self.ids.navigate_button.text_source = _("Print Failed, Close")
+            self.ids.navigate_button.text_source = _("Print Failed")
+            self.ids.navigate_button.background_color = [2.0, 0.0, 0.0, 1.0]
 
     def print_file(self, *args, **kwargs):
         self.print_options = [self._print_file, args, kwargs]
@@ -202,10 +217,12 @@ class PrintingUI(Screen):
             self.parent.current = self.return_to
 
     def restart(self):
+        self.ids.printer_animation.animation_stop()
         if self.print_api:
             self.print_api.close()
         self.print_api = None
         self.ids.navigate_button.text_source = _('Cancel Print')
+        self.ids.navigate_button.background_color = [2.0, 1.3, 0.0, 1.0]
         last_print = App.get_running_app().last_print
         if last_print.print_type is "file":
             self.print_file(last_print.source, self.return_to)
@@ -237,9 +254,11 @@ class PrintingUI(Screen):
         for (title, value) in self.parent.setting_translation.get_settings().items():
             self.ids.print_settings.add_widget(ListElement(title=title, value=value))
         self.ids.navigate_button.text_source = _('Cancel Print')
+        self.ids.navigate_button.background_color = [2.0, 1.0, 0.0, 1.0]
 
     def on_pre_leave(self):
         if self.print_api:
             self.print_api.close()
+        self.ids.printer_animation.animation_stop()
         self.print_api = None
         self.ids.print_settings.clear_widgets()
