@@ -14,7 +14,7 @@ from kivy.properties import StringProperty, NumericProperty, ListProperty, Objec
 from kivy.clock import Clock
 from kivy.uix.image import Image
 
-from ui.custom_widgets import ErrorPopup
+from ui.custom_widgets import ErrorPopup, I18NPopup
 from ui.peachy_widgets import LaserWarningPopup
 from infrastructure.langtools import _
 
@@ -30,13 +30,19 @@ class ListElement(BoxLayout):
 
 class PrinterAnimation(RelativeLayout):
     padding = NumericProperty(40)
+
     printer_actual_dimensions = ListProperty([80, 80, 80])
     printer_current_actual_height = NumericProperty(0.0)
-    printer_pixel_height = NumericProperty(1)
-    printer_pixel_width = NumericProperty(1)
-    resin_pixel_height = NumericProperty(20)
-    water_pixel_height = NumericProperty(20)
-    resin_y = NumericProperty(0)
+
+    printer_height = NumericProperty(1)
+    printer_width = NumericProperty(1)
+    printer_left = NumericProperty(0)
+    printer_bottom = NumericProperty(40)
+
+    laser_size = ListProperty([40, 40])
+
+    resin_height = NumericProperty(20)
+    water_height = NumericProperty(20)
 
     scale = NumericProperty(1.0)
 
@@ -48,6 +54,8 @@ class PrinterAnimation(RelativeLayout):
     drip_history = ListProperty()
     laser_points = ListProperty()
 
+    middle_x = NumericProperty(52)
+
     def __init__(self, **kwargs):
         super(PrinterAnimation, self).__init__(**kwargs)
         self.drip_time_range = 5
@@ -57,30 +65,18 @@ class PrinterAnimation(RelativeLayout):
         self.waiting_for_drips = True
 
     def on_size(self, *largs):
-        bounds_y = (self.height * 0.7) - self.resin_pixel_height
+        bounds_y = (self.height * 0.7) - self.resin_height
         bounds_x = self.width - (self.padding * 2)
         printer_x = self.printer_actual_dimensions[0]
         printer_y = self.printer_actual_dimensions[1]
 
         self.scale = min(bounds_y / printer_y, bounds_x / printer_x)
-        self.printer_pixel_width = printer_x * self.scale
-        self.printer_pixel_height = printer_y * self.scale
+        self.printer_width = printer_x * self.scale
+        self.printer_height = printer_y * self.scale
 
     def redraw(self, key):
-        while self.images:
-            self.remove_widget(self.images.pop())
-        top = time.time()
-        bottom = top - self.drip_time_range
-        for drip_time in self.drip_history:
-            if drip_time > bottom:
-                time_ago = top - drip_time
-                y_pos_percent = (self.drip_time_range - time_ago) / self.drip_time_range
-                drip_pos_y = (self.height * y_pos_percent) + self.padding
-                image_widget = Image(source="resources/images/drop.png", size_hint=[None, None], size=[20, 20], pos=[self.padding + 20, drip_pos_y], allow_strech=True)
-                self.images.append(image_widget)
-        for image in self.images:
-            self.add_widget(image)
-        self._change_laser()
+        self._draw_drips()
+        self._draw_laser()
         Clock.unschedule(self.redraw)
         Clock.schedule_once(self.redraw, 1.0 / 20.0)
 
@@ -90,17 +86,41 @@ class PrinterAnimation(RelativeLayout):
         while self.images:
             self.remove_widget(self.images.pop())
 
-    def _change_laser(self):
+    def _draw_drips(self):
+        while self.images:
+            self.remove_widget(self.images.pop())
+        top = time.time()
+        bottom = top - self.drip_time_range
+        for drip_time in self.drip_history:
+            if drip_time > bottom:
+                time_ago = top - drip_time
+                y_pos_percent = (self.drip_time_range - time_ago) / self.drip_time_range
+                drip_pos_y = (self.height * y_pos_percent) + self.padding
+                image_widget = Image(source="resources/images/drop.png", size_hint=[None, None], size=[10, 10], pos=[self.printer_left + 20, drip_pos_y], allow_strech=True)
+                self.images.append(image_widget)
+        for image in self.images:
+            self.add_widget(image)
+
+    def _draw_laser(self):
         if self.waiting_for_drips:
             self.laser_points = []
         else:
             if self.laser_pos >= 90 or self.laser_pos <= 10:
                 self.laser_speed = self.laser_speed * -1
             self.laser_pos += self.laser_speed
-            laser_x = self.padding + (self.printer_pixel_width * (self.laser_pos / 100.0))
+            laser_x = self.padding + (self.printer_width * (self.laser_pos / 100.0))
 
             self.laser_points = [self.width / 2.0, self.height - self.padding,
-                                 laser_x,          self.water_pixel_height + self.padding + self.resin_pixel_height]
+                                 laser_x,          self.water_height + self.padding + self.resin_height]
+
+
+class SettingsPopUp(I18NPopup):
+    def add_setting(self, widget):
+        self.ids.print_settings.add_widget(widget)
+
+    def remove_settings(self):
+        self.ids.print_settings.clear_widgets()
+
 
 class PrintingUI(Screen):
     printer_actual_dimensions = ListProperty([10, 10, 10])
@@ -123,6 +143,7 @@ class PrintingUI(Screen):
         self.api = api
         self.print_api = None
         self.print_options = []
+        self.settings_popup = SettingsPopUp()
 
     def on_printer_dimensions(self, instance, value):
         self.ids.printer_animation.printer_actual_dimensions = value
@@ -252,7 +273,7 @@ class PrintingUI(Screen):
 
     def on_pre_enter(self):
         for (title, value) in self.parent.setting_translation.get_settings().items():
-            self.ids.print_settings.add_widget(ListElement(title=title, value=value))
+            self.settings_popup.add_setting(ListElement(title=title, value=value))
         self.ids.navigate_button.text_source = _('Cancel Print')
         self.ids.navigate_button.background_color = [2.0, 1.0, 0.0, 1.0]
 
@@ -261,4 +282,4 @@ class PrintingUI(Screen):
             self.print_api.close()
         self.ids.printer_animation.animation_stop()
         self.print_api = None
-        self.ids.print_settings.clear_widgets()
+        self.settings_popup.remove_settings()
