@@ -26,36 +26,44 @@
         valign: 'middle'
 
 <PrinterAnimation>:
-    water_pixel_height: (root.scale * root.printer_current_actual_height)
+    water_height: (root.scale * root.printer_current_actual_height)
+    printer_left: root.middle_x - (root.printer_width / 2.0)
+    middle_x: self.width / 2
     canvas.before:
+        #Background
         Color:
             rgba: 1.0, 1.0, 1.0, 1.0
         Rectangle:
-            size: [root.printer_pixel_width, root.resin_pixel_height + root.water_pixel_height]
-            pos: [self.padding, self.padding ]
-
+            size: [root.printer_width, root.resin_height + root.water_height]
+            pos: [root.printer_left, root.printer_bottom]
+        
+        #Resin
         Color:
             rgba: root.resin_color
         Rectangle:
-            size: [root.printer_pixel_width, root.resin_pixel_height]
-            pos: [self.padding, self.padding + root.water_pixel_height ]
+            size: [root.printer_width, root.resin_height]
+            pos: [root.printer_left, root.printer_bottom + root.water_height ]
 
+        #Water
         Color:
             rgba: root.water_color
         Rectangle:
-            size: [root.printer_pixel_width, root.water_pixel_height]
-            pos: [self.padding, self.padding]
-        
+            size: [root.printer_width, root.water_height]
+            pos: [root.printer_left, root.printer_bottom]
+
+        #Container
         Color:
             rgba: root.container_color
         Line:
             points: 
-                [self.padding, root.printer_pixel_height + root.resin_pixel_height,
-                self.padding, self.padding,
-                self.padding + root.printer_pixel_width, self.padding,
-                self.padding + root.printer_pixel_width, root.printer_pixel_height + root.resin_pixel_height
+                [root.printer_left, root.printer_height + root.resin_height,
+                root.printer_left, root.printer_bottom,
+                root.printer_left + root.printer_width, root.printer_bottom,
+                root.printer_left + root.printer_width, root.printer_height + root.resin_height
                 ]
             width: 4
+
+        #Laser
         Color:
             rgba: root.laser_color
         Line:
@@ -64,16 +72,34 @@
     Image:
         size_hint: [None, None]
         source: "resources/peachy.png"
-        pos: [(root.width / 2.0) - (root.padding / 2.0), root.height  - (root.padding)]
-        size: [root.padding, root.padding]
+        pos: [root.middle_x - (self.width / 2.0), root.height  - self.height]
+        size: root.laser_size
 
+<SettingsPopUp>:
+    size_hint: (0.6, 0.6)
+    title_source: _("Settings")
+    BoxLayout:
+        orientation: 'vertical'
+        ScrollView:
+            BoxLayout:
+                orientation:'vertical'
+                id: print_settings
+                size_hint_y: None
+                height: sum([child.height + self.spacing for child in self.children])
+                spacing: "3dp"
+        I18NButton:
+            text_source: _("Close")
+            on_release: root.dismiss()
+            size_hint_y: None
+            height: app.button_height
 
 <PrintingUI>:
     name: 'printingui'
     BoxLayout:
         orientation: 'horizontal'
         BoxLayout:
-            size_hint_x: 0.7
+            size_hint_x: None
+            width: "250dp"
             orientation:'vertical'
             padding: "3dp"
             spacing:"10dp"
@@ -275,16 +301,6 @@
                         valign: 'middle'
                         text: "{:.0f}".format(root.skipped_layers)
             Label:
-        BoxLayout:
-            orientation: 'vertical'
-            PrinterAnimation:
-                id: printer_animation
-        BoxLayout:
-            orientation: 'vertical'
-            size_hint_x: 0.7
-            spacing: "10dp"
-            padding: "3dp"
-           
             I18NImageButton:
                 text_source: _("Cancel Print")
                 source: "resources/icons/printing_cancel-24x24.png"
@@ -298,33 +314,15 @@
                 on_release: root.restart()
                 size_hint_y: None
                 height: app.button_height
-            BoxLayout:
-                orientation: 'vertical'
-                padding: "3dp"
-                spacing:"3dp"
-                canvas.before:
-                    Color:
-                        rgba: 1.0, 1.0, 1.0, 0.3
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
-                BoxLayout:
-                    orientation: 'horizontal'
-                    size_hint_y: None
-                    height: app.button_height
-                    Image:
-                        size_hint: [None, None]
-                        size: [24, 24]
-                        source: "resources/icons/printing_settings-24x24.png"
-                    I18NLabel:
-                        bold: True
-                        text_source: _("Settings")
-                ScrollView:
-                    BoxLayout:
-                        orientation:'vertical'
-                        id: print_settings
-                        size_hint_y: None
-                        height: sum([child.height + self.spacing for child in self.children])
-                        spacing: "3dp"
+            I18NImageButton:
+                text_source: _("Display Settings")
+                source: "resources/icons/printing_settings-24x24.png"
+                on_release: root.settings_popup.open()
+                size_hint_y: None
+                height: app.button_height
+        BoxLayout:
+            orientation: 'vertical'
+            PrinterAnimation:
+                id: printer_animation
 
 
