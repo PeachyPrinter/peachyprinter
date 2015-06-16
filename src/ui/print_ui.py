@@ -40,8 +40,8 @@ class PrinterAnimation(RelativeLayout):
 
     scale = NumericProperty(1.0)
 
-    resin_color = ListProperty([0.0, 1.0, 0.0, 0.3])
-    water_color = ListProperty([0.4, 0.4, 1.0, 0.3])
+    resin_color = ListProperty([0.0, 0.8, 0.0, 0.6])
+    water_color = ListProperty([0.2, 0.2, 1.0, 0.6])
     container_color = ListProperty([1.0, 1.0, 1.0, 1.0])
     laser_color = ListProperty([0.0, 0.0, 1.0, 1.0])
 
@@ -222,7 +222,7 @@ class PrintingUI(Screen):
             self.print_api.close()
         self.print_api = None
         self.ids.navigate_button.text_source = _('Cancel Print')
-        self.ids.navigate_button.background_color = [2.0, 1.3, 0.0, 1.0]
+        self.ids.navigate_button.background_color = [2.0, 1.0, 0.0, 1.0]
         last_print = App.get_running_app().last_print
         if last_print.print_type is "file":
             self.print_file(last_print.source, self.return_to)

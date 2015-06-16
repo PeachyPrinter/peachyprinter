@@ -29,6 +29,12 @@
     water_pixel_height: (root.scale * root.printer_current_actual_height)
     canvas.before:
         Color:
+            rgba: 1.0, 1.0, 1.0, 1.0
+        Rectangle:
+            size: [root.printer_pixel_width, root.resin_pixel_height + root.water_pixel_height]
+            pos: [self.padding, self.padding ]
+
+        Color:
             rgba: root.resin_color
         Rectangle:
             size: [root.printer_pixel_width, root.resin_pixel_height]
@@ -55,6 +61,12 @@
         Line:
             points: root.laser_points
             width: 2
+    Image:
+        size_hint: [None, None]
+        source: "resources/peachy.png"
+        pos: [(root.width / 2.0) - (root.padding / 2.0), root.height  - (root.padding)]
+        size: [root.padding, root.padding]
+
 
 <PrintingUI>:
     name: 'printingui'
@@ -65,12 +77,6 @@
             orientation:'vertical'
             padding: "3dp"
             spacing:"10dp"
-            canvas.before:
-                Color:
-                    rgba: 1.0, 1.0, 1.0, 0.1
-                Rectangle:
-                    pos:  self.pos
-                    size: self.size
             GridLayout:
                 padding: "3dp"
                 spacing:"3dp"
@@ -79,7 +85,7 @@
                 size_hint_y: None
                 canvas.before:
                     Color:
-                        rgba: 1.0, 1.0, 1.0, 0.1
+                        rgba: 1.0, 1.0, 1.0, 0.3
                     Rectangle:
                         pos: self.pos
                         size: self.size
@@ -93,6 +99,7 @@
                         source: "resources/icons/printing_dripper-24x24.png"
                     I18NLabel:
                         text_source: _("Dripper Informaiton")
+                        bold: True
                 GridLayout:
                     height: self.minimum_height
                     size_hint_y: None
@@ -150,7 +157,7 @@
                 size_hint_y: None
                 canvas.before:
                     Color:
-                        rgba: 1.0, 1.0, 1.0, 0.1
+                        rgba: 1.0, 1.0, 1.0, 0.3
                     Rectangle:
                         pos: self.pos
                         size: self.size
@@ -163,6 +170,7 @@
                         size: [24, 24]
                         source: "resources/icons/printing_time-24x24.png"
                     I18NLabel:
+                        bold: True
                         text_source: _("Time")
                 GridLayout:
                     cols: 2
@@ -196,13 +204,15 @@
                         halign: 'right'
                         valign: 'middle'
                         text: root.elapsed_time
-            BoxLayout:
-                orientation: 'vertical'
+            GridLayout:
+                cols: 1
                 padding: "3dp"
                 spacing:"3dp"
+                height: self.minimum_height
+                size_hint_y: None
                 canvas.before:
                     Color:
-                        rgba: 1.0, 1.0, 1.0, 0.1
+                        rgba: 1.0, 1.0, 1.0, 0.3
                     Rectangle:
                         pos: self.pos
                         size: self.size
@@ -215,29 +225,66 @@
                         size: [24, 24]
                         source: "resources/icons/printing_settings-24x24.png"
                     I18NLabel:
-                        text_source: _("Settings")
-                ScrollView:
-                    BoxLayout:
-                        orientation:'vertical'
-                        id: print_settings
+                        bold: True
+                        text_source: _("Posisition")
+                GridLayout:
+                    cols: 2
+                    height: self.minimum_height
+                    size_hint_y: None
+                    padding: "3dp"
+                    I18NLabel:
                         size_hint_y: None
-                        height: sum([child.height + self.spacing for child in self.children])
-                        spacing: "3dp"
+                        height: app.label_height
+                        text_size: self.size
+                        halign: 'left'
+                        valign: 'middle'
+                        text_source: _("Current Height")
+                    Label:
+                        size_hint: [0.3, None]
+                        height: app.label_height
+                        text_size: self.size
+                        halign: 'right'
+                        valign: 'middle'
+                        text: "{:.2f}".format(root.print_height)
+                    I18NLabel:
+                        size_hint_y: None
+                        height: app.label_height
+                        text_size: self.size
+                        halign: 'left'
+                        valign: 'middle'
+                        text_source: _("Layers")
+                    Label:
+                        size_hint: [0.3, None]
+                        height: app.label_height
+                        text_size: self.size
+                        halign: 'right'
+                        valign: 'middle'
+                        text: "{:.0f}".format(root.current_layer)
+                    I18NLabel:
+                        size_hint_y: None
+                        height: app.label_height
+                        text_size: self.size
+                        halign: 'left'
+                        valign: 'middle'
+                        text_source: _("Skipped Layers")
+                    Label:
+                        size_hint: [0.3, None]
+                        height: app.label_height
+                        text_size: self.size
+                        halign: 'right'
+                        valign: 'middle'
+                        text: "{:.0f}".format(root.skipped_layers)
+            Label:
         BoxLayout:
             orientation: 'vertical'
             PrinterAnimation:
                 id: printer_animation
         BoxLayout:
             orientation: 'vertical'
-            size_hint_x: 0.5
-            spacing: "3dp"
+            size_hint_x: 0.7
+            spacing: "10dp"
             padding: "3dp"
-            canvas.before:
-                Color:
-                    rgba: 1.0, 1.0, 1.0, 0.1
-                Rectangle:
-                    pos:  self.pos
-                    size: self.size
+           
             I18NImageButton:
                 text_source: _("Cancel Print")
                 source: "resources/icons/printing_cancel-24x24.png"
@@ -251,59 +298,33 @@
                 on_release: root.restart()
                 size_hint_y: None
                 height: app.button_height
-            Label:
-            GridLayout:
-                cols: 2
-                height: self.minimum_height
-                size_hint_y: None
+            BoxLayout:
+                orientation: 'vertical'
+                padding: "3dp"
+                spacing:"3dp"
                 canvas.before:
                     Color:
-                        rgba: 1.0, 1.0, 1.0, 1.0
+                        rgba: 1.0, 1.0, 1.0, 0.3
                     Rectangle:
-                        pos:  self.pos
+                        pos: self.pos
                         size: self.size
-                I18NLabel:
+                BoxLayout:
+                    orientation: 'horizontal'
                     size_hint_y: None
-                    height: app.label_height
-                    text_size: self.size
-                    halign: 'left'
-                    valign: 'middle'
-                    text_source: _("Current Height")
-                Label:
-                    size_hint: [0.3, None]
-                    height: app.label_height
-                    text_size: self.size
-                    halign: 'right'
-                    valign: 'middle'
-                    text: "{:.2f}".format(root.print_height)
-                I18NLabel:
-                    size_hint_y: None
-                    height: app.label_height
-                    text_size: self.size
-                    halign: 'left'
-                    valign: 'middle'
-                    text_source: _("Layers")
-                Label:
-                    size_hint: [0.3, None]
-                    height: app.label_height
-                    text_size: self.size
-                    halign: 'right'
-                    valign: 'middle'
-                    text: "{:.0f}".format(root.current_layer)
-                I18NLabel:
-                    size_hint_y: None
-                    height: app.label_height
-                    text_size: self.size
-                    halign: 'left'
-                    valign: 'middle'
-                    text_source: _("Skipped Layers")
-                Label:
-                    size_hint: [0.3, None]
-                    height: app.label_height
-                    text_size: self.size
-                    halign: 'right'
-                    valign: 'middle'
-                    text: "{:.0f}".format(root.skipped_layers)
-            Label:
+                    height: app.button_height
+                    Image:
+                        size_hint: [None, None]
+                        size: [24, 24]
+                        source: "resources/icons/printing_settings-24x24.png"
+                    I18NLabel:
+                        bold: True
+                        text_source: _("Settings")
+                ScrollView:
+                    BoxLayout:
+                        orientation:'vertical'
+                        id: print_settings
+                        size_hint_y: None
+                        height: sum([child.height + self.spacing for child in self.children])
+                        spacing: "3dp"
 
 
