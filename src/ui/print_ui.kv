@@ -240,7 +240,6 @@
                     size: self.size
             I18NImageButton:
                 text_source: _("Cancel Print")
-                background_color: 2.0, 0.0, 0.0, 1.0
                 source: "resources/icons/printing_cancel-24x24.png"
                 on_release: app.root.current = root.return_to
                 id: navigate_button
@@ -249,7 +248,6 @@
             I18NImageButton:
                 text_source: _("Restart Print")
                 source: "resources/icons/printing_restart-24x24.png"
-                on_release: app.root.current = root.return_to
                 on_release: root.restart()
                 size_hint_y: None
                 height: app.button_height
