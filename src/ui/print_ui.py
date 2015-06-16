@@ -108,10 +108,10 @@ class PrinterAnimation(RelativeLayout):
             if self.laser_pos >= 90 or self.laser_pos <= 10:
                 self.laser_speed = self.laser_speed * -1
             self.laser_pos += self.laser_speed
-            laser_x = self.padding + (self.printer_width * (self.laser_pos / 100.0))
+            laser_x = self.printer_left + (self.printer_width * (self.laser_pos / 100.0))
 
-            self.laser_points = [self.width / 2.0, self.height - self.padding,
-                                 laser_x,          self.water_height + self.padding + self.resin_height]
+            self.laser_points = [self.middle_x, self.height - self.padding,
+                                 laser_x,          self.water_height + self.printer_bottom + self.resin_height]
 
 
 class SettingsPopUp(I18NPopup):
