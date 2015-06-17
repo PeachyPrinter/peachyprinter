@@ -12,7 +12,6 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.properties import StringProperty, NumericProperty, ListProperty, ObjectProperty
 from kivy.clock import Clock
-from kivy.uix.image import Image
 from kivy.graphics import InstructionGroup
 from kivy.core.image import Image as CoreImage
 
@@ -62,7 +61,6 @@ class PrinterAnimation(RelativeLayout):
     def __init__(self, **kwargs):
         super(PrinterAnimation, self).__init__(**kwargs)
         self.drip_time_range = 5
-        self.images = []
         self.laser_pos = 60
         
         self.waiting_for_drips = True
@@ -95,7 +93,6 @@ class PrinterAnimation(RelativeLayout):
         Clock.unschedule(self.redraw)
         self.laser_points = []
 
-
     def _draw_drips(self):
         self.drips_instruction.clear()
         top = time.time()
@@ -106,8 +103,6 @@ class PrinterAnimation(RelativeLayout):
                 y_pos_percent = (self.drip_time_range - time_ago) / self.drip_time_range
                 drip_pos_y = (self.height * y_pos_percent) + self.padding
                 self.drips_instruction.add(Rectangle(size=[12, 16], pos=[self.printer_left + 20, drip_pos_y], texture= self.drip_texture))
-
-
 
     def _draw_laser(self):
         if self.waiting_for_drips:

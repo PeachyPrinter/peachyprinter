@@ -4,7 +4,8 @@ from kivy.properties import NumericProperty, BoundedNumericProperty, StringPrope
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.label import Label
-from kivy.uix.image import Image
+from kivy.core.image import Image as CoreImage
+from kivy.graphics import *
 from kivy.clock import Clock
 
 from kivy.app import App
@@ -48,6 +49,7 @@ class DripperCalibrationUI(Screen):
         self.ids.settings_box_id.clear_widgets()
         self.configuration_api.stop_counting_drips()
         self.configuration_api.set_dripper_type(value)
+        self.circut_visuals.stop_animation()
 
         if value == 'emulated':
             self.ids.setup_box_id.add_widget(BoxLayout())
@@ -61,6 +63,7 @@ class DripperCalibrationUI(Screen):
         elif value == 'microcontroller':
             self.ids.setup_box_id.add_widget(self.circut_setup)
             self.ids.visuals_box_id.add_widget(self.circut_visuals)
+            self.circut_visuals.start_animation()
             self.ids.settings_box_id.add_widget(self.circut_settings)
             self.configuration_api.start_counting_drips(self.drip_call_back)
 
@@ -137,6 +140,12 @@ class CircutVisuals(BoxLayout):
     def on_drip_history(self, instance,value):
         self.ids.dripper_animation.drip_history = value
 
+    def start_animation(self):
+        Clock.schedule_once(self.ids.dripper_animation.redraw)
+
+    def stop_animation(self):
+        Clock.unschedule(self.ids.dripper_animation.redraw)
+
 
 class DripperAnimation(RelativeLayout):
     cup_width = NumericProperty()
@@ -154,25 +163,44 @@ class DripperAnimation(RelativeLayout):
 
     def __init__(self, **kwargs):
         super(DripperAnimation, self).__init__(**kwargs)
-        Clock.schedule_once(self.redraw)
         self.drip_time_range = 5
-        self.images = []
+        self._gl_setup()
+        self._refresh_rate = App.get_running_app().refresh_rate
+
+    def _gl_setup(self):
+        self.drip_texture = CoreImage("resources/images/drop.png", mipmap=True).texture
+        self.drips_instruction = InstructionGroup()
+        self.canvas.add(self.drips_instruction)
 
     def redraw(self, key):
-        while self.images:
-            self.remove_widget(self.images.pop())
+        # while self.images:
+        #     self.remove_widget(self.images.pop())
+        # top = time.time()
+        # bottom = top - self.drip_time_range
+        # for drip_time in self.drip_history:
+        #     if drip_time > bottom:
+        #         time_ago = top - drip_time
+        #         y_pos_percent = (self.drip_time_range - time_ago) / self.drip_time_range
+        #         drip_pos_y = self.drips_height * y_pos_percent + self.cup_water_level 
+        #         image_widget = Image(source="resources/images/drop.png", size_hint=[None, None], size=[20, 20], pos=[self.dripper_left, drip_pos_y], allow_strech=True)
+        #         self.images.append(image_widget)
+        # for image in self.images:
+        #     self.add_widget(image)
+        self._draw_drips()
+        Clock.unschedule(self.redraw)
+        Clock.schedule_once(self.redraw, self._refresh_rate)
+
+    def _draw_drips(self):
+        self.drips_instruction.clear()
         top = time.time()
         bottom = top - self.drip_time_range
         for drip_time in self.drip_history:
             if drip_time > bottom:
                 time_ago = top - drip_time
                 y_pos_percent = (self.drip_time_range - time_ago) / self.drip_time_range
-                drip_pos_y = self.drips_height * y_pos_percent + self.cup_water_level 
-                image_widget = Image(source="resources/images/drop.png", size_hint=[None, None], size=[20, 20], pos=[self.dripper_left, drip_pos_y], allow_strech=True)
-                self.images.append(image_widget)
-        for image in self.images:
-            self.add_widget(image)
-        Clock.schedule_once(self.redraw, 1.0 / 10.0)
+                drip_pos_y = self.drips_height * y_pos_percent + self.cup_water_level
+                self.drips_instruction.add(Rectangle(size=[12, 16], pos=[self.dripper_left, drip_pos_y], texture= self.drip_texture))
+
 
 
 class CircutSettings(BoxLayout):
