@@ -100,6 +100,7 @@ class MyScreenManager(ScreenManager):
 class PeachyPrinter(App):
     button_height = StringProperty("30dp")
     label_height = StringProperty("24dp")
+    refresh_rate = NumericProperty(1.0 / 60.0)
     use_kivy_settings = False
     lang = StringProperty('en_GB')
     translator = ObjectProperty(None, allownone=True)
