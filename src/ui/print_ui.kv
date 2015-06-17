@@ -27,39 +27,44 @@
 
 <PrinterAnimation>:
     water_height: (root.scale * root.printer_current_actual_height)
-    printer_left: root.middle_x - (root.printer_width / 2.0)
+    print_area_left: root.middle_x - (root.print_area_width / 2.0)
     middle_x: root.width / 2
+    container_padding: root.print_area_width * 0.05
+    container_left: root.print_area_left - root.container_padding
+    container_width: root.print_area_width + root.container_padding + root.container_padding
+    container_bottom: root.print_area_bottom
+    container_height: root.print_area_height + root.container_padding + root.container_padding
     canvas.before:
         #Background
         Color:
             rgba: 1.0, 1.0, 1.0, 1.0
         Rectangle:
-            size: [root.printer_width, root.resin_height + root.water_height]
-            pos: [root.printer_left, root.printer_bottom]
+            size: [root.container_width, root.resin_height + root.water_height]
+            pos: [root.container_left, root.print_area_bottom]
         
         #Resin
         Color:
             rgba: root.resin_color
         Rectangle:
-            size: [root.printer_width, root.resin_height]
-            pos: [root.printer_left, root.printer_bottom + root.water_height ]
+            size: [root.container_width, root.resin_height]
+            pos: [root.container_left, root.print_area_bottom + root.water_height ]
 
         #Water
         Color:
             rgba: root.water_color
         Rectangle:
-            size: [root.printer_width, root.water_height]
-            pos: [root.printer_left, root.printer_bottom]
+            size: [root.container_width, root.water_height]
+            pos: [root.container_left, root.print_area_bottom]
 
         #Container
         Color:
             rgba: root.container_color
         Line:
             points: 
-                [root.printer_left, root.printer_height + root.resin_height,
-                root.printer_left, root.printer_bottom,
-                root.printer_left + root.printer_width, root.printer_bottom,
-                root.printer_left + root.printer_width, root.printer_height + root.resin_height
+                [root.container_left, root.container_height + root.resin_height,
+                root.container_left, root.container_bottom,
+                root.container_left + root.container_width, root.container_bottom,
+                root.container_left + root.container_width, root.container_height + root.resin_height
                 ]
             width: 4
 

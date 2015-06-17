@@ -36,10 +36,16 @@ class PrinterAnimation(RelativeLayout):
     printer_actual_dimensions = ListProperty([80, 80, 80])
     printer_current_actual_height = NumericProperty(0.0)
 
-    printer_height = NumericProperty(1)
-    printer_width = NumericProperty(1)
-    printer_left = NumericProperty(0)
-    printer_bottom = NumericProperty(40)
+    print_area_height = NumericProperty(1)
+    print_area_width = NumericProperty(1)
+    print_area_left = NumericProperty(0)
+    print_area_bottom = NumericProperty(40)
+
+    container_padding = NumericProperty(0)
+    container_left = NumericProperty(0)
+    container_width = NumericProperty(0)
+    container_bottom = NumericProperty(0)
+    container_height = NumericProperty(0)
 
     laser_size = ListProperty([40, 40])
 
@@ -92,8 +98,8 @@ class PrinterAnimation(RelativeLayout):
         printer_y = self.printer_actual_dimensions[1]
 
         self.scale = min(bounds_y / printer_y, bounds_x / printer_x)
-        self.printer_width = printer_x * self.scale
-        self.printer_height = printer_y * self.scale
+        self.print_area_width = printer_x * self.scale
+        self.print_area_height = printer_y * self.scale
 
     def redraw(self, key):
         self._draw_drips()
@@ -120,7 +126,7 @@ class PrinterAnimation(RelativeLayout):
                 time_ago = top - drip_time
                 y_pos_percent = (self.drip_time_range - time_ago) / self.drip_time_range
                 drip_pos_y = (self.height * y_pos_percent) + self.padding
-                self.drips_instruction.add(Rectangle(size=[12, 16], pos=[self.printer_left + 20, drip_pos_y], texture= self.drip_texture))
+                self.drips_instruction.add(Rectangle(size=[12, 16], pos=[self.print_area_left + 20, drip_pos_y], texture= self.drip_texture))
 
     def _draw_laser(self):
         if self.waiting_for_drips:
@@ -129,10 +135,10 @@ class PrinterAnimation(RelativeLayout):
             if (self.laser_pos >= 100.0 - abs(self._laser_speed)) or (self.laser_pos <= abs(self._laser_speed)):
                 self._laser_speed = self._laser_speed * -1
             self.laser_pos += self._laser_speed
-            laser_x = self.printer_left + (self.printer_width * (self.laser_pos / 100.0))
+            laser_x = self.print_area_left + (self.print_area_width * (self.laser_pos / 100.0))
 
             self.laser_points = [self.middle_x, self.height - self.padding,
-                                 laser_x,          self.water_height + self.printer_bottom + self.resin_height]
+                                 laser_x,          self.water_height + self.print_area_bottom + self.resin_height]
 
     def _draw_model(self):
             self.model_instruction.clear()
@@ -148,8 +154,8 @@ class PrinterAnimation(RelativeLayout):
 
                 points = []
                 for idx in range(0, len(self.line_x)):
-                    x =  int(self.printer_left + (self.line_x[idx] * self.printer_width))
-                    y =  int(self.printer_bottom + self.resin_height + (self.line_y[idx] * self.printer_height))
+                    x =  int(self.print_area_left + (self.line_x[idx] * self.print_area_width))
+                    y =  int(self.print_area_bottom + self.resin_height + (self.line_y[idx] * self.print_area_height))
                     points.append(x)
                     points.append(y)
 
@@ -249,13 +255,11 @@ class PrintingUI(Screen):
             self.play_complete_sound()
             self.ids.navigate_button.text_source = _("Print Complete")
             self.ids.navigate_button.background_color = [0.0, 2.0, 0.0, 1.0]
-            self._finished = True
         elif self.status == 'Failed':
             self.ids.printer_animation.animation_stop()
             self.play_failed_sound()
             self.ids.navigate_button.text_source = _("Print Failed")
             self.ids.navigate_button.background_color = [2.0, 0.0, 0.0, 1.0]
-            self._finished = True
         else:
             Clock.schedule_once(self._callback, self._refresh_rate)
 
