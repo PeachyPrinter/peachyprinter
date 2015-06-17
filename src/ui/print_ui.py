@@ -13,10 +13,13 @@ from kivy.uix.relativelayout import RelativeLayout
 from kivy.properties import StringProperty, NumericProperty, ListProperty, ObjectProperty
 from kivy.clock import Clock
 from kivy.uix.image import Image
+from kivy.graphics import InstructionGroup
+from kivy.core.image import Image as CoreImage
 
 from ui.custom_widgets import ErrorPopup, I18NPopup
 from ui.peachy_widgets import LaserWarningPopup
 from infrastructure.langtools import _
+
 
 import os
 
@@ -65,6 +68,12 @@ class PrinterAnimation(RelativeLayout):
         self.waiting_for_drips = True
         self._refresh_rate = App.get_running_app().refresh_rate
         self._laser_speed = 100.0 / (1.0 / self._refresh_rate)
+        self._gl_setup()
+
+    def _gl_setup(self):
+        self.drip_texture = CoreImage("resources/images/drop.png", mipmap=True).texture
+        self.drips_instruction = InstructionGroup()
+        self.canvas.add(self.drips_instruction)
 
     def on_size(self, *largs):
         bounds_y = (self.height * 0.7) - self.resin_height
@@ -85,24 +94,20 @@ class PrinterAnimation(RelativeLayout):
     def animation_stop(self):
         Clock.unschedule(self.redraw)
         self.laser_points = []
-        while self.images:
-            self.remove_widget(self.images.pop())
+
 
     def _draw_drips(self):
-        pass
-        # while self.images:
-        #     self.remove_widget(self.images.pop())
-        # top = time.time()
-        # bottom = top - self.drip_time_range
-        # for drip_time in self.drip_history:
-        #     if drip_time > bottom:
-        #         time_ago = top - drip_time
-        #         y_pos_percent = (self.drip_time_range - time_ago) / self.drip_time_range
-        #         drip_pos_y = (self.height * y_pos_percent) + self.padding
-        #         image_widget = Image(source="resources/images/drop.png", size_hint=[None, None], size=[10, 10], pos=[self.printer_left + 20, drip_pos_y], allow_strech=True)
-        #         self.images.append(image_widget)
-        # for image in self.images:
-        #     self.add_widget(image)
+        self.drips_instruction.clear()
+        top = time.time()
+        bottom = top - self.drip_time_range
+        for drip_time in self.drip_history:
+            if drip_time > bottom:
+                time_ago = top - drip_time
+                y_pos_percent = (self.drip_time_range - time_ago) / self.drip_time_range
+                drip_pos_y = (self.height * y_pos_percent) + self.padding
+                self.drips_instruction.add(Rectangle(size=[12, 16], pos=[self.printer_left + 20, drip_pos_y], texture= self.drip_texture))
+
+
 
     def _draw_laser(self):
         if self.waiting_for_drips:
