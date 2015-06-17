@@ -58,6 +58,7 @@ class PrinterAnimation(RelativeLayout):
 
     middle_x = NumericProperty(52)
 
+
     def __init__(self, **kwargs):
         super(PrinterAnimation, self).__init__(**kwargs)
         self.drip_time_range = 5
@@ -67,11 +68,22 @@ class PrinterAnimation(RelativeLayout):
         self._refresh_rate = App.get_running_app().refresh_rate
         self._laser_speed = 100.0 / (1.0 / self._refresh_rate)
         self._gl_setup()
+        self.axis_history = []
+
+        self.line_x = []
+        self.line_y = []
+        self.last_height = 0
+        self.min_height = 0
+
+    def on_printer_actual_dimensions(self):
+            self.min_height = self.printer_actual_dimensions[2] / 400.0
 
     def _gl_setup(self):
         self.drip_texture = CoreImage("resources/images/drop.png", mipmap=True).texture
         self.drips_instruction = InstructionGroup()
         self.canvas.add(self.drips_instruction)
+        self.model_instruction = InstructionGroup()
+        self.canvas.add(self.model_instruction)
 
     def on_size(self, *largs):
         bounds_y = (self.height * 0.7) - self.resin_height
@@ -86,11 +98,17 @@ class PrinterAnimation(RelativeLayout):
     def redraw(self, key):
         self._draw_drips()
         self._draw_laser()
+        self._draw_model()
         Clock.unschedule(self.redraw)
         Clock.schedule_once(self.redraw, self._refresh_rate)
 
     def animation_stop(self):
         Clock.unschedule(self.redraw)
+        self.axis_history = []
+        self.line_x = []
+        self.line_y = []
+        self.last_height = 0
+        self.min_height = 0
         self.laser_points = []
 
     def _draw_drips(self):
@@ -115,6 +133,34 @@ class PrinterAnimation(RelativeLayout):
 
             self.laser_points = [self.middle_x, self.height - self.padding,
                                  laser_x,          self.water_height + self.printer_bottom + self.resin_height]
+
+    def _draw_model(self):
+            self.model_instruction.clear()
+            self.model_instruction.add(Color(rgba=(1.0,0.0,0.0,1.0)))
+            if self.axis_history:
+                x1,y1,x2,y2 = self._get_pixels(self.axis_history[-1])
+                if y1 > (self.last_height + self.min_height):
+                    self.line_x.insert(0, x1)
+                    self.line_x.append(x2)
+                    self.line_y.insert(0, y1)
+                    self.line_y.append(y2)
+                    self.last_height = y1
+
+                points = []
+                for idx in range(0, len(self.line_x)):
+                    x =  int(self.printer_left + (self.line_x[idx] * self.printer_width))
+                    y =  int(self.printer_bottom + self.resin_height + (self.line_y[idx] * self.printer_height))
+                    points.append(x)
+                    points.append(y)
+
+                self.model_instruction.add(Line(points=points, width=1, close=True))
+
+    def _get_pixels(self, data):
+        pixel_height = data[2] / self.printer_actual_dimensions[2]
+        pixel_pos_min = (data[0][0] + (self.printer_actual_dimensions[1] / 2.0)) / self.printer_actual_dimensions[1]
+        pixel_pos_max = (data[0][1] + (self.printer_actual_dimensions[1] / 2.0)) / self.printer_actual_dimensions[1]
+        return [ pixel_pos_min, pixel_height, pixel_pos_max, pixel_height ]
+
 
 
 class SettingsPopUp(I18NPopup):
@@ -149,6 +195,7 @@ class PrintingUI(Screen):
         self.settings_popup = SettingsPopUp()
         self.data = {}
         self._refresh_rate = App.get_running_app().refresh_rate
+
 
     def on_printer_dimensions(self, instance, value):
         self.ids.printer_animation.printer_actual_dimensions = value
@@ -193,6 +240,8 @@ class PrintingUI(Screen):
             self.skipped_layers = data['skipped_layers']
         if 'drip_history' in data:
             self.ids.printer_animation.drip_history = data['drip_history']
+        if 'axis' in data:
+            self.ids.printer_animation.axis_history = data['axis']
 
         Clock.unschedule(self._callback)
         if self.status == 'Complete':
@@ -230,6 +279,7 @@ class PrintingUI(Screen):
 
     def is_safe(self, instance):
         if instance.is_safe():
+            self.ids.printer_animation.axis_history = []
             Clock.schedule_once(self.ids.printer_animation.redraw)
             Clock.schedule_once(self._callback, self._refresh_rate)
             self.print_options[0](*self.print_options[1], **self.print_options[2])
