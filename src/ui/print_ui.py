@@ -61,8 +61,10 @@ class PrinterAnimation(RelativeLayout):
         self.drip_time_range = 5
         self.images = []
         self.laser_pos = 60
-        self.laser_speed = 10
+        
         self.waiting_for_drips = True
+        self._refresh_rate = App.get_running_app().refresh_rate
+        self._laser_speed = 100.0 / (1.0 / self._refresh_rate)
 
     def on_size(self, *largs):
         bounds_y = (self.height * 0.7) - self.resin_height
@@ -78,7 +80,7 @@ class PrinterAnimation(RelativeLayout):
         self._draw_drips()
         self._draw_laser()
         Clock.unschedule(self.redraw)
-        Clock.schedule_once(self.redraw, 1.0 / 20.0)
+        Clock.schedule_once(self.redraw, self._refresh_rate)
 
     def animation_stop(self):
         Clock.unschedule(self.redraw)
@@ -87,27 +89,28 @@ class PrinterAnimation(RelativeLayout):
             self.remove_widget(self.images.pop())
 
     def _draw_drips(self):
-        while self.images:
-            self.remove_widget(self.images.pop())
-        top = time.time()
-        bottom = top - self.drip_time_range
-        for drip_time in self.drip_history:
-            if drip_time > bottom:
-                time_ago = top - drip_time
-                y_pos_percent = (self.drip_time_range - time_ago) / self.drip_time_range
-                drip_pos_y = (self.height * y_pos_percent) + self.padding
-                image_widget = Image(source="resources/images/drop.png", size_hint=[None, None], size=[10, 10], pos=[self.printer_left + 20, drip_pos_y], allow_strech=True)
-                self.images.append(image_widget)
-        for image in self.images:
-            self.add_widget(image)
+        pass
+        # while self.images:
+        #     self.remove_widget(self.images.pop())
+        # top = time.time()
+        # bottom = top - self.drip_time_range
+        # for drip_time in self.drip_history:
+        #     if drip_time > bottom:
+        #         time_ago = top - drip_time
+        #         y_pos_percent = (self.drip_time_range - time_ago) / self.drip_time_range
+        #         drip_pos_y = (self.height * y_pos_percent) + self.padding
+        #         image_widget = Image(source="resources/images/drop.png", size_hint=[None, None], size=[10, 10], pos=[self.printer_left + 20, drip_pos_y], allow_strech=True)
+        #         self.images.append(image_widget)
+        # for image in self.images:
+        #     self.add_widget(image)
 
     def _draw_laser(self):
         if self.waiting_for_drips:
             self.laser_points = []
         else:
-            if self.laser_pos >= 90 or self.laser_pos <= 10:
-                self.laser_speed = self.laser_speed * -1
-            self.laser_pos += self.laser_speed
+            if (self.laser_pos >= 100.0 - abs(self._laser_speed)) or (self.laser_pos <= abs(self._laser_speed)):
+                self._laser_speed = self._laser_speed * -1
+            self.laser_pos += self._laser_speed
             laser_x = self.printer_left + (self.printer_width * (self.laser_pos / 100.0))
 
             self.laser_points = [self.middle_x, self.height - self.padding,
@@ -144,6 +147,8 @@ class PrintingUI(Screen):
         self.print_api = None
         self.print_options = []
         self.settings_popup = SettingsPopUp()
+        self.data = {}
+        self._refresh_rate = App.get_running_app().refresh_rate
 
     def on_printer_dimensions(self, instance, value):
         self.ids.printer_animation.printer_actual_dimensions = value
@@ -159,6 +164,10 @@ class PrintingUI(Screen):
         return "{0}:{1:02d}".format(hours, minutes)
 
     def callback(self, data):
+        self.data = data
+
+    def _callback(self, arg):
+        data = self.data
         if 'status' in data:
             self.status = data['status']
         if 'model_height' in data:
@@ -185,16 +194,21 @@ class PrintingUI(Screen):
         if 'drip_history' in data:
             self.ids.printer_animation.drip_history = data['drip_history']
 
+        Clock.unschedule(self._callback)
         if self.status == 'Complete':
             self.ids.printer_animation.animation_stop()
             self.play_complete_sound()
             self.ids.navigate_button.text_source = _("Print Complete")
             self.ids.navigate_button.background_color = [0.0, 2.0, 0.0, 1.0]
-        if self.status == 'Failed':
+            self._finished = True
+        elif self.status == 'Failed':
             self.ids.printer_animation.animation_stop()
             self.play_failed_sound()
             self.ids.navigate_button.text_source = _("Print Failed")
             self.ids.navigate_button.background_color = [2.0, 0.0, 0.0, 1.0]
+            self._finished = True
+        else:
+            Clock.schedule_once(self._callback, self._refresh_rate)
 
     def print_file(self, *args, **kwargs):
         self.print_options = [self._print_file, args, kwargs]
@@ -217,6 +231,7 @@ class PrintingUI(Screen):
     def is_safe(self, instance):
         if instance.is_safe():
             Clock.schedule_once(self.ids.printer_animation.redraw)
+            Clock.schedule_once(self._callback, self._refresh_rate)
             self.print_options[0](*self.print_options[1], **self.print_options[2])
         else:
             self.parent.current = self.return_to
@@ -278,6 +293,7 @@ class PrintingUI(Screen):
         self.ids.navigate_button.background_color = [2.0, 1.0, 0.0, 1.0]
 
     def on_pre_leave(self):
+        Clock.unschedule(self._callback)
         if self.print_api:
             self.print_api.close()
         self.ids.printer_animation.animation_stop()
