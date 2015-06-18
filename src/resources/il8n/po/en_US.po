@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-29 12:53-0600\n"
+"POT-Creation-Date: 2015-06-18 11:18-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -11,20 +11,20 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/gui.py:58
+#: src/gui.py:60
 msgid "Load file"
 msgstr ""
 
-#: src/gui.py:136 src/gui.py:158 src/peachyprinter.kv:29
-#: src/ui/custom_widgets.kv:55
+#: src/gui.py:149 src/gui.py:171 src/peachyprinter.kv:35
+#: src/ui/custom_widgets.kv:118 src/ui/print_ui.kv:122
 msgid "Close"
 msgstr ""
 
-#: src/gui.py:145
+#: src/gui.py:158
 msgid "Please connect your peachy printer before starting the software"
 msgstr ""
 
-#: src/gui.py:146
+#: src/gui.py:159
 msgid "Exit"
 msgstr ""
 
@@ -32,39 +32,39 @@ msgstr ""
 msgid "Settings Selection"
 msgstr ""
 
-#: src/peachyprinter.kv:14
+#: src/peachyprinter.kv:15
 msgid "Laser Calibration"
 msgstr ""
 
-#: src/peachyprinter.kv:17
+#: src/peachyprinter.kv:19
 msgid "Dripper Calibration"
 msgstr ""
 
-#: src/peachyprinter.kv:20
+#: src/peachyprinter.kv:23
 msgid "Resin Curing Calibration"
 msgstr ""
 
-#: src/peachyprinter.kv:23
+#: src/peachyprinter.kv:27
 msgid "Advanced Settings"
 msgstr ""
 
-#: src/peachyprinter.kv:26
+#: src/peachyprinter.kv:31
 msgid "Restore Defaults"
 msgstr ""
 
-#: src/peachyprinter.kv:44
+#: src/peachyprinter.kv:52
 msgid "Print from file"
 msgstr ""
 
-#: src/peachyprinter.kv:47
+#: src/peachyprinter.kv:57
 msgid "Print from library"
 msgstr ""
 
-#: src/peachyprinter.kv:76
+#: src/peachyprinter.kv:86
 msgid "Starting Height"
 msgstr ""
 
-#: src/peachyprinter.kv:84 src/infrastructure/setting_mapper.py:81
+#: src/peachyprinter.kv:95 src/infrastructure/setting_mapper.py:81
 #: src/infrastructure/setting_mapper.py:98
 #: src/infrastructure/setting_mapper.py:115
 #: src/infrastructure/setting_mapper.py:133
@@ -91,12 +91,12 @@ msgstr ""
 #: src/infrastructure/setting_mapper.py:369
 #: src/infrastructure/setting_mapper.py:389
 #: src/infrastructure/setting_mapper.py:399
-#: src/infrastructure/setting_mapper.py:409 src/ui/library_ui.kv:53
-#: src/ui/peachy_widgets.kv:42
+#: src/infrastructure/setting_mapper.py:409 src/ui/library_ui.kv:54
+#: src/ui/peachy_widgets.kv:47
 msgid "Cancel"
 msgstr "Cancel"
 
-#: src/peachyprinter.kv:88
+#: src/peachyprinter.kv:100
 msgid "Load"
 msgstr ""
 
@@ -504,17 +504,17 @@ msgid "dripper_type DESCRIPTION"
 msgstr ""
 
 #: src/infrastructure/setting_mapper.py:379
-#: src/ui/dripper_calibration_ui.kv:25
+#: src/ui/dripper_calibration_ui.kv:279
 msgid "Emulated"
 msgstr ""
 
 #: src/infrastructure/setting_mapper.py:379
-#: src/ui/dripper_calibration_ui.kv:25
+#: src/ui/dripper_calibration_ui.kv:279
 msgid "Photo"
 msgstr ""
 
 #: src/infrastructure/setting_mapper.py:379
-#: src/ui/dripper_calibration_ui.kv:25
+#: src/ui/dripper_calibration_ui.kv:279
 msgid "Circut"
 msgstr ""
 
@@ -542,244 +542,284 @@ msgstr "Minimum Layer Time"
 msgid "dripper_photo_zaxis_delay DESCRIPTION"
 msgstr "The minimum time the Peachy will take to draw a layer"
 
-#: src/ui/calibrate_ui.kv:24
-msgid "Top"
-msgstr ""
-
-#: src/ui/calibrate_ui.kv:29
-msgid "Bottom"
-msgstr ""
-
-#: src/ui/calibrate_ui.kv:36 src/ui/cure_test_ui.kv:204
-#: src/ui/dripper_calibration_ui.kv:40 src/ui/library_ui.kv:69
-msgid "Back"
-msgstr ""
-
-#: src/ui/calibrate_ui.kv:42
+#: src/ui/calibrate_ui.kv:17
 msgid "Center"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:47 src/ui/calibrate_ui.kv:96
-#: src/ui/calibrate_ui.kv:263 src/ui/calibrate_ui.kv:307
-#: src/ui/calibrate_ui.kv:385 src/ui/calibrate_ui.kv:457
-#: src/ui/cure_test_ui.kv:153 src/ui/dripper_calibration_ui.kv:33
-msgid "Help me"
-msgstr ""
-
-#: src/ui/calibrate_ui.kv:48
-msgid "MARKUP - Center Calibration Instructions"
-msgstr ""
-
-#: src/ui/calibrate_ui.kv:48
-msgid "Help - Calibration Setup"
-msgstr ""
-
-#: src/ui/calibrate_ui.kv:64
+#: src/ui/calibrate_ui.kv:21
 msgid "Orientation"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:97
-msgid "MARKUP - Orientation Instructions"
-msgstr ""
-
-#: src/ui/calibrate_ui.kv:97
-msgid "Help - Orientation"
-msgstr ""
-
-#: src/ui/calibrate_ui.kv:258
-msgid "Print Area"
-msgstr ""
-
-#: src/ui/calibrate_ui.kv:264
-msgid "MARKUP - Print Area Instructions"
-msgstr ""
-
-#: src/ui/calibrate_ui.kv:264
-msgid "Help - Print Area"
-msgstr ""
-
-#: src/ui/calibrate_ui.kv:273 src/ui/library_ui.kv:21
-msgid "Height (mm)"
-msgstr ""
-
-#: src/ui/calibrate_ui.kv:283
-msgid "Depth (mm)"
-msgstr ""
-
-#: src/ui/calibrate_ui.kv:293 src/ui/library_ui.kv:29
-msgid "Width (mm)"
-msgstr ""
-
-#: src/ui/calibrate_ui.kv:302
+#: src/ui/calibrate_ui.kv:25
 msgid "Aligment"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:308
-msgid "MARKUP - Alignment Instructions"
+#: src/ui/calibrate_ui.kv:29
+msgid "Print Area"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:308
-msgid "Help - Alignment"
+#: src/ui/calibrate_ui.kv:33
+msgid "Top"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:353
-msgid "Super Accurate Mode"
+#: src/ui/calibrate_ui.kv:37
+msgid "Bottom"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:367
-msgid "Reset All"
-msgstr ""
-
-#: src/ui/calibrate_ui.kv:386
-msgid "MARKUP - Calibration Instructions"
-msgstr ""
-
-#: src/ui/calibrate_ui.kv:386
-msgid "Help - Calibration"
-msgstr ""
-
-#: src/ui/calibrate_ui.kv:409
+#: src/ui/calibrate_ui.kv:41
 msgid "Test Patterns"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:422
+#: src/ui/calibrate_ui.kv:45 src/ui/cure_test_ui.kv:295
+#: src/ui/dripper_calibration_ui.kv:310 src/ui/library_ui.kv:72
+msgid "Back"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:55 src/ui/calibrate_ui.kv:106
+#: src/ui/calibrate_ui.kv:272 src/ui/calibrate_ui.kv:318
+#: src/ui/calibrate_ui.kv:398 src/ui/calibrate_ui.kv:468
+#: src/ui/cure_test_ui.kv:287 src/ui/dripper_calibration_ui.kv:285
+msgid "Help me"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:56
+msgid "MARKUP - Center Calibration Instructions"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:56
+msgid "Help - Calibration Setup"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:107
+msgid "MARKUP - Orientation Instructions"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:107
+msgid "Help - Orientation"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:273
+msgid "MARKUP - Print Area Instructions"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:273
+msgid "Help - Print Area"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:283 src/ui/library_ui.kv:21
+msgid "Height (mm)"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:294
+msgid "Depth (mm)"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:305 src/ui/library_ui.kv:29
+msgid "Width (mm)"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:319
+msgid "MARKUP - Alignment Instructions"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:319
+msgid "Help - Alignment"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:364
+msgid "Super Accurate Mode"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:379
+msgid "Reset All"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:399
+msgid "MARKUP - Calibration Instructions"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:399
+msgid "Help - Calibration"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:433
 msgid "Speed"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:440
+#: src/ui/calibrate_ui.kv:451
 msgid "Height"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:458
+#: src/ui/calibrate_ui.kv:469
 msgid "MARKUP - Test Pattern Instructions"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:458
+#: src/ui/calibrate_ui.kv:469
 msgid "Help - Test Patterns"
 msgstr ""
 
-#: src/ui/cure_test_ui.kv:11
+#: src/ui/cure_test_ui.kv:7
 msgid "Base Speed"
 msgstr ""
 
-#: src/ui/cure_test_ui.kv:43
-msgid "Cure Rate Test"
+#: src/ui/cure_test_ui.kv:36
+msgid "[b]Test Print Setup[/b]"
 msgstr ""
 
-#: src/ui/cure_test_ui.kv:49
+#: src/ui/cure_test_ui.kv:44
+msgid "Start Speed"
+msgstr ""
+
+#: src/ui/cure_test_ui.kv:53
+msgid "Stop Speed"
+msgstr ""
+
+#: src/ui/cure_test_ui.kv:65
 msgid "Base Height"
 msgstr ""
 
-#: src/ui/cure_test_ui.kv:60
-msgid "Test Height"
-msgstr ""
-
-#: src/ui/cure_test_ui.kv:71
-msgid "Starting Speed"
+#: src/ui/cure_test_ui.kv:74
+msgid "Total Height"
 msgstr ""
 
 #: src/ui/cure_test_ui.kv:82
-msgid "Stopping Speed"
-msgstr ""
-
-#: src/ui/cure_test_ui.kv:94
 msgid "Run Cure Test Now"
 msgstr ""
 
-#: src/ui/cure_test_ui.kv:103
-msgid "Always Override Speeds"
+#: src/ui/cure_test_ui.kv:99
+msgid ""
+"[b]Result Selection[/b]\n"
+"[i]Click to select best height[/i]"
 msgstr ""
 
-#: src/ui/cure_test_ui.kv:113
-msgid "Draw Speed (mm)"
+#: src/ui/cure_test_ui.kv:165
+msgid "Base"
 msgstr ""
 
-#: src/ui/cure_test_ui.kv:124
-msgid "Move Speed (mm)"
-msgstr ""
-
-#: src/ui/cure_test_ui.kv:135
-msgid "Always Use Laser Power"
-msgstr ""
-
-#: src/ui/cure_test_ui.kv:145
-msgid "Laser Power"
-msgstr ""
-
-#: src/ui/cure_test_ui.kv:154
-msgid "Markup- Cure Rate"
-msgstr ""
-
-#: src/ui/cure_test_ui.kv:154
-msgid "Help - Cure Rate Settings"
-msgstr ""
-
-#: src/ui/cure_test_ui.kv:184
-msgid "Best Height"
-msgstr ""
-
-#: src/ui/cure_test_ui.kv:191
-msgid "Best Draw Speed"
+#: src/ui/cure_test_ui.kv:179
+msgid "Test"
 msgstr ""
 
 #: src/ui/cure_test_ui.kv:198
-msgid "Use Best Draw Speed"
+msgid "Use These Settings"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:22
-msgid "Dripper Type"
+#: src/ui/cure_test_ui.kv:214
+msgid "[b]Print Settings[/b]"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:34
-msgid "MARKUP - Dripper Instructions"
+#: src/ui/cure_test_ui.kv:224
+msgid "Override speeds"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:34
-msgid "Help - Dripper Settings"
+#: src/ui/cure_test_ui.kv:237
+msgid "Draw Speed"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:50
-msgid "Drips Per Second"
+#: src/ui/cure_test_ui.kv:251
+msgid "Move Speed"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:57
-msgid "Drips Per Millimeter"
+#: src/ui/cure_test_ui.kv:265
+msgid "Override laser power"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:68
-msgid "Delay After Layer"
+#: src/ui/cure_test_ui.kv:278
+msgid "Laser Power %"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:91
-msgid "Drip Calculator"
+#: src/ui/cure_test_ui.kv:288
+msgid "Markup- Cure Rate"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:100
-msgid "Distance to Measure (mm)"
+#: src/ui/cure_test_ui.kv:288
+msgid "Help - Cure Rate Settings"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:109
+#: src/ui/dripper_calibration_ui.kv:11
+msgid "[b]Dripper Test Setup[/b]"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:19
+msgid "Test Height"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:80
 msgid "Reset Drip Count"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:116
+#: src/ui/dripper_calibration_ui.kv:85
+msgid "[b]Circut Setup[/b]"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:97
 msgid "Drips"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:124
-msgid "Average Drips per Second"
+#: src/ui/dripper_calibration_ui.kv:111
+msgid "Average Drips"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:132
-msgid "Current Drips per mm"
+#: src/ui/dripper_calibration_ui.kv:121
+msgid "It takes"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:138
-msgid "Use Current Drips per mm"
+#: src/ui/dripper_calibration_ui.kv:122
+msgid ""
+"drips\n"
+" to make"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:148
+#: src/ui/dripper_calibration_ui.kv:123
+msgid "mm of water"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:133
+msgid "[b]Circut Settings[/b]"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:140 src/ui/dripper_calibration_ui.kv:181
 msgid "Drips per mm"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:155
+msgid "Microns per drip"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:172
+msgid "[b]Emulated Settings[/b]"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:193 src/ui/print_ui.kv:170
+msgid "Drips per second"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:205
+msgid "[b]Emulated Dripper Setup[/b]"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:219
+msgid "[b]Photo Settings[/b]"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:228
+msgid "Delay After Layer"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:240
+msgid "[b]Photo Dripper Setup[/b]"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:274
+msgid "Dripper Type"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:286
+msgid "MARKUP - Dripper Instructions"
+msgstr ""
+
+#: src/ui/dripper_calibration_ui.kv:286
+msgid "Help - Dripper Settings"
 msgstr ""
 
 #: src/ui/library_ui.kv:37
@@ -790,44 +830,80 @@ msgstr ""
 msgid "Speed (mm/sec)"
 msgstr ""
 
-#: src/ui/library_ui.kv:56
+#: src/ui/library_ui.kv:58
 msgid "Print Now"
 msgstr ""
 
-#: src/ui/peachy_widgets.kv:15
+#: src/ui/peachy_widgets.kv:18
 msgid "Done"
 msgstr ""
 
-#: src/ui/peachy_widgets.kv:23 src/ui/print_ui.py:91
+#: src/ui/peachy_widgets.kv:26 src/ui/print_ui.py:291
 msgid "Laser Safety Notice"
 msgstr ""
 
-#: src/ui/peachy_widgets.kv:30
+#: src/ui/peachy_widgets.kv:33
 msgid "You are about to turn on the laser. Do you wish to proceed"
 msgstr ""
 
-#: src/ui/peachy_widgets.kv:37
+#: src/ui/peachy_widgets.kv:41
 msgid "Turn on Laser"
 msgstr ""
 
-#: src/ui/print_ui.kv:14
-msgid "Print Details"
+#: src/ui/print_ui.kv:111
+msgid "Settings"
 msgstr ""
 
-#: src/ui/print_ui.kv:22
-msgid "Printer Settings"
+#: src/ui/print_ui.kv:158
+msgid "Dripper Informaiton"
 msgstr ""
 
-#: src/ui/print_ui.kv:33
-msgid "Printing UI"
+#: src/ui/print_ui.kv:185
+msgid "Total Drips"
 msgstr ""
 
-#: src/ui/print_ui.kv:43
+#: src/ui/print_ui.kv:200
+msgid "Waiting for drips"
+msgstr ""
+
+#: src/ui/print_ui.kv:231
+msgid "Time"
+msgstr ""
+
+#: src/ui/print_ui.kv:242
+msgid "Start Time"
+msgstr ""
+
+#: src/ui/print_ui.kv:256
+msgid "Elapsed Time"
+msgstr ""
+
+#: src/ui/print_ui.kv:286
+msgid "Posisition"
+msgstr ""
+
+#: src/ui/print_ui.kv:298
+msgid "Current Height"
+msgstr ""
+
+#: src/ui/print_ui.kv:312
+msgid "Layers"
+msgstr ""
+
+#: src/ui/print_ui.kv:326
+msgid "Skipped Layers"
+msgstr ""
+
+#: src/ui/print_ui.kv:336 src/ui/print_ui.py:337 src/ui/print_ui.py:369
+msgid "Cancel Print"
+msgstr ""
+
+#: src/ui/print_ui.kv:343
 msgid "Restart Print"
 msgstr ""
 
-#: src/ui/print_ui.kv:47 src/ui/print_ui.py:133
-msgid "Cancel Print"
+#: src/ui/print_ui.kv:349
+msgid "Display Settings"
 msgstr ""
 
 #: src/ui/restore_ui.kv:9
@@ -835,82 +911,42 @@ msgid ""
 "You are about to destory all of those settings you spent forever setting up"
 msgstr ""
 
-#: src/ui/restore_ui.kv:13
+#: src/ui/restore_ui.kv:15
 msgid "Yep, Nuke Em."
 msgstr ""
 
-#: src/ui/restore_ui.kv:16
+#: src/ui/restore_ui.kv:20
 msgid "No, No, Abort, Stop."
 msgstr ""
 
-#: src/ui/calibrate_ui.py:247
+#: src/ui/calibrate_ui.py:243
 msgid "Printer Posisition || "
 msgstr ""
 
-#: src/ui/calibrate_ui.py:416 src/ui/dripper_calibration_ui.py:64
+#: src/ui/calibrate_ui.py:419 src/ui/dripper_calibration_ui.py:85
 #: src/ui/restore_ui.py:28
 msgid "Error"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:416 src/ui/dripper_calibration_ui.py:64
+#: src/ui/calibrate_ui.py:419 src/ui/dripper_calibration_ui.py:85
 #: src/ui/restore_ui.py:28
 msgid "No Peachy Printer Detected"
 msgstr ""
 
-#: src/ui/custom_widgets.py:58
+#: src/ui/custom_widgets.py:68
 msgid "Bad Stuff Happened"
 msgstr ""
 
-#: src/ui/custom_widgets.py:62
+#: src/ui/custom_widgets.py:72
 msgid "No Title"
 msgstr ""
 
-#: src/ui/print_ui.py:20
-msgid "Status"
+#: src/ui/print_ui.py:279
+msgid "Print Complete"
 msgstr ""
 
-#: src/ui/print_ui.py:21
-msgid "Model Height"
-msgstr ""
-
-#: src/ui/print_ui.py:22
-msgid "Start Time"
-msgstr ""
-
-#: src/ui/print_ui.py:23
-msgid "Drips Counted"
-msgstr ""
-
-#: src/ui/print_ui.py:24
-msgid "Actual Height"
-msgstr ""
-
-#: src/ui/print_ui.py:25
-msgid "Drips per second"
-msgstr ""
-
-#: src/ui/print_ui.py:26
-msgid "Error List"
-msgstr ""
-
-#: src/ui/print_ui.py:27
-msgid "Waiting for drip"
-msgstr ""
-
-#: src/ui/print_ui.py:28
-msgid "Elapsed Time"
-msgstr ""
-
-#: src/ui/print_ui.py:29
-msgid "Current Layer"
-msgstr ""
-
-#: src/ui/print_ui.py:30
-msgid "Skipped Layers"
-msgstr ""
-
-#: src/ui/print_ui.py:87
-msgid "Print Complete, Close"
+#: src/ui/print_ui.py:284
+msgid "Print Failed"
 msgstr ""
 
 #~ msgid "en_GB Text"
