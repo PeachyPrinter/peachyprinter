@@ -42,7 +42,7 @@ def setup_env(path):
     if getattr(sys, 'frozen', False):
         if os.name == 'nt':
             dll_base = os.path.join(path, 'win')
-        elif sys.platform == 'darwin:
+        elif sys.platform == 'darwin':
             dll_base =  os.path.join(path, 'mac')
         elif sys.platform == 'linux2':
             dll_base =  os.path.join(path, 'linux')
