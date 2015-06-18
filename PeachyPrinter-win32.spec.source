@@ -12,11 +12,11 @@ a = Analysis(['src\\main.py'],
              pathex=['C:\\Users\\jtownley\\git\\kivypeachyprinter'],
              hiddenimports=[],
              runtime_hooks=None)
-a.datas += [('libusb-1.0.dll','libusb-1.0.dll','')]
 pyz = PYZ(a.pure)
 exe = EXE(pyz,
           Tree('src'),
           Tree([f for f in os.environ.get('KIVY_SDL2_PATH', '').split(';') if 'bin' in f][0]),
+          Tree(os.path.join(os.environ.get('KIVY_PORTABLE_ROOT', ''), 'Python27\Lib\site-packages\peachyprinter\dependancies')),
           Tree(gst_plugin_path),
           Tree(os.path.join(gst_plugin_path, 'bin')),
           a.scripts,
