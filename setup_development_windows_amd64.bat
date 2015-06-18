@@ -16,7 +16,7 @@ ECHO --------Setting up numpy----
 call pip install --upgrade http://www.lfd.uci.edu/~gohlke/pythonlibs/r7to5k3j/numpy-1.9.2+mkl-cp27-none-win_amd64.whl
 
 ECHO -----Moving required DLL-----------
-copy src\resources\DLL\amd64\*.dll src\
+REM copy src\resources\DLL\amd64\*.dll src\
 
 ECHO --------Getting Latest API----
 call get_latest_api.bat
