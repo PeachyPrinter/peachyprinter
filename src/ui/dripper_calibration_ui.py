@@ -124,12 +124,25 @@ class CircutSetup(BoxLayout):
 
 
 class CircutVisuals(BoxLayout):
-    drips = StringProperty("0")
-    average_drips = StringProperty("0.00")
+    drips_display = StringProperty("0")
+    average_drips_display = StringProperty("0.00")
     target_height = StringProperty("0")
-    drip_history = ListProperty()
+    drip_history_display = ListProperty()
     drips_per_mm = NumericProperty()
     reset = BooleanProperty()
+    
+    def __init__(self, **kwargs):
+        super(CircutVisuals, self).__init__(**kwargs)
+        self.drips = 0
+        self.average_drips = 0
+        self.drip_history = []
+        self._refresh_rate = App.get_running_app().refresh_rate
+
+    def redraw(self, *args):
+        self. drips_display = self.drips
+        self. average_drips_display = self.average_drips
+        self. drip_history_display = self.drip_history
+        Clock.schedule_once(self.redraw, self._refresh_rate)
 
     def calculate_drips_per_mm(self):
         self.drips_per_mm = float(self.drips) / float(self.target_height)
@@ -137,13 +150,15 @@ class CircutVisuals(BoxLayout):
     def on_target_height(self, instance, value):
         self.ids.dripper_animation.test_height = float(value)
 
-    def on_drip_history(self, instance,value):
+    def on_drip_history_display(self, instance,value):
         self.ids.dripper_animation.drip_history = value
 
     def start_animation(self):
+        Clock.schedule_once(self.redraw)
         Clock.schedule_once(self.ids.dripper_animation.redraw)
 
     def stop_animation(self):
+        Clock.unschedule(self.redraw)
         Clock.unschedule(self.ids.dripper_animation.redraw)
 
 
@@ -157,9 +172,9 @@ class DripperAnimation(RelativeLayout):
     cup_right = NumericProperty()
     cup_dest_water_level = NumericProperty()
     test_height = NumericProperty()
-    drip_history = ListProperty()
     drips_bottom = NumericProperty()
     drips_height = NumericProperty()
+    drip_history = ListProperty()
 
     def __init__(self, **kwargs):
         super(DripperAnimation, self).__init__(**kwargs)
@@ -173,19 +188,6 @@ class DripperAnimation(RelativeLayout):
         self.canvas.add(self.drips_instruction)
 
     def redraw(self, key):
-        # while self.images:
-        #     self.remove_widget(self.images.pop())
-        # top = time.time()
-        # bottom = top - self.drip_time_range
-        # for drip_time in self.drip_history:
-        #     if drip_time > bottom:
-        #         time_ago = top - drip_time
-        #         y_pos_percent = (self.drip_time_range - time_ago) / self.drip_time_range
-        #         drip_pos_y = self.drips_height * y_pos_percent + self.cup_water_level 
-        #         image_widget = Image(source="resources/images/drop.png", size_hint=[None, None], size=[20, 20], pos=[self.dripper_left, drip_pos_y], allow_strech=True)
-        #         self.images.append(image_widget)
-        # for image in self.images:
-        #     self.add_widget(image)
         self._draw_drips()
         Clock.unschedule(self.redraw)
         Clock.schedule_once(self.redraw, self._refresh_rate)

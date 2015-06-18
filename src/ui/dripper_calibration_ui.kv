@@ -99,7 +99,7 @@
             halign: 'right'
             valign: 'middle'
             text_size: self.size
-            text: root.drips
+            text: root.drips_display
     BoxLayout:
         orientation: 'horizontal'
         size_hint_y:None
@@ -113,7 +113,7 @@
             halign: 'right'
             valign: 'middle'
             text_size: self.size
-            text: root.average_drips
+            text: root.average_drips_display
     Button:
         size_hint_y:None
         halign: "center"
@@ -121,7 +121,7 @@
         start: _("It takes")
         middle: _("drips\n to make")
         end: _("mm of water")
-        text: "{} {} {} {}{}".format(app.translation(self.start), root.drips, app.translation(self.middle), root.target_height, app.translation(self.end))
+        text: "{} {} {} {}{}".format(app.translation(self.start), root.drips_display, app.translation(self.middle), root.target_height, app.translation(self.end))
         on_release: root.calculate_drips_per_mm()
 
 <CircutSettings>:
