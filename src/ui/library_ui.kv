@@ -21,7 +21,7 @@
                         text_source: _("Height (mm)")
                     FloatInput:
                         id: height
-                        text: '20'
+                        text: root.print_area_height
                 BoxLayout:
                     size_hint: [1.0, 60 / root.height]
                     orientation: 'horizontal'
@@ -29,7 +29,7 @@
                         text_source: _("Width (mm)")
                     FloatInput:
                         id: width
-                        text: '20'
+                        text: root.print_area_width
                 BoxLayout:
                     size_hint: [1.0, 60 / root.height]
                     orientation: 'horizontal'
@@ -45,7 +45,7 @@
                         text_source: _("Speed (mm/sec)")
                     FloatInput:
                         id: speed
-                        text: '120'
+                        text: root.speed
             BoxLayout:
                 size_hint: [1.0, 60 / root.height]
                 orientation: 'horizontal'
