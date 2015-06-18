@@ -64,15 +64,17 @@ class PrinterAnimation(RelativeLayout):
 
     middle_x = NumericProperty(52)
 
+    laser_pos = NumericProperty(60)
+    laser_speed = NumericProperty(1)
+    refresh_rate = NumericProperty(1.0 / 60.0)
 
     def __init__(self, **kwargs):
         super(PrinterAnimation, self).__init__(**kwargs)
         self.drip_time_range = 5
-        self.laser_pos = 60
         
         self.waiting_for_drips = True
-        self._refresh_rate = App.get_running_app().refresh_rate
-        self._laser_speed = 100.0 / (1.0 / self._refresh_rate)
+        self.refresh_rate = App.get_running_app().refresh_rate
+        
         self._gl_setup()
         self.axis_history = []
 
@@ -80,6 +82,8 @@ class PrinterAnimation(RelativeLayout):
         self.line_y = []
         self.last_height = 0
         self.min_height = 0
+        self.last_x_min = 0
+        self.last_x_max = 0
 
     def on_printer_actual_dimensions(self):
             self.min_height = self.printer_actual_dimensions[2] / 400.0
@@ -96,6 +100,7 @@ class PrinterAnimation(RelativeLayout):
         bounds_x = self.width - (self.padding * 2)
         printer_x = self.printer_actual_dimensions[0]
         printer_y = self.printer_actual_dimensions[1]
+        self.laser_pos = self.width / 2
 
         self.scale = min(bounds_y / printer_y, bounds_x / printer_x)
         self.print_area_width = printer_x * self.scale
@@ -106,7 +111,7 @@ class PrinterAnimation(RelativeLayout):
         self._draw_laser()
         self._draw_model()
         Clock.unschedule(self.redraw)
-        Clock.schedule_once(self.redraw, self._refresh_rate)
+        Clock.schedule_once(self.redraw, self.refresh_rate)
 
     def animation_stop(self):
         Clock.unschedule(self.redraw)
@@ -126,17 +131,21 @@ class PrinterAnimation(RelativeLayout):
                 time_ago = top - drip_time
                 y_pos_percent = (self.drip_time_range - time_ago) / self.drip_time_range
                 drip_pos_y = (self.height * y_pos_percent) + self.padding
-                self.drips_instruction.add(Rectangle(size=[12, 16], pos=[self.print_area_left + 20, drip_pos_y], texture= self.drip_texture))
+                self.drips_instruction.add(Rectangle(size=[12, 16], pos=[self.print_area_left + 20, drip_pos_y], texture=self.drip_texture))
 
     def _draw_laser(self):
         if self.waiting_for_drips:
             self.laser_points = []
         else:
-            if (self.laser_pos >= 100.0 - abs(self._laser_speed)) or (self.laser_pos <= abs(self._laser_speed)):
-                self._laser_speed = self._laser_speed * -1
-            self.laser_pos += self._laser_speed
-            laser_x = self.print_area_left + (self.print_area_width * (self.laser_pos / 100.0))
+            x_min = int(self.print_area_left + (self.last_x_min * self.print_area_width))
+            x_max = int(self.print_area_left + (self.last_x_max * self.print_area_width))
+            if (self.laser_pos >= x_max):
+                self.laser_speed = abs(self.laser_speed) * -1
+            if (self.laser_pos <= x_min):
+                self.laser_speed = abs(self.laser_speed)
 
+            self.laser_pos += self.laser_speed
+            laser_x = self.laser_pos
             self.laser_points = [self.middle_x, self.height - self.padding,
                                  laser_x,          self.water_height + self.print_area_bottom + self.resin_height]
 
@@ -144,8 +153,11 @@ class PrinterAnimation(RelativeLayout):
             self.model_instruction.clear()
             self.model_instruction.add(Color(rgba=(1.0,0.0,0.0,1.0)))
             if self.axis_history:
-                x1,y1,x2,y2 = self._get_pixels(self.axis_history[-1])
+                x1, y1, x2, y2 = self._get_pixels(self.axis_history[-1])
                 if y1 > (self.last_height + self.min_height):
+                    self.last_x_min = x1
+                    self.last_x_max = x2
+
                     self.line_x.insert(0, x1)
                     self.line_x.append(x2)
                     self.line_y.insert(0, y1)
@@ -154,8 +166,8 @@ class PrinterAnimation(RelativeLayout):
 
                 points = []
                 for idx in range(0, len(self.line_x)):
-                    x =  int(self.print_area_left + (self.line_x[idx] * self.print_area_width))
-                    y =  int(self.print_area_bottom + self.resin_height + (self.line_y[idx] * self.print_area_height))
+                    x = int(self.print_area_left + (self.line_x[idx] * self.print_area_width))
+                    y = int(self.print_area_bottom + self.resin_height + (self.line_y[idx] * self.print_area_height))
                     points.append(x)
                     points.append(y)
 
@@ -200,7 +212,7 @@ class PrintingUI(Screen):
         self.print_options = []
         self.settings_popup = SettingsPopUp()
         self.data = {}
-        self._refresh_rate = App.get_running_app().refresh_rate
+        self.refresh_rate = App.get_running_app().refresh_rate
 
 
     def on_printer_dimensions(self, instance, value):
@@ -261,7 +273,7 @@ class PrintingUI(Screen):
             self.ids.navigate_button.text_source = _("Print Failed")
             self.ids.navigate_button.background_color = [2.0, 0.0, 0.0, 1.0]
         else:
-            Clock.schedule_once(self._callback, self._refresh_rate)
+            Clock.schedule_once(self._callback, self.refresh_rate)
 
     def print_file(self, *args, **kwargs):
         self.print_options = [self._print_file, args, kwargs]
@@ -285,7 +297,7 @@ class PrintingUI(Screen):
         if instance.is_safe():
             self.ids.printer_animation.axis_history = []
             Clock.schedule_once(self.ids.printer_animation.redraw)
-            Clock.schedule_once(self._callback, self._refresh_rate)
+            Clock.schedule_once(self._callback, self.refresh_rate)
             self.print_options[0](*self.print_options[1], **self.print_options[2])
         else:
             self.parent.current = self.return_to

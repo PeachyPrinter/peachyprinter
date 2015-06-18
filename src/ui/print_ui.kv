@@ -34,6 +34,7 @@
     container_width: root.print_area_width + root.container_padding + root.container_padding
     container_bottom: root.print_area_bottom
     container_height: root.print_area_height + root.container_padding + root.container_padding
+    laser_speed: (root.print_area_width / (1.0 / root.refresh_rate) / 10.0)
     canvas.before:
         #Background
         Color:
