@@ -11,7 +11,7 @@ from kivy.uix.accordion import AccordionItem
 from kivy.uix.boxlayout import BoxLayout
 from kivy.compat import string_types
 from kivy.factory import Factory
-from kivy.properties import ListProperty, ObjectProperty, BooleanProperty, NumericProperty, StringProperty,BoundedNumericProperty
+from kivy.properties import ListProperty, ObjectProperty, BooleanProperty, NumericProperty, StringProperty, BoundedNumericProperty, OptionProperty
 from kivy.uix.dropdown import DropDown
 from kivy.lang import Builder
 import re
@@ -58,6 +58,7 @@ class I18NAccordionItem(AccordionItem):
 class I18NImageButton(Button):
     text_source = StringProperty()
     source = StringProperty()
+    orientation = OptionProperty('horizontal', options=('horizontal', 'vertical'))
 
 class ErrorPopup(I18NPopup):
     text = StringProperty()

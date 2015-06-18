@@ -133,15 +133,15 @@ class CircutVisuals(BoxLayout):
     
     def __init__(self, **kwargs):
         super(CircutVisuals, self).__init__(**kwargs)
-        self.drips = 0
-        self.average_drips = 0
+        self.drips = "0"
+        self.average_drips = "0"
         self.drip_history = []
         self._refresh_rate = App.get_running_app().refresh_rate
 
-    def redraw(self, *args):
-        self. drips_display = self.drips
-        self. average_drips_display = self.average_drips
-        self. drip_history_display = self.drip_history
+    def redraw(self, *args):    
+        self.drips_display = self.drips
+        self.average_drips_display = self.average_drips
+        self.drip_history_display = self.drip_history
         Clock.schedule_once(self.redraw, self._refresh_rate)
 
     def calculate_drips_per_mm(self):

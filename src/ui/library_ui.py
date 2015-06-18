@@ -1,4 +1,6 @@
 import os
+import re
+
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.label import Label
@@ -9,7 +11,7 @@ from kivy.logger import Logger
 from kivy.properties import StringProperty
 from kivy.lang import Builder
 from kivy.app import App
-from ui.custom_widgets import I18NPopup
+from ui.custom_widgets import I18NPopup,I18NImageButton
 
 
 Builder.load_file('ui/library_ui.kv')
@@ -47,15 +49,17 @@ class PrintPop(I18NPopup):
 
 class LibraryUI(Screen):
     def __init__(self, api, **kwargs):
+        pattern = re.compile('[\W_]+')
         super(LibraryUI, self).__init__(**kwargs)
         self.api = api
         self.test_print_api = self.api.get_test_print_api()
         library_names = self.test_print_api.test_print_names()
         for name in library_names:
-            image_path = os.path.join('resources', 'library_prints', name)
+            filename = pattern.sub('', name) + '.png'
+            image_path = os.path.join('resources', 'library_prints', filename)
             if not os.path.isfile(image_path):
                 image_path = os.path.join('resources', 'library_prints', 'missing.png')
-            pict_button = Button(on_release=self.print_a,  text=name)
+            pict_button = I18NImageButton(on_release=self.print_a,  text_source=name, source=image_path, orientation='vertical')
             self.ids.library_grid.add_widget(pict_button)
 
     def print_a(self, instance):
