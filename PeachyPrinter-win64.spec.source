@@ -12,7 +12,6 @@ a = Analysis(['src\\main.py'],
              pathex=['C:\\Users\\jtownley\\git\\kivypeachyprinter'],
              hiddenimports=[],
              runtime_hooks=None)
-a.datas += [('libusb-1.0.dll','libusb-1.0.dll','')]
 pyz = PYZ(a.pure)
 exe = EXE(pyz,
           Tree('src'),
