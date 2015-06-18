@@ -57,7 +57,9 @@ class PrinterAnimation(RelativeLayout):
     resin_color = ListProperty([0.0, 0.8, 0.0, 0.6])
     water_color = ListProperty([0.2, 0.2, 1.0, 0.6])
     container_color = ListProperty([1.0, 1.0, 1.0, 1.0])
-    laser_color = ListProperty([0.0, 0.0, 1.0, 1.0])
+    laser_color_edge2 = ListProperty([0.0, 0.0, 0.5, 1.0])
+    laser_color_edge = ListProperty([0.0, 0.0, 1.0, 1.0])
+    laser_color = ListProperty([0.7, 1.0, 1.0, 1.0])
 
     drip_history = ListProperty()
     laser_points = ListProperty()
@@ -93,7 +95,7 @@ class PrinterAnimation(RelativeLayout):
         self.drips_instruction = InstructionGroup()
         self.canvas.add(self.drips_instruction)
         self.model_instruction = InstructionGroup()
-        self.canvas.add(self.model_instruction)
+        self.canvas.insert(2, self.model_instruction)
 
     def on_size(self, *largs):
         bounds_y = (self.height * 0.7) - self.resin_height

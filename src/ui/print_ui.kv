@@ -26,6 +26,7 @@
         valign: 'middle'
 
 <PrinterAnimation>:
+    resin_height: max(5, root.container_height / 30)
     water_height: (root.scale * root.printer_current_actual_height)
     print_area_left: root.middle_x - (root.print_area_width / 2.0)
     middle_x: root.width / 2
@@ -42,7 +43,7 @@
         Rectangle:
             size: [root.container_width, root.resin_height + root.water_height]
             pos: [root.container_left, root.print_area_bottom]
-        
+
         #Resin
         Color:
             rgba: root.resin_color
@@ -75,10 +76,34 @@
         Line:
             points: root.laser_points
             width: 2
+
+        Color:
+            rgba: root.laser_color_edge
+        Line:
+            points: [ root.laser_points[idx] + 2 * ((idx + 1) % 2) for idx in range(0,len(root.laser_points))]
+            width: 1
+
+        Color:
+            rgba: root.laser_color_edge
+        Line:
+            points: [ root.laser_points[idx] - 2 * ((idx + 1) % 2) for idx in range(0,len(root.laser_points))]
+            width: 1
+
+        Color:
+            rgba: root.laser_color_edge2
+        Line:
+            points: [ root.laser_points[idx] + 3 * ((idx + 1) % 2) for idx in range(0,len(root.laser_points))]
+            width: 1
+
+        Color:
+            rgba: root.laser_color_edge2
+        Line:
+            points: [ root.laser_points[idx] - 3 * ((idx + 1) % 2) for idx in range(0,len(root.laser_points))]
+            width: 1
     Image:
         size_hint: [None, None]
         source: "resources/peachy.png"
-        pos: [root.middle_x - (self.width / 2.0), root.height  - self.height]
+        pos: [root.middle_x - (self.width / 2.0), root.height  - (self.height / 2) - root.padding]
         size: root.laser_size
 
 <SettingsPopUp>:
