@@ -42,10 +42,14 @@ def setup_env(path):
     if getattr(sys, 'frozen', False):
         if os.name == 'nt':
             dll_base = os.path.join(path, 'win')
-            if python_64:
-                os.environ['PEACHY_API_DLL_PATH'] = os.path.join(dll_base, "AMD64")
-            else:
-                os.environ['PEACHY_API_DLL_PATH'] = os.path.join(dll_base, "x86")
+        elif sys.platform == 'darwin:
+            dll_base =  os.path.join(path, 'mac')
+        elif sys.platform == 'linux2':
+            dll_base =  os.path.join(path, 'linux')
+        if python_64:
+            os.environ['PEACHY_API_DLL_PATH'] = os.path.join(dll_base, "AMD64")
+        else:
+            os.environ['PEACHY_API_DLL_PATH'] = os.path.join(dll_base, "x86")
 
 
 if __name__ == "__main__":
