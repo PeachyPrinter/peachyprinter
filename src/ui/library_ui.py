@@ -17,11 +17,18 @@ Builder.load_file('ui/library_ui.kv')
 
 class PrintPop(I18NPopup):
     name = StringProperty()
+    print_area_height = StringProperty()
+    print_area_width = StringProperty()
+    speed = StringProperty()
 
     def __init__(self, api, screen_manager, **kwargs):
         self.screen_manager = screen_manager
         super(PrintPop, self).__init__(**kwargs)
-        self.test_print_api = api
+        self.test_print_api = api.get_test_print_api()
+        printer = api.get_current_config()
+        self.speed = str(printer.cure_rate.draw_speed)
+        self.print_area_width = str(min(printer.calibration.print_area_x, printer.calibration.print_area_y))
+        self.print_area_height = str(printer.calibration.print_area_z)
 
     def image(self):
         return os.path.join('resources', 'library_prints', 'missing.png')
@@ -32,7 +39,7 @@ class PrintPop(I18NPopup):
         width = float(self.ids.width.text)
         layer_height = float(self.ids.layer_height.text)
         speed = float(self.ids.speed.text)
-        App.get_running_app().last_print.set("test_print",(name, height, width, layer_height, speed))
+        App.get_running_app().last_print.set("test_print", (name, height, width, layer_height, speed))
         generator = self.test_print_api.get_test_print(name, height, width, layer_height, speed)
         self.screen_manager.current = 'printingui'
         self.screen_manager.printing_ui.print_generator(generator)
@@ -52,5 +59,5 @@ class LibraryUI(Screen):
             self.ids.library_grid.add_widget(pict_button)
 
     def print_a(self, instance):
-        PrintPop(name=instance.text, api=self.test_print_api, screen_manager=self.parent).open()
+        PrintPop(name=instance.text, api=self.api, screen_manager=self.parent).open()
 
