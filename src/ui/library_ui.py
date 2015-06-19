@@ -59,9 +59,14 @@ class LibraryUI(Screen):
             image_path = os.path.join('resources', 'library_prints', filename)
             if not os.path.isfile(image_path):
                 image_path = os.path.join('resources', 'library_prints', 'missing.png')
-            pict_button = I18NImageButton(on_release=self.print_a,  text_source=name, source=image_path, orientation='vertical')
+            pict_button = I18NImageButton(
+                on_release=self.print_a,  
+                text_source=name, 
+                source=image_path, 
+                orientation='vertical',
+                key=name )
             self.ids.library_grid.add_widget(pict_button)
 
     def print_a(self, instance):
-        PrintPop(name=instance.text, api=self.api, screen_manager=self.parent).open()
+        PrintPop(name=instance.key, api=self.api, screen_manager=self.parent).open()
 
