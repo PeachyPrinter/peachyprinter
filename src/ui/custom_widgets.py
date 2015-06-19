@@ -59,6 +59,7 @@ class I18NImageButton(Button):
     text_source = StringProperty()
     source = StringProperty()
     orientation = OptionProperty('horizontal', options=('horizontal', 'vertical'))
+    key = StringProperty()
 
 class ErrorPopup(I18NPopup):
     text = StringProperty()
