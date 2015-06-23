@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-18 11:18-0600\n"
+"POT-Creation-Date: 2015-06-23 09:40-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -652,7 +652,7 @@ msgstr "'ab"
 
 #: src/ui/calibrate_ui.kv:469
 msgid "MARKUP - Test Pattern Instructions"
-msgstr "MARKUP-waH pattern Instructions"
+msgstr "laH lo' waH patterns waH mI'. SoH je waH patterns pongmaj pIm neH print chu' 'ej QaQ print speeds lo'. \n\n1 tu' chaw' speed 'ab 'ej SeH. [b] meyrI' [/b]-DanoHmeH Sa' Qapla' calibration waH. vaj meyrI' laH je ngat je waH wa' bom vIqawbej. vaj speed lIS mach neH luDan start Suq tun 'er'In untill vaj wItI'nISmo' DoH loQ. laH lo' lo'laHghach. \n2 'aqroS speed. [b] in\n3 chaw'nIS jIHvaD twitch [/b]-lo'. [b] waH [/b]-[i] modder lo' [/i] used neHqu' magnetic damping qIlmeH pIj HevmeH. SIm je magenets 'ej slugs HevmeH 'ach chaq DayaHmoH modders ngong. \n4 Hev SoH. [b] hourglass [/b]-[i] modder lo' [/i] hourgalss waH pattern lulIjbe'lu'bogh 'angbogh Da botlh lang overlapping tlhegh Hoch moj je hourglass QaQ pattern in line with oppisite DopDaq pattern. \n5 qaStaHvIS. [b] nesw [/b]-DanoHmeH printer orientation waH. qaStaHvIS Daq lugh Hoch compas lang 'ej wej reversed pagh upside vI'ogh. \n6. [b] gho [/b]-latlh waH calibration 'ej QuQ choHwI'maj laH. HeghDI' properly calibrated ghItlhvam moj SoHvaD HuvchoH gho distortions. \n7. [b] [/b]-hilbert chut lulajpu'bogh hilbert curve yIteb QIt ropwI'qoq yab print mIchHom yuvtlhe'. laH lo' QI'yaH-linearities vItu' 'ej je QaQ waH 'aqroS speed. \n8 qIlmeH pIj 'oH. [b] [/b]-spiral spiral waH nagh hilbert curve Homvetlh usefullness QI'yaH linearities vItu'"
 
 #: src/ui/calibrate_ui.kv:469
 msgid "Help - Test Patterns"
@@ -933,11 +933,11 @@ msgstr "Qagh"
 msgid "No Peachy Printer Detected"
 msgstr "pagh Peachy Printer Detected"
 
-#: src/ui/custom_widgets.py:68
+#: src/ui/custom_widgets.py:70
 msgid "Bad Stuff Happened"
 msgstr "qaS qab ghoD"
 
-#: src/ui/custom_widgets.py:72
+#: src/ui/custom_widgets.py:74
 msgid "No Title"
 msgstr "pagh "
 
