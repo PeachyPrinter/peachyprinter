@@ -636,7 +636,7 @@ msgstr "Hoch reset"
 
 #: src/ui/calibrate_ui.kv:399
 msgid "MARKUP - Calibration Instructions"
-msgstr "MARKUP-Calibration Instructions"
+msgstr "software account 'op typical irregularites chaw' yor bIS'ub Calibration mIw 'ej pa' peachy printer. mIw below.\n\n1 Qu' vaj folow. DuHIvDI' grid nav below 'uD pongmaj yor printer starting je botlh lo' lan 'ej alignment tabs accuratly.\n2. yor print posistion button wIv eg. x:100.0, y: 100.0 \n3. click drag grid leghlaHbe' 'ej 'uD vIH print yoS designated grid dot neH mini grid ghuS poS. \n4 'er'In. [i] (optional) [/i] click 'Super qar mode' percisely posisition clicking je dragging 'uD. \n5. [mIw ratlh lang. \n 6. ghaHDaq jatlhqa' BERNARDO. grid navmey vIH print mIchHom pIrmuS 'ej Hoch raghpu'bogh mIw 'bIS'ub' calibration tab jatlhqa'."
 
 #: src/ui/calibrate_ui.kv:399
 msgid "Help - Calibration"
