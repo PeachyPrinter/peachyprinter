@@ -4,7 +4,7 @@ params=`getopt -o :hrnpcisj -l build_runner,install_dep,remove-venv,no_setup,pul
 eval set -- "$params"
 
 DEBIAN_DEP="python-pip python-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev"
-REDHAT_DEP="python-pip python-devel python-distutils-extra python-enchant python-distutils-extra python-enchant freeglut PyOpenGL SDL_ttf-devel SDL_mixer-devel pygame pygame-devel khrplatform-devel mesa-libGLES mesa-libGLES-devel gstreamer-plugins-good gstreamer gstreamer-python mtdev-devel"
+REDHAT_DEP="gcc python-pip python-devel python-distutils-extra python-enchant python-distutils-extra python-enchant freeglut PyOpenGL SDL_ttf-devel SDL_mixer-devel pygame pygame-devel khrplatform-devel mesa-libGLES mesa-libGLES-devel gstreamer-plugins-good gstreamer gstreamer-python mtdev-devel"
 
 RS="\033[0m"    # reset
 FRED="\033[31m" # foreground red
@@ -51,7 +51,7 @@ function enable_venv ()
   echo "Upgrading / Starting Virtual Environment"
   echo "------------------------------------"
   if [ ! -f venv/bin/activate ]; then
-    virtualenv -p python2.7 venv
+    virtualenv --system-site-packages -p python2.7 venv
     if [ $? != 0 ]; then
       echo "${FRED}FAILED Setting up virtual enviroment${RS}"
       EXIT_CODE=59
@@ -69,7 +69,7 @@ function setup_venv ()
   echo "Setting up virtual env"
   echo "------------------------------------"
   echo "--------Setting up cython----"
-  pip install -U cython==0.21.2
+  pip install -I -U cython==0.21.2
   if [ $? != 0 ]; then
       echo "${FRED}FAILURE: cython failed installing${RS}"
       EXIT_CODE=666
@@ -77,7 +77,7 @@ function setup_venv ()
   fi
 
   echo "--------Setting up kivy----"
-  pip install -U kivy==1.9.0
+  pip install -I -U kivy==1.9.0
   if [ $? != 0 ]; then
     echo "${FRED}FAILURE: kivy failed installing${RS}"
     EXIT_CODE=666
@@ -86,7 +86,7 @@ function setup_venv ()
   
   yum -h > /dev/null
   if [ $? == 0 ]; then
-    sudo pip install pygments
+    sudo pip install -I pygments
   fi
 
   if [ -f api.source ]; then
@@ -95,7 +95,7 @@ function setup_venv ()
     api_source=http://software.peachyprinter.com/builds/api/latest.tar.gz
   fi
 
-  pip install --upgrade $api_source
+  pip install -I --upgrade $api_source
   if [ $? != 0 ]; then
     echo -e "${FRED}FAILED TO UPDATE${RS}"
     EXIT_CODE=59
@@ -167,7 +167,7 @@ function dependancies ()
     echo "${FGRN}APT detected using APT${RS}"
     echo "You will be prompted to elevate permissions"
     sudo apt-get install $DEBIAN_DEP
-    sudo pip install --upgrade virtualenv
+    sudo pip install -I --upgrade virtualenv
     return
   fi
   yum -h > /dev/null
@@ -176,7 +176,7 @@ function dependancies ()
     echo "Assumes the EPEL repos are available"
     echo "You will be prompted to elevate permissions"
     sudo yum install $REDHAT_DEP
-    sudo pip install --upgrade virtualenv
+    sudo pip install -I --upgrade virtualenv
     return
   fi
   echo "${FRED}APT or YUM not found aborting${RS}"

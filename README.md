@@ -19,36 +19,11 @@ Complete packages are available at [http://software.peachyprinter.com/]
 ### Ubuntu (Debian)
 
 ### Steps (Rough example)
- - sudo apt-get install python-pip git python-dev libsdl1.2-dev python-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev mercurial libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev
-
- - sudo pip install --upgrade virtualenv
- - sudo usermod -a -G dialout username
- - sudo mkdir /opt/git
- - sudo chown username.username /opt/git/
- - sudo chmod 777 /opt/git
- - cd /opt/git
- - git clone https://github.com/PeachyPrinter/kivypeachyprinter.git
- - git clone https://github.com/PeachyPrinter/peachyprintertools.git
- - cd kivypeachyprinter
- - ./setup_development_linux.sh
- - echo "for api dev this links to api checkout"
- - rm -rf venv/lib/python2.7/site-packages/peachyprinter
- - rm -rf venv/local/lib/python2.7/site-packages/peachyprinter
- - ln -s /opt/git/peachyprintertools/src/peachyprinter venv/lib/python2.7/site-packages/peachyprinter
+run build_linux.sh -h for details
 
 
-### Centos (RedHat)
-<!-- via yum
- - python-pip
- - python-virtualenv
-
- You can prepare your enviroment using the following command:
-```sh
-sudo rpm -iUvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
-sudo yum -y update
-sudo yum -y install python-pip
-sudo yum -y install python-virtualenv
-``` -->
+### Fedora (RedHat)
+run build_linux.sh -h for details
 
 ### Mac OSX
 ####Pre-Script Requirements
