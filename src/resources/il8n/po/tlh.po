@@ -584,7 +584,7 @@ msgstr "HIQaH"
 
 #: src/ui/calibrate_ui.kv:56
 msgid "MARKUP - Center Calibration Instructions"
-msgstr "MARKUP-botlh Calibration Instructions"
+msgstr "centre calibration chenmoH be 'e' printer patlh pIlam naH je waH ghor waH 'ej grid 'ej tool. vaj lang 'ach not naQ lutDaj tInwI' 'ej moj perpendicular ghor printer 'uD position laH lIS SoH pong magnetic HevmeH Qeb this.\n\n [i] Note chav jIr: leQ wItI'nISmo' 'ej forther DuqIppu'chugh tab alignment tab chaq DayaHmoH [/i] \n HeghDI' SoH navmey grid aligning."
 
 #: src/ui/calibrate_ui.kv:56
 msgid "Help - Calibration Setup"
@@ -592,7 +592,7 @@ msgstr "QaH-Calibration Setup"
 
 #: src/ui/calibrate_ui.kv:107
 msgid "MARKUP - Orientation Instructions"
-msgstr "MARKUP-Orientation Instructions"
+msgstr "coil polarity qIlmeH pIj 'ej account during calibration mIw printing 'ej latlh software chaw' orientation tool. figure tu'lu'be' pong printer vaj Dalegh. figure wIv see.\n\n[i]advanced[/i]\nadjust SoH pong polarity swapping vay' connections swapping coils pattern p"
 
 #: src/ui/calibrate_ui.kv:107
 msgid "Help - Orientation"

@@ -584,7 +584,7 @@ msgstr ""
 
 #: src/ui/calibrate_ui.kv:56
 msgid "MARKUP - Center Calibration Instructions"
-msgstr ""
+msgstr "Centre calibration is a tool to make sure that the printer is level and plum with the test surface and test grid. The printer should be pointing straight down and should be perpendicular to the surface you can adjust the laser position by rotating the magnetic damping rings to achieve this.\n\n [i]Note:[/i]\n When aligning the grid paper you may wish to switch back and forther between this tab and the alignment tab."
 
 #: src/ui/calibrate_ui.kv:56
 msgid "Help - Calibration Setup"
@@ -592,7 +592,7 @@ msgstr ""
 
 #: src/ui/calibrate_ui.kv:107
 msgid "MARKUP - Orientation Instructions"
-msgstr ""
+msgstr "The orientation tool allows the software to determine the coil polarity and account for it during other calibration steps and printing. You should see a figure being drawn by the printer. Select the figure you see.\n\n[i]Advanced[/i]\nAdjust the coils by swapping the polarity or swapping the connections to make a the pattern be a 'P'"
 
 #: src/ui/calibrate_ui.kv:107
 msgid "Help - Orientation"
