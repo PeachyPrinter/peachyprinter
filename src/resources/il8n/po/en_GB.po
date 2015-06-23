@@ -544,7 +544,7 @@ msgstr "The minimum time the Peachy will take to draw a layer"
 
 #: src/ui/calibrate_ui.kv:17
 msgid "Center"
-msgstr ""
+msgstr "Centre"
 
 #: src/ui/calibrate_ui.kv:21
 msgid "Orientation"
@@ -600,7 +600,7 @@ msgstr ""
 
 #: src/ui/calibrate_ui.kv:273
 msgid "MARKUP - Print Area Instructions"
-msgstr ""
+msgstr "Printer area allows you to specify the area in which you have to print. The square is shown as a guide. When meausing the width and depth measure from the top of the print area. you print area should be inside the shown square to leave room for calibration.\n If you need increase the print area raise the printer and lower it for higher resolution in a smaller area."
 
 #: src/ui/calibrate_ui.kv:273
 msgid "Help - Print Area"
@@ -620,7 +620,7 @@ msgstr ""
 
 #: src/ui/calibrate_ui.kv:319
 msgid "MARKUP - Alignment Instructions"
-msgstr ""
+msgstr "The Alignment tab is used to help line up your grid paper before performing calibration. Swap between the alignment tab and the centre tab to get things just right before going to the calibration tab. If you bump something you can alway come back here to realign the paper.\n\n[b]Note[/b]\nIf you see a curving in the line you are displaying it may mean your printer is not plumb. you can adjust the damping to straighten out the line. Once straight go to the centre tab and re-centre the print."
 
 #: src/ui/calibrate_ui.kv:319
 msgid "Help - Alignment"

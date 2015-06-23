@@ -600,7 +600,7 @@ msgstr "QaH-Orientation"
 
 #: src/ui/calibrate_ui.kv:273
 msgid "MARKUP - Print Area Instructions"
-msgstr "MARKUP-Print yoS Instructions"
+msgstr "SoH ghaH mIchHom Hay'DI' print Daghaj per chaw' printer mIchHom. cha' meyrI' je DevwI'. ghorgh 'aD meausing width 'ej natlhlu'mo' vo' mIchHom print yor. yoS print vaj qoD cha' meyrI' pa' calibration. \n DaH vaj mIchHom print nIS ghur SoH printer pep 'ej 'oH ghuS veb resolution pa' yoS smaller."
 
 #: src/ui/calibrate_ui.kv:273
 msgid "Help - Print Area"
@@ -620,7 +620,7 @@ msgstr "width (mm)"
 
 #: src/ui/calibrate_ui.kv:319
 msgid "MARKUP - Alignment Instructions"
-msgstr "MARKUP-Alignment Instructions"
+msgstr "DanoHmeH Alignment tab tlhegh woDDI' nav grid pa' calibration much QaH. swap DuqIppu'chugh alignment tab botlh tab Doch Suq neH lugh, pa' petaQ ghoS calibration tab. vaj laH reH naDev SoH wItI'nISmo' paper.\n\n[b]note[/b]\nif curving pa' Dalegh realign vay' bump SoH 'oHbe' printer plumb chaq qej tlhegh cha' je SoH. tlhegh straighten damping laH lIS SoH. wa'logh 'ach not naQ lutDaj botlh tab 'ej print 'elqa' botlh."
 
 #: src/ui/calibrate_ui.kv:319
 msgid "Help - Alignment"
