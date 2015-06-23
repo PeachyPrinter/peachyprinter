@@ -636,7 +636,7 @@ msgstr ""
 
 #: src/ui/calibrate_ui.kv:399
 msgid "MARKUP - Calibration Instructions"
-msgstr ""
+msgstr "The Top and Bottom Calibration Steps allow the software to account of some of the typical irregularites in a peachy printer. To do so folow the steps below.\n\n1. Place the provided grid paper below the laser starting at the top height of your printer and using the center and alignment tabs accuratly.\n2. Select the top print posistion button eg. 'X:100.0, y: 100.0'\n3. Click and drag on the grid to the right and move the laser to the corner of your print area designated by the grid dot in the mini grid on the lower left.\n4. [i](optional)[/i] Click the 'Super Accurate mode' to percisely posisition the laser by clicking and dragging.\n5.Repeat the process for the remaining points.\n 6. Move the grid paper to the bottom of the print area and repeat all the above steps on the 'Bottom' calibration tab."
 
 #: src/ui/calibrate_ui.kv:399
 msgid "Help - Calibration"
