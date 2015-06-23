@@ -231,7 +231,9 @@ function build_runner () {
 
   if [ ! -f /etc/udev/rules.d/99-peachy.rules ]; then
     echo "You will be prompted to elevate permissions"
-    sudo echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="16d0", ATTR{idProduct}=="0af3", MODE="0666"' > /etc/udev/rules.d/99-peachy.rules
+    echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="16d0", ATTR{idProduct}=="0af3", MODE="0666"' > 99-peachy.rules
+    sudo cp 99-peachy.rules /etc/udev/rules.d/99-peachy.rules
+    echo "Added rules you may be required to login again"
   fi
   echo "source venv/bin/activate" > run.sh
   echo "python src/main.py -tl INFO" >> run.sh

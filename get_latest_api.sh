@@ -14,6 +14,10 @@ else
 
 fi
 
+# This accounts for the fact that fedora 22 comes with pytz version 2012d 
+# which fails the protobuf dependancy check for >=2010 despite being correct.
+pip install --upgrade pytz==2015.4
+
 pip install --upgrade $api_source
 if [ $? != 0 ]; then
         echo -e "${red}FAILED TO UPDATE${NC}"
