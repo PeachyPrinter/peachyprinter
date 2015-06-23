@@ -4,7 +4,7 @@ params=`getopt -o :hrnpcisj -l build_runner,install_dep,remove-venv,no_setup,pul
 eval set -- "$params"
 
 DEBIAN_DEP="python-pip python-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev"
-CENTOS_DEP="python-pip python-devel python-distutils-extra python-enchant freeglut SDL_image SDL_image-devel SDL_ttf-devel SDL_mixer-devel khrplatform-devel mesa-libGLES mesa-libGLES-devel gstreamer-plugins-good gstreamer gstreamer-devel gstreamer-python mtdev-devel"
+REDHAT_DEP="python-pip python-devel python-distutils-extra python-enchant python-distutils-extra python-enchant freeglut PyOpenGL SDL_ttf-devel SDL_mixer-devel pygame pygame-devel khrplatform-devel mesa-libGLES mesa-libGLES-devel gstreamer-plugins-good gstreamer gstreamer-python mtdev-devel"
 
 RS="\033[0m"    # reset
 FRED="\033[31m" # foreground red
@@ -82,6 +82,11 @@ function setup_venv ()
     echo "${FRED}FAILURE: kivy failed installing${RS}"
     EXIT_CODE=666
     failed_exit
+  fi
+  
+  yum -h > /dev/null
+  if [ $? == 0 ]; then
+    sudo pip install pygments
   fi
 
   if [ -f api.source ]; then
@@ -170,8 +175,7 @@ function dependancies ()
     echo "${FGRN}YUM detected using YUM${RS}"
     echo "Assumes the EPEL repos are available"
     echo "You will be prompted to elevate permissions"
-
-    sudo yum install $CENTOS_DEP
+    sudo yum install $REDHAT_DEP
     sudo pip install --upgrade virtualenv
     return
   fi
