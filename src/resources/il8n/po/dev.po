@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-18 11:18-0600\n"
+"POT-Creation-Date: 2015-06-23 09:40-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -933,11 +933,11 @@ msgstr ""
 msgid "No Peachy Printer Detected"
 msgstr ""
 
-#: src/ui/custom_widgets.py:68
+#: src/ui/custom_widgets.py:70
 msgid "Bad Stuff Happened"
 msgstr "#!00169!#"
 
-#: src/ui/custom_widgets.py:72
+#: src/ui/custom_widgets.py:74
 msgid "No Title"
 msgstr ""
 
