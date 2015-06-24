@@ -90,14 +90,16 @@
         pos: self.parent.pos
         size: self.parent.size
         orientation: root.orientation
-        Image:
-            id: image
-            allow_stretch: True
-            keep_ratio: True
+        BoxLayout:
+            padding: ["5dp"]
             size_hint: [None, None]
             width: (min(self.parent.height, self.parent.width - label_text.texture_size[0]) if root.orientation == 'horizontal' else self.parent.width)
             height: (min(self.parent.width, self.parent.height - label_text.height) if root.orientation == 'vertical' else self.parent.height)
-            source: root.source
+            Image:
+                id: image
+                allow_stretch: True
+                keep_ratio: True
+                source: root.source
         Label:
             id: label_text
             text: root.atext
