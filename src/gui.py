@@ -160,6 +160,15 @@ class PeachyPrinter(App):
             fail_box.add_widget(pop_message)
             fail_box.add_widget(pop_exit)
             return fail_box
+        except Exception as ex:
+            fail_box = BoxLayout(orientation="vertical")
+            pop_message = I18NLabel(text_source=_("An Error has Occured"),size_hint_y=None, height=self.label_height,)
+            pop_error = I18NLabel(text_source=str(ex))
+            pop_exit = I18NButton(text_source=_("Exit"), size_hint_y=None, height=self.button_height, on_release=exit)
+            fail_box.add_widget(pop_message)
+            fail_box.add_widget(pop_error)
+            fail_box.add_widget(pop_exit)
+            return fail_box
         self.manager = MyScreenManager(self.api, self.setting_translation)
         return self.manager
 
