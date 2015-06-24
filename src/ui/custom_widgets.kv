@@ -9,16 +9,18 @@
         pos: root.pos
         size: root.size
         orientation: root.orientation
+        Label:
+            size_hint_x:None
+            width: "5dp"
         Image:
             id: image
             allow_stretch: True
             keep_ratio: True
             size_hint_y: self.size_hint_y if root.orientation == 'horizontal' else None
             size_hint_x: self.size_hint_x if root.orientation == 'vertical' else None
-            width: min(self.texture_size[0], root.width) if root.orientation == 'horizontal' else max(self.texture_size[0], root.width)
-            height: min(self.texture_size[1], root.height) if root.orientation == 'vertical' else max(self.texture_size[1], root.height)
+            width:self.texture_size[0]
+            height:self.texture_size[1]
             source: root.source
-            pos: [root.pos[0], root.pos[1]]
         Label:
             text: app.translation(root.text_source)
             size_hint_y: self.size_hint_y if root.orientation == 'horizontal' else None

@@ -9,6 +9,7 @@
     BoxLayout:
         orientation: 'vertical'
         CommunicativeTabbedPanel:
+            tab_width: 110
             id:tab_panel
             tab_pos: "top_left"
             do_default_tab: False
@@ -22,7 +23,7 @@
                 source: "resources/icons/laser_calibration_orientation-24x24.png"
             I18NImageTabbedPanelHeader:
                 id: alignment_panel
-                text_source: _("Aligment")
+                text_source: _("Alignment")
                 source: "resources/icons/laser_calibration_alignment-24x24.png"
             I18NImageTabbedPanelHeader:
                 id: print_area_panel
@@ -38,7 +39,7 @@
                 source: "resources/icons/laser_calibration_bottom-24x24.png"
             I18NImageTabbedPanelHeader:
                 id: test_pattern_panel
-                text_source: _("Test Patterns")
+                text_source: _("Patterns")
                 source: "resources/icons/laser_calibration_patterns-24x24.png"
         I18NImageButton:
             source: "resources/icons/general_back-24x24.png"
@@ -383,7 +384,7 @@
         Image:
             id: example_grid
             pos: self.parent.pos
-            padding:10
+            padding: [10]
             size: self.parent.size
             source: "resources/grid_small.png"
             allow_stretch: True

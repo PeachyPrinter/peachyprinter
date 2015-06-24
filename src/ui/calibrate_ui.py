@@ -345,13 +345,25 @@ class TestPatternPanel(SetupPanel):
     def __init__(self, **kwargs):
         super(TestPatternPanel, self).__init__(**kwargs)
         self.loaded = False
+        self.friendly_names = {
+        "Square": _("Square"),
+        "Twitch": _("Twitch"),
+        "Damping Test": _("Damping"),
+        "Memory Hourglass": _("Hourglass"),
+        "NESW": _("NESW"),
+        "Circle": _("Circle"),
+        "Hilbert Space Filling Curve": _("Hilbert"),
+        "Spiral": _("Spiral"),
+
+        }
 
     def on_enter(self):
         if not self.loaded:
             items = self.calibration_api.get_test_patterns()
             for item in items:
                 image_source = "resources/icons/laser_calibration-test_pattern_{0}-100x100.png".format(item.lower().replace(' ', '_'))
-                self.ids.patterns.add_widget(I18NImageToggleButton(group='test_patterns',  text_source=item, source=image_source, on_release=self.show_pattern))
+                text = self.friendly_names[item] if item in self.friendly_names else item
+                self.ids.patterns.add_widget(I18NImageToggleButton(group='test_patterns',  text_source=text, source=image_source, on_release=self.show_pattern))
             self.calibration_api.set_test_pattern_speed(self.speed)
             self.ids.patterns.children[-1].state = "down"
             self.loaded = True
