@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-23 09:40-0600\n"
+"POT-Creation-Date: 2015-06-24 09:11-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -16,7 +16,7 @@ msgid "Load file"
 msgstr ""
 
 #: src/gui.py:149 src/gui.py:171 src/peachyprinter.kv:35
-#: src/ui/custom_widgets.kv:118 src/ui/print_ui.kv:122
+#: src/ui/custom_widgets.kv:120 src/ui/print_ui.kv:122
 msgid "Close"
 msgstr ""
 
@@ -542,119 +542,189 @@ msgstr "Minimum Layer Time"
 msgid "dripper_photo_zaxis_delay DESCRIPTION"
 msgstr "The minimum time the Peachy will take to draw a layer"
 
-#: src/ui/calibrate_ui.kv:17
+#: src/ui/calibrate_ui.kv:18
 msgid "Center"
 msgstr "Centre"
 
-#: src/ui/calibrate_ui.kv:21
+#: src/ui/calibrate_ui.kv:22
 msgid "Orientation"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:25
-msgid "Aligment"
+#: src/ui/calibrate_ui.kv:26
+msgid "Alignment"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:29
+#: src/ui/calibrate_ui.kv:30
 msgid "Print Area"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:33
+#: src/ui/calibrate_ui.kv:34
 msgid "Top"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:37
+#: src/ui/calibrate_ui.kv:38
 msgid "Bottom"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:41
-msgid "Test Patterns"
+#: src/ui/calibrate_ui.kv:42
+msgid "Patterns"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:45 src/ui/cure_test_ui.kv:295
+#: src/ui/calibrate_ui.kv:46 src/ui/cure_test_ui.kv:295
 #: src/ui/dripper_calibration_ui.kv:310 src/ui/library_ui.kv:72
 msgid "Back"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:55 src/ui/calibrate_ui.kv:106
-#: src/ui/calibrate_ui.kv:272 src/ui/calibrate_ui.kv:318
-#: src/ui/calibrate_ui.kv:398 src/ui/calibrate_ui.kv:468
+#: src/ui/calibrate_ui.kv:56 src/ui/calibrate_ui.kv:107
+#: src/ui/calibrate_ui.kv:273 src/ui/calibrate_ui.kv:319
+#: src/ui/calibrate_ui.kv:399 src/ui/calibrate_ui.kv:469
 #: src/ui/cure_test_ui.kv:287 src/ui/dripper_calibration_ui.kv:285
 msgid "Help me"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:56
+#: src/ui/calibrate_ui.kv:57
 msgid "MARKUP - Center Calibration Instructions"
-msgstr "Centre calibration is a tool to make sure that the printer is level and plum with the test surface and test grid. The printer should be pointing straight down and should be perpendicular to the surface you can adjust the laser position by rotating the magnetic damping rings to achieve this.\n\n [i]Note:[/i]\n When aligning the grid paper you may wish to switch back and forther between this tab and the alignment tab."
+msgstr ""
+"Centre calibration is a tool to make sure that the printer is level and plum "
+"with the test surface and test grid. The printer should be pointing straight "
+"down and should be perpendicular to the surface you can adjust the laser "
+"position by rotating the magnetic damping rings to achieve this.\n"
+"\n"
+" [i]Note:[/i]\n"
+" When aligning the grid paper you may wish to switch back and forther "
+"between this tab and the alignment tab."
 
-#: src/ui/calibrate_ui.kv:56
+#: src/ui/calibrate_ui.kv:57
 msgid "Help - Calibration Setup"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:107
+#: src/ui/calibrate_ui.kv:108
 msgid "MARKUP - Orientation Instructions"
-msgstr "The orientation tool allows the software to determine the coil polarity and account for it during other calibration steps and printing. You should see a figure being drawn by the printer. Select the figure you see.\n\n[i]Advanced[/i]\nAdjust the coils by swapping the polarity or swapping the connections to make a the pattern be a 'P'"
+msgstr ""
+"The orientation tool allows the software to determine the coil polarity and "
+"account for it during other calibration steps and printing. You should see a "
+"figure being drawn by the printer. Select the figure you see.\n"
+"\n"
+"[i]Advanced[/i]\n"
+"Adjust the coils by swapping the polarity or swapping the connections to "
+"make a the pattern be a 'P'"
 
-#: src/ui/calibrate_ui.kv:107
+#: src/ui/calibrate_ui.kv:108
 msgid "Help - Orientation"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:273
+#: src/ui/calibrate_ui.kv:274
 msgid "MARKUP - Print Area Instructions"
-msgstr "Printer area allows you to specify the area in which you have to print. The square is shown as a guide. When meausing the width and depth measure from the top of the print area. you print area should be inside the shown square to leave room for calibration.\n If you need increase the print area raise the printer and lower it for higher resolution in a smaller area."
+msgstr ""
+"Printer area allows you to specify the area in which you have to print. The "
+"square is shown as a guide. When meausing the width and depth measure from "
+"the top of the print area. you print area should be inside the shown square "
+"to leave room for calibration.\n"
+" If you need increase the print area raise the printer and lower it for "
+"higher resolution in a smaller area."
 
-#: src/ui/calibrate_ui.kv:273
+#: src/ui/calibrate_ui.kv:274
 msgid "Help - Print Area"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:283 src/ui/library_ui.kv:21
+#: src/ui/calibrate_ui.kv:284 src/ui/library_ui.kv:21
 msgid "Height (mm)"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:294
+#: src/ui/calibrate_ui.kv:295
 msgid "Depth (mm)"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:305 src/ui/library_ui.kv:29
+#: src/ui/calibrate_ui.kv:306 src/ui/library_ui.kv:29
 msgid "Width (mm)"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:319
+#: src/ui/calibrate_ui.kv:320
 msgid "MARKUP - Alignment Instructions"
-msgstr "The Alignment tab is used to help line up your grid paper before performing calibration. Swap between the alignment tab and the centre tab to get things just right before going to the calibration tab. If you bump something you can alway come back here to realign the paper.\n\n[b]Note[/b]\nIf you see a curving in the line you are displaying it may mean your printer is not plumb. you can adjust the damping to straighten out the line. Once straight go to the centre tab and re-centre the print."
+msgstr ""
+"The Alignment tab is used to help line up your grid paper before performing "
+"calibration. Swap between the alignment tab and the centre tab to get things "
+"just right before going to the calibration tab. If you bump something you "
+"can alway come back here to realign the paper.\n"
+"\n"
+"[b]Note[/b]\n"
+"If you see a curving in the line you are displaying it may mean your printer "
+"is not plumb. you can adjust the damping to straighten out the line. Once "
+"straight go to the centre tab and re-centre the print."
 
-#: src/ui/calibrate_ui.kv:319
+#: src/ui/calibrate_ui.kv:320
 msgid "Help - Alignment"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:364
+#: src/ui/calibrate_ui.kv:365
 msgid "Super Accurate Mode"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:379
+#: src/ui/calibrate_ui.kv:380
 msgid "Reset All"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:399
+#: src/ui/calibrate_ui.kv:400
 msgid "MARKUP - Calibration Instructions"
-msgstr "The Top and Bottom Calibration Steps allow the software to account of some of the typical irregularites in a peachy printer. To do so folow the steps below.\n\n1. Place the provided grid paper below the laser starting at the top height of your printer and using the centre and alignment tabs accuratly.\n2. Select the top print posistion button eg. 'X:100.0, y: 100.0'\n3. Click and drag on the grid to the right and move the laser to the corner of your print area designated by the grid dot in the mini grid on the lower left.\n4. [i](optional)[/i] Click the 'Super Accurate mode' to percisely posisition the laser by clicking and dragging.\n5.Repeat the process for the remaining points.\n 6. Move the grid paper to the bottom of the print area and repeat all the above steps on the 'Bottom' calibration tab."
+msgstr ""
+"The Top and Bottom Calibration Steps allow the software to account of some "
+"of the typical irregularites in a peachy printer. To do so folow the steps "
+"below.\n"
+"\n"
+"1. Place the provided grid paper below the laser starting at the top height "
+"of your printer and using the centre and alignment tabs accuratly.\n"
+"2. Select the top print posistion button eg. 'X:100.0, y: 100.0'\n"
+"3. Click and drag on the grid to the right and move the laser to the corner "
+"of your print area designated by the grid dot in the mini grid on the lower "
+"left.\n"
+"4. [i](optional)[/i] Click the 'Super Accurate mode' to percisely posisition "
+"the laser by clicking and dragging.\n"
+"5.Repeat the process for the remaining points.\n"
+" 6. Move the grid paper to the bottom of the print area and repeat all the "
+"above steps on the 'Bottom' calibration tab."
 
-#: src/ui/calibrate_ui.kv:399
+#: src/ui/calibrate_ui.kv:400
 msgid "Help - Calibration"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:433
+#: src/ui/calibrate_ui.kv:434
 msgid "Speed"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:451
+#: src/ui/calibrate_ui.kv:452
 msgid "Height"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:469
+#: src/ui/calibrate_ui.kv:470
 msgid "MARKUP - Test Pattern Instructions"
-msgstr "The test patterns can be used for a number of tests. The speed and height controls allow you to play with the test patterns at diffrent heights in the print and find good print speeds to use.\n\n1. [b]Square[/b] - Used to test the general success of the calibration. It should be square it can also be used as a test for ringing. To do so adjust the speed untill the corners of the square start getting soft then back off a little bit. This can be used a maximum speed value.\n2. [b]Twitch[/b] -  Used for FILL ME IN\n3. [b]Damping Test[/b] - [i]Modder use[/i] Used to determine the best magnetic damping. This has been calculated for you with the magenets and damping slugs you recieved however modders may wish to experiment.\n4. [b]Hourglass[/b] - [i]Modder use[/i] The hourgalss is a test pattern for the memory effect a good hourglass should have the center points overlapping and all the lines in pattern in line with the oppisite side of the pattern.\n5. [b]NESW[/b] - Used to test the orientation of the printer. all the compas points should be in the correct places and not reversed or upside down.\n6. [b]Circle[/b] - Another test of calibration that can be used. When properly calibrated the image should be a very clear circle with out distortions.\n7. [b]Hilbert[/b] - The hilbert curve is designed to cover a large portion of the print area. It can be used for finding non-linearities and also makes a good test for determining maximum speed.\n8. [b]Spiral[/b] - The spiral test is similar to the hilbert curve in it usefullness for finding non linearities "
+msgstr ""
+"The test patterns can be used for a number of tests. The speed and height "
+"controls allow you to play with the test patterns at diffrent heights in the "
+"print and find good print speeds to use.\n"
+"\n"
+"1. [b]Square[/b] - Used to test the general success of the calibration. It "
+"should be square it can also be used as a test for ringing. To do so adjust "
+"the speed untill the corners of the square start getting soft then back off "
+"a little bit. This can be used a maximum speed value.\n"
+"2. [b]Twitch[/b] -  Used for FILL ME IN\n"
+"3. [b]Damping Test[/b] - [i]Modder use[/i] Used to determine the best "
+"magnetic damping. This has been calculated for you with the magenets and "
+"damping slugs you recieved however modders may wish to experiment.\n"
+"4. [b]Hourglass[/b] - [i]Modder use[/i] The hourgalss is a test pattern for "
+"the memory effect a good hourglass should have the center points overlapping "
+"and all the lines in pattern in line with the oppisite side of the pattern.\n"
+"5. [b]NESW[/b] - Used to test the orientation of the printer. all the compas "
+"points should be in the correct places and not reversed or upside down.\n"
+"6. [b]Circle[/b] - Another test of calibration that can be used. When "
+"properly calibrated the image should be a very clear circle with out "
+"distortions.\n"
+"7. [b]Hilbert[/b] - The hilbert curve is designed to cover a large portion "
+"of the print area. It can be used for finding non-linearities and also makes "
+"a good test for determining maximum speed.\n"
+"8. [b]Spiral[/b] - The spiral test is similar to the hilbert curve in it "
+"usefullness for finding non linearities "
 
-#: src/ui/calibrate_ui.kv:469
+#: src/ui/calibrate_ui.kv:470
 msgid "Help - Test Patterns"
 msgstr ""
 
@@ -923,12 +993,44 @@ msgstr ""
 msgid "Printer Posisition || "
 msgstr ""
 
-#: src/ui/calibrate_ui.py:419 src/ui/dripper_calibration_ui.py:85
+#: src/ui/calibrate_ui.py:349
+msgid "Square"
+msgstr ""
+
+#: src/ui/calibrate_ui.py:350
+msgid "Twitch"
+msgstr ""
+
+#: src/ui/calibrate_ui.py:351
+msgid "Damping"
+msgstr ""
+
+#: src/ui/calibrate_ui.py:352
+msgid "Hourglass"
+msgstr ""
+
+#: src/ui/calibrate_ui.py:353
+msgid "NESW"
+msgstr ""
+
+#: src/ui/calibrate_ui.py:354
+msgid "Circle"
+msgstr ""
+
+#: src/ui/calibrate_ui.py:355
+msgid "Hilbert"
+msgstr ""
+
+#: src/ui/calibrate_ui.py:356
+msgid "Spiral"
+msgstr ""
+
+#: src/ui/calibrate_ui.py:431 src/ui/dripper_calibration_ui.py:85
 #: src/ui/restore_ui.py:28
 msgid "Error"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:419 src/ui/dripper_calibration_ui.py:85
+#: src/ui/calibrate_ui.py:431 src/ui/dripper_calibration_ui.py:85
 #: src/ui/restore_ui.py:28
 msgid "No Peachy Printer Detected"
 msgstr ""
