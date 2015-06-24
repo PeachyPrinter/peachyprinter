@@ -41,6 +41,7 @@ class I18NToggleButton(Button):
 class I18NImageToggleButton(ToggleButton):
     text_source = StringProperty('')
     source = StringProperty()
+    key = StringProperty()
 
 
 class I18NPopup(Popup):
