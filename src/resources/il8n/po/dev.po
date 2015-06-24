@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-23 09:40-0600\n"
+"POT-Creation-Date: 2015-06-24 09:11-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -16,7 +16,7 @@ msgid "Load file"
 msgstr "#!00000!#"
 
 #: src/gui.py:149 src/gui.py:171 src/peachyprinter.kv:35
-#: src/ui/custom_widgets.kv:118 src/ui/print_ui.kv:122
+#: src/ui/custom_widgets.kv:120 src/ui/print_ui.kv:122
 msgid "Close"
 msgstr "#!00001!#"
 
@@ -542,119 +542,119 @@ msgstr "#!00100!#"
 msgid "dripper_photo_zaxis_delay DESCRIPTION"
 msgstr "#!00101!#"
 
-#: src/ui/calibrate_ui.kv:17
+#: src/ui/calibrate_ui.kv:18
 msgid "Center"
 msgstr "#!00105!#"
 
-#: src/ui/calibrate_ui.kv:21
+#: src/ui/calibrate_ui.kv:22
 msgid "Orientation"
 msgstr "#!00109!#"
 
-#: src/ui/calibrate_ui.kv:25
-msgid "Aligment"
-msgstr "#!00118!#"
+#: src/ui/calibrate_ui.kv:26
+msgid "Alignment"
+msgstr ""
 
-#: src/ui/calibrate_ui.kv:29
+#: src/ui/calibrate_ui.kv:30
 msgid "Print Area"
 msgstr "#!00112!#"
 
-#: src/ui/calibrate_ui.kv:33
+#: src/ui/calibrate_ui.kv:34
 msgid "Top"
 msgstr "#!00102!#"
 
-#: src/ui/calibrate_ui.kv:37
+#: src/ui/calibrate_ui.kv:38
 msgid "Bottom"
 msgstr "#!00103!#"
 
-#: src/ui/calibrate_ui.kv:41
-msgid "Test Patterns"
-msgstr "#!00127!#"
+#: src/ui/calibrate_ui.kv:42
+msgid "Patterns"
+msgstr ""
 
-#: src/ui/calibrate_ui.kv:45 src/ui/cure_test_ui.kv:295
+#: src/ui/calibrate_ui.kv:46 src/ui/cure_test_ui.kv:295
 #: src/ui/dripper_calibration_ui.kv:310 src/ui/library_ui.kv:72
 msgid "Back"
 msgstr "#!00104!#"
 
-#: src/ui/calibrate_ui.kv:55 src/ui/calibrate_ui.kv:106
-#: src/ui/calibrate_ui.kv:272 src/ui/calibrate_ui.kv:318
-#: src/ui/calibrate_ui.kv:398 src/ui/calibrate_ui.kv:468
+#: src/ui/calibrate_ui.kv:56 src/ui/calibrate_ui.kv:107
+#: src/ui/calibrate_ui.kv:273 src/ui/calibrate_ui.kv:319
+#: src/ui/calibrate_ui.kv:399 src/ui/calibrate_ui.kv:469
 #: src/ui/cure_test_ui.kv:287 src/ui/dripper_calibration_ui.kv:285
 msgid "Help me"
 msgstr "#!00106!#"
 
-#: src/ui/calibrate_ui.kv:56
+#: src/ui/calibrate_ui.kv:57
 msgid "MARKUP - Center Calibration Instructions"
 msgstr "#!00107!#"
 
-#: src/ui/calibrate_ui.kv:56
+#: src/ui/calibrate_ui.kv:57
 msgid "Help - Calibration Setup"
 msgstr "#!00108!#"
 
-#: src/ui/calibrate_ui.kv:107
+#: src/ui/calibrate_ui.kv:108
 msgid "MARKUP - Orientation Instructions"
 msgstr "#!00110!#"
 
-#: src/ui/calibrate_ui.kv:107
+#: src/ui/calibrate_ui.kv:108
 msgid "Help - Orientation"
 msgstr "#!00111!#"
 
-#: src/ui/calibrate_ui.kv:273
+#: src/ui/calibrate_ui.kv:274
 msgid "MARKUP - Print Area Instructions"
 msgstr "#!00113!#"
 
-#: src/ui/calibrate_ui.kv:273
+#: src/ui/calibrate_ui.kv:274
 msgid "Help - Print Area"
 msgstr "#!00114!#"
 
-#: src/ui/calibrate_ui.kv:283 src/ui/library_ui.kv:21
+#: src/ui/calibrate_ui.kv:284 src/ui/library_ui.kv:21
 msgid "Height (mm)"
 msgstr "#!00115!#"
 
-#: src/ui/calibrate_ui.kv:294
+#: src/ui/calibrate_ui.kv:295
 msgid "Depth (mm)"
 msgstr "#!00116!#"
 
-#: src/ui/calibrate_ui.kv:305 src/ui/library_ui.kv:29
+#: src/ui/calibrate_ui.kv:306 src/ui/library_ui.kv:29
 msgid "Width (mm)"
 msgstr "#!00117!#"
 
-#: src/ui/calibrate_ui.kv:319
+#: src/ui/calibrate_ui.kv:320
 msgid "MARKUP - Alignment Instructions"
 msgstr "#!00119!#"
 
-#: src/ui/calibrate_ui.kv:319
+#: src/ui/calibrate_ui.kv:320
 msgid "Help - Alignment"
 msgstr "#!00120!#"
 
-#: src/ui/calibrate_ui.kv:364
+#: src/ui/calibrate_ui.kv:365
 msgid "Super Accurate Mode"
 msgstr "#!00122!#"
 
-#: src/ui/calibrate_ui.kv:379
+#: src/ui/calibrate_ui.kv:380
 msgid "Reset All"
 msgstr "#!00123!#"
 
-#: src/ui/calibrate_ui.kv:399
+#: src/ui/calibrate_ui.kv:400
 msgid "MARKUP - Calibration Instructions"
 msgstr "#!00125!#"
 
-#: src/ui/calibrate_ui.kv:399
+#: src/ui/calibrate_ui.kv:400
 msgid "Help - Calibration"
 msgstr "#!00126!#"
 
-#: src/ui/calibrate_ui.kv:433
+#: src/ui/calibrate_ui.kv:434
 msgid "Speed"
 msgstr "#!00128!#"
 
-#: src/ui/calibrate_ui.kv:451
+#: src/ui/calibrate_ui.kv:452
 msgid "Height"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:469
+#: src/ui/calibrate_ui.kv:470
 msgid "MARKUP - Test Pattern Instructions"
 msgstr "#!00129!#"
 
-#: src/ui/calibrate_ui.kv:469
+#: src/ui/calibrate_ui.kv:470
 msgid "Help - Test Patterns"
 msgstr "#!00130!#"
 
@@ -923,12 +923,44 @@ msgstr ""
 msgid "Printer Posisition || "
 msgstr "#!00168!#"
 
-#: src/ui/calibrate_ui.py:419 src/ui/dripper_calibration_ui.py:85
+#: src/ui/calibrate_ui.py:349
+msgid "Square"
+msgstr ""
+
+#: src/ui/calibrate_ui.py:350
+msgid "Twitch"
+msgstr ""
+
+#: src/ui/calibrate_ui.py:351
+msgid "Damping"
+msgstr ""
+
+#: src/ui/calibrate_ui.py:352
+msgid "Hourglass"
+msgstr ""
+
+#: src/ui/calibrate_ui.py:353
+msgid "NESW"
+msgstr ""
+
+#: src/ui/calibrate_ui.py:354
+msgid "Circle"
+msgstr ""
+
+#: src/ui/calibrate_ui.py:355
+msgid "Hilbert"
+msgstr ""
+
+#: src/ui/calibrate_ui.py:356
+msgid "Spiral"
+msgstr ""
+
+#: src/ui/calibrate_ui.py:431 src/ui/dripper_calibration_ui.py:85
 #: src/ui/restore_ui.py:28
 msgid "Error"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:419 src/ui/dripper_calibration_ui.py:85
+#: src/ui/calibrate_ui.py:431 src/ui/dripper_calibration_ui.py:85
 #: src/ui/restore_ui.py:28
 msgid "No Peachy Printer Detected"
 msgstr ""
@@ -948,6 +980,12 @@ msgstr ""
 #: src/ui/print_ui.py:284
 msgid "Print Failed"
 msgstr ""
+
+#~ msgid "Aligment"
+#~ msgstr "#!00118!#"
+
+#~ msgid "Test Patterns"
+#~ msgstr "#!00127!#"
 
 #~ msgid "Cure Rate Test"
 #~ msgstr "#!00131!#"
