@@ -190,7 +190,7 @@ class I18NImageSpinner(I18NImageButton):
     def __init__(self, **kwargs):
         self._dropdown = None
         super(I18NImageSpinner, self).__init__(**kwargs)
-        fbind = self.fast_bind
+        fbind = self.fbind
         build_dropdown = self._build_dropdown
         fbind('on_release', self._toggle_dropdown)
         fbind('dropdown_cls', build_dropdown)

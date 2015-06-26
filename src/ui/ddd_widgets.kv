@@ -1,0 +1,16 @@
+#:kivy 1.9.0
+#:import I18NLabel ui.custom_widgets.I18NLabel
+
+<I18NObjImageButton>:
+    BoxLayout:
+        size_hint: [None,None]
+        width: root.width
+        height: root.height
+        orientation: 'horizontal'
+        BoxLayout:
+            Renderer:
+                model: root.model
+        I18NLabel:
+            size_hint_x: None
+            width: self.texture_size[0] + 10
+            text_source: root.text_source

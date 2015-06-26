@@ -12,6 +12,7 @@ from kivy.properties import StringProperty
 from kivy.lang import Builder
 from kivy.app import App
 from ui.custom_widgets import I18NPopup,I18NImageButton
+from ui.ddd_widgets import I18NObjImageButton
 
 
 Builder.load_file('ui/library_ui.kv')
@@ -55,17 +56,25 @@ class LibraryUI(Screen):
         self.test_print_api = self.api.get_test_print_api()
         library_names = self.test_print_api.test_print_names()
         for name in library_names:
-            filename = pattern.sub('', name) + '.png'
-            image_path = os.path.join('resources', 'library_prints', filename)
-            if not os.path.isfile(image_path):
+            filename = pattern.sub('', name) + '.obj'
+            model_path = os.path.join('resources', 'objects', filename)
+            if os.path.isfile(model_path):
+                pict_button = I18NObjImageButton(
+                    on_release=self.print_a,  
+                    text_source=name, 
+                    model=model_path, 
+                    orientation='vertical',
+                    key=name )
+                self.ids.library_grid.add_widget(pict_button)
+            else:
                 image_path = os.path.join('resources', 'library_prints', 'missing.png')
-            pict_button = I18NImageButton(
-                on_release=self.print_a,  
-                text_source=name, 
-                source=image_path, 
-                orientation='vertical',
-                key=name )
-            self.ids.library_grid.add_widget(pict_button)
+                pict_button = I18NImageButton(
+                    on_release=self.print_a,  
+                    text_source=name, 
+                    source=image_path, 
+                    orientation='vertical',
+                    key=name )
+                self.ids.library_grid.add_widget(pict_button)
 
     def print_a(self, instance):
         PrintPop(name=instance.key, api=self.api, screen_manager=self.parent).open()
