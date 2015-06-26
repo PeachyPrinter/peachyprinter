@@ -43,7 +43,6 @@ class I18NImageToggleButton(ToggleButton):
     source = StringProperty()
     key = StringProperty()
 
-
 class I18NPopup(Popup):
     title_source = StringProperty('')
 
