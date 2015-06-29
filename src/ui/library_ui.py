@@ -13,6 +13,7 @@ from kivy.lang import Builder
 from kivy.app import App
 from ui.custom_widgets import I18NPopup,I18NImageButton
 from ui.ddd_widgets import I18NObjImageButton
+from kivy.resources import resource_find
 
 
 Builder.load_file('ui/library_ui.kv')
@@ -55,27 +56,39 @@ class LibraryUI(Screen):
         self.api = api
         self.test_print_api = self.api.get_test_print_api()
         library_names = self.test_print_api.test_print_names()
+        self.animations = []
         for name in library_names:
             filename = pattern.sub('', name) + '.obj'
             model_path = os.path.join('resources', 'objects', filename)
-            if os.path.isfile(model_path):
+            if model_path and os.path.isfile(model_path):
+                Logger.info("Loading model file: {}".format(str(model_path)))
                 pict_button = I18NObjImageButton(
-                    on_release=self.print_a,  
-                    text_source=name, 
-                    model=model_path, 
+                    on_release=self.print_a,
+                    text_source=name,
+                    model=model_path,
                     orientation='vertical',
-                    key=name )
+                    key=name)
+                self.animations.append(pict_button)
                 self.ids.library_grid.add_widget(pict_button)
             else:
+                Logger.info("Path not found for model file: {}".format(str(model_path)))
                 image_path = os.path.join('resources', 'library_prints', 'missing.png')
                 pict_button = I18NImageButton(
-                    on_release=self.print_a,  
-                    text_source=name, 
-                    source=image_path, 
+                    on_release=self.print_a,
+                    text_source=name,
+                    source=image_path,
                     orientation='vertical',
-                    key=name )
+                    key=name)
                 self.ids.library_grid.add_widget(pict_button)
 
     def print_a(self, instance):
         PrintPop(name=instance.key, api=self.api, screen_manager=self.parent).open()
+
+    def on_enter(self):
+        for animation in self.animations:
+            animation.start_animations()
+
+    def on_leave(self):
+        for animation in self.animations:
+            animation.stop_animations()
 

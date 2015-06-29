@@ -6,11 +6,20 @@
         size_hint: [None,None]
         width: root.width
         height: root.height
+        x: root.x
+        y: root.y
         orientation: 'horizontal'
         BoxLayout:
+            size_hint: [None,None]
+            width: root.width * 0.66
+            height: root.height * 0.66
+            x: root.x
+            y: root.y
             Renderer:
+                id: renderer
+                x: root.x
+                y: root.y
                 model: root.model
         I18NLabel:
-            size_hint_x: None
-            width: self.texture_size[0] + 10
+            text_size: self.size
             text_source: root.text_source
