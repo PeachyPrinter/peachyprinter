@@ -9,6 +9,11 @@
         x: root.x
         y: root.y
         orientation: 'horizontal'
+        I18NLabel:
+            text_size: self.size
+            valign: 'top'
+            text_source: root.text_source
+            padding: ['5dp','5dp']
         BoxLayout:
             size_hint: [None,None]
             width: root.width * 0.66
@@ -20,6 +25,3 @@
                 x: root.x
                 y: root.y
                 model: root.model
-        I18NLabel:
-            text_size: self.size
-            text_source: root.text_source

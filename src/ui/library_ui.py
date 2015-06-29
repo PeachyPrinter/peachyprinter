@@ -59,8 +59,8 @@ class LibraryUI(Screen):
         self.animations = []
         for name in library_names:
             filename = pattern.sub('', name) + '.obj'
-            model_path = os.path.join('resources', 'objects', filename)
-            if model_path and os.path.isfile(model_path):
+            model_path = resource_find(filename)
+            if model_path:
                 Logger.info("Loading model file: {}".format(str(model_path)))
                 pict_button = I18NObjImageButton(
                     on_release=self.print_a,

@@ -7,6 +7,7 @@ from kivy.lang import Builder
 from kivy.properties import StringProperty
 from kivy.uix.button import Button
 from kivy.core.window import Window
+from kivy.resources import resource_find
 
 from infrastructure.object_loader import ObjFile
 from infrastructure.langtools import _
@@ -34,24 +35,25 @@ class Renderer(Widget):
 
     def __init__(self, **kwargs):
         self.canvas = RenderContext()
-        self.canvas.shader.source = 'resources/shaders/simple.glsl'
-        self.last_update = 0
+        shader = resource_find('simple.glsl')
+        if not shader:
+            Logger.error("Shader not found")
+        self.canvas.shader.source = shader
         self._running = False
         super(Renderer, self).__init__(**kwargs)
 
     def start_animations(self):
-
         Clock.schedule_interval(self.update_glsl, 1 / 60.)
         self._running = True
         self.on_model(self, self.model)
 
     def stop_animations(self):
         self._running = False
+        self.canvas.clear()
         Clock.unschedule(self.update_glsl)
 
     def on_model(self, instance, value):
         if self._running:
-            self.last_update = time.time()
             if value:
                 self.canvas.clear()
                 self.scene = ObjFile(self.model)
@@ -69,25 +71,23 @@ class Renderer(Widget):
         glDisable(GL_DEPTH_TEST)
 
     def update_glsl(self, *largs):
-        if time.time() > self.last_update + 100:
-            self.on_model(self, self.model)
-        else:
-            asp = max(self.width / float(self.height),1)
-            proj = Matrix().view_clip(-asp, asp, -1, 1, 1, 100, 1)
-            
-            tx = ((self.center_x / float(Window.width)) * 2.0) - 1.0
-            ty = ((self.center_y / float(Window.height)) * 2.0) - 1.0
-            trans = Matrix().translate(tx,ty,0)
-            self.canvas['projection_mat'] = proj
-            self.canvas['diffuse_light'] = (1.0, 1.0, 0.8)
-            self.canvas['ambient_light'] = (0.1, 0.1, 0.1)
-            self.canvas['translate_mat'] = trans
-            self.rot.angle += 1
+        asp = max(self.width / float(self.height),1)
+        proj = Matrix().view_clip(-asp, asp, -1, 1, 1, 100, 1)
+        
+        tx = ((self.center_x / float(Window.width)) * 2.0) - 1.0
+        ty = ((self.center_y / float(Window.height)) * 2.0) - 1.0
+        trans = Matrix().translate(tx,ty,0)
+        self.canvas['projection_mat'] = proj
+        self.canvas['diffuse_light'] = (1.0, 1.0, 0.8)
+        self.canvas['ambient_light'] = (0.1, 0.1, 0.1)
+        self.canvas['translate_mat'] = trans
+        self.rot.angle += 1
 
     def setup_scene(self):
         Color(1, 1, 1, 1)
         PushMatrix()
         Translate(0,0,-3)
+        Rotate(15, 1, 0, 0)
         self.rot = Rotate(1, 0, 1, 0)
         m = list(self.scene.objects.values())[0]
         UpdateNormalMatrix()

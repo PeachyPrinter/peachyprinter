@@ -88,10 +88,9 @@ class MyScreenManager(ScreenManager):
         self.calibration_ui = CalibrateUI(self.api)
         self.cure_test_ui = CureTestUI(self.api)
         self.restore_ui = RestoreUI(self.api)
-        self.add_widget(self.library_ui)
         self.add_widget(self.main_ui)
         self.add_widget(self.printing_ui)
-        # self.add_widget(self.library_ui)
+        self.add_widget(self.library_ui)
         self.add_widget(self.dripper_calibration_ui)
         self.add_widget(self.cure_test_ui)
         self.add_widget(self.calibration_ui)
@@ -110,8 +109,8 @@ class PeachyPrinter(App):
     def __init__(self, api, language=None, **kwargs):
         resource_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'resources')
         resource_add_path(resource_path)
-        # resource_add_path(os.path.join(resource_path, 'objects'))
-        # resource_add_path(os.path.join(resource_path, 'shaders'))
+        resource_add_path(os.path.join(resource_path, 'objects'))
+        resource_add_path(os.path.join(resource_path, 'shaders'))
         self.last_print = LastPrint()
         self.api = api
         self.setting_translation = SettingsMapper(self.api)
