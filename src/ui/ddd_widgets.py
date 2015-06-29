@@ -81,14 +81,101 @@ class Renderer(Widget):
         self.canvas['diffuse_light'] = (1.0, 1.0, 0.8)
         self.canvas['ambient_light'] = (0.1, 0.1, 0.1)
         self.canvas['translate_mat'] = trans
-        self.rot.angle += 1
+        self.rotate_y.angle += 1
 
     def setup_scene(self):
         Color(1, 1, 1, 1)
         PushMatrix()
         Translate(0,0,-3)
         Rotate(15, 1, 0, 0)
-        self.rot = Rotate(1, 0, 1, 0)
+        self.rotate_y = Rotate(1, 0, 1, 0)
+        m = list(self.scene.objects.values())[0]
+        UpdateNormalMatrix()
+        self.mesh = Mesh(
+            vertices=m.vertices,
+            indices=m.indices,
+            fmt=m.vertex_format,
+            mode='triangles',
+        )
+        PopMatrix()
+
+
+class ObjectManipulator(BoxLayout):
+    model = StringProperty(allow_none=True)
+
+    def __init__(self, **kwargs):
+        self.canvas = RenderContext()
+        shader = resource_find('simple.glsl')
+        if not shader:
+            Logger.error("Shader not found")
+        self.canvas.shader.source = shader
+        self._running = False
+        super(ObjectManipulator, self).__init__(**kwargs)
+
+    def start_animations(self):
+        Clock.schedule_interval(self.update_glsl, 1 / 60.)
+        self._running = True
+        self.on_model(self, self.model)
+
+    def stop_animations(self):
+        self._running = False
+        self.canvas.clear()
+        Clock.unschedule(self.update_glsl)
+
+    def on_model(self, instance, value):
+        if self._running:
+            if value:
+                self.canvas.clear()
+                self.scene = ObjFile(self.model)
+                with self.canvas:
+                    self.cb = Callback(self.setup_gl_context)
+                    PushMatrix()
+                    self.setup_scene()
+                    PopMatrix()
+                    self.cb = Callback(self.reset_gl_context)
+
+    def setup_gl_context(self, *args):
+        glEnable(GL_DEPTH_TEST)
+
+    def reset_gl_context(self, *args):
+        glDisable(GL_DEPTH_TEST)
+
+    def update_glsl(self, *largs):
+        asp = max(self.width / float(self.height),1)
+        proj = Matrix().view_clip(-asp, asp, -1, 1, 1, 100, 1)
+        
+        tx = ((self.center_x / float(Window.width)) * 2.0) - 1.0
+        ty = ((self.center_y / float(Window.height)) * 2.0) - 1.0
+        trans = Matrix().translate(tx, ty, 0)
+        self.canvas['projection_mat'] = proj
+        self.canvas['diffuse_light'] = (1.0, 1.0, 0.8)
+        self.canvas['ambient_light'] = (0.1, 0.1, 0.1)
+        self.canvas['translate_mat'] = trans
+        if self.rotate_x.angle < 360:
+            self.rotate_x.angle += 1
+        else:
+            if self.rotate_y.angle < 360:
+                self.rotate_y.angle += 1
+            else:
+                if self.rotate_z.angle < 360:
+                    self.rotate_z.angle += 1
+                else:
+                    self.rotate_x.angle = 0
+                    self.rotate_y.angle = 0
+                    self.rotate_z.angle = 0
+
+    def setup_scene(self):
+        Color(1, 1, 1, 1)
+        PushMatrix()
+        Translate(0, 0, -2)
+        Rotate(15, 1, 0, 0)
+        Translate(0, 0.5, 0)
+        self.rotate_x = Rotate(0, 1, 0, 0)
+        Translate(0, -0.5, 0)
+        self.rotate_y = Rotate(1, 0, 1, 0)
+        Translate(0, 0.5, 0)
+        self.rotate_z = Rotate(0, 0, 0, 1)
+        Translate(0, -0.5, 0)
         m = list(self.scene.objects.values())[0]
         UpdateNormalMatrix()
         self.mesh = Mesh(

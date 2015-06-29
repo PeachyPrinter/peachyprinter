@@ -11,9 +11,10 @@ from kivy.logger import Logger
 from kivy.properties import StringProperty
 from kivy.lang import Builder
 from kivy.app import App
-from ui.custom_widgets import I18NPopup,I18NImageButton
+from ui.custom_widgets import I18NPopup, I18NImageButton
 from ui.ddd_widgets import I18NObjImageButton
 from kivy.resources import resource_find
+from kivy.clock import Clock
 
 
 Builder.load_file('ui/library_ui.kv')
@@ -24,6 +25,7 @@ class PrintPop(I18NPopup):
     print_area_height = StringProperty()
     print_area_width = StringProperty()
     speed = StringProperty()
+    model = StringProperty(allow_none=True)
 
     def __init__(self, api, screen_manager, **kwargs):
         self.screen_manager = screen_manager
@@ -33,9 +35,10 @@ class PrintPop(I18NPopup):
         self.speed = str(printer.cure_rate.draw_speed)
         self.print_area_width = str(min(printer.calibration.print_area_x, printer.calibration.print_area_y))
         self.print_area_height = str(printer.calibration.print_area_z)
+        Clock.schedule_once(self.go)
 
-    def image(self):
-        return os.path.join('resources', 'library_prints', 'missing.png')
+    def go(self, *args):
+        self.ids.manipulator.start_animations()
 
     def print_from_library(self):
         name = self.title
@@ -43,6 +46,7 @@ class PrintPop(I18NPopup):
         width = float(self.ids.width.text)
         layer_height = float(self.ids.layer_height.text)
         speed = float(self.ids.speed.text)
+        self.ids.manipulator.stop_animations()
         App.get_running_app().last_print.set("test_print", (name, height, width, layer_height, speed))
         generator = self.test_print_api.get_test_print(name, height, width, layer_height, speed)
         self.screen_manager.current = 'printingui'
@@ -82,7 +86,7 @@ class LibraryUI(Screen):
                 self.ids.library_grid.add_widget(pict_button)
 
     def print_a(self, instance):
-        PrintPop(name=instance.key, api=self.api, screen_manager=self.parent).open()
+        PrintPop(name=instance.key, api=self.api, screen_manager=self.parent, model=instance.model).open()
 
     def on_enter(self):
         for animation in self.animations:

@@ -7,9 +7,10 @@
     size_hint: [0.9, 0.9]
     BoxLayout:
         orientation: 'horizontal'
-        Image:
+        ObjectManipulator:
+            id: manipulator
+            model: root.model
             size_hint: (0.8,1.0)
-            source: root.image()
         BoxLayout:
             orientation: 'vertical'
             StackLayout:
