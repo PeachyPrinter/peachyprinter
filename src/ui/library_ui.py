@@ -27,7 +27,8 @@ class PrintPop(I18NPopup):
     speed = StringProperty()
     model = StringProperty(allow_none=True)
 
-    def __init__(self, api, screen_manager, **kwargs):
+    def __init__(self, api, screen_manager, cancel_call_back, **kwargs):
+        self.cancel_call_back = cancel_call_back
         self.screen_manager = screen_manager
         super(PrintPop, self).__init__(**kwargs)
         self.test_print_api = api.get_test_print_api()
@@ -39,6 +40,9 @@ class PrintPop(I18NPopup):
 
     def go(self, *args):
         self.ids.manipulator.start_animations()
+
+    def on_dismiss(self):
+        self.cancel_call_back()
 
     def print_from_library(self):
         name = self.title
@@ -86,7 +90,13 @@ class LibraryUI(Screen):
                 self.ids.library_grid.add_widget(pict_button)
 
     def print_a(self, instance):
-        PrintPop(name=instance.key, api=self.api, screen_manager=self.parent, model=instance.model).open()
+        for animation in self.animations:
+            animation.stop_animations()
+        PrintPop(name=instance.key, api=self.api, screen_manager=self.parent, cancel_call_back=self.pop_up_cancel_call_back, model=instance.model).open()
+
+    def pop_up_cancel_call_back(self):
+        for animation in self.animations:
+            animation.start_animations()
 
     def on_enter(self):
         for animation in self.animations:
