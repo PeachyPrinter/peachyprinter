@@ -150,6 +150,8 @@ class PeachyPrinter(App):
         if hasattr(self, 'settings'):
             self.settings.interface.menu.close_button.text = self.translation(_("Close"))
 
+    def exit_app(self, *args):
+        exit()
     def build(self):
         self.settings_cls = SettingsWithSidebar
         try:
@@ -158,7 +160,7 @@ class PeachyPrinter(App):
         except MissingPrinterException:
             fail_box = BoxLayout(orientation="vertical")
             pop_message = I18NLabel(text_source=_("Please connect your peachy printer before starting the software"))
-            pop_exit = I18NButton(text_source=_("Exit"), size_hint_y=None, height=30, on_release=exit)
+            pop_exit = I18NButton(text_source=_("Exit"), size_hint_y=None, height=30, on_release=self.exit_app)
             fail_box.add_widget(pop_message)
             fail_box.add_widget(pop_exit)
             return fail_box
@@ -166,7 +168,7 @@ class PeachyPrinter(App):
             fail_box = BoxLayout(orientation="vertical")
             pop_message = I18NLabel(text_source=_("An Error has Occured"), size_hint_y=None, height=self.label_height,)
             pop_error = I18NLabel(text_source=str(ex))
-            pop_exit = I18NButton(text_source=_("Exit"), size_hint_y=None, height=self.button_height, on_release=exit)
+            pop_exit = I18NButton(text_source=_("Exit"), size_hint_y=None, height=self.button_height, on_release=self.exit_app)
             fail_box.add_widget(pop_message)
             fail_box.add_widget(pop_error)
             fail_box.add_widget(pop_exit)
