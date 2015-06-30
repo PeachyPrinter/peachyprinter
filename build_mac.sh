@@ -80,7 +80,7 @@ echo "------------------------------------"
 echo "Packaging Application"
 echo "------------------------------------"
 
-hdiutil create ./peachyprinter-$VERSION.dmg -srcfolder peachyprinter-$VERSION.app -ov --size 160m
+hdiutil create ./peachyprinter-$VERSION.dmg -srcfolder peachyprinter-$VERSION.app -ov -size 160m
 if [ $? != 0 ]; then
     echo "FAILURE: packaging app"
     exit 234
