@@ -222,11 +222,13 @@ class CalibrationPanel(SetupPanel):
         rel_x = mouse_pos.pos[0] - grid_x
         rel_y = mouse_pos.pos[1] - grid_y
         # Logger.info("X,Y -> %s,%s" % (rel_x, rel_y))
-        if 0 <= rel_x and rel_x <= grid_size and 0 <= rel_y and rel_y <= grid_size:
-            print_x = rel_x / grid_size
-            print_y = rel_y / grid_size
+        if -10 <= rel_x and rel_x <= grid_size + 10 and -10 <= rel_y and rel_y <= grid_size + 10:
+            print_x = min(grid_size, max(0, rel_x)) / grid_size
+            print_y = min(grid_size, max(0, rel_y)) / grid_size
             self.set_printer_pos_from_screen(print_x, print_y)
-            self.calibration_point = mouse_pos.pos
+            pos_x = min(grid_size, max(0, rel_x)) + grid_x
+            pos_y = min(grid_size, max(0, rel_y)) + grid_y
+            self.calibration_point = [pos_x, pos_y]
         if motionevent == 'end':
             self._save_current_point()
 
