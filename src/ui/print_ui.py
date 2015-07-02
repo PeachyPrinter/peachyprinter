@@ -33,7 +33,7 @@ class ListElement(BoxLayout):
 class PrinterAnimation(RelativeLayout):
     padding = NumericProperty(40)
 
-    printer_actual_dimensions = ListProperty([80, 80, 80])
+    printer_actual_dimensions = ListProperty([10, 10, 80])
     printer_current_actual_height = NumericProperty(0.0)
 
     print_area_height = NumericProperty(1)
@@ -70,6 +70,10 @@ class PrinterAnimation(RelativeLayout):
     laser_speed = NumericProperty(1)
     refresh_rate = NumericProperty(1.0 / 60.0)
 
+    line_x = ListProperty([])
+    line_y = ListProperty([])
+    axis_history = ListProperty([])
+
     def __init__(self, **kwargs):
         super(PrinterAnimation, self).__init__(**kwargs)
         self.drip_time_range = 5
@@ -83,15 +87,15 @@ class PrinterAnimation(RelativeLayout):
 
         self.line_x = []
         self.line_y = []
-        self.last_height = 0
-        self.min_height = 0
-        self.last_x_min = 0
-        self.last_x_max = 0
+        self.last_height = 0.0
+        self.min_height = 0.0
+        self.last_x_min = 0.0
+        self.last_x_max = 0.0
         self.is_on_canvas = False
 
-
-    def on_printer_actual_dimensions(self):
-            self.min_height = self.printer_actual_dimensions[2] / 400.0
+    def on_printer_actual_dimensions(self, instance, value):
+        self.min_height = self.printer_actual_dimensions[2] / 400.0
+        self.on_size(None)
 
     def _gl_setup(self):
         self.drip_texture = CoreImage("resources/images/drop.png", mipmap=True).texture
@@ -105,7 +109,7 @@ class PrinterAnimation(RelativeLayout):
         bounds_y = (self.height * 0.7) - self.resin_height
         bounds_x = self.width - (self.padding * 2)
         printer_x = self.printer_actual_dimensions[0]
-        printer_y = self.printer_actual_dimensions[1]
+        printer_y = self.printer_actual_dimensions[2]
         self.laser_pos = self.width / 2
 
         self.scale = min(bounds_y / printer_y, bounds_x / printer_x)
@@ -129,7 +133,7 @@ class PrinterAnimation(RelativeLayout):
         self.line_x = []
         self.line_y = []
         self.last_height = 0
-        self.min_height = 0
+        self.min_height = 0.0
         self.laser_points = []
 
     def _draw_drips(self):
@@ -148,11 +152,13 @@ class PrinterAnimation(RelativeLayout):
         if self.waiting_for_drips:
             self.laser_points = []
         else:
-            x_min = int(self.print_area_left + (self.last_x_min * self.print_area_width))
-            x_max = int(self.print_area_left + (self.last_x_max * self.print_area_width))
+            x_min = self.print_area_left + (self.last_x_min * self.print_area_width)
+            x_max = self.print_area_left + (self.last_x_max * self.print_area_width)
             if (self.laser_pos >= x_max):
+                self.laser_pos = x_max
                 self.laser_speed = abs(self.laser_speed) * -1
             if (self.laser_pos <= x_min):
+                self.laser_pos = x_min
                 self.laser_speed = abs(self.laser_speed)
 
             self.laser_pos += self.laser_speed
@@ -165,7 +171,7 @@ class PrinterAnimation(RelativeLayout):
             self.model_instruction.add(Color(rgba=(1.0,0.0,0.0,1.0)))
             if self.axis_history:
                 x1, y1, x2, y2 = self._get_pixels(self.axis_history[-1])
-                if y1 > (self.last_height + self.min_height):
+                if y1 > (self.last_height + self.min_height) or not self.line_x:
                     self.last_x_min = x1
                     self.last_x_max = x2
 
@@ -188,8 +194,7 @@ class PrinterAnimation(RelativeLayout):
         pixel_height = data[2] / self.printer_actual_dimensions[2]
         pixel_pos_min = (data[0][0] + (self.printer_actual_dimensions[1] / 2.0)) / self.printer_actual_dimensions[1]
         pixel_pos_max = (data[0][1] + (self.printer_actual_dimensions[1] / 2.0)) / self.printer_actual_dimensions[1]
-        return [ pixel_pos_min, pixel_height, pixel_pos_max, pixel_height ]
-
+        return [pixel_pos_min, pixel_height, pixel_pos_max, pixel_height]
 
 
 class SettingsPopUp(I18NPopup):
@@ -219,14 +224,19 @@ class PrintingUI(Screen):
         self.return_to = 'mainui'
         super(PrintingUI, self).__init__(**kwargs)
         self.api = api
+        printer = api.get_current_config()
+        self.printer_actual_dimensions = [
+            printer.calibration.print_area_x,
+            printer.calibration.print_area_y,
+            printer.calibration.print_area_z]
+
         self.print_api = None
         self.print_options = []
         self.settings_popup = SettingsPopUp()
         self.data = {}
         self.refresh_rate = App.get_running_app().refresh_rate
 
-
-    def on_printer_dimensions(self, instance, value):
+    def on_printer_actual_dimensions(self, instance, value):
         self.ids.printer_animation.printer_actual_dimensions = value
 
     def on_model_height(self, instance, value):

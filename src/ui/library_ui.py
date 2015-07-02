@@ -53,6 +53,7 @@ class PrintPop(I18NPopup):
         self.ids.manipulator.stop_animations()
         App.get_running_app().last_print.set("test_print", (name, height, width, layer_height, speed))
         generator = self.test_print_api.get_test_print(name, height, width, layer_height, speed)
+        self.dismiss()
         self.screen_manager.current = 'printingui'
         self.screen_manager.printing_ui.print_generator(generator)
 
