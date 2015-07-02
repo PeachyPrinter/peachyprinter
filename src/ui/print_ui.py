@@ -70,10 +70,6 @@ class PrinterAnimation(RelativeLayout):
     laser_speed = NumericProperty(1)
     refresh_rate = NumericProperty(1.0 / 60.0)
 
-    line_x = ListProperty([])
-    line_y = ListProperty([])
-    axis_history = ListProperty([])
-
     def __init__(self, **kwargs):
         super(PrinterAnimation, self).__init__(**kwargs)
         self.drip_time_range = 5
@@ -90,7 +86,7 @@ class PrinterAnimation(RelativeLayout):
         self.last_height = 0.0
         self.min_height = 0.0
         self.last_x_min = 0.0
-        self.last_x_max = 0.0
+        self.last_x_max = 1.0
         self.is_on_canvas = False
 
     def on_printer_actual_dimensions(self, instance, value):
@@ -170,8 +166,9 @@ class PrinterAnimation(RelativeLayout):
             self.model_instruction.clear()
             self.model_instruction.add(Color(rgba=(1.0,0.0,0.0,1.0)))
             if self.axis_history:
-                x1, y1, x2, y2 = self._get_pixels(self.axis_history[-1])
-                if y1 > (self.last_height + self.min_height) or not self.line_x:
+                model_height = self.axis_history[-1][2]
+                if model_height > (self.last_height + self.min_height) or not self.line_x:
+                    x1, y1, x2, y2 = self._get_pixels(self.axis_history[-1])
                     self.last_x_min = x1
                     self.last_x_max = x2
 
@@ -179,7 +176,7 @@ class PrinterAnimation(RelativeLayout):
                     self.line_x.append(x2)
                     self.line_y.insert(0, y1)
                     self.line_y.append(y2)
-                    self.last_height = y1
+                    self.last_height = model_height
 
                 points = []
                 for idx in range(0, len(self.line_x)):
