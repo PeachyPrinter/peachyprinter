@@ -365,7 +365,7 @@ class TestPatternPanel(SetupPanel):
             for item in items:
                 image_source = "resources/icons/laser_calibration-test_pattern_{0}-100x100.png".format(item.lower().replace(' ', '_'))
                 text = self.friendly_names[item] if item in self.friendly_names else item
-                self.ids.patterns.add_widget(I18NImageToggleButton(group='test_patterns', key=item, text_source=text, source=image_source, on_release=self.show_pattern))
+                self.ids.patterns.add_widget(I18NImageToggleButton(group='test_patterns', key=item, allow_no_selection=False, text_source=text, source=image_source, on_release=self.show_pattern))
             self.calibration_api.set_test_pattern_speed(self.speed)
             self.ids.patterns.children[-1].state = "down"
             self.loaded = True
