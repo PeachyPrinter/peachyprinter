@@ -18,7 +18,7 @@ from kivy.core.image import Image as CoreImage
 from ui.custom_widgets import ErrorPopup, I18NPopup
 from ui.peachy_widgets import LaserWarningPopup
 from infrastructure.langtools import _
-
+import math
 
 import os
 
@@ -77,6 +77,7 @@ class PrinterAnimation(RelativeLayout):
         self.refresh_rate = App.get_running_app().refresh_rate
         self._gl_setup()
         self.axis_history = []
+        self.drips = 0
 
         self.line_x = []
         self.line_y = []
@@ -134,12 +135,13 @@ class PrinterAnimation(RelativeLayout):
         self.drips_instruction.add(Color(1, 1, 1, 1))
         top = time.time()
         bottom = top - self.drip_time_range
-        for drip_time in self.drip_history:
+        for (index, drip_time) in zip(range(len(self.drip_history), 0, -1), self.drip_history):
             if drip_time > bottom:
                 time_ago = top - drip_time
                 y_pos_percent = (self.drip_time_range - time_ago) / self.drip_time_range
                 drip_pos_y = (self.height * y_pos_percent) + self.padding
-                self.drips_instruction.add(Rectangle(size=[12, 16], pos=[self.print_area_left + 20, drip_pos_y], texture=self.drip_texture))
+                xoff = math.sin((self.drips - index) / (2 * math.pi)) * 20
+                self.drips_instruction.add(Rectangle(size=[12, 16], pos=[self.print_area_left + xoff, drip_pos_y], texture=self.drip_texture))
 
     def _draw_laser(self):
         if self.waiting_for_drips:
@@ -252,6 +254,7 @@ class PrintingUI(Screen):
             self.start_time = data['start_time']
         if 'drips' in data:
             self.drips = data['drips']
+            self.ids.printer_animation.drips = data['drips']
         if 'height' in data:
             self.print_height = data['height']
         if 'drips_per_second' in data:
