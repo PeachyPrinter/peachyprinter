@@ -73,12 +73,9 @@ class PrinterAnimation(RelativeLayout):
     def __init__(self, **kwargs):
         super(PrinterAnimation, self).__init__(**kwargs)
         self.drip_time_range = 5
-        
         self.waiting_for_drips = True
         self.refresh_rate = App.get_running_app().refresh_rate
-        
         self._gl_setup()
-
         self.axis_history = []
 
         self.line_x = []
@@ -230,7 +227,6 @@ class PrintingUI(Screen):
         self.print_api = None
         self.print_options = []
         self.settings_popup = SettingsPopUp()
-        self.data = {}
         self.refresh_rate = App.get_running_app().refresh_rate
 
     def on_printer_actual_dimensions(self, instance, value):
@@ -246,11 +242,8 @@ class PrintingUI(Screen):
         minutes = remainder / 60
         return "{0}:{1:02d}".format(hours, minutes)
 
-    def callback(self, data):
-        self.data = data
-
-    def _callback(self, arg):
-        data = self.data
+    def _update_status(self, arg):
+        data = self.print_api.get_status()
         if 'status' in data:
             self.status = data['status']
         if 'model_height' in data:
@@ -279,7 +272,7 @@ class PrintingUI(Screen):
         if 'axis' in data:
             self.ids.printer_animation.axis_history = data['axis']
 
-        Clock.unschedule(self._callback)
+        Clock.unschedule(self._update_status)
         if self.status == 'Complete':
             self.ids.printer_animation.animation_stop()
             self.play_complete_sound()
@@ -291,7 +284,7 @@ class PrintingUI(Screen):
             self.ids.navigate_button.text_source = _("Print Failed")
             self.ids.navigate_button.background_color = [2.0, 0.0, 0.0, 1.0]
         else:
-            Clock.schedule_once(self._callback, self.refresh_rate)
+            Clock.schedule_once(self._update_status, self.refresh_rate)
 
     def print_file(self, *args, **kwargs):
         self.print_options = [self._print_file, args, kwargs]
@@ -303,7 +296,7 @@ class PrintingUI(Screen):
         self.return_to = return_name
         try:
             filepath = filename[0].encode('utf-8')
-            self.print_api = self.api.get_print_api(start_height=start_height, status_call_back=self.callback)
+            self.print_api = self.api.get_print_api(start_height=start_height)
             self.path = os.path.basename(filepath)
             self.print_api.print_gcode(filepath, force_source_speed=force_source_speed)
         except Exception as ex:
@@ -315,7 +308,7 @@ class PrintingUI(Screen):
         if instance.is_safe():
             self.ids.printer_animation.axis_history = []
             Clock.schedule_once(self.ids.printer_animation.redraw)
-            Clock.schedule_once(self._callback, self.refresh_rate)
+            Clock.schedule_once(self._update_status, self.refresh_rate)
             self.print_options[0](*self.print_options[1], **self.print_options[2])
         else:
             self.parent.current = self.return_to
@@ -329,7 +322,7 @@ class PrintingUI(Screen):
     def _print_generator(self, generator, return_name='mainui', force_source_speed=False):
         self.return_to = return_name
         try:
-            self.print_api = self.api.get_print_api(status_call_back=self.callback)
+            self.print_api = self.api.get_print_api()
             self.print_api.print_layers(generator, force_source_speed=force_source_speed)
         except Exception as ex:
             popup = ErrorPopup(title='Error', text=str(ex), size_hint=(0.6, 0.6))
@@ -377,7 +370,7 @@ class PrintingUI(Screen):
         self.ids.navigate_button.background_color = [2.0, 1.0, 0.0, 1.0]
 
     def on_pre_leave(self):
-        Clock.unschedule(self._callback)
+        Clock.unschedule(self._update_status)
         if self.print_api:
             self.print_api.close()
         self.ids.printer_animation.animation_stop()
