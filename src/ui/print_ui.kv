@@ -124,6 +124,38 @@
             size_hint_y: None
             height: app.button_height
 
+<DripSpeed>:
+    orientation: 'vertical'
+    size_hint_y: None
+    height: self.minimum_height
+    cols: 1
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: app.label_height
+        I18NLabel:
+            size_hint_y: None
+            height: app.label_height
+            text_size: self.size
+            halign: 'left'
+            valign: 'middle'
+            text_source: _("Drip Speed")
+        Label:
+            size_hint_y: None
+            height: app.label_height
+            text_size: self.size
+            halign: 'right'
+            valign: 'middle'
+            text: '{0:.2f}'.format(root.drips_per_second)
+    Slider:
+        size_hint_y: None
+        orientation: 'horizontal'
+        height: app.label_height
+        min: 0.0
+        max: 20.0
+        value: root.drips_per_second
+        on_value: root.drips_per_second = self.value
+
 <PrintingUI>:
     name: 'printingui'
     BoxLayout:
@@ -138,6 +170,7 @@
                 padding: "3dp"
                 spacing:"3dp"
                 cols: 1
+                id: dripper_grid
                 height: self.minimum_height
                 size_hint_y: None
                 canvas.before:

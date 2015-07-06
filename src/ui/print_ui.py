@@ -9,8 +9,9 @@ from kivy.app import App
 from kivy.core.audio import SoundLoader
 from kivy.resources import resource_find
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.gridlayout import GridLayout
 from kivy.uix.relativelayout import RelativeLayout
-from kivy.properties import StringProperty, NumericProperty, ListProperty, ObjectProperty
+from kivy.properties import StringProperty, NumericProperty, ListProperty, ObjectProperty, BoundedNumericProperty
 from kivy.clock import Clock
 from kivy.graphics import InstructionGroup
 from kivy.core.image import Image as CoreImage
@@ -28,6 +29,17 @@ Builder.load_file('ui/print_ui.kv')
 class ListElement(BoxLayout):
     title = StringProperty()
     value = StringProperty()
+
+
+class DripSpeed(GridLayout):
+    drips_per_second = BoundedNumericProperty(1.0, min=0.0, max=20.0)
+
+    def __init__(self, set_drips_per_second, **kwargs):
+        super(DripSpeed, self).__init__(**kwargs)
+        self._set_drips_per_second = set_drips_per_second
+
+    def on_drips_per_second(self, instance, value):
+        self._set_drips_per_second(value)
 
 
 class PrinterAnimation(RelativeLayout):
@@ -218,6 +230,7 @@ class PrintingUI(Screen):
 
     def __init__(self, api, **kwargs):
         self.return_to = 'mainui'
+        self.dripper_setting = None
         super(PrintingUI, self).__init__(**kwargs)
         self.api = api
         printer = api.get_current_config()
@@ -302,6 +315,7 @@ class PrintingUI(Screen):
             self.print_api = self.api.get_print_api(start_height=start_height)
             self.path = os.path.basename(filepath)
             self.print_api.print_gcode(filepath, force_source_speed=force_source_speed)
+            self.setup_dripper()
         except Exception as ex:
             popup = ErrorPopup(title='Error', text=str(ex), size_hint=(0.6, 0.6))
             popup.open()
@@ -316,6 +330,13 @@ class PrintingUI(Screen):
         else:
             self.parent.current = self.return_to
 
+    def setup_dripper(self):
+        if self.print_api and self.print_api.can_set_drips_per_second():
+            self.dripper_setting = DripSpeed(self.print_api.set_drips_per_second)
+            self.dripper_setting.drips_per_second = self.print_api.get_drips_per_second()
+            self.ids.dripper_grid.add_widget(self.dripper_setting)
+
+
     def print_generator(self, *args, **kwargs):
         self.print_options = [self._print_generator, args, kwargs]
         popup = LaserWarningPopup()
@@ -327,6 +348,7 @@ class PrintingUI(Screen):
         try:
             self.print_api = self.api.get_print_api()
             self.print_api.print_layers(generator, force_source_speed=force_source_speed)
+            self.setup_dripper()
         except Exception as ex:
             popup = ErrorPopup(title='Error', text=str(ex), size_hint=(0.6, 0.6))
             popup.open()
@@ -335,6 +357,9 @@ class PrintingUI(Screen):
     def restart(self):
         Clock.unschedule(self._update_status)
         self.ids.printer_animation.animation_stop()
+        if self.dripper_setting:
+            self.ids.dripper_grid.remove_widget(self.dripper_setting)
+            self.dripper_setting = None
         if self.print_api:
             self.print_api.close()
         self.print_api = None
@@ -374,6 +399,9 @@ class PrintingUI(Screen):
         self.ids.navigate_button.background_color = [2.0, 1.0, 0.0, 1.0]
 
     def on_pre_leave(self):
+        if self.dripper_setting:
+            self.ids.dripper_grid.remove_widget(self.dripper_setting)
+            self.dripper_setting = None
         Clock.unschedule(self._update_status)
         if self.print_api:
             self.print_api.close()
