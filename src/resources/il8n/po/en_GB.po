@@ -532,7 +532,7 @@ msgstr "Emulated Drips/Second"
 
 #: src/infrastructure/setting_mapper.py:397
 msgid "dripper_emulated_drips_per_second DESCRIPTION"
-msgstr "The rate at which the computer will emulate drips when in Emulate Drips mode
+msgstr "The rate at which the computer will emulate drips when in Emulate Drips mode"
 
 #: src/infrastructure/setting_mapper.py:406
 msgid "dripper_photo_zaxis_delay TITLE"
