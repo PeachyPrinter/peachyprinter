@@ -367,7 +367,7 @@ class SettingsMapper(object):
                     'desc_source': _('cure_rate_override_laser_power_amount DESCRIPTION'),
                     'ok_button_text': _('Ok'),
                     'cancel_button_text': _('Cancel'),
-                    'value_range': [0, 0.1567],
+                    'value_range': [0, 1.0],
                 },
 # ----------- BEGIN Dripper --------------------
                 {
