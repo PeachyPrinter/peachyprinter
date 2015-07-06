@@ -124,6 +124,7 @@ class PeachyPrinter(App):
         super(PeachyPrinter, self).__init__(**kwargs)
         self.lang = lang
         Config.set("input", "mouse", "mouse,disable_multitouch")
+        Config.set("kivy", "exit_on_escape", 0)
         self.switch_lang(self.lang)
         self.manager = None
 
@@ -152,6 +153,7 @@ class PeachyPrinter(App):
 
     def exit_app(self, *args):
         exit()
+
     def build(self):
         self.settings_cls = SettingsWithSidebar
         try:
