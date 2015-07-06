@@ -333,6 +333,7 @@ class PrintingUI(Screen):
             self.parent.current = self.return_to
 
     def restart(self):
+        Clock.unschedule(self._update_status)
         self.ids.printer_animation.animation_stop()
         if self.print_api:
             self.print_api.close()
