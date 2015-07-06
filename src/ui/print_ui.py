@@ -133,6 +133,17 @@ class PrinterAnimation(RelativeLayout):
         Clock.unschedule(self.redraw)
         Clock.schedule_once(self.redraw, self.refresh_rate)
 
+    def animation_start(self, *args):
+        Clock.unschedule(self.redraw)
+        self.axis_history = []
+        self.line_x = []
+        self.line_y = []
+        self.last_height = 0
+        self.min_height = 0.0
+        self.laser_points = []
+        self.drip_history = []
+        Clock.schedule_once(self.redraw, self.refresh_rate)
+
     def animation_stop(self):
         Clock.unschedule(self.redraw)
         self.axis_history = []
@@ -141,6 +152,7 @@ class PrinterAnimation(RelativeLayout):
         self.last_height = 0
         self.min_height = 0.0
         self.laser_points = []
+        self.drip_history = []
 
     def _draw_drips(self):
         self.drips_instruction.clear()
@@ -152,7 +164,7 @@ class PrinterAnimation(RelativeLayout):
                 time_ago = top - drip_time
                 y_pos_percent = (self.drip_time_range - time_ago) / self.drip_time_range
                 drip_pos_y = (self.height * y_pos_percent) + self.padding
-                xoff = math.sin((self.drips - index) / (2 * math.pi)) * 20
+                xoff = math.sin((len(self.drip_history) - index) / (2 * math.pi)) * 20
                 self.drips_instruction.add(Rectangle(size=[12, 16], pos=[self.print_area_left + xoff, drip_pos_y], texture=self.drip_texture))
 
     def _draw_laser(self):
@@ -324,7 +336,7 @@ class PrintingUI(Screen):
     def is_safe(self, instance):
         if instance.is_safe():
             self.ids.printer_animation.axis_history = []
-            Clock.schedule_once(self.ids.printer_animation.redraw)
+            Clock.schedule_once(self.ids.printer_animation.animation_start)
             Clock.schedule_once(self._update_status, self.refresh_rate)
             self.print_options[0](*self.print_options[1], **self.print_options[2])
         else:
