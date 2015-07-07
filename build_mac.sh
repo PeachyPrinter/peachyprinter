@@ -74,3 +74,22 @@ if [ $? != 0 ]; then
     echo "FAILURE: Copying app"
     exit 233
 fi
+
+echo "------------------------------------"
+echo "Building dmg"
+echo "------------------------------------"
+
+dmg_name=PeachyPrinter-$VERSION.dmg
+background_image=src/resources/images/mac_installer.png
+backgound_width=700
+background_height=400
+app=peachyprinter-$VERSION.app
+app_pos_x=250
+app_pos_y=200
+sym_pos_x=550
+sym_pos_y=200
+icon_size=64
+
+/opt/git/create-dmg/create-dmg --volnamen$dmg_name --background $background_image --window-size $backgound_width $background_height --icon_size $icon_size --icon $app $app_pos_x $app_pos_y --app-drop-link $sym_pos_x $sym_pos_y --hide-extension $app
+
+
