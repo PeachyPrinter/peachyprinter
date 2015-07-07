@@ -63,3 +63,5 @@ Once the virtual environment is started running the software an be done via the 
  - setup_devleopment*  - These create a python virtual environment and install required dependancies (Note some may need to be installed on the system)
  - get_latest_api  - This will update a currently active virtual envirionment with the lastest version of the api code 
 
+###Contibutors
+Nicolas Rubio - Posisition icon - source: https://www.iconfinder.com/icons/311123/coordinates_gps_locate_location_map_position_icon
