@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-06 16:02-0600\n"
+"POT-Creation-Date: 2015-07-07 15:33-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -60,19 +60,23 @@ msgstr "'Itlh Settings"
 msgid "Restore Defaults"
 msgstr "Defaults SabHa'"
 
-#: src/peachyprinter.kv:52
+#: src/peachyprinter.kv:58
 msgid "Print from file"
 msgstr "print vo' teywI'"
 
-#: src/peachyprinter.kv:57
+#: src/peachyprinter.kv:65
 msgid "Print from library"
 msgstr "print vo' be'nI''a'wI', Datu'"
 
-#: src/peachyprinter.kv:86
+#: src/peachyprinter.kv:72 src/ui/print_ui.kv:111
+msgid "Settings"
+msgstr "setting"
+
+#: src/peachyprinter.kv:90
 msgid "Starting Height"
 msgstr "start 'ab"
 
-#: src/peachyprinter.kv:95 src/infrastructure/setting_mapper.py:81
+#: src/peachyprinter.kv:99 src/infrastructure/setting_mapper.py:81
 #: src/infrastructure/setting_mapper.py:98
 #: src/infrastructure/setting_mapper.py:115
 #: src/infrastructure/setting_mapper.py:133
@@ -104,7 +108,7 @@ msgstr "start 'ab"
 msgid "Cancel"
 msgstr "qIl"
 
-#: src/peachyprinter.kv:100
+#: src/peachyprinter.kv:104
 msgid "Load"
 msgstr "load"
 
@@ -920,10 +924,6 @@ msgstr "jIqapruppu': tlhe' 'uD ruch DaneHchugh"
 msgid "Turn on Laser"
 msgstr "tlhe' 'uD"
 
-#: src/ui/print_ui.kv:111
-msgid "Settings"
-msgstr "setting"
-
 #: src/ui/print_ui.kv:142
 msgid "Drip Speed"
 msgstr ""
@@ -976,7 +976,7 @@ msgstr "Print qIl"
 msgid "Restart Print"
 msgstr "Print restart"
 
-#: src/ui/print_ui.kv:388
+#: src/ui/print_ui.kv:389
 msgid "Display Settings"
 msgstr ""
 
@@ -985,11 +985,11 @@ msgid ""
 "You are about to destory all of those settings you spent forever setting up"
 msgstr "jIqapruppu': Hoch settings reH beH SoH rep destory"
 
-#: src/ui/restore_ui.kv:15
+#: src/ui/restore_ui.kv:16
 msgid "Yep, Nuke Em."
 msgstr "yep, Em Nuke"
 
-#: src/ui/restore_ui.kv:20
+#: src/ui/restore_ui.kv:21
 msgid "No, No, Abort, Stop."
 msgstr "ghobe', ghobe', Abort, mev"
 
