@@ -43,33 +43,37 @@
             size: root.size
             pos: root.pos
             orientation: 'horizontal'
+            Image:
+                source: 'resources/logo.png'
+                allow_stretch: True
+                keep_ratio: True
             BoxLayout:
                 size_hint: [0.3, 1.0]
                 orientation: 'vertical'
                 I18NImageButton:
+                    size_hint_y: None
+                    height: "100dp"
                     orientation:'vertical'
                     source: "resources/icons/main_screen_print_from_file-48x48.png"
                     text_source: _('Print from file')
                     on_release: mainui.show_load()
                 I18NImageButton:
+                    size_hint_y: None
+                    height: "100dp"
                     orientation:'vertical'
                     source: "resources/icons/main_screen_print_from_library-48x48.png"
                     text_source: _('Print from library')
                     on_release: app.root.current = 'libraryui'
-            Image:
-                source: 'resources/logo.png'
-                allow_stretch: True
-                keep_ratio: True
-        FloatLayout:
-            Button:
-                background_color: 1,1,1,0
-                size_hint: [0.06, 0.06]
-                pos: [root.size[0] - root.size[0] * 0.06, root.size[1] - root.size[1] * 0.06 ]
-                on_release: root.setting_selected()
-                Image:
-                    pos: self.parent.pos
-                    size: self.parent.size
-                    source: 'resources/icons/settings-up.png'
+                I18NImageButton:
+                    size_hint_y: None
+                    height: "100dp"
+                    orientation:'vertical'
+                    source: "resources/icons/settings-up.png"
+                    text_source: _('Settings')
+                    on_release: root.setting_selected()
+                Label:
+
+
 <LoadDialog>:
     BoxLayout:
         orientation: 'vertical'

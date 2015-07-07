@@ -414,7 +414,7 @@ class PrintingUI(Screen):
         Logger.info("Print cancel requested")
         Clock.unschedule(self._update_status)
         self.parent.current = self.return_to
-        
+
     def on_pre_leave(self):
         if self.dripper_setting:
             self.ids.dripper_grid.remove_widget(self.dripper_setting)
