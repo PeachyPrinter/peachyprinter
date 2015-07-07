@@ -10,6 +10,7 @@ echo "------------------------------------"
 rm -rf dist
 rm -rf build
 rm -rf *.app
+rm -rf *.dmg
 rm -rf venv
 rm -f src/VERSION.py
 rm -f version.properties 
@@ -69,7 +70,7 @@ echo "------------------------------------"
 echo "Moving Application"
 echo "------------------------------------"
 
-cp -R dist/peachyprinter-mac.app peachyprinter-$VERSION.app
+cp -R dist/peachyprinter-mac.app peachyprinter.app
 if [ $? != 0 ]; then
     echo "FAILURE: Copying app"
     exit 233
@@ -80,16 +81,18 @@ echo "Building dmg"
 echo "------------------------------------"
 
 dmg_name=PeachyPrinter-$VERSION.dmg
+vol_name=PeachyPrinter
 background_image=src/resources/images/mac_installer.png
+volicon=src/resources/peachy.icns
 backgound_width=700
 background_height=400
-app=peachyprinter-$VERSION.app
+app=peachyprinter.app
 app_pos_x=250
 app_pos_y=200
-sym_pos_x=550
+sym_pos_x=600
 sym_pos_y=200
 icon_size=64
 
-/opt/git/create-dmg/create-dmg --volname $dmg_name --background $background_image --window-size $backgound_width $background_height --icon-size $icon_size --icon $app $app_pos_x $app_pos_y --app-drop-link $sym_pos_x $sym_pos_y --hide-extension $app
+/opt/git/create-dmg/create-dmg --volicon $volicon --volname $vol_name --background $background_image --window-pos 200 120 --window-size $backgound_width $background_height --icon-size $icon_size --icon $app $app_pos_x $app_pos_y --app-drop-link $sym_pos_x $sym_pos_y --hide-extension $app $dmg_name peachyprinter.app
 
 
