@@ -122,7 +122,7 @@ class CalibrationPanel(SetupPanel):
         self.ids.point_selections.clear_widgets()
         self.valid = False
 
-        for point in [[-1.0, 1.0], [1.0, 1.0], [1.0, -1.0], [-1.0, -1.0]]:
+        for point in [[1.0, 1.0], [1.0, -1.0], [-1.0, 1.0], [-1.0, -1.0]]:
             c_point = CalibrationPoint(
                 caller=self,
                 active=False,
