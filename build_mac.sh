@@ -90,6 +90,6 @@ sym_pos_x=550
 sym_pos_y=200
 icon_size=64
 
-/opt/git/create-dmg/create-dmg --volnamen$dmg_name --background $background_image --window-size $backgound_width $background_height --icon_size $icon_size --icon $app $app_pos_x $app_pos_y --app-drop-link $sym_pos_x $sym_pos_y --hide-extension $app
+/opt/git/create-dmg/create-dmg --volname $dmg_name --background $background_image --window-size $backgound_width $background_height --icon_size $icon_size --icon $app $app_pos_x $app_pos_y --app-drop-link $sym_pos_x $sym_pos_y --hide-extension $app
 
 
