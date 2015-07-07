@@ -10,7 +10,6 @@ echo "------------------------------------"
 rm -rf dist
 rm -rf build
 rm -rf *.app
-rm -f *.dmg
 rm -rf venv
 rm -f src/VERSION.py
 rm -f version.properties 
@@ -74,14 +73,4 @@ cp -R dist/peachyprinter-mac.app peachyprinter-$VERSION.app
 if [ $? != 0 ]; then
     echo "FAILURE: Copying app"
     exit 233
-fi
-
-echo "------------------------------------"
-echo "Packaging Application"
-echo "------------------------------------"
-
-hdiutil create ./peachyprinter-$VERSION.dmg -srcfolder peachyprinter-$VERSION.app -ov -size 160m
-if [ $? != 0 ]; then
-    echo "FAILURE: packaging app"
-    exit 234
 fi
