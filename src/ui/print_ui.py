@@ -376,7 +376,7 @@ class PrintingUI(Screen):
             self.print_api.close()
         self.print_api = None
         self.ids.navigate_button.text_source = _('Cancel Print')
-        self.ids.navigate_button.background_color = [2.0, 1.0, 0.0, 1.0]
+        self.ids.navigate_button.background_color = [2.0, 0.0, 0.0, 1.0]
         last_print = App.get_running_app().last_print
         if last_print.print_type is "file":
             self.print_file(last_print.source, self.return_to)
@@ -408,8 +408,13 @@ class PrintingUI(Screen):
         for (title, value) in self.parent.setting_translation.get_settings().items():
             self.settings_popup.add_setting(ListElement(title=title, value=value))
         self.ids.navigate_button.text_source = _('Cancel Print')
-        self.ids.navigate_button.background_color = [2.0, 1.0, 0.0, 1.0]
+        self.ids.navigate_button.background_color = [2.0, 0.0, 0.0, 1.0]
 
+    def cancel_print(self):
+        Logger.info("Print cancel requested")
+        Clock.unschedule(self._update_status)
+        self.parent.current = self.return_to
+        
     def on_pre_leave(self):
         if self.dripper_setting:
             self.ids.dripper_grid.remove_widget(self.dripper_setting)
