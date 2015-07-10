@@ -80,7 +80,7 @@ class PrinterAnimation(RelativeLayout):
 
     laser_pos = NumericProperty(60)
     laser_speed = NumericProperty(1)
-    refresh_rate = NumericProperty(1.0 / 60.0)
+    refresh_rate = NumericProperty(1.0)
 
     def __init__(self, **kwargs):
         super(PrinterAnimation, self).__init__(**kwargs)
