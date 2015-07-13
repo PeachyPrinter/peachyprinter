@@ -242,9 +242,27 @@ function build_runner () {
   echo -e "${FGRN}Complete${RS}"
 }
 
+function build_kivy () {
+  echo "------------------------------------"
+  echo "Creating Kivy Install From Source"
+  echo "------------------------------------"
+
+  curdir=`pwd`
+  cd ..
+  git clone https://github.org/kivy/kivy
+  cd kivy
+  make force
+  kivy_dir=`pwd`/kivy
+  cd $VIRTUAL_ENV/lib/python2.7/site-packages/
+  mv kivy kivy_old
+  ln -s $kivy_dir kivy
+  cd $curdir
+}
+
 function help ()
 {
   echo "Peachy Printer Build Script"
+  echo "Recommened Usage: build_linux.sh -ijk"
   echo "-h | --help             Displayes this message and exits"
   echo "-r | --remove-venv      Removes Virtual Environment"
   echo "-n | --no_setup         Ignores enviroment setup"
@@ -253,6 +271,7 @@ function help ()
   echo "-i | --install_dep      Install the linux dependancies (sudo required)"
   echo "-s | --setup_only       Setups the enviroment only and does not package"
   echo "-j | --build_runner     Creates the rules and files required to run peachy printer(sudo required)"
+  echo "-k | --kivy_source      Builds kivy from source and symlinks the folder"
 }
 
 function failed_exit()
@@ -272,6 +291,7 @@ do
     -i | --install_dep )   dependancies ; shift ;;
     -j | --build_runner )  build_runner ; shift ;;
     -s | --setup_only )    setup_only="1" ; shift ;;
+    -k | --kivy_source )   build_kivy="1" ; shift ;;
     -- )                   shift ; break ;;
     * )                    echo "Unexpected entry: $1" ; help ; exit 1 ;;
   esac
