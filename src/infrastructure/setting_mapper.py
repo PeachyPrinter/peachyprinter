@@ -397,7 +397,7 @@ class SettingsMapper(object):
                     'desc_source': _('dripper_emulated_drips_per_second DESCRIPTION'),
                     'ok_button_text': _('Ok'),
                     'cancel_button_text': _('Cancel'),
-                    'value_range': [0, None],
+                    'value_range': [0.0, 20.0],
                 },
                 {
                     'type': 'numeric',

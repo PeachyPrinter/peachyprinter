@@ -210,7 +210,7 @@ class CircutSettings(BoxLayout):
 
 
 class EmulatedSettings(BoxLayout):
-    drips_per_second = BoundedNumericProperty(10, min=0.0001, max=None)
+    drips_per_second = BoundedNumericProperty(10, min=0.0001, max=20.0)
     drips_per_mm = BoundedNumericProperty(10, min=0.0001, max=None)
 
 
