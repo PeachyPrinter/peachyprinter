@@ -302,6 +302,8 @@ cd "$(dirname "$0")"
 ensure_no_active_venv
 clean_workspace
 enable_venv
+if [ "${build_kivy}" == "1" ]; then
+  build_kivy
 if [ "${no_setup}" != "1" ]; then
   setup_venv
 fi
