@@ -304,6 +304,7 @@ clean_workspace
 enable_venv
 if [ "${build_kivy}" == "1" ]; then
   build_kivy
+fi
 if [ "${no_setup}" != "1" ]; then
   setup_venv
 fi
