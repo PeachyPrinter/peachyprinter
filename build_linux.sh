@@ -249,7 +249,7 @@ function build_kivy_source () {
 
   curdir=`pwd`
   cd ..
-  git clone https://github.org/kivy/kivy
+  git clone http://github.org/kivy/kivy
   cd kivy
   make force
   kivy_dir=`pwd`/kivy
