@@ -127,9 +127,10 @@ class PrinterAnimation(RelativeLayout):
         self._draw_laser()
         self._draw_model()
         if not self.is_on_canvas:
-            self.canvas.insert(4,self.drips_instruction)
-            self.canvas.insert(4,self.model_instruction)
+            self.canvas.insert(4, self.drips_instruction)
+            self.canvas.insert(4, self.model_instruction)
             self.is_on_canvas = True
+
         Clock.unschedule(self.redraw)
         Clock.schedule_once(self.redraw, self.refresh_rate)
 
@@ -159,7 +160,8 @@ class PrinterAnimation(RelativeLayout):
         self.drips_instruction.add(Color(1, 1, 1, 1))
         top = time.time()
         bottom = top - self.drip_time_range
-        for (index, drip_time) in zip(range(len(self.drip_history), 0, -1), self.drip_history):
+        drips_in_history = len(self.drip_history)
+        for (index, drip_time) in zip(range(drips_in_history, 0, -1), self.drip_history):
             if drip_time > bottom:
                 time_ago = top - drip_time
                 y_pos_percent = (self.drip_time_range - time_ago) / self.drip_time_range
@@ -186,8 +188,6 @@ class PrinterAnimation(RelativeLayout):
                                  laser_x,          self.water_height + self.print_area_bottom + self.resin_height]
 
     def _draw_model(self):
-            self.model_instruction.clear()
-            self.model_instruction.add(Color(rgba=(1.0,0.0,0.0,1.0)))
             if self.axis_history:
                 model_height = self.axis_history[-1][2]
                 if model_height > (self.last_height + self.min_height) or not self.line_x:
@@ -201,14 +201,15 @@ class PrinterAnimation(RelativeLayout):
                     self.line_y.append(y2)
                     self.last_height = model_height
 
-                points = []
-                for idx in range(0, len(self.line_x)):
-                    x = int(self.print_area_left + (self.line_x[idx] * self.print_area_width))
-                    y = int(self.print_area_bottom + self.resin_height + (self.line_y[idx] * self.print_area_height)) - 2
-                    points.append(x)
-                    points.append(y)
-
-                self.model_instruction.add(Line(points=points, width=2, close=True))
+                    points = []
+                    for idx in range(0, len(self.line_x)):
+                        x = int(self.print_area_left + (self.line_x[idx] * self.print_area_width))
+                        y = int(self.print_area_bottom + self.resin_height + (self.line_y[idx] * self.print_area_height)) - 2
+                        points.append(x)
+                        points.append(y)
+                    self.model_instruction.clear()
+                    self.model_instruction.add(Color(rgba=(1.0, 0.0, 0.0, 1.0)))
+                    self.model_instruction.add(Line(points=points, width=2, close=True))
 
     def _get_pixels(self, data):
         pixel_height = data[2] / self.printer_actual_dimensions[2]
@@ -347,7 +348,6 @@ class PrintingUI(Screen):
             self.dripper_setting = DripSpeed(self.print_api.set_drips_per_second)
             self.dripper_setting.drips_per_second = self.print_api.get_drips_per_second()
             self.ids.dripper_grid.add_widget(self.dripper_setting)
-
 
     def print_generator(self, *args, **kwargs):
         self.print_options = [self._print_generator, args, kwargs]
