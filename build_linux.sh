@@ -1,6 +1,6 @@
 #!/bin/bash
 
-params=`getopt -o :hrnpcisj -l build_runner,install_dep,remove-venv,no_setup,pull,clean,help,setup_only --name "$0" -- "$@"`
+params=`getopt -o :hrnpcisjk -l build_runner,install_dep,remove-venv,no_setup,pull,clean,help,setup_only,build_kivy --name "$0" -- "$@"`
 eval set -- "$params"
 
 DEBIAN_DEP="python-pip python-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev"
@@ -242,7 +242,7 @@ function build_runner () {
   echo -e "${FGRN}Complete${RS}"
 }
 
-function build_kivy () {
+function build_kivy_source () {
   echo "------------------------------------"
   echo "Creating Kivy Install From Source"
   echo "------------------------------------"
@@ -303,9 +303,10 @@ ensure_no_active_venv
 clean_workspace
 enable_venv
 if [ "${build_kivy}" == "1" ]; then
-  build_kivy
+  build_kivy_source
 fi
 if [ "${no_setup}" != "1" ]; then
+  ./run_tests
   setup_venv
 fi
 if [ "${setup_only}" != "1" ]; then
