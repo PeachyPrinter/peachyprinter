@@ -66,10 +66,18 @@ class MainUI(Screen):
         Clock.schedule_once(self.show_disclaimer)
 
     def show_disclaimer(self, *args):
-        self._disclaimer = I18NPopup(title_source=_("Disclaimer"), content=Disclaimer(self.accept_disclaimer, self.reject_disclaimer, ), size_hint=(0.9, 0.9))
-        self._disclaimer.open()
+        accepted_disclaimer = Config.getdefault('internal', 'disclaimer', False)
+        if not accepted_disclaimer:
+            self._disclaimer = I18NPopup(
+                title_source=_("Disclaimer"),
+                content=Disclaimer(self.accept_disclaimer, self.reject_disclaimer, ),
+                size_hint=(0.9, 0.9),
+                auto_dismiss=False)
+            self._disclaimer.open()
 
     def accept_disclaimer(self):
+        Config.set('internal', 'disclaimer', True)
+        Config.write()
         self._disclaimer.dismiss()
 
     def reject_disclaimer(self):
