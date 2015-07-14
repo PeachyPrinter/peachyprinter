@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-07 15:33-0600\n"
+"POT-Creation-Date: 2015-07-14 16:09-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,24 +17,28 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/gui.py:60
+#: src/gui.py:72
+msgid "Disclaimer"
+msgstr ""
+
+#: src/gui.py:90
 msgid "Load file"
 msgstr ""
 
-#: src/gui.py:152 src/gui.py:186 src/peachyprinter.kv:35
+#: src/gui.py:186 src/gui.py:220 src/peachyprinter.kv:35
 #: src/ui/custom_widgets.kv:122 src/ui/print_ui.kv:122
 msgid "Close"
 msgstr ""
 
-#: src/gui.py:164
+#: src/gui.py:198
 msgid "Please connect your peachy printer before starting the software"
 msgstr ""
 
-#: src/gui.py:165 src/gui.py:173
+#: src/gui.py:199 src/gui.py:207 src/peachyprinter.kv:123
 msgid "Exit"
 msgstr ""
 
-#: src/gui.py:171
+#: src/gui.py:205
 msgid "An Error has Occured"
 msgstr ""
 
@@ -116,6 +120,14 @@ msgstr ""
 
 #: src/peachyprinter.kv:104
 msgid "Load"
+msgstr ""
+
+#: src/peachyprinter.kv:112
+msgid "MARKUP - Disclaimer "
+msgstr ""
+
+#: src/peachyprinter.kv:118
+msgid "Accept"
 msgstr ""
 
 #: src/infrastructure/setting_mapper.py:28
@@ -522,17 +534,17 @@ msgid "dripper_type DESCRIPTION"
 msgstr ""
 
 #: src/infrastructure/setting_mapper.py:379
-#: src/ui/dripper_calibration_ui.kv:279
+#: src/ui/dripper_calibration_ui.kv:281
 msgid "Emulated"
 msgstr ""
 
 #: src/infrastructure/setting_mapper.py:379
-#: src/ui/dripper_calibration_ui.kv:279
+#: src/ui/dripper_calibration_ui.kv:281
 msgid "Photo"
 msgstr ""
 
 #: src/infrastructure/setting_mapper.py:379
-#: src/ui/dripper_calibration_ui.kv:279
+#: src/ui/dripper_calibration_ui.kv:281
 msgid "Circut"
 msgstr ""
 
@@ -589,14 +601,14 @@ msgid "Patterns"
 msgstr ""
 
 #: src/ui/calibrate_ui.kv:46 src/ui/cure_test_ui.kv:295
-#: src/ui/dripper_calibration_ui.kv:310 src/ui/library_ui.kv:73
+#: src/ui/dripper_calibration_ui.kv:312 src/ui/library_ui.kv:73
 msgid "Back"
 msgstr ""
 
 #: src/ui/calibrate_ui.kv:56 src/ui/calibrate_ui.kv:107
 #: src/ui/calibrate_ui.kv:273 src/ui/calibrate_ui.kv:319
 #: src/ui/calibrate_ui.kv:401 src/ui/calibrate_ui.kv:472
-#: src/ui/cure_test_ui.kv:287 src/ui/dripper_calibration_ui.kv:285
+#: src/ui/cure_test_ui.kv:287 src/ui/dripper_calibration_ui.kv:287
 msgid "Help me"
 msgstr ""
 
@@ -812,31 +824,31 @@ msgstr ""
 msgid "Drips per second"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:205
+#: src/ui/dripper_calibration_ui.kv:207
 msgid "[b]Emulated Dripper Setup[/b]"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:219
+#: src/ui/dripper_calibration_ui.kv:221
 msgid "[b]Photo Settings[/b]"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:228
+#: src/ui/dripper_calibration_ui.kv:230
 msgid "Delay After Layer"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:240
+#: src/ui/dripper_calibration_ui.kv:242
 msgid "[b]Photo Dripper Setup[/b]"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:274
+#: src/ui/dripper_calibration_ui.kv:276
 msgid "Dripper Type"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:286
+#: src/ui/dripper_calibration_ui.kv:288
 msgid "MARKUP - Dripper Instructions"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:286
+#: src/ui/dripper_calibration_ui.kv:288
 msgid "Help - Dripper Settings"
 msgstr ""
 
@@ -856,7 +868,7 @@ msgstr ""
 msgid "Done"
 msgstr ""
 
-#: src/ui/peachy_widgets.kv:26 src/ui/print_ui.py:319
+#: src/ui/peachy_widgets.kv:26 src/ui/print_ui.py:320
 msgid "Laser Safety Notice"
 msgstr ""
 
@@ -983,18 +995,18 @@ msgstr ""
 msgid "No Peachy Printer Detected"
 msgstr ""
 
-#: src/ui/custom_widgets.py:70
+#: src/ui/custom_widgets.py:77
 msgid "Bad Stuff Happened"
 msgstr ""
 
-#: src/ui/custom_widgets.py:74
+#: src/ui/custom_widgets.py:81
 msgid "No Title"
 msgstr ""
 
-#: src/ui/print_ui.py:307
+#: src/ui/print_ui.py:308
 msgid "Print Complete"
 msgstr ""
 
-#: src/ui/print_ui.py:312
+#: src/ui/print_ui.py:313
 msgid "Print Failed"
 msgstr ""
