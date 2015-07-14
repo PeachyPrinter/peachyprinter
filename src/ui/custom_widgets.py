@@ -1,4 +1,6 @@
 from kivy.uix.gridlayout import GridLayout
+from kivy.uix.relativelayout import RelativeLayout
+from kivy.uix.bubble import Bubble
 from kivy.uix.label import Label
 from kivy.graphics import Line, Color
 from kivy.logger import Logger
@@ -14,6 +16,7 @@ from kivy.factory import Factory
 from kivy.properties import ListProperty, ObjectProperty, BooleanProperty, NumericProperty, StringProperty, BoundedNumericProperty, OptionProperty
 from kivy.uix.dropdown import DropDown
 from kivy.lang import Builder
+from kivy.core.window import Window
 import re
 
 from infrastructure.langtools import _
@@ -21,10 +24,12 @@ from infrastructure.langtools import _
 
 Builder.load_file('ui/custom_widgets.kv')
 
+
 class I18NImageTabbedPanelHeader(TabbedPanelHeader):
     text_source = StringProperty()
     source = StringProperty()
     orientation = StringProperty('horizontal')
+
 
 class I18NLabel(Label):
     text_source = StringProperty('')
@@ -43,6 +48,7 @@ class I18NImageToggleButton(ToggleButton):
     source = StringProperty()
     key = StringProperty()
 
+
 class I18NPopup(Popup):
     title_source = StringProperty('')
 
@@ -60,6 +66,7 @@ class I18NImageButton(Button):
     source = StringProperty()
     orientation = OptionProperty('horizontal', options=('horizontal', 'vertical'))
     key = StringProperty()
+
 
 class ErrorPopup(I18NPopup):
     text = StringProperty()
@@ -147,6 +154,7 @@ class BorderedLabel(I18NLabel):
                 self.left_border.points =   [self.pos[0]               , self.pos[1],                       self.pos[0]               , self.pos[1] + self.size[1]]
 
 
+'''Depricated use Numeric Input'''
 class FloatInput(TextInput):
     valid_characters = re.compile('[^0-9]')
 
@@ -161,6 +169,58 @@ class FloatInput(TextInput):
         else:
             string_value = '.'.join([re.sub(self.valid_characters, '', string_value) for string_value in substring.split('.', 1)])
         return super(FloatInput, self).insert_text(string_value, from_undo=from_undo)
+
+
+class NumericInput(TextInput):
+    value = BoundedNumericProperty(None)
+    min = NumericProperty()
+    max = NumericProperty()
+
+    def __init__(self, **kwargs):
+        self.last_text = None
+
+        super(NumericInput, self).__init__(**kwargs)
+
+        if hasattr(kwargs, 'multiline') and kwargs['multiline']:
+            raise Exception('Multiline numeric input unsupported')
+        else:
+            kwargs['multiline'] = False
+
+    def on_min(self, instance, value):
+        self.property('value').set_min(self, value)
+
+    def on_max(self, instance, value):
+        self.property('value').set_max(self, value)
+
+    def on_value(self, instance, value):
+        self.text = str(value)
+
+    def on_text(self, instance, text):
+        if self._validate(text):
+            try:
+                self.value = self._convert_type(text)
+                self.last_text = self.text
+            except:
+                self.text = self.last_text
+        else:
+            self.text = self.last_text
+
+    def _validate(self, text):
+        number = self._convert_type(text)
+        if number is None:
+            return False
+        return True
+
+    def _convert_type(self, text):
+        is_float = '.' in str(self.value)
+        try:
+            if is_float:
+                number = float(text)
+            else:
+                number = int(text)
+        except ValueError:
+            return None
+        return number
 
 
 class CommunicativeTabbedPanel(TabbedPanel):
@@ -246,6 +306,7 @@ class I18NImageSpinner(I18NImageButton):
         else:
             if self._dropdown.attach_to:
                 self._dropdown.dismiss()
+
 
 class HorizontalLabelSlider(BoxLayout):
     title = StringProperty()

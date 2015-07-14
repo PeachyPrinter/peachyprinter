@@ -1,6 +1,6 @@
 #:kivy 1.9.0
 #:import _ __main__._
-#:import FloatInput ui.custom_widgets.FloatInput
+#:import NumericInput ui.custom_widgets.NumericInput
 
 <CircutSetup>:
     orientation: 'vertical'
@@ -138,11 +138,11 @@
         halign: 'left'
         valign: 'middle'
         text_source:_("Drips per mm")
-    FloatInput:
+    NumericInput:
         size_hint_y:None
         height: "30dp"
-        text: str(root.drips_per_mm)
-        on_text: root.drips_per_mm = float(self.text)
+        value: root.drips_per_mm
+        on_value: root.drips_per_mm = float(self.value)
     Label:
         size_hint_y:None
         height: "5dp"
@@ -179,9 +179,9 @@
             halign: 'left'
             valign: 'middle'
             text_source:_("Drips per mm")
-        FloatInput:
-            text: str(root.drips_per_mm)
-            on_text: root.drips_per_mm = float(self.text)
+        NumericInput:
+            value: root.drips_per_mm
+            on_value: root.drips_per_mm = float(self.value)
     BoxLayout:
         orientation: 'horizontal'
         size_hint_y:None
@@ -191,9 +191,11 @@
             halign: 'left'
             valign: 'middle'
             text_source:_("Drips per second")
-        FloatInput:
-            text: str(root.drips_per_second)
-            on_text: root.drips_per_second = float(self.text)
+        NumericInput:
+            min: 0.0
+            max: 20.0
+            value: root.drips_per_second
+            on_value: root.drips_per_second = float(self.value)
     BoxLayout:
 
 <EmulatedVisuals>:
@@ -226,9 +228,9 @@
             halign: 'left'
             valign: 'middle'
             text_source:_("Delay After Layer")
-        FloatInput:
-            text: str(root.photo_zaxis_delay)
-            on_text: root.photo_zaxis_delay = float(self.text)
+        NumericInput:
+            value: root.photo_zaxis_delay
+            on_value: root.photo_zaxis_delay = float(self.value)
     BoxLayout:
 
 <PhotoVisuals>:

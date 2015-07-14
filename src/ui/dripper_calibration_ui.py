@@ -204,18 +204,17 @@ class DripperAnimation(RelativeLayout):
                 self.drips_instruction.add(Rectangle(size=[12, 16], pos=[self.dripper_left, drip_pos_y], texture= self.drip_texture))
 
 
-
 class CircutSettings(BoxLayout):
     drips_per_mm = BoundedNumericProperty(10, min=0.0, max=None)
 
 
 class EmulatedSettings(BoxLayout):
-    drips_per_second = BoundedNumericProperty(10, min=0.0001, max=20.0)
-    drips_per_mm = BoundedNumericProperty(10, min=0.0001, max=None)
+    drips_per_second = BoundedNumericProperty(10.0, min=0.0001, max=20.0)
+    drips_per_mm = BoundedNumericProperty(10.0, min=0.0001, max=None)
 
 
 class PhotoSettings(BoxLayout):
-    photo_zaxis_delay = BoundedNumericProperty(10, min=0.0001, max=None)
+    photo_zaxis_delay = BoundedNumericProperty(10.0, min=0.0001, max=None)
 
 
 class EmulatedVisuals(BoxLayout):
