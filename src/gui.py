@@ -6,6 +6,8 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.boxlayout import BoxLayout
 from kivy.config import Config
 from kivy.resources import resource_add_path
+from kivy.core.window import Window
+
 from infrastructure.setting_mapper import SettingsMapper
 from infrastructure.langtools import _
 
@@ -122,6 +124,8 @@ class PeachyPrinter(App):
         if lang not in self.supported_languages:
             lang = 'en_GB'
         super(PeachyPrinter, self).__init__(**kwargs)
+        Window.minimum_width = "780dp"
+        Window.minimum_height = "540dp"
         self.lang = lang
         Config.set("input", "mouse", "mouse,disable_multitouch")
         Config.set("kivy", "exit_on_escape", 0)
