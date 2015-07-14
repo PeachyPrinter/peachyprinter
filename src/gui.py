@@ -4,9 +4,11 @@ from kivy.uix.settings import SettingsWithSidebar
 from kivy.properties import StringProperty, ObjectProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.scrollview import ScrollView
 from kivy.config import Config
 from kivy.resources import resource_add_path
 from kivy.core.window import Window
+from kivy.clock import Clock
 
 from infrastructure.setting_mapper import SettingsMapper
 from infrastructure.langtools import _
@@ -47,6 +49,13 @@ class LastPrint(object):
         Logger.info("Last print was from: %s with %s" % (self.print_type, str(self.source)))
 
 
+class Disclaimer(BoxLayout):
+    def __init__(self, accept, reject, **kwargs):
+        self.accept = accept
+        self.reject = reject
+        super(Disclaimer, self).__init__(**kwargs)
+
+
 class MainUI(Screen):
     setting = ObjectProperty()
     last_directory = StringProperty('~')
@@ -54,6 +63,17 @@ class MainUI(Screen):
     def __init__(self, **kwargs):
         super(MainUI, self).__init__(**kwargs)
         self.settings = SettingsSelector()
+        Clock.schedule_once(self.show_disclaimer)
+
+    def show_disclaimer(self, *args):
+        self._disclaimer = I18NPopup(title_source=_("Disclaimer"), content=Disclaimer(self.accept_disclaimer, self.reject_disclaimer, ), size_hint=(0.9, 0.9))
+        self._disclaimer.open()
+
+    def accept_disclaimer(self):
+        self._disclaimer.dismiss()
+
+    def reject_disclaimer(self):
+        exit()
 
     def show_load(self):
         Config.adddefaultsection('internal')
@@ -76,6 +96,8 @@ class MainUI(Screen):
 
     def setting_selected(self):
         self.settings.open()
+
+
 
 
 class MyScreenManager(ScreenManager):

@@ -104,3 +104,23 @@
                 text_source: _('Load')
                 on_release: root.load(filechooser.path, filechooser.selection, float(starting_height.text))
 
+<Disclaimer>:
+    orientation: 'vertical'
+    ScrollView:
+        padding: '20dp'
+        I18NLabel:
+            text_source: _("MARKUP - Disclaimer ")
+            markup: True
+            size_hint_y: None
+            height: self.texture_size[1]
+            text_size: [self.width, None]
+    I18NButton:
+        text_source: _("Accept")
+        size_hint_y: None
+        height: app.button_height
+        on_release: root.accept()
+    I18NButton:
+        text_source: _("Exit")
+        size_hint_y: None
+        height: app.button_height
+        on_release: root.reject()
