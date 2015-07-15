@@ -84,7 +84,6 @@ class MainUI(Screen):
         exit()
 
     def show_load(self):
-        Config.adddefaultsection('internal')
         self.last_directory = Config.getdefault('internal', 'last_directory', self.last_directory)
         content = LoadDialog(load=self.load, cancel=self.dismiss_popup, last_directory=self.last_directory)
         self._popup = I18NPopup(title_source=_("Load file"), content=content, size_hint=(0.9, 0.9))
@@ -159,6 +158,7 @@ class PeachyPrinter(App):
         self.lang = lang
         Config.set("input", "mouse", "mouse,disable_multitouch")
         Config.set("kivy", "exit_on_escape", 0)
+        Config.adddefaultsection('internal')
         self.switch_lang(self.lang)
         self.manager = None
 
