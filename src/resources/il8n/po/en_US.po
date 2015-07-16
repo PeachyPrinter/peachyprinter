@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-14 16:09-0600\n"
+"POT-Creation-Date: 2015-07-16 15:30-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -15,7 +15,7 @@ msgstr ""
 msgid "Disclaimer"
 msgstr ""
 
-#: src/gui.py:90
+#: src/gui.py:89
 msgid "Load file"
 msgstr ""
 
