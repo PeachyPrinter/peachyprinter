@@ -152,9 +152,10 @@ class PeachyPrinter(App):
         Logger.info("Specifed Language Locale: %s" % lang)
         if lang not in self.supported_languages:
             lang = 'en_GB'
+        Window.size = (1000, 700)
+        Window.minimum_width = 1000
+        Window.minimum_height = 700
         super(PeachyPrinter, self).__init__(**kwargs)
-        Window.minimum_width = "780dp"
-        Window.minimum_height = "540dp"
         self.lang = lang
         Config.set("input", "mouse", "mouse,disable_multitouch")
         Config.set("kivy", "exit_on_escape", 0)
