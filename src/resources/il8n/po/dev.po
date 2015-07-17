@@ -65,7 +65,7 @@ msgid "Restore Defaults"
 msgstr ""
 
 #: src/peachyprinter.kv:58
-msgid "Print from file"
+msgid "Print from gcode"
 msgstr "#!00007!#"
 
 #: src/peachyprinter.kv:65
