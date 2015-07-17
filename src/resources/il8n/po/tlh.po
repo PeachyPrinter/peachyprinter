@@ -65,7 +65,7 @@ msgid "Restore Defaults"
 msgstr "Defaults SabHa'"
 
 #: src/peachyprinter.kv:58
-msgid "Print from file"
+msgid "Print from gcode"
 msgstr "print vo' teywI'"
 
 #: src/peachyprinter.kv:65
