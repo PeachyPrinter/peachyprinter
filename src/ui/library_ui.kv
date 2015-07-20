@@ -52,14 +52,16 @@
                         id: speed
                         text: root.speed
             BoxLayout:
-                size_hint_y: None
-                height: app.button_height
                 orientation: 'horizontal'
                 I18NImageButton:
+                    size_hint_y: None
+                    height: app.button_height
                     source: "resources/icons/library_cancel-24x24.png"
                     text_source: _("Cancel")
                     on_release: root.dismiss()
                 I18NImageButton:
+                    size_hint_y: None
+                    height: app.button_height
                     source: "resources/icons/library_print_now-24x24.png"
                     text_source: _("Print Now")
                     on_release: root.dismiss(); root.print_from_library()
