@@ -79,28 +79,27 @@
 <I18NImageButton>:
     on_press: image.color = [1.0,1.0,1.0,0.5]
     on_release: image.color = [1.0,1.0,1.0,1.0]
-    text_height: "30dp"
     atext: app.translation(root.text_source)
-    padding: ["5dp","5dp"]
-    BoxLayout:
-        pos: self.parent.pos
-        size: self.parent.size
-        orientation: root.orientation
-        BoxLayout:
-            padding: ["5dp"]
+    GridLayout:
+        padding: [0, "5dp", 0, "5dp"] if root.orientation == 'vertical' else ["5dp", 0, "5dp", 0]
+        size_hint: [None, None]
+        size: root.size
+        pos: root.pos
+        cols: 2 if root.orientation == 'horizontal' else 1
+        col_default_width: root.width if root.orientation == 'vertical' else 0
+        rows: 2 if root.orientation == 'vertical' else 1
+        row_default_height: root.height if root.orientation == 'horizontal' else 0
+        Image:
+            id: image
+            allow_stretch: True
+            keep_ratio: True
+            source: root.source
             size_hint: [None, None]
-            width: (min(self.parent.height, self.parent.width - label_text.texture_size[0]) if root.orientation == 'horizontal' else self.parent.width)
-            height: (min(self.parent.width, self.parent.height - label_text.height) if root.orientation == 'vertical' else self.parent.height)
-            Image:
-                id: image
-                allow_stretch: True
-                keep_ratio: True
-                source: root.source
+            height: str(self.texture_size[1]) + "dp"
+            width: str(self.texture_size[0]) + "dp" 
         Label:
             id: label_text
             text: root.atext
-            size_hint_y: self.size_hint_y if root.orientation == 'horizontal' else None
-            height: root.text_height
 
 <ErrorPopup>:
     BoxLayout:

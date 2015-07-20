@@ -129,6 +129,7 @@ class MyScreenManager(ScreenManager):
 
 
 class PeachyPrinter(App):
+    large_button_height = StringProperty("52dp")
     button_height = StringProperty("30dp")
     label_height = StringProperty("24dp")
     refresh_rate = NumericProperty(1.0 / 30.0)
