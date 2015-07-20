@@ -17,7 +17,7 @@
         I18NButton:
             text_source: _('Done')
             size_hint_y:None
-            height: "30dp"
+            height: app.button_height
             on_release: root.dismiss()
 
 <TouchyLabel>:
@@ -40,11 +40,11 @@
                 source: "resources/icons/laser_safety_turn_on_laser-24x24.png"
                 text_source: _('Turn on Laser')
                 size_hint_y:None
-                height: "30dp"
+                height: app.button_height
                 on_release: root.accepted = "True"; root.dismiss()
             I18NImageButton:
                 source: "resources/icons/laser_safety_cancel-24x24.png"
                 text_source: _('Cancel')
                 size_hint_y:None
-                height: "30dp"
+                height: app.button_height
                 on_release: root.accepted = "False"; root.dismiss()

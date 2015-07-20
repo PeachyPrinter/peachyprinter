@@ -45,7 +45,7 @@
             source: "resources/icons/general_back-24x24.png"
             text_source: _("Back")
             size_hint_y: None
-            height: "30dp"
+            height: app.button_height
             on_release: app.root.current = 'mainui'
 
 <CenterPanel>:
@@ -56,7 +56,7 @@
         text_source: _("Help me")
         on_release: I18NHelpPopup(text_source=_('MARKUP - Center Calibration Instructions'), title_source=_("Help - Calibration Setup"), size_hint=(0.9, 0.9)).open()
         size_hint_y:None
-        height: "30dp"
+        height: app.button_height
     Image:
         pos: self.parent.pos
         size: self.parent.size
@@ -79,7 +79,7 @@
             orientation: 'vertical'
             BoxLayout:
                 size_hint_y: None
-                height: "30dp"
+                height: app.label_height
                 orientation: 'horizontal'
                 Label:
                     text: "Flipped on X:"
@@ -87,7 +87,7 @@
                     text: root.orient_xflip
             BoxLayout:
                 size_hint_y: None
-                height: "30dp"
+                height: app.label_height
                 orientation: 'horizontal'
                 Label:
                     text: "Flipped on y:"
@@ -95,7 +95,7 @@
                     text: root.orient_yflip
             BoxLayout:
                 size_hint_y: None
-                height: "30dp"
+                height: app.label_height
                 orientation: 'horizontal'
                 Label:
                     text: 'Swapped Axis:'
@@ -107,7 +107,7 @@
             text_source: _("Help me")
             on_release: I18NHelpPopup(text_source=_('MARKUP - Orientation Instructions'), title_source=_("Help - Orientation"), size_hint=(0.9, 0.9)).open()
             size_hint_y:None
-            height: "30dp"
+            height: app.button_height
     GridLayout:
         id: orientations
         cols:4
@@ -289,12 +289,12 @@
         text_source: _("Help me")
         on_release: I18NHelpPopup(text_source=_('MARKUP - Print Area Instructions'), title_source=_("Help - Print Area"), size_hint=(0.9, 0.9)).open()
         size_hint_y:None
-        height: "30dp"
+        height: app.button_height
     BoxLayout:
         orientation: 'vertical'
         BoxLayout:
             size_hint_y: None
-            height: "30dp"
+            height: app.label_height
             orientation: 'horizontal'
             I18NLabel:
                 text_source: _('Height (mm)')
@@ -305,7 +305,7 @@
             Label:
         BoxLayout:
             size_hint_y: None
-            height: "30dp"
+            height: app.label_height
             orientation: 'horizontal'
             I18NLabel:
                 text_source: _('Depth (mm)')
@@ -316,7 +316,7 @@
             Label:
         BoxLayout:
             size_hint_y: None
-            height: "30dp"
+            height: app.label_height
             orientation: 'horizontal'
             I18NLabel:
                 text_source: _('Width (mm)')
@@ -335,7 +335,7 @@
         text_source: _("Help me")
         on_release: I18NHelpPopup(text_source=_('MARKUP - Alignment Instructions'), title_source=_("Help - Alignment"), size_hint=(0.9, 0.9)).open()
         size_hint_y:None
-        height: "30dp"
+        height: app.button_height
     Image:
         pos: self.parent.pos
         size: self.parent.size
@@ -417,7 +417,7 @@
             text_source: _("Help me")
             on_release: I18NHelpPopup(text_source=_('MARKUP - Calibration Instructions'), title_source=_("Help - Calibration"), size_hint=(0.9, 0.9)).open()
             size_hint_y:None
-            height: "30dp"
+            height: app.button_height
     Image:
         id: top_calibration_grid
         pos: self.parent.pos
@@ -452,11 +452,11 @@
                     on_is_on: speed_slider.max = 100000
                     text_source: _("Speed")
                     size_hint_y: None
-                    height: "30dp"
+                    height: app.label_height
                 Label:
                     text: '%.f (mm/sec)' % root.speed
                     size_hint_y: None
-                    height: "30dp"
+                    height: app.label_height
                 Slider:
                     orientation: 'vertical'
                     id: speed_slider
@@ -470,11 +470,11 @@
                 I18NLabel:
                     text_source: _("Height")
                     size_hint_y: None
-                    height: "30dp"
+                    height: app.label_height
                 Label:
                     text: '%.2f (mm)' % root.current_height
                     size_hint_y: None
-                    height: "30dp"
+                    height: app.label_height
                 Slider:
                     orientation: 'vertical'
                     id: current_height_slider
@@ -488,7 +488,7 @@
             text_source: _("Help me")
             on_release: I18NHelpPopup(text_source=_('MARKUP - Test Pattern Instructions'), title_source=_("Help - Test Patterns"), size_hint=(0.9, 0.9)).open()
             size_hint_y:None
-            height: "30dp"
+            height: app.button_height
     GridLayout:
         id: patterns
         cols: 2

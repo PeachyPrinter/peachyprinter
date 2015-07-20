@@ -8,15 +8,16 @@
         I18NLabel:
             text_source: _("You are about to destory all of those settings you spent forever setting up")
         BoxLayout:
-            size_hint_y: 0.3
+            size_hint_y: None
+            height: dp(150)
             orientation: "horizontal"
             I18NImageButton:
                 orientation: 'vertical'
-                source: "resources/icons/restore_defaults_proceed-48x48.png"
+                source: "resources/icons/restore_defaults_proceed-100x100.png"
                 text_source: _("Yep, Nuke Em.")
                 on_release: root.restore_defaults(); app.root.current = 'mainui'
             I18NImageButton:
                 orientation: 'vertical'
-                source: "resources/icons/restore_defaults_abort_cancel-48x48.png"
+                source: "resources/icons/restore_defaults_abort_cancel-100x100.png"
                 text_source: _("No, No, Abort, Stop.")
                 on_release: app.root.current = 'mainui'

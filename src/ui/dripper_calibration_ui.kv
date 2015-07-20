@@ -7,7 +7,7 @@
     I18NLabel:
         markup: True
         size_hint_y:None
-        height: "30dp"
+        height: app.label_height
         text_source:_("[b]Dripper Test Setup[/b]")
     BoxLayout:
         orientation: 'vertical'
@@ -70,7 +70,7 @@
         text: "{:.2f}mm".format(root.test_height)
         pos: [root.cup_right + 5, root.cup_dest_water_level]
         size_hint: [None, None]
-        height: "30dp"
+        height: app.label_height
         width: root.cup_width
 
 <CircutVisuals>:
@@ -78,12 +78,12 @@
     padding: "3dp"
     I18NButton:
         size_hint_y:None
-        height: "30dp"
+        height: app.button_height
         text_source: _("Reset Drip Count")
         on_release: root.reset = not root.reset
     I18NLabel:
         size_hint_y:None
-        height: "30dp"
+        height: app.label_height
         text_source:_("[b]Circut Setup[/b]")
         markup: True
     DripperAnimation:
@@ -91,7 +91,7 @@
     BoxLayout:
         orientation: 'horizontal'
         size_hint_y:None
-        height: "30dp"
+        height: app.label_height
         I18NLabel:
             halign: 'left'
             valign: 'middle'
@@ -105,7 +105,7 @@
     BoxLayout:
         orientation: 'horizontal'
         size_hint_y:None
-        height: "30dp"
+        height: app.label_height
         I18NLabel:
             halign: 'left'
             valign: 'middle'
@@ -131,18 +131,18 @@
     I18NLabel:
         markup: True
         size_hint_y:None
-        height: "30dp"
+        height: app.label_height
         text_source:_("[b]Circut Settings[/b]")
     I18NLabel:
         size_hint_y:None
-        height: "30dp"
+        height: app.label_height
         text_size: self.size
         halign: 'left'
         valign: 'middle'
         text_source:_("Drips per mm")
     NumericInput:
         size_hint_y:None
-        height: "30dp"
+        height: app.input_height
         value: root.drips_per_mm
         on_value: root.drips_per_mm = float(self.value)
     Label:
@@ -150,7 +150,7 @@
         height: "5dp"
     I18NLabel:
         size_hint_y:None
-        height: "30dp"
+        height: app.label_height
         text_size: self.size
         halign: 'left'
         valign: 'middle'
@@ -160,7 +160,7 @@
         halign: 'right'
         valign: 'middle'
         size_hint_y:None
-        height: "30dp"
+        height: app.label_height
         text: "{:.2f}".format((1.0 / root.drips_per_mm) * 1000.0)
     Label:
 
@@ -170,12 +170,12 @@
     I18NLabel:
         markup: True
         size_hint_y:None
-        height: "30dp"
+        height: app.label_height
         text_source:_("[b]Emulated Settings[/b]")
     BoxLayout:
         orientation: 'horizontal'
         size_hint_y:None
-        height: "30dp"
+        height: app.input_height
         I18NLabel:
             text_size: self.size
             halign: 'left'
@@ -187,7 +187,7 @@
     BoxLayout:
         orientation: 'horizontal'
         size_hint_y:None
-        height: "30dp"
+        height: app.input_height
         I18NLabel:
             text_size: self.size
             halign: 'left'
@@ -205,7 +205,7 @@
     padding: "3dp"
     I18NLabel:
         size_hint_y:None
-        height: "30dp"
+        height: app.label_height
         text_source:_("[b]Emulated Dripper Setup[/b]")
         markup: True
     Label:
@@ -219,12 +219,12 @@
     I18NLabel:
         markup: True
         size_hint_y:None
-        height: "30dp"
+        height: app.label_height
         text_source:_("[b]Photo Settings[/b]")
     BoxLayout:
         orientation: 'horizontal'
         size_hint_y:None
-        height: "30dp"
+        height: app.input_height
         I18NLabel:
             text_size: self.size
             halign: 'left'
@@ -240,7 +240,7 @@
     padding: "3dp"
     I18NLabel:
         size_hint_y:None
-        height: "30dp"
+        height: app.label_height
         text_source:_("[b]Photo Dripper Setup[/b]")
         markup: True
     Label:
@@ -271,7 +271,7 @@
                         size: self.size
                 I18NLabel:
                     size_hint_y:None
-                    height: "30dp"
+                    height: app.label_height
                     text_size: self.size
                     halign: 'left'
                     valign: 'middle'
@@ -289,7 +289,7 @@
                     text_source: _("Help me")
                     on_release: I18NHelpPopup(text_source=_('MARKUP - Dripper Instructions'), title_source=_("Help - Dripper Settings"), size_hint=(0.9, 0.9)).open()
                     size_hint_y:None
-                    height: "30dp"
+                    height: app.button_height
             BoxLayout:
                 id: visuals_box_id
                 orientation: 'vertical'
@@ -313,5 +313,5 @@
             source: "resources/icons/general_back-24x24.png"
             text_source: _("Back")
             size_hint_y: None
-            height: "30dp"
+            height: app.button_height
             on_release: app.root.current = 'mainui'
