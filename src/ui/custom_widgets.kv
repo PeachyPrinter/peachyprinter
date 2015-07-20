@@ -4,27 +4,23 @@
 <I18NImageTabbedPanelHeader>:
     on_press: image.color = [1.0,1.0,1.0,0.5]
     on_release: image.color = [1.0,1.0,1.0,1.0]
-    text_height: "30dp"
-    BoxLayout:
+    GridLayout:
+        size_hint: [None, None]
+        padding: ["5dp",0,"5dp",0]
+        height: "34dp"
+        width:root.width
         pos: root.pos
-        size: root.size
-        orientation: root.orientation
-        Label:
-            size_hint_x:None
-            width: "5dp"
+        cols: 2
         Image:
             id: image
             allow_stretch: True
             keep_ratio: True
-            size_hint_y: self.size_hint_y if root.orientation == 'horizontal' else None
-            size_hint_x: self.size_hint_x if root.orientation == 'vertical' else None
-            width:self.texture_size[0]
-            height:self.texture_size[1]
+            size_hint: [None, None]
+            height: str(self.texture_size[1]) + "dp"
+            width: str(self.texture_size[0]) + "dp"
             source: root.source
         Label:
             text: app.translation(root.text_source)
-            size_hint_y: self.size_hint_y if root.orientation == 'horizontal' else None
-            height: root.text_height
 
 <I18NImageSpinnerOption>:
     size_hint_y: None
