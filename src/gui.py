@@ -9,6 +9,7 @@ from kivy.config import Config
 from kivy.resources import resource_add_path
 from kivy.core.window import Window
 from kivy.clock import Clock
+from kivy.metrics import dp
 
 from infrastructure.setting_mapper import SettingsMapper
 from infrastructure.langtools import _
@@ -129,9 +130,9 @@ class MyScreenManager(ScreenManager):
 
 
 class PeachyPrinter(App):
-    large_button_height = StringProperty("52dp")
-    button_height = StringProperty("30dp")
-    label_height = StringProperty("24dp")
+    large_button_height = NumericProperty(dp(52))
+    button_height = NumericProperty(dp(30))
+    label_height = NumericProperty(dp(24))
     refresh_rate = NumericProperty(1.0 / 30.0)
     use_kivy_settings = False
     lang = StringProperty('en_GB')
