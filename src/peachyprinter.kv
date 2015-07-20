@@ -99,6 +99,7 @@
 <LoadDialog>:
     BoxLayout:
         orientation: 'vertical'
+        spacing: dp(5)
         BoxLayout:
             orientation: "vertical"
             FileChooserListView:
@@ -107,7 +108,7 @@
                 path: root.last_directory
         BoxLayout:
             size_hint_y: None
-            height: "30dp"
+            height: app.input_height
             I18NLabel:
                 text_source: _('Starting Height')
             FloatInput:
@@ -117,11 +118,15 @@
             size_hint_y: None
             height: app.button_height
             I18NImageButton:
+                size_hint_y: None
+                height: app.button_height
                 source: "resources/icons/main_screen-load_file_cancel-24x24.png"
                 text_source: _('Cancel')
                 on_release: root.cancel()
 
             I18NImageButton:
+                size_hint_y: None
+                height: app.button_height
                 source: "resources/icons/main_screen-load_file_load-24x24.png"
                 text_source: _('Load')
                 on_release: root.load(filechooser.path, filechooser.selection, float(starting_height.text))
