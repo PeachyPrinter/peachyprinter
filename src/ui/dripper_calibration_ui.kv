@@ -27,14 +27,16 @@
     cup_bottom: 10.0
     cup_height: self.cup_top - self.cup_bottom
     cup_water_level: self.cup_height / 4.0
-    cup_left: 10.0
+    cup_left: dp(10.0)
     cup_right: self.cup_left + self.cup_width
     cup_dest_water_level: (self.cup_height - self.cup_water_level + self.cup_bottom) * (self.test_height / 1000.0)
-    dripper_left: self.cup_left + 20
-    dripper_right: self.dripper_left + 24
-    dripper_top: self.height - 10
-    dripper_bottom: self.height - 100
-    drips_height: self.dripper_top - self.cup_water_level - 24
+    dripper_left: self.cup_left + dp(20)
+    dripper_width: dp(24)
+    dripper_right: self.dripper_left + self.dripper_width
+    dripper_top: self.height - dp(10)
+    dripper_bottom: self.height - dp(100)
+    drips_height: self.dripper_top - self.cup_water_level - dp(24)
+    drip_pos_x: self.dripper_left + (self.dripper_width - dp(12))/ 2
     canvas.before:
         Color:
             rgba: 0.0, 0.4, 1.0, 0.8
@@ -55,7 +57,7 @@
                 self.cup_right, self.cup_bottom,
                 self.cup_right, self.cup_top
                 ]
-            width: 4
+            width: dp(4)
         Line:
             points: 
                 [self.dripper_left, self.dripper_bottom,
@@ -63,7 +65,7 @@
                 self.dripper_right, self.dripper_top,
                 self.dripper_right, self.dripper_bottom
                 ]
-            width: 2
+            width: dp(2)
     Label:
         text: "{:.2f}mm".format(root.test_height)
         pos: [root.cup_right + 5, root.cup_dest_water_level]

@@ -7,6 +7,7 @@ from kivy.uix.label import Label
 from kivy.core.image import Image as CoreImage
 from kivy.graphics import *
 from kivy.clock import Clock
+from kivy.metrics import dp
 
 from kivy.app import App
 from kivy.logger import Logger
@@ -201,7 +202,7 @@ class DripperAnimation(RelativeLayout):
                 time_ago = top - drip_time
                 y_pos_percent = (self.drip_time_range - time_ago) / self.drip_time_range
                 drip_pos_y = self.drips_height * y_pos_percent + self.cup_water_level
-                self.drips_instruction.add(Rectangle(size=[12, 16], pos=[self.dripper_left, drip_pos_y], texture= self.drip_texture))
+                self.drips_instruction.add(Rectangle(size=[dp(12), dp(16)], pos=[self.drip_pos_x, drip_pos_y], texture=self.drip_texture))
 
 
 class CircutSettings(BoxLayout):
