@@ -16,7 +16,8 @@
             StackLayout:
                 orientation: 'lr-tb'
                 BoxLayout:
-                    size_hint: [1.0, 60 / root.height]
+                    size_hint_y: None
+                    height: app.input_height
                     orientation: 'horizontal'
                     I18NLabel:
                         text_source: _("Height (mm)")
@@ -24,7 +25,8 @@
                         id: height
                         text: root.print_area_height
                 BoxLayout:
-                    size_hint: [1.0, 60 / root.height]
+                    size_hint_y: None
+                    height: app.input_height
                     orientation: 'horizontal'
                     I18NLabel:
                         text_source: _("Width (mm)")
@@ -32,7 +34,8 @@
                         id: width
                         text: root.print_area_width
                 BoxLayout:
-                    size_hint: [1.0, 60 / root.height]
+                    size_hint_y: None
+                    height: app.input_height
                     orientation: 'horizontal'
                     I18NLabel:
                         text_source: _("Layer Height (mm)")
@@ -40,7 +43,8 @@
                         id: layer_height
                         text: '0.01'
                 BoxLayout:
-                    size_hint: [1.0, 60 / root.height]
+                    size_hint_y: None
+                    height: app.input_height
                     orientation: 'horizontal'
                     I18NLabel:
                         text_source: _("Speed (mm/sec)")
@@ -48,7 +52,8 @@
                         id: speed
                         text: root.speed
             BoxLayout:
-                size_hint: [1.0, 60 / root.height]
+                size_hint_y: None
+                height: app.button_height
                 orientation: 'horizontal'
                 I18NImageButton:
                     source: "resources/icons/library_cancel-24x24.png"
@@ -69,6 +74,7 @@
                 cols: 2
         I18NImageButton:
             source: "resources/icons/general_back-24x24.png"
-            size_hint: [1.0, 0.05]
+            size_hint_y: None
+            height: app.button_height
             text_source: _('Back')
             on_release: app.root.current = 'mainui'
