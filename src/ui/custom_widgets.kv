@@ -79,27 +79,25 @@
 <I18NImageButton>:
     on_press: image.color = [1.0,1.0,1.0,0.5]
     on_release: image.color = [1.0,1.0,1.0,1.0]
-    atext: app.translation(root.text_source)
     GridLayout:
-        padding: [0, "5dp", 0, "5dp"] if root.orientation == 'vertical' else ["5dp", 0, "5dp", 0]
         size_hint: [None, None]
         size: root.size
         pos: root.pos
+        padding: [0, "5dp", 0, "5dp"] if root.orientation == 'vertical' else ["5dp", 0, "5dp", 0]
         cols: 2 if root.orientation == 'horizontal' else 1
-        col_default_width: root.width if root.orientation == 'vertical' else 0
-        rows: 2 if root.orientation == 'vertical' else 1
-        row_default_height: root.height if root.orientation == 'horizontal' else 0
+        col_default_width: self.width if self.rows == 2 else 0
+        rows: 2  if root.orientation == 'vertical' else 1
+        row_default_height: self.height if self.cols == 2 else 0
         Image:
             id: image
             allow_stretch: True
             keep_ratio: True
             source: root.source
             size_hint: [None, None]
-            height: str(self.texture_size[1]) + "dp"
-            width: str(self.texture_size[0]) + "dp" 
+            height: dp(self.texture_size[1])
+            width: dp(self.texture_size[0])
         Label:
-            id: label_text
-            text: root.atext
+            text: app.translation(root.text_source)
 
 <ErrorPopup>:
     BoxLayout:
