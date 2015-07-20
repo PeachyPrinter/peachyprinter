@@ -65,8 +65,8 @@
             keep_ratio: True
             size_hint_y: self.size_hint_y if root.orientation == 'horizontal' else None
             size_hint_x: self.size_hint_x if root.orientation == 'vertical' else None
-            width: min(self.texture_size[0], root.width) if root.orientation == 'horizontal' else max(self.texture_size[0], root.width)
-            height: min(self.texture_size[1], root.height) if root.orientation == 'vertical' else max(self.texture_size[1], root.height)
+            height: dp(self.texture_size[1])
+            width: dp(self.texture_size[0])
             source: root.source
             pos: [root.pos[0], root.pos[1]]
         Label:
