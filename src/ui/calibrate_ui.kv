@@ -66,8 +66,8 @@
             Color:
                 rgba: 0, 1, 0, 1
             Ellipse:
-                pos: [self.center[0] - 4, self.center[1] -4]
-                size: [8,8]
+                pos: [self.center[0] - dp(4), self.center[1] - dp(4)]
+                size: [dp(8),dp(8)]
 
 <OrientationPanel>:
     orientation: 'horizontal'
@@ -410,7 +410,7 @@
                 Color:
                     rgba: 0, 1, 0, 1
                 Ellipse:
-                    pos: root.example_dot
+                    pos: [root.example_dot[0] - dp(2), root.example_dot[1] - dp(2)]
                     size: [dp(8),dp(8)]
         I18NImageButton:
             source: "resources/icons/general_help-24x24.png"
@@ -435,7 +435,7 @@
             Color:
                 rgba: root.calibration_point_color
             Ellipse:
-                pos: [root.calibration_point[0] - 4,root.calibration_point[1] - 4]
+                pos: [root.calibration_point[0] - dp(2), root.calibration_point[1] - dp(2)]
                 size: [dp(8),dp(8)]
 
 <TestPatternPanel>:
