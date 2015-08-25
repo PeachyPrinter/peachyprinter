@@ -75,10 +75,13 @@ echo "Moving Application"
 echo "------------------------------------"
 
 cp -R /opt/git/kivy-sdk-packager/osx/src.app peachyprinter.app
+
 if [ $? != 0 ]; then
     echo "FAILURE: Copying app"
     exit 233
 fi
+
+cp src/resources/peachy.icns peachyprinter.app/Contents/Resources/appIcon.icns
 
 echo "------------------------------------"
 echo "Building dmg"
