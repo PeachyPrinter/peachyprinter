@@ -10,6 +10,7 @@ echo "------------------------------------"
 rm -rf dist
 rm -rf build
 rm -rf *.app
+rm -rf /opt/git/kivy-sdk-packager/osx/src.app
 rm -rf *.dmg
 rm -rf venv
 rm -f src/VERSION.py
@@ -59,18 +60,21 @@ echo "------------------------------------"
 echo "Building Package"
 echo "------------------------------------"
 
-cp peachyprinter-mac.spec.source peachyprinter-mac.spec
-pyinstaller peachyprinter-mac.spec
+apppath=`pwd`\src
+
+pushd /opt/git/kivy-sdk-packager/osx
+./package-app.sh $apppath
 if [ $? != 0 ]; then
     echo "FAILURE: Building app"
     exit 232
 fi
+popd
 
 echo "------------------------------------"
 echo "Moving Application"
 echo "------------------------------------"
 
-cp -R dist/peachyprinter-mac.app peachyprinter.app
+cp -R /opt/git/kivy-sdk-packager/osx/src.app peachyprinter.app
 if [ $? != 0 ]; then
     echo "FAILURE: Copying app"
     exit 233
