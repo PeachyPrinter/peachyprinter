@@ -60,7 +60,7 @@ echo "------------------------------------"
 echo "Building Package"
 echo "------------------------------------"
 
-apppath=`pwd`\src
+apppath=`pwd`/src
 
 pushd /opt/git/kivy-sdk-packager/osx
 ./package-app.sh $apppath
