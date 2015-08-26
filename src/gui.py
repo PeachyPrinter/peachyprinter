@@ -132,7 +132,7 @@ class MyScreenManager(ScreenManager):
 class PeachyPrinter(App):
     large_button_height = NumericProperty(dp(52))
     button_height = NumericProperty(dp(40))
-    label_height = NumericProperty(dp(24))
+    label_height = NumericProperty(dp(30))
     input_height = NumericProperty(dp(30))
     refresh_rate = NumericProperty(1.0 / 30.0)
     use_kivy_settings = False
