@@ -69,7 +69,7 @@ function setup_venv ()
   echo "Setting up virtual env"
   echo "------------------------------------"
   echo "--------Setting up cython----"
-  pip install -I -U cython==0.21.2
+  pip install -I -U cython==0.23
   if [ $? != 0 ]; then
       echo "${FRED}FAILURE: cython failed installing${RS}"
       EXIT_CODE=666
@@ -246,17 +246,8 @@ function build_kivy_source () {
   echo "------------------------------------"
   echo "Creating Kivy Install From Source"
   echo "------------------------------------"
-
-  curdir=`pwd`
-  cd ..
-  git clone http://github.org/kivy/kivy
-  cd kivy
-  make force
-  kivy_dir=`pwd`/kivy
-  cd $VIRTUAL_ENV/lib/python2.7/site-packages/
-  mv kivy kivy_old
-  ln -s $kivy_dir kivy
-  cd $curdir
+  pip install cython==0.23
+  pip install git+https://github.com/kivy/kivy.git@master
 }
 
 function help ()
