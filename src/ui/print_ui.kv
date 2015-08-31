@@ -133,7 +133,8 @@
         orientation: 'horizontal'
         size_hint_y: None
         height: app.label_height
-        I18NLabel:
+        TouchyLabel:
+            on_is_on: dps_slider.max = (200 if self.is_on else 20)
             size_hint_y: None
             height: app.label_height
             text_size: self.size
@@ -148,6 +149,7 @@
             valign: 'middle'
             text: '{0:.2f}'.format(root.drips_per_second)
     Slider:
+        id: dps_slider
         size_hint_y: None
         orientation: 'horizontal'
         height: app.label_height

@@ -32,7 +32,7 @@ class ListElement(BoxLayout):
 
 
 class DripSpeed(GridLayout):
-    drips_per_second = BoundedNumericProperty(1.0, min=0.0, max=20.0)
+    drips_per_second = NumericProperty(1.0)
 
     def __init__(self, set_drips_per_second, **kwargs):
         super(DripSpeed, self).__init__(**kwargs)

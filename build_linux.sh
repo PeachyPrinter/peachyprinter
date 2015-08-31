@@ -293,12 +293,12 @@ cd "$(dirname "$0")"
 ensure_no_active_venv
 clean_workspace
 enable_venv
-if [ "${build_kivy}" == "1" ]; then
-  build_kivy_source
-fi
 if [ "${no_setup}" != "1" ]; then
   ./run_tests
   setup_venv
+fi
+if [ "${build_kivy}" == "1" ]; then
+  build_kivy_source
 fi
 if [ "${setup_only}" != "1" ]; then
   find_version_number
