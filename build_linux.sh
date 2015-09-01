@@ -1,6 +1,6 @@
 #!/bin/bash
 
-params=`getopt -o :hrnpcisjk -l build_runner,install_dep,remove-venv,no_setup,pull,clean,help,setup_only,build_kivy --name "$0" -- "$@"`
+params=`getopt -o :hrnpcisj -l build_runner,install_dep,remove-venv,no_setup,pull,clean,help,setup_only --name "$0" -- "$@"`
 eval set -- "$params"
 
 DEBIAN_DEP="python-pip python-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev"
@@ -77,7 +77,7 @@ function setup_venv ()
   fi
 
   echo "--------Setting up kivy----"
-  pip install -I -U kivy==1.9.0
+  pip install -I -U git+https://github.com/kivy/kivy.git@master
   if [ $? != 0 ]; then
     echo "${FRED}FAILURE: kivy failed installing${RS}"
     EXIT_CODE=666
@@ -242,14 +242,6 @@ function build_runner () {
   echo -e "${FGRN}Complete${RS}"
 }
 
-function build_kivy_source () {
-  echo "------------------------------------"
-  echo "Creating Kivy Install From Source"
-  echo "------------------------------------"
-  pip install cython==0.23
-  pip install git+https://github.com/kivy/kivy.git@master
-}
-
 function help ()
 {
   echo "Peachy Printer Build Script"
@@ -262,7 +254,6 @@ function help ()
   echo "-i | --install_dep      Install the linux dependancies (sudo required)"
   echo "-s | --setup_only       Setups the enviroment only and does not package"
   echo "-j | --build_runner     Creates the rules and files required to run peachy printer(sudo required)"
-  echo "-k | --kivy_source      Builds kivy from source and symlinks the folder"
 }
 
 function failed_exit()
