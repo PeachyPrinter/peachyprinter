@@ -611,7 +611,7 @@ msgstr ""
 
 #: src/ui/calibrate_ui.kv:57
 msgid "MARKUP - Center Calibration Instructions"
-msgstr ""
+msgstr "Centre is a tool that will assist you in adjusting the mirrors resting point to be centred in the range of deflection and parallel with the surface of the mirror frame.  When complete, the laser beam should be plumb (perfectly vertical) and centred in your build volume.\n\nEnsure that your safety glasses are on.\nPlace the grid paper underneath the printer\nCenter the grid paper underneath the 2nd mirror\nMove the laser beam to the center of the grid paper by rotating the magnetic damper discs on each galvanometer.  One disc will move the laser in the X-axis, the other will move the laser in the Y-axis.\n\n[b]Note[/b]: Be gentle while adjusting the magnetic damper discs.\n[b]Note[/b]: Be sure the magnets do not touch the aluminum damper slug\n\nOnce you are satisfied with the adjustments you’ve made, move on to 'Orientation'\n\n[b]Remember[/b]:  The more accurately you calibrate your printer, the better it will perform. However if you’re just printing for fun, then being off centre by 2 mm or so isn’t a big deal."
 
 #: src/ui/calibrate_ui.kv:57
 msgid "Help - Calibration Setup"
@@ -619,7 +619,7 @@ msgstr ""
 
 #: src/ui/calibrate_ui.kv:108
 msgid "MARKUP - Orientation Instructions"
-msgstr ""
+msgstr "Orientation is a tool that helps the software determine the orientation of your printer and the polarity of the coils.\n\nEnsure that your safety glasses are on.\nPlace the glow paper underneath the printer.\nWhile looking at the printer from the front you should see it drawing a 'P' in one of the 8 orientations on you computer screen.\nChoose the 'P' on the screen that matches the orientation of the 'P' that the printer is drawing.  Our software will automatically detect the polarity of your coils and the orientation of your printer. \nOnce this is done correctly, you may move on to 'Alignment'."
 
 #: src/ui/calibrate_ui.kv:108
 msgid "Help - Orientation"
@@ -627,7 +627,7 @@ msgstr ""
 
 #: src/ui/calibrate_ui.kv:290
 msgid "MARKUP - Print Area Instructions"
-msgstr ""
+msgstr "This is where you define the print area of your lower reservoir.\n\nMeasure the X and Y dimensions (width and length) of your lower reservoir.\nEnter those measurements into the software.\n\nOnce you’ve completed this, you may move onto 'Top'"
 
 #: src/ui/calibrate_ui.kv:290
 msgid "Help - Print Area"
@@ -647,7 +647,8 @@ msgstr ""
 
 #: src/ui/calibrate_ui.kv:336
 msgid "MARKUP - Alignment Instructions"
-msgstr ""
+msgstr "Alignment is a tool that will help you get your grid paper positioned properly underneath the printer.  You may come back to this tool multiple times throughout the calibration process.  When complete the laser path should be parallel with the lines on the grid paper.\nEnsure that your safety glasses are on.\nPlace the grid paper underneath the printer.\nThe printer should be drawing a straight line, rotate the grid paper until the laser line is parallel with the grid paper lines.\n\n[b]Note[/b]:  In order to get the most accurate calibration switch back and forth between the 'Alignment' and “Centre” tools to ensure the grid paper is both centered and aligned.\n\nOnce you’ve completed this, you may move on to 'Print Area'"
+
 
 #: src/ui/calibrate_ui.kv:336
 msgid "Help - Alignment"
