@@ -758,7 +758,7 @@ msgstr ""
 
 #: src/ui/cure_test_ui.kv:288
 msgid "Markup- Cure Rate"
-msgstr ""
+msgstr "Not all lasers and resins are the same, they all vary a bit from bottle to bottle/printer to printer. \nThis tool allows you to test out just how much time your printer needs to properly expose your resin to light, so that it will cure. \n\nThe test starts by moving the laser very slowly, so that the first layers get lot and lots of light and fully cure.  As the cure rate test continues it speeds up the laser, spending less and less time on each layer, and curing the resin less and less.  When the print is done you should see a very smooth looking area somewhere in your print.  Measure the lowest point on the print that still has a smooth print surface and enter that height into the software."
 
 #: src/ui/cure_test_ui.kv:288
 msgid "Help - Cure Rate Settings"
@@ -844,7 +844,7 @@ msgstr ""
 
 #: src/ui/dripper_calibration_ui.kv:290
 msgid "MARKUP - Dripper Instructions"
-msgstr ""
+msgstr "This tool informs the software of how many drips it takes to make the print surface rise 1mm in your print container.  This is how the software knows what height the print is at while it is running.  If you switch to a different print container you will have to go through this process again.\n\n Allow some salt water to drip into your lower reservoir.  If the bottom of your lower reservoir has an irregular shape then make sure that you fill it until the surface of the water is past that point.  This test must be done in the straight walled portion of your lower reservoir.\n Make a mark at the surface of the water.  Make another mark exactly 1cm above the first mark.\n Begin dripping again and wait for the water level to rise to your second mark.\n When the water surface reaches your second mark shut off the dripper and click 'calculate'."
 
 #: src/ui/dripper_calibration_ui.kv:290
 msgid "Help - Dripper Settings"
