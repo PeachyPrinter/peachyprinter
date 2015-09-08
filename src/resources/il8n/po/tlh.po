@@ -816,7 +816,7 @@ msgstr ""
 
 #: src/ui/cure_test_ui.kv:288
 msgid "Markup- Cure Rate"
-msgstr "markup-vor Rate"
+msgstr "wej Hoch 'uD je resins rap, Sar Hoch chaH bit vo' bal bal ghap printer printer. \nthis tool chaw' SoH ghaH waH neH 'ar poH properly resin wov, Hopmo' nIS printer vaj 'e' vor 'oH. starts \n\nthe waH pong 'uD vIH QIt lot nIvbogh wov je Suq patlh wa'DIch 'ej fully vor. speeds Hoch 'oH taH vor rate waH woDDI' 'uD, 'arghbej qup 'ej qup poH Hoch patlh je resin vor qup je qup. HeghDI' Qu' print SoHvaD Hab legh mIchHom HeSwI' SoH vogh neH print. lowest lang print Daghajbogh poH'a' Hab ghor print 'ej 'ab 'el software 'aD."
 
 #: src/ui/cure_test_ui.kv:288
 msgid "Help - Cure Rate Settings"
