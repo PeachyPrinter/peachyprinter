@@ -664,7 +664,7 @@ msgstr ""
 
 #: src/ui/calibrate_ui.kv:418
 msgid "MARKUP - Calibration Instructions"
-msgstr ""
+msgstr "Here you can tell our software when the laser is touching the 4 corners of the box shaped print area you described. We will use this information to calibrate the printer’s output.\n\n\nEnsure that your safety glasses are on \nPlace the calibration grid on your work surface underneath your printer.\nUsing the “Align” and “Center” tools, align and center your grid paper.\n Click one of the 4 position buttons.  A dot will appear on the grid on your screen.  Click and drag the dot with your mouse, this will move the actual laser on the printer.  Position the laser dot on the corresponding corner of your print area on the grid paper.  Repeat this process for all 4 buttons until all 4 corners have been positioned.\nPlace your lower reservoir underneath your printer, then place the grid paper on top of it or level with the top of it.\nRepeat steps 3 and 4 using the “Top” calibration."
 
 #: src/ui/calibrate_ui.kv:418
 msgid "Help - Calibration"
@@ -680,7 +680,7 @@ msgstr ""
 
 #: src/ui/calibrate_ui.kv:489
 msgid "MARKUP - Test Pattern Instructions"
-msgstr ""
+msgstr "Each of these test patterns may be useful in understanding various aspects of your printers performance.  The following patterns are of specific interest:\n\n[b]Hourglass[/b] - The hourglass is very good for testing for hysteresis if you play this pattern slowly (below 50mm/second) the laser should come to the exact center of the hourglass 2 times per layer.  If your printer has hysteresis the 2 centre points of the hourglass will not overlap, the will be misaligned.\n\n[b]NSEW[/b] - If you picked the correct shape in the orientation section then this pattern should draw NSEW the same way you would look at a map.\n\n[b]Twitch[/b] - Playing this pattern along with the speed adjuster can help you learn things \nabout the resonant frequency of each mirror\n\n[b]Damping[/b] - This can help you see the effects of the slew rate caused by the dampening on your printer.\n\n\n[b]Hilbert[/b] - This pattern is useful in seeing how linear the printer’s output is, \nand if the printer has the same ability to turn a sharp corner in all areas of the print.\n\n[b]Spiral[/b] - We find this very helpful in finding an irregular spot in your mirror movement \nsuch as would be caused if the damper magnets were physically touching the aluminum slug on one of your mirrors."
 
 #: src/ui/calibrate_ui.kv:489
 msgid "Help - Test Patterns"
