@@ -22,7 +22,8 @@ from ui.calibrate_ui import CalibrateUI
 from ui.restore_ui import RestoreUI
 from ui.custom_widgets import *
 from peachyprinter import MissingPrinterException
-from peachyprinter import version as api_version
+import peachyprinter
+
 
 import os
 from os.path import join, dirname
@@ -73,7 +74,7 @@ class MainUI(Screen):
         except:
             ui_version = "DEV"
         self.ui_version = ui_version
-        self.api_version = api_version
+        self.api_version = peachyprinter.version
 
     def show_disclaimer(self, *args):
         accepted_disclaimer = Config.getdefault('internal', 'disclaimer', False)
