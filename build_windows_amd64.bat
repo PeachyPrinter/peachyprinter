@@ -47,7 +47,7 @@ ECHO # THIS IS A GENERATED FILE  > version.properties
 ECHO version='%VERSION%' >> version.properties
 ECHO revision='%GIT_REV%' >> version.properties
 ECHO Git Revision Number is %GIT_REV_COUNT%
-copy version.properties src\VERSION.py
+copy version.properties src\UIVERSION.py
 copy version.properties VERSION.py
 
 ECHO ------------------------------------

@@ -94,6 +94,16 @@
                     text_source: _('Settings')
                     on_release: root.setting_selected()
                 Label:
+                Label:
+                    size_hint_y: None
+                    height: app.label_height
+                    text: "API version: %s" % root.api_version
+                    text_size: [self.width, None]
+                Label:
+                    size_hint_y: None
+                    height: app.label_height
+                    text: "UI version: %s" % root.ui_version
+                    text_size: [self.width, None]
 
 
 <LoadDialog>:

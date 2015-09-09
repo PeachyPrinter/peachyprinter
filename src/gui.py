@@ -22,6 +22,7 @@ from ui.calibrate_ui import CalibrateUI
 from ui.restore_ui import RestoreUI
 from ui.custom_widgets import *
 from peachyprinter import MissingPrinterException
+from peachyprinter import version as api_version
 
 import os
 from os.path import join, dirname
@@ -60,11 +61,19 @@ class Disclaimer(BoxLayout):
 class MainUI(Screen):
     setting = ObjectProperty()
     last_directory = StringProperty('~')
+    api_version = StringProperty("")
+    ui_version = StringProperty("")
 
     def __init__(self, **kwargs):
         super(MainUI, self).__init__(**kwargs)
         self.settings = SettingsSelector()
         Clock.schedule_once(self.show_disclaimer)
+        try:
+            from UIVERSION import version as ui_version
+        except:
+            ui_version = "DEV"
+        self.ui_version = ui_version
+        self.api_version = api_version
 
     def show_disclaimer(self, *args):
         accepted_disclaimer = Config.getdefault('internal', 'disclaimer', False)
