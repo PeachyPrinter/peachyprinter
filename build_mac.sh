@@ -82,6 +82,7 @@ if [ $? != 0 ]; then
 fi
 
 cp src/resources/peachy.icns peachyprinter.app/Contents/Resources/appIcon.icns
+cp venv/lib/python2.7/site-packages/peachyprinter/dependancies/mac/amd64/libPeachyUSB.dylib peachyprinter.app/Contents/Resources/venv/lib/python2.7/site-packages/peachyprinter/dependancies/mac/amd64/libPeachyUSB.dylib
 
 echo "------------------------------------"
 echo "Building dmg"
