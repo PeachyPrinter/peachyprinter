@@ -74,7 +74,8 @@ class MainUI(Screen):
         except:
             ui_version = "DEV"
         self.ui_version = ui_version
-        self.api_version = peachyprinter.version
+        logger.warning("PP: %s" % dir(peachyprinter))
+        self.api_version = peachyprinter['version']
 
     def show_disclaimer(self, *args):
         accepted_disclaimer = Config.getdefault('internal', 'disclaimer', False)
