@@ -5,17 +5,24 @@ echo "Cleaning workspace"
 echo "------------------------------------"
 
 # TODO JT 2014-02-13 - Should clean the workspace
+KIVY_SDK_PACKAGER=/opt/git/kivy-sdk-packager/osx/
+export KIVY_APP_PATH=/Applications/Kivy.app
 
 # rm -rf venv
 rm -rf dist
 rm -rf build
 rm -rf *.app
-rm -rf /opt/git/kivy-sdk-packager/osx/src.app
+rm -rf ${KIVY_SDK_PACKAGER}/src.app
+rm -rf ${KIVY_SDK_PACKAGER}/Kivy.app
 rm -rf *.dmg
 rm -rf venv
 rm -f src/VERSION.py
 rm -f version.properties 
 find . -name "*.pyc" -exec rm -rf {} \;
+
+cp -a ${KIVY_APP_PATH} ${KIVY_SDK_PACKAGER}/Kivy.app
+export KIVY_APP_PATH=${KIVY_SDK_PACKAGER}/Kivy.app
+
 
 echo "------------------------------------"
 echo "Setting up Enviroment"
@@ -61,7 +68,6 @@ echo "Building Package"
 echo "------------------------------------"
 
 apppath=`pwd`/src
-
 pushd /opt/git/kivy-sdk-packager/osx
 ./package-app.sh $apppath
 if [ $? != 0 ]; then
