@@ -8,10 +8,10 @@ if [[ "$VIRTUAL_ENV" == "" ]]; then
 fi
 
 if [ -f api.source ]; then
+    echo"***************USING OVERRIDDEN API SOURCE*********************"
     api_source=`cat api.source`
 else
     api_source=http://software.peachyprinter.com/builds/api/latest.tar.gz
-
 fi
 
 # This accounts for the fact that fedora 22 comes with pytz version 2012d 
