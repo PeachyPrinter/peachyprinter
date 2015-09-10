@@ -5,7 +5,7 @@ echo "Cleaning workspace"
 echo "------------------------------------"
 
 # TODO JT 2014-02-13 - Should clean the workspace
-KIVY_SDK_PACKAGER=/opt/git/kivy-sdk-packager/osx/
+KIVY_SDK_PACKAGER=/opt/git/kivy-sdk-packager/osx
 export KIVY_APP_PATH=/Applications/Kivy.app
 
 # rm -rf venv
@@ -16,7 +16,7 @@ rm -rf ${KIVY_SDK_PACKAGER}/src.app
 rm -rf ${KIVY_SDK_PACKAGER}/Kivy.app
 rm -rf *.dmg
 rm -rf venv
-rm -f src/VERSION.py
+rm -f src/UIVERSION.py
 rm -f version.properties 
 find . -name "*.pyc" -exec rm -rf {} \;
 
