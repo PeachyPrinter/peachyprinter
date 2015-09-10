@@ -29,12 +29,13 @@ export KIVY_HOME="${KIVY_APP_PATH_RESOURCES}/.kivy"
 echo "--------Setting up pyinstaller----"
 pip install -U pyinstaller
 
-echo "--------Getting Latest API----"
-./get_latest_api.sh
-
 echo "--------Applying work around to googles protobuf library----"
+pip install protobuf==2.6.1
 touch venv/lib/python2.7/site-packages/google/__init__.py
 python -m compileall venv/lib/python2.7/site-packages/google/
+
+echo "--------Getting Latest API----"
+./get_latest_api.sh
 
 echo ""
 echo "-----------------------------------"
