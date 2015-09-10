@@ -64,6 +64,7 @@ class MainUI(Screen):
     last_directory = StringProperty('~')
     api_version = StringProperty("")
     ui_version = StringProperty("")
+    lib_version = StringProperty("")
 
     def __init__(self, **kwargs):
         super(MainUI, self).__init__(**kwargs)
@@ -75,6 +76,7 @@ class MainUI(Screen):
             ui_version = "DEV"
         self.ui_version = ui_version
         self.api_version = peachyprinter.version
+        self.lib_version = peachyprinter.lib_version
 
     def show_disclaimer(self, *args):
         accepted_disclaimer = Config.getdefault('internal', 'disclaimer', False)

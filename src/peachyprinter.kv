@@ -96,13 +96,18 @@
                 Label:
                 Label:
                     size_hint_y: None
-                    height: app.label_height
+                    height: self.texture_size[1]
+                    text: "UI version: %s" % root.ui_version
+                    text_size: [self.width, None]
+                Label:
+                    size_hint_y: None
+                    height: self.texture_size[1]
                     text: "API version: %s" % root.api_version
                     text_size: [self.width, None]
                 Label:
                     size_hint_y: None
-                    height: app.label_height
-                    text: "UI version: %s" % root.ui_version
+                    height: self.texture_size[1]
+                    text: "Lib version: %s" % root.lib_version
                     text_size: [self.width, None]
 
 
