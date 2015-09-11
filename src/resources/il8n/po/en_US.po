@@ -174,27 +174,27 @@ msgstr ""
 
 #: src/infrastructure/setting_mapper.py:29
 msgid "info_version_number DESCRIPTION"
-msgstr ""
+msgstr "Version Number"
 
 #: src/infrastructure/setting_mapper.py:30
 msgid "info_version_number TITLE"
-msgstr ""
+msgstr "Version"
 
 #: src/infrastructure/setting_mapper.py:37
 msgid "info_serial_number DESCRIPTION"
-msgstr ""
+msgstr "Serial Number"
 
 #: src/infrastructure/setting_mapper.py:38
 msgid "info_serial_number TITLE"
-msgstr ""
+msgstr "S/N"
 
 #: src/infrastructure/setting_mapper.py:45
 msgid "info_hardware_version_number DESCRIPTION"
-msgstr ""
+msgstr "Hardware Version Number"
 
 #: src/infrastructure/setting_mapper.py:46
 msgid "info_hardware_version_number TITLE"
-msgstr ""
+msgstr "HW Version"
 
 #: src/infrastructure/setting_mapper.py:53
 msgid "info_firmware_version_number DESCRIPTION"
@@ -202,15 +202,15 @@ msgstr ""
 
 #: src/infrastructure/setting_mapper.py:54
 msgid "info_firmware_version_number TITLE"
-msgstr ""
+msgstr "Firmware Version Number"
 
 #: src/infrastructure/setting_mapper.py:61
 msgid "info_firmware_data_rate DESCRIPTION"
-msgstr ""
+msgstr "Firmware Data Rate"
 
 #: src/infrastructure/setting_mapper.py:62
 msgid "info_firmware_data_rate TITLE"
-msgstr ""
+msgstr "Firmware Data Rate"
 
 #: src/infrastructure/setting_mapper.py:69
 #: src/infrastructure/setting_mapper.py:75
@@ -231,11 +231,11 @@ msgstr ""
 
 #: src/infrastructure/setting_mapper.py:71
 msgid "options_use_sublayers TITLE"
-msgstr ""
+msgstr "Use Sublayers"
 
 #: src/infrastructure/setting_mapper.py:72
 msgid "options_use_sublayers DESCRIPTION"
-msgstr ""
+msgstr "Enables automatic addinf layers"
 
 #: src/infrastructure/setting_mapper.py:77
 msgid "options_sublayer_height_mm TITLE"
@@ -243,7 +243,7 @@ msgstr ""
 
 #: src/infrastructure/setting_mapper.py:78
 msgid "options_sublayer_height_mm DESCRIPTION"
-msgstr ""
+msgstr "Height in mm of sublayers when Use Sublayers is on"
 
 #: src/infrastructure/setting_mapper.py:80
 #: src/infrastructure/setting_mapper.py:97
@@ -278,99 +278,99 @@ msgstr "Ok"
 
 #: src/infrastructure/setting_mapper.py:87
 msgid "options_use_shufflelayers TITLE"
-msgstr ""
+msgstr "Use Shufflelayers"
 
 #: src/infrastructure/setting_mapper.py:88
 msgid "options_use_shufflelayers DESCRIPTION"
-msgstr ""
+msgstr "Shuffle Layers moves the starting point around the print"
 
 #: src/infrastructure/setting_mapper.py:94
 msgid "options_shuffle_layers_amount TITLE"
-msgstr ""
+msgstr "Shuffle Layer Amount"
 
 #: src/infrastructure/setting_mapper.py:95
 msgid "options_shuffle_layers_amount DESCRIPTION"
-msgstr ""
+msgstr "Number of points to shuffle each layer"
 
 #: src/infrastructure/setting_mapper.py:104
 msgid "options_use_overlap TITLE"
-msgstr ""
+msgstr "Use Overlap"
 
 #: src/infrastructure/setting_mapper.py:105
 msgid "options_use_overlap DESCRIPTION"
-msgstr ""
+msgstr "Enables overlapping at the end of each layer"
 
 #: src/infrastructure/setting_mapper.py:111
 msgid "options_overlap_amount_mm TITLE"
-msgstr ""
+msgstr "Overlap amount mm"
 
 #: src/infrastructure/setting_mapper.py:112
 msgid "options_overlap_amount_mm DESCRIPTION"
-msgstr ""
+msgstr "Amount to overlap each layer"
 
 #: src/infrastructure/setting_mapper.py:121
 msgid "options_laser_thickness_mm TITLE"
-msgstr ""
+msgstr "Laser Thickness mm"
 
 #: src/infrastructure/setting_mapper.py:122
 msgid "options_laser_thickness_mm DESCRIPTION"
-msgstr ""
+msgstr "The size of the laser as it his the surface"
 
 #: src/infrastructure/setting_mapper.py:129
 msgid "options_scaling_factor TITLE"
-msgstr ""
+msgstr "Gcode Scaling factor"
 
 #: src/infrastructure/setting_mapper.py:130
 msgid "options_scaling_factor DESCRIPTION"
-msgstr ""
+msgstr "Scales the gocde x the specified amount"
 
 #: src/infrastructure/setting_mapper.py:140
 msgid "options_max_lead_distance_mm TITLE"
-msgstr ""
+msgstr "Max Lead Distance"
 
 #: src/infrastructure/setting_mapper.py:141
 msgid "options_max_lead_distance_mm DESCRIPTION"
-msgstr ""
+msgstr "Amount of distance the drips can be ahead of the layer before skipping"
 
 #: src/infrastructure/setting_mapper.py:150
 msgid "options_pre_layer_delay TITLE"
-msgstr ""
+msgstr "Pre Layer Delay"
 
 #: src/infrastructure/setting_mapper.py:151
 msgid "options_pre_layer_delay DESCRIPTION"
-msgstr ""
+msgstr "TODO"
 
 #: src/infrastructure/setting_mapper.py:160
 msgid "options_post_fire_delay TITLE"
-msgstr ""
+msgstr "Post Fire Delay"
 
 #: src/infrastructure/setting_mapper.py:161
 msgid "options_post_fire_delay DESCRIPTION"
-msgstr ""
+msgstr "Amout of time to wait before moving after turning the laser on"
 
 #: src/infrastructure/setting_mapper.py:170
 msgid "options_slew_delay TITLE"
-msgstr ""
+msgstr "Slew Rate delay"
 
 #: src/infrastructure/setting_mapper.py:171
 msgid "options_slew_delay DESCRIPTION"
-msgstr ""
+msgstr "A time to wait to allow for the inertia of the mirror assembly"
 
 #: src/infrastructure/setting_mapper.py:180
 msgid "options_wait_after_move_milliseconds TITLE"
-msgstr ""
+msgstr "Wait after move milliseconds"
 
 #: src/infrastructure/setting_mapper.py:181
 msgid "options_wait_after_move_milliseconds DESCRIPTION"
-msgstr ""
+msgstr "Number of milliseconds to wait after each move."
 
 #: src/infrastructure/setting_mapper.py:190
 msgid "options_print_queue_delay TITLE"
-msgstr ""
+msgstr "Print Queue Delay [Unsupported]"
 
 #: src/infrastructure/setting_mapper.py:191
 msgid "options_print_queue_delay DESCRIPTION"
-msgstr ""
+msgstr "Unsupported"
 
 #: src/infrastructure/setting_mapper.py:199
 #: src/infrastructure/setting_mapper.py:207
@@ -384,59 +384,59 @@ msgstr ""
 
 #: src/infrastructure/setting_mapper.py:201
 msgid "email.on TITLE"
-msgstr ""
+msgstr "Email On"
 
 #: src/infrastructure/setting_mapper.py:202
 msgid "email.on DESCRIPTION"
-msgstr ""
+msgstr "True emailing after print"
 
 #: src/infrastructure/setting_mapper.py:209
 msgid "email.port TITLE"
-msgstr ""
+msgstr "Email SMTP port"
 
 #: src/infrastructure/setting_mapper.py:210
 msgid "email.port DESCRIPTION"
-msgstr ""
+msgstr "The port for outgoing smtp messages"
 
 #: src/infrastructure/setting_mapper.py:219
 msgid "email.host TITLE"
-msgstr ""
+msgstr "SMTP server address"
 
 #: src/infrastructure/setting_mapper.py:220
 msgid "email.host DESCRIPTION"
-msgstr ""
+msgstr "The Address of the SMTP server for email"
 
 #: src/infrastructure/setting_mapper.py:226
 msgid "email.sender TITLE"
-msgstr ""
+msgstr "Email Sender"
 
 #: src/infrastructure/setting_mapper.py:227
 msgid "email.sender DESCRIPTION"
-msgstr ""
+msgstr "The Email address that you wish to send from"
 
 #: src/infrastructure/setting_mapper.py:236
 msgid "email.recipient TITLE"
-msgstr ""
+msgstr "Email Reciepient"
 
 #: src/infrastructure/setting_mapper.py:237
 msgid "email.recipient DESCRIPTION"
-msgstr ""
+msgstr "The Email address that you wish to receive with"
 
 #: src/infrastructure/setting_mapper.py:246
 msgid "email.username TITLE"
-msgstr ""
+msgstr "Email account username"
 
 #: src/infrastructure/setting_mapper.py:247
 msgid "email.username DESCRIPTION"
-msgstr ""
+msgstr "Enter Email username"
 
 #: src/infrastructure/setting_mapper.py:255
 msgid "email.password TITLE"
-msgstr ""
+msgstr "Email Password"
 
 #: src/infrastructure/setting_mapper.py:256
 msgid "email.password DESCRIPTION"
-msgstr ""
+msgstr "Enter Email password"
 
 #: src/infrastructure/setting_mapper.py:263
 #: src/infrastructure/setting_mapper.py:269
@@ -450,59 +450,59 @@ msgstr ""
 
 #: src/infrastructure/setting_mapper.py:265
 msgid "serial_enabled TITLE"
-msgstr ""
+msgstr "Enable Simple Serial"
 
 #: src/infrastructure/setting_mapper.py:266
 msgid "serial_enabled DESCRIPTION"
-msgstr ""
+msgstr "Send characters to an arduino upon events"
 
 #: src/infrastructure/setting_mapper.py:271
 msgid "serial_port TITLE"
-msgstr ""
+msgstr "Serial Port"
 
 #: src/infrastructure/setting_mapper.py:272
 msgid "serial_port DESCRIPTION"
-msgstr ""
+msgstr "Enter the serial port you wish to use ie: /dev/tty/USB0"
 
 #: src/infrastructure/setting_mapper.py:280
 msgid "serial_on_command TITLE"
-msgstr ""
+msgstr "Dripper on command"
 
 #: src/infrastructure/setting_mapper.py:281
 msgid "serial_on_command DESCRIPTION"
-msgstr ""
+msgstr "Signals that the layer at current height is complete"
 
 #: src/infrastructure/setting_mapper.py:290
 msgid "serial_off_command TITLE"
-msgstr ""
+msgstr "Dripper off command"
 
 #: src/infrastructure/setting_mapper.py:291
 msgid "serial_off_command DESCRIPTION"
-msgstr ""
+msgstr "Signals that the z-axis has reached the height for the next layer"
 
 #: src/infrastructure/setting_mapper.py:300
 msgid "serial_layer_started_command TITLE"
-msgstr ""
+msgstr "Layer Started command"
 
 #: src/infrastructure/setting_mapper.py:301
 msgid "serial_layer_started_command DESCRIPTION"
-msgstr ""
+msgstr "Signals that the printer has begun drawing a layer"
 
 #: src/infrastructure/setting_mapper.py:310
 msgid "serial_layer_ended_command TITLE"
-msgstr ""
+msgstr "Layer Ended Command"
 
 #: src/infrastructure/setting_mapper.py:311
 msgid "serial_layer_ended_command DESCRIPTION"
-msgstr ""
+msgstr "Signals that the printer has finished drawing a layer"
 
 #: src/infrastructure/setting_mapper.py:320
 msgid "serial_print_ended_command TITLE"
-msgstr ""
+msgstr "Print ended command"
 
 #: src/infrastructure/setting_mapper.py:321
 msgid "serial_print_ended_command DESCRIPTION"
-msgstr ""
+msgstr "Signals that the print has ended"
 
 #: src/infrastructure/setting_mapper.py:330
 #: src/infrastructure/setting_mapper.py:336
@@ -514,43 +514,43 @@ msgstr ""
 
 #: src/infrastructure/setting_mapper.py:331
 msgid "cure_rate_use_draw_speed TITLE"
-msgstr ""
+msgstr "Override GCODE Speeds"
 
 #: src/infrastructure/setting_mapper.py:332
 msgid "cure_rate_use_draw_speed DESCRIPTION"
-msgstr ""
+msgstr "Override the laser draw speeds specified in GCODE"
 
 #: src/infrastructure/setting_mapper.py:337
 msgid "cure_rate_draw_speed TITLE"
-msgstr ""
+msgstr "Laser Draw Speed"
 
 #: src/infrastructure/setting_mapper.py:338
 msgid "cure_rate_draw_speed DESCRIPTION"
-msgstr ""
+msgstr "The override speed to be used when the laser is on"
 
 #: src/infrastructure/setting_mapper.py:347
 msgid "cure_rate_move_speed TITLE"
-msgstr ""
+msgstr "Move Speed"
 
 #: src/infrastructure/setting_mapper.py:348
 msgid "cure_rate_move_speed DESCRIPTION"
-msgstr ""
+msgstr "The override speed to be used when the laser is off"
 
 #: src/infrastructure/setting_mapper.py:357
 msgid "cure_rate_override_laser_power TITLE"
-msgstr ""
+msgstr "Override Laser Power"
 
 #: src/infrastructure/setting_mapper.py:358
 msgid "cure_rate_override_laser_power DESCRIPTION"
-msgstr ""
+msgstr "Override the laser power/extrusion rate specified in GCODE"
 
 #: src/infrastructure/setting_mapper.py:366
 msgid "cure_rate_override_laser_power_amount TITLE"
-msgstr ""
+msgstr "Laser Power"
 
 #: src/infrastructure/setting_mapper.py:367
 msgid "cure_rate_override_laser_power_amount DESCRIPTION"
-msgstr ""
+msgstr "The override power to be used"
 
 #: src/infrastructure/setting_mapper.py:376
 #: src/infrastructure/setting_mapper.py:385
@@ -561,50 +561,53 @@ msgstr ""
 
 #: src/infrastructure/setting_mapper.py:377
 msgid "dripper_type TITLE"
-msgstr ""
+msgstr "Z-axis Stuff"
 
 #: src/infrastructure/setting_mapper.py:378
 msgid "dripper_type DESCRIPTION"
-msgstr ""
+msgstr "Choose the way that your printer handles Z-axis movement"
 
 #: src/infrastructure/setting_mapper.py:379
 #: src/ui/dripper_calibration_ui.kv:283
 msgid "Emulated"
-msgstr ""
+msgstr "Emulate Drips"
 
 #: src/infrastructure/setting_mapper.py:379
 #: src/ui/dripper_calibration_ui.kv:283
 msgid "Photo"
-msgstr ""
+msgstr "Light Drawing Photo Mode"
 
 #: src/infrastructure/setting_mapper.py:379
 #: src/ui/dripper_calibration_ui.kv:283
 msgid "Circut"
-msgstr ""
+msgstr "Default"
 
 #: src/infrastructure/setting_mapper.py:386
 msgid "dripper_drips_per_mm TITLE"
-msgstr ""
+msgstr "Drips Per Millimeter"
 
 #: src/infrastructure/setting_mapper.py:387
 msgid "dripper_drips_per_mm DESCRIPTION"
 msgstr ""
+"The number of drips that it takes to raise the print surface 1 millimeter"
 
 #: src/infrastructure/setting_mapper.py:396
 msgid "dripper_emulated_drips_per_second TITLE"
-msgstr ""
+msgstr "Emulated Drips/Second"
 
 #: src/infrastructure/setting_mapper.py:397
 msgid "dripper_emulated_drips_per_second DESCRIPTION"
 msgstr ""
+"The rate at which the computer will emulate drips when in Emulate Drips mode"
 
 #: src/infrastructure/setting_mapper.py:406
 msgid "dripper_photo_zaxis_delay TITLE"
-msgstr "Minimum Layer Time"
+msgstr "Photo Exposure Length"
 
 #: src/infrastructure/setting_mapper.py:407
 msgid "dripper_photo_zaxis_delay DESCRIPTION"
-msgstr "The minimum time the Peachy will take to draw a layer"
+msgstr ""
+"The minimum total layer duration to allow for consistent exposure lengths"
 
 #: src/ui/calibrate_ui.kv:18
 msgid "Center"
