@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-01 16:34-0600\n"
+"POT-Creation-Date: 2015-09-11 12:20-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,28 +17,28 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/gui.py:73
+#: src/gui.py:85
 msgid "Disclaimer"
 msgstr ""
 
-#: src/gui.py:90
+#: src/gui.py:102
 msgid "Load file"
 msgstr ""
 
-#: src/gui.py:190 src/gui.py:224 src/peachyprinter.kv:57
+#: src/gui.py:202 src/gui.py:236 src/peachyprinter.kv:57
 #: src/ui/custom_widgets.kv:115 src/ui/print_ui.kv:122
 msgid "Close"
 msgstr ""
 
-#: src/gui.py:202
+#: src/gui.py:214
 msgid "Please connect your peachy printer before starting the software"
 msgstr ""
 
-#: src/gui.py:203 src/gui.py:211 src/peachyprinter.kv:150
+#: src/gui.py:215 src/gui.py:223 src/peachyprinter.kv:165
 msgid "Exit"
 msgstr ""
 
-#: src/gui.py:209
+#: src/gui.py:221
 msgid "An Error has Occured"
 msgstr ""
 
@@ -82,11 +82,11 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: src/peachyprinter.kv:113
+#: src/peachyprinter.kv:128
 msgid "Starting Height"
 msgstr ""
 
-#: src/peachyprinter.kv:124 src/infrastructure/setting_mapper.py:81
+#: src/peachyprinter.kv:139 src/infrastructure/setting_mapper.py:81
 #: src/infrastructure/setting_mapper.py:98
 #: src/infrastructure/setting_mapper.py:115
 #: src/infrastructure/setting_mapper.py:133
@@ -118,15 +118,15 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: src/peachyprinter.kv:131
+#: src/peachyprinter.kv:146
 msgid "Load"
 msgstr ""
 
-#: src/peachyprinter.kv:139
+#: src/peachyprinter.kv:154
 msgid "MARKUP - Disclaimer "
 msgstr ""
 
-#: src/peachyprinter.kv:145
+#: src/peachyprinter.kv:160
 msgid "Accept"
 msgstr ""
 
@@ -820,7 +820,7 @@ msgstr ""
 msgid "[b]Emulated Settings[/b]"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:195 src/ui/print_ui.kv:207
+#: src/ui/dripper_calibration_ui.kv:195 src/ui/print_ui.kv:215
 msgid "Drips per second"
 msgstr ""
 
@@ -884,55 +884,55 @@ msgstr ""
 msgid "Drip Speed"
 msgstr ""
 
-#: src/ui/print_ui.kv:195
+#: src/ui/print_ui.kv:203
 msgid "Dripper Informaiton"
 msgstr ""
 
-#: src/ui/print_ui.kv:222
+#: src/ui/print_ui.kv:230
 msgid "Total Drips"
 msgstr ""
 
-#: src/ui/print_ui.kv:237
+#: src/ui/print_ui.kv:245
 msgid "Waiting for drips"
 msgstr ""
 
-#: src/ui/print_ui.kv:270
+#: src/ui/print_ui.kv:286
 msgid "Time"
 msgstr ""
 
-#: src/ui/print_ui.kv:281
+#: src/ui/print_ui.kv:297
 msgid "Start Time"
 msgstr ""
 
-#: src/ui/print_ui.kv:295
+#: src/ui/print_ui.kv:311
 msgid "Elapsed Time"
 msgstr ""
 
-#: src/ui/print_ui.kv:327
+#: src/ui/print_ui.kv:351
 msgid "Posisition"
 msgstr ""
 
-#: src/ui/print_ui.kv:339
+#: src/ui/print_ui.kv:363
 msgid "Current Height"
 msgstr ""
 
-#: src/ui/print_ui.kv:353
+#: src/ui/print_ui.kv:377
 msgid "Layers"
 msgstr ""
 
-#: src/ui/print_ui.kv:367
+#: src/ui/print_ui.kv:391
 msgid "Skipped Layers"
 msgstr ""
 
-#: src/ui/print_ui.kv:377 src/ui/print_ui.py:378 src/ui/print_ui.py:410
+#: src/ui/print_ui.kv:401 src/ui/print_ui.py:378 src/ui/print_ui.py:410
 msgid "Cancel Print"
 msgstr ""
 
-#: src/ui/print_ui.kv:384
+#: src/ui/print_ui.kv:408
 msgid "Restart Print"
 msgstr ""
 
-#: src/ui/print_ui.kv:391
+#: src/ui/print_ui.kv:415
 msgid "Display Settings"
 msgstr ""
 
