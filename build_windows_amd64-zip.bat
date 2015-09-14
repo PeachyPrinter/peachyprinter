@@ -70,7 +70,7 @@ ECHO ------------------------------------
 ECHO Moving file
 ECHO ------------------------------------
 
-COPY dist\PeachyPrinter*.exe .
+COPY dist\PeachyPrinter*.zip .
 IF NOT "%ERRORLEVEL%" == "0" (
     ECHO "FAILED moving files"
     EXIT /B 798
