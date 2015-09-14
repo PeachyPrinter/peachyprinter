@@ -12,7 +12,7 @@ a = Analysis(['src\\main.py'],
              pathex=['C:\\Users\\jtownley\\git\\kivypeachyprinter'],
              hiddenimports=[],
              runtime_hooks=None)
-col = Collect(exe,
+col = COLLECT(exe,
           Tree('src'),
           Tree([f for f in os.environ.get('KIVY_SDL2_PATH', '').split(';') if 'bin' in f][0]),
           Tree(gst_plugin_path),
