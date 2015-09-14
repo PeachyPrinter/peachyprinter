@@ -33,5 +33,5 @@ col = COLLECT(exe,
           a.binaries,
           a.zipfiles,
           a.datas,
-          name='PeachyPrinter_amd64-%s.exe' % version,
+          name='PeachyPrinter_amd64-%s' % version,
           )
