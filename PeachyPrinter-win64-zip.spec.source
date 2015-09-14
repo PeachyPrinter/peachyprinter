@@ -12,6 +12,17 @@ a = Analysis(['src\\main.py'],
              pathex=['C:\\Users\\jtownley\\git\\kivypeachyprinter'],
              hiddenimports=[],
              runtime_hooks=None)
+pyz = PYZ(a.pure)
+exe = EXE(pyz,
+          a.scripts,
+          exclude_binaries=True,
+          name='PeachyPrinter_amd64-%s.exe' % version,
+          debug=False,
+          strip=None,
+          upx=True,
+          console=True,
+          icon='src\\resources\\peachy.ico'
+          )
 col = COLLECT(exe,
           Tree('src'),
           Tree([f for f in os.environ.get('KIVY_SDL2_PATH', '').split(';') if 'bin' in f][0]),
@@ -23,9 +34,4 @@ col = COLLECT(exe,
           a.zipfiles,
           a.datas,
           name='PeachyPrinter_amd64-%s.exe' % version,
-          debug=False,
-          strip=None,
-          upx=True,
-          console=True , 
-          icon='src\\resources\\peachy.ico'
           )
