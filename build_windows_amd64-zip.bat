@@ -70,8 +70,8 @@ ECHO ------------------------------------
 ECHO Moving file
 ECHO ------------------------------------
 
-REM COPY dist\PeachyPrinter*.zip .
-REM IF NOT "%ERRORLEVEL%" == "0" (
-REM     ECHO "FAILED moving files"
-REM     EXIT /B 798
-REM )
+python make_zip.py dist\PeachyPrinter_amd64-%VERSION% PeachyPrinter_amd64-%VERSION%.zip
+IF NOT "%ERRORLEVEL%" == "0" (
+    ECHO "FAILED moving files"
+    EXIT /B 798
+)
