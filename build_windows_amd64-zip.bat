@@ -9,6 +9,7 @@ DEL /q
 RMDIR /S /Q build
 RMDIR /S /Q dist
 DEL /S *.pyc
+DEL /S *.zip
 
 ECHO ------------------------------------
 ECHO Setting up Enviroment
@@ -69,9 +70,10 @@ IF NOT "%ERRORLEVEL%" == "0" (
 ECHO ------------------------------------
 ECHO Moving file
 ECHO ------------------------------------
-
-python make_zip.py dist\PeachyPrinter_amd64-%VERSION% PeachyPrinter_amd64-%VERSION%.zip
+cd dist
+python ..\make_zip.py PeachyPrinter_amd64-%VERSION% ..\PeachyPrinter_amd64-%VERSION%.zip
 IF NOT "%ERRORLEVEL%" == "0" (
     ECHO "FAILED moving files"
     EXIT /B 798
 )
+cd ..
