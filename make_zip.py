@@ -15,5 +15,5 @@ if __name__ == '__main__':
     out_file = sys.argv[2]
     in_folder = sys.argv[1]
     print("Zipping from {} into {}".format(in_folder, out_file))
-    with zipfile.ZipFile(out_file, 'w') as zip_file_handle:
+    with zipfile.ZipFile(out_file, 'w', zipfile.ZIP_DEFLATED) as zip_file_handle:
         zip_dir(in_folder, zip_file_handle)
