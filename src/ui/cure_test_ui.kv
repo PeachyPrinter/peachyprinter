@@ -76,11 +76,11 @@
                         step: 1
                         on_value: root.test_height = self.value
                 I18NImageButton:
-                    source: "resources/icons/cure_rate_test_run_cure_test-24x24.png"
                     size_hint_y: None
                     height: app.button_height
-                    text_source: _('Run Cure Test Now')
-                    on_release: root.print_now()
+                    text_source: _("Use These Settings")
+                    source: "resources/icons/cure_rate_test_use_best_draw_speed-24x24.png"
+                    on_release: draw_speed_id.text = selected_speed_id.text.split(' ')[0]; root.draw_speed = float(selected_speed_id.text.split(' ')[0])
             BoxLayout:
                 orientation: 'vertical'
                 padding: "5dp"
@@ -193,11 +193,11 @@
                                 pos:  self.pos
                                 size: self.size
                 I18NImageButton:
+                    source: "resources/icons/cure_rate_test_run_cure_test-24x24.png"
                     size_hint_y: None
                     height: app.button_height
-                    text_source: _("Use These Settings")
-                    source: "resources/icons/cure_rate_test_use_best_draw_speed-24x24.png"
-                    on_release: draw_speed_id.text = selected_speed_id.text.split(' ')[0]; root.draw_speed = float(selected_speed_id.text.split(' ')[0])
+                    text_source: _('Run Cure Test Now')
+                    on_release: root.print_now()
             BoxLayout:
                 canvas.before:
                     Color:

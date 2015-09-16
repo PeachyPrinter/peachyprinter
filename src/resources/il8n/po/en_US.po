@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-01 16:34-0600\n"
+"POT-Creation-Date: 2015-09-11 12:20-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -11,28 +11,28 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/gui.py:73
+#: src/gui.py:85
 msgid "Disclaimer"
 msgstr ""
 
-#: src/gui.py:90
+#: src/gui.py:102
 msgid "Load file"
 msgstr ""
 
-#: src/gui.py:190 src/gui.py:224 src/peachyprinter.kv:57
+#: src/gui.py:202 src/gui.py:236 src/peachyprinter.kv:57
 #: src/ui/custom_widgets.kv:115 src/ui/print_ui.kv:122
 msgid "Close"
 msgstr ""
 
-#: src/gui.py:202
+#: src/gui.py:214
 msgid "Please connect your peachy printer before starting the software"
 msgstr ""
 
-#: src/gui.py:203 src/gui.py:211 src/peachyprinter.kv:150
+#: src/gui.py:215 src/gui.py:223 src/peachyprinter.kv:165
 msgid "Exit"
 msgstr ""
 
-#: src/gui.py:209
+#: src/gui.py:221
 msgid "An Error has Occured"
 msgstr ""
 
@@ -76,11 +76,11 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: src/peachyprinter.kv:113
+#: src/peachyprinter.kv:128
 msgid "Starting Height"
 msgstr ""
 
-#: src/peachyprinter.kv:124 src/infrastructure/setting_mapper.py:81
+#: src/peachyprinter.kv:139 src/infrastructure/setting_mapper.py:81
 #: src/infrastructure/setting_mapper.py:98
 #: src/infrastructure/setting_mapper.py:115
 #: src/infrastructure/setting_mapper.py:133
@@ -112,15 +112,55 @@ msgstr ""
 msgid "Cancel"
 msgstr "Cancel"
 
-#: src/peachyprinter.kv:131
+#: src/peachyprinter.kv:146
 msgid "Load"
 msgstr ""
 
-#: src/peachyprinter.kv:139
+#: src/peachyprinter.kv:154
 msgid "MARKUP - Disclaimer "
 msgstr ""
+"[b]Laser Safety[/b]\n"
+"\n"
+"The Peachy Printer uses a high power UV laser to cure the resin.  This laser "
+"is powerful enough to damage your eyesight.  As a user you agree that you "
+"will take the following precautions to ensure the safety of yourself and "
+"those around you:\n"
+"\n"
+"Everyone in the room must wear UV filtering safety glasses when the printer "
+"is operating\n"
+"Remove any pets or young children from the room\n"
+"Install the UV filtering safety guards on the printer\n"
+"Do not pick the printer up while the laser is turned on\n"
+"\n"
+"[b]Resin Safety[/b]\n"
+"\n"
+"The resin that Peachy Printer uses is a mild skin irritant.  Some people may "
+"have reactions to it if it makes direct contact with their skin.  It cures "
+"under UV light, and if exposed to direct sunlight can actually cure at a "
+"dangerous rate.  As a user you agree to take the following precautions to "
+"ensure the safety of yourself and those around you:\n"
+"\n"
+"keep away from children and animals\n"
+"use protective gloves when handling\n"
+"wear protective glasses when handling\n"
+"be extra careful to keep away from sensitive skin areas\n"
+"do not drink it\n"
+"store in a cool dark place\n"
+"do not expose to direct sunlight\n"
+"use in a well ventilated area\n"
+"\n"
+"[b]Product Functionality[/b]\n"
+"\n"
+"Peachy Printer Inc guarantees no amount of functionality from our "
+"product(s).  Given the fact that the kit is constructed by the user we "
+"cannot guarantee that it will work.\n"
+"\n"
+"By installing the software you agree that Peachy Printer Inc is not liable "
+"for anything at all, ever.  We are especially not liable for injuries from "
+"any of our product(s)  If they are used properly (as we advise) there should "
+"be no injuries."
 
-#: src/peachyprinter.kv:145
+#: src/peachyprinter.kv:160
 msgid "Accept"
 msgstr ""
 
@@ -134,27 +174,27 @@ msgstr ""
 
 #: src/infrastructure/setting_mapper.py:29
 msgid "info_version_number DESCRIPTION"
-msgstr ""
+msgstr "Version Number"
 
 #: src/infrastructure/setting_mapper.py:30
 msgid "info_version_number TITLE"
-msgstr ""
+msgstr "Version"
 
 #: src/infrastructure/setting_mapper.py:37
 msgid "info_serial_number DESCRIPTION"
-msgstr ""
+msgstr "Serial Number"
 
 #: src/infrastructure/setting_mapper.py:38
 msgid "info_serial_number TITLE"
-msgstr ""
+msgstr "S/N"
 
 #: src/infrastructure/setting_mapper.py:45
 msgid "info_hardware_version_number DESCRIPTION"
-msgstr ""
+msgstr "Hardware Version Number"
 
 #: src/infrastructure/setting_mapper.py:46
 msgid "info_hardware_version_number TITLE"
-msgstr ""
+msgstr "HW Version"
 
 #: src/infrastructure/setting_mapper.py:53
 msgid "info_firmware_version_number DESCRIPTION"
@@ -162,15 +202,15 @@ msgstr ""
 
 #: src/infrastructure/setting_mapper.py:54
 msgid "info_firmware_version_number TITLE"
-msgstr ""
+msgstr "Firmware Version Number"
 
 #: src/infrastructure/setting_mapper.py:61
 msgid "info_firmware_data_rate DESCRIPTION"
-msgstr ""
+msgstr "Firmware Data Rate"
 
 #: src/infrastructure/setting_mapper.py:62
 msgid "info_firmware_data_rate TITLE"
-msgstr ""
+msgstr "Firmware Data Rate"
 
 #: src/infrastructure/setting_mapper.py:69
 #: src/infrastructure/setting_mapper.py:75
@@ -191,11 +231,11 @@ msgstr ""
 
 #: src/infrastructure/setting_mapper.py:71
 msgid "options_use_sublayers TITLE"
-msgstr ""
+msgstr "Use Sublayers"
 
 #: src/infrastructure/setting_mapper.py:72
 msgid "options_use_sublayers DESCRIPTION"
-msgstr ""
+msgstr "Enables automatic addinf layers"
 
 #: src/infrastructure/setting_mapper.py:77
 msgid "options_sublayer_height_mm TITLE"
@@ -203,7 +243,7 @@ msgstr ""
 
 #: src/infrastructure/setting_mapper.py:78
 msgid "options_sublayer_height_mm DESCRIPTION"
-msgstr ""
+msgstr "Height in mm of sublayers when Use Sublayers is on"
 
 #: src/infrastructure/setting_mapper.py:80
 #: src/infrastructure/setting_mapper.py:97
@@ -238,99 +278,99 @@ msgstr "Ok"
 
 #: src/infrastructure/setting_mapper.py:87
 msgid "options_use_shufflelayers TITLE"
-msgstr ""
+msgstr "Use Shufflelayers"
 
 #: src/infrastructure/setting_mapper.py:88
 msgid "options_use_shufflelayers DESCRIPTION"
-msgstr ""
+msgstr "Shuffle Layers moves the starting point around the print"
 
 #: src/infrastructure/setting_mapper.py:94
 msgid "options_shuffle_layers_amount TITLE"
-msgstr ""
+msgstr "Shuffle Layer Amount"
 
 #: src/infrastructure/setting_mapper.py:95
 msgid "options_shuffle_layers_amount DESCRIPTION"
-msgstr ""
+msgstr "Number of points to shuffle each layer"
 
 #: src/infrastructure/setting_mapper.py:104
 msgid "options_use_overlap TITLE"
-msgstr ""
+msgstr "Use Overlap"
 
 #: src/infrastructure/setting_mapper.py:105
 msgid "options_use_overlap DESCRIPTION"
-msgstr ""
+msgstr "Enables overlapping at the end of each layer"
 
 #: src/infrastructure/setting_mapper.py:111
 msgid "options_overlap_amount_mm TITLE"
-msgstr ""
+msgstr "Overlap amount mm"
 
 #: src/infrastructure/setting_mapper.py:112
 msgid "options_overlap_amount_mm DESCRIPTION"
-msgstr ""
+msgstr "Amount to overlap each layer"
 
 #: src/infrastructure/setting_mapper.py:121
 msgid "options_laser_thickness_mm TITLE"
-msgstr ""
+msgstr "Laser Thickness mm"
 
 #: src/infrastructure/setting_mapper.py:122
 msgid "options_laser_thickness_mm DESCRIPTION"
-msgstr ""
+msgstr "The size of the laser as it his the surface"
 
 #: src/infrastructure/setting_mapper.py:129
 msgid "options_scaling_factor TITLE"
-msgstr ""
+msgstr "Gcode Scaling factor"
 
 #: src/infrastructure/setting_mapper.py:130
 msgid "options_scaling_factor DESCRIPTION"
-msgstr ""
+msgstr "Scales the gocde x the specified amount"
 
 #: src/infrastructure/setting_mapper.py:140
 msgid "options_max_lead_distance_mm TITLE"
-msgstr ""
+msgstr "Max Lead Distance"
 
 #: src/infrastructure/setting_mapper.py:141
 msgid "options_max_lead_distance_mm DESCRIPTION"
-msgstr ""
+msgstr "Amount of distance the drips can be ahead of the layer before skipping"
 
 #: src/infrastructure/setting_mapper.py:150
 msgid "options_pre_layer_delay TITLE"
-msgstr ""
+msgstr "Pre Layer Delay"
 
 #: src/infrastructure/setting_mapper.py:151
 msgid "options_pre_layer_delay DESCRIPTION"
-msgstr ""
+msgstr "TODO"
 
 #: src/infrastructure/setting_mapper.py:160
 msgid "options_post_fire_delay TITLE"
-msgstr ""
+msgstr "Post Fire Delay"
 
 #: src/infrastructure/setting_mapper.py:161
 msgid "options_post_fire_delay DESCRIPTION"
-msgstr ""
+msgstr "Amout of time to wait before moving after turning the laser on"
 
 #: src/infrastructure/setting_mapper.py:170
 msgid "options_slew_delay TITLE"
-msgstr ""
+msgstr "Slew Rate delay"
 
 #: src/infrastructure/setting_mapper.py:171
 msgid "options_slew_delay DESCRIPTION"
-msgstr ""
+msgstr "A time to wait to allow for the inertia of the mirror assembly"
 
 #: src/infrastructure/setting_mapper.py:180
 msgid "options_wait_after_move_milliseconds TITLE"
-msgstr ""
+msgstr "Wait after move milliseconds"
 
 #: src/infrastructure/setting_mapper.py:181
 msgid "options_wait_after_move_milliseconds DESCRIPTION"
-msgstr ""
+msgstr "Number of milliseconds to wait after each move."
 
 #: src/infrastructure/setting_mapper.py:190
 msgid "options_print_queue_delay TITLE"
-msgstr ""
+msgstr "Print Queue Delay [Unsupported]"
 
 #: src/infrastructure/setting_mapper.py:191
 msgid "options_print_queue_delay DESCRIPTION"
-msgstr ""
+msgstr "Unsupported"
 
 #: src/infrastructure/setting_mapper.py:199
 #: src/infrastructure/setting_mapper.py:207
@@ -344,59 +384,59 @@ msgstr ""
 
 #: src/infrastructure/setting_mapper.py:201
 msgid "email.on TITLE"
-msgstr ""
+msgstr "Email On"
 
 #: src/infrastructure/setting_mapper.py:202
 msgid "email.on DESCRIPTION"
-msgstr ""
+msgstr "True emailing after print"
 
 #: src/infrastructure/setting_mapper.py:209
 msgid "email.port TITLE"
-msgstr ""
+msgstr "Email SMTP port"
 
 #: src/infrastructure/setting_mapper.py:210
 msgid "email.port DESCRIPTION"
-msgstr ""
+msgstr "The port for outgoing smtp messages"
 
 #: src/infrastructure/setting_mapper.py:219
 msgid "email.host TITLE"
-msgstr ""
+msgstr "SMTP server address"
 
 #: src/infrastructure/setting_mapper.py:220
 msgid "email.host DESCRIPTION"
-msgstr ""
+msgstr "The Address of the SMTP server for email"
 
 #: src/infrastructure/setting_mapper.py:226
 msgid "email.sender TITLE"
-msgstr ""
+msgstr "Email Sender"
 
 #: src/infrastructure/setting_mapper.py:227
 msgid "email.sender DESCRIPTION"
-msgstr ""
+msgstr "The Email address that you wish to send from"
 
 #: src/infrastructure/setting_mapper.py:236
 msgid "email.recipient TITLE"
-msgstr ""
+msgstr "Email Reciepient"
 
 #: src/infrastructure/setting_mapper.py:237
 msgid "email.recipient DESCRIPTION"
-msgstr ""
+msgstr "The Email address that you wish to receive with"
 
 #: src/infrastructure/setting_mapper.py:246
 msgid "email.username TITLE"
-msgstr ""
+msgstr "Email account username"
 
 #: src/infrastructure/setting_mapper.py:247
 msgid "email.username DESCRIPTION"
-msgstr ""
+msgstr "Enter Email username"
 
 #: src/infrastructure/setting_mapper.py:255
 msgid "email.password TITLE"
-msgstr ""
+msgstr "Email Password"
 
 #: src/infrastructure/setting_mapper.py:256
 msgid "email.password DESCRIPTION"
-msgstr ""
+msgstr "Enter Email password"
 
 #: src/infrastructure/setting_mapper.py:263
 #: src/infrastructure/setting_mapper.py:269
@@ -410,59 +450,59 @@ msgstr ""
 
 #: src/infrastructure/setting_mapper.py:265
 msgid "serial_enabled TITLE"
-msgstr ""
+msgstr "Enable Simple Serial"
 
 #: src/infrastructure/setting_mapper.py:266
 msgid "serial_enabled DESCRIPTION"
-msgstr ""
+msgstr "Send characters to an arduino upon events"
 
 #: src/infrastructure/setting_mapper.py:271
 msgid "serial_port TITLE"
-msgstr ""
+msgstr "Serial Port"
 
 #: src/infrastructure/setting_mapper.py:272
 msgid "serial_port DESCRIPTION"
-msgstr ""
+msgstr "Enter the serial port you wish to use ie: /dev/tty/USB0"
 
 #: src/infrastructure/setting_mapper.py:280
 msgid "serial_on_command TITLE"
-msgstr ""
+msgstr "Dripper on command"
 
 #: src/infrastructure/setting_mapper.py:281
 msgid "serial_on_command DESCRIPTION"
-msgstr ""
+msgstr "Signals that the layer at current height is complete"
 
 #: src/infrastructure/setting_mapper.py:290
 msgid "serial_off_command TITLE"
-msgstr ""
+msgstr "Dripper off command"
 
 #: src/infrastructure/setting_mapper.py:291
 msgid "serial_off_command DESCRIPTION"
-msgstr ""
+msgstr "Signals that the z-axis has reached the height for the next layer"
 
 #: src/infrastructure/setting_mapper.py:300
 msgid "serial_layer_started_command TITLE"
-msgstr ""
+msgstr "Layer Started command"
 
 #: src/infrastructure/setting_mapper.py:301
 msgid "serial_layer_started_command DESCRIPTION"
-msgstr ""
+msgstr "Signals that the printer has begun drawing a layer"
 
 #: src/infrastructure/setting_mapper.py:310
 msgid "serial_layer_ended_command TITLE"
-msgstr ""
+msgstr "Layer Ended Command"
 
 #: src/infrastructure/setting_mapper.py:311
 msgid "serial_layer_ended_command DESCRIPTION"
-msgstr ""
+msgstr "Signals that the printer has finished drawing a layer"
 
 #: src/infrastructure/setting_mapper.py:320
 msgid "serial_print_ended_command TITLE"
-msgstr ""
+msgstr "Print ended command"
 
 #: src/infrastructure/setting_mapper.py:321
 msgid "serial_print_ended_command DESCRIPTION"
-msgstr ""
+msgstr "Signals that the print has ended"
 
 #: src/infrastructure/setting_mapper.py:330
 #: src/infrastructure/setting_mapper.py:336
@@ -474,43 +514,43 @@ msgstr ""
 
 #: src/infrastructure/setting_mapper.py:331
 msgid "cure_rate_use_draw_speed TITLE"
-msgstr ""
+msgstr "Override GCODE Speeds"
 
 #: src/infrastructure/setting_mapper.py:332
 msgid "cure_rate_use_draw_speed DESCRIPTION"
-msgstr ""
+msgstr "Override the laser draw speeds specified in GCODE"
 
 #: src/infrastructure/setting_mapper.py:337
 msgid "cure_rate_draw_speed TITLE"
-msgstr ""
+msgstr "Laser Draw Speed"
 
 #: src/infrastructure/setting_mapper.py:338
 msgid "cure_rate_draw_speed DESCRIPTION"
-msgstr ""
+msgstr "The override speed to be used when the laser is on"
 
 #: src/infrastructure/setting_mapper.py:347
 msgid "cure_rate_move_speed TITLE"
-msgstr ""
+msgstr "Move Speed"
 
 #: src/infrastructure/setting_mapper.py:348
 msgid "cure_rate_move_speed DESCRIPTION"
-msgstr ""
+msgstr "The override speed to be used when the laser is off"
 
 #: src/infrastructure/setting_mapper.py:357
 msgid "cure_rate_override_laser_power TITLE"
-msgstr ""
+msgstr "Override Laser Power"
 
 #: src/infrastructure/setting_mapper.py:358
 msgid "cure_rate_override_laser_power DESCRIPTION"
-msgstr ""
+msgstr "Override the laser power/extrusion rate specified in GCODE"
 
 #: src/infrastructure/setting_mapper.py:366
 msgid "cure_rate_override_laser_power_amount TITLE"
-msgstr ""
+msgstr "Laser Power"
 
 #: src/infrastructure/setting_mapper.py:367
 msgid "cure_rate_override_laser_power_amount DESCRIPTION"
-msgstr ""
+msgstr "The override power to be used"
 
 #: src/infrastructure/setting_mapper.py:376
 #: src/infrastructure/setting_mapper.py:385
@@ -521,50 +561,53 @@ msgstr ""
 
 #: src/infrastructure/setting_mapper.py:377
 msgid "dripper_type TITLE"
-msgstr ""
+msgstr "Z-axis Stuff"
 
 #: src/infrastructure/setting_mapper.py:378
 msgid "dripper_type DESCRIPTION"
-msgstr ""
+msgstr "Choose the way that your printer handles Z-axis movement"
 
 #: src/infrastructure/setting_mapper.py:379
 #: src/ui/dripper_calibration_ui.kv:283
 msgid "Emulated"
-msgstr ""
+msgstr "Emulate Drips"
 
 #: src/infrastructure/setting_mapper.py:379
 #: src/ui/dripper_calibration_ui.kv:283
 msgid "Photo"
-msgstr ""
+msgstr "Light Drawing Photo Mode"
 
 #: src/infrastructure/setting_mapper.py:379
 #: src/ui/dripper_calibration_ui.kv:283
 msgid "Circut"
-msgstr ""
+msgstr "Default"
 
 #: src/infrastructure/setting_mapper.py:386
 msgid "dripper_drips_per_mm TITLE"
-msgstr ""
+msgstr "Drips Per Millimeter"
 
 #: src/infrastructure/setting_mapper.py:387
 msgid "dripper_drips_per_mm DESCRIPTION"
 msgstr ""
+"The number of drips that it takes to raise the print surface 1 millimeter"
 
 #: src/infrastructure/setting_mapper.py:396
 msgid "dripper_emulated_drips_per_second TITLE"
-msgstr ""
+msgstr "Emulated Drips/Second"
 
 #: src/infrastructure/setting_mapper.py:397
 msgid "dripper_emulated_drips_per_second DESCRIPTION"
 msgstr ""
+"The rate at which the computer will emulate drips when in Emulate Drips mode"
 
 #: src/infrastructure/setting_mapper.py:406
 msgid "dripper_photo_zaxis_delay TITLE"
-msgstr "Minimum Layer Time"
+msgstr "Photo Exposure Length"
 
 #: src/infrastructure/setting_mapper.py:407
 msgid "dripper_photo_zaxis_delay DESCRIPTION"
-msgstr "The minimum time the Peachy will take to draw a layer"
+msgstr ""
+"The minimum total layer duration to allow for consistent exposure lengths"
 
 #: src/ui/calibrate_ui.kv:18
 msgid "Center"
@@ -608,7 +651,28 @@ msgstr ""
 
 #: src/ui/calibrate_ui.kv:57
 msgid "MARKUP - Center Calibration Instructions"
-msgstr "Center is a tool that will assist you in adjusting the mirrors resting point to be centered in the range of deflection and parallel with the surface of the mirror frame.  When complete, the laser beam should be plumb (perfectly vertical) and centered in your build volume.\n\nEnsure that your safety glasses are on.\nPlace the grid paper underneath the printer\nCenter the grid paper underneath the 2nd mirror\nMove the laser beam to the center of the grid paper by rotating the magnetic damper discs on each galvanometer.  One disc will move the laser in the X-axis, the other will move the laser in the Y-axis.\n\n[b]Note[/b]: Be gentle while adjusting the magnetic damper discs.\n[b]Note[/b]: Be sure the magnets do not touch the aluminum damper slug\n\nOnce you are satisfied with the adjustments you’ve made, move on to 'Orientation'\n\n[b]Remember[/b]:  The more accurately you calibrate your printer, the better it will perform. However if you’re just printing for fun, then being off center by 2 mm or so isn’t a big deal."
+msgstr ""
+"Center is a tool that will assist you in adjusting the mirrors resting point "
+"to be centered in the range of deflection and parallel with the surface of "
+"the mirror frame.  When complete, the laser beam should be plumb (perfectly "
+"vertical) and centered in your build volume.\n"
+"\n"
+"Ensure that your safety glasses are on.\n"
+"Place the grid paper underneath the printer\n"
+"Center the grid paper underneath the 2nd mirror\n"
+"Move the laser beam to the center of the grid paper by rotating the magnetic "
+"damper discs on each galvanometer.  One disc will move the laser in the X-"
+"axis, the other will move the laser in the Y-axis.\n"
+"\n"
+"[b]Note[/b]: Be gentle while adjusting the magnetic damper discs.\n"
+"[b]Note[/b]: Be sure the magnets do not touch the aluminum damper slug\n"
+"\n"
+"Once you are satisfied with the adjustments you’ve made, move on to "
+"'Orientation'\n"
+"\n"
+"[b]Remember[/b]:  The more accurately you calibrate your printer, the better "
+"it will perform. However if you’re just printing for fun, then being off "
+"center by 2 mm or so isn’t a big deal."
 
 #: src/ui/calibrate_ui.kv:57
 msgid "Help - Calibration Setup"
@@ -616,7 +680,18 @@ msgstr ""
 
 #: src/ui/calibrate_ui.kv:108
 msgid "MARKUP - Orientation Instructions"
-msgstr "Orientation is a tool that helps the software determine the orientation of your printer and the polarity of the coils.\n\nEnsure that your safety glasses are on.\nPlace the glow paper underneath the printer.\nWhile looking at the printer from the front you should see it drawing a 'P' in one of the 8 orientations on you computer screen.\nChoose the 'P' on the screen that matches the orientation of the 'P' that the printer is drawing.  Our software will automatically detect the polarity of your coils and the orientation of your printer. \nOnce this is done correctly, you may move on to 'Alignment'."
+msgstr ""
+"Orientation is a tool that helps the software determine the orientation of "
+"your printer and the polarity of the coils.\n"
+"\n"
+"Ensure that your safety glasses are on.\n"
+"Place the glow paper underneath the printer.\n"
+"While looking at the printer from the front you should see it drawing a 'P' "
+"in one of the 8 orientations on you computer screen.\n"
+"Choose the 'P' on the screen that matches the orientation of the 'P' that "
+"the printer is drawing.  Our software will automatically detect the polarity "
+"of your coils and the orientation of your printer. \n"
+"Once this is done correctly, you may move on to 'Alignment'."
 
 #: src/ui/calibrate_ui.kv:108
 msgid "Help - Orientation"
@@ -624,7 +699,13 @@ msgstr ""
 
 #: src/ui/calibrate_ui.kv:290
 msgid "MARKUP - Print Area Instructions"
-msgstr "This is where you define the print area of your lower reservoir.\n\nMeasure the X and Y dimensions (width and length) of your lower reservoir.\nEnter those measurements into the software.\n\nOnce you’ve completed this, you may move onto 'Top'"
+msgstr ""
+"This is where you define the print area of your lower reservoir.\n"
+"\n"
+"Measure the X and Y dimensions (width and length) of your lower reservoir.\n"
+"Enter those measurements into the software.\n"
+"\n"
+"Once you’ve completed this, you may move onto 'Top'"
 
 #: src/ui/calibrate_ui.kv:290
 msgid "Help - Print Area"
@@ -644,7 +725,21 @@ msgstr ""
 
 #: src/ui/calibrate_ui.kv:336
 msgid "MARKUP - Alignment Instructions"
-msgstr  "Alignment is a tool that will help you get your grid paper positioned properly underneath the printer.  You may come back to this tool multiple times throughout the calibration process.  When complete the laser path should be parallel with the lines on the grid paper.\nEnsure that your safety glasses are on.\nPlace the grid paper underneath the printer.\nThe printer should be drawing a straight line, rotate the grid paper until the laser line is parallel with the grid paper lines.\n\n[b]Note[/b]:  In order to get the most accurate calibration switch back and forth between the 'Alignment' and “Center” tools to ensure the grid paper is both centered and aligned.\n\nOnce you’ve completed this, you may move on to 'Print Area'"
+msgstr ""
+"Alignment is a tool that will help you get your grid paper positioned "
+"properly underneath the printer.  You may come back to this tool multiple "
+"times throughout the calibration process.  When complete the laser path "
+"should be parallel with the lines on the grid paper.\n"
+"Ensure that your safety glasses are on.\n"
+"Place the grid paper underneath the printer.\n"
+"The printer should be drawing a straight line, rotate the grid paper until "
+"the laser line is parallel with the grid paper lines.\n"
+"\n"
+"[b]Note[/b]:  In order to get the most accurate calibration switch back and "
+"forth between the 'Alignment' and “Center” tools to ensure the grid paper is "
+"both centered and aligned.\n"
+"\n"
+"Once you’ve completed this, you may move on to 'Print Area'"
 
 #: src/ui/calibrate_ui.kv:336
 msgid "Help - Alignment"
@@ -660,7 +755,23 @@ msgstr ""
 
 #: src/ui/calibrate_ui.kv:418
 msgid "MARKUP - Calibration Instructions"
-msgstr "Here you can tell our software when the laser is touching the 4 corners of the box shaped print area you described. We will use this information to calibrate the printer’s output.\n\n\nEnsure that your safety glasses are on \nPlace the calibration grid on your work surface underneath your printer.\nUsing the “Align” and “Center” tools, align and center your grid paper.\n Click one of the 4 position buttons.  A dot will appear on the grid on your screen.  Click and drag the dot with your mouse, this will move the actual laser on the printer.  Position the laser dot on the corresponding corner of your print area on the grid paper.  Repeat this process for all 4 buttons until all 4 corners have been positioned.\nPlace your lower reservoir underneath your printer, then place the grid paper on top of it or level with the top of it.\nRepeat steps 3 and 4 using the “Top” calibration."
+msgstr ""
+"Here you can tell our software when the laser is touching the 4 corners of "
+"the box shaped print area you described. We will use this information to "
+"calibrate the printer’s output.\n"
+"\n"
+"\n"
+"Ensure that your safety glasses are on \n"
+"Place the calibration grid on your work surface underneath your printer.\n"
+"Using the “Align” and “Center” tools, align and center your grid paper.\n"
+" Click one of the 4 position buttons.  A dot will appear on the grid on your "
+"screen.  Click and drag the dot with your mouse, this will move the actual "
+"laser on the printer.  Position the laser dot on the corresponding corner of "
+"your print area on the grid paper.  Repeat this process for all 4 buttons "
+"until all 4 corners have been positioned.\n"
+"Place your lower reservoir underneath your printer, then place the grid "
+"paper on top of it or level with the top of it.\n"
+"Repeat steps 3 and 4 using the “Top” calibration."
 
 #: src/ui/calibrate_ui.kv:418
 msgid "Help - Calibration"
@@ -676,7 +787,37 @@ msgstr ""
 
 #: src/ui/calibrate_ui.kv:489
 msgid "MARKUP - Test Pattern Instructions"
-msgstr "Each of these test patterns may be useful in understanding various aspects of your printers performance.  The following patterns are of specific interest:\n\n[b]Hourglass[/b] - The hourglass is very good for testing for hysteresis if you play this pattern slowly (below 50mm/second) the laser should come to the exact center of the hourglass 2 times per layer.  If your printer has hysteresis the 2 center points of the hourglass will not overlap, the will be misaligned.\n\n[b]NSEW[/b] - If you picked the correct shape in the orientation section then this pattern should draw NSEW the same way you would look at a map.\n\n[b]Twitch[/b] - Playing this pattern along with the speed adjuster can help you learn things \nabout the resonant frequency of each mirror\n\n[b]Damping[/b] - This can help you see the effects of the slew rate caused by the dampening on your printer.\n\n\n[b]Hilbert[/b] - This pattern is useful in seeing how linear the printer’s output is, \nand if the printer has the same ability to turn a sharp corner in all areas of the print.\n\n[b]Spiral[/b] - We find this very helpful in finding an irregular spot in your mirror movement \nsuch as would be caused if the damper magnets were physically touching the aluminum slug on one of your mirrors."
+msgstr ""
+"Each of these test patterns may be useful in understanding various aspects "
+"of your printers performance.  The following patterns are of specific "
+"interest:\n"
+"\n"
+"[b]Hourglass[/b] - The hourglass is very good for testing for hysteresis if "
+"you play this pattern slowly (below 50mm/second) the laser should come to "
+"the exact center of the hourglass 2 times per layer.  If your printer has "
+"hysteresis the 2 center points of the hourglass will not overlap, the will "
+"be misaligned.\n"
+"\n"
+"[b]NSEW[/b] - If you picked the correct shape in the orientation section "
+"then this pattern should draw NSEW the same way you would look at a map.\n"
+"\n"
+"[b]Twitch[/b] - Playing this pattern along with the speed adjuster can help "
+"you learn things \n"
+"about the resonant frequency of each mirror\n"
+"\n"
+"[b]Damping[/b] - This can help you see the effects of the slew rate caused "
+"by the dampening on your printer.\n"
+"\n"
+"\n"
+"[b]Hilbert[/b] - This pattern is useful in seeing how linear the printer’s "
+"output is, \n"
+"and if the printer has the same ability to turn a sharp corner in all areas "
+"of the print.\n"
+"\n"
+"[b]Spiral[/b] - We find this very helpful in finding an irregular spot in "
+"your mirror movement \n"
+"such as would be caused if the damper magnets were physically touching the "
+"aluminum slug on one of your mirrors."
 
 #: src/ui/calibrate_ui.kv:489
 msgid "Help - Test Patterns"
@@ -754,7 +895,19 @@ msgstr ""
 
 #: src/ui/cure_test_ui.kv:288
 msgid "Markup- Cure Rate"
-msgstr "Not all lasers and resins are the same, they all vary a bit from bottle to bottle/printer to printer. \nThis tool allows you to test out just how much time your printer needs to properly expose your resin to light, so that it will cure. \n\nThe test starts by moving the laser very slowly, so that the first layers get lot and lots of light and fully cure.  As the cure rate test continues it speeds up the laser, spending less and less time on each layer, and curing the resin less and less.  When the print is done you should see a very smooth looking area somewhere in your print.  Measure the lowest point on the print that still has a smooth print surface and enter that height into the software."
+msgstr ""
+"Not all lasers and resins are the same, they all vary a bit from bottle to "
+"bottle/printer to printer. \n"
+"This tool allows you to test out just how much time your printer needs to "
+"properly expose your resin to light, so that it will cure. \n"
+"\n"
+"The test starts by moving the laser very slowly, so that the first layers "
+"get lot and lots of light and fully cure.  As the cure rate test continues "
+"it speeds up the laser, spending less and less time on each layer, and "
+"curing the resin less and less.  When the print is done you should see a "
+"very smooth looking area somewhere in your print.  Measure the lowest point "
+"on the print that still has a smooth print surface and enter that height "
+"into the software."
 
 #: src/ui/cure_test_ui.kv:288
 msgid "Help - Cure Rate Settings"
@@ -814,7 +967,7 @@ msgstr ""
 msgid "[b]Emulated Settings[/b]"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:195 src/ui/print_ui.kv:207
+#: src/ui/dripper_calibration_ui.kv:195 src/ui/print_ui.kv:215
 msgid "Drips per second"
 msgstr ""
 
@@ -840,7 +993,22 @@ msgstr ""
 
 #: src/ui/dripper_calibration_ui.kv:290
 msgid "MARKUP - Dripper Instructions"
-msgstr "This tool informs the software of how many drips it takes to make the print surface rise 1mm in your print container.  This is how the software knows what height the print is at while it is running.  If you switch to a different print container you will have to go through this process again.\n\n Allow some salt water to drip into your lower reservoir.  If the bottom of your lower reservoir has an irregular shape then make sure that you fill it until the surface of the water is past that point.  This test must be done in the straight walled portion of your lower reservoir.\n Make a mark at the surface of the water.  Make another mark exactly 1cm above the first mark.\n Begin dripping again and wait for the water level to rise to your second mark.\n When the water surface reaches your second mark shut off the dripper and click 'calculate'."
+msgstr ""
+"This tool informs the software of how many drips it takes to make the print "
+"surface rise 1mm in your print container.  This is how the software knows "
+"what height the print is at while it is running.  If you switch to a "
+"different print container you will have to go through this process again.\n"
+"\n"
+" Allow some salt water to drip into your lower reservoir.  If the bottom of "
+"your lower reservoir has an irregular shape then make sure that you fill it "
+"until the surface of the water is past that point.  This test must be done "
+"in the straight walled portion of your lower reservoir.\n"
+" Make a mark at the surface of the water.  Make another mark exactly 1cm "
+"above the first mark.\n"
+" Begin dripping again and wait for the water level to rise to your second "
+"mark.\n"
+" When the water surface reaches your second mark shut off the dripper and "
+"click 'calculate'."
 
 #: src/ui/dripper_calibration_ui.kv:290
 msgid "Help - Dripper Settings"
@@ -869,6 +1037,18 @@ msgstr ""
 #: src/ui/peachy_widgets.kv:33
 msgid "You are about to turn on the laser. Do you wish to proceed"
 msgstr ""
+"[color=ff0000ff][b]Warning[/b]: the laser is about to turn on![/color]\n"
+"\n"
+"The Peachy Printer uses a high power UV laser to cure the resin.  This laser "
+"is powerful enough to damage your eyesight.  Before proceeding you must take "
+"the following precautions to ensure the safety of yourself and those around "
+"you:\n"
+"\n"
+" - Everyone in the room must wear UV filtering safety glasses when the printer "
+"is operating\n"
+" - Remove any pets or young children from the room\n"
+" - Install the UV filtering safety guards on the printer\n"
+" - Do not pick the printer up while the laser is turned on"
 
 #: src/ui/peachy_widgets.kv:41
 msgid "Turn on Laser"
@@ -878,55 +1058,55 @@ msgstr ""
 msgid "Drip Speed"
 msgstr ""
 
-#: src/ui/print_ui.kv:195
+#: src/ui/print_ui.kv:203
 msgid "Dripper Informaiton"
 msgstr ""
 
-#: src/ui/print_ui.kv:222
+#: src/ui/print_ui.kv:230
 msgid "Total Drips"
 msgstr ""
 
-#: src/ui/print_ui.kv:237
+#: src/ui/print_ui.kv:245
 msgid "Waiting for drips"
 msgstr ""
 
-#: src/ui/print_ui.kv:270
+#: src/ui/print_ui.kv:286
 msgid "Time"
 msgstr ""
 
-#: src/ui/print_ui.kv:281
+#: src/ui/print_ui.kv:297
 msgid "Start Time"
 msgstr ""
 
-#: src/ui/print_ui.kv:295
+#: src/ui/print_ui.kv:311
 msgid "Elapsed Time"
 msgstr ""
 
-#: src/ui/print_ui.kv:327
+#: src/ui/print_ui.kv:351
 msgid "Posisition"
 msgstr ""
 
-#: src/ui/print_ui.kv:339
+#: src/ui/print_ui.kv:363
 msgid "Current Height"
 msgstr ""
 
-#: src/ui/print_ui.kv:353
+#: src/ui/print_ui.kv:377
 msgid "Layers"
 msgstr ""
 
-#: src/ui/print_ui.kv:367
+#: src/ui/print_ui.kv:391
 msgid "Skipped Layers"
 msgstr ""
 
-#: src/ui/print_ui.kv:377 src/ui/print_ui.py:378 src/ui/print_ui.py:410
+#: src/ui/print_ui.kv:401 src/ui/print_ui.py:378 src/ui/print_ui.py:410
 msgid "Cancel Print"
 msgstr ""
 
-#: src/ui/print_ui.kv:384
+#: src/ui/print_ui.kv:408
 msgid "Restart Print"
 msgstr ""
 
-#: src/ui/print_ui.kv:391
+#: src/ui/print_ui.kv:415
 msgid "Display Settings"
 msgstr ""
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-01 16:34-0600\n"
+"POT-Creation-Date: 2015-09-11 12:20-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -11,28 +11,28 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/gui.py:73
+#: src/gui.py:85
 msgid "Disclaimer"
 msgstr ""
 
-#: src/gui.py:90
+#: src/gui.py:102
 msgid "Load file"
 msgstr "load teywI'"
 
-#: src/gui.py:190 src/gui.py:224 src/peachyprinter.kv:57
+#: src/gui.py:202 src/gui.py:236 src/peachyprinter.kv:57
 #: src/ui/custom_widgets.kv:115 src/ui/print_ui.kv:122
 msgid "Close"
 msgstr "SoQmoH"
 
-#: src/gui.py:202
+#: src/gui.py:214
 msgid "Please connect your peachy printer before starting the software"
 msgstr "nuqneH peachy printer rar pa' software starting"
 
-#: src/gui.py:203 src/gui.py:211 src/peachyprinter.kv:150
+#: src/gui.py:215 src/gui.py:223 src/peachyprinter.kv:165
 msgid "Exit"
 msgstr "mej"
 
-#: src/gui.py:209
+#: src/gui.py:221
 msgid "An Error has Occured"
 msgstr ""
 
@@ -76,11 +76,11 @@ msgstr "print vo' be'nI''a'wI', Datu'"
 msgid "Settings"
 msgstr "setting"
 
-#: src/peachyprinter.kv:113
+#: src/peachyprinter.kv:128
 msgid "Starting Height"
 msgstr "start 'ab"
 
-#: src/peachyprinter.kv:124 src/infrastructure/setting_mapper.py:81
+#: src/peachyprinter.kv:139 src/infrastructure/setting_mapper.py:81
 #: src/infrastructure/setting_mapper.py:98
 #: src/infrastructure/setting_mapper.py:115
 #: src/infrastructure/setting_mapper.py:133
@@ -112,15 +112,15 @@ msgstr "start 'ab"
 msgid "Cancel"
 msgstr "qIl"
 
-#: src/peachyprinter.kv:131
+#: src/peachyprinter.kv:146
 msgid "Load"
 msgstr "load"
 
-#: src/peachyprinter.kv:139
+#: src/peachyprinter.kv:154
 msgid "MARKUP - Disclaimer "
 msgstr ""
 
-#: src/peachyprinter.kv:145
+#: src/peachyprinter.kv:160
 msgid "Accept"
 msgstr ""
 
@@ -816,7 +816,17 @@ msgstr ""
 
 #: src/ui/cure_test_ui.kv:288
 msgid "Markup- Cure Rate"
-msgstr "wej Hoch 'uD je resins rap, Sar Hoch chaH bit vo' bal bal ghap printer printer. \nthis tool chaw' SoH ghaH waH neH 'ar poH properly resin wov, Hopmo' nIS printer vaj 'e' vor 'oH. starts \n\nthe waH pong 'uD vIH QIt lot nIvbogh wov je Suq patlh wa'DIch 'ej fully vor. speeds Hoch 'oH taH vor rate waH woDDI' 'uD, 'arghbej qup 'ej qup poH Hoch patlh je resin vor qup je qup. HeghDI' Qu' print SoHvaD Hab legh mIchHom HeSwI' SoH vogh neH print. lowest lang print Daghajbogh poH'a' Hab ghor print 'ej 'ab 'el software 'aD."
+msgstr ""
+"wej Hoch 'uD je resins rap, Sar Hoch chaH bit vo' bal bal ghap printer "
+"printer. \n"
+"this tool chaw' SoH ghaH waH neH 'ar poH properly resin wov, Hopmo' nIS "
+"printer vaj 'e' vor 'oH. starts \n"
+"\n"
+"the waH pong 'uD vIH QIt lot nIvbogh wov je Suq patlh wa'DIch 'ej fully vor. "
+"speeds Hoch 'oH taH vor rate waH woDDI' 'uD, 'arghbej qup 'ej qup poH Hoch "
+"patlh je resin vor qup je qup. HeghDI' Qu' print SoHvaD Hab legh mIchHom "
+"HeSwI' SoH vogh neH print. lowest lang print Daghajbogh poH'a' Hab ghor "
+"print 'ej 'ab 'el software 'aD."
 
 #: src/ui/cure_test_ui.kv:288
 msgid "Help - Cure Rate Settings"
@@ -876,7 +886,7 @@ msgstr ""
 msgid "[b]Emulated Settings[/b]"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:195 src/ui/print_ui.kv:207
+#: src/ui/dripper_calibration_ui.kv:195 src/ui/print_ui.kv:215
 msgid "Drips per second"
 msgstr "drips per cha'DIch"
 
@@ -940,55 +950,55 @@ msgstr "tlhe' 'uD"
 msgid "Drip Speed"
 msgstr ""
 
-#: src/ui/print_ui.kv:195
+#: src/ui/print_ui.kv:203
 msgid "Dripper Informaiton"
 msgstr ""
 
-#: src/ui/print_ui.kv:222
+#: src/ui/print_ui.kv:230
 msgid "Total Drips"
 msgstr ""
 
-#: src/ui/print_ui.kv:237
+#: src/ui/print_ui.kv:245
 msgid "Waiting for drips"
 msgstr ""
 
-#: src/ui/print_ui.kv:270
+#: src/ui/print_ui.kv:286
 msgid "Time"
 msgstr ""
 
-#: src/ui/print_ui.kv:281
+#: src/ui/print_ui.kv:297
 msgid "Start Time"
 msgstr "start poH"
 
-#: src/ui/print_ui.kv:295
+#: src/ui/print_ui.kv:311
 msgid "Elapsed Time"
 msgstr "elapsed poH"
 
-#: src/ui/print_ui.kv:327
+#: src/ui/print_ui.kv:351
 msgid "Posisition"
 msgstr ""
 
-#: src/ui/print_ui.kv:339
+#: src/ui/print_ui.kv:363
 msgid "Current Height"
 msgstr ""
 
-#: src/ui/print_ui.kv:353
+#: src/ui/print_ui.kv:377
 msgid "Layers"
 msgstr ""
 
-#: src/ui/print_ui.kv:367
+#: src/ui/print_ui.kv:391
 msgid "Skipped Layers"
 msgstr "skip patlh"
 
-#: src/ui/print_ui.kv:377 src/ui/print_ui.py:378 src/ui/print_ui.py:410
+#: src/ui/print_ui.kv:401 src/ui/print_ui.py:378 src/ui/print_ui.py:410
 msgid "Cancel Print"
 msgstr "Print qIl"
 
-#: src/ui/print_ui.kv:384
+#: src/ui/print_ui.kv:408
 msgid "Restart Print"
 msgstr "Print restart"
 
-#: src/ui/print_ui.kv:391
+#: src/ui/print_ui.kv:415
 msgid "Display Settings"
 msgstr ""
 

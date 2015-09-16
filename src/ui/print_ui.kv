@@ -3,7 +3,7 @@
 <ListElement>:
     orientation: 'vertical'
     size_hint_y: None
-    height:"50dp"
+    height: app.label_height * 2
     canvas.before:
         Color:
             rgba: 1.0, 1.0, 1.0, 0.1
@@ -185,15 +185,23 @@
                     orientation: 'horizontal'
                     size_hint_y: None
                     height: app.button_height
-                    Image:
-                        size_hint: [None, None]
-                        size: ["24dp", "24dp"]
-                        allow_stretch: True
-                        keep_ratio: True
-                        source: "resources/icons/printing_dripper-24x24.png"
-                    I18NLabel:
-                        text_source: _("Dripper Informaiton")
-                        bold: True
+                    AnchorLayout:
+                        anchor_x: "left"
+                        anchor_y: "top"
+                        size_hint_x: None
+                        width: "24dp"
+                        Image:
+                            size_hint: [None, None]
+                            size: ["24dp", "24dp"]
+                            allow_stretch: True
+                            keep_ratio: True
+                            source: "resources/icons/printing_dripper-24x24.png"
+                    AnchorLayout:
+                        anchor_x: "center"
+                        anchor_y: "center"
+                        I18NLabel:
+                            text_source: _("Dripper Informaiton")
+                            bold: True
                 GridLayout:
                     height: self.minimum_height
                     size_hint_y: None
@@ -259,15 +267,23 @@
                     orientation: 'horizontal'
                     size_hint_y: None
                     height: app.button_height
-                    Image:
-                        size_hint: [None, None]
-                        size: ["24dp", "24dp"]
-                        allow_stretch: True
-                        keep_ratio: True
-                        source: "resources/icons/printing_time-24x24.png"
-                    I18NLabel:
-                        bold: True
-                        text_source: _("Time")
+                    AnchorLayout:
+                        anchor_x: "left"
+                        anchor_y: "top"
+                        size_hint_x: None
+                        width: "24dp"
+                        Image:
+                            size_hint: [None, None]
+                            size: ["24dp", "24dp"]
+                            allow_stretch: True
+                            keep_ratio: True
+                            source: "resources/icons/printing_time-24x24.png"
+                    AnchorLayout:
+                        anchor_x: "center"
+                        anchor_y: "center"
+                        I18NLabel:
+                            bold: True
+                            text_source: _("Time")
                 GridLayout:
                     cols: 2
                     height: self.minimum_height
@@ -316,15 +332,23 @@
                     orientation: 'horizontal'
                     size_hint_y: None
                     height: app.button_height
-                    Image:
-                        size_hint: [None, None]
-                        size: ["24dp", "24dp"]
-                        allow_stretch: True
-                        keep_ratio: True
-                        source: "resources/icons/printing_posisition-24x24.png"
-                    I18NLabel:
-                        bold: True
-                        text_source: _("Posisition")
+                    AnchorLayout:
+                        anchor_x: "left"
+                        anchor_y: "top"
+                        size_hint_x: None
+                        width: "24dp"
+                        Image:
+                            size_hint: [None, None]
+                            size: ["24dp", "24dp"]
+                            allow_stretch: True
+                            keep_ratio: True
+                            source: "resources/icons/printing_posisition-24x24.png"
+                    AnchorLayout:
+                        anchor_x: "center"
+                        anchor_y: "center"
+                        I18NLabel:
+                            bold: True
+                            text_source: _("Posisition")
                 GridLayout:
                     cols: 2
                     height: self.minimum_height
