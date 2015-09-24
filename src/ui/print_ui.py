@@ -119,6 +119,7 @@ class PrinterAnimation(RelativeLayout):
         self.laser_pos = self.width / 2
 
         self.scale = min(bounds_y / printer_y, bounds_x / printer_x)
+        Logger.info("Scale: {}".format(self.scale))
         self.print_area_width = printer_x * self.scale
         self.print_area_height = printer_y * self.scale
 

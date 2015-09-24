@@ -391,12 +391,10 @@
             Label:
                 text: root.printer_point_text
                 bold: root.printer_point_emphasis
-            BoxLayout:
-                orientation: 'horizontal'
-                I18NImageButton:
-                    source: "resources/icons/laser_calibration_rest_all_points-24x24.png"
-                    text_source: _('Reset All')
-                    on_release: root.reset_points()
+            I18NImageButton:
+                source: "resources/icons/laser_calibration_rest_all_points-24x24.png"
+                text_source: _('Reset All')
+                on_release: root.reset_points()
             Label:
                 size_hint_y:0.2
         Image:
