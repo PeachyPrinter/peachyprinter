@@ -183,7 +183,7 @@ class CalibrationPanel(SetupPanel):
         else:
             self.is_accurate = True
             self.calibration_point_color = [0.78, 0, 1, 1]
-            self.center_point = self.remove_orientation_correction(*self.printer_point)
+            self.center_point = self.remove_orientation_correction(self.printer_point[0], self.printer_point[1])
             self.calibration_point = self.ids.top_calibration_grid.center
 
     def set_screen_point_from_printer(self):
@@ -273,6 +273,7 @@ class CalibrationPanel(SetupPanel):
                 group="current",
             )
             self.ids.point_selections.add_widget(c_point)
+        self.ids.point_selections.children[0].state = "down"
 
     def disable_super_accurate_mode(self):
         self.ids.super_accurate.state = 'normal'

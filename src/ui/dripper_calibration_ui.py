@@ -3,7 +3,6 @@ from kivy.lang import Builder
 from kivy.properties import NumericProperty, BoundedNumericProperty, StringProperty, ListProperty, BooleanProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.relativelayout import RelativeLayout
-from kivy.uix.label import Label
 from kivy.core.image import Image as CoreImage
 from kivy.graphics import *
 from kivy.clock import Clock
@@ -56,6 +55,7 @@ class DripperCalibrationUI(Screen):
             self.ids.setup_box_id.add_widget(BoxLayout())
             self.ids.visuals_box_id.add_widget(self.emulated_visuals)
             self.ids.settings_box_id.add_widget(self.emulated_settings)
+
         elif value == 'photo':
             self.ids.setup_box_id.add_widget(BoxLayout())
             self.ids.visuals_box_id.add_widget(self.photo_visuals)
@@ -131,7 +131,7 @@ class CircutVisuals(BoxLayout):
     drip_history_display = ListProperty()
     drips_per_mm = NumericProperty()
     reset = BooleanProperty()
-    
+
     def __init__(self, **kwargs):
         super(CircutVisuals, self).__init__(**kwargs)
         self.drips = "0"
@@ -139,7 +139,7 @@ class CircutVisuals(BoxLayout):
         self.drip_history = []
         self._refresh_rate = App.get_running_app().refresh_rate
 
-    def redraw(self, *args):    
+    def redraw(self, *args):
         self.drips_display = self.drips
         self.average_drips_display = self.average_drips
         self.drip_history_display = self.drip_history
@@ -151,7 +151,7 @@ class CircutVisuals(BoxLayout):
     def on_target_height(self, instance, value):
         self.ids.dripper_animation.test_height = float(value)
 
-    def on_drip_history_display(self, instance,value):
+    def on_drip_history_display(self, instance, value):
         self.ids.dripper_animation.drip_history = value
 
     def start_animation(self):
