@@ -1,5 +1,7 @@
 @ECHO OFF
 
+SET PYTHON_PATH=c:\Python27_32
+
 ECHO ------------------------------------
 ECHO Cleaning workspace
 ECHO ------------------------------------
@@ -15,8 +17,15 @@ ECHO ------------------------------------
 ECHO Setting up Enviroment
 ECHO ------------------------------------
 
-CALL c:\kivy_amd64\kivy-2.7.bat
-CALL setup_development_windows_amd64.bat
+IF EXIST venv GOTO SETUP_DEP
+ECHO ----Building Kivy Virtual ENV----
+%PYTHON_PATH%\Scripts\virtualenv venv
+IF NOT "%ERRORLEVEL%" == "0" (
+    ECHO FAILURE: Installer failed, check log
+    EXIT /B 99
+)
+
+CALL setup_development_windows.bat
 IF NOT "%ERRORLEVEL%" == "0" (
     ECHO FAILURE: Environment setup failed, check log
     EXIT /B 23
@@ -71,7 +80,7 @@ ECHO ------------------------------------
 ECHO Moving file
 ECHO ------------------------------------
 cd dist
-python ..\make_zip.py PeachyPrinter_x86-%VERSION% ..\PeachyPrinter_x86-%VERSION%.zip
+python ..\make_zip.py PeachyPrinter_x86 ..\PeachyPrinter_x86-%VERSION%.zip
 IF NOT "%ERRORLEVEL%" == "0" (
     ECHO "FAILED moving files"
     EXIT /B 798

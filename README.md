@@ -21,7 +21,6 @@ Complete packages are available at [http://software.peachyprinter.com/]
 ### Steps (Rough example)
 run build_linux.sh -h for details
 
-
 ### Fedora (RedHat)
 run build_linux.sh -h for details
 
@@ -29,19 +28,12 @@ run build_linux.sh -h for details
 ####Pre-Script Requirements
  - Kivy from source see http://kivy.org/docs/installation/installation-macosx.html
 
-### Windows Setup
- - kivy [http://kivy.org/#download] or [http://kivy.org/downloads/1.9.0/Kivy-1.9.0-py2.7-win32-x86.exe]
- - Assumed extraction point as c:\kivy_x86 or kivy_amd64
- - Fix the kivy to point at master (I know, i know)
- -- open the kivy_x86 directory in a  terminal windows
- -- move kivy27 kivy27_old
- -- git clone https://github.com/kivy/kivy.git kivy27
- -- close the windows
- -- open a terminal window as an administrator
- -- cd \kivy
- -- kivy-2.7.bat
- -- cd kivy27
- -- make force
+### Windows Development Setup
+install 
+    http://aka.ms/vcpython27
+    python 64 or 32
+    install pip
+    install virtualenv
 
 ##Getting Started
 ###Creating a development environment
@@ -57,6 +49,9 @@ Once the virtual environment is started running the software an be done via the 
  - "-l LEVEL" - will select the log level valid levels: DEBUG INFO WARNING ERROR  note:DEBUG is so verbose printing will probibily get ruined by delays
 
 ###Known issues
+ - Occasionally crashes on close in windows 10
+ - Configuration can have problems if printers are swapped while software is running
+ - 
 
 ###Scripts
  - build*  - These create an installable package
@@ -65,3 +60,9 @@ Once the virtual environment is started running the software an be done via the 
 
 ###Contibutors
 Nicolas Rubio - Posisition icon - source: https://www.iconfinder.com/icons/311123/coordinates_gps_locate_location_map_position_icon
+
+### Installing
+Visit peachyprinter.com for installation binaries
+
+### Release Notes
+v1.0.x Initial public release of peachy printer ui for peachy printer tools.
