@@ -10,7 +10,7 @@ from VERSION import version
 
 a = Analysis(['src\\main.py'],
              pathex=['C:\\Users\\jtownley\\git\\kivypeachyprinter'],
-             hiddenimports=['six'],
+             hiddenimports=['six', 'packaging'],
              runtime_hooks=None)
 pyz = PYZ(a.pure)
 exe = EXE(pyz,
