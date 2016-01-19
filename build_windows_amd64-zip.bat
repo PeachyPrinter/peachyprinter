@@ -26,6 +26,7 @@ IF NOT "%ERRORLEVEL%" == "0" (
     EXIT /B 99
 )
 
+:SETUP_DEP
 CALL setup_development_windows.bat
 IF NOT "%ERRORLEVEL%" == "0" (
     ECHO FAILURE: Environment setup failed, check log
