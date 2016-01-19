@@ -13,7 +13,7 @@ ECHO ----Adding PyInstaller----
 call pip install --upgrade PyInstaller==2.1
 
 ECHO --------Setting up numpy----
-call pip install --upgrade http://www.lfd.uci.edu/~gohlke/pythonlibs/r7to5k3j/numpy-1.9.2+mkl-cp27-none-win_amd64.whl
+call pip install --upgrade c:\Dependancies\numpy-1.10.4+mkl-cp27-none-win_amd64.whl
 
 ECHO -----Moving required DLL-----------
 REM copy src\resources\DLL\amd64\*.dll src\
