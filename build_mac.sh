@@ -91,14 +91,14 @@ echo "------------------------------------"
 echo "Moving Application"
 echo "------------------------------------"
 
-cp -R dist/PeachyPrinter.app peachyprinter.app
+cp -R dist/PeachyPrinter.app PeachyPrinter.app
 
 if [ $? != 0 ]; then
     echo "FAILURE: Copying app"
     exit 233
 fi
 
-cp src/resources/peachy.icns peachyprinter.app/Contents/Resources/appIcon.icns
+cp src/resources/peachy.icns peachyprinter.app/Contents/Resources/icon-windowed.icns
 
 echo "------------------------------------"
 echo "Building dmg"
@@ -110,7 +110,7 @@ background_image=src/resources/images/mac_installer.png
 volicon=src/resources/peachy.icns
 backgound_width=700
 background_height=400
-app=peachyprinter.app
+app=PeachyPrinter.app
 app_pos_x=250
 app_pos_y=200
 sym_pos_x=600

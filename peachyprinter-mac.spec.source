@@ -35,7 +35,6 @@ coll = COLLECT(exe,
                strip=False,
                upx=True,
                name='PeachyPrinter',
-               icon='src/resources/peachy.icns'
                )
 app = BUNDLE(coll,
              name='PeachyPrinter.app',
