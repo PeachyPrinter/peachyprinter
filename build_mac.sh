@@ -117,7 +117,7 @@ sym_pos_x=600
 sym_pos_y=200
 icon_size=64
 
-/opt/git/create-dmg/create-dmg --volicon $volicon --volname $vol_name --background $background_image --window-pos 200 120 --window-size $backgound_width $background_height --icon-size $icon_size --icon $app $app_pos_x $app_pos_y --app-drop-link $sym_pos_x $sym_pos_y --hide-extension $app $dmg_name peachyprinter.app
+/opt/git/create-dmg/create-dmg --volicon $volicon --volname $vol_name --background $background_image --window-pos 200 120 --window-size $backgound_width $background_height --icon-size $icon_size --icon $app $app_pos_x $app_pos_y --app-drop-link $sym_pos_x $sym_pos_y --hide-extension $app $dmg_name PeachyPrinter.app
 
 
 deactivate
