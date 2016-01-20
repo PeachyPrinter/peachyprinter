@@ -79,6 +79,7 @@ echo "------------------------------------"
 echo "Building Package"
 echo "------------------------------------"
 
+cp -R peachyprinter-mac.spec.source PeachyPrinter.spec
 pyinstaller -y --clean --windowed PeachyPrinter.spec
 
 if [ $? != 0 ]; then
@@ -91,7 +92,7 @@ echo "------------------------------------"
 echo "Moving Application"
 echo "------------------------------------"
 
-cp -R /opt/git/kivy-sdk-packager/osx/src.app peachyprinter.app
+cp -R dist/PeachyPrinter.app peachyprinter.app
 
 if [ $? != 0 ]; then
     echo "FAILURE: Copying app"
