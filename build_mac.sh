@@ -4,6 +4,7 @@
 ## brew install python
 ## brew linkapps python
 ## brew reinstall --build-bottle sdl2 sdl2_image sdl2_ttf sdl2_mixer
+## python -m pip install --upgrade virtualenv==12.0.7
 
 echo "------------------------------------"
 echo "Cleaning workspace"
@@ -23,7 +24,7 @@ echo "------------------------------------"
 echo "Setting up Enviroment"
 echo "------------------------------------"
 
-python -m pip install --upgrade virtualenv==12.0.7
+
 if [ ! -d "venv" ]; then
   python -m virtualenv venv
 fi
