@@ -1,34 +1,45 @@
 #!/bin/bash
 
+##MAC SETUP
+## brew install python
+## brew linkapps python
+## brew reinstall --build-bottle sdl2 sdl2_image sdl2_ttf sdl2_mixer
+
 echo "------------------------------------"
 echo "Cleaning workspace"
 echo "------------------------------------"
 
-# TODO JT 2014-02-13 - Should clean the workspace
-KIVY_SDK_PACKAGER=/opt/git/kivy-sdk-packager/osx
-export KIVY_APP_PATH=/Applications/Kivy.app
-
-# rm -rf venv
+rm -rf venv
 rm -rf dist
 rm -rf build
 rm -rf *.app
-rm -rf ${KIVY_SDK_PACKAGER}/src.app
-rm -rf ${KIVY_SDK_PACKAGER}/Kivy.app
 rm -rf *.dmg
 rm -rf venv
 rm -f src/UIVERSION.py
 rm -f version.properties 
 find . -name "*.pyc" -exec rm -rf {} \;
 
-cp -a ${KIVY_APP_PATH} ${KIVY_SDK_PACKAGER}/Kivy.app
-export KIVY_APP_PATH=${KIVY_SDK_PACKAGER}/Kivy.app
-
-
 echo "------------------------------------"
 echo "Setting up Enviroment"
 echo "------------------------------------"
 
+python -m pip install --upgrade virtualenv==12.0.7
+if [ ! -d "venv" ]; then
+  python -m virtualenv venv
+fi
+
+source venv/bin/activate
+if [ $? != 0 ]; then
+    echo "FAILURE: Creating Virtual env"
+    exit 451
+fi
 source setup_development_macosx.sh
+if [ $? != 0 ]; then
+    echo "FAILURE: Setup Env"
+    exit 452
+fi
+
+python -m pip install --upgrade setuptools==19.2
 
 echo "------------------------------------"
 echo "Extracting Git Revision Number"
@@ -67,9 +78,8 @@ echo "------------------------------------"
 echo "Building Package"
 echo "------------------------------------"
 
-apppath=`pwd`/src
-pushd /opt/git/kivy-sdk-packager/osx
-./package-app.sh $apppath
+pyinstaller -y --clean --windowed PeachyPrinter.spec
+
 if [ $? != 0 ]; then
     echo "FAILURE: Building app"
     exit 232
@@ -109,3 +119,4 @@ icon_size=64
 /opt/git/create-dmg/create-dmg --volicon $volicon --volname $vol_name --background $background_image --window-pos 200 120 --window-size $backgound_width $background_height --icon-size $icon_size --icon $app $app_pos_x $app_pos_y --app-drop-link $sym_pos_x $sym_pos_y --hide-extension $app $dmg_name peachyprinter.app
 
 
+deactivate

@@ -1,34 +1,43 @@
 # -*- mode: python -*-
 import os
-from kivy.tools.packaging.pyinstaller_hooks import install_hooks
-install_hooks(globals())
+
+block_cipher = None
+peachy_dependancies = os.path.join(os.environ.get('VIRTUAL_ENV', ''), 'lib', 'python2.7', 'site-packages', 'peachyprinter', 'dependancies', 'mac', 'amd64')
+
 
 a = Analysis(['src/main.py'],
-             pathex=[os.path.dirname(os.path.realpath(__file__))],
+             pathex=[''],
+             binaries=None,
+             datas=None,
              hiddenimports=[],
-             runtime_hooks=None)
-pyz = PYZ(a.pure)
+             hookspath=[],
+             runtime_hooks=[],
+             excludes=['_tkinter', 'Tkinter', 'enchant', 'twisted'],
+             win_no_prefer_redirects=False,
+             win_private_assemblies=False,
+             cipher=block_cipher)
+pyz = PYZ(a.pure, a.zipped_data,
+             cipher=block_cipher)
 exe = EXE(pyz,
           a.scripts,
           exclude_binaries=True,
-          name='peachyprinter-mac',
+          name='PeachyPrinter',
           debug=False,
-          strip=None,
+          strip=False,
           upx=True,
           console=False )
 coll = COLLECT(exe,
                Tree('src'),
-               Tree('/Applications/Kivy.app/Contents/Frameworks/SDL2.framework'),
-               Tree('/Applications/Kivy.app/Contents/Frameworks/SDL2_image.framework'),
-               Tree('/Applications/Kivy.app/Contents/Frameworks/SDL2_ttf.framework'),
-               Tree('/Applications/Kivy.app/Contents/Frameworks/SDL2_mixer.framework'),
-               Tree(os.path.join(os.environ.get('VIRTUAL_ENV', ''), 'lib/python2.7/site-packages/peachyprinter/dependancies')),
                a.binaries,
                a.zipfiles,
                a.datas,
-               strip=None,
+               Tree(peachy_dependancies),
+               strip=False,
                upx=True,
-               name='peachyprinter-mac')
+               name='PeachyPrinter',
+               icon='src/resources/peachy.icns'
+               )
 app = BUNDLE(coll,
-             name='peachyprinter-mac.app',
-             icon='src/resources/peachy.icns')
+             name='PeachyPrinter.app',
+             icon=None,
+             bundle_identifier=None)
