@@ -81,12 +81,11 @@ echo "------------------------------------"
 
 cp -R peachyprinter-mac.spec.source PeachyPrinter.spec
 pyinstaller -y --clean --windowed PeachyPrinter.spec
-
 if [ $? != 0 ]; then
     echo "FAILURE: Building app"
     exit 232
 fi
-popd
+
 
 echo "------------------------------------"
 echo "Moving Application"
