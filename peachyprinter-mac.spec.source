@@ -1,8 +1,8 @@
 # -*- mode: python -*-
-from kivy.deps import sdl2, glew
 import os
 
 block_cipher = None
+from kivy.tools.packaging.pyinstaller_hooks import get_deps_all, hookspath, runtime_hooks
 peachy_dependancies = os.path.join(os.environ.get('VIRTUAL_ENV', ''), 'lib', 'python2.7', 'site-packages', 'peachyprinter', 'dependancies', 'mac', 'amd64')
 
 
@@ -33,7 +33,7 @@ coll = COLLECT(exe,
                a.zipfiles,
                a.datas,
                Tree(peachy_dependancies),
-               *[Tree(p) for p in (sdl2.dep_bins + glew.dep_bins)],
+               Tree('/Library/Frameworks/SDL2_ttf.framework/Versions/A/Frameworks/FreeType.framework'),
                strip=False,
                upx=True,
                name='PeachyPrinter',
