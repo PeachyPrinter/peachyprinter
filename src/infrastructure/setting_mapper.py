@@ -23,14 +23,14 @@ class SettingsMapper(object):
     @property
     def config_info(self):
         return [
-                {
-                    'type': 'string',
-                    'section': _('Info'),
-                    'desc_source': _('info_version_number DESCRIPTION'),
-                    'title_source': _('info_version_number TITLE'),
-                    'key': 'info_version_number',
-                    'disabled': True
-                },
+                # {
+                #     'type': 'string',
+                #     'section': _('Info'),
+                #     'desc_source': _('info_version_number DESCRIPTION'),
+                #     'title_source': _('info_version_number TITLE'),
+                #     'key': 'info_version_number',
+                #     'disabled': True
+                # },
                 {
                     'type': 'string',
                     'section': _('Info'),
