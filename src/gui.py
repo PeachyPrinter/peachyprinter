@@ -6,7 +6,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.scrollview import ScrollView
 from kivy.config import Config
-from kivy.resources import resource_add_path
+from kivy.resources import resource_add_path, resource_find
 from kivy.core.window import Window
 from kivy.clock import Clock
 from kivy.metrics import dp
@@ -205,7 +205,7 @@ class PeachyPrinter(App):
         exit()
 
     def build(self):
-        self.icon = 'peachy.png'
+        self.icon = os.path.join(os.path.dirname(__file__), 'resources', 'peachy.png')
         self.settings_cls = SettingsWithSidebar
         try:
             self.setting_translation.load_config(self.config)
