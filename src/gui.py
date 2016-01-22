@@ -205,6 +205,7 @@ class PeachyPrinter(App):
         exit()
 
     def build(self):
+        self.icon = 'peachy.png'
         self.settings_cls = SettingsWithSidebar
         try:
             self.setting_translation.load_config(self.config)
