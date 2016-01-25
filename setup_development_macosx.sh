@@ -16,7 +16,7 @@ if [ -f api.source ]; then
     echo"***************USING OVERRIDDEN API SOURCE*********************"
     api_source=`cat api.source`
 else
-    api_source=http://software.peachyprinter.com/builds/api/latest.tar.gz
+    api_source=https://github.com/PeachyPrinter/peachyprintertools/releases/download/1.0.0/PeachyPrinterToolsAPI-1.0.0.893.tar.gz
 fi
 
 pip install --upgrade $api_source

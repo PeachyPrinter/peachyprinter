@@ -4,7 +4,7 @@ from kivy.tools.packaging.pyinstaller_hooks import install_hooks
 install_hooks(globals())
 
 a = Analysis(['src\\main.py'],
-             pathex=['C:\\Users\\jtownley\\git\\kivypeachyprinter'],
+             pathex=['peachyprinter'],
              hiddenimports=[],
              runtime_hooks=None)
 pyz = PYZ(a.pure)

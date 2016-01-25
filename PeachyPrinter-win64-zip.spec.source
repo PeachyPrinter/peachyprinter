@@ -7,7 +7,7 @@ peachy_dependancies = os.path.join(os.environ.get('VIRTUAL_ENV', ''), 'Lib', 'si
 
 
 a = Analysis(['src\\main.py'],
-             pathex=['C:\\Users\\jtownley\\git\\kivypeachyprinter'],
+             pathex=['peachyprinter'],
              binaries=None,
              datas=None,
              hiddenimports=[],
