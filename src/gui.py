@@ -94,7 +94,7 @@ class MainUI(Screen):
         self._disclaimer.dismiss()
 
     def reject_disclaimer(self):
-        exit()
+        App.get_running_app().Exit()
 
     def show_load(self):
         self.last_directory = Config.getdefault('internal', 'last_directory', self.last_directory)
@@ -202,7 +202,7 @@ class PeachyPrinter(App):
             self.settings.interface.menu.close_button.text = self.translation(_("Close"))
 
     def exit_app(self, *args):
-        exit()
+        self.Exit()
 
     def build(self):
         self.icon = os.path.join(os.path.dirname(__file__), 'resources', 'peachy.png')
