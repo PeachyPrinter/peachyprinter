@@ -65,4 +65,4 @@ Nicolas Rubio - Posisition icon - source: https://www.iconfinder.com/icons/31112
 Visit peachyprinter.com for installation binaries
 
 ### Release Notes
-v1.0.x Initial public release of peachy printer ui for peachy printer tools.
+January 25th  2016 :: 1.0.x Initial public release of peachy printer ui for peachy printer tools.
