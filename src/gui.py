@@ -10,6 +10,7 @@ from kivy.resources import resource_add_path, resource_find
 from kivy.core.window import Window
 from kivy.clock import Clock
 from kivy.metrics import dp
+from kivy.logger import Logger
 
 from infrastructure.setting_mapper import SettingsMapper
 from infrastructure.langtools import _
@@ -94,7 +95,7 @@ class MainUI(Screen):
         self._disclaimer.dismiss()
 
     def reject_disclaimer(self):
-        App.get_running_app().Exit()
+        App.get_running_app().stop()
 
     def show_load(self):
         self.last_directory = Config.getdefault('internal', 'last_directory', self.last_directory)
@@ -202,7 +203,7 @@ class PeachyPrinter(App):
             self.settings.interface.menu.close_button.text = self.translation(_("Close"))
 
     def exit_app(self, *args):
-        self.Exit()
+        self.stop()
 
     def build(self):
         self.icon = os.path.join(os.path.dirname(__file__), 'resources', 'peachy.png')
