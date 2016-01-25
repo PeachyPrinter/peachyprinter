@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-11 12:20-0600\n"
+"POT-Creation-Date: 2016-01-25 12:16-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -19,20 +19,20 @@ msgstr ""
 msgid "Load file"
 msgstr "load teywI'"
 
-#: src/gui.py:202 src/gui.py:236 src/peachyprinter.kv:57
+#: src/gui.py:202 src/gui.py:237 src/peachyprinter.kv:57
 #: src/ui/custom_widgets.kv:115 src/ui/print_ui.kv:122
 msgid "Close"
 msgstr "SoQmoH"
 
-#: src/gui.py:214
+#: src/gui.py:215
 msgid "Please connect your peachy printer before starting the software"
 msgstr "nuqneH peachy printer rar pa' software starting"
 
-#: src/gui.py:215 src/gui.py:223 src/peachyprinter.kv:165
+#: src/gui.py:216 src/gui.py:224 src/peachyprinter.kv:165
 msgid "Exit"
 msgstr "mej"
 
-#: src/gui.py:221
+#: src/gui.py:222
 msgid "An Error has Occured"
 msgstr ""
 
@@ -121,40 +121,43 @@ msgid "MARKUP - Disclaimer "
 msgstr ""
 "[b]Laser Safety[/b]\n"
 "\n"
-"The Peachy Printer uses a UV laser to cure the resin.  This laser "
-"is powerful enough to damage your eyesight.  As a user you agree that you "
-"will take the following precautions to ensure the safety of yourself and "
-"those around you:\n"
+"The Peachy Printer uses a UV laser to cure the resin.  This laser is "
+"powerful enough to damage your eyesight.  As a user you agree that you will "
+"take the following precautions to ensure the safety of yourself and those "
+"around you:\n"
 "\n"
-" - Never give the laser light any opportunity to shine on your skin or eyes.\n"
-“ - Always ensure when operating the printer, that it is in an enclosure which prevents "
-"all laser light from escaping.\n”
-“ - Never look directly into the laser (even when using the UV glasses).\n” 
-“ - Be aware that the UV blocking glasses included do not guarantee your safety.\n”
-“ - Do not remove the aperture from the laser module.\n”
+" - Never give the laser light any opportunity to shine on your skin or "
+"eyes.\n"
+" - Always ensure when operating the printer, that it is in an enclosure "
+"which prevents all laser light from escaping.\n"
+" - Never look directly into the laser (even when using the UV glasses).\n"
+" - Be aware that the UV blocking glasses included do not guarantee your "
+"safety.\n"
+" - Do not remove the aperture from the laser module.\n"
 " - Remove any pets or young children from the room.\n"
 " - Install and use the UV filtering safeguards on the printer.\n"
 " - Do not pick the printer up while the laser is turned on.\n"
-“ - Ensure that your enclosure window is not faded scratched or damaged in any way\n”
-“ - Resin can damage the UV blocking materials we have sent you.  If resin comes in contact with these materials replace them immediately.”
-"\n"
+" - Ensure that your enclosure window is not faded scratched or damaged in "
+"any way\n"
+" - Resin can damage the UV blocking materials we have sent you.  If resin "
+"comes in contact with these materials replace them immediately.\n"
 "[b]Resin Safety[/b]\n"
 "\n"
 "The resin that Peachy Printer uses is a mild skin irritant.  Some people may "
 "have reactions to it if it makes direct contact with their skin.  It cures "
 "under UV light, and if exposed to direct sunlight can actually cure at a "
-"dangerous rate causing it to heat and possibly shatter.\n“
-“You must read and understand the MSDS that pertains to the resin you are using.”
-“If you have received resin from peachy printer, note that this Resin is a Maker Juice Product, ”
-“refer to Maker Juice for MSDS information.\n”
-“In addition to instructions contained in the MSDS, "
-"you agree to take the following precautions to "
-"ensure the safety of yourself and those around you:\n"
+"dangerous rate causing it to heat and possibly shatter.\n"
+"You must read and understand the MSDS that pertains to the resin you are "
+"using.If you have received resin from peachy printer, note that this Resin "
+"is a Maker Juice Product, refer to Maker Juice for MSDS information.\n"
+"In addition to instructions contained in the MSDS, you agree to take the "
+"following precautions to ensure the safety of yourself and those around "
+"you:\n"
 "\n"
-
 " - Keep away from children and animals.\n"
 " - Use protective gloves when handling.\n"
-" - Wear protective safety glasses (The UV blocking glasses are not adequate safety glasses) when handling.\n"
+" - Wear protective safety glasses (The UV blocking glasses are not adequate "
+"safety glasses) when handling.\n"
 " - Be extra careful to keep away from skin and clothing.\n"
 " - Do not drink or ingest it.\n"
 " - Store in a cool dark place.\n"
@@ -166,28 +169,20 @@ msgstr ""
 "As the Peachy Printer Kit is constructed by the user, Peachy Printer Inc."
 "does not guarantee any amount of functionality.\n"
 "\n"
-"By building any part of the kit or installing any part of the software you agree that Peachy Printer Inc. is not liable for injuries or damages from "
+"By building any part of the kit or installing any part of the software you "
+"agree that Peachy Printer Inc. is not liable for injuries or damages from "
 "any of our products."
 
 #: src/peachyprinter.kv:160
 msgid "Accept"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:28
 #: src/infrastructure/setting_mapper.py:36
 #: src/infrastructure/setting_mapper.py:44
 #: src/infrastructure/setting_mapper.py:52
 #: src/infrastructure/setting_mapper.py:60
 msgid "Info"
 msgstr "info"
-
-#: src/infrastructure/setting_mapper.py:29
-msgid "info_version_number DESCRIPTION"
-msgstr "info version mI' "
-
-#: src/infrastructure/setting_mapper.py:30
-msgid "info_version_number TITLE"
-msgstr "info version mI' "
 
 #: src/infrastructure/setting_mapper.py:37
 msgid "info_serial_number DESCRIPTION"
@@ -650,7 +645,7 @@ msgstr "chap"
 
 #: src/ui/calibrate_ui.kv:56 src/ui/calibrate_ui.kv:107
 #: src/ui/calibrate_ui.kv:289 src/ui/calibrate_ui.kv:335
-#: src/ui/calibrate_ui.kv:417 src/ui/calibrate_ui.kv:488
+#: src/ui/calibrate_ui.kv:415 src/ui/calibrate_ui.kv:486
 #: src/ui/cure_test_ui.kv:287 src/ui/dripper_calibration_ui.kv:289
 msgid "Help me"
 msgstr "HIQaH"
@@ -729,11 +724,11 @@ msgstr "QaH-Alignment"
 msgid "Super Accurate Mode"
 msgstr "super qar Mode"
 
-#: src/ui/calibrate_ui.kv:398
+#: src/ui/calibrate_ui.kv:396
 msgid "Reset All"
 msgstr "Hoch reset"
 
-#: src/ui/calibrate_ui.kv:418
+#: src/ui/calibrate_ui.kv:416
 msgid "MARKUP - Calibration Instructions"
 msgstr ""
 "software account 'op typical irregularites chaw' yor bIS'ub Calibration mIw "
@@ -750,19 +745,19 @@ msgstr ""
 " 6. ghaHDaq jatlhqa' BERNARDO. grid navmey vIH print mIchHom pIrmuS 'ej Hoch "
 "raghpu'bogh mIw 'bIS'ub' calibration tab jatlhqa'."
 
-#: src/ui/calibrate_ui.kv:418
+#: src/ui/calibrate_ui.kv:416
 msgid "Help - Calibration"
 msgstr "QaH-Calibration"
 
-#: src/ui/calibrate_ui.kv:453
+#: src/ui/calibrate_ui.kv:451
 msgid "Speed"
 msgstr "speed"
 
-#: src/ui/calibrate_ui.kv:471
+#: src/ui/calibrate_ui.kv:469
 msgid "Height"
 msgstr "'ab"
 
-#: src/ui/calibrate_ui.kv:489
+#: src/ui/calibrate_ui.kv:487
 msgid "MARKUP - Test Pattern Instructions"
 msgstr ""
 "laH lo' waH patterns waH mI'. SoH je waH patterns pongmaj pIm neH print chu' "
@@ -789,7 +784,7 @@ msgstr ""
 "8 qIlmeH pIj 'oH. [b] [/b]-spiral spiral waH nagh hilbert curve Homvetlh "
 "usefullness QI'yaH linearities vItu'"
 
-#: src/ui/calibrate_ui.kv:489
+#: src/ui/calibrate_ui.kv:487
 msgid "Help - Test Patterns"
 msgstr "QaH-waH patterns"
 
@@ -817,9 +812,9 @@ msgstr "waw' 'ab"
 msgid "Total Height"
 msgstr ""
 
-#: src/ui/cure_test_ui.kv:82
-msgid "Run Cure Test Now"
-msgstr "vor waH qet DaH"
+#: src/ui/cure_test_ui.kv:81
+msgid "Use These Settings"
+msgstr ""
 
 #: src/ui/cure_test_ui.kv:99
 msgid ""
@@ -835,9 +830,9 @@ msgstr ""
 msgid "Test"
 msgstr ""
 
-#: src/ui/cure_test_ui.kv:198
-msgid "Use These Settings"
-msgstr ""
+#: src/ui/cure_test_ui.kv:199
+msgid "Run Cure Test Now"
+msgstr "vor waH qet DaH"
 
 #: src/ui/cure_test_ui.kv:214
 msgid "[b]Print Settings[/b]"
@@ -983,28 +978,31 @@ msgstr "DaH print"
 msgid "Done"
 msgstr "pItlh"
 
-#: src/ui/peachy_widgets.kv:26 src/ui/print_ui.py:320
+#: src/ui/peachy_widgets.kv:26 src/ui/print_ui.py:321
 msgid "Laser Safety Notice"
 msgstr ""
 "[color=ff0000ff][b]Warning[/b]: the laser is about to turn on![/color]\n"
 "\n"
-"The Peachy Printer uses a UV laser to cure the resin.  This laser "
-"is powerful enough to damage your eyesight.  As a user you agree that you "
-"will take the following precautions to ensure the safety of yourself and "
-"those around you:\n"
+"The Peachy Printer uses a UV laser to cure the resin.  This laser is "
+"powerful enough to damage your eyesight.  As a user you agree that you will "
+"take the following precautions to ensure the safety of yourself and those "
+"around you:\n"
 "\n"
-" - Never give the laser light any opportunity to shine on your skin or eyes.\n"
-“ - Always ensure when operating the printer, that it is in an enclosure which prevents "
-"all laser light from escaping.\n”
-“ - Never look directly into the laser (even when using the UV glasses).\n” 
-“ - Be aware that the UV blocking glasses included do not guarantee your safety.\n”
-“ - Do not remove the aperture from the laser module.\n”
+" - Never give the laser light any opportunity to shine on your skin or "
+"eyes.\n"
+" - Always ensure when operating the printer, that it is in an enclosure "
+"which prevents all laser light from escaping.\n"
+" - Never look directly into the laser (even when using the UV glasses).\n"
+" - Be aware that the UV blocking glasses included do not guarantee your "
+"safety.\n"
+" - Do not remove the aperture from the laser module.\n"
 " - Remove any pets or young children from the room.\n"
 " - Install and use the UV filtering safeguards on the printer.\n"
 " - Do not pick the printer up while the laser is turned on.\n"
-“ - Ensure that your enclosure window is not faded scratched or damaged in any way\n”
-“ - Resin can damage the UV blocking materials we have sent you.  If resin comes in contact with these materials replace them immediately.”
-
+" - Ensure that your enclosure window is not faded scratched or damaged in "
+"any way\n"
+" - Resin can damage the UV blocking materials we have sent you.  If resin "
+"comes in contact with these materials replace them immediately."
 
 #: src/ui/peachy_widgets.kv:33
 msgid "You are about to turn on the laser. Do you wish to proceed"
@@ -1058,7 +1056,7 @@ msgstr ""
 msgid "Skipped Layers"
 msgstr "skip patlh"
 
-#: src/ui/print_ui.kv:401 src/ui/print_ui.py:378 src/ui/print_ui.py:410
+#: src/ui/print_ui.kv:401 src/ui/print_ui.py:379 src/ui/print_ui.py:411
 msgid "Cancel Print"
 msgstr "Print qIl"
 
@@ -1087,44 +1085,44 @@ msgstr "ghobe', ghobe', Abort, mev"
 msgid "Printer Posisition || "
 msgstr "printer Posisition ||"
 
-#: src/ui/calibrate_ui.py:351
+#: src/ui/calibrate_ui.py:352
 msgid "Square"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:352
+#: src/ui/calibrate_ui.py:353
 msgid "Twitch"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:353
+#: src/ui/calibrate_ui.py:354
 msgid "Damping"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:354
+#: src/ui/calibrate_ui.py:355
 msgid "Hourglass"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:355
+#: src/ui/calibrate_ui.py:356
 msgid "NESW"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:356
+#: src/ui/calibrate_ui.py:357
 msgid "Circle"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:357
+#: src/ui/calibrate_ui.py:358
 msgid "Hilbert"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:358
+#: src/ui/calibrate_ui.py:359
 msgid "Spiral"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:433 src/ui/dripper_calibration_ui.py:86
+#: src/ui/calibrate_ui.py:434 src/ui/dripper_calibration_ui.py:86
 #: src/ui/restore_ui.py:28
 msgid "Error"
 msgstr "Qagh"
 
-#: src/ui/calibrate_ui.py:433 src/ui/dripper_calibration_ui.py:86
+#: src/ui/calibrate_ui.py:434 src/ui/dripper_calibration_ui.py:86
 #: src/ui/restore_ui.py:28
 msgid "No Peachy Printer Detected"
 msgstr "pagh Peachy Printer Detected"
@@ -1137,13 +1135,19 @@ msgstr "qaS qab ghoD"
 msgid "No Title"
 msgstr "pagh "
 
-#: src/ui/print_ui.py:308
+#: src/ui/print_ui.py:309
 msgid "Print Complete"
 msgstr ""
 
-#: src/ui/print_ui.py:313
+#: src/ui/print_ui.py:314
 msgid "Print Failed"
 msgstr ""
+
+#~ msgid "info_version_number DESCRIPTION"
+#~ msgstr "info version mI' "
+
+#~ msgid "info_version_number TITLE"
+#~ msgstr "info version mI' "
 
 #~ msgid "Print from gcode"
 #~ msgstr "print vo' teywI'"

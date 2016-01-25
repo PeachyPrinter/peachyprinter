@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-11 12:20-0600\n"
+"POT-Creation-Date: 2016-01-25 12:16-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -19,20 +19,20 @@ msgstr ""
 msgid "Load file"
 msgstr "#!00000!#"
 
-#: src/gui.py:202 src/gui.py:236 src/peachyprinter.kv:57
+#: src/gui.py:202 src/gui.py:237 src/peachyprinter.kv:57
 #: src/ui/custom_widgets.kv:115 src/ui/print_ui.kv:122
 msgid "Close"
 msgstr "#!00001!#"
 
-#: src/gui.py:214
+#: src/gui.py:215
 msgid "Please connect your peachy printer before starting the software"
 msgstr ""
 
-#: src/gui.py:215 src/gui.py:223 src/peachyprinter.kv:165
+#: src/gui.py:216 src/gui.py:224 src/peachyprinter.kv:165
 msgid "Exit"
 msgstr ""
 
-#: src/gui.py:221
+#: src/gui.py:222
 msgid "An Error has Occured"
 msgstr ""
 
@@ -124,21 +124,12 @@ msgstr ""
 msgid "Accept"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:28
 #: src/infrastructure/setting_mapper.py:36
 #: src/infrastructure/setting_mapper.py:44
 #: src/infrastructure/setting_mapper.py:52
 #: src/infrastructure/setting_mapper.py:60
 msgid "Info"
 msgstr "#!00012!#"
-
-#: src/infrastructure/setting_mapper.py:29
-msgid "info_version_number DESCRIPTION"
-msgstr "#!00013!#"
-
-#: src/infrastructure/setting_mapper.py:30
-msgid "info_version_number TITLE"
-msgstr "#!00014!#"
 
 #: src/infrastructure/setting_mapper.py:37
 msgid "info_serial_number DESCRIPTION"
@@ -601,7 +592,7 @@ msgstr "#!00104!#"
 
 #: src/ui/calibrate_ui.kv:56 src/ui/calibrate_ui.kv:107
 #: src/ui/calibrate_ui.kv:289 src/ui/calibrate_ui.kv:335
-#: src/ui/calibrate_ui.kv:417 src/ui/calibrate_ui.kv:488
+#: src/ui/calibrate_ui.kv:415 src/ui/calibrate_ui.kv:486
 #: src/ui/cure_test_ui.kv:287 src/ui/dripper_calibration_ui.kv:289
 msgid "Help me"
 msgstr "#!00106!#"
@@ -654,31 +645,31 @@ msgstr "#!00120!#"
 msgid "Super Accurate Mode"
 msgstr "#!00122!#"
 
-#: src/ui/calibrate_ui.kv:398
+#: src/ui/calibrate_ui.kv:396
 msgid "Reset All"
 msgstr "#!00123!#"
 
-#: src/ui/calibrate_ui.kv:418
+#: src/ui/calibrate_ui.kv:416
 msgid "MARKUP - Calibration Instructions"
 msgstr "#!00125!#"
 
-#: src/ui/calibrate_ui.kv:418
+#: src/ui/calibrate_ui.kv:416
 msgid "Help - Calibration"
 msgstr "#!00126!#"
 
-#: src/ui/calibrate_ui.kv:453
+#: src/ui/calibrate_ui.kv:451
 msgid "Speed"
 msgstr "#!00128!#"
 
-#: src/ui/calibrate_ui.kv:471
+#: src/ui/calibrate_ui.kv:469
 msgid "Height"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:489
+#: src/ui/calibrate_ui.kv:487
 msgid "MARKUP - Test Pattern Instructions"
 msgstr "#!00129!#"
 
-#: src/ui/calibrate_ui.kv:489
+#: src/ui/calibrate_ui.kv:487
 msgid "Help - Test Patterns"
 msgstr "#!00130!#"
 
@@ -706,9 +697,9 @@ msgstr "#!00132!#"
 msgid "Total Height"
 msgstr ""
 
-#: src/ui/cure_test_ui.kv:82
-msgid "Run Cure Test Now"
-msgstr "#!00136!#"
+#: src/ui/cure_test_ui.kv:81
+msgid "Use These Settings"
+msgstr ""
 
 #: src/ui/cure_test_ui.kv:99
 msgid ""
@@ -724,9 +715,9 @@ msgstr ""
 msgid "Test"
 msgstr ""
 
-#: src/ui/cure_test_ui.kv:198
-msgid "Use These Settings"
-msgstr ""
+#: src/ui/cure_test_ui.kv:199
+msgid "Run Cure Test Now"
+msgstr "#!00136!#"
 
 #: src/ui/cure_test_ui.kv:214
 msgid "[b]Print Settings[/b]"
@@ -862,7 +853,7 @@ msgstr "#!00162!#"
 msgid "Done"
 msgstr "#!00163!#"
 
-#: src/ui/peachy_widgets.kv:26 src/ui/print_ui.py:320
+#: src/ui/peachy_widgets.kv:26 src/ui/print_ui.py:321
 msgid "Laser Safety Notice"
 msgstr ""
 
@@ -918,7 +909,7 @@ msgstr ""
 msgid "Skipped Layers"
 msgstr "#!00180!#"
 
-#: src/ui/print_ui.kv:401 src/ui/print_ui.py:378 src/ui/print_ui.py:410
+#: src/ui/print_ui.kv:401 src/ui/print_ui.py:379 src/ui/print_ui.py:411
 msgid "Cancel Print"
 msgstr "#!00167!#"
 
@@ -947,44 +938,44 @@ msgstr ""
 msgid "Printer Posisition || "
 msgstr "#!00168!#"
 
-#: src/ui/calibrate_ui.py:351
+#: src/ui/calibrate_ui.py:352
 msgid "Square"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:352
+#: src/ui/calibrate_ui.py:353
 msgid "Twitch"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:353
+#: src/ui/calibrate_ui.py:354
 msgid "Damping"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:354
+#: src/ui/calibrate_ui.py:355
 msgid "Hourglass"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:355
+#: src/ui/calibrate_ui.py:356
 msgid "NESW"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:356
+#: src/ui/calibrate_ui.py:357
 msgid "Circle"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:357
+#: src/ui/calibrate_ui.py:358
 msgid "Hilbert"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:358
+#: src/ui/calibrate_ui.py:359
 msgid "Spiral"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:433 src/ui/dripper_calibration_ui.py:86
+#: src/ui/calibrate_ui.py:434 src/ui/dripper_calibration_ui.py:86
 #: src/ui/restore_ui.py:28
 msgid "Error"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:433 src/ui/dripper_calibration_ui.py:86
+#: src/ui/calibrate_ui.py:434 src/ui/dripper_calibration_ui.py:86
 #: src/ui/restore_ui.py:28
 msgid "No Peachy Printer Detected"
 msgstr ""
@@ -997,13 +988,19 @@ msgstr "#!00169!#"
 msgid "No Title"
 msgstr ""
 
-#: src/ui/print_ui.py:308
+#: src/ui/print_ui.py:309
 msgid "Print Complete"
 msgstr ""
 
-#: src/ui/print_ui.py:313
+#: src/ui/print_ui.py:314
 msgid "Print Failed"
 msgstr ""
+
+#~ msgid "info_version_number DESCRIPTION"
+#~ msgstr "#!00013!#"
+
+#~ msgid "info_version_number TITLE"
+#~ msgstr "#!00014!#"
 
 #~ msgid "Print from gcode"
 #~ msgstr "#!00007!#"
