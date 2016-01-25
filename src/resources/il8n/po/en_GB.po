@@ -121,44 +121,55 @@ msgid "MARKUP - Disclaimer "
 msgstr ""
 "[b]Laser Safety[/b]\n"
 "\n"
-"The Peachy Printer uses a high power UV laser to cure the resin.  This laser "
+"The Peachy Printer uses a UV laser to cure the resin.  This laser "
 "is powerful enough to damage your eyesight.  As a user you agree that you "
 "will take the following precautions to ensure the safety of yourself and "
 "those around you:\n"
 "\n"
-"Everyone in the room must wear UV filtering safety glasses when the printer "
-"is operating\n"
-"Remove any pets or young children from the room\n"
-"Install the UV filtering safety guards on the printer\n"
-"Do not pick the printer up while the laser is turned on\n"
+" - Never give the laser light any opportunity to shine on your skin or eyes.\n"
+“ - Always ensure when operating the printer, that it is in an enclosure which prevents "
+"all laser light from escaping.\n”
+“ - Never look directly into the laser (even when using the UV glasses).\n” 
+“ - Be aware that the UV blocking glasses included do not guarantee your safety.\n”
+“ - Do not remove the aperture from the laser module.\n”
+" - Remove any pets or young children from the room.\n"
+" - Install and use the UV filtering safeguards on the printer.\n"
+" - Do not pick the printer up while the laser is turned on.\n"
+“ - Ensure that your enclosure window is not faded scratched or damaged in any way\n”
+“ - Resin can damage the UV blocking materials we have sent you.  If resin comes in contact with these materials replace them immediately.”
 "\n"
 "[b]Resin Safety[/b]\n"
 "\n"
 "The resin that Peachy Printer uses is a mild skin irritant.  Some people may "
 "have reactions to it if it makes direct contact with their skin.  It cures "
 "under UV light, and if exposed to direct sunlight can actually cure at a "
-"dangerous rate.  As a user you agree to take the following precautions to "
+"dangerous rate causing it to heat and possibly shatter.\n“
+“You must read and understand the MSDS that pertains to the resin you are using.”
+“If you have received resin from peachy printer, note that this Resin is a Maker Juice Product, ”
+“refer to Maker Juice for MSDS information.\n”
+“In addition to instructions contained in the MSDS, "
+"you agree to take the following precautions to "
 "ensure the safety of yourself and those around you:\n"
 "\n"
-"keep away from children and animals\n"
-"use protective gloves when handling\n"
-"wear protective glasses when handling\n"
-"be extra careful to keep away from sensitive skin areas\n"
-"do not drink it\n"
-"store in a cool dark place\n"
-"do not expose to direct sunlight\n"
-"use in a well ventilated area\n"
+
+" - Keep away from children and animals.\n"
+" - Use protective gloves when handling.\n"
+" - Wear protective safety glasses (The UV blocking glasses are not adequate safety glasses) when handling.\n"
+" - Be extra careful to keep away from skin and clothing.\n"
+" - Do not drink or ingest it.\n"
+" - Store in a cool dark place.\n"
+" - Do not expose to direct sunlight.\n"
+" - Use in a well ventilated area.\n"
 "\n"
 "[b]Product Functionality[/b]\n"
 "\n"
-"Peachy Printer Inc guarantees no amount of functionality from our "
-"product(s).  Given the fact that the kit is constructed by the user we "
-"cannot guarantee that it will work.\n"
+"As the Peachy Printer Kit is constructed by the user, Peachy Printer Inc."
+"does not guarantee any amount of functionality.\n"
 "\n"
-"By installing the software you agree that Peachy Printer Inc is not liable "
-"for anything at all, ever.  We are especially not liable for injuries from "
-"any of our product(s)  If they are used properly (as we advise) there should "
-"be no injuries."
+"By building any part of the kit or installing any part of the software you agree "
+"that Peachy Printer Inc. is not liable for injuries or damages from "
+"any of our products."  
+
 
 #: src/peachyprinter.kv:160
 msgid "Accept"
@@ -1039,20 +1050,27 @@ msgid "You are about to turn on the laser. Do you wish to proceed"
 msgstr ""
 "[color=ff0000ff][b]Warning[/b]: the laser is about to turn on![/color]\n"
 "\n"
-"The Peachy Printer uses a high power UV laser to cure the resin.  This laser "
-"is powerful enough to damage your eyesight.  Before proceeding you must take "
-"the following precautions to ensure the safety of yourself and those around "
-"you:\n"
+"The Peachy Printer uses a UV laser to cure the resin.  This laser "
+"is powerful enough to damage your eyesight.  As a user you agree that you "
+"will take the following precautions to ensure the safety of yourself and "
+"those around you:\n"
 "\n"
-" - Everyone in the room must wear UV filtering safety glasses when the printer "
-"is operating\n"
-" - Remove any pets or young children from the room\n"
-" - Install the UV filtering safety guards on the printer\n"
-" - Do not pick the printer up while the laser is turned on"
+" - Never give the laser light any opportunity to shine on your skin or eyes.\n"
+“ - Always ensure when operating the printer, that it is in an enclosure which prevents "
+"all laser light from escaping.\n”
+“ - Never look directly into the laser (even when using the UV glasses).\n” 
+“ - Be aware that the UV blocking glasses included do not guarantee your safety.\n”
+“ - Do not remove the aperture from the laser module.\n”
+" - Remove any pets or young children from the room.\n"
+" - Install and use the UV filtering safeguards on the printer.\n"
+" - Do not pick the printer up while the laser is turned on.\n"
+“ - Ensure that your enclosure window is not faded scratched or damaged in any way\n”
+“ - Resin can damage the UV blocking materials we have sent you.  If resin comes in contact with these materials replace them immediately.”
+
 
 #: src/ui/peachy_widgets.kv:41
 msgid "Turn on Laser"
-msgstr ""
+msgstr "My printer is enclosed and safe,  turn on laser now."
 
 #: src/ui/print_ui.kv:143
 msgid "Drip Speed"
