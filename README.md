@@ -1,5 +1,5 @@
 # Peachy Printer
-Kivy Peachy Printer is a kivy frontend to replace the existing tk front end.
+Peachy Printer is a kivy frontend to replace the existing tk front end.
 
 API [https://github.com/PeachyPrinter/peachyprintertools]
 
@@ -7,7 +7,7 @@ This code [https://github.com/PeachyPrinter/peachyprinter]
 
 ## Installing
 #### Windows / Mac
-Visit peachyprinter.com for installation binaries
+Visit peachyprinter.com and click the get started link for installation binaries
 
 #### Linux
 The Linux version needs to be run from source and the comptuer must meet the following:
