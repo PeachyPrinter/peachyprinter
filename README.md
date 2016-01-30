@@ -17,7 +17,8 @@ The Linux version needs to be run from source and the comptuer must meet the fol
 
 There is a handy script to help you get started. Once you have the code:
 
-1 download the source from the download zip link on this page \n
+1 download the source from the download zip link on this page 
+
 2 unzip the file
 
 3 open a terminal window and go to the directory you just unziped.
