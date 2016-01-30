@@ -16,8 +16,8 @@ The Linux version needs to be run from source and the comptuer must meet the fol
 - darwin like linux (all testing done with ubuntu) _Other operating systems may work as well if dependancies can be met but are not yet supported_
 
 There is a handy script to help you get started. Once you have the code:
-1 download the source from the download zip link on this page
 
+1 download the source from the download zip link on this page \n
 2 unzip the file
 
 3 open a terminal window and go to the directory you just unziped.
