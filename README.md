@@ -16,13 +16,13 @@ The Linux version needs to be run from source and the comptuer must meet the fol
 - darwin like linux (all testing done with ubuntu) _Other operating systems may work as well if dependancies can be met but are not yet supported_
 
 There is a handy script to help you get started. Once you have the code:
-1. download the source from the download zip link on this page
-2. unzip the file
-3. open a terminal window and go to the directory you just unziped.
-4. type  **./build_linux.sh -i -j** and hit enter to run 
+1 download the source from the download zip link on this page
+2 unzip the file
+3 open a terminal window and go to the directory you just unziped.
+4 type  **./build_linux.sh -i -j** and hit enter to run 
  - The -i flag will install the requirements via apt.
  - The -j flag adds a line to allow access to the usb port. and creates a run.sh script.
-5. Once that process is complete type **./run.sh**  and hit enter to start the software.
+5 Once that process is complete type **./run.sh**  and hit enter to start the software.
 
 ## Known issues
  - Occasionally crashes on close in windows 10
