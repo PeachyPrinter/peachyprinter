@@ -3,8 +3,8 @@
 params=`getopt -o :hrnpcisj -l build_runner,install_dep,remove-venv,no_setup,pull,clean,help,setup_only --name "$0" -- "$@"`
 eval set -- "$params"
 
-DEBIAN_DEP="python-pip python-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev"
-REDHAT_DEP="gcc python-pip python-devel python-distutils-extra python-enchant python-distutils-extra python-enchant freeglut PyOpenGL SDL_ttf-devel SDL_mixer-devel pygame pygame-devel khrplatform-devel mesa-libGLES mesa-libGLES-devel gstreamer-plugins-good gstreamer gstreamer-python mtdev-devel"
+DEBIAN_DEP="python-pip python-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev git"
+REDHAT_DEP="gcc python-pip python-devel python-distutils-extra python-enchant python-distutils-extra python-enchant freeglut PyOpenGL SDL_ttf-devel SDL_mixer-devel pygame pygame-devel khrplatform-devel mesa-libGLES mesa-libGLES-devel gstreamer-plugins-good gstreamer gstreamer-python mtdev-devel git"
 
 RS="\033[0m"    # reset
 FRED="\033[31m" # foreground red
@@ -130,11 +130,17 @@ function find_version_number ()
     fi
   fi
 
-  export GIT_REV_COUNT_RAW=`$GIT_HOME log --pretty=oneline | wc -l`
-  export GIT_REV_COUNT=`trim $GIT_REV_COUNT_RAW`
-  export GIT_REV=`$GIT_HOME rev-parse HEAD`
-
-  VERSION=$SEMANTIC.$TAG$GIT_REV_COUNT
+  git status
+  if [ $? == 0 ]; then
+    export GIT_REV_COUNT_RAW=`$GIT_HOME log --pretty=oneline | wc -l`
+    export GIT_REV_COUNT=`trim $GIT_REV_COUNT_RAW`
+    export GIT_REV=`$GIT_HOME rev-parse HEAD`
+    VERSION=$SEMANTIC.$TAG$GIT_REV_COUNT
+  else
+    export GIT_REV_COUNT='release'
+    export GIT_REV='release'
+    VERSION=$SEMANTIC.r
+  fi
   echo "Version: $VERSION"
   echo "# THIS IS A GENERATED FILE " > version.properties
   echo "version='$VERSION'" >> version.properties
