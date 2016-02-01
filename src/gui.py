@@ -118,14 +118,30 @@ class MainUI(Screen):
     def setting_selected(self):
         self.settings.open()
 
-
+class LoadingUI(Screen):
+    pass
 
 
 class MyScreenManager(ScreenManager):
     def __init__(self, api, setting_translation,  **kwargs):
         super(MyScreenManager, self).__init__(**kwargs)
-        self.api = api
         self.setting_translation = setting_translation
+        self.api = api
+        self.loading_ui = LoadingUI()
+        self.add_widget(self.loading_ui)
+
+        Clock.schedule_once(self.attempt_connection)
+
+    def attempt_connection(self, *args):
+        if App.get_running_app().connect_to_printer():
+            Logger.info("Printer Connection Complete")
+            self.connected()
+            self.current = 'mainui'
+        else:
+            Logger.info("Printer Connection Failed")
+            Clock.schedule_once(self.attempt_connection, 2)
+
+    def connected(self):
         self.main_ui = MainUI()
         self.printing_ui = PrintingUI(self.api)
         self.library_ui = LibraryUI(self.api)
@@ -133,6 +149,7 @@ class MyScreenManager(ScreenManager):
         self.calibration_ui = CalibrateUI(self.api)
         self.cure_test_ui = CureTestUI(self.api)
         self.restore_ui = RestoreUI(self.api)
+
         self.add_widget(self.main_ui)
         self.add_widget(self.printing_ui)
         self.add_widget(self.library_ui)
@@ -158,6 +175,7 @@ class PeachyPrinter(App):
         resource_add_path(resource_path)
         resource_add_path(os.path.join(resource_path, 'objects'))
         resource_add_path(os.path.join(resource_path, 'shaders'))
+        resource_add_path(os.path.join(resource_path, 'images'))
         self.last_print = LastPrint()
         self.api = api
         self.setting_translation = SettingsMapper(self.api)
@@ -208,16 +226,17 @@ class PeachyPrinter(App):
     def build(self):
         self.icon = os.path.join(os.path.dirname(__file__), 'resources', 'peachy.png')
         self.settings_cls = SettingsWithSidebar
+        self.manager = MyScreenManager(self.api, self.setting_translation)
+        return self.manager
+
+    def connect_to_printer(self):
         try:
             self.setting_translation.load_config(self.config)
             self.config.add_callback(self.setting_translation.update_setting)
+            self.api.get_configuration_api().get_current_config()
+            return True
         except MissingPrinterException:
-            fail_box = BoxLayout(orientation="vertical")
-            pop_message = I18NLabel(text_source=_("Please connect your peachy printer before starting the software"))
-            pop_exit = I18NButton(text_source=_("Exit"), size_hint_y=None, height=30, on_release=self.exit_app)
-            fail_box.add_widget(pop_message)
-            fail_box.add_widget(pop_exit)
-            return fail_box
+            return False
         except Exception as ex:
             fail_box = BoxLayout(orientation="vertical")
             pop_message = I18NLabel(text_source=_("An Error has Occured"), size_hint_y=None, height=self.label_height,)
@@ -227,8 +246,6 @@ class PeachyPrinter(App):
             fail_box.add_widget(pop_error)
             fail_box.add_widget(pop_exit)
             return fail_box
-        self.manager = MyScreenManager(self.api, self.setting_translation)
-        return self.manager
 
     def build_config(self, config):
         self.setting_translation.set_defaults(config)

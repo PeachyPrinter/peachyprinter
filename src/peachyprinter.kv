@@ -57,6 +57,32 @@
             text_source: _('Close')
             on_release: root.dismiss()
 
+<LoadingUI>:
+    name: 'loadingui'
+    BoxLayout:
+        size_hint: (None,None)
+        pos: root.pos
+        size: root.size
+        canvas:
+            Color: 
+                rgba: [0,0,0,1]
+            Rectangle: 
+                pos: root.pos
+                size: root.size
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+            Image:
+                source: 'loading.gif'
+                anim_delay: 1 / 30.0
+            I18NLabel:
+                size_hint_y: None
+                height: "40dp"
+                halign: "center"
+                text_source: _("Loading, Ensure your printer is connected")
+            Label:
+
+
 <MainUI>:
     name: 'mainui'
     id: mainui
