@@ -1,5 +1,5 @@
-# Kivy Peachy Printer
-Kivy Peachy Printer is a kivy frontend to replace the existing tk front end.
+# Peachy Printer
+Peachy Printer is a kivy frontend to replace the existing tk front end.
 
 API [https://github.com/PeachyPrinter/peachyprintertools]
 
@@ -7,7 +7,7 @@ This code [https://github.com/PeachyPrinter/peachyprinter]
 
 ## Installing
 #### Windows / Mac
-Visit peachyprinter.com for installation binaries
+Visit peachyprinter.com and click the get started link for installation binaries
 
 #### Linux
 The Linux version needs to be run from source and the comptuer must meet the following:
@@ -17,10 +17,19 @@ The Linux version needs to be run from source and the comptuer must meet the fol
 
 There is a handy script to help you get started. Once you have the code:
 
-1. run **./build_linux.sh -i -j**
-2. The -i flag will install the requirements via apt.
-3. The -j flag adds a line to allow access to the usb port. and creates a run.sh script.
-4. Once that process is complete run **./run.sh** to start the software.
+1 download the source from the download zip link on this page 
+
+2 unzip the file
+
+3 open a terminal window and go to the directory you just unziped.
+
+4 type  **./build_linux.sh -i -j** and hit enter to run 
+
+ - The -i flag will install the requirements via apt.
+ - The -j flag adds a line to allow access to the usb port. and creates a run.sh script.
+ 
+5 Once that process is complete type **./run.sh**  and hit enter to start the software.
+
 
 ## Known issues
  - Occasionally crashes on close in windows 10
