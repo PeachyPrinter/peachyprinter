@@ -37,15 +37,16 @@ def setup_logging(args):
     else:
         logging.basicConfig(filename=logfile, format=logging_format, level=logging_level)
 
+
 def setup_env(path):
     python_64 = sys.maxsize > 2**32
     if getattr(sys, 'frozen', False):
         if os.name == 'nt':
             dll_base = os.path.join(path, 'win')
         elif sys.platform == 'darwin':
-            dll_base =  os.path.join(path, 'mac')
+            dll_base = os.path.join(path, 'mac')
         elif sys.platform == 'linux2':
-            dll_base =  os.path.join(path, 'linux')
+            dll_base = os.path.join(path, 'linux')
         if python_64:
             os.environ['PEACHY_API_DLL_PATH'] = os.path.join(dll_base, "AMD64")
         else:

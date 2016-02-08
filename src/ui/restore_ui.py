@@ -27,4 +27,4 @@ class RestoreUI(Screen):
             traceback.print_exc()
             ep = ErrorPopup(title_source=_("Error"), text=_("No Peachy Printer Detected"), details="%s\n%s" % (type(ex), ex))
             ep.open()
-            App.get_running_app().root.current = 'mainui'
+            App.get_running_app().root.current = 'main_ui'

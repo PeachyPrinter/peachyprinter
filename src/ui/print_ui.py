@@ -322,7 +322,7 @@ class PrintingUI(Screen):
         popup.bind(on_dismiss=self.is_safe)
         popup.open()
 
-    def _print_file(self, filename, start_height=0.0, return_name='mainui', force_source_speed=False):
+    def _print_file(self, filename, start_height=0.0, return_name='main_ui', force_source_speed=False):
         self.return_to = return_name
         try:
             filepath = filename[0].encode('utf-8')
@@ -356,7 +356,7 @@ class PrintingUI(Screen):
         popup.bind(on_dismiss=self.is_safe)
         popup.open()
 
-    def _print_generator(self, generator, return_name='mainui', force_source_speed=False):
+    def _print_generator(self, generator, return_name='main_ui', force_source_speed=False):
         self.return_to = return_name
         try:
             self.print_api = self.api.get_print_api()

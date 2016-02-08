@@ -3,7 +3,7 @@
 params=`getopt -o :hrnpcisj -l build_runner,install_dep,remove-venv,no_setup,pull,clean,help,setup_only --name "$0" -- "$@"`
 eval set -- "$params"
 
-DEBIAN_DEP="python-pip python-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev git"
+DEBIAN_DEP="python-pip python-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev git dfu-util"
 REDHAT_DEP="gcc python-pip python-devel python-distutils-extra python-enchant python-distutils-extra python-enchant freeglut PyOpenGL SDL_ttf-devel SDL_mixer-devel pygame pygame-devel khrplatform-devel mesa-libGLES mesa-libGLES-devel gstreamer-plugins-good gstreamer gstreamer-python mtdev-devel git"
 
 RS="\033[0m"    # reset
@@ -92,7 +92,7 @@ function setup_venv ()
   if [ -f api.source ]; then
     api_source=`cat api.source`
   else
-    api_source=https://github.com/PeachyPrinter/peachyprintertools/releases/download/1.0.0.905/PeachyPrinterToolsAPI-1.0.0.905.tar.gz
+    api_source=https://github.com/PeachyPrinter/peachyprintertools/releases/download/1.0.0.916/PeachyPrinterToolsAPI-1.0.0.916.tar.gz
   fi
 
   pip install -I --upgrade $api_source
@@ -238,7 +238,8 @@ function build_runner () {
   if [ ! -f /etc/udev/rules.d/99-peachy.rules ]; then
     echo "You will be prompted to elevate permissions"
     echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="16d0", ATTR{idProduct}=="0af3", MODE="0666"' > 99-peachy.rules
-    sudo cp 99-peachy.rules /etc/udev/rules.d/99-peachy.rules
+    echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="df11", MODE="0666"' >> 99-peachy.rules
+    sudo cp -rf 99-peachy.rules /etc/udev/rules.d/99-peachy.rules
     echo "Added rules you may be required to login again"
   fi
   echo "source venv/bin/activate" > run.sh

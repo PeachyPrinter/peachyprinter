@@ -85,7 +85,7 @@ class DripperCalibrationUI(Screen):
             raise
             ep = ErrorPopup(title=_("Error"), text=_("No Peachy Printer Detected"))
             ep.open()
-            App.get_running_app().root.current = 'mainui'
+            App.get_running_app().root.current = 'main_ui'
 
     def drip_call_back(self, drips, current_z_location_mm, average_drips, drip_history):
         self.circut_visuals.drips = str(drips)

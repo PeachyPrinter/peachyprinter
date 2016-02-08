@@ -17,6 +17,7 @@ from infrastructure.langtools import _
 
 from ui.print_ui import PrintingUI
 from ui.library_ui import LibraryUI
+from ui.firmware_ui import FirmwareUI, FirmwareUpdateUI
 from ui.dripper_calibration_ui import DripperCalibrationUI
 from ui.cure_test_ui import CureTestUI
 from ui.calibrate_ui import CalibrateUI
@@ -118,6 +119,7 @@ class MainUI(Screen):
     def setting_selected(self):
         self.settings.open()
 
+
 class LoadingUI(Screen):
     pass
 
@@ -132,17 +134,42 @@ class MyScreenManager(ScreenManager):
 
         Clock.schedule_once(self.attempt_connection)
 
+    def _firmware_update_required(self):
+        Logger.info("Checking for bootloader")
+        if self.api.get_firmware_api().is_ready():
+            Logger.info("Bootloader found")
+            return True
+        Logger.info("Loading Printer")
+        self.api.load_printer()
+        actual_version = self.api.get_configuration_api().get_info_firmware_version_number()
+        Logger.info("Got Printer Firmware Version: {}".format(actual_version))
+        return not self.api.get_firmware_api().is_firmware_valid(actual_version)
+
     def attempt_connection(self, *args):
-        if App.get_running_app().connect_to_printer():
-            Logger.info("Printer Connection Complete")
-            self.connected()
-            self.current = 'mainui'
-        else:
-            Logger.info("Printer Connection Failed")
+        try:
+            firmware_required = self._firmware_update_required()
+            if firmware_required:
+                self.firmware_ui = FirmwareUI(self.api)
+                self.add_widget(self.firmware_ui)
+                self.firmware_update_ui = FirmwareUpdateUI(self.api)
+                self.add_widget(self.firmware_update_ui)
+                self.current = 'firmware_ui'
+            else:
+                Logger.info("Printer Connection Complete")
+                self.connected()
+                self.current = 'main_ui'
+        except MissingPrinterException:
+            Logger.info("Printer not found checking again")
             Clock.schedule_once(self.attempt_connection, 2)
+        except Exception as ex:
+            Logger.error(ex.message)
+            raise
+        
 
     def connected(self):
         self.main_ui = MainUI()
+
+        self.firmware_update_ui = FirmwareUpdateUI(self.api)
         self.printing_ui = PrintingUI(self.api)
         self.library_ui = LibraryUI(self.api)
         self.dripper_calibration_ui = DripperCalibrationUI(self.api)
@@ -255,5 +282,6 @@ class PeachyPrinter(App):
         settings.interface.menu.close_button.text = self.translation(_("Close"))
 
     def on_stop(self):
-        if self.manager:
-            self.manager.current = 'mainui'
+        pass
+        # if self.manager:
+        #     self.manager.current = 'main_ui'

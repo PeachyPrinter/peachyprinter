@@ -421,7 +421,7 @@ class CalibrateUI(Screen):
         if instance.is_safe():
             self.turn_on()
         else:
-            App.get_running_app().root.current = 'mainui'
+            App.get_running_app().root.current = 'main_ui'
 
     def turn_on(self):
         self.is_active = True
@@ -433,7 +433,7 @@ class CalibrateUI(Screen):
             traceback.print_exc()
             ep = ErrorPopup(title_source=_("Error"), text=_("No Peachy Printer Detected"), details="%s\n%s" % (type(ex), ex))
             ep.open()
-            App.get_running_app().root.current = 'mainui'
+            App.get_running_app().root.current = 'main_ui'
         self._switch_to_default_panel()
 
     def on_calibration_api(self, instance, value):
