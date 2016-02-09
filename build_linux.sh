@@ -92,7 +92,7 @@ function setup_venv ()
   if [ -f api.source ]; then
     api_source=`cat api.source`
   else
-    api_source=https://github.com/PeachyPrinter/peachyprintertools/releases/download/1.0.0.916/PeachyPrinterToolsAPI-1.0.0.916.tar.gz
+    api_source=https://github.com/PeachyPrinter/peachyprintertools/releases/download/1.0.0.920/PeachyPrinterToolsAPI-1.0.0.920.tar.gz
   fi
 
   pip install -I --upgrade $api_source

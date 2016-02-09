@@ -59,6 +59,7 @@
 
 <LoadingUI>:
     name: 'loadingui'
+    image: image
     BoxLayout:
         size_hint: (None,None)
         pos: root.pos
@@ -73,8 +74,9 @@
             orientation: 'vertical'
             Label:
             Image:
+                id: image
                 source: 'loading.gif'
-                anim_delay: 1 / 30.0
+                anim_delay: -1
             I18NLabel:
                 size_hint_y: None
                 height: "40dp"

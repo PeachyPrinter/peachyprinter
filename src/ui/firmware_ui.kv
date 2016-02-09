@@ -1,0 +1,115 @@
+#:kivy 1.8.0
+#:import _ __main__._
+#:import FloatInput ui.custom_widgets.FloatInput
+
+<FirmwareUI>:
+    name: 'firmware_ui'
+    required_version: _('Detecting')
+    actual_version: _('Detecting')
+    BoxLayout:
+        orientation: 'vertical'
+        I18NLabel:
+            canvas.before:
+                Color:
+                    rgba: [1.0,0.2,0.2,1.0]
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            text_source: _("Update Required")
+            color: [0,0,0,1.0]
+            size_hint_y: None
+            height: app.button_height
+        Label:
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+            BoxLayout:
+                padding: '5dp'
+                orientation: 'vertical'
+                size_hint_y: None
+                height: '80dp'
+                canvas:
+                    Color:
+                        rgba: [0.5,0.5,0.5,1.0]
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                I18NLabel:
+                    text_source: _("Current Version")
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    pos_hint: {'top': 0.9}
+                Label:
+                Label:
+                    text: root.actual_version
+                    size_hint_y: None
+                    height: self.texture_size[1]
+            Label:
+
+            BoxLayout:
+                padding: '5dp'
+                orientation: 'vertical'
+                size_hint_y: None
+                height: '80dp'
+                canvas:
+                    Color:
+                        rgba: [0.5,0.5,0.5,1.0]
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+                I18NLabel:
+                    text_source: _("Required Verison")
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    valign: 'top'
+                Label:
+                Label:
+                    text: root.required_version
+                    size_hint_y: None
+                    height: self.texture_size[1]
+            Label:
+        Label:
+        I18NLabel:
+            text_source: _("Update Disclaimer - MARKUP")
+            markup: True
+            text_size: self.width, None
+            size_hint_y: None
+            height: self.texture_size[1]
+        Label:
+        BoxLayout:
+            orientation: 'horizontal'
+            I18NButton:
+                text_source: _('Update Now')
+                size_hint_y:None
+                height: app.button_height
+                on_release: root.update_now()
+
+            I18NButton:
+                text_source: _('Close And Exit')
+                size_hint_y:None
+                height: app.button_height
+                on_release: app.stop()
+
+
+<FirmwareUpdateUI>:
+    name: 'firmware_update_ui'
+    label: label
+    image: image
+    window: window
+    BoxLayout:
+        id: window
+        orientation: 'vertical'
+        Label:
+        Image:
+            id: image
+            source: 'loading.gif'
+            anim_delay: -1
+        I18NLabel:
+            id: label
+            size_hint_y: None
+            height: "40dp"
+            halign: "center"
+            text_source: _("Preparing, do not shutdown or restart your computer or disconnect")
+        Label:
+

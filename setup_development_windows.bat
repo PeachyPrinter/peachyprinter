@@ -30,7 +30,7 @@ IF NOT "%ERRORLEVEL%" == "0" (
 )
 
 ECHO ----Fetching API for Peachy Printer Tools----
-python -m pip install --upgrade https://github.com/PeachyPrinter/peachyprintertools/releases/download/1.0.0.916/PeachyPrinterToolsAPI-1.0.0.916.zip
+python -m pip install --upgrade https://github.com/PeachyPrinter/peachyprintertools/releases/download/1.0.0.920/PeachyPrinterToolsAPI-1.0.0.920.zip
 IF NOT "%ERRORLEVEL%" == "0" (
     ECHO FAILURE: Installer failed, check log
     EXIT /B 99

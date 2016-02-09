@@ -5,9 +5,12 @@ API [https://github.com/PeachyPrinter/peachyprintertools]
 
 This code [https://github.com/PeachyPrinter/peachyprinter]
 
-## Installing
+
 #### Windows / Mac
 Visit peachyprinter.com and click the get started link for installation binaries
+Windows 7+ 
+Mac OS (Version named after mountians)
+
 
 #### Linux
 The Linux version needs to be run from source and the comptuer must meet the following:

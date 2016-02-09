@@ -121,20 +121,18 @@ class MainUI(Screen):
 
 
 class LoadingUI(Screen):
-    pass
-
-
-class MyScreenManager(ScreenManager):
-    def __init__(self, api, setting_translation,  **kwargs):
-        super(MyScreenManager, self).__init__(**kwargs)
-        self.setting_translation = setting_translation
+    def __init__(self, api,  **kwargs):
+        super(LoadingUI, self).__init__(**kwargs)
         self.api = api
-        self.loading_ui = LoadingUI()
-        self.add_widget(self.loading_ui)
 
+    def on_enter(self):
+        self.image.anim_delay = 1 / 30.0
         Clock.schedule_once(self.attempt_connection)
 
-    def _firmware_update_required(self):
+    def on_leave(self):
+        self.image.anim_delay = -1
+
+    def _is_firmware_update_required(self):
         Logger.info("Checking for bootloader")
         if self.api.get_firmware_api().is_ready():
             Logger.info("Bootloader found")
@@ -147,24 +145,35 @@ class MyScreenManager(ScreenManager):
 
     def attempt_connection(self, *args):
         try:
-            firmware_required = self._firmware_update_required()
+            firmware_required = self._is_firmware_update_required()
             if firmware_required:
-                self.firmware_ui = FirmwareUI(self.api)
-                self.add_widget(self.firmware_ui)
-                self.firmware_update_ui = FirmwareUpdateUI(self.api)
-                self.add_widget(self.firmware_update_ui)
-                self.current = 'firmware_ui'
+                Logger.info("Printer Connection Complete")
+                self.parent.firmware_required()
             else:
                 Logger.info("Printer Connection Complete")
-                self.connected()
-                self.current = 'main_ui'
+                self.parent.connected()
         except MissingPrinterException:
             Logger.info("Printer not found checking again")
             Clock.schedule_once(self.attempt_connection, 2)
         except Exception as ex:
             Logger.error(ex.message)
             raise
-        
+
+
+class MyScreenManager(ScreenManager):
+    def __init__(self, api, setting_translation,  **kwargs):
+        super(MyScreenManager, self).__init__(**kwargs)
+        self.setting_translation = setting_translation
+        self.api = api
+        self.loading_ui = LoadingUI(self.api)
+        self.add_widget(self.loading_ui)
+
+    def firmware_required(self):
+        self.firmware_ui = FirmwareUI(self.api)
+        self.add_widget(self.firmware_ui)
+        self.firmware_update_ui = FirmwareUpdateUI(self.api)
+        self.add_widget(self.firmware_update_ui)
+        self.current = 'firmware_ui'
 
     def connected(self):
         self.main_ui = MainUI()
@@ -184,6 +193,8 @@ class MyScreenManager(ScreenManager):
         self.add_widget(self.cure_test_ui)
         self.add_widget(self.calibration_ui)
         self.add_widget(self.restore_ui)
+
+        self.current = 'main_ui'
 
 
 class PeachyPrinter(App):
