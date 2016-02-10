@@ -11,15 +11,12 @@ pip install protobuf==2.6.1
 touch venv/lib/python2.7/site-packages/google/__init__.py
 python -m compileall venv/lib/python2.7/site-packages/google/
 
-echo "--------Getting Latest API----"
-if [ -f api.source ]; then
-    echo"***************USING OVERRIDDEN API SOURCE*********************"
-    api_source=`cat api.source`
-else
-    api_source=https://github.com/PeachyPrinter/peachyprintertools/releases/download/1.0.0.920/PeachyPrinterToolsAPI-1.0.0.920.tar.gz
-fi
 
-pip install --upgrade $api_source
+pip install --upgrade -r requirements.txt
+if [ $? != 0 ]; then
+    echo -e "${FRED}FAILED TO INSTALL REQUIREMENTS{RS}"
+    exit 59
+fi
 
 echo ""
 echo "-----------------------------------"

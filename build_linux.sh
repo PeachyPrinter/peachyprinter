@@ -69,7 +69,7 @@ function setup_venv ()
   echo "Setting up virtual env"
   echo "------------------------------------"
   echo "--------Setting up cython----"
-  pip install -I -U cython==0.23
+  python -m pip install -I -U cython==0.23
   if [ $? != 0 ]; then
       echo "${FRED}FAILURE: cython failed installing${RS}"
       EXIT_CODE=666
@@ -77,7 +77,7 @@ function setup_venv ()
   fi
 
   echo "--------Setting up kivy----"
-  pip install -I -U git+https://github.com/kivy/kivy.git@master
+  python -m pip install -I -U git+https://github.com/kivy/kivy.git@master
   if [ $? != 0 ]; then
     echo "${FRED}FAILURE: kivy failed installing${RS}"
     EXIT_CODE=666
@@ -89,18 +89,12 @@ function setup_venv ()
     sudo pip install -I pygments
   fi
 
-  if [ -f api.source ]; then
-    api_source=`cat api.source`
-  else
-    api_source=https://github.com/PeachyPrinter/peachyprintertools/releases/download/1.0.0.920/PeachyPrinterToolsAPI-1.0.0.920.tar.gz
+  python -m pip install --upgrade -r requirements.txt
+  if [ $? != 0 ]; then
+      echo -e "${FRED}FAILED TO INSTALL REQUIREMENTS{RS}"
+      exit 59
   fi
 
-  pip install -I --upgrade $api_source
-  if [ $? != 0 ]; then
-    echo -e "${FRED}FAILED TO UPDATE${RS}"
-    EXIT_CODE=59
-    failed_exit
-  fi
 
   echo -e "${FGRN}Complete${RS}"
   echo""
