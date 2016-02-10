@@ -41,12 +41,18 @@
                 id: test_pattern_panel
                 text_source: _("Patterns")
                 source: "resources/icons/laser_calibration_patterns-24x24.png"
-        I18NImageButton:
-            source: "resources/icons/general_back-24x24.png"
-            text_source: _("Back")
+        BoxLayout:
+            orientation: 'horizontal'
             size_hint_y: None
             height: app.button_height
-            on_release: app.root.current = 'main_ui'
+            I18NImageButton:
+                source: "resources/icons/general_back-24x24.png"
+                text_source: _("Back")
+                on_release: app.root.current = 'main_ui'
+            I18NImageButton:
+                source: "resources/icons/general_emergency-24x24.png"
+                text_source: _("Emergency Stop")
+                on_release: app.root.current = 'main_ui'
 
 <CenterPanel>:
     orientation: 'horizontal'

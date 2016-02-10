@@ -398,6 +398,13 @@
                         text: "{:.0f}".format(root.skipped_layers)
             Label:
             I18NImageButton:
+                text_source: _("Emergency Stop")
+                source: "resources/icons/general_emergency-24x24.png"
+                background_color: [2.0, 0.0, 0.0, 1.0]
+                on_release: root.cancel_print()
+                size_hint_y: None
+                height: app.button_height
+            I18NImageButton:
                 text_source: _("Cancel Print")
                 source: "resources/icons/printing_cancel-24x24.png"
                 on_release: root.cancel_print()
