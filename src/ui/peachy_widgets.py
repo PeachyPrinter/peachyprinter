@@ -104,10 +104,13 @@ class LaserWarningPopup(I18NPopup):
 class LaserStatusBar(BoxLayout):
     def __init__(self, **kwargs):
         super(LaserStatusBar, self).__init__(**kwargs)
-        self.key_state = True
-        self.switch_state = True
-        self.card_state = True
-        self.laser_state = True
 
-    def update(self, printer_status_message):
-        pass
+    def update_message(self, printer_status_message):
+        self._last_message = printer_status_message
+        Clock.schedule_once(self._update)
+
+    def _update(self, *args):
+        self.key_state = self._last_message.keyInserted
+        self.switch_state = self._last_message.overrideSwitch
+        self.card_state = self._last_message.cardInserted
+        self.laser_state = self._last_message.laserOn

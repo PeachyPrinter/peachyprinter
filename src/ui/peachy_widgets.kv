@@ -59,6 +59,14 @@
                 on_release: root.accepted = "False"; root.dismiss()
 
 <LaserStatusBar>:
+    key_image: key_image
+    key_state: False
+    switch_image: switch_image
+    switch_state: False
+    card_image: card_image
+    card_state: False
+    laser_image: laser_image
+    laser_state: False
     orientation: 'vertical'
     size_hint_x: None
     width: '54dp'
@@ -66,14 +74,7 @@
         orientation: 'vertical'
         size_hint_x: None
         width: '54dp'
-        key_image: key_image
-        key_state: key_state
-        switch_image: switch_image
-        switch_state: switch_state
-        card_image: card_image
-        card_state: card_state
-        laser_image: laser_image
-        laser_state: laser_state
+
         canvas.before:
             Color:
                 rgba: [0.0, 0.0, 0.0, 1.0]
@@ -88,10 +89,9 @@
                 height: '48dp'
                 source:"resources/icons/status_key-48x96.png"
             Image:
-                id: key_state
                 size_hint_y: None
                 height: '16dp'
-                source: "resources/icons/status_off-32x32.png"
+                source: "resources/icons/status_on-32x32.png" if root.key_state else "resources/icons/status_off-32x32.png"
         BoxLayout:
             orientation: 'vertical'
             Image:
@@ -100,10 +100,9 @@
                 height: '48dp'
                 source:"resources/icons/status_switch-48x96.png"
             Image:
-                id: switch_state
                 size_hint_y: None
                 height: '16dp'
-                source: "resources/icons/status_on-32x32.png"
+                source: "resources/icons/status_on-32x32.png" if root.switch_state else "resources/icons/status_off-32x32.png"
         BoxLayout:
             orientation: 'vertical'
             Image:
@@ -112,10 +111,9 @@
                 height: '48dp'
                 source:"resources/icons/status_card-48x96.png"
             Image:
-                id: card_state
                 size_hint_y: None
                 height: '16dp'
-                source: "resources/icons/status_off-32x32.png"
+                source: "resources/icons/status_on-32x32.png" if root.card_state else "resources/icons/status_off-32x32.png"
         BoxLayout:
             orientation: 'vertical'
             Image:
@@ -124,8 +122,7 @@
                 height: '48dp'
                 source:"resources/icons/status_laser-48x96.png"
             Image:
-                id: laser_state
                 size_hint_y: None
                 height: '16dp'
-                source: "resources/icons/status_off-32x32.png"
+                source: "resources/icons/status_on-32x32.png" if root.laser_state else "resources/icons/status_off-32x32.png"
         Label:
