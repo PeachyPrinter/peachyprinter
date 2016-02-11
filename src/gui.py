@@ -160,6 +160,10 @@ class LoadingUI(Screen):
             raise
 
 
+class ExitUI(Screen):
+    pass
+
+
 class MyScreenManager(ScreenManager):
     def __init__(self, api, setting_translation,  **kwargs):
         super(MyScreenManager, self).__init__(**kwargs)
@@ -167,6 +171,8 @@ class MyScreenManager(ScreenManager):
         self.api = api
         self.loading_ui = LoadingUI(self.api)
         self.add_widget(self.loading_ui)
+        self.exit_ui = ExitUI()
+        self.add_widget(self.exit_ui)
 
     def firmware_required(self):
         self.firmware_ui = FirmwareUI(self.api)
@@ -293,6 +299,5 @@ class PeachyPrinter(App):
         settings.interface.menu.close_button.text = self.translation(_("Close"))
 
     def on_stop(self):
-        pass
-        # if self.manager:
-        #     self.manager.current = 'main_ui'
+        if self.manager:
+            self.manager.current = 'exit_ui'
