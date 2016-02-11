@@ -6,6 +6,7 @@
 
 <CalibrateUI>:
     name: 'calibrationui'
+    status_bar: status_bar
     BoxLayout:
         orientation: 'horizontal'
         BoxLayout:
@@ -57,6 +58,7 @@
                     text_source: _("Emergency Stop")
                     on_release: app.root.current = 'main_ui'
         LaserStatusBar:
+            id: status_bar
 
 
 <CenterPanel>:

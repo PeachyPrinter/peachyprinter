@@ -427,6 +427,7 @@ class CalibrateUI(Screen):
         self.is_active = True
         try:
             self.calibration_api = self.api.get_calibration_api()
+            self.calibration_api.subscribe_to_status(self.status_bar.update_message)
             self.calibration_api.show_point([0.5, 0.5, 0.0])
         except Exception as ex:
             import traceback
@@ -438,7 +439,7 @@ class CalibrateUI(Screen):
 
     def on_calibration_api(self, instance, value):
         for an_id in self.ids:
-            if hasattr(self.ids[an_id].content, 'calibration_api'):
+            if hasattr(self.ids[an_id], 'content')and hasattr(self.ids[an_id].content, 'calibration_api'):
                 self.ids[an_id].content.calibration_api = value
 
     def on_pre_leave(self):
