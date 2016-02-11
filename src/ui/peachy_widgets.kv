@@ -25,9 +25,15 @@
 <LaserWarningPopup>:
     title:_('Laser Safety Notice')
     size_hint:[0.6, 0.6]
+    container: container
+    laser_on_button: laser_on_button
+    markup: markup
+    buttons: buttons
     BoxLayout:
+        id: container
         orientation: 'vertical'
         ScrollView:
+            id: markup
             padding: "10dp"
             I18NLabel:
                 text_source: _("You are about to turn on the laser. Do you wish to proceed")
@@ -36,12 +42,14 @@
                 size_hint_y: None
                 height: self.texture_size[1]
         BoxLayout:
+            id: buttons
             I18NImageButton:
+                id:laser_on_button
                 source: "resources/icons/laser_safety_turn_on_laser-24x24.png"
                 text_source: _('Turn on Laser')
                 size_hint_y:None
                 height: app.button_height
-                on_release: root.accepted = "True"; root.dismiss()
+                on_release: root.accepted = "True"; root.phase2()
             I18NImageButton:
                 source: "resources/icons/laser_safety_cancel-24x24.png"
                 text_source: _('Cancel')
@@ -49,3 +57,86 @@
                 size_hint_x: 0.5
                 height: app.button_height
                 on_release: root.accepted = "False"; root.dismiss()
+
+<LaserStatusBar>:
+    orientation: 'vertical'
+    # size_hint_y: None
+    # height: '54dp'
+    size_hint_x: None
+    width: '54dp'
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_x: None
+        width: '54dp'
+        key_image: key_image
+        key_state: key_state
+        switch_image: switch_image
+        switch_state: switch_state
+        card_image: card_image
+        card_state: card_state
+        laser_image: laser_image
+        laser_state: laser_state
+        canvas.before:
+            Color:
+                rgba: [0.0, 0.0, 0.0, 1.0]
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        BoxLayout:
+            orientation: 'vertical'
+            Image:
+                id: key_image
+                size_hint_y: None
+                height: '30dp'
+                source:"resources/icons/status_key-96x48.png"
+            Image:
+                id: key_state
+                size_hint_y: None
+                height: '16dp'
+                source: "resources/icons/status_off-24x24.png"
+        BoxLayout:
+            orientation: 'vertical'
+            Image:
+                id: switch_image
+                size_hint_y: None
+                height: '30dp'
+                source:"resources/icons/status_switch-96x48.png"
+            Image:
+                id: switch_state
+                size_hint_y: None
+                height: '16dp'
+                source: "resources/icons/status_on-24x24.png"
+        BoxLayout:
+            orientation: 'vertical'
+            Image:
+                id: card_image
+                size_hint_y: None
+                height: '30dp'
+                source:"resources/icons/status_card-96x48.png"
+            Image:
+                id: card_state
+                size_hint_y: None
+                height: '16dp'
+                source: "resources/icons/status_off-24x24.png"
+        BoxLayout:
+            orientation: 'vertical'
+            Image:
+                id: laser_image
+                size_hint_y: None
+                height: '30dp'
+                source:"resources/icons/status_laser-96x48.png"
+            Image:
+                id: laser_state
+                size_hint_y: None
+                height: '16dp'
+                source: "resources/icons/status_off-24x24.png"
+        Label:
+    # BoxLayout:
+    #     size_hint_y: None
+    #     height: '8dp'
+    #     canvas.before:
+    #         Color:
+    #             rgba: (1, 1, 1, 1)
+    #         Rectangle:
+    #             size: (self.size[0], 2)
+    #             pos: (self.x, self.y + 3)

@@ -3,6 +3,7 @@ from kivy.graphics import *
 from kivy.clock import Clock
 from kivy.properties import StringProperty, BooleanProperty
 from kivy.uix.popup import Popup
+from kivy.uix.image import Image
 import time
 from math import sin, pi
 
@@ -76,8 +77,32 @@ class LaserWarningPopup(I18NPopup):
 
     def __init__(self, **kwargs):
         super(LaserWarningPopup, self).__init__(**kwargs)
+        self.countdown_image = Image(source="resources/icons/laser_safety_countdown-256x256.gif", anim_delay=-1, anim_loop=1)
+
+    def phase2(self):
+        self.buttons.remove_widget(self.laser_on_button)
+        self.container.remove_widget(self.markup)
+        self.container.add_widget(self.countdown_image, index=2)
+        Clock.schedule_once(self.phase3)
+
+    def phase3(self, *args):
+        self.countdown_image.anim_delay = (1.0 / 15.0)
+        Clock.schedule_once(self.is_accepted, 3.7)
+
+    def is_accepted(self, *args):
+        if self.accepted != "False":
+            self.accepted = "True"
+        self.dismiss()
 
     def is_safe(self):
         if self.accepted is "True":
             return True
         return False
+
+class LaserStatusBar(BoxLayout):
+    def __init__(self, **kwargs):
+        super(LaserStatusBar, self).__init__(**kwargs)
+        self.key_state = True
+        self.switch_state = True
+        self.card_state = True
+        self.laser_state = True

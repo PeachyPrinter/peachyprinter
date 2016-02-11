@@ -7,52 +7,57 @@
 <CalibrateUI>:
     name: 'calibrationui'
     BoxLayout:
-        orientation: 'vertical'
-        CommunicativeTabbedPanel:
-            tab_width: "135dp"
-            id:tab_panel
-            tab_pos: "top_left"
-            do_default_tab: False
-            I18NImageTabbedPanelHeader:
-                id: center_panel
-                text_source: _("Center")
-                source: "resources/icons/laser_calibration_center-24x24.png"
-            I18NImageTabbedPanelHeader:
-                id: orientation_panel
-                text_source: _("Orientation")
-                source: "resources/icons/laser_calibration_orientation-24x24.png"
-            I18NImageTabbedPanelHeader:
-                id: alignment_panel
-                text_source: _("Alignment")
-                source: "resources/icons/laser_calibration_alignment-24x24.png"
-            I18NImageTabbedPanelHeader:
-                id: print_area_panel
-                text_source: _("Print Area")
-                source: "resources/icons/laser_calibration_print_area-24x24.png"
-            I18NImageTabbedPanelHeader:
-                id: calibration_panel_top
-                text_source: _('Top')
-                source: "resources/icons/laser_calibration_top-24x24.png"
-            I18NImageTabbedPanelHeader:
-                id: calibration_panel_bottom
-                text_source: _('Bottom')
-                source: "resources/icons/laser_calibration_bottom-24x24.png"
-            I18NImageTabbedPanelHeader:
-                id: test_pattern_panel
-                text_source: _("Patterns")
-                source: "resources/icons/laser_calibration_patterns-24x24.png"
+        orientation: 'horizontal'
         BoxLayout:
-            orientation: 'horizontal'
-            size_hint_y: None
-            height: app.button_height
-            I18NImageButton:
-                source: "resources/icons/general_back-24x24.png"
-                text_source: _("Back")
-                on_release: app.root.current = 'main_ui'
-            I18NImageButton:
-                source: "resources/icons/general_emergency-24x24.png"
-                text_source: _("Emergency Stop")
-                on_release: app.root.current = 'main_ui'
+            orientation: 'vertical'
+            
+            CommunicativeTabbedPanel:
+                tab_width: "135dp"
+                id:tab_panel
+                tab_pos: "top_left"
+                do_default_tab: False
+                I18NImageTabbedPanelHeader:
+                    id: center_panel
+                    text_source: _("Center")
+                    source: "resources/icons/laser_calibration_center-24x24.png"
+                I18NImageTabbedPanelHeader:
+                    id: orientation_panel
+                    text_source: _("Orientation")
+                    source: "resources/icons/laser_calibration_orientation-24x24.png"
+                I18NImageTabbedPanelHeader:
+                    id: alignment_panel
+                    text_source: _("Alignment")
+                    source: "resources/icons/laser_calibration_alignment-24x24.png"
+                I18NImageTabbedPanelHeader:
+                    id: print_area_panel
+                    text_source: _("Print Area")
+                    source: "resources/icons/laser_calibration_print_area-24x24.png"
+                I18NImageTabbedPanelHeader:
+                    id: calibration_panel_top
+                    text_source: _('Top')
+                    source: "resources/icons/laser_calibration_top-24x24.png"
+                I18NImageTabbedPanelHeader:
+                    id: calibration_panel_bottom
+                    text_source: _('Bottom')
+                    source: "resources/icons/laser_calibration_bottom-24x24.png"
+                I18NImageTabbedPanelHeader:
+                    id: test_pattern_panel
+                    text_source: _("Patterns")
+                    source: "resources/icons/laser_calibration_patterns-24x24.png"
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: app.button_height
+                I18NImageButton:
+                    source: "resources/icons/general_back-24x24.png"
+                    text_source: _("Back")
+                    on_release: app.root.current = 'main_ui'
+                I18NImageButton:
+                    source: "resources/icons/general_emergency-24x24.png"
+                    text_source: _("Emergency Stop")
+                    on_release: app.root.current = 'main_ui'
+        LaserStatusBar:
+
 
 <CenterPanel>:
     orientation: 'horizontal'
