@@ -8,6 +8,7 @@ import time
 from math import sin, pi
 
 from kivy.lang import Builder
+from kivy.loader import Loader
 from ui.custom_widgets import I18NPopup, I18NLabel
 
 
@@ -99,6 +100,7 @@ class LaserWarningPopup(I18NPopup):
             return True
         return False
 
+
 class LaserStatusBar(BoxLayout):
     def __init__(self, **kwargs):
         super(LaserStatusBar, self).__init__(**kwargs)
@@ -106,3 +108,6 @@ class LaserStatusBar(BoxLayout):
         self.switch_state = True
         self.card_state = True
         self.laser_state = True
+
+    def update(self, printer_status_message):
+        pass

@@ -11,6 +11,7 @@ from kivy.core.window import Window
 from kivy.clock import Clock
 from kivy.metrics import dp
 from kivy.logger import Logger
+from kivy.loader import Loader
 
 from infrastructure.setting_mapper import SettingsMapper
 from infrastructure.langtools import _
