@@ -160,6 +160,7 @@
 
 <PrintingUI>:
     name: 'printingui'
+    status_bar: status_bar
     BoxLayout:
         orientation: 'horizontal'
         BoxLayout:
@@ -400,7 +401,6 @@
             I18NImageButton:
                 text_source: _("Emergency Stop")
                 source: "resources/icons/general_emergency-24x24.png"
-                background_color: [2.0, 0.0, 0.0, 1.0]
                 on_release: root.cancel_print()
                 size_hint_y: None
                 height: app.button_height
@@ -417,7 +417,6 @@
                 on_release: root.restart()
                 size_hint_y: None
                 height: app.button_height
-                background_color: [1.4, 1.4, 0.0, 1.0]
             I18NImageButton:
                 text_source: _("Display Settings")
                 source: "resources/icons/printing_settings-24x24.png"
@@ -428,5 +427,7 @@
             orientation: 'vertical'
             PrinterAnimation:
                 id: printer_animation
+        LaserStatusBar:
+            id: status_bar
 
 

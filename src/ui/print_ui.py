@@ -307,12 +307,10 @@ class PrintingUI(Screen):
             self.ids.printer_animation.animation_stop()
             self.play_complete_sound()
             self.ids.navigate_button.text_source = _("Print Complete")
-            self.ids.navigate_button.background_color = [0.0, 2.0, 0.0, 1.0]
         elif self.status == 'Failed':
             self.ids.printer_animation.animation_stop()
             self.play_failed_sound()
             self.ids.navigate_button.text_source = _("Print Failed")
-            self.ids.navigate_button.background_color = [2.0, 0.0, 0.0, 1.0]
         else:
             Clock.schedule_once(self._update_status, self.refresh_rate)
 
@@ -329,7 +327,7 @@ class PrintingUI(Screen):
             self.print_api = self.api.get_print_api(start_height=start_height)
             self.path = os.path.basename(filepath)
             self.print_api.print_gcode(filepath, force_source_speed=force_source_speed)
-            self.setup_dripper()
+            self._setup_print()
         except Exception as ex:
             popup = ErrorPopup(title='Error', text=str(ex), size_hint=(0.6, 0.6))
             popup.open()
@@ -344,11 +342,13 @@ class PrintingUI(Screen):
         else:
             self.parent.current = self.return_to
 
-    def setup_dripper(self):
-        if self.print_api and self.print_api.can_set_drips_per_second():
-            self.dripper_setting = DripSpeed(self.print_api.set_drips_per_second)
-            self.dripper_setting.drips_per_second = self.print_api.get_drips_per_second()
-            self.ids.dripper_grid.add_widget(self.dripper_setting)
+    def _setup_print(self):
+        if self.print_api:
+            self.print_api.subscribe_to_status(self.status_bar.update_message)
+            if self.print_api.can_set_drips_per_second():
+                self.dripper_setting = DripSpeed(self.print_api.set_drips_per_second)
+                self.dripper_setting.drips_per_second = self.print_api.get_drips_per_second()
+                self.ids.dripper_grid.add_widget(self.dripper_setting)
 
     def print_generator(self, *args, **kwargs):
         self.print_options = [self._print_generator, args, kwargs]
@@ -361,7 +361,7 @@ class PrintingUI(Screen):
         try:
             self.print_api = self.api.get_print_api()
             self.print_api.print_layers(generator, force_source_speed=force_source_speed)
-            self.setup_dripper()
+            self._setup_print()
         except Exception as ex:
             popup = ErrorPopup(title='Error', text=str(ex), size_hint=(0.6, 0.6))
             popup.open()
@@ -377,7 +377,6 @@ class PrintingUI(Screen):
             self.print_api.close()
         self.print_api = None
         self.ids.navigate_button.text_source = _('Cancel Print')
-        self.ids.navigate_button.background_color = [2.0, 0.0, 0.0, 1.0]
         last_print = App.get_running_app().last_print
         if last_print.print_type is "file":
             self.print_file(last_print.source, self.return_to)
@@ -409,7 +408,6 @@ class PrintingUI(Screen):
         for (title, value) in self.parent.setting_translation.get_settings().items():
             self.settings_popup.add_setting(ListElement(title=title, value=value))
         self.ids.navigate_button.text_source = _('Cancel Print')
-        self.ids.navigate_button.background_color = [2.0, 0.0, 0.0, 1.0]
 
     def cancel_print(self):
         Logger.info("Print cancel requested")
