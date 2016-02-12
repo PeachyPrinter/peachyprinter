@@ -116,3 +116,11 @@ class LaserStatusBar(BoxLayout):
             self.switch_state = self._last_message.overrideSwitch
             self.card_state = self._last_message.cardInserted
             self.laser_state = self._last_message.laserOn
+
+    def popup(self, *args):
+        popup = LaserStatusDescriptionsPopup()
+        popup.open()
+
+
+class LaserStatusDescriptionsPopup(I18NPopup):
+    pass

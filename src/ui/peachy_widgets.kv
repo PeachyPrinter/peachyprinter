@@ -58,6 +58,111 @@
                 height: app.button_height
                 on_release: root.accepted = "False"; root.dismiss()
 
+
+<LaserStatusDescriptionsPopup>:
+    size_hint: [0.6, 0.6]
+    title: _("Laser Status Information")
+    BoxLayout:
+        id: container
+        orientation: 'vertical'
+        ScrollView:
+            id: markup
+            size_hint_y: None
+            height: self.parent.height - app.button_height - dp(20)
+            pos: self.parent.pos
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: "5dp"
+                size_hint_y: None
+                height: status_key.height + status_switch.height + status_card.height + status_laser.height + dp(20)
+                Label:
+                    size_hint_y: None
+                    height: '20dp'
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: status_key.height
+                    BoxLayout:
+                        size_hint: (None,None)
+                        width: '28dp'
+                        height: status_key.height
+                        Image:
+                            size_hint_x: None
+                            width: '24dp'
+                            source:"resources/icons/status_key-48x96.png"
+                    I18NLabel:
+                        id: status_key
+                        text_source: _("Laser Status Key - MARKUP")
+                        markup: True
+                        text_size: self.width, None
+                        size_hint_y: None
+                        height: max(self.texture_size[1], dp(48))
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: status_switch.height
+                    BoxLayout:
+                        size_hint: (None,None)
+                        width: '28dp'
+                        height: status_switch.height
+                        Image:
+                            size_hint_x: None
+                            width: '24dp'
+                            source:"resources/icons/status_switch-48x96.png"
+                    I18NLabel:
+                        id: status_switch
+                        text_source: _("Laser Status Switch - MARKUP")
+                        markup: True
+                        text_size: self.width, None
+                        size_hint_y: None
+                        height: max(self.texture_size[1], dp(48))
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: status_card.height
+                    BoxLayout:
+                        size_hint: (None,None)
+                        width: '28dp'
+                        height: status_card.height
+                        Image:
+                            size_hint_x: None
+                            width: '24dp'
+                            source:"resources/icons/status_card-48x96.png"
+                    I18NLabel:
+                        id: status_card
+                        text_source: _("Laser Status Card - MARKUP")
+                        markup: True
+                        text_size: self.width, None
+                        size_hint_y: None
+                        height: max(self.texture_size[1], dp(48))
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: status_laser.height
+                    BoxLayout:
+                        size_hint: (None,None)
+                        width: '28dp'
+                        height: status_laser.height
+                        Image:
+                            size_hint_x: None
+                            width: '24dp'
+                            source:"resources/icons/status_laser-48x96.png"
+                    I18NLabel:
+                        id: status_laser
+                        text_source: _("Laser Status Laser - MARKUP")
+                        markup: True
+                        text_size: self.width, None
+                        size_hint_y: None
+                        height: max(self.texture_size[1], dp(48))
+        BoxLayout:
+            I18NImageButton:
+                id:close
+                source: "resources/icons/general_cancel-24x24.png"
+                text_source: _('Close')
+                size_hint_y:None
+                height: app.button_height
+                on_release: root.dismiss()
+
 <LaserStatusBar>:
     key_image: key_image
     key_state: False
@@ -67,6 +172,7 @@
     card_state: False
     laser_image: laser_image
     laser_state: False
+    on_touch_down: self.popup()
     orientation: 'vertical'
     size_hint_x: None
     color: [0.45, 0.45, 0.45, 1.0]

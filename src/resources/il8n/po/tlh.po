@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-25 12:16-0600\n"
+"POT-Creation-Date: 2016-02-12 11:31-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -11,30 +11,27 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/gui.py:85
+#: src/gui.py:88
 msgid "Disclaimer"
 msgstr ""
 
-#: src/gui.py:102
+#: src/gui.py:105
 msgid "Load file"
 msgstr "load teywI'"
 
-#: src/gui.py:202 src/gui.py:237 src/peachyprinter.kv:57
-#: src/ui/custom_widgets.kv:115 src/ui/print_ui.kv:122
+#: src/gui.py:266 src/gui.py:300 src/peachyprinter.kv:57
+#: src/ui/custom_widgets.kv:115 src/ui/peachy_widgets.kv:161
+#: src/ui/print_ui.kv:122 src/ui/firmware_ui.py:47
 msgid "Close"
 msgstr "SoQmoH"
 
-#: src/gui.py:215
-msgid "Please connect your peachy printer before starting the software"
-msgstr "nuqneH peachy printer rar pa' software starting"
-
-#: src/gui.py:216 src/gui.py:224 src/peachyprinter.kv:165
-msgid "Exit"
-msgstr "mej"
-
-#: src/gui.py:222
+#: src/gui.py:287
 msgid "An Error has Occured"
 msgstr ""
+
+#: src/gui.py:289 src/peachyprinter.kv:197
+msgid "Exit"
+msgstr "mej"
 
 #: src/test.py:19
 msgid "Some Text"
@@ -64,23 +61,31 @@ msgstr "'Itlh Settings"
 msgid "Restore Defaults"
 msgstr "Defaults SabHa'"
 
-#: src/peachyprinter.kv:80
+#: src/peachyprinter.kv:84
+msgid "Loading, Ensure your printer is connected"
+msgstr ""
+
+#: src/peachyprinter.kv:90
+msgid "Shutting down"
+msgstr ""
+
+#: src/peachyprinter.kv:112
 msgid "Print from file"
 msgstr ""
 
-#: src/peachyprinter.kv:87
+#: src/peachyprinter.kv:119
 msgid "Print from library"
 msgstr "print vo' be'nI''a'wI', Datu'"
 
-#: src/peachyprinter.kv:94 src/ui/print_ui.kv:111
+#: src/peachyprinter.kv:126 src/ui/print_ui.kv:111
 msgid "Settings"
 msgstr "setting"
 
-#: src/peachyprinter.kv:128
+#: src/peachyprinter.kv:160
 msgid "Starting Height"
 msgstr "start 'ab"
 
-#: src/peachyprinter.kv:139 src/infrastructure/setting_mapper.py:81
+#: src/peachyprinter.kv:171 src/infrastructure/setting_mapper.py:81
 #: src/infrastructure/setting_mapper.py:98
 #: src/infrastructure/setting_mapper.py:115
 #: src/infrastructure/setting_mapper.py:133
@@ -108,15 +113,15 @@ msgstr "start 'ab"
 #: src/infrastructure/setting_mapper.py:389
 #: src/infrastructure/setting_mapper.py:399
 #: src/infrastructure/setting_mapper.py:409 src/ui/library_ui.kv:60
-#: src/ui/peachy_widgets.kv:47
+#: src/ui/peachy_widgets.kv:55
 msgid "Cancel"
 msgstr "qIl"
 
-#: src/peachyprinter.kv:146
+#: src/peachyprinter.kv:178
 msgid "Load"
 msgstr "load"
 
-#: src/peachyprinter.kv:154
+#: src/peachyprinter.kv:186
 msgid "MARKUP - Disclaimer "
 msgstr ""
 "[b]Laser Safety[/b]\n"
@@ -173,7 +178,7 @@ msgstr ""
 "agree that Peachy Printer Inc. is not liable for injuries or damages from "
 "any of our products."
 
-#: src/peachyprinter.kv:160
+#: src/peachyprinter.kv:192
 msgid "Accept"
 msgstr ""
 
@@ -610,47 +615,51 @@ msgstr " mIm dripper photo zaxis"
 msgid "dripper_photo_zaxis_delay DESCRIPTION"
 msgstr " mIm dripper photo zaxis"
 
-#: src/ui/calibrate_ui.kv:18
+#: src/ui/calibrate_ui.kv:23
 msgid "Center"
 msgstr "botlh"
 
-#: src/ui/calibrate_ui.kv:22
+#: src/ui/calibrate_ui.kv:27
 msgid "Orientation"
 msgstr "orientation"
 
-#: src/ui/calibrate_ui.kv:26
+#: src/ui/calibrate_ui.kv:31
 msgid "Alignment"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:30
+#: src/ui/calibrate_ui.kv:35
 msgid "Print Area"
 msgstr "yoS print"
 
-#: src/ui/calibrate_ui.kv:34
+#: src/ui/calibrate_ui.kv:39
 msgid "Top"
 msgstr "yor"
 
-#: src/ui/calibrate_ui.kv:38
+#: src/ui/calibrate_ui.kv:43
 msgid "Bottom"
 msgstr "bIS'ub"
 
-#: src/ui/calibrate_ui.kv:42
+#: src/ui/calibrate_ui.kv:47
 msgid "Patterns"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:46 src/ui/cure_test_ui.kv:295
+#: src/ui/calibrate_ui.kv:55 src/ui/cure_test_ui.kv:295
 #: src/ui/dripper_calibration_ui.kv:314 src/ui/library_ui.kv:81
 msgid "Back"
 msgstr "chap"
 
-#: src/ui/calibrate_ui.kv:56 src/ui/calibrate_ui.kv:107
-#: src/ui/calibrate_ui.kv:289 src/ui/calibrate_ui.kv:335
-#: src/ui/calibrate_ui.kv:415 src/ui/calibrate_ui.kv:486
+#: src/ui/calibrate_ui.kv:59 src/ui/print_ui.kv:402
+msgid "Emergency Stop"
+msgstr ""
+
+#: src/ui/calibrate_ui.kv:70 src/ui/calibrate_ui.kv:121
+#: src/ui/calibrate_ui.kv:303 src/ui/calibrate_ui.kv:349
+#: src/ui/calibrate_ui.kv:429 src/ui/calibrate_ui.kv:500
 #: src/ui/cure_test_ui.kv:287 src/ui/dripper_calibration_ui.kv:289
 msgid "Help me"
 msgstr "HIQaH"
 
-#: src/ui/calibrate_ui.kv:57
+#: src/ui/calibrate_ui.kv:71
 msgid "MARKUP - Center Calibration Instructions"
 msgstr ""
 "centre calibration chenmoH be 'e' printer patlh pIlam naH je waH ghor waH "
@@ -661,11 +670,11 @@ msgstr ""
 "tab chaq DayaHmoH [/i] \n"
 " HeghDI' SoH navmey grid aligning."
 
-#: src/ui/calibrate_ui.kv:57
+#: src/ui/calibrate_ui.kv:71
 msgid "Help - Calibration Setup"
 msgstr "QaH-Calibration Setup"
 
-#: src/ui/calibrate_ui.kv:108
+#: src/ui/calibrate_ui.kv:122
 msgid "MARKUP - Orientation Instructions"
 msgstr ""
 "coil polarity qIlmeH pIj 'ej account during calibration mIw printing 'ej "
@@ -675,11 +684,11 @@ msgstr ""
 "[i]advanced[/i]\n"
 "adjust SoH pong polarity swapping vay' connections swapping coils pattern p"
 
-#: src/ui/calibrate_ui.kv:108
+#: src/ui/calibrate_ui.kv:122
 msgid "Help - Orientation"
 msgstr "QaH-Orientation"
 
-#: src/ui/calibrate_ui.kv:290
+#: src/ui/calibrate_ui.kv:304
 msgid "MARKUP - Print Area Instructions"
 msgstr ""
 "SoH ghaH mIchHom Hay'DI' print Daghaj per chaw' printer mIchHom. cha' meyrI' "
@@ -688,23 +697,23 @@ msgstr ""
 " DaH vaj mIchHom print nIS ghur SoH printer pep 'ej 'oH ghuS veb resolution "
 "pa' yoS smaller."
 
-#: src/ui/calibrate_ui.kv:290
+#: src/ui/calibrate_ui.kv:304
 msgid "Help - Print Area"
 msgstr "QaH-Print yoS"
 
-#: src/ui/calibrate_ui.kv:300 src/ui/library_ui.kv:23
+#: src/ui/calibrate_ui.kv:314 src/ui/library_ui.kv:23
 msgid "Height (mm)"
 msgstr "'ab (mm)"
 
-#: src/ui/calibrate_ui.kv:311
+#: src/ui/calibrate_ui.kv:325
 msgid "Depth (mm)"
 msgstr "natlhlu'mo' (mm)"
 
-#: src/ui/calibrate_ui.kv:322 src/ui/library_ui.kv:32
+#: src/ui/calibrate_ui.kv:336 src/ui/library_ui.kv:32
 msgid "Width (mm)"
 msgstr "width (mm)"
 
-#: src/ui/calibrate_ui.kv:336
+#: src/ui/calibrate_ui.kv:350
 msgid "MARKUP - Alignment Instructions"
 msgstr ""
 "DanoHmeH Alignment tab tlhegh woDDI' nav grid pa' calibration much QaH. swap "
@@ -716,19 +725,19 @@ msgstr ""
 "tlhegh cha' je SoH. tlhegh straighten damping laH lIS SoH. wa'logh 'ach not "
 "naQ lutDaj botlh tab 'ej print 'elqa' botlh."
 
-#: src/ui/calibrate_ui.kv:336
+#: src/ui/calibrate_ui.kv:350
 msgid "Help - Alignment"
 msgstr "QaH-Alignment"
 
-#: src/ui/calibrate_ui.kv:383
+#: src/ui/calibrate_ui.kv:397
 msgid "Super Accurate Mode"
 msgstr "super qar Mode"
 
-#: src/ui/calibrate_ui.kv:396
+#: src/ui/calibrate_ui.kv:410
 msgid "Reset All"
 msgstr "Hoch reset"
 
-#: src/ui/calibrate_ui.kv:416
+#: src/ui/calibrate_ui.kv:430
 msgid "MARKUP - Calibration Instructions"
 msgstr ""
 "software account 'op typical irregularites chaw' yor bIS'ub Calibration mIw "
@@ -745,19 +754,19 @@ msgstr ""
 " 6. ghaHDaq jatlhqa' BERNARDO. grid navmey vIH print mIchHom pIrmuS 'ej Hoch "
 "raghpu'bogh mIw 'bIS'ub' calibration tab jatlhqa'."
 
-#: src/ui/calibrate_ui.kv:416
+#: src/ui/calibrate_ui.kv:430
 msgid "Help - Calibration"
 msgstr "QaH-Calibration"
 
-#: src/ui/calibrate_ui.kv:451
+#: src/ui/calibrate_ui.kv:465
 msgid "Speed"
 msgstr "speed"
 
-#: src/ui/calibrate_ui.kv:469
+#: src/ui/calibrate_ui.kv:483
 msgid "Height"
 msgstr "'ab"
 
-#: src/ui/calibrate_ui.kv:487
+#: src/ui/calibrate_ui.kv:501
 msgid "MARKUP - Test Pattern Instructions"
 msgstr ""
 "laH lo' waH patterns waH mI'. SoH je waH patterns pongmaj pIm neH print chu' "
@@ -784,7 +793,7 @@ msgstr ""
 "8 qIlmeH pIj 'oH. [b] [/b]-spiral spiral waH nagh hilbert curve Homvetlh "
 "usefullness QI'yaH linearities vItu'"
 
-#: src/ui/calibrate_ui.kv:487
+#: src/ui/calibrate_ui.kv:501
 msgid "Help - Test Patterns"
 msgstr "QaH-waH patterns"
 
@@ -930,7 +939,7 @@ msgstr ""
 msgid "[b]Emulated Settings[/b]"
 msgstr ""
 
-#: src/ui/dripper_calibration_ui.kv:195 src/ui/print_ui.kv:215
+#: src/ui/dripper_calibration_ui.kv:195 src/ui/print_ui.kv:216
 msgid "Drips per second"
 msgstr "drips per cha'DIch"
 
@@ -962,6 +971,38 @@ msgstr "MARKUP-Dripper Instructions"
 msgid "Help - Dripper Settings"
 msgstr "QaH-Dripper Settings"
 
+#: src/ui/firmware_ui.kv:7 src/ui/firmware_ui.kv:8
+msgid "Detecting"
+msgstr ""
+
+#: src/ui/firmware_ui.kv:18
+msgid "Update Required"
+msgstr ""
+
+#: src/ui/firmware_ui.kv:38
+msgid "Current Version"
+msgstr ""
+
+#: src/ui/firmware_ui.kv:62
+msgid "Required Verison"
+msgstr ""
+
+#: src/ui/firmware_ui.kv:74
+msgid "Update Disclaimer - MARKUP"
+msgstr ""
+
+#: src/ui/firmware_ui.kv:83
+msgid "Update Now"
+msgstr ""
+
+#: src/ui/firmware_ui.kv:89
+msgid "Close And Exit"
+msgstr ""
+
+#: src/ui/firmware_ui.kv:113
+msgid "Preparing, do not shutdown or restart your computer or disconnect"
+msgstr ""
+
 #: src/ui/library_ui.kv:41
 msgid "Layer Height (mm)"
 msgstr "patlh 'ab (mm)"
@@ -978,7 +1019,7 @@ msgstr "DaH print"
 msgid "Done"
 msgstr "pItlh"
 
-#: src/ui/peachy_widgets.kv:26 src/ui/print_ui.py:321
+#: src/ui/peachy_widgets.kv:26 src/ui/print_ui.py:319
 msgid "Laser Safety Notice"
 msgstr ""
 "[color=ff0000ff][b]Warning[/b]: the laser is about to turn on![/color]\n"
@@ -1004,67 +1045,87 @@ msgstr ""
 " - Resin can damage the UV blocking materials we have sent you.  If resin "
 "comes in contact with these materials replace them immediately."
 
-#: src/ui/peachy_widgets.kv:33
+#: src/ui/peachy_widgets.kv:39
 msgid "You are about to turn on the laser. Do you wish to proceed"
 msgstr "jIqapruppu': tlhe' 'uD ruch DaneHchugh"
 
-#: src/ui/peachy_widgets.kv:41
+#: src/ui/peachy_widgets.kv:49
 msgid "Turn on Laser"
 msgstr "My printer is enclosed and safe,  turn on laser now"
+
+#: src/ui/peachy_widgets.kv:64
+msgid "Laser Status Information"
+msgstr ""
+
+#: src/ui/peachy_widgets.kv:95
+msgid "Laser Status Key - MARKUP"
+msgstr ""
+
+#: src/ui/peachy_widgets.kv:114
+msgid "Laser Status Switch - MARKUP"
+msgstr ""
+
+#: src/ui/peachy_widgets.kv:133
+msgid "Laser Status Card - MARKUP"
+msgstr ""
+
+#: src/ui/peachy_widgets.kv:152
+msgid "Laser Status Laser - MARKUP"
+msgstr ""
 
 #: src/ui/print_ui.kv:143
 msgid "Drip Speed"
 msgstr ""
 
-#: src/ui/print_ui.kv:203
+#: src/ui/print_ui.kv:204
 msgid "Dripper Informaiton"
 msgstr ""
 
-#: src/ui/print_ui.kv:230
+#: src/ui/print_ui.kv:231
 msgid "Total Drips"
 msgstr ""
 
-#: src/ui/print_ui.kv:245
+#: src/ui/print_ui.kv:246
 msgid "Waiting for drips"
 msgstr ""
 
-#: src/ui/print_ui.kv:286
+#: src/ui/print_ui.kv:287
 msgid "Time"
 msgstr ""
 
-#: src/ui/print_ui.kv:297
+#: src/ui/print_ui.kv:298
 msgid "Start Time"
 msgstr "start poH"
 
-#: src/ui/print_ui.kv:311
+#: src/ui/print_ui.kv:312
 msgid "Elapsed Time"
 msgstr "elapsed poH"
 
-#: src/ui/print_ui.kv:351
+#: src/ui/print_ui.kv:352
 msgid "Posisition"
 msgstr ""
 
-#: src/ui/print_ui.kv:363
+#: src/ui/print_ui.kv:364
 msgid "Current Height"
 msgstr ""
 
-#: src/ui/print_ui.kv:377
+#: src/ui/print_ui.kv:378
 msgid "Layers"
 msgstr ""
 
-#: src/ui/print_ui.kv:391
+#: src/ui/print_ui.kv:392
 msgid "Skipped Layers"
 msgstr "skip patlh"
 
-#: src/ui/print_ui.kv:401 src/ui/print_ui.py:379 src/ui/print_ui.py:411
+#: src/ui/print_ui.kv:408 src/ui/print_ui.py:379 src/ui/print_ui.py:410
 msgid "Cancel Print"
 msgstr "Print qIl"
 
-#: src/ui/print_ui.kv:408
+#: src/ui/print_ui.kv:415
 msgid "Restart Print"
 msgstr "Print restart"
 
-#: src/ui/print_ui.kv:415
+#: src/ui/print_ui.kv:421
 msgid "Display Settings"
 msgstr ""
 
@@ -1117,12 +1178,12 @@ msgstr ""
 msgid "Spiral"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:434 src/ui/dripper_calibration_ui.py:86
+#: src/ui/calibrate_ui.py:435 src/ui/dripper_calibration_ui.py:86
 #: src/ui/restore_ui.py:28
 msgid "Error"
 msgstr "Qagh"
 
-#: src/ui/calibrate_ui.py:434 src/ui/dripper_calibration_ui.py:86
+#: src/ui/calibrate_ui.py:435 src/ui/dripper_calibration_ui.py:86
 #: src/ui/restore_ui.py:28
 msgid "No Peachy Printer Detected"
 msgstr "pagh Peachy Printer Detected"
@@ -1135,13 +1196,37 @@ msgstr "qaS qab ghoD"
 msgid "No Title"
 msgstr "pagh "
 
+#: src/ui/firmware_ui.py:62
+msgid ""
+"Checking for readiness, do not shutdown or restart your computer or "
+"disconnect."
+msgstr ""
+
+#: src/ui/firmware_ui.py:65
+msgid "Updating, do not shutdown or restart your computer or disconnect."
+msgstr ""
+
+#: src/ui/firmware_ui.py:74
+msgid ""
+"Firmware update successful, please disconnect and reconnect your printer."
+msgstr ""
+
+#: src/ui/firmware_ui.py:78
+msgid ""
+"Firmware update failed, please disconnect the printer restart the software "
+"and try again."
+msgstr ""
+
 #: src/ui/print_ui.py:309
 msgid "Print Complete"
 msgstr ""
 
-#: src/ui/print_ui.py:314
+#: src/ui/print_ui.py:313
 msgid "Print Failed"
 msgstr ""
+
+#~ msgid "Please connect your peachy printer before starting the software"
+#~ msgstr "nuqneH peachy printer rar pa' software starting"
 
 #~ msgid "info_version_number DESCRIPTION"
 #~ msgstr "info version mI' "
