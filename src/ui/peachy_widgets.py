@@ -78,7 +78,7 @@ class LaserWarningPopup(I18NPopup):
 
     def __init__(self, **kwargs):
         super(LaserWarningPopup, self).__init__(**kwargs)
-        self.countdown_image = Image(source="resources/icons/laser_safety_countdown-256x256.gif", anim_delay=-1, anim_loop=1)
+        self.countdown_image = Image(source="resources/icons/laser_safety_countdown-256x256.zip", anim_delay=-1, anim_loop=1)
 
     def phase2(self):
         self.buttons.remove_widget(self.laser_on_button)
