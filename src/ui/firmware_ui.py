@@ -7,6 +7,7 @@ from kivy.app import App
 from kivy.clock import Clock
 
 from infrastructure.langtools import _
+from ui.custom_widgets import I18NPopup
 
 
 Builder.load_file('ui/firmware_ui.kv')
@@ -25,12 +26,32 @@ class FirmwareUI(Screen):
         try:
             Logger.info("Get current firmware")
             self.api.load_printer()
-            self.actual_version = self.api.get_configuration_api().get_info_firmware_version_number()
+            version = self.api.get_configuration_api().get_info_firmware_version_number()
         except:
             Logger.info("Could not get printer information for firmware version check")
-            self.actual_version = 'Unknown'
-        if self.actual_version == '':
-            self.actual_version = 'Older'
+            version = ''
+        self.actual_version = self._get_display_version(version)
+
+    def _get_display_version(self, reported_version):
+            if self.firmware_api.is_ready():
+                return _('Bootloader')
+            elif reported_version == '':
+                return self._bootloader_required()
+            elif self._get_revision_from_verison(reported_version) < 238:
+                return self._bootloader_required()
+            else:
+                return reported_version
+
+    def _bootloader_required(self):
+        self.update_button.parent.remove_widget(self.update_button)
+        FirmwareManualBootloaderPopup().open()
+        return _('Unsupported')
+
+    def _get_revision_from_verison(self, version):
+        try:
+            return int(version.split('.')[-1])
+        except:
+            return 0
 
     def update_now(self):
         if not self.firmware_api.is_ready():
@@ -82,3 +103,7 @@ class FirmwareUpdateUI(Screen):
 
     def on_leave(self):
         self.image.anim_delay = -1
+
+
+class FirmwareManualBootloaderPopup(I18NPopup):
+    pass

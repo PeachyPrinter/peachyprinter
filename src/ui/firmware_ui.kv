@@ -6,6 +6,7 @@
     name: 'firmware_ui'
     required_version: _('Detecting')
     actual_version: _('Detecting')
+    update_button: update_button
     BoxLayout:
         orientation: 'vertical'
         I18NLabel:
@@ -80,6 +81,7 @@
         BoxLayout:
             orientation: 'horizontal'
             I18NButton:
+                id: update_button
                 text_source: _('Update Now')
                 size_hint_y:None
                 height: app.button_height
@@ -113,3 +115,23 @@
             text_source: _("Preparing, do not shutdown or restart your computer or disconnect")
         Label:
 
+
+<FirmwareManualBootloaderPopup>:
+    title_source:_('Manual hardware update required')
+    size_hint:[0.6, 0.6]
+    BoxLayout:
+        id: container
+        orientation: 'vertical'
+        I18NLabel:
+            text_source: _("Manual Hardware Update Required - MARKUP")
+            markup: True
+            text_size: self.width, None
+            size_hint_y: None
+            height: self.texture_size[1]
+        BoxLayout:
+            I18NImageButton:
+                source: "resources/icons/general_cancel-24x24.png"
+                text_source: _('Close')
+                size_hint_y:None
+                height: app.button_height
+                on_release: root.dismiss()
