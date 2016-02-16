@@ -65,7 +65,7 @@ class FirmwareUpdateUI(Screen):
         self.api = api
         self.check_rate = 1.0 / 4.0
         app = App.get_running_app()
-        self._complete_button = I18NButton(text_source=_("Close"), on_release=self.close, size_hint_y=None, height=app.button_height)
+        self._complete_button = I18NButton(text_source=_("Continue"), on_release=self.close, size_hint_y=None, height=app.button_height)
 
     def on_enter(self):
         self.image.anim_delay = 1.0 / 30.0
@@ -73,7 +73,6 @@ class FirmwareUpdateUI(Screen):
         Clock.schedule_once(self.ready_check, self.check_rate)
 
     def close(self, *args):
-        self.window.remove_widget(self._complete_button)
         self.parent.current = 'loadingui'
 
     def exit(self, *args):
@@ -91,15 +90,34 @@ class FirmwareUpdateUI(Screen):
 
     def complete_call_back(self, status):
         if status:
-            self.image.anim_delay = -1
-            self.label.text_source = _("Firmware update successful, please disconnect and reconnect your printer.")
-
+            Clock.schedule_once(self._complete_success)
         else:
-            self.image.anim_delay = -1
-            self.label.text_source = _("Firmware update failed, please disconnect the printer restart the software and try again.")
-            self._complete_button.on_release = self.exit
+            Clock.schedule_once(self._complete_fail)
 
+    def _complete_fail(self, *args):
+        self.image.anim_delay = -1
+        self.label.text_source = _("Firmware update failed, please disconnect the printer restart the software and try again.")
+        self._complete_button.on_release = self.exit
         self.window.add_widget(self._complete_button)
+
+    def _complete_success(self, *args):
+        self.label.text_source = _("Firmware update successful. Please disconnect and reconnect your printer.")
+        self.image.source = 'resources/icons/firmware_out_in_512x512.zip'
+        self.image.anim_delay = 2.0 / 3.0
+        Clock.schedule_once(self._check_for_peachy, 0.5)
+
+    def _check_for_peachy(self, *args):
+        try:
+            Logger.info("Get current firmware")
+
+            self.api.load_printer()
+            self.api.get_configuration_api().get_info_firmware_version_number()
+
+            self.image.anim_delay = -1
+            self.close()
+        except:
+            Logger.info("Could not get printer information for firmware version check")
+            Clock.schedule_once(self._check_for_peachy, 0.5)
 
     def on_leave(self):
         self.image.anim_delay = -1
