@@ -9,6 +9,7 @@ from math import sin, pi
 
 from kivy.lang import Builder
 from kivy.loader import Loader
+from kivy.logger import Logger
 from ui.custom_widgets import I18NPopup, I18NLabel
 
 
@@ -117,7 +118,15 @@ class LaserStatusBar(BoxLayout):
             self.card_state = self._last_message.cardInserted
             self.laser_state = self._last_message.laserOn
 
-    def popup(self, *args):
+    def on_touch_up(self, touch):
+        if (touch.x > self.x and
+            touch.x < (self.x+self.width) and
+            touch.y > self.y and
+            touch.y < (self.y + self.height)):
+                self.popup()
+        super(LaserStatusBar, self).on_touch_down(touch)
+
+    def popup(self):
         popup = LaserStatusDescriptionsPopup()
         popup.open()
 
