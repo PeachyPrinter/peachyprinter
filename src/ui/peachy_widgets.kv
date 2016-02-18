@@ -89,7 +89,7 @@
                         Image:
                             size_hint_x: None
                             width: '24dp'
-                            source:"resources/icons/status_key-48x96.png"
+                            source:"resources/icons/status_key_off-48x96.png"
                     I18NLabel:
                         id: status_key
                         text_source: _("Laser Status Key - MARKUP")
@@ -108,7 +108,7 @@
                         Image:
                             size_hint_x: None
                             width: '24dp'
-                            source:"resources/icons/status_switch-48x96.png"
+                            source:"resources/icons/status_switch_off-48x96.png"
                     I18NLabel:
                         id: status_switch
                         text_source: _("Laser Status Switch - MARKUP")
@@ -127,7 +127,7 @@
                         Image:
                             size_hint_x: None
                             width: '24dp'
-                            source:"resources/icons/status_card-48x96.png"
+                            source:"resources/icons/status_interlock_off-48x96.png"
                     I18NLabel:
                         id: status_card
                         text_source: _("Laser Status Card - MARKUP")
@@ -146,7 +146,7 @@
                         Image:
                             size_hint_x: None
                             width: '24dp'
-                            source:"resources/icons/status_laser-48x96.png"
+                            source:"resources/icons/status_laser_off-48x96.png"
                     I18NLabel:
                         id: status_laser
                         text_source: _("Laser Status Laser - MARKUP")
@@ -192,7 +192,7 @@
                 id: key_image
                 size_hint_y: None
                 height: '48dp'
-                source:"resources/icons/status_key-48x96.png"
+                source:"resources/icons/status_key_on-48x96.png" if root.key_state else "resources/icons/status_key_off-48x96.png"
             Image:
                 size_hint_y: None
                 height: '16dp'
@@ -203,7 +203,7 @@
                 id: switch_image
                 size_hint_y: None
                 height: '48dp'
-                source:"resources/icons/status_switch-48x96.png"
+                source:"resources/icons/status_switch_on-48x96.png" if root.switch_state else "resources/icons/status_switch_off-48x96.png"
             Image:
                 size_hint_y: None
                 height: '16dp'
@@ -214,7 +214,7 @@
                 id: card_image
                 size_hint_y: None
                 height: '48dp'
-                source:"resources/icons/status_card-48x96.png"
+                source:"resources/icons/status_interlock_on-48x96.png" if root.card_state else "resources/icons/status_interlock_off-48x96.png"
             Image:
                 size_hint_y: None
                 height: '16dp'
@@ -225,7 +225,7 @@
                 id: laser_image
                 size_hint_y: None
                 height: '48dp'
-                source:"resources/icons/status_laser-48x96.png"
+                source:"resources/icons/status_laser_on-48x96.png" if root.laser_state else "resources/icons/status_laser_off-48x96.png"
             Image:
                 size_hint_y: None
                 height: '16dp'
