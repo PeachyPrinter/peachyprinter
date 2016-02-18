@@ -103,7 +103,7 @@ class FirmwareUpdateUI(Screen):
     def _complete_success(self, *args):
         self.label.text_source = _("Firmware update successful. Please disconnect and reconnect your printer.")
         self.image.source = 'resources/icons/firmware_out_in_512x512.zip'
-        self.image.anim_delay = 2.0 / 3.0
+        self.image.anim_delay = 1.0 / 15.0
         Clock.schedule_once(self._check_for_peachy, 0.5)
 
     def _check_for_peachy(self, *args):
