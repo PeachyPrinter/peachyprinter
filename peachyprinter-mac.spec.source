@@ -4,6 +4,8 @@ import os
 block_cipher = None
 from kivy.tools.packaging.pyinstaller_hooks import get_deps_all, hookspath, runtime_hooks
 peachy_dependancies = os.path.join(os.environ.get('VIRTUAL_ENV', ''), 'lib', 'python2.7', 'site-packages', 'peachyprinter', 'dependancies', 'mac', 'amd64')
+firmware_dependancies = os.path.join(os.environ.get('VIRTUAL_ENV', ''), 'lib', 'python2.7', 'site-packages', 'peachyprinter', 'dependancies', 'firmware')
+flash_dependancies = os.path.join(os.environ.get('VIRTUAL_ENV', ''), 'lib', 'python2.7', 'site-packages', 'firmware', 'dependancies', 'mac')
 
 
 a = Analysis(['src/main.py'],
@@ -33,6 +35,8 @@ coll = COLLECT(exe,
                a.zipfiles,
                a.datas,
                Tree(peachy_dependancies),
+               Tree(firmware_dependancies),
+               Tree(flash_dependancies),
                Tree('/Library/Frameworks/SDL2_ttf.framework/Versions/A/Frameworks/FreeType.framework'),
                strip=False,
                upx=True,
