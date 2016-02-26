@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-12 11:31-0600\n"
+"POT-Creation-Date: 2016-02-26 09:57-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -20,8 +20,8 @@ msgid "Load file"
 msgstr ""
 
 #: src/gui.py:266 src/gui.py:300 src/peachyprinter.kv:57
-#: src/ui/custom_widgets.kv:115 src/ui/peachy_widgets.kv:161
-#: src/ui/print_ui.kv:122 src/ui/firmware_ui.py:47
+#: src/ui/custom_widgets.kv:115 src/ui/firmware_ui.kv:134
+#: src/ui/peachy_widgets.kv:161 src/ui/print_ui.kv:122
 msgid "Close"
 msgstr ""
 
@@ -29,7 +29,7 @@ msgstr ""
 msgid "An Error has Occured"
 msgstr ""
 
-#: src/gui.py:289 src/peachyprinter.kv:197
+#: src/gui.py:289 src/peachyprinter.kv:202
 msgid "Exit"
 msgstr ""
 
@@ -65,27 +65,31 @@ msgstr ""
 msgid "Loading, Ensure your printer is connected"
 msgstr ""
 
-#: src/peachyprinter.kv:90
+#: src/peachyprinter.kv:87
+msgid "Close and Exit"
+msgstr ""
+
+#: src/peachyprinter.kv:95
 msgid "Shutting down"
 msgstr ""
 
-#: src/peachyprinter.kv:112
+#: src/peachyprinter.kv:117
 msgid "Print from file"
 msgstr "Print from GCODE"
 
-#: src/peachyprinter.kv:119
+#: src/peachyprinter.kv:124
 msgid "Print from library"
 msgstr ""
 
-#: src/peachyprinter.kv:126 src/ui/print_ui.kv:111
+#: src/peachyprinter.kv:131 src/ui/print_ui.kv:111
 msgid "Settings"
 msgstr ""
 
-#: src/peachyprinter.kv:160
+#: src/peachyprinter.kv:165
 msgid "Starting Height"
 msgstr ""
 
-#: src/peachyprinter.kv:171 src/infrastructure/setting_mapper.py:81
+#: src/peachyprinter.kv:176 src/infrastructure/setting_mapper.py:81
 #: src/infrastructure/setting_mapper.py:98
 #: src/infrastructure/setting_mapper.py:115
 #: src/infrastructure/setting_mapper.py:133
@@ -117,11 +121,11 @@ msgstr ""
 msgid "Cancel"
 msgstr "Cancel"
 
-#: src/peachyprinter.kv:178
+#: src/peachyprinter.kv:183
 msgid "Load"
 msgstr ""
 
-#: src/peachyprinter.kv:186
+#: src/peachyprinter.kv:191
 msgid "MARKUP - Disclaimer "
 msgstr ""
 "[b]Laser Safety[/b]\n"
@@ -178,7 +182,7 @@ msgstr ""
 "agree that Peachy Printer Inc. is not liable for injuries or damages from "
 "any of our products."
 
-#: src/peachyprinter.kv:192
+#: src/peachyprinter.kv:197
 msgid "Accept"
 msgstr ""
 
@@ -1031,33 +1035,51 @@ msgstr ""
 msgid "Detecting"
 msgstr ""
 
-#: src/ui/firmware_ui.kv:18
+#: src/ui/firmware_ui.kv:19
 msgid "Update Required"
 msgstr ""
 
-#: src/ui/firmware_ui.kv:38
+#: src/ui/firmware_ui.kv:39
 msgid "Current Version"
 msgstr ""
 
-#: src/ui/firmware_ui.kv:62
+#: src/ui/firmware_ui.kv:63
 msgid "Required Verison"
 msgstr ""
 
-#: src/ui/firmware_ui.kv:74
+#: src/ui/firmware_ui.kv:75
 msgid "Update Disclaimer - MARKUP"
 msgstr ""
+"You are about to update your Peachy Printer with the latest version of firmware.  Please do not unplug the device while the update is ongoing, doing so will cause the update to fail.\n"
+"For more information visit qa.peachyprinter.com"
 
-#: src/ui/firmware_ui.kv:83
+#: src/ui/firmware_ui.kv:85
 msgid "Update Now"
 msgstr ""
 
-#: src/ui/firmware_ui.kv:89
+#: src/ui/firmware_ui.kv:91
 msgid "Close And Exit"
 msgstr ""
 
-#: src/ui/firmware_ui.kv:113
+#: src/ui/firmware_ui.kv:115
 msgid "Preparing, do not shutdown or restart your computer or disconnect"
 msgstr ""
+
+#: src/ui/firmware_ui.kv:120
+msgid "Manual hardware update required"
+msgstr ""
+
+#: src/ui/firmware_ui.kv:126
+msgid "Manual Hardware Update Required - MARKUP"
+msgstr ""
+"Your running old hardware or somthing very odd has happened. You will need to manually prepare a firmware update\n"
+"To prepare a manual update:\n"
+"1. Exit this software.\n"
+"2. Disconnect the printer.\n"
+"3. Using a conductive connector such as a paperclip connect the JP4 holes on the circutboard.\n"
+"4. With the pins jumpered plug in the circuit (no lights should flash).\n"
+"5. Remove the connection on JP4.\n"
+"6. Start the software and follow prompts normally."
 
 #: src/ui/library_ui.kv:41
 msgid "Layer Height (mm)"
@@ -1115,19 +1137,19 @@ msgstr ""
 
 #: src/ui/peachy_widgets.kv:95
 msgid "Laser Status Key - MARKUP"
-msgstr ""
+msgstr "This icon indicates the connection state of the Analog Key. This is a mandatory safety feature and must be properly connected in order for the laser to power on."
 
 #: src/ui/peachy_widgets.kv:114
 msgid "Laser Status Switch - MARKUP"
-msgstr ""
+msgstr "This icon indicates the connection and On/Off state of the Arm laser Switch.  The Arm Laser Switch must be connected and in the On position in order for the laser to power on."
 
 #: src/ui/peachy_widgets.kv:133
 msgid "Laser Status Card - MARKUP"
-msgstr ""
+msgstr "This icon indicates whether or not the enclosure has been properly seated and whether or not the Failsafe Interlock has been activated. The enclosure and Failsafe Interlock are mandatory safety features and must be properly seated and remain in the correct position in order for the laser to power on."
 
 #: src/ui/peachy_widgets.kv:152
 msgid "Laser Status Laser - MARKUP"
-msgstr ""
+msgstr "This icon is a Laser Emission Indicator.  This will only light up if the laser is powered on."
 
 #: src/ui/print_ui.kv:143
 msgid "Drip Speed"
@@ -1252,25 +1274,37 @@ msgstr ""
 msgid "No Title"
 msgstr ""
 
-#: src/ui/firmware_ui.py:62
+#: src/ui/firmware_ui.py:37
+msgid "Bootloader"
+msgstr ""
+
+#: src/ui/firmware_ui.py:48
+msgid "Unsupported"
+msgstr ""
+
+#: src/ui/firmware_ui.py:68
+msgid "Continue"
+msgstr ""
+
+#: src/ui/firmware_ui.py:82
 msgid ""
 "Checking for readiness, do not shutdown or restart your computer or "
 "disconnect."
 msgstr ""
 
-#: src/ui/firmware_ui.py:65
+#: src/ui/firmware_ui.py:85
 msgid "Updating, do not shutdown or restart your computer or disconnect."
 msgstr ""
 
-#: src/ui/firmware_ui.py:74
-msgid ""
-"Firmware update successful, please disconnect and reconnect your printer."
-msgstr ""
-
-#: src/ui/firmware_ui.py:78
+#: src/ui/firmware_ui.py:99
 msgid ""
 "Firmware update failed, please disconnect the printer restart the software "
 "and try again."
+msgstr ""
+
+#: src/ui/firmware_ui.py:104
+msgid ""
+"Firmware update successful. Please disconnect and reconnect your printer."
 msgstr ""
 
 #: src/ui/print_ui.py:309
