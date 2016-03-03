@@ -4,6 +4,8 @@ import os
 
 block_cipher = None
 peachy_dependancies = os.path.join(os.environ.get('VIRTUAL_ENV', ''), 'Lib', 'site-packages', 'peachyprinter', 'dependancies', 'win', 'x86')
+firmware_dependancies = os.path.join(os.environ.get('VIRTUAL_ENV', ''), 'Lib', 'site-packages', 'peachyprinter', 'dependancies', 'firmware')
+flash_dependancies = os.path.join(os.environ.get('VIRTUAL_ENV', ''), 'Lib', 'site-packages', 'firmware', 'dependancies', 'windows')
 
 
 a = Analysis(['src\\main.py'],
@@ -35,6 +37,8 @@ coll = COLLECT(exe,
                a.zipfiles,
                a.datas,
                Tree(peachy_dependancies),
+               Tree(firmware_dependancies),
+               Tree(flash_dependancies),
                *[Tree(p) for p in (sdl2.dep_bins + glew.dep_bins)],
                strip=False,
                upx=True,
