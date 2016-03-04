@@ -1,5 +1,12 @@
 #!/bin/bash
 
+echo "--------Build Media---------------"
+python build_media.py
+if [ $? != 0 ]; then
+    echo -e "${FRED}MEDIA BUILD FAILED{RS}"
+    exit 59
+fi
+
 echo "--------Install Kivy--------------"
 pip install -I Cython==0.23
 USE_OSX_FRAMEWORKS=0 pip install -U kivy==1.9.1

@@ -21,6 +21,12 @@ python -m pip install --upgrade kivy.deps.sdl2==0.1.12
 python -m pip install --upgrade kivy.deps.glew==0.1.4
 python -m pip install --upgrade kivy==1.9.1
 
+ECHO --------Build Media---------------
+python build_media.py
+IF NOT "%ERRORLEVEL%" == "0" (
+    ECHO FAILURE: Media Build failed
+    EXIT /B 99
+)
 
 ECHO ----Adding PyInstaller----
 python -m pip install --upgrade pyinstaller==3.1

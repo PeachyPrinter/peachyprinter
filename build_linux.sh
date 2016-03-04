@@ -190,9 +190,13 @@ function build ()
   echo "Building Deistribution"
   echo "------------------------------------"
 
-  echo -e "${FRED}NOT COMPLETE- MORE CODES BE NEEDED${RS}"
-  EXIT_CODE=1
-  failed_exit
+
+  echo "--------Build Media---------------"
+  python build_media.py
+  if [ $? != 0 ]; then
+      echo -e "${FRED}MEDIA BUILD FAILED{RS}"
+      exit 59
+  fi
 }
 
 function update ()
