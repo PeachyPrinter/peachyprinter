@@ -298,7 +298,7 @@ do
     -c | --clean )         clean ; shift ;;
     -i | --install_dep )   dependancies ; shift ;;
     -j | --build_runner )  build_runner ; shift ;;
-    -d | --build_driver )  build_drv="1" ; shift ;;
+    -d | --build_driver )  build_driver="1" ; shift ;;
     -s | --setup_only )    setup_only="1" ; shift ;;
     -k | --kivy_source )   build_kivy="1" ; shift ;;
     -- )                   shift ; break ;;
@@ -323,7 +323,7 @@ if [ "${setup_only}" != "1" ]; then
   run_tests
   build
 fi
-if [ "${build_drv}" != "1" ]; then
+if [ "${build_driver}" != "1" ]; then
   build_driver_now
 fi
 echo "A computer restart is required"
