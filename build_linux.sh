@@ -184,7 +184,7 @@ function dependancies ()
   failed_exit
 }
 
-function build_driver ()
+function build_driver_now ()
 {
   echo "------------------------------------"
   echo "Building libPeachyUSB"
@@ -324,7 +324,7 @@ if [ "${setup_only}" != "1" ]; then
   build
 fi
 if [ "${build_drv}" != "1" ]; then
-  build_driver
+  build_driver_now
 fi
 echo "A computer restart is required"
 popd
