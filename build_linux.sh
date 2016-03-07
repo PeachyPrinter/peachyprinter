@@ -197,7 +197,7 @@ function build_driver ()
   git checkout tags/0.0.1.47
   ./build_linux.sh
   popd
-  cp /tmp/c-usb-module/linux64/libPeachyUSB.so venv/lib/python2.7/site-packages/peachyprinter/dependancies/linux/amd64
+  cp /tmp/c-usb-module/linux64/libPeachyUSB.so venv/lib/python2.7/site-packages/peachyprinter/dependancies/linux/amd64/libPeachyUSB.so
   if [ $? != 0 ]; then
       echo -e "${FRED}Building libPeachyUSB FAILED{RS}"
       exit 59
