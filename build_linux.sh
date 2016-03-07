@@ -192,6 +192,7 @@ function build_driver_now ()
 
   pushd .
   cd /tmp
+  rm -rf c-usb-module
   git clone https://github.com/PeachyPrinter/c-usb-module.git
   cd c-usb-module
   git checkout tags/0.0.1.47
