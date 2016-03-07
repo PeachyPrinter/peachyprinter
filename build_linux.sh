@@ -1,14 +1,19 @@
 #!/bin/bash
 
-params=`getopt -o :hdrnpcisj -l build_runner,build_driver,install_dep,remove-venv,no_setup,pull,clean,help,setup_only --name "$0" -- "$@"`
-eval set -- "$params"
-
-DEBIAN_DEP="cmake libusb-1.0-0-dev libstdc++6 python-pip python-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev git dfu-util"
-REDHAT_DEP="gcc python-pip python-devel python-distutils-extra python-enchant python-distutils-extra python-enchant freeglut PyOpenGL SDL_ttf-devel SDL_mixer-devel pygame pygame-devel khrplatform-devel mesa-libGLES mesa-libGLES-devel gstreamer-plugins-good gstreamer gstreamer-python mtdev-devel git"
-
-RS="\033[0m"    # reset
-FRED="\033[31m" # foreground red
-FGRN="\033[32m" # foreground green
+function help ()
+{
+  echo "Peachy Printer Build Script"
+  echo "Recommened Usage: build_linux.sh -dij"
+  echo "-h | --help             Displayes this message and exits"
+  echo "-r | --remove-venv      Removes Virtual Environment"
+  echo "-n | --no_setup         Ignores enviroment setup"
+  echo "-p | --pull             Pulls from git before running setup"
+  echo "-c | --clean            Performs a git reset and clean"
+  echo "-i | --install_dep      Install the linux dependancies (sudo required)"
+  echo "-s | --setup_only       Setups the enviroment only and does not package"
+  echo "-j | --build_runner     Creates the rules and files required to run peachy printer(sudo required)"
+  echo "-d | --build_driver     Creates libPeachyUSB driver"
+}
 
 function remove_venv ()
 {
@@ -268,26 +273,27 @@ function build_runner () {
   echo -e "${FGRN}Complete${RS}"
 }
 
-function help ()
-{
-  echo "Peachy Printer Build Script"
-  echo "Recommened Usage: build_linux.sh -dij"
-  echo "-h | --help             Displayes this message and exits"
-  echo "-r | --remove-venv      Removes Virtual Environment"
-  echo "-n | --no_setup         Ignores enviroment setup"
-  echo "-p | --pull             Pulls from git before running setup"
-  echo "-c | --clean            Performs a git reset and clean"
-  echo "-i | --install_dep      Install the linux dependancies (sudo required)"
-  echo "-s | --setup_only       Setups the enviroment only and does not package"
-  echo "-j | --build_runner     Creates the rules and files required to run peachy printer(sudo required)"
-  echo "-d | --build_driver     Creates libPeachyUSB driver"
-}
-
 function failed_exit()
 {
   popd
   exit $EXIT_CODE
 }
+
+
+if [ $# -eq 0 ]; then
+    help
+    exit 0
+fi
+
+params=`getopt -o :hdrnpcisj -l build_runner,build_driver,install_dep,remove-venv,no_setup,pull,clean,help,setup_only --name "$0" -- "$@"`
+eval set -- "$params"
+
+DEBIAN_DEP="cmake libusb-1.0-0-dev libstdc++6 python-pip python-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev git dfu-util"
+REDHAT_DEP="gcc python-pip python-devel python-distutils-extra python-enchant python-distutils-extra python-enchant freeglut PyOpenGL SDL_ttf-devel SDL_mixer-devel pygame pygame-devel khrplatform-devel mesa-libGLES mesa-libGLES-devel gstreamer-plugins-good gstreamer gstreamer-python mtdev-devel git"
+
+RS="\033[0m"    # reset
+FRED="\033[31m" # foreground red
+FGRN="\033[32m" # foreground green
 
 while true
 do
