@@ -190,16 +190,17 @@ function build_driver ()
   echo "Building libPeachyUSB"
   echo "------------------------------------"
 
-  pushd
+  pushd .
   cd /tmp
   git clone https://github.com/PeachyPrinter/c-usb-module.git
   cd c-usb-module
   git checkout tags/0.0.1.47
   ./build_linux.sh
   popd
+  echo pwd
   cp /tmp/c-usb-module/linux64/libPeachyUSB.so venv/lib/python2.7/site-packages/peachyprinter/dependancies/linux/amd64/libPeachyUSB.so
   if [ $? != 0 ]; then
-      echo -e "${FRED}Building libPeachyUSB FAILED{RS}"
+      echo -e "${FRED}Building libPeachyUSB FAILED${RS}"
       exit 59
   fi
 }
@@ -214,7 +215,7 @@ function build ()
   echo "--------Build Media---------------"
   python build_media.py
   if [ $? != 0 ]; then
-      echo -e "${FRED}MEDIA BUILD FAILED{RS}"
+      echo -e "${FRED}MEDIA BUILD FAILED${RS}"
       exit 59
   fi
 }
