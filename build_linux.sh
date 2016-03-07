@@ -3,7 +3,7 @@
 params=`getopt -o :hdrnpcisj -l build_runner,build_driver,install_dep,remove-venv,no_setup,pull,clean,help,setup_only --name "$0" -- "$@"`
 eval set -- "$params"
 
-DEBIAN_DEP="cmake libstdc++6 python-pip python-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev git dfu-util"
+DEBIAN_DEP="cmake libusb-1.0-0-dev libstdc++6 python-pip python-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev git dfu-util"
 REDHAT_DEP="gcc python-pip python-devel python-distutils-extra python-enchant python-distutils-extra python-enchant freeglut PyOpenGL SDL_ttf-devel SDL_mixer-devel pygame pygame-devel khrplatform-devel mesa-libGLES mesa-libGLES-devel gstreamer-plugins-good gstreamer gstreamer-python mtdev-devel git"
 
 RS="\033[0m"    # reset
@@ -197,7 +197,7 @@ function build_driver ()
   git checkout tags/0.0.1.47
   ./build_linux.sh
   popd
-  cp /tmp/c-usb-module/src/libPeachyUSB.so venv/lib/python2.7/site-packages/peachyprinter/dependancies/linux/amd64
+  cp /tmp/c-usb-module/linux64/libPeachyUSB.so venv/lib/python2.7/site-packages/peachyprinter/dependancies/linux/amd64
   if [ $? != 0 ]; then
       echo -e "${FRED}Building libPeachyUSB FAILED{RS}"
       exit 59
