@@ -323,7 +323,7 @@ if [ "${setup_only}" != "1" ]; then
   run_tests
   build
 fi
-if [ "${build_driver}" != "1" ]; then
+if [ "${build_driver}" == "1" ]; then
   build_driver_now
 fi
 echo "A computer restart is required"
