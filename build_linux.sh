@@ -184,6 +184,26 @@ function dependancies ()
   failed_exit
 }
 
+function build_driver ()
+{
+  echo "------------------------------------"
+  echo "Building libPeachyUSB"
+  echo "------------------------------------"
+
+  pushd
+  cd /tmp
+  git clone https://github.com/PeachyPrinter/c-usb-module.git
+  cd c-usb-module
+  git checkout tags/0.0.1.47
+  ./build_linux.sh
+  popd
+  cp /tmp/c-usb-module/src/libPeachyUSB.so venv/lib/python2.7/site-packages/peachyprinter/dependancies/linux/amd64
+  if [ $? != 0 ]; then
+      echo -e "${FRED}Building libPeachyUSB FAILED{RS}"
+      exit 59
+  fi
+}
+
 function build ()
 {
   echo "------------------------------------"
@@ -249,7 +269,7 @@ function build_runner () {
 function help ()
 {
   echo "Peachy Printer Build Script"
-  echo "Recommened Usage: build_linux.sh -ijk"
+  echo "Recommened Usage: build_linux.sh -dij"
   echo "-h | --help             Displayes this message and exits"
   echo "-r | --remove-venv      Removes Virtual Environment"
   echo "-n | --no_setup         Ignores enviroment setup"
@@ -258,6 +278,7 @@ function help ()
   echo "-i | --install_dep      Install the linux dependancies (sudo required)"
   echo "-s | --setup_only       Setups the enviroment only and does not package"
   echo "-j | --build_runner     Creates the rules and files required to run peachy printer(sudo required)"
+  echo "-d | --build_driver     Creates libPeachyUSB driver"
 }
 
 function failed_exit()
@@ -276,6 +297,7 @@ do
     -c | --clean )         clean ; shift ;;
     -i | --install_dep )   dependancies ; shift ;;
     -j | --build_runner )  build_runner ; shift ;;
+    -d | --build_driver )  build_driver ; shift ;;
     -s | --setup_only )    setup_only="1" ; shift ;;
     -k | --kivy_source )   build_kivy="1" ; shift ;;
     -- )                   shift ; break ;;
