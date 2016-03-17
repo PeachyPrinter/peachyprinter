@@ -110,7 +110,7 @@ class MainUI(Screen):
         Config.set('internal', 'last_directory', self.last_directory)
         Config.write()
         self.dismiss_popup()
-        App.get_running_app().last_print.set("file", filename)
+        vlast_print.set("file", filename)
         self.parent.current = 'printingui'
         self.parent.printing_ui.print_file(filename, start_height)
 
@@ -183,6 +183,7 @@ class MyScreenManager(ScreenManager):
         self.current = 'firmware_ui'
 
     def connected(self):
+        App.get_running_app().connect_to_printer()
         self.main_ui = MainUI()
 
         self.firmware_update_ui = FirmwareUpdateUI(self.api)

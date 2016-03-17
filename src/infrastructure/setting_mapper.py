@@ -4,7 +4,6 @@ import json
 import collections
 from kivy.logger import Logger
 from kivy.app import App
-from kivy.uix.settings import SettingBoolean 
 from ui.peachy_settings import SettingString, SettingNumeric
 
 try:
@@ -16,6 +15,7 @@ except:
 
 class SettingsMapper(object):
     email_regex = """[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$"""
+
     def __init__(self, api):
         self.api = api
         self.configuration_api = self.api.get_configuration_api()
@@ -69,7 +69,8 @@ class SettingsMapper(object):
                     'section': _('Options'),
                     'key': 'options_use_sublayers',
                     'title_source': _('options_use_sublayers TITLE'),
-                    'desc_source': _('options_use_sublayers DESCRIPTION'),                },
+                    'desc_source': _('options_use_sublayers DESCRIPTION'),
+                },
                 {
                     'type': 'numeric',
                     'section': _('Options'),
@@ -200,7 +201,7 @@ class SettingsMapper(object):
                     'key': 'email_on',
                     'title_source': _('email.on TITLE'),
                     'desc_source': _('email.on DESCRIPTION'),
-                    'true': 'auto' 
+                    'true': 'auto'
                 },
                 {
                     'type': 'numeric',
@@ -263,7 +264,8 @@ class SettingsMapper(object):
                     'section': _('Serial'),
                     'key': 'serial_enabled',
                     'title_source': _('serial_enabled TITLE'),
-                    'desc_source': _('serial_enabled DESCRIPTION'),                },
+                    'desc_source': _('serial_enabled DESCRIPTION'),
+                },
                 {
                     'type': 'string',
                     'section': _('Serial'),
@@ -441,7 +443,7 @@ class SettingsMapper(object):
             else:
                 return int(value)
         if entry_type == 'bool':
-            if value == '1' or value == True:
+            if value == '1' or value is True:
                 return True
             else:
                 return False
