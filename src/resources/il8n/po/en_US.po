@@ -492,7 +492,7 @@ msgstr "Dripper off command"
 
 #: src/infrastructure/setting_mapper.py:293
 msgid "serial_off_command DESCRIPTION"
-msgstr "Signals that the z-axis has reached the height for the next layer"
+msgstr "Signals that the vertical axis has reached the height for the next layer"
 
 #: src/infrastructure/setting_mapper.py:302
 msgid "serial_layer_started_command TITLE"
@@ -575,11 +575,11 @@ msgstr ""
 
 #: src/infrastructure/setting_mapper.py:379
 msgid "dripper_type TITLE"
-msgstr "Z-axis Stuff"
+msgstr "Vertical axis stuff"
 
 #: src/infrastructure/setting_mapper.py:380
 msgid "dripper_type DESCRIPTION"
-msgstr "Choose the way that your printer handles Z-axis movement"
+msgstr "Choose the way that your printer handles vertical movement"
 
 #: src/infrastructure/setting_mapper.py:381
 #: src/ui/dripper_calibration_ui.kv:283
