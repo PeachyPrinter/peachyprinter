@@ -621,7 +621,7 @@ msgstr "Photo Exposure Length"
 #: src/infrastructure/setting_mapper.py:409
 msgid "dripper_photo_zaxis_delay DESCRIPTION"
 msgstr ""
-"The minimum total layer duration to allow for consistent exposure lengths"
+"The minimum total layer duration to allow for consistent exposure lengths while using light drawing photomode"
 
 #: src/ui/calibrate_ui.kv:23
 msgid "Center"
