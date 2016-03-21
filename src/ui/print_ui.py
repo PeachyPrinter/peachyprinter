@@ -243,7 +243,7 @@ class PrintingUI(Screen):
     skipped_layers = NumericProperty(0)
 
     def __init__(self, api, **kwargs):
-        self.return_to = 'mainui'
+        self.return_to = 'main_ui'
         self.dripper_setting = None
         super(PrintingUI, self).__init__(**kwargs)
         self.api = api

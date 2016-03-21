@@ -13,8 +13,13 @@ def setup_logging(args):
         logfile = os.path.join(config.PEACHY_PATH, 'peachyprinter-%s.log' % timestr)
     else:
         logfile = os.path.join(config.PEACHY_PATH, 'peachyprinter.log')
-    if os.path.isfile(logfile):
-        os.remove(logfile)
+    print ("Using logfile: {}".format(logfile))
+    try:
+        if os.path.isfile(logfile):
+            os.remove(logfile)
+    except:
+        print("Log file: {} appears to be in use by another process, attempting to continue logs may be bad.".format(logfile))
+
     logging_format = '%(levelname)s: %(asctime)s %(module)s - %(message)s'
     logging_level = getattr(logging, args.loglevel.upper(), "INFO")
     if not isinstance(logging_level, int):
