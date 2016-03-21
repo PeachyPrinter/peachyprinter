@@ -383,6 +383,9 @@ class PrintingUI(Screen):
         elif last_print.print_type is "test_print":
             generator = self.api.get_test_print_api().get_test_print(*last_print.source)
             self.print_generator(generator, self.return_to)
+        elif last_print.print_type is "cure_test_print":
+            generator = self.api.get_configuration_api().get_cure_test(*last_print.source)
+            self.print_generator(generator, self.return_to)
         else:
             raise("Unsupported Print Type %s" % last_print.print_type)
 

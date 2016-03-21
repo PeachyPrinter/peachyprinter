@@ -4,6 +4,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import BoundedNumericProperty, BooleanProperty, StringProperty, NumericProperty, OptionProperty
 from kivy.logger import Logger
 from kivy.metrics import sp
+from kivy.app import App
 from ui.custom_widgets import HorizontalLabelSlider
 
 Builder.load_file('ui/cure_test_ui.kv')
@@ -120,6 +121,7 @@ class CureTestUI(Screen):
             base_speed = self.base_speed.value
         else:
             base_speed = None
+        App.get_running_app().last_print.set("cure_test_print", (self.base, self.test_height, self.start_speed, self.stop_speed, base_speed))
         generator = self.configuration_api.get_cure_test(self.base, self.test_height, self.start_speed, self.stop_speed, base_speed)
         self.manager.current = 'printingui'
         self.manager.printing_ui.print_generator(generator, self.name, force_source_speed=True)
