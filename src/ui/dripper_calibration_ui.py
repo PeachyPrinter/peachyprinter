@@ -77,6 +77,7 @@ class DripperCalibrationUI(Screen):
             self.dripper_type_changed(None, dripper_type)
 
             self.emulated_settings.drips_per_mm = self.configuration_api.get_dripper_drips_per_mm()
+            self.emulated_settings.drips_per_second = self.configuration_api.get_dripper_emulated_drips_per_second()
             self.circut_settings.drips_per_mm = self.configuration_api.get_dripper_drips_per_mm()
             self.circut_visuals.target_height = str(self.circut_setup.test_height)
             self.photo_settings.photo_zaxis_delay = self.configuration_api.get_dripper_photo_zaxis_delay()
