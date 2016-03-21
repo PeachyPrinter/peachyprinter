@@ -211,7 +211,7 @@
                     I18NLabel:
                         size_hint_y: None
                         height: app.label_height
-                        text: _("[b]Print Settings[/b]")
+                        text_source: _("[b]Print Settings[/b]")
                         markup: True
                     BoxLayout:
                         size_hint_y: None
@@ -221,7 +221,7 @@
                             text_size: self.size
                             halign: 'left'
                             valign: 'middle'
-                            text: _("Override speeds")
+                            text_source: _("Override speeds")
                         Switch:
                             size_hint_x: 0.5
                             id: use_draw_speed_id
@@ -234,7 +234,7 @@
                             text_size: self.size
                             halign: 'left'
                             valign: 'middle'
-                            text: _("Draw Speed")
+                            text_source: _("Draw Speed")
                         FloatInput:
                             size_hint_x: 0.5
                             id: draw_speed_id
@@ -262,7 +262,7 @@
                             text_size: self.size
                             halign: 'left'
                             valign: 'middle'
-                            text: _("Override laser power")
+                            text_source: _("Override laser power")
                         Switch:
                             size_hint_x: 0.5
                             id: override_laser_power_id
@@ -275,7 +275,7 @@
                             text_size: self.size
                             halign: 'left'
                             valign: 'middle'
-                            text: _("Laser Power %")
+                            text_source: _("Laser Power %")
                         FloatInput:
                             size_hint_x: 0.5
                             id: override_laser_power_amount_id

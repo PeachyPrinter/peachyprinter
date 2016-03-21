@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-26 10:27-0600\n"
+"POT-Creation-Date: 2016-03-21 15:16-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,17 +25,17 @@ msgstr ""
 msgid "Load file"
 msgstr ""
 
-#: src/gui.py:266 src/gui.py:300 src/peachyprinter.kv:57
+#: src/gui.py:267 src/gui.py:301 src/peachyprinter.kv:57
 #: src/ui/custom_widgets.kv:115 src/ui/firmware_ui.kv:134
 #: src/ui/peachy_widgets.kv:161 src/ui/print_ui.kv:122
 msgid "Close"
 msgstr ""
 
-#: src/gui.py:287
+#: src/gui.py:288
 msgid "An Error has Occured"
 msgstr ""
 
-#: src/gui.py:289 src/peachyprinter.kv:202
+#: src/gui.py:290 src/peachyprinter.kv:202
 msgid "Exit"
 msgstr ""
 
@@ -95,34 +95,34 @@ msgstr ""
 msgid "Starting Height"
 msgstr ""
 
-#: src/peachyprinter.kv:176 src/infrastructure/setting_mapper.py:81
-#: src/infrastructure/setting_mapper.py:98
-#: src/infrastructure/setting_mapper.py:115
-#: src/infrastructure/setting_mapper.py:133
-#: src/infrastructure/setting_mapper.py:144
-#: src/infrastructure/setting_mapper.py:154
-#: src/infrastructure/setting_mapper.py:164
-#: src/infrastructure/setting_mapper.py:174
-#: src/infrastructure/setting_mapper.py:184
-#: src/infrastructure/setting_mapper.py:194
-#: src/infrastructure/setting_mapper.py:213
-#: src/infrastructure/setting_mapper.py:229
-#: src/infrastructure/setting_mapper.py:239
-#: src/infrastructure/setting_mapper.py:249
-#: src/infrastructure/setting_mapper.py:258
-#: src/infrastructure/setting_mapper.py:274
-#: src/infrastructure/setting_mapper.py:283
-#: src/infrastructure/setting_mapper.py:293
-#: src/infrastructure/setting_mapper.py:303
-#: src/infrastructure/setting_mapper.py:313
-#: src/infrastructure/setting_mapper.py:323
-#: src/infrastructure/setting_mapper.py:340
-#: src/infrastructure/setting_mapper.py:350
-#: src/infrastructure/setting_mapper.py:360
-#: src/infrastructure/setting_mapper.py:369
-#: src/infrastructure/setting_mapper.py:389
-#: src/infrastructure/setting_mapper.py:399
-#: src/infrastructure/setting_mapper.py:409 src/ui/library_ui.kv:60
+#: src/peachyprinter.kv:176 src/infrastructure/setting_mapper.py:82
+#: src/infrastructure/setting_mapper.py:99
+#: src/infrastructure/setting_mapper.py:116
+#: src/infrastructure/setting_mapper.py:134
+#: src/infrastructure/setting_mapper.py:145
+#: src/infrastructure/setting_mapper.py:155
+#: src/infrastructure/setting_mapper.py:165
+#: src/infrastructure/setting_mapper.py:175
+#: src/infrastructure/setting_mapper.py:185
+#: src/infrastructure/setting_mapper.py:195
+#: src/infrastructure/setting_mapper.py:214
+#: src/infrastructure/setting_mapper.py:230
+#: src/infrastructure/setting_mapper.py:240
+#: src/infrastructure/setting_mapper.py:250
+#: src/infrastructure/setting_mapper.py:259
+#: src/infrastructure/setting_mapper.py:276
+#: src/infrastructure/setting_mapper.py:285
+#: src/infrastructure/setting_mapper.py:295
+#: src/infrastructure/setting_mapper.py:305
+#: src/infrastructure/setting_mapper.py:315
+#: src/infrastructure/setting_mapper.py:325
+#: src/infrastructure/setting_mapper.py:342
+#: src/infrastructure/setting_mapper.py:352
+#: src/infrastructure/setting_mapper.py:362
+#: src/infrastructure/setting_mapper.py:371
+#: src/infrastructure/setting_mapper.py:391
+#: src/infrastructure/setting_mapper.py:401
+#: src/infrastructure/setting_mapper.py:411 src/ui/library_ui.kv:60
 #: src/ui/peachy_widgets.kv:55
 msgid "Cancel"
 msgstr ""
@@ -179,19 +179,19 @@ msgid "info_firmware_data_rate TITLE"
 msgstr ""
 
 #: src/infrastructure/setting_mapper.py:69
-#: src/infrastructure/setting_mapper.py:75
-#: src/infrastructure/setting_mapper.py:85
-#: src/infrastructure/setting_mapper.py:92
-#: src/infrastructure/setting_mapper.py:102
-#: src/infrastructure/setting_mapper.py:109
-#: src/infrastructure/setting_mapper.py:119
-#: src/infrastructure/setting_mapper.py:127
-#: src/infrastructure/setting_mapper.py:138
-#: src/infrastructure/setting_mapper.py:148
-#: src/infrastructure/setting_mapper.py:158
-#: src/infrastructure/setting_mapper.py:168
-#: src/infrastructure/setting_mapper.py:178
-#: src/infrastructure/setting_mapper.py:188
+#: src/infrastructure/setting_mapper.py:76
+#: src/infrastructure/setting_mapper.py:86
+#: src/infrastructure/setting_mapper.py:93
+#: src/infrastructure/setting_mapper.py:103
+#: src/infrastructure/setting_mapper.py:110
+#: src/infrastructure/setting_mapper.py:120
+#: src/infrastructure/setting_mapper.py:128
+#: src/infrastructure/setting_mapper.py:139
+#: src/infrastructure/setting_mapper.py:149
+#: src/infrastructure/setting_mapper.py:159
+#: src/infrastructure/setting_mapper.py:169
+#: src/infrastructure/setting_mapper.py:179
+#: src/infrastructure/setting_mapper.py:189
 msgid "Options"
 msgstr ""
 
@@ -203,372 +203,372 @@ msgstr ""
 msgid "options_use_sublayers DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:77
+#: src/infrastructure/setting_mapper.py:78
 msgid "options_sublayer_height_mm TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:78
+#: src/infrastructure/setting_mapper.py:79
 msgid "options_sublayer_height_mm DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:80
-#: src/infrastructure/setting_mapper.py:97
-#: src/infrastructure/setting_mapper.py:114
-#: src/infrastructure/setting_mapper.py:132
-#: src/infrastructure/setting_mapper.py:143
-#: src/infrastructure/setting_mapper.py:153
-#: src/infrastructure/setting_mapper.py:163
-#: src/infrastructure/setting_mapper.py:173
-#: src/infrastructure/setting_mapper.py:183
-#: src/infrastructure/setting_mapper.py:193
-#: src/infrastructure/setting_mapper.py:212
-#: src/infrastructure/setting_mapper.py:228
-#: src/infrastructure/setting_mapper.py:238
-#: src/infrastructure/setting_mapper.py:248
-#: src/infrastructure/setting_mapper.py:257
-#: src/infrastructure/setting_mapper.py:273
-#: src/infrastructure/setting_mapper.py:282
-#: src/infrastructure/setting_mapper.py:292
-#: src/infrastructure/setting_mapper.py:302
-#: src/infrastructure/setting_mapper.py:312
-#: src/infrastructure/setting_mapper.py:322
-#: src/infrastructure/setting_mapper.py:339
-#: src/infrastructure/setting_mapper.py:349
-#: src/infrastructure/setting_mapper.py:359
-#: src/infrastructure/setting_mapper.py:368
-#: src/infrastructure/setting_mapper.py:388
-#: src/infrastructure/setting_mapper.py:398
-#: src/infrastructure/setting_mapper.py:408
+#: src/infrastructure/setting_mapper.py:81
+#: src/infrastructure/setting_mapper.py:98
+#: src/infrastructure/setting_mapper.py:115
+#: src/infrastructure/setting_mapper.py:133
+#: src/infrastructure/setting_mapper.py:144
+#: src/infrastructure/setting_mapper.py:154
+#: src/infrastructure/setting_mapper.py:164
+#: src/infrastructure/setting_mapper.py:174
+#: src/infrastructure/setting_mapper.py:184
+#: src/infrastructure/setting_mapper.py:194
+#: src/infrastructure/setting_mapper.py:213
+#: src/infrastructure/setting_mapper.py:229
+#: src/infrastructure/setting_mapper.py:239
+#: src/infrastructure/setting_mapper.py:249
+#: src/infrastructure/setting_mapper.py:258
+#: src/infrastructure/setting_mapper.py:275
+#: src/infrastructure/setting_mapper.py:284
+#: src/infrastructure/setting_mapper.py:294
+#: src/infrastructure/setting_mapper.py:304
+#: src/infrastructure/setting_mapper.py:314
+#: src/infrastructure/setting_mapper.py:324
+#: src/infrastructure/setting_mapper.py:341
+#: src/infrastructure/setting_mapper.py:351
+#: src/infrastructure/setting_mapper.py:361
+#: src/infrastructure/setting_mapper.py:370
+#: src/infrastructure/setting_mapper.py:390
+#: src/infrastructure/setting_mapper.py:400
+#: src/infrastructure/setting_mapper.py:410
 msgid "Ok"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:87
+#: src/infrastructure/setting_mapper.py:88
 msgid "options_use_shufflelayers TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:88
+#: src/infrastructure/setting_mapper.py:89
 msgid "options_use_shufflelayers DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:94
+#: src/infrastructure/setting_mapper.py:95
 msgid "options_shuffle_layers_amount TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:95
+#: src/infrastructure/setting_mapper.py:96
 msgid "options_shuffle_layers_amount DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:104
+#: src/infrastructure/setting_mapper.py:105
 msgid "options_use_overlap TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:105
+#: src/infrastructure/setting_mapper.py:106
 msgid "options_use_overlap DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:111
+#: src/infrastructure/setting_mapper.py:112
 msgid "options_overlap_amount_mm TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:112
+#: src/infrastructure/setting_mapper.py:113
 msgid "options_overlap_amount_mm DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:121
+#: src/infrastructure/setting_mapper.py:122
 msgid "options_laser_thickness_mm TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:122
+#: src/infrastructure/setting_mapper.py:123
 msgid "options_laser_thickness_mm DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:129
+#: src/infrastructure/setting_mapper.py:130
 msgid "options_scaling_factor TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:130
+#: src/infrastructure/setting_mapper.py:131
 msgid "options_scaling_factor DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:140
+#: src/infrastructure/setting_mapper.py:141
 msgid "options_max_lead_distance_mm TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:141
+#: src/infrastructure/setting_mapper.py:142
 msgid "options_max_lead_distance_mm DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:150
+#: src/infrastructure/setting_mapper.py:151
 msgid "options_pre_layer_delay TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:151
+#: src/infrastructure/setting_mapper.py:152
 msgid "options_pre_layer_delay DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:160
+#: src/infrastructure/setting_mapper.py:161
 msgid "options_post_fire_delay TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:161
+#: src/infrastructure/setting_mapper.py:162
 msgid "options_post_fire_delay DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:170
+#: src/infrastructure/setting_mapper.py:171
 msgid "options_slew_delay TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:171
+#: src/infrastructure/setting_mapper.py:172
 msgid "options_slew_delay DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:180
+#: src/infrastructure/setting_mapper.py:181
 msgid "options_wait_after_move_milliseconds TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:181
+#: src/infrastructure/setting_mapper.py:182
 msgid "options_wait_after_move_milliseconds DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:190
+#: src/infrastructure/setting_mapper.py:191
 msgid "options_print_queue_delay TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:191
+#: src/infrastructure/setting_mapper.py:192
 msgid "options_print_queue_delay DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:199
-#: src/infrastructure/setting_mapper.py:207
-#: src/infrastructure/setting_mapper.py:217
-#: src/infrastructure/setting_mapper.py:224
-#: src/infrastructure/setting_mapper.py:234
-#: src/infrastructure/setting_mapper.py:244
-#: src/infrastructure/setting_mapper.py:253
+#: src/infrastructure/setting_mapper.py:200
+#: src/infrastructure/setting_mapper.py:208
+#: src/infrastructure/setting_mapper.py:218
+#: src/infrastructure/setting_mapper.py:225
+#: src/infrastructure/setting_mapper.py:235
+#: src/infrastructure/setting_mapper.py:245
+#: src/infrastructure/setting_mapper.py:254
 msgid "Email"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:201
+#: src/infrastructure/setting_mapper.py:202
 msgid "email.on TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:202
+#: src/infrastructure/setting_mapper.py:203
 msgid "email.on DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:209
+#: src/infrastructure/setting_mapper.py:210
 msgid "email.port TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:210
+#: src/infrastructure/setting_mapper.py:211
 msgid "email.port DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:219
+#: src/infrastructure/setting_mapper.py:220
 msgid "email.host TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:220
+#: src/infrastructure/setting_mapper.py:221
 msgid "email.host DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:226
+#: src/infrastructure/setting_mapper.py:227
 msgid "email.sender TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:227
+#: src/infrastructure/setting_mapper.py:228
 msgid "email.sender DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:236
+#: src/infrastructure/setting_mapper.py:237
 msgid "email.recipient TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:237
+#: src/infrastructure/setting_mapper.py:238
 msgid "email.recipient DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:246
+#: src/infrastructure/setting_mapper.py:247
 msgid "email.username TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:247
+#: src/infrastructure/setting_mapper.py:248
 msgid "email.username DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:255
+#: src/infrastructure/setting_mapper.py:256
 msgid "email.password TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:256
+#: src/infrastructure/setting_mapper.py:257
 msgid "email.password DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:263
-#: src/infrastructure/setting_mapper.py:269
-#: src/infrastructure/setting_mapper.py:278
-#: src/infrastructure/setting_mapper.py:288
-#: src/infrastructure/setting_mapper.py:298
-#: src/infrastructure/setting_mapper.py:308
-#: src/infrastructure/setting_mapper.py:318
+#: src/infrastructure/setting_mapper.py:264
+#: src/infrastructure/setting_mapper.py:271
+#: src/infrastructure/setting_mapper.py:280
+#: src/infrastructure/setting_mapper.py:290
+#: src/infrastructure/setting_mapper.py:300
+#: src/infrastructure/setting_mapper.py:310
+#: src/infrastructure/setting_mapper.py:320
 msgid "Serial"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:265
+#: src/infrastructure/setting_mapper.py:266
 msgid "serial_enabled TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:266
+#: src/infrastructure/setting_mapper.py:267
 msgid "serial_enabled DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:271
+#: src/infrastructure/setting_mapper.py:273
 msgid "serial_port TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:272
+#: src/infrastructure/setting_mapper.py:274
 msgid "serial_port DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:280
+#: src/infrastructure/setting_mapper.py:282
 msgid "serial_on_command TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:281
+#: src/infrastructure/setting_mapper.py:283
 msgid "serial_on_command DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:290
+#: src/infrastructure/setting_mapper.py:292
 msgid "serial_off_command TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:291
+#: src/infrastructure/setting_mapper.py:293
 msgid "serial_off_command DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:300
+#: src/infrastructure/setting_mapper.py:302
 msgid "serial_layer_started_command TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:301
+#: src/infrastructure/setting_mapper.py:303
 msgid "serial_layer_started_command DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:310
+#: src/infrastructure/setting_mapper.py:312
 msgid "serial_layer_ended_command TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:311
+#: src/infrastructure/setting_mapper.py:313
 msgid "serial_layer_ended_command DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:320
+#: src/infrastructure/setting_mapper.py:322
 msgid "serial_print_ended_command TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:321
+#: src/infrastructure/setting_mapper.py:323
 msgid "serial_print_ended_command DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:330
-#: src/infrastructure/setting_mapper.py:336
-#: src/infrastructure/setting_mapper.py:346
-#: src/infrastructure/setting_mapper.py:356
-#: src/infrastructure/setting_mapper.py:365
+#: src/infrastructure/setting_mapper.py:332
+#: src/infrastructure/setting_mapper.py:338
+#: src/infrastructure/setting_mapper.py:348
+#: src/infrastructure/setting_mapper.py:358
+#: src/infrastructure/setting_mapper.py:367
 msgid "Cure Rate"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:331
+#: src/infrastructure/setting_mapper.py:333
 msgid "cure_rate_use_draw_speed TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:332
+#: src/infrastructure/setting_mapper.py:334
 msgid "cure_rate_use_draw_speed DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:337
+#: src/infrastructure/setting_mapper.py:339
 msgid "cure_rate_draw_speed TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:338
+#: src/infrastructure/setting_mapper.py:340
 msgid "cure_rate_draw_speed DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:347
+#: src/infrastructure/setting_mapper.py:349
 msgid "cure_rate_move_speed TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:348
+#: src/infrastructure/setting_mapper.py:350
 msgid "cure_rate_move_speed DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:357
+#: src/infrastructure/setting_mapper.py:359
 msgid "cure_rate_override_laser_power TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:358
+#: src/infrastructure/setting_mapper.py:360
 msgid "cure_rate_override_laser_power DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:366
+#: src/infrastructure/setting_mapper.py:368
 msgid "cure_rate_override_laser_power_amount TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:367
+#: src/infrastructure/setting_mapper.py:369
 msgid "cure_rate_override_laser_power_amount DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:376
-#: src/infrastructure/setting_mapper.py:385
-#: src/infrastructure/setting_mapper.py:395
-#: src/infrastructure/setting_mapper.py:405
+#: src/infrastructure/setting_mapper.py:378
+#: src/infrastructure/setting_mapper.py:387
+#: src/infrastructure/setting_mapper.py:397
+#: src/infrastructure/setting_mapper.py:407
 msgid "Dripper"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:377
+#: src/infrastructure/setting_mapper.py:379
 msgid "dripper_type TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:378
+#: src/infrastructure/setting_mapper.py:380
 msgid "dripper_type DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:379
+#: src/infrastructure/setting_mapper.py:381
 #: src/ui/dripper_calibration_ui.kv:283
 msgid "Emulated"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:379
+#: src/infrastructure/setting_mapper.py:381
 #: src/ui/dripper_calibration_ui.kv:283
 msgid "Photo"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:379
+#: src/infrastructure/setting_mapper.py:381
 #: src/ui/dripper_calibration_ui.kv:283
 msgid "Circut"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:386
+#: src/infrastructure/setting_mapper.py:388
 msgid "dripper_drips_per_mm TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:387
+#: src/infrastructure/setting_mapper.py:389
 msgid "dripper_drips_per_mm DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:396
+#: src/infrastructure/setting_mapper.py:398
 msgid "dripper_emulated_drips_per_second TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:397
+#: src/infrastructure/setting_mapper.py:399
 msgid "dripper_emulated_drips_per_second DESCRIPTION"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:406
+#: src/infrastructure/setting_mapper.py:408
 msgid "dripper_photo_zaxis_delay TITLE"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:407
+#: src/infrastructure/setting_mapper.py:409
 msgid "dripper_photo_zaxis_delay DESCRIPTION"
 msgstr ""
 
@@ -988,7 +988,7 @@ msgstr ""
 msgid "Skipped Layers"
 msgstr ""
 
-#: src/ui/print_ui.kv:408 src/ui/print_ui.py:379 src/ui/print_ui.py:410
+#: src/ui/print_ui.kv:408 src/ui/print_ui.py:379 src/ui/print_ui.py:413
 msgid "Cancel Print"
 msgstr ""
 
