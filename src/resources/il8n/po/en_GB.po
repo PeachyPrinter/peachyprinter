@@ -191,7 +191,7 @@ msgstr ""
 #: src/infrastructure/setting_mapper.py:52
 #: src/infrastructure/setting_mapper.py:60
 msgid "Info"
-msgstr ""
+msgstr "Peachy Circuit Info"
 
 #: src/infrastructure/setting_mapper.py:37
 msgid "info_serial_number DESCRIPTION"
@@ -459,7 +459,7 @@ msgstr "Enter Email password"
 #: src/infrastructure/setting_mapper.py:308
 #: src/infrastructure/setting_mapper.py:318
 msgid "Serial"
-msgstr ""
+msgstr "Arduino Serial Coms"
 
 #: src/infrastructure/setting_mapper.py:265
 msgid "serial_enabled TITLE"
