@@ -459,7 +459,7 @@ msgstr "Enter Email password"
 #: src/infrastructure/setting_mapper.py:310
 #: src/infrastructure/setting_mapper.py:320
 msgid "Serial"
-msgstr "Arduino Serial Coms"
+msgstr "Arduino Serial Com"
 
 #: src/infrastructure/setting_mapper.py:266
 msgid "serial_enabled TITLE"
@@ -475,7 +475,7 @@ msgstr "Serial Port"
 
 #: src/infrastructure/setting_mapper.py:274
 msgid "serial_port DESCRIPTION"
-msgstr "Enter the serial port you wish to use ie: /dev/tty/USB0"
+msgstr "Enter the serial port you wish to use ie: /dev/tty/USB0 or COM5"
 
 #: src/infrastructure/setting_mapper.py:282
 msgid "serial_on_command TITLE"
