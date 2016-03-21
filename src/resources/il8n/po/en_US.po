@@ -402,7 +402,7 @@ msgstr "Email On"
 
 #: src/infrastructure/setting_mapper.py:203
 msgid "email.on DESCRIPTION"
-msgstr "True emailing after print"
+msgstr "Enable emailing after print"
 
 #: src/infrastructure/setting_mapper.py:210
 msgid "email.port TITLE"
