@@ -352,7 +352,7 @@ msgstr "Pre Layer Delay"
 
 #: src/infrastructure/setting_mapper.py:152
 msgid "options_pre_layer_delay DESCRIPTION"
-msgstr "TODO"
+msgstr "Amount of time in seconds to wait before starting the next layer after reaching that layer height"
 
 #: src/infrastructure/setting_mapper.py:161
 msgid "options_post_fire_delay TITLE"
