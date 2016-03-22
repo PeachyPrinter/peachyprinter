@@ -555,7 +555,7 @@ msgstr "Override Laser Power"
 
 #: src/infrastructure/setting_mapper.py:360
 msgid "cure_rate_override_laser_power DESCRIPTION"
-msgstr "Override the laser power/extrusion rate specified in GCODE"
+msgstr "Override the laser power/extrusion rate specified in GCODE (This is currently always on and will be enabled in a future release)"
 
 #: src/infrastructure/setting_mapper.py:368
 msgid "cure_rate_override_laser_power_amount TITLE"
@@ -574,7 +574,7 @@ msgstr ""
 
 #: src/infrastructure/setting_mapper.py:379
 msgid "dripper_type TITLE"
-msgstr "Vertical axis stuff"
+msgstr "Vertical Axis Type"
 
 #: src/infrastructure/setting_mapper.py:380
 msgid "dripper_type DESCRIPTION"
@@ -593,7 +593,7 @@ msgstr "Light Drawing Photo Mode"
 #: src/infrastructure/setting_mapper.py:381
 #: src/ui/dripper_calibration_ui.kv:283
 msgid "Circut"
-msgstr "Default"
+msgstr "Peachy Circuit"
 
 #: src/infrastructure/setting_mapper.py:388
 msgid "dripper_drips_per_mm TITLE"
