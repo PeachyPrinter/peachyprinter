@@ -110,7 +110,7 @@ class MainUI(Screen):
         Config.set('internal', 'last_directory', self.last_directory)
         Config.write()
         self.dismiss_popup()
-        vlast_print.set("file", filename)
+        App.get_running_app().last_print.set("file", filename)
         self.parent.current = 'printingui'
         self.parent.printing_ui.print_file(filename, start_height)
 
