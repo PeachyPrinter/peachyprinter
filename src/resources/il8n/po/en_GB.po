@@ -323,11 +323,11 @@ msgstr "Amount to overlap each layer"
 
 #: src/infrastructure/setting_mapper.py:122
 msgid "options_laser_thickness_mm TITLE"
-msgstr "Laser Thickness mm"
+msgstr "Laser Spot Diameter mm"
 
 #: src/infrastructure/setting_mapper.py:123
 msgid "options_laser_thickness_mm DESCRIPTION"
-msgstr "The size of the laser as it his the surface"
+msgstr "Diameter of the laser as it hits the surface (Note: This is the focused portion of the laser only, not the all of defracted light around it)"
 
 #: src/infrastructure/setting_mapper.py:130
 msgid "options_scaling_factor TITLE"
