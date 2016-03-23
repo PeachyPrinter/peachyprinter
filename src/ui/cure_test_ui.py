@@ -124,7 +124,7 @@ class CureTestUI(Screen):
         App.get_running_app().last_print.set("cure_test_print", (self.base, self.test_height, self.start_speed, self.stop_speed, base_speed))
         generator = self.configuration_api.get_cure_test(self.base, self.test_height, self.start_speed, self.stop_speed, base_speed)
         self.manager.current = 'printingui'
-        self.manager.printing_ui.print_generator(generator, self.name, force_source_speed=True)
+        self.manager.printing_ui.print_generator(generator, return_name=self.name, force_source_speed=True)
 
     def on_pre_enter(self):
         self.configuration_api = self.api.get_configuration_api()

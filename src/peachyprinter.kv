@@ -1,6 +1,7 @@
 #:kivy 1.9.0
 #:import _ __main__._
 #:import FloatInput ui.custom_widgets.FloatInput
+#:import os os
 
 
 <MyScreenManager>:
@@ -149,6 +150,8 @@
 
 
 <LoadDialog>:
+    height_input: height_input
+    filechooser: filechooser
     BoxLayout:
         orientation: 'vertical'
         spacing: dp(5)
@@ -158,14 +161,30 @@
                 id: filechooser
                 filters: ['*.gcode']
                 path: root.last_directory
+                multiselect: True
+        BoxLayout:
+            size_hint_y: None
+            height: app.input_height
+            canvas.before:
+                Color:
+                    rgba: [1,1,1,0.2]
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: ', '.join([os.path.basename(file) for file in filechooser.selection])
+                
         BoxLayout:
             size_hint_y: None
             height: app.input_height
             I18NLabel:
                 text_source: _('Starting Height')
             FloatInput:
-                id: starting_height
+                disabled: len(filechooser.selection) > 1
+                id: height_input
                 text: '0.0'
+                on_text: root.starting_height = float(self.text)
+
         BoxLayout:
             size_hint_y: None
             height: app.button_height
@@ -181,7 +200,7 @@
                 height: app.button_height
                 source: "resources/icons/main_screen-load_file_load-24x24.png"
                 text_source: _('Load')
-                on_release: root.load(filechooser.path, filechooser.selection, float(starting_height.text))
+                on_release: root.load(filechooser.path, filechooser.selection, root.starting_height)
 
 <Disclaimer>:
     orientation: 'vertical'

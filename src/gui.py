@@ -38,7 +38,7 @@ class LoadDialog(BoxLayout):
     load = ObjectProperty(None)
     cancel = ObjectProperty(None)
     last_directory = StringProperty('~')
-
+    starting_height = NumericProperty(0.0)
 
 class SettingsSelector(I18NPopup):
     pass
@@ -112,7 +112,7 @@ class MainUI(Screen):
         self.dismiss_popup()
         App.get_running_app().last_print.set("file", filename)
         self.parent.current = 'printingui'
-        self.parent.printing_ui.print_file(filename, start_height)
+        self.parent.printing_ui.print_files(filename, start_height)
 
     def dismiss_popup(self):
         self._popup.dismiss()

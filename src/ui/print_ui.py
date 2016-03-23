@@ -321,6 +321,7 @@ class PrintingUI(Screen):
         self.print_files([filename], start_height)
 
     def print_files(self, filenames, start_height):
+        Logger.info("filenames {}".format(len(filenames)))
         try:
             start_height = float(start_height)
         except:
@@ -337,8 +338,9 @@ class PrintingUI(Screen):
         self._print_next_file(start_height)
 
     def _print_next_file(self, start_height=0.0):
-        self.current_print = self.current_print + 1
         file = self._filenames.pop()
+        self.current_print = self.total_prints - len(self._filenames)
+        Logger.info("Poped filename {}".format(file))
         self._print_file(file, start_height=start_height)
 
     def _print_file(self, filename, start_height=0.0, return_name='main_ui', force_source_speed=False):
@@ -361,7 +363,7 @@ class PrintingUI(Screen):
             self.ids.printer_animation.axis_history = []
             Clock.schedule_once(self.ids.printer_animation.animation_start)
             Clock.schedule_once(self._update_status, self.refresh_rate)
-            self.print_options[0](*self.print_options[1], **self.print_options[2])
+            self.print_options[0](self.print_options[1], **self.print_options[2])
         else:
             self.parent.current = self.return_to
 
@@ -373,8 +375,8 @@ class PrintingUI(Screen):
                 self.dripper_setting.drips_per_second = self.print_api.get_drips_per_second()
                 self.ids.dripper_grid.add_widget(self.dripper_setting)
 
-    def print_generator(self, *args, **kwargs):
-        self.print_options = [self._print_generator, args, kwargs]
+    def print_generator(self, generator, return_name='main_ui', force_source_speed=True):
+        self.print_options = [self._print_generator, generator, {'return_name': return_name, 'force_source_speed': force_source_speed}]
         popup = LaserWarningPopup()
         popup.bind(on_dismiss=self.is_safe)
         popup.open()
