@@ -135,6 +135,19 @@ class PrinterAnimation(RelativeLayout):
         Clock.unschedule(self.redraw)
         Clock.schedule_once(self.redraw, self.refresh_rate)
 
+    def reset(self):
+        self.axis_history = []
+        self.line_x = []
+        self.line_y = []
+        self.last_height = 0
+        self.min_height = 0.0
+        self.laser_points = []
+        self.drip_history = []
+        self.waiting_for_drips = True
+        self.printer_current_actual_height = 0
+        self.redraw('')
+        Clock.unschedule(self.redraw)
+
     def animation_start(self, *args):
         Clock.unschedule(self.redraw)
         self.axis_history = []
@@ -211,6 +224,8 @@ class PrinterAnimation(RelativeLayout):
                     self.model_instruction.clear()
                     self.model_instruction.add(Color(rgba=(1.0, 0.0, 0.0, 1.0)))
                     self.model_instruction.add(Line(points=points, width=2, close=True))
+            else:
+                self.model_instruction.clear()
 
     def _get_pixels(self, data):
         pixel_height = data[2] / self.printer_actual_dimensions[2]
@@ -308,7 +323,10 @@ class PrintingUI(Screen):
         if self.status == 'Complete':
             self.ids.printer_animation.animation_stop()
             self.play_complete_sound()
-            self.ids.navigate_button.text_source = _("Print Complete")
+            if (App.get_running_app().last_print.print_type is "file" and len(self._filenames) > 0):
+                self._wait_and_print_next()
+            else:
+                self.ids.navigate_button.text_source = _("Print Complete")
         elif self.status == 'Failed':
             self.ids.printer_animation.animation_stop()
             self.play_failed_sound()
@@ -316,12 +334,35 @@ class PrintingUI(Screen):
         else:
             Clock.schedule_once(self._update_status, self.refresh_rate)
 
+    def _wait_and_print_next(self):
+        if self.dripper_setting:
+            self.ids.dripper_grid.remove_widget(self.dripper_setting)
+            self.dripper_setting = None
+        if self.print_api:
+            self.print_api.close()
+        self.print_api = None
+        Clock.schedule_once(self._ready_to_print_next, self.api.get_configuration_api().get_options_print_queue_delay())
+
+    def _ready_to_print_next(self, *args):
+        Clock.schedule_once(self._check_for_non_completion, 0.5)
+        self._print_next_file()
+
+    def _check_for_non_completion(self, *args):
+        if self.print_api != None:
+            data = self.print_api.get_status()
+        else:
+            data = {}
+        if 'status' in data and data['status'] == 'Complete':
+            Clock.schedule_once(self._check_for_non_completion, 0.5)
+        else:
+            Clock.schedule_once(self._update_status)
+            Clock.schedule_once(self.ids.printer_animation.animation_start)
+
     def print_file(self, filename, start_height):
         '''Depricated'''
         self.print_files([filename], start_height)
 
     def print_files(self, filenames, start_height):
-        Logger.info("filenames {}".format(len(filenames)))
         try:
             start_height = float(start_height)
         except:
@@ -332,7 +373,6 @@ class PrintingUI(Screen):
         popup.open()
 
     def _print_files(self, filenames, start_height=0.0):
-        Logger.info("filenames {}".format(filenames))
         self.total_prints = len(filenames)
         self._filenames = list(filenames)
         self._print_next_file(start_height)
@@ -340,7 +380,6 @@ class PrintingUI(Screen):
     def _print_next_file(self, start_height=0.0):
         file = self._filenames.pop()
         self.current_print = self.total_prints - len(self._filenames)
-        Logger.info("Poped filename {}".format(file))
         self._print_file(file, start_height=start_height)
 
     def _print_file(self, filename, start_height=0.0, return_name='main_ui', force_source_speed=False):
@@ -449,6 +488,7 @@ class PrintingUI(Screen):
         Clock.unschedule(self._update_status)
         if self.print_api:
             self.print_api.close()
+        self.ids.printer_animation.reset()
         self.ids.printer_animation.animation_stop()
         self.print_api = None
         self.settings_popup.remove_settings()
