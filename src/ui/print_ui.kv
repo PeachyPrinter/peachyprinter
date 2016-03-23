@@ -168,7 +168,7 @@
             width: "250dp"
             orientation:'vertical'
             padding: "3dp"
-            spacing: "10dp"
+            spacing: "5dp"
             GridLayout:
                 padding: "3dp"
                 spacing: "3dp"
@@ -254,7 +254,7 @@
                         text: root.waiting_for_drips
             GridLayout:
                 padding: "3dp"
-                spacing: "5dp"
+                spacing: "2dp"
                 cols: 1
                 height: self.minimum_height
                 size_hint_y: None
@@ -289,6 +289,20 @@
                     cols: 2
                     height: self.minimum_height
                     size_hint_y: None
+                    I18NLabel:
+                        size_hint_y: None
+                        height: app.label_height
+                        text_size: self.size
+                        halign: 'left'
+                        valign: 'middle'
+                        text_source: _("Print")
+                    Label:
+                        size_hint_y: None
+                        height: app.label_height
+                        text_size: self.size
+                        halign: 'right'
+                        valign: 'middle'
+                        text: '{}/{}'.format(root.current_print, root.total_prints)
                     I18NLabel:
                         size_hint_y: None
                         height: app.label_height

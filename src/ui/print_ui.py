@@ -241,6 +241,8 @@ class PrintingUI(Screen):
     elapsed_time = StringProperty("0")
     current_layer = NumericProperty(0)
     skipped_layers = NumericProperty(0)
+    current_print = NumericProperty(0)
+    total_prints = NumericProperty(0)
 
     def __init__(self, api, **kwargs):
         self.return_to = 'main_ui'
@@ -314,8 +316,12 @@ class PrintingUI(Screen):
         else:
             Clock.schedule_once(self._update_status, self.refresh_rate)
 
-    def print_file(self, *args, **kwargs):
-        self.print_options = [self._print_file, args, kwargs]
+    def print_file(self, filename, start_height):
+        try:
+            start_height = float(start_height)
+        except:
+            start_height = 0.0
+        self.print_options = [self._print_file, [filename], {'start_height': start_height}]
         popup = LaserWarningPopup(title=_('Laser Safety Notice'), size_hint=(0.6, 0.6))
         popup.bind(on_dismiss=self.is_safe)
         popup.open()
