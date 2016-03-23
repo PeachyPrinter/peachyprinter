@@ -317,24 +317,41 @@ class PrintingUI(Screen):
             Clock.schedule_once(self._update_status, self.refresh_rate)
 
     def print_file(self, filename, start_height):
+        '''Depricated'''
+        self.print_files([filename], start_height)
+
+    def print_files(self, filenames, start_height):
         try:
             start_height = float(start_height)
         except:
             start_height = 0.0
-        self.print_options = [self._print_file, [filename], {'start_height': start_height}]
+        self.print_options = [self._print_files, filenames, {'start_height': start_height}]
         popup = LaserWarningPopup(title=_('Laser Safety Notice'), size_hint=(0.6, 0.6))
         popup.bind(on_dismiss=self.is_safe)
         popup.open()
 
+    def _print_files(self, filenames, start_height=0.0):
+        Logger.info("filenames {}".format(filenames))
+        self.total_prints = len(filenames)
+        self._filenames = list(filenames)
+        self._print_next_file(start_height)
+
+    def _print_next_file(self, start_height=0.0):
+        self.current_print = self.current_print + 1
+        file = self._filenames.pop()
+        self._print_file(file, start_height=start_height)
+
     def _print_file(self, filename, start_height=0.0, return_name='main_ui', force_source_speed=False):
+        Logger.info("About to print {}".format(filename))
         self.return_to = return_name
         try:
-            filepath = filename[0].encode('utf-8')
+            filepath = filename.encode('utf-8')
             self.print_api = self.api.get_print_api(start_height=start_height)
             self.path = os.path.basename(filepath)
             self.print_api.print_gcode(filepath, force_source_speed=force_source_speed)
             self._setup_print()
         except Exception as ex:
+            raise
             popup = ErrorPopup(title='Error', text=str(ex), size_hint=(0.6, 0.6))
             popup.open()
             self.parent.current = self.return_to
