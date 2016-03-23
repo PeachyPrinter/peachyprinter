@@ -79,6 +79,7 @@ if __name__ == "__main__":
     setup_logging(args)
 
     api = PrinterAPI()
+    api.load_printer()
     sys.argv = [sys.argv[0]]
     if args.mod:
         sys.argv.append("-m")
