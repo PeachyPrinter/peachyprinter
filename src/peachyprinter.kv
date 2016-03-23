@@ -2,6 +2,7 @@
 #:import _ __main__._
 #:import FloatInput ui.custom_widgets.FloatInput
 #:import os os
+#:import Logger kivy.logger.Logger
 
 
 <MyScreenManager>:
@@ -162,6 +163,7 @@
                 filters: ['*.gcode']
                 path: root.last_directory
                 multiselect: True
+                on_selection: root.selected()
         BoxLayout:
             size_hint_y: None
             height: app.input_height

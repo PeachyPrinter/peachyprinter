@@ -443,7 +443,7 @@ class PrintingUI(Screen):
         self.ids.navigate_button.text_source = _('Cancel Print')
         last_print = App.get_running_app().last_print
         if last_print.print_type is "file":
-            self.print_file(last_print.source, self.return_to)
+            self.print_files(last_print.source, self.return_to)
         elif last_print.print_type is "test_print":
             generator = self.api.get_test_print_api().get_test_print(*last_print.source)
             self.print_generator(generator, self.return_to)

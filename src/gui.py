@@ -40,6 +40,14 @@ class LoadDialog(BoxLayout):
     last_directory = StringProperty('~')
     starting_height = NumericProperty(0.0)
 
+    def selected(self):
+        selected = [os.path.basename(file) for file in self.filechooser.selection]
+        for item in self.filechooser._items:
+            if item.ids['filename'].text in selected:
+                item.ids['filename'].color = [0.0, 0.9, 1.0, 1.0]
+            else:
+                item.ids['filename'].color = [1.0, 1.0, 1.0, 1.0]
+
 class SettingsSelector(I18NPopup):
     pass
 
