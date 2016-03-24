@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 15:16-0600\n"
+"POT-Creation-Date: 2016-03-24 13:24-0600\n"
 "PO-Revision-Date: 2015-03-17 09:48-0600\n"
 "Last-Translator: James Townley <software+dev@gmail.com>\n"
 "Language-Team: James Townley <software+dev@gmail.com>\n"
@@ -11,25 +11,25 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/gui.py:88
+#: src/gui.py:96
 msgid "Disclaimer"
 msgstr ""
 
-#: src/gui.py:105
+#: src/gui.py:113
 msgid "Load file"
 msgstr ""
 
-#: src/gui.py:267 src/gui.py:301 src/peachyprinter.kv:57
+#: src/gui.py:275 src/gui.py:309 src/peachyprinter.kv:59
 #: src/ui/custom_widgets.kv:115 src/ui/firmware_ui.kv:134
 #: src/ui/peachy_widgets.kv:161 src/ui/print_ui.kv:122
 msgid "Close"
 msgstr ""
 
-#: src/gui.py:288
+#: src/gui.py:296
 msgid "An Error has Occured"
 msgstr ""
 
-#: src/gui.py:290 src/peachyprinter.kv:202
+#: src/gui.py:298 src/peachyprinter.kv:223
 msgid "Exit"
 msgstr ""
 
@@ -37,59 +37,59 @@ msgstr ""
 msgid "Some Text"
 msgstr ""
 
-#: src/peachyprinter.kv:12
+#: src/peachyprinter.kv:14
 msgid "Settings Selection"
 msgstr ""
 
-#: src/peachyprinter.kv:22
+#: src/peachyprinter.kv:24
 msgid "Laser Calibration"
 msgstr ""
 
-#: src/peachyprinter.kv:29
+#: src/peachyprinter.kv:31
 msgid "Dripper Calibration"
 msgstr ""
 
-#: src/peachyprinter.kv:36
+#: src/peachyprinter.kv:38
 msgid "Resin Curing Calibration"
 msgstr ""
 
-#: src/peachyprinter.kv:43
+#: src/peachyprinter.kv:45
 msgid "Advanced Settings"
 msgstr ""
 
-#: src/peachyprinter.kv:50
+#: src/peachyprinter.kv:52
 msgid "Restore Defaults"
 msgstr ""
 
-#: src/peachyprinter.kv:84
+#: src/peachyprinter.kv:86
 msgid "Loading, Ensure your printer is connected"
 msgstr ""
 
-#: src/peachyprinter.kv:87
+#: src/peachyprinter.kv:89
 msgid "Close and Exit"
 msgstr ""
 
-#: src/peachyprinter.kv:95
+#: src/peachyprinter.kv:97
 msgid "Shutting down"
 msgstr ""
 
-#: src/peachyprinter.kv:117
+#: src/peachyprinter.kv:119
 msgid "Print from file"
 msgstr "Print from GCODE"
 
-#: src/peachyprinter.kv:124
+#: src/peachyprinter.kv:126
 msgid "Print from library"
 msgstr ""
 
-#: src/peachyprinter.kv:131 src/ui/print_ui.kv:111
+#: src/peachyprinter.kv:133 src/ui/print_ui.kv:111
 msgid "Settings"
 msgstr ""
 
-#: src/peachyprinter.kv:165
+#: src/peachyprinter.kv:183
 msgid "Starting Height"
 msgstr ""
 
-#: src/peachyprinter.kv:176 src/infrastructure/setting_mapper.py:82
+#: src/peachyprinter.kv:197 src/infrastructure/setting_mapper.py:82
 #: src/infrastructure/setting_mapper.py:99
 #: src/infrastructure/setting_mapper.py:116
 #: src/infrastructure/setting_mapper.py:134
@@ -110,22 +110,23 @@ msgstr ""
 #: src/infrastructure/setting_mapper.py:305
 #: src/infrastructure/setting_mapper.py:315
 #: src/infrastructure/setting_mapper.py:325
-#: src/infrastructure/setting_mapper.py:342
+#: src/infrastructure/setting_mapper.py:335
 #: src/infrastructure/setting_mapper.py:352
 #: src/infrastructure/setting_mapper.py:362
-#: src/infrastructure/setting_mapper.py:371
-#: src/infrastructure/setting_mapper.py:391
+#: src/infrastructure/setting_mapper.py:372
+#: src/infrastructure/setting_mapper.py:381
 #: src/infrastructure/setting_mapper.py:401
-#: src/infrastructure/setting_mapper.py:411 src/ui/library_ui.kv:60
+#: src/infrastructure/setting_mapper.py:411
+#: src/infrastructure/setting_mapper.py:421 src/ui/library_ui.kv:60
 #: src/ui/peachy_widgets.kv:55
 msgid "Cancel"
 msgstr "Cancel"
 
-#: src/peachyprinter.kv:183
+#: src/peachyprinter.kv:204
 msgid "Load"
 msgstr ""
 
-#: src/peachyprinter.kv:191
+#: src/peachyprinter.kv:212
 msgid "MARKUP - Disclaimer "
 msgstr ""
 "[b]Laser Safety[/b]\n"
@@ -183,7 +184,7 @@ msgstr ""
 "agree that Peachy Printer Inc. is not liable for injuries or damages from "
 "any of our products."
 
-#: src/peachyprinter.kv:197
+#: src/peachyprinter.kv:218
 msgid "Accept"
 msgstr ""
 
@@ -280,13 +281,14 @@ msgstr "Height in mm of sublayers when Use Sublayers is on"
 #: src/infrastructure/setting_mapper.py:304
 #: src/infrastructure/setting_mapper.py:314
 #: src/infrastructure/setting_mapper.py:324
-#: src/infrastructure/setting_mapper.py:341
+#: src/infrastructure/setting_mapper.py:334
 #: src/infrastructure/setting_mapper.py:351
 #: src/infrastructure/setting_mapper.py:361
-#: src/infrastructure/setting_mapper.py:370
-#: src/infrastructure/setting_mapper.py:390
+#: src/infrastructure/setting_mapper.py:371
+#: src/infrastructure/setting_mapper.py:380
 #: src/infrastructure/setting_mapper.py:400
 #: src/infrastructure/setting_mapper.py:410
+#: src/infrastructure/setting_mapper.py:420
 msgid "Ok"
 msgstr "Ok"
 
@@ -328,7 +330,9 @@ msgstr "Laser Spot Diameter mm"
 
 #: src/infrastructure/setting_mapper.py:123
 msgid "options_laser_thickness_mm DESCRIPTION"
-msgstr "Diameter of the laser as it hits the surface (Note: This is the focused portion of the laser only, not the all of defracted light around it)"
+msgstr ""
+"Diameter of the laser as it hits the surface (Note: This is the focused "
+"portion of the laser only, not the all of defracted light around it)"
 
 #: src/infrastructure/setting_mapper.py:130
 msgid "options_scaling_factor TITLE"
@@ -352,7 +356,9 @@ msgstr "Pre Layer Delay"
 
 #: src/infrastructure/setting_mapper.py:152
 msgid "options_pre_layer_delay DESCRIPTION"
-msgstr "Amount of time in seconds to wait before starting the next layer after reaching that layer height"
+msgstr ""
+"Amount of time in seconds to wait before starting the next layer after "
+"reaching that layer height"
 
 #: src/infrastructure/setting_mapper.py:161
 msgid "options_post_fire_delay TITLE"
@@ -459,6 +465,7 @@ msgstr "Enter Email password"
 #: src/infrastructure/setting_mapper.py:300
 #: src/infrastructure/setting_mapper.py:310
 #: src/infrastructure/setting_mapper.py:320
+#: src/infrastructure/setting_mapper.py:330
 msgid "Serial"
 msgstr "Arduino Serial Com"
 
@@ -492,7 +499,8 @@ msgstr "Dripper off command"
 
 #: src/infrastructure/setting_mapper.py:293
 msgid "serial_off_command DESCRIPTION"
-msgstr "Signals that the vertical axis has reached the height for the next layer"
+msgstr ""
+"Signals that the vertical axis has reached the height for the next layer"
 
 #: src/infrastructure/setting_mapper.py:302
 msgid "serial_layer_started_command TITLE"
@@ -511,117 +519,128 @@ msgid "serial_layer_ended_command DESCRIPTION"
 msgstr "Signals that the printer has finished drawing a layer"
 
 #: src/infrastructure/setting_mapper.py:322
+msgid "serial_print_start_command TITLE"
+msgstr "Print start command"
+
+#: src/infrastructure/setting_mapper.py:323
+msgid "serial_print_start_command DESCRIPTION"
+msgstr "Signals that the print has started"
+
+#: src/infrastructure/setting_mapper.py:332
 msgid "serial_print_ended_command TITLE"
 msgstr "Print ended command"
 
-#: src/infrastructure/setting_mapper.py:323
+#: src/infrastructure/setting_mapper.py:333
 msgid "serial_print_ended_command DESCRIPTION"
 msgstr "Signals that the print has ended"
 
-#: src/infrastructure/setting_mapper.py:332
-#: src/infrastructure/setting_mapper.py:338
+#: src/infrastructure/setting_mapper.py:342
 #: src/infrastructure/setting_mapper.py:348
 #: src/infrastructure/setting_mapper.py:358
-#: src/infrastructure/setting_mapper.py:367
+#: src/infrastructure/setting_mapper.py:368
+#: src/infrastructure/setting_mapper.py:377
 msgid "Cure Rate"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:333
+#: src/infrastructure/setting_mapper.py:343
 msgid "cure_rate_use_draw_speed TITLE"
 msgstr "Override GCODE Speeds"
 
-#: src/infrastructure/setting_mapper.py:334
+#: src/infrastructure/setting_mapper.py:344
 msgid "cure_rate_use_draw_speed DESCRIPTION"
 msgstr "Override the laser draw speeds specified in GCODE"
 
-#: src/infrastructure/setting_mapper.py:339
+#: src/infrastructure/setting_mapper.py:349
 msgid "cure_rate_draw_speed TITLE"
 msgstr "Laser Draw Speed"
 
-#: src/infrastructure/setting_mapper.py:340
+#: src/infrastructure/setting_mapper.py:350
 msgid "cure_rate_draw_speed DESCRIPTION"
 msgstr "The override speed to be used when the laser is on"
 
-#: src/infrastructure/setting_mapper.py:349
+#: src/infrastructure/setting_mapper.py:359
 msgid "cure_rate_move_speed TITLE"
 msgstr "Move Speed"
 
-#: src/infrastructure/setting_mapper.py:350
+#: src/infrastructure/setting_mapper.py:360
 msgid "cure_rate_move_speed DESCRIPTION"
 msgstr "The override speed to be used when the laser is off"
 
-#: src/infrastructure/setting_mapper.py:359
+#: src/infrastructure/setting_mapper.py:369
 msgid "cure_rate_override_laser_power TITLE"
 msgstr "Override Laser Power"
 
-#: src/infrastructure/setting_mapper.py:360
+#: src/infrastructure/setting_mapper.py:370
 msgid "cure_rate_override_laser_power DESCRIPTION"
-msgstr "Override the laser power/extrusion rate specified in GCODE (This is currently always on and will be enabled in a future release)"
+msgstr ""
+"Override the laser power/extrusion rate specified in GCODE (This is "
+"currently always on and will be enabled in a future release)"
 
-#: src/infrastructure/setting_mapper.py:368
+#: src/infrastructure/setting_mapper.py:378
 msgid "cure_rate_override_laser_power_amount TITLE"
 msgstr "Laser Power"
 
-#: src/infrastructure/setting_mapper.py:369
+#: src/infrastructure/setting_mapper.py:379
 msgid "cure_rate_override_laser_power_amount DESCRIPTION"
 msgstr "The override power to be used"
 
-#: src/infrastructure/setting_mapper.py:378
-#: src/infrastructure/setting_mapper.py:387
+#: src/infrastructure/setting_mapper.py:388
 #: src/infrastructure/setting_mapper.py:397
 #: src/infrastructure/setting_mapper.py:407
+#: src/infrastructure/setting_mapper.py:417
 msgid "Dripper"
 msgstr ""
 
-#: src/infrastructure/setting_mapper.py:379
+#: src/infrastructure/setting_mapper.py:389
 msgid "dripper_type TITLE"
 msgstr "Vertical Axis Type"
 
-#: src/infrastructure/setting_mapper.py:380
+#: src/infrastructure/setting_mapper.py:390
 msgid "dripper_type DESCRIPTION"
 msgstr "Choose the way that your printer handles vertical movement"
 
-#: src/infrastructure/setting_mapper.py:381
+#: src/infrastructure/setting_mapper.py:391
 #: src/ui/dripper_calibration_ui.kv:283
 msgid "Emulated"
 msgstr "Emulate Drips"
 
-#: src/infrastructure/setting_mapper.py:381
+#: src/infrastructure/setting_mapper.py:391
 #: src/ui/dripper_calibration_ui.kv:283
 msgid "Photo"
 msgstr "Light Drawing Photo Mode"
 
-#: src/infrastructure/setting_mapper.py:381
+#: src/infrastructure/setting_mapper.py:391
 #: src/ui/dripper_calibration_ui.kv:283
 msgid "Circut"
 msgstr "Peachy Circuit"
 
-#: src/infrastructure/setting_mapper.py:388
+#: src/infrastructure/setting_mapper.py:398
 msgid "dripper_drips_per_mm TITLE"
 msgstr "Drips Per Millimeter"
 
-#: src/infrastructure/setting_mapper.py:389
+#: src/infrastructure/setting_mapper.py:399
 msgid "dripper_drips_per_mm DESCRIPTION"
 msgstr ""
 "The number of drips that it takes to raise the print surface 1 millimeter"
 
-#: src/infrastructure/setting_mapper.py:398
+#: src/infrastructure/setting_mapper.py:408
 msgid "dripper_emulated_drips_per_second TITLE"
 msgstr "Emulated Drips/Second"
 
-#: src/infrastructure/setting_mapper.py:399
+#: src/infrastructure/setting_mapper.py:409
 msgid "dripper_emulated_drips_per_second DESCRIPTION"
 msgstr ""
 "The rate at which the computer will emulate drips when in Emulate Drips mode"
 
-#: src/infrastructure/setting_mapper.py:408
+#: src/infrastructure/setting_mapper.py:418
 msgid "dripper_photo_zaxis_delay TITLE"
 msgstr "Photo Exposure Length"
 
-#: src/infrastructure/setting_mapper.py:409
+#: src/infrastructure/setting_mapper.py:419
 msgid "dripper_photo_zaxis_delay DESCRIPTION"
 msgstr ""
-"The minimum total layer duration to allow for consistent exposure lengths while using light drawing photomode"
+"The minimum total layer duration to allow for consistent exposure lengths "
+"while using light drawing photomode"
 
 #: src/ui/calibrate_ui.kv:23
 msgid "Center"
@@ -656,7 +675,7 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: src/ui/calibrate_ui.kv:59 src/ui/print_ui.kv:402
+#: src/ui/calibrate_ui.kv:59 src/ui/print_ui.kv:416
 msgid "Emergency Stop"
 msgstr ""
 
@@ -883,27 +902,27 @@ msgstr ""
 msgid "Test"
 msgstr ""
 
-#: src/ui/cure_test_ui.kv:199
+#: src/ui/cure_test_ui.kv:198
 msgid "Run Cure Test Now"
 msgstr ""
 
-#: src/ui/cure_test_ui.kv:214
+#: src/ui/cure_test_ui.kv:213
 msgid "[b]Print Settings[/b]"
 msgstr ""
 
-#: src/ui/cure_test_ui.kv:224
+#: src/ui/cure_test_ui.kv:223
 msgid "Override speeds"
 msgstr ""
 
-#: src/ui/cure_test_ui.kv:237
+#: src/ui/cure_test_ui.kv:236
 msgid "Draw Speed"
 msgstr ""
 
-#: src/ui/cure_test_ui.kv:251
+#: src/ui/cure_test_ui.kv:250
 msgid "Move Speed"
 msgstr ""
 
-#: src/ui/cure_test_ui.kv:265
+#: src/ui/cure_test_ui.kv:264
 msgid "Override laser power"
 msgstr "Override power (always on)"
 
@@ -1102,7 +1121,7 @@ msgstr ""
 msgid "Done"
 msgstr ""
 
-#: src/ui/peachy_widgets.kv:26 src/ui/print_ui.py:319
+#: src/ui/peachy_widgets.kv:26 src/ui/print_ui.py:371
 msgid "Laser Safety Notice"
 msgstr ""
 
@@ -1189,38 +1208,42 @@ msgid "Time"
 msgstr ""
 
 #: src/ui/print_ui.kv:298
-msgid "Start Time"
+msgid "Print"
 msgstr ""
 
 #: src/ui/print_ui.kv:312
+msgid "Start Time"
+msgstr ""
+
+#: src/ui/print_ui.kv:326
 msgid "Elapsed Time"
 msgstr ""
 
-#: src/ui/print_ui.kv:352
+#: src/ui/print_ui.kv:366
 msgid "Posisition"
 msgstr ""
 
-#: src/ui/print_ui.kv:364
+#: src/ui/print_ui.kv:378
 msgid "Current Height"
 msgstr ""
 
-#: src/ui/print_ui.kv:378
+#: src/ui/print_ui.kv:392
 msgid "Layers"
 msgstr ""
 
-#: src/ui/print_ui.kv:392
+#: src/ui/print_ui.kv:406
 msgid "Skipped Layers"
 msgstr ""
 
-#: src/ui/print_ui.kv:408 src/ui/print_ui.py:379 src/ui/print_ui.py:413
+#: src/ui/print_ui.kv:422 src/ui/print_ui.py:443 src/ui/print_ui.py:477
 msgid "Cancel Print"
 msgstr ""
 
-#: src/ui/print_ui.kv:415
+#: src/ui/print_ui.kv:429
 msgid "Restart Print"
 msgstr ""
 
-#: src/ui/print_ui.kv:421
+#: src/ui/print_ui.kv:435
 msgid "Display Settings"
 msgstr ""
 
@@ -1273,12 +1296,12 @@ msgstr ""
 msgid "Spiral"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:435 src/ui/dripper_calibration_ui.py:86
+#: src/ui/calibrate_ui.py:435 src/ui/dripper_calibration_ui.py:87
 #: src/ui/restore_ui.py:28
 msgid "Error"
 msgstr ""
 
-#: src/ui/calibrate_ui.py:435 src/ui/dripper_calibration_ui.py:86
+#: src/ui/calibrate_ui.py:435 src/ui/dripper_calibration_ui.py:87
 #: src/ui/restore_ui.py:28
 msgid "No Peachy Printer Detected"
 msgstr ""
@@ -1324,11 +1347,11 @@ msgid ""
 "Firmware update successful. Please disconnect and reconnect your printer."
 msgstr ""
 
-#: src/ui/print_ui.py:309
+#: src/ui/print_ui.py:329
 msgid "Print Complete"
 msgstr ""
 
-#: src/ui/print_ui.py:313
+#: src/ui/print_ui.py:333
 msgid "Print Failed"
 msgstr ""
 

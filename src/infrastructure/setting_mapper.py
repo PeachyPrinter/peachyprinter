@@ -318,6 +318,16 @@ class SettingsMapper(object):
                 {
                     'type': 'string',
                     'section': _('Serial'),
+                    'key': 'serial_print_start_command',
+                    'title_source': _('serial_print_start_command TITLE'),
+                    'desc_source': _('serial_print_start_command DESCRIPTION'),
+                    'ok_button_text': _("Ok"),
+                    'cancel_button_text': _("Cancel"),
+                    'validation_regex': ".$"
+                },
+                {
+                    'type': 'string',
+                    'section': _('Serial'),
                     'key': 'serial_print_ended_command',
                     'title_source': _('serial_print_ended_command TITLE'),
                     'desc_source': _('serial_print_ended_command DESCRIPTION'),
