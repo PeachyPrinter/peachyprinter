@@ -1,2 +1,2 @@
 https://github.com/PeachyPrinter/peachy-firmware-flash/releases/download/0.0.1.63/PeachyPrinterFirmwareAPI-0.0.1.63.tar.gz
-https://github.com/PeachyPrinter/peachyprintertools/releases/download/1.1.0.969/PeachyPrinterToolsAPI-1.1.0.969.tar.gz
+https://github.com/PeachyPrinter/peachyprintertools/releases/download/1.1.1.970/PeachyPrinterToolsAPI-1.1.1.970.tar.gz
