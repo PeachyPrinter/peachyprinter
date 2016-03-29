@@ -483,7 +483,7 @@ msgstr "Serial Port"
 
 #: src/infrastructure/setting_mapper.py:274
 msgid "serial_port DESCRIPTION"
-msgstr "Enter the serial port you wish to use ie: /dev/tty/USB0 or COM5"
+msgstr "Enter the serial port you wish to use ie: /dev/ttyUSB0 or COM5"
 
 #: src/infrastructure/setting_mapper.py:282
 msgid "serial_on_command TITLE"
