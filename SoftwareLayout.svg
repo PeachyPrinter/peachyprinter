@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="SoftwareLayout.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="439.71873"
+     inkscape:cy="570.40641"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1056"
+     inkscape:window-x="1920"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#ffff00;stroke:#000000;stroke-width:8.16644192;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4136"
+       width="646.06287"
+       height="923.11017"
+       x="49.885895"
+       y="65.676666" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="200.57144"
+       y="117.21935"
+       id="text4138"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4140"
+         x="200.57144"
+         y="117.21935"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold'">Peachy Printer</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="127.71429"
+       y="148.64792"
+       id="text4142"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4144"
+         x="127.71429"
+         y="148.64792"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic'">https://github.com/PeachyPrinter/peachyprinter</tspan></text>
+    <rect
+       style="fill:#00ffff;stroke:#000000;stroke-width:7.04308033;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4136-2"
+       width="606.78015"
+       height="731.06586"
+       x="70.038498"
+       y="235.11497" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="149.85716"
+       y="284.93365"
+       id="text4138-1"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4140-8"
+         x="149.85716"
+         y="284.93365"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold'">Peachy Printer Tools</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="115.57144"
+       y="317.79077"
+       id="text4142-3"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4144-1"
+         x="115.57144"
+         y="317.79077"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic'">https://github.com/PeachyPrinter/peachyprintertools</tspan></text>
+    <rect
+       style="fill:#ff8080;stroke:#000000;stroke-width:3.00163436;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4136-9"
+       width="492.25015"
+       height="163.67876"
+       x="130.87492"
+       y="435.95135" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="258.42859"
+       y="486.36218"
+       id="text4138-17"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4140-6"
+         x="258.42859"
+         y="486.36218"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold'">USB Driver</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="139.85715"
+       y="520.64795"
+       id="text4142-9"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4144-6"
+         x="139.85715"
+         y="520.64795"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic'">https://github.com/PeachyPrinter/c-usb-module</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="108.18962"
+       y="181.56198"
+       id="text4195"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="108.18962"
+         y="181.56198"
+         style="font-size:12.5px"
+         id="tspan4199">Peachy printer is the UI component of peachy printer and uses Kivy as it's front end.</tspan><tspan
+         sodipodi:role="line"
+         x="108.18962"
+         y="197.18698"
+         style="font-size:12.5px"
+         id="tspan4203">Although not a necessity for printing it makes  it way easier.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="121.99432"
+       y="344.58939"
+       id="text4195-6"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="121.99432"
+         y="344.58939"
+         style="font-size:12.5px"
+         id="tspan4203-6">Preachy Printer Tools is the API for printing and is required to interact with the printer.</tspan><tspan
+         sodipodi:role="line"
+         x="121.99432"
+         y="360.21439"
+         style="font-size:12.5px"
+         id="tspan4228">It contains a commandline printer in the src folder called print_file.py which can be</tspan><tspan
+         sodipodi:role="line"
+         x="121.99432"
+         y="375.83939"
+         style="font-size:12.5px"
+         id="tspan4230">used to print from the command line.</tspan><tspan
+         sodipodi:role="line"
+         x="121.99432"
+         y="391.46439"
+         style="font-size:12.5px"
+         id="tspan4232">It is fully tested (TDD).</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="156.33908"
+       y="547.80176"
+       id="text4195-6-9"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="156.33908"
+         y="547.80176"
+         style="font-size:12.5px"
+         id="tspan4232-9">The usb driver is not a code dependancy how every the dll,so,dylibs</tspan><tspan
+         sodipodi:role="line"
+         x="156.33908"
+         y="563.42676"
+         style="font-size:12.5px"
+         id="tspan4278">built by this project are.</tspan><tspan
+         sodipodi:role="line"
+         x="156.33908"
+         y="579.05176"
+         style="font-size:12.5px"
+         id="tspan4280">They should be placed in the src/peachyprinter/dependancies/[OS]/[ARCH]</tspan></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4261"
+       style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:40px;line-height:125%;letter-spacing:0px;word-spacing:0px"><flowRegion
+         id="flowRegion4263"><rect
+           id="rect4265"
+           width="65.714287"
+           height="47.142857"
+           x="182.85715"
+           y="563.79077" /></flowRegion><flowPara
+         id="flowPara4267"></flowPara></flowRoot>    <rect
+       style="fill:#ffb380;stroke:#000000;stroke-width:3.00163436;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4136-9-0"
+       width="492.25015"
+       height="163.67876"
+       x="131.5892"
+       y="613.09424" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="202.00003"
+       y="661.36218"
+       id="text4138-17-5"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4140-6-2"
+         x="202.00003"
+         y="661.36218"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold'">Firmware Flash</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:16.25px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="146.57144"
+       y="697.79083"
+       id="text4142-9-4"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4144-6-0"
+         x="146.57144"
+         y="697.79083"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.25px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic'">https://github.com/PeachyPrinter/peachy-firmware-flash</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="157.05338"
+       y="724.94464"
+       id="text4195-6-9-9"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="157.05338"
+         y="724.94464"
+         style="font-size:12.5px"
+         id="tspan4280-8">This contains the code and binaries required to perform a upgrade of the</tspan><tspan
+         sodipodi:role="line"
+         x="157.05338"
+         y="740.56964"
+         style="font-size:12.5px"
+         id="tspan4326">firmware on the peachy printer.</tspan></text>
+    <rect
+       style="fill:#ccff00;stroke:#000000;stroke-width:3.00163436;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4136-9-0-8"
+       width="492.25015"
+       height="163.67876"
+       x="131.5892"
+       y="790.23712" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="267.71432"
+       y="834.21936"
+       id="text4138-17-5-3"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4140-6-2-4"
+         x="267.71432"
+         y="834.21936"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold'">Firmware</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:16.25px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="153.64252"
+       y="856.24591"
+       id="text4142-9-4-1"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4144-6-0-6"
+         x="153.64252"
+         y="856.24591"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.25px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic'">https://github.com/PeachyPrinter/peachy-pro-firmware</tspan><tspan
+         sodipodi:role="line"
+         x="153.64252"
+         y="876.55841"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.25px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic'"
+         id="tspan4364"> **Due to safety regulations this is not open source**</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="157.05338"
+       y="902.08752"
+       id="text4195-6-9-9-4"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="157.05338"
+         y="902.08752"
+         style="font-size:12.5px"
+         id="tspan4326-8">This is the microcontroller code for the peachyprinter. The compiled</tspan><tspan
+         sodipodi:role="line"
+         x="157.05338"
+         y="917.71252"
+         style="font-size:12.5px"
+         id="tspan4368">binary from this is placed in the src/dependancies/firmware folder.</tspan></text>
+  </g>
+</svg>
